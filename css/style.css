@@ -521,3 +521,37 @@ nav.nav-hidden {
 @media (max-width: 600px) {
   .progress-nav { padding: 10px 24px; }
 }
+
+/* === BURGER X FIX — hide extra lines === */
+.burger[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+  width: 22px;
+}
+.burger[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+  width: 0;
+}
+.burger[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+  width: 22px;
+}
+
+/* === ABOUT PAGE MOBILE FIX === */
+@media (max-width: 800px) {
+  .about-photo {
+    position: static;
+    max-width: 280px;
+  }
+}
+
+/* === CASE NAV MOBILE — bottom only === */
+@media (max-width: 600px) {
+  .case-nav .container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+  }
+  .case-nav-link.next {
+    text-align: left;
+  }
+}
