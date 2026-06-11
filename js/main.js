@@ -11,8 +11,10 @@ function applyThemeColor(theme) {
   document.querySelectorAll('meta[name="theme-color"]').forEach(el => el.remove());
   const meta = document.createElement('meta');
   meta.name = 'theme-color';
-  meta.content = theme === 'dark' ? '#0D0D0D' : '#FFFFFF';
+  const color = theme === 'dark' ? '#0D0D0D' : '#FFFFFF';
+  meta.content = color;
   document.head.appendChild(meta);
+  document.documentElement.style.backgroundColor = color;
 }
 
 // Apply on load
