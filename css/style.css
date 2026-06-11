@@ -8,7 +8,7 @@
   --font-display: 'Cormorant Garamond', Georgia, serif;
   --font-body: 'Inter', system-ui, sans-serif;
   --font-mono: 'DM Mono', monospace;
-  --max: 1120px;
+  --max: 1400px;
   --transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
@@ -49,7 +49,7 @@ nav {
   z-index: 100;
   background: rgba(255,255,255,0.96);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
+  
 }
 .nav-inner {
   max-width: var(--max);
@@ -94,7 +94,7 @@ nav {
 /* === HOME HERO === */
 .home-hero {
   padding: 80px 0 60px;
-  border-bottom: 1px solid var(--border);
+  
 }
 .home-hero .container {
   display: flex;
@@ -117,19 +117,17 @@ nav {
 }
 
 /* === WORK GRID === */
-.work-grid { padding: 0; }
+.work-grid { padding: 48px 0; }
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1px;
-  background: var(--border);
+  gap: 24px;
 }
 @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
 
 .work-card {
   position: relative;
   overflow: hidden;
-  background: var(--white);
   cursor: pointer;
   display: block;
 }
@@ -185,7 +183,7 @@ nav {
 /* === CASE STUDY PAGE === */
 .case-hero {
   padding: 72px 0 56px;
-  border-bottom: 1px solid var(--border);
+  
 }
 .case-eyebrow {
   font-family: var(--font-mono);
