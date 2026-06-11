@@ -278,6 +278,16 @@ nav {
   color: var(--mid);
   font-style: italic;
 }
+.case-image-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin: 40px 0;
+}
+.case-image-grid .case-image { margin: 0; }
+@media (max-width: 600px) {
+  .case-image-grid { grid-template-columns: 1fr; }
+}
 .case-section ul {
   margin: 16px 0;
   padding-left: 0;
