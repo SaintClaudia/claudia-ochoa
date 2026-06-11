@@ -240,7 +240,6 @@ nav {
 .case-image { margin: 40px 0; }
 .case-image img {
   width: 100%;
-  border: 1px solid var(--border);
 }
 .case-image figcaption {
   margin-top: 12px;
@@ -481,8 +480,7 @@ nav.nav-hidden {
   left: 0; right: 0;
   z-index: 99;
   background: var(--white);
-  border-bottom: 1px solid var(--border);
-}
+  }
 .progress-bar-track {
   height: 2px;
   background: var(--border);
