@@ -14,9 +14,20 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@400;500;600&family=DM+Mono&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@400;500;600;700&family=DM+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
   <style>
+    /* ── Walmart brand tokens ── */
+    :root {
+      --wm-blue: #0053E2;
+      --wm-yellow: #FFC220;
+      --wm-navy: #001E60;
+      --wm-sky: #A9DDF7;
+      --wm-everyday: #4DBDF5;
+      --wm-white: #FFFFFF;
+      --wm-light: #F5F7FA;
+    }
+
     .cs-section { max-width: 800px; margin: 0 auto 80px; padding: 0 40px; }
     .cs-label { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: #6B6B6B; margin-bottom: 12px; display: block; }
     .cs-h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.2rem); font-weight: 400; line-height: 1.2; color: #0A0A0A; margin-bottom: 20px; }
@@ -42,113 +53,158 @@
     .funnel-pct { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: #6B6B6B; }
     .funnel-bar-track { height: 6px; background: #E8E8E8; }
     .funnel-bar-fill { height: 6px; width: 0; transition: width 1.4s cubic-bezier(0.25,0.46,0.45,0.94); }
-    .f1 { background: #0D47A1; }
-    .f2 { background: #1565C0; }
-    .f3 { background: #1976D2; }
-    .f4 { background: #42A5F5; }
-    .f5 { background: #90CAF9; }
-    .f6 { background: #FFC107; }
-    .funnel-drop { font-size: 0.75rem; color: #1565C0; margin-top: 4px; opacity: 0.8; }
+    .f1{background:#001E60;} .f2{background:#0053E2;} .f3{background:#1E6FD9;}
+    .f4{background:#4DBDF5;} .f5{background:#A9DDF7;} .f6{background:#FFC220;}
+    .funnel-drop { font-size: 0.75rem; color: #0053E2; margin-top: 4px; opacity: 0.8; }
 
     /* Before/After */
-    .ba-tabs { display: flex; border-bottom: 1px solid #E8E8E8; margin-bottom: 0; }
+    .ba-tabs { display: flex; border-bottom: 1px solid #E8E8E8; }
     .ba-tab { padding: 12px 24px; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; color: #6B6B6B; transition: all 0.2s; }
     .ba-tab.active { color: #0A0A0A; border-bottom-color: #0A0A0A; }
     .ba-panel { display: none; padding: 32px; background: #F7F7F7; }
     .ba-panel.active { display: block; }
-    .flow-step { display: flex; align-items: flex-start; gap: 16px; padding: 16px 0; border-bottom: 1px solid #E8E8E8; }
+    .flow-step { display: flex; gap: 16px; padding: 16px 0; border-bottom: 1px solid #E8E8E8; }
     .flow-step:last-child { border-bottom: none; }
     .flow-dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
-    .flow-dot.bad { background: #1565C0; opacity: 0.4; }
-    .flow-dot.good { background: #0D47A1; }
+    .flow-dot.bad { background: #0053E2; opacity: 0.3; }
+    .flow-dot.good { background: #001E60; }
     .flow-step-name { font-size: 0.9rem; font-weight: 500; color: #0A0A0A; margin-bottom: 2px; }
     .flow-step-note { font-size: 0.8rem; color: #6B6B6B; line-height: 1.5; }
     .flow-tag { display: inline-block; margin-top: 4px; padding: 2px 8px; font-size: 0.7rem; border-radius: 2px; }
-    .flow-tag.friction { background: #E3F2FD; color: #1565C0; }
+    .flow-tag.friction { background: #EEF3FF; color: #0053E2; }
     .flow-tag.win { background: #E8F5E9; color: #2E7D32; }
 
-    /* ── PROTOTYPE ── */
-    .proto-section { background: #F0F2F5; padding: 64px 40px; margin: 0; }
-    .proto-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 340px; gap: 64px; align-items: center; }
-    @media(max-width:780px){ .proto-inner { grid-template-columns: 1fr; } }
+    /* ── ASK SAM PROTOTYPE ── */
+    .sam-section { background: var(--wm-light); padding: 72px 40px; margin: 0; }
+    .sam-inner { max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: 1fr 300px; gap: 72px; align-items: center; }
+    @media(max-width:800px){ .sam-inner { grid-template-columns: 1fr; gap: 40px; } }
 
-    .proto-copy { }
-    .proto-copy .cs-label { color: #6B6B6B; }
-    .proto-copy .cs-h2 { color: #0A0A0A; }
-    .proto-copy .cs-p { color: #4a4a4a; }
-
-    .proto-steps { margin-top: 32px; display: flex; flex-direction: column; gap: 0; }
-    .proto-step { padding: 16px 0; border-bottom: 1px solid #E0E0E0; cursor: pointer; display: flex; align-items: center; gap: 16px; }
-    .proto-step:last-child { border-bottom: none; }
-    .proto-step-indicator { width: 3px; height: 40px; background: #E0E0E0; border-radius: 2px; flex-shrink: 0; transition: background 0.3s; }
-    .proto-step.active .proto-step-indicator { background: #0D47A1; }
-    .proto-step-text { }
-    .proto-step-num { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: #9B9B9B; margin-bottom: 3px; }
-    .proto-step-title { font-size: 0.9rem; font-weight: 600; color: #0A0A0A; }
-    .proto-step-desc { font-size: 0.78rem; color: #6B6B6B; line-height: 1.4; margin-top: 2px; }
-    .proto-step.active .proto-step-title { color: #0D47A1; }
-
-    /* Phone frame */
-    .phone-frame { position: relative; width: 340px; flex-shrink: 0; }
-    .phone-shell {
-      background: #1A1A1A;
-      border-radius: 44px;
-      padding: 12px;
-      box-shadow: 0 40px 80px rgba(0,0,0,0.25), 0 0 0 1px rgba(255,255,255,0.06) inset;
-      position: relative;
+    /* Phone */
+    .sam-phone { position: relative; width: 300px; margin: 0 auto; }
+    .sam-phone-shell {
+      background: linear-gradient(160deg, #2A2A2A, #1A1A1A);
+      border-radius: 42px;
+      padding: 10px;
+      box-shadow: 0 48px 80px rgba(0,0,0,0.28), 0 0 0 1px rgba(255,255,255,0.07) inset, 0 2px 4px rgba(255,255,255,0.05) inset;
     }
-    .phone-notch {
-      position: absolute;
-      top: 12px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100px;
-      height: 28px;
-      background: #1A1A1A;
-      border-radius: 0 0 18px 18px;
-      z-index: 10;
-    }
-    .phone-screen-wrap {
+    .sam-phone-screen {
       background: #fff;
       border-radius: 34px;
       overflow: hidden;
+      height: 560px;
       position: relative;
-      height: 580px;
     }
-    .phone-slide {
+    /* Screens */
+    .sam-screen {
       position: absolute;
       inset: 0;
+      display: flex;
+      flex-direction: column;
       opacity: 0;
-      transform: translateX(20px);
-      transition: opacity 0.45s ease, transform 0.45s ease;
+      transform: translateX(30px);
+      transition: opacity 0.5s cubic-bezier(0.4,0,0.2,1), transform 0.5s cubic-bezier(0.4,0,0.2,1);
       pointer-events: none;
     }
-    .phone-slide.active {
+    .sam-screen.active {
       opacity: 1;
       transform: translateX(0);
       pointer-events: auto;
     }
-    .phone-slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top center;
-      display: block;
+    .sam-screen.exit {
+      opacity: 0;
+      transform: translateX(-30px);
     }
-    .phone-btn-row {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 20px;
+
+    /* Sam UI elements */
+    .sam-topbar {
+      background: linear-gradient(135deg, #0053E2, #0071CE);
+      padding: 14px 16px 10px;
+      flex-shrink: 0;
     }
-    .phone-dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: #C0C0C0;
+    .sam-topbar-row { display: flex; align-items: center; gap: 10px; }
+    .sam-sparky { width: 32px; height: 32px; object-fit: contain; }
+    .sam-topbar-title { color: #fff; font-weight: 700; font-size: 1rem; font-family: 'Inter', sans-serif; flex: 1; }
+    .sam-close { color: rgba(255,255,255,0.8); font-size: 1.1rem; font-weight: 300; cursor: pointer; line-height: 1; }
+    .sam-disclaimer { font-size: 0.58rem; color: rgba(255,255,255,0.65); text-align: center; margin-top: 6px; line-height: 1.4; font-family: 'Inter', sans-serif; }
+
+    .sam-body { flex: 1; overflow: hidden; padding: 14px 14px 8px; display: flex; flex-direction: column; gap: 10px; background: #fff; }
+
+    .sam-msg-row { display: flex; gap: 8px; align-items: flex-start; }
+    .sam-msg-sparky { width: 22px; height: 22px; object-fit: contain; flex-shrink: 0; margin-top: 2px; }
+    .sam-msg-bubble { background: #F0F4FF; border-radius: 0 12px 12px 12px; padding: 10px 12px; font-size: 0.75rem; line-height: 1.55; color: var(--wm-navy); font-family: 'Inter', sans-serif; font-weight: 600; max-width: 220px; }
+    .sam-msg-bubble span { font-weight: 400; color: #333; }
+
+    .sam-ctas { display: flex; flex-direction: column; gap: 8px; padding: 0 4px; }
+    .sam-cta-btn {
+      background: var(--wm-blue);
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      padding: 10px 18px;
+      font-size: 0.73rem;
+      font-weight: 700;
+      font-family: 'Inter', sans-serif;
       cursor: pointer;
-      transition: background 0.2s, transform 0.2s;
+      text-align: center;
+      transition: background 0.15s, transform 0.1s;
+      width: 100%;
     }
-    .phone-dot.active { background: #0D47A1; transform: scale(1.3); }
+    .sam-cta-btn:active { transform: scale(0.97); }
+    .sam-cta-btn.ghost { background: transparent; border: 1.5px solid var(--wm-blue); color: var(--wm-blue); }
+
+    /* Availability screen */
+    .sam-avail-q { font-size: 0.75rem; font-weight: 700; color: var(--wm-navy); line-height: 1.5; font-family: 'Inter', sans-serif; }
+    .sam-avail-q span { font-weight: 400; }
+    .shift-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 8px; }
+    .shift-tile {
+      border: 1.5px solid #D0D7E8;
+      border-radius: 10px;
+      padding: 12px 8px 10px;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      background: #fff;
+    }
+    .shift-tile:hover { border-color: var(--wm-blue); }
+    .shift-tile.selected { border-color: var(--wm-blue); border-width: 2px; background: #F0F4FF; }
+    .shift-tile img { width: 36px; height: 36px; object-fit: contain; display: block; margin: 0 auto 6px; }
+    .shift-tile.selected img { filter: none; }
+    .shift-tile-name { font-size: 0.68rem; font-weight: 700; color: var(--wm-navy); font-family: 'Inter', sans-serif; }
+    .shift-any { border: 1.5px solid #D0D7E8; border-radius: 10px; padding: 10px; text-align: center; cursor: pointer; margin-top: 7px; font-size: 0.68rem; font-weight: 700; color: var(--wm-navy); font-family: 'Inter', sans-serif; transition: border-color 0.2s; }
+    .shift-any:hover, .shift-any.selected { border-color: var(--wm-blue); background: #F0F4FF; }
+    .shift-next-btn {
+      background: var(--wm-blue);
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      padding: 11px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 10px;
+      transition: background 0.15s;
+    }
+
+    .sam-input-bar { padding: 8px 12px; display: flex; align-items: center; gap: 8px; border-top: 1px solid #EAEAEA; flex-shrink: 0; background: #fff; }
+    .sam-plus { color: #888; font-size: 1.1rem; font-weight: 300; }
+    .sam-input-field { flex: 1; background: #F2F2F2; border-radius: 20px; padding: 7px 12px; font-size: 0.65rem; color: #999; font-family: 'Inter', sans-serif; }
+    .sam-send-btn { width: 26px; height: 26px; background: #888; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .sam-send-btn svg { width: 12px; height: 12px; fill: #fff; }
+    .sam-legal { font-size: 0.55rem; color: #aaa; text-align: center; padding: 4px 0 8px; font-family: 'Inter', sans-serif; }
+    .sam-legal a { color: #0053E2; }
+
+    /* Step navigator */
+    .sam-steps { display: flex; flex-direction: column; gap: 0; }
+    .sam-step { padding: 18px 0; border-bottom: 1px solid #E8E8E8; cursor: pointer; display: flex; gap: 16px; align-items: flex-start; }
+    .sam-step:last-child { border-bottom: none; }
+    .sam-step-bar { width: 3px; height: 44px; background: #E8E8E8; border-radius: 2px; flex-shrink: 0; margin-top: 2px; transition: background 0.3s; }
+    .sam-step.active .sam-step-bar { background: var(--wm-blue); }
+    .sam-step-num { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: #aaa; margin-bottom: 4px; }
+    .sam-step-title { font-size: 0.88rem; font-weight: 600; color: #0A0A0A; }
+    .sam-step.active .sam-step-title { color: var(--wm-blue); }
+    .sam-step-desc { font-size: 0.76rem; color: #6B6B6B; line-height: 1.45; margin-top: 2px; }
 
     /* Principles */
     .principles-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: #E8E8E8; margin: 48px 0; }
@@ -156,7 +212,7 @@
     .principle-num { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; color: #6B6B6B; margin-bottom: 8px; }
     .principle-title { font-size: 0.95rem; font-weight: 600; color: #0A0A0A; margin-bottom: 6px; }
     .principle-body { font-size: 0.82rem; color: #6B6B6B; line-height: 1.6; }
-    @media(max-width:600px){ .principles-grid { grid-template-columns: 1fr; } .proto-section { padding: 48px 24px; } }
+    @media(max-width:600px){ .principles-grid { grid-template-columns: 1fr; } .sam-section { padding: 48px 24px; } .cs-section { padding: 0 24px; } }
   </style>
 </head>
 <body>
@@ -185,7 +241,7 @@
     <div class="container">
       <p class="case-eyebrow reveal">Walmart · GenAI · 2024</p>
       <h1 class="reveal">Transforming Hiring<br><em>with GenAI</em></h1>
-      <p class="lead reveal">Designed end-to-end in 24 hours. A conversational AI hiring experience that replaced a fragmented, multi-system application flow for Walmart's hourly store associates.</p>
+      <p class="lead reveal">Designed end-to-end in 24 hours. A conversational AI experience that replaced Walmart's fragmented, multi-system hiring flow for hourly store associates.</p>
       <div class="cs-cover reveal">
         <img src="../images/Walmart_GenAI.png.webp" alt="Walmart GenAI Candidate Experience">
         <div class="cs-nda">⚠ Covered by NDA. Details generalized to honor confidentiality.</div>
@@ -218,7 +274,7 @@
     <span class="cs-label">Overview</span>
     <h2 class="cs-h2">From exploratory ask to Creative Director</h2>
     <p class="cs-p">This didn't start as a project. After a meeting with Paradox — a leader in Chat-to-Apply — leadership asked what a Walmart-specific version could look like. Instead of recreating what we'd seen, I proposed something differentiated.</p>
-    <p class="cs-p">Within 24 hours I delivered an end-to-end concept: apply, schedule, accept, and learn about Walmart entirely through one AI-driven conversation. The concept reshaped internal thinking about AI-enabled hiring and earned early leadership support — positioning me as Creative Director for the initiative.</p>
+    <p class="cs-p">Within 24 hours I delivered an end-to-end concept: apply, schedule, accept, and learn about Walmart through one AI-driven conversation. The concept reshaped internal thinking about AI-enabled hiring and earned early leadership support — positioning me as Creative Director for the initiative.</p>
   </div>
 
   <hr class="cs-divider">
@@ -267,11 +323,11 @@
 
   <hr class="cs-divider">
 
-  <!-- BEFORE / AFTER -->
+  <!-- BEFORE/AFTER -->
   <div class="cs-section reveal">
     <span class="cs-label">Design Thinking</span>
     <h2 class="cs-h2">Old flow vs. new conversation</h2>
-    <p class="cs-p">I personally applied for hourly roles at competing retailers to experience their Chat-to-Apply flows firsthand. The insight was clear: friction isn't just inconvenient — for first-time job seekers, it signals you're not welcome.</p>
+    <p class="cs-p">I personally applied for hourly roles at competing retailers to experience Chat-to-Apply flows firsthand. The insight was clear: friction isn't just inconvenient — for first-time job seekers, it signals you're not welcome.</p>
   </div>
 
   <div style="max-width:800px;margin:0 auto 80px;padding:0 40px;" class="reveal">
@@ -286,110 +342,220 @@
       <div class="flow-step"><div class="flow-dot bad"></div><div><div class="flow-step-name">Interview scheduling (separate system)</div><div class="flow-step-note">Fourth platform. Candidate must re-enter information.</div><span class="flow-tag friction">Still no confirmation of progress</span></div></div>
     </div>
     <div class="ba-panel" id="panel-after">
-      <div class="flow-step"><div class="flow-dot good"></div><div><div class="flow-step-name">Meet Sam — one conversation starts it all</div><div class="flow-step-note">A friendly AI guide surfaces on the careers page. No account required to start.</div><span class="flow-tag win">Zero friction entry point</span></div></div>
+      <div class="flow-step"><div class="flow-dot good"></div><div><div class="flow-step-name">Meet Sam — one conversation starts it all</div><div class="flow-step-note">A friendly AI guide surfaces on the careers page. No account required.</div><span class="flow-tag win">Zero friction entry point</span></div></div>
       <div class="flow-step"><div class="flow-dot good"></div><div><div class="flow-step-name">Role match in 3 questions</div><div class="flow-step-note">Sam asks about availability, location, and role preference — in plain language.</div><span class="flow-tag win">Feels like a conversation, not a form</span></div></div>
-      <div class="flow-step"><div class="flow-dot good"></div><div><div class="flow-step-name">Apply, schedule, and accept — in one flow</div><div class="flow-step-note">The entire journey happens within the same experience. No redirects, no re-entry.</div><span class="flow-tag win">One system. Clear progress. Human tone.</span></div></div>
+      <div class="flow-step"><div class="flow-dot good"></div><div><div class="flow-step-name">Apply, schedule, and accept — in one flow</div><div class="flow-step-note">The entire journey happens within one experience. No redirects, no re-entry.</div><span class="flow-tag win">One system. Clear progress. Human tone.</span></div></div>
       <div class="flow-step"><div class="flow-dot good"></div><div><div class="flow-step-name">Learn about Walmart while you wait</div><div class="flow-step-note">Sam shares culture content between steps — building confidence and connection.</div><span class="flow-tag win">Turns dead time into brand-building</span></div></div>
     </div>
   </div>
 
-  <!-- PROTOTYPE -->
-  <section class="proto-section">
-    <div class="proto-inner">
-      <div class="proto-copy">
+  <!-- ASK SAM -->
+  <section class="sam-section">
+    <div class="sam-inner">
+
+      <div>
         <span class="cs-label">The Solution · Ask Sam</span>
-        <h2 class="cs-h2">A hiring assistant built for first-time job seekers</h2>
-        <p class="cs-p">Sam ("Sparky And Me") was designed to align with the Me@ product family. The visual language, tone, and every interaction were intentional — warm, direct, and built to make a 17-year-old applying for their first job feel capable and seen.</p>
-        <p class="cs-p">A distinct visual language was created from scratch — not a reskinned third-party tool — to feel unmistakably Walmart while setting a new bar for conversational hiring design.</p>
+        <h2 class="cs-h2" style="color:#0A0A0A;">A hiring assistant built for first-time job seekers</h2>
+        <p class="cs-p">Sam — "Sparky And Me" — was named to align with Walmart's Me@ product family. Every interaction was designed to make a first-time applicant feel capable, supported, and seen.</p>
+        <p class="cs-p">A distinct visual language was built from scratch — custom icons, Walmart-native color system, and a conversational tone that sets it apart from any off-the-shelf tool.</p>
 
-        <div class="proto-steps">
-          <div class="proto-step active" data-slide="0">
-            <div class="proto-step-indicator"></div>
-            <div class="proto-step-text">
-              <div class="proto-step-num">01</div>
-              <div class="proto-step-title">Returning candidate recognition</div>
-              <div class="proto-step-desc">Sam remembers context and surfaces relevant jobs immediately — no re-entry required.</div>
+        <div class="sam-steps" style="margin-top:32px;">
+          <div class="sam-step active" data-screen="0">
+            <div class="sam-step-bar"></div>
+            <div>
+              <div class="sam-step-num">01</div>
+              <div class="sam-step-title">Recognition & context</div>
+              <div class="sam-step-desc">Sam remembers returning candidates and surfaces relevant roles — no re-entry required.</div>
             </div>
           </div>
-          <div class="proto-step" data-slide="1">
-            <div class="proto-step-indicator"></div>
-            <div class="proto-step-text">
-              <div class="proto-step-num">02</div>
-              <div class="proto-step-title">Availability in one step</div>
-              <div class="proto-step-desc">Shift selection replaces the 80-screen assessment. Three taps to match.</div>
+          <div class="sam-step" data-screen="1">
+            <div class="sam-step-bar"></div>
+            <div>
+              <div class="sam-step-num">02</div>
+              <div class="sam-step-title">Availability in one step</div>
+              <div class="sam-step-desc">Custom shift icons replace the 80-screen assessment. Three taps to match.</div>
             </div>
           </div>
-          <div class="proto-step" data-slide="2">
-            <div class="proto-step-indicator"></div>
-            <div class="proto-step-text">
-              <div class="proto-step-num">03</div>
-              <div class="proto-step-title">Selection state</div>
-              <div class="proto-step-desc">Morning selected — custom illustrated icons with Walmart-native color system activate on tap.</div>
+          <div class="sam-step" data-screen="2">
+            <div class="sam-step-bar"></div>
+            <div>
+              <div class="sam-step-num">03</div>
+              <div class="sam-step-title">Selection state</div>
+              <div class="sam-step-desc">Illustrated icons activate in Walmart's brand palette — color and typography working as a system.</div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="phone-frame">
-        <div class="phone-shell">
-          <div class="phone-notch"></div>
-          <div class="phone-screen-wrap">
-            <div class="phone-slide active" id="slide-0">
-              <img src="../images/sam-genai-intro.png" alt="Ask Sam — welcome screen">
+      <!-- PHONE -->
+      <div class="sam-phone">
+        <div class="sam-phone-shell">
+          <div class="sam-phone-screen">
+
+            <!-- Screen 0: Welcome back -->
+            <div class="sam-screen active" id="sam-s0">
+              <div class="sam-topbar">
+                <div class="sam-topbar-row">
+                  <img src="../images/sparky.png" class="sam-sparky" alt="Sparky">
+                  <span class="sam-topbar-title">Ask Sam</span>
+                  <span class="sam-close">✕</span>
+                </div>
+                <div class="sam-disclaimer">Ask Sam is powered by AI to guide you through your application.<br>Only share information needed to apply.</div>
+              </div>
+              <div class="sam-body">
+                <div class="sam-msg-row">
+                  <img src="../images/sparky.png" class="sam-msg-sparky" alt="">
+                  <div class="sam-msg-bubble">Welcome back! I see you were looking for cashier jobs last time.<br><br><span>Would you like me to help you find open shifts near you now?</span></div>
+                </div>
+                <div class="sam-ctas" style="margin-top:8px;">
+                  <button class="sam-cta-btn" onclick="goSam(1)">Yes, show me cashier jobs in my area</button>
+                  <button class="sam-cta-btn" onclick="goSam(1)">I'm not sure — help me choose</button>
+                  <button class="sam-cta-btn ghost" onclick="goSam(1)">Upload my resume now</button>
+                </div>
+              </div>
+              <div class="sam-input-bar">
+                <span class="sam-plus">+</span>
+                <div class="sam-input-field">Write a reply...</div>
+                <div class="sam-send-btn"><svg viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/></svg></div>
+              </div>
+              <div class="sam-legal">View <a href="#">Privacy Notice</a> and <a href="#">Terms of Use</a></div>
             </div>
-            <div class="phone-slide" id="slide-1">
-              <img src="../images/sam-genai-avail.png" alt="Ask Sam — availability selection">
+
+            <!-- Screen 1: Availability -->
+            <div class="sam-screen" id="sam-s1">
+              <div class="sam-topbar">
+                <div class="sam-topbar-row">
+                  <img src="../images/sparky.png" class="sam-sparky" alt="Sparky">
+                  <span class="sam-topbar-title">Ask Sam</span>
+                  <span class="sam-close" onclick="goSam(0)">✕</span>
+                </div>
+                <div class="sam-disclaimer">Ask Sam is powered by AI to guide you through your application.<br>Only share information needed to apply.</div>
+              </div>
+              <div class="sam-body" style="padding-bottom:4px;">
+                <div class="sam-msg-row">
+                  <img src="../images/sparky.png" class="sam-msg-sparky" alt="">
+                  <div class="sam-avail-q">When are you available to work? Select all that apply — <span>or choose 'Any Shift' if you're flexible.</span></div>
+                </div>
+                <div class="shift-grid">
+                  <div class="shift-tile" onclick="selectShift(this,2)">
+                    <img src="../images/morning.png" alt="Morning">
+                    <div class="shift-tile-name">Morning</div>
+                  </div>
+                  <div class="shift-tile" onclick="selectShift(this,2)">
+                    <img src="../images/afternoon.png" alt="Afternoon">
+                    <div class="shift-tile-name">Afternoon</div>
+                  </div>
+                  <div class="shift-tile" onclick="selectShift(this,2)">
+                    <img src="../images/evening.png" alt="Evening">
+                    <div class="shift-tile-name">Evening</div>
+                  </div>
+                  <div class="shift-tile" onclick="selectShift(this,2)">
+                    <img src="../images/overnight.png" alt="Overnight">
+                    <div class="shift-tile-name">Overnight</div>
+                  </div>
+                </div>
+                <div class="shift-any" onclick="selectShift(this,2)">Any Shift</div>
+                <button class="shift-next-btn" onclick="goSam(2)">Next</button>
+              </div>
+              <div class="sam-input-bar">
+                <span class="sam-plus">+</span>
+                <div class="sam-input-field">Write a reply...</div>
+                <div class="sam-send-btn"><svg viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/></svg></div>
+              </div>
+              <div class="sam-legal">View <a href="#">Privacy Notice</a> and <a href="#">Terms of Use</a></div>
             </div>
-            <div class="phone-slide" id="slide-2">
-              <img src="../images/sam-genai-avail-active.png" alt="Ask Sam — shift selected">
+
+            <!-- Screen 2: Availability with Morning selected -->
+            <div class="sam-screen" id="sam-s2">
+              <div class="sam-topbar">
+                <div class="sam-topbar-row">
+                  <img src="../images/sparky.png" class="sam-sparky" alt="Sparky">
+                  <span class="sam-topbar-title">Ask Sam</span>
+                  <span class="sam-close" onclick="goSam(1)">✕</span>
+                </div>
+                <div class="sam-disclaimer">Ask Sam is powered by AI to guide you through your application.<br>Only share information needed to apply.</div>
+              </div>
+              <div class="sam-body" style="padding-bottom:4px;">
+                <div class="sam-msg-row">
+                  <img src="../images/sparky.png" class="sam-msg-sparky" alt="">
+                  <div class="sam-avail-q">When are you available to work? Select all that apply — <span>or choose 'Any Shift' if you're flexible.</span></div>
+                </div>
+                <div class="shift-grid">
+                  <div class="shift-tile selected">
+                    <img src="../images/morning.png" alt="Morning">
+                    <div class="shift-tile-name">Morning</div>
+                  </div>
+                  <div class="shift-tile">
+                    <img src="../images/afternoon.png" alt="Afternoon">
+                    <div class="shift-tile-name">Afternoon</div>
+                  </div>
+                  <div class="shift-tile">
+                    <img src="../images/evening.png" alt="Evening">
+                    <div class="shift-tile-name">Evening</div>
+                  </div>
+                  <div class="shift-tile">
+                    <img src="../images/overnight.png" alt="Overnight">
+                    <div class="shift-tile-name">Overnight</div>
+                  </div>
+                </div>
+                <div class="shift-any">Any Shift</div>
+                <button class="shift-next-btn" onclick="goSam(0)">Next</button>
+              </div>
+              <div class="sam-input-bar">
+                <span class="sam-plus">+</span>
+                <div class="sam-input-field">Write a reply...</div>
+                <div class="sam-send-btn"><svg viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/></svg></div>
+              </div>
+              <div class="sam-legal">View <a href="#">Privacy Notice</a> and <a href="#">Terms of Use</a></div>
             </div>
+
           </div>
         </div>
-        <div class="phone-btn-row">
-          <div class="phone-dot active" data-slide="0"></div>
-          <div class="phone-dot" data-slide="1"></div>
-          <div class="phone-dot" data-slide="2"></div>
+        <!-- dots -->
+        <div style="display:flex;justify-content:center;gap:8px;margin-top:16px;">
+          <div class="phone-dot active" data-s="0" style="width:6px;height:6px;border-radius:50%;background:#0053E2;cursor:pointer;transition:all 0.2s;"></div>
+          <div class="phone-dot" data-s="1" style="width:6px;height:6px;border-radius:50%;background:#C0C0C0;cursor:pointer;transition:all 0.2s;"></div>
+          <div class="phone-dot" data-s="2" style="width:6px;height:6px;border-radius:50%;background:#C0C0C0;cursor:pointer;transition:all 0.2s;"></div>
         </div>
       </div>
+
     </div>
   </section>
 
   <hr class="cs-divider">
 
-  <!-- DESIGN PRINCIPLES -->
+  <!-- PRINCIPLES -->
   <div class="cs-section reveal">
     <span class="cs-label">Design Decisions</span>
     <h2 class="cs-h2">Four principles that shaped every screen</h2>
   </div>
-
   <div style="max-width:800px;margin:0 auto 80px;padding:0 40px;" class="reveal">
     <div class="principles-grid">
       <div class="principle-cell">
         <div class="principle-num">01</div>
         <div class="principle-title">Zero account wall</div>
-        <div class="principle-body">Candidates can start a conversation before creating an account. Commitment follows value, not the other way around.</div>
+        <div class="principle-body">Candidates can start before creating an account. Commitment follows value, not the other way around.</div>
       </div>
       <div class="principle-cell">
         <div class="principle-num">02</div>
         <div class="principle-title">Human tone, always</div>
-        <div class="principle-body">Every Sam message was written to sound like a helpful person, not a system. No jargon, no passive voice, no corporate hedging.</div>
+        <div class="principle-body">Every Sam message was written to sound like a helpful person — no jargon, no passive voice, no corporate hedging.</div>
       </div>
       <div class="principle-cell">
         <div class="principle-num">03</div>
         <div class="principle-title">One system, full journey</div>
-        <div class="principle-body">Apply, schedule, and accept — all within Sam. No redirects, no re-entering information, no wondering if you're in the right place.</div>
+        <div class="principle-body">Apply, schedule, and accept — all within Sam. No redirects, no re-entering information.</div>
       </div>
       <div class="principle-cell">
         <div class="principle-num">04</div>
         <div class="principle-title">Distinct visual language</div>
-        <div class="principle-body">Built from scratch to feel unmistakably Walmart — custom icons, brand-native type, and interaction patterns designed for a first-time applicant.</div>
+        <div class="principle-body">Custom icons and Walmart's brand palette, built from scratch — not a reskinned off-the-shelf tool.</div>
       </div>
     </div>
   </div>
 
   <hr class="cs-divider">
 
-  <!-- OUTCOME -->
   <div class="cs-section reveal">
     <span class="cs-label">Outcome</span>
     <h2 class="cs-h2">A concept that became a platform</h2>
@@ -409,7 +575,6 @@
       </a>
     </div>
   </nav>
-
 </main>
 
 <footer>
@@ -420,7 +585,7 @@
 
 <script src="../js/main.js"></script>
 <script>
-  // Before/After tabs
+  // Before/After
   document.querySelectorAll('.ba-tab').forEach(tab => {
     tab.addEventListener('click', () => {
       document.querySelectorAll('.ba-tab').forEach(t => t.classList.remove('active'));
@@ -430,44 +595,53 @@
     });
   });
 
-  // Funnel animation
-  const funnelObserver = new IntersectionObserver((entries) => {
+  // Funnel
+  const fo = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) {
-        e.target.querySelectorAll('.funnel-bar-fill').forEach((bar, i) => {
-          setTimeout(() => { bar.style.width = bar.dataset.width + '%'; }, i * 120);
+        e.target.querySelectorAll('.funnel-bar-fill').forEach((b,i) => {
+          setTimeout(() => { b.style.width = b.dataset.width + '%'; }, i * 130);
         });
-        funnelObserver.unobserve(e.target);
+        fo.unobserve(e.target);
       }
     });
   }, { threshold: 0.3 });
-  document.querySelectorAll('.funnel-wrap').forEach(el => funnelObserver.observe(el));
+  document.querySelectorAll('.funnel-wrap').forEach(el => fo.observe(el));
 
-  // Prototype slide navigation
-  let currentSlide = 0;
-  const totalSlides = 3;
-
-  function goToSlide(n) {
-    document.querySelectorAll('.phone-slide').forEach(s => s.classList.remove('active'));
-    document.querySelectorAll('.phone-dot').forEach(d => d.classList.remove('active'));
-    document.querySelectorAll('.proto-step').forEach(s => s.classList.remove('active'));
-    document.getElementById('slide-' + n).classList.add('active');
-    document.querySelector('.phone-dot[data-slide="' + n + '"]').classList.add('active');
-    document.querySelector('.proto-step[data-slide="' + n + '"]').classList.add('active');
-    currentSlide = n;
+  // Sam prototype
+  let samCurrent = 0;
+  function goSam(n) {
+    const prev = document.getElementById('sam-s' + samCurrent);
+    prev.classList.remove('active');
+    prev.classList.add('exit');
+    setTimeout(() => prev.classList.remove('exit'), 500);
+    samCurrent = n;
+    document.getElementById('sam-s' + n).classList.add('active');
+    document.querySelectorAll('.phone-dot').forEach(d => {
+      d.style.background = d.dataset.s == n ? '#0053E2' : '#C0C0C0';
+      d.style.transform = d.dataset.s == n ? 'scale(1.3)' : 'scale(1)';
+    });
+    document.querySelectorAll('.sam-step').forEach(s => {
+      s.classList.toggle('active', s.dataset.screen == n);
+    });
   }
-
-  document.querySelectorAll('.proto-step').forEach(step => {
-    step.addEventListener('click', () => goToSlide(+step.dataset.slide));
+  function selectShift(el, next) {
+    el.classList.toggle('selected');
+    setTimeout(() => goSam(next), 300);
+  }
+  document.querySelectorAll('.phone-dot').forEach(d => {
+    d.addEventListener('click', () => goSam(+d.dataset.s));
   });
-  document.querySelectorAll('.phone-dot').forEach(dot => {
-    dot.addEventListener('click', () => goToSlide(+dot.dataset.slide));
+  document.querySelectorAll('.sam-step').forEach(s => {
+    s.addEventListener('click', () => goSam(+s.dataset.screen));
   });
 
-  // Auto-advance
-  setInterval(() => {
-    goToSlide((currentSlide + 1) % totalSlides);
-  }, 4000);
+  // Auto advance
+  let samTimer = setInterval(() => goSam((samCurrent + 1) % 3), 4500);
+  document.querySelector('.sam-section').addEventListener('mouseenter', () => clearInterval(samTimer));
+  document.querySelector('.sam-section').addEventListener('mouseleave', () => {
+    samTimer = setInterval(() => goSam((samCurrent + 1) % 3), 4500);
+  });
 </script>
 </body>
 </html>
