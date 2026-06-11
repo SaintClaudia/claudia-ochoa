@@ -16,7 +16,6 @@ function applyThemeColor(theme) {
     document.head.appendChild(meta);
   }
   meta.setAttribute('content', color);
-  void document.body.offsetHeight; // force reflow so iOS Safari re-reads theme-color
   document.documentElement.style.backgroundColor = color;
 }
 
@@ -27,9 +26,8 @@ const toggle = document.querySelector('.theme-toggle');
 toggle?.addEventListener('click', () => {
   const isDark = root.getAttribute('data-theme') === 'dark';
   const next = isDark ? 'light' : 'dark';
-  root.setAttribute('data-theme', next);
   localStorage.setItem('theme', next);
-  applyThemeColor(next);
+  location.reload();
 });
 
 // Scroll reveal
