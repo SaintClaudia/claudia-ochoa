@@ -457,3 +457,19 @@ nav.nav-hidden {
   border-bottom: 1px solid var(--border);
   padding-bottom: 24px;
 }
+
+/* === MOBILE MENU OVERRIDES === */
+.mobile-menu a {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+/* Clean up burger dots */
+.burger span {
+  border-radius: 0;
+}
