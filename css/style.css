@@ -588,3 +588,14 @@ nav.case-nav {
   border-bottom: none !important;
   z-index: auto !important;
 }
+
+/* === FOOTER CLEANUP === */
+.footer-inner {
+  justify-content: center;
+}
+.case-nav {
+  border-top: none !important;
+}
+footer {
+  border-top: none !important;
+}
