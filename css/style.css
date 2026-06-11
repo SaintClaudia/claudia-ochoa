@@ -404,7 +404,6 @@ nav.nav-hidden {
   top: 64px;
   left: 0; right: 0;
   background: var(--white);
-  border-bottom: 1px solid var(--border);
   padding: 24px;
   flex-direction: column;
   gap: 24px;
@@ -453,7 +452,6 @@ nav.nav-hidden {
   letter-spacing: -0.02em;
   color: var(--black);
   text-transform: none;
-  border-bottom: 1px solid var(--border);
   padding-bottom: 24px;
 }
 
@@ -561,3 +559,9 @@ nav.nav-hidden {
 .has-progress-nav {
   padding-top: 128px;
 }
+
+/* === HARD OVERRIDES === */
+nav { border-bottom: none !important; }
+.case-image img { border: none !important; }
+.card-image img { border: none !important; }
+img { border: none !important; }
