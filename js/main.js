@@ -16,6 +16,7 @@ function applyThemeColor(theme) {
     document.head.appendChild(meta);
   }
   meta.setAttribute('content', color);
+  void document.body.offsetHeight; // force reflow so iOS Safari re-reads theme-color
   document.documentElement.style.backgroundColor = color;
 }
 
