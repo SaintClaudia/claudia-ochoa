@@ -565,3 +565,13 @@ nav { border-bottom: none !important; }
 .case-image img { border: none !important; }
 .card-image img { border: none !important; }
 img { border: none !important; }
+
+/* === PROGRESS NAV ALIGNMENT === */
+.progress-nav {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 10px 40px;
+}
+@media (max-width: 600px) {
+  .progress-nav { padding: 10px 24px; }
+}
