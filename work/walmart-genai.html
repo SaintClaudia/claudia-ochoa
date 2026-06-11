@@ -351,174 +351,22 @@
 
   <!-- ASK SAM -->
   <section class="sam-section">
-    <div class="sam-inner">
-
-      <div>
-        <span class="cs-label">The Solution · Ask Sam</span>
-        <h2 class="cs-h2" style="color:#0A0A0A;">A hiring assistant built for first-time job seekers</h2>
-        <p class="cs-p">Sam — "Sparky And Me" — was named to align with Walmart's Me@ product family. Every interaction was designed to make a first-time applicant feel capable, supported, and seen.</p>
-        <p class="cs-p">A distinct visual language was built from scratch — custom icons, Walmart-native color system, and a conversational tone that sets it apart from any off-the-shelf tool.</p>
-
-        <div class="sam-steps" style="margin-top:32px;">
-          <div class="sam-step active" data-screen="0">
-            <div class="sam-step-bar"></div>
-            <div>
-              <div class="sam-step-num">01</div>
-              <div class="sam-step-title">Recognition & context</div>
-              <div class="sam-step-desc">Sam remembers returning candidates and surfaces relevant roles — no re-entry required.</div>
-            </div>
-          </div>
-          <div class="sam-step" data-screen="1">
-            <div class="sam-step-bar"></div>
-            <div>
-              <div class="sam-step-num">02</div>
-              <div class="sam-step-title">Availability in one step</div>
-              <div class="sam-step-desc">Custom shift icons replace the 80-screen assessment. Three taps to match.</div>
-            </div>
-          </div>
-          <div class="sam-step" data-screen="2">
-            <div class="sam-step-bar"></div>
-            <div>
-              <div class="sam-step-num">03</div>
-              <div class="sam-step-title">Selection state</div>
-              <div class="sam-step-desc">Illustrated icons activate in Walmart's brand palette — color and typography working as a system.</div>
-            </div>
-          </div>
-        </div>
+    <div style="max-width:960px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;align-items:start;">
+      <div style="text-align:center;">
+        <div style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:#6B6B6B;margin-bottom:12px;">01 · Recognition</div>
+        <img src="../images/sam-genai-intro.png" alt="Ask Sam welcome screen" style="width:100%;border-radius:20px;box-shadow:0 24px 48px rgba(0,0,0,0.18);">
       </div>
-
-      <!-- PHONE -->
-      <div class="sam-phone">
-        <div class="sam-phone-shell">
-          <div class="sam-phone-screen">
-
-            <!-- Screen 0: Welcome back -->
-            <div class="sam-screen active" id="sam-s0">
-              <div class="sam-topbar">
-                <div class="sam-topbar-row">
-                  <img src="../images/sparky.png" class="sam-sparky" alt="Sparky">
-                  <span class="sam-topbar-title">Ask Sam</span>
-                  <span class="sam-close">✕</span>
-                </div>
-                <div class="sam-disclaimer">Ask Sam is powered by AI to guide you through your application.<br>Only share information needed to apply.</div>
-              </div>
-              <div class="sam-body">
-                <div class="sam-msg-row">
-                  <img src="../images/sparky.png" class="sam-msg-sparky" alt="">
-                  <div class="sam-msg-bubble">Welcome back! I see you were looking for cashier jobs last time.<br><br><span>Would you like me to help you find open shifts near you now?</span></div>
-                </div>
-                <div class="sam-ctas" style="margin-top:8px;">
-                  <button class="sam-cta-btn" onclick="goSam(1)">Yes, show me cashier jobs in my area</button>
-                  <button class="sam-cta-btn" onclick="goSam(1)">I'm not sure — help me choose</button>
-                  <button class="sam-cta-btn ghost" onclick="goSam(1)">Upload my resume now</button>
-                </div>
-              </div>
-              <div class="sam-input-bar">
-                <span class="sam-plus">+</span>
-                <div class="sam-input-field">Write a reply...</div>
-                <div class="sam-send-btn"><svg viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/></svg></div>
-              </div>
-              <div class="sam-legal">View <a href="#">Privacy Notice</a> and <a href="#">Terms of Use</a></div>
-            </div>
-
-            <!-- Screen 1: Availability -->
-            <div class="sam-screen" id="sam-s1">
-              <div class="sam-topbar">
-                <div class="sam-topbar-row">
-                  <img src="../images/sparky.png" class="sam-sparky" alt="Sparky">
-                  <span class="sam-topbar-title">Ask Sam</span>
-                  <span class="sam-close" onclick="goSam(0)">✕</span>
-                </div>
-                <div class="sam-disclaimer">Ask Sam is powered by AI to guide you through your application.<br>Only share information needed to apply.</div>
-              </div>
-              <div class="sam-body" style="padding-bottom:4px;">
-                <div class="sam-msg-row">
-                  <img src="../images/sparky.png" class="sam-msg-sparky" alt="">
-                  <div class="sam-avail-q">When are you available to work? Select all that apply — <span>or choose 'Any Shift' if you're flexible.</span></div>
-                </div>
-                <div class="shift-grid">
-                  <div class="shift-tile" onclick="selectShift(this,2)">
-                    <img src="../images/morning.png" alt="Morning">
-                    <div class="shift-tile-name">Morning</div>
-                  </div>
-                  <div class="shift-tile" onclick="selectShift(this,2)">
-                    <img src="../images/afternoon.png" alt="Afternoon">
-                    <div class="shift-tile-name">Afternoon</div>
-                  </div>
-                  <div class="shift-tile" onclick="selectShift(this,2)">
-                    <img src="../images/evening.png" alt="Evening">
-                    <div class="shift-tile-name">Evening</div>
-                  </div>
-                  <div class="shift-tile" onclick="selectShift(this,2)">
-                    <img src="../images/overnight.png" alt="Overnight">
-                    <div class="shift-tile-name">Overnight</div>
-                  </div>
-                </div>
-                <div class="shift-any" onclick="selectShift(this,2)">Any Shift</div>
-                <button class="shift-next-btn" onclick="goSam(2)">Next</button>
-              </div>
-              <div class="sam-input-bar">
-                <span class="sam-plus">+</span>
-                <div class="sam-input-field">Write a reply...</div>
-                <div class="sam-send-btn"><svg viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/></svg></div>
-              </div>
-              <div class="sam-legal">View <a href="#">Privacy Notice</a> and <a href="#">Terms of Use</a></div>
-            </div>
-
-            <!-- Screen 2: Availability with Morning selected -->
-            <div class="sam-screen" id="sam-s2">
-              <div class="sam-topbar">
-                <div class="sam-topbar-row">
-                  <img src="../images/sparky.png" class="sam-sparky" alt="Sparky">
-                  <span class="sam-topbar-title">Ask Sam</span>
-                  <span class="sam-close" onclick="goSam(1)">✕</span>
-                </div>
-                <div class="sam-disclaimer">Ask Sam is powered by AI to guide you through your application.<br>Only share information needed to apply.</div>
-              </div>
-              <div class="sam-body" style="padding-bottom:4px;">
-                <div class="sam-msg-row">
-                  <img src="../images/sparky.png" class="sam-msg-sparky" alt="">
-                  <div class="sam-avail-q">When are you available to work? Select all that apply — <span>or choose 'Any Shift' if you're flexible.</span></div>
-                </div>
-                <div class="shift-grid">
-                  <div class="shift-tile selected">
-                    <img src="../images/morning.png" alt="Morning">
-                    <div class="shift-tile-name">Morning</div>
-                  </div>
-                  <div class="shift-tile">
-                    <img src="../images/afternoon.png" alt="Afternoon">
-                    <div class="shift-tile-name">Afternoon</div>
-                  </div>
-                  <div class="shift-tile">
-                    <img src="../images/evening.png" alt="Evening">
-                    <div class="shift-tile-name">Evening</div>
-                  </div>
-                  <div class="shift-tile">
-                    <img src="../images/overnight.png" alt="Overnight">
-                    <div class="shift-tile-name">Overnight</div>
-                  </div>
-                </div>
-                <div class="shift-any">Any Shift</div>
-                <button class="shift-next-btn" onclick="goSam(0)">Next</button>
-              </div>
-              <div class="sam-input-bar">
-                <span class="sam-plus">+</span>
-                <div class="sam-input-field">Write a reply...</div>
-                <div class="sam-send-btn"><svg viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/></svg></div>
-              </div>
-              <div class="sam-legal">View <a href="#">Privacy Notice</a> and <a href="#">Terms of Use</a></div>
-            </div>
-
-          </div>
-        </div>
-        <!-- dots -->
-        <div style="display:flex;justify-content:center;gap:8px;margin-top:16px;">
-          <div class="phone-dot active" data-s="0" style="width:6px;height:6px;border-radius:50%;background:#0053E2;cursor:pointer;transition:all 0.2s;"></div>
-          <div class="phone-dot" data-s="1" style="width:6px;height:6px;border-radius:50%;background:#C0C0C0;cursor:pointer;transition:all 0.2s;"></div>
-          <div class="phone-dot" data-s="2" style="width:6px;height:6px;border-radius:50%;background:#C0C0C0;cursor:pointer;transition:all 0.2s;"></div>
-        </div>
+      <div style="text-align:center;">
+        <div style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:#6B6B6B;margin-bottom:12px;">02 · Availability</div>
+        <img src="../images/sam-genai-avail.png" alt="Ask Sam availability screen" style="width:100%;border-radius:20px;box-shadow:0 24px 48px rgba(0,0,0,0.18);">
       </div>
-
+      <div style="text-align:center;">
+        <div style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:#6B6B6B;margin-bottom:12px;">03 · Selection</div>
+        <img src="../images/sam-genai-avail-active.png" alt="Ask Sam shift selected" style="width:100%;border-radius:20px;box-shadow:0 24px 48px rgba(0,0,0,0.18);">
+      </div>
+    </div>
+    <div style="max-width:960px;margin:40px auto 0;">
+      <p style="font-size:0.85rem;color:#6B6B6B;line-height:1.7;max-width:none;">Sam — "Sparky And Me" — was named to align with Walmart's Me@ product family. A distinct visual language was built from scratch: custom illustrated icons, Walmart's brand color system, and a conversational tone designed to make a first-time applicant feel capable and seen. Not a reskinned off-the-shelf tool.</p>
     </div>
   </section>
 
