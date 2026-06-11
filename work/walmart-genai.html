@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Walmart : GenAI Candidate Experience — CLAUDIA OCHOA</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3G6X2P2669"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -9,21 +12,160 @@
     gtag('js', new Date());
     gtag('config', 'G-3G6X2P2669');
   </script>
-  <meta charset="UTF-8">
-    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Walmart : GenAI Candidate Experience — CLAUDIA OCHOA</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@400;500;600&family=DM+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .cs-section { max-width: 800px; margin: 0 auto 80px; padding: 0 40px; }
+    .cs-label { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: #6B6B6B; margin-bottom: 12px; display: block; }
+    .cs-h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.2rem); font-weight: 400; line-height: 1.2; color: #0A0A0A; margin-bottom: 20px; }
+    .cs-p { font-size: 1rem; line-height: 1.8; color: #4a4a4a; margin-bottom: 16px; max-width: 68ch; }
+    .cs-divider { border: none; border-top: 1px solid #E8E8E8; margin: 80px auto; max-width: 800px; }
+    .cs-cover { margin: 48px 0 0; }
+    .cs-cover img { width: 100%; display: block; }
+    .cs-nda { display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; padding: 10px 16px; background: #F7F7F7; border-left: 3px solid #0A0A0A; font-size: 0.82rem; color: #6B6B6B; }
+
+    /* Stats */
+    .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #E8E8E8; margin: 48px 0; }
+    .stat-cell { background: #fff; padding: 32px 24px; }
+    .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; color: #0A0A0A; line-height: 1; }
+    .stat-label { font-size: 0.8rem; color: #6B6B6B; margin-top: 6px; line-height: 1.4; }
+    @media(max-width:600px){ .stat-row { grid-template-columns: 1fr; } }
+
+    /* Funnel */
+    .funnel-wrap { background: #F7F7F7; padding: 48px 40px; margin: 48px 0; }
+    .funnel-title { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: #6B6B6B; margin-bottom: 32px; }
+    .funnel-stage { margin-bottom: 20px; }
+    .funnel-stage-label { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; }
+    .funnel-name { font-size: 0.85rem; font-weight: 500; color: #0A0A0A; }
+    .funnel-pct { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: #6B6B6B; }
+    .funnel-bar-track { height: 6px; background: #E8E8E8; }
+    .funnel-bar-fill { height: 6px; width: 0; transition: width 1.4s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .f1 { background: #0D47A1; }
+    .f2 { background: #1565C0; }
+    .f3 { background: #1976D2; }
+    .f4 { background: #42A5F5; }
+    .f5 { background: #90CAF9; }
+    .f6 { background: #FFC107; }
+    .funnel-drop { font-size: 0.75rem; color: #1565C0; margin-top: 4px; opacity: 0.8; }
+
+    /* Before/After */
+    .ba-tabs { display: flex; border-bottom: 1px solid #E8E8E8; margin-bottom: 0; }
+    .ba-tab { padding: 12px 24px; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; color: #6B6B6B; transition: all 0.2s; }
+    .ba-tab.active { color: #0A0A0A; border-bottom-color: #0A0A0A; }
+    .ba-panel { display: none; padding: 32px; background: #F7F7F7; }
+    .ba-panel.active { display: block; }
+    .flow-step { display: flex; align-items: flex-start; gap: 16px; padding: 16px 0; border-bottom: 1px solid #E8E8E8; }
+    .flow-step:last-child { border-bottom: none; }
+    .flow-dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
+    .flow-dot.bad { background: #1565C0; opacity: 0.4; }
+    .flow-dot.good { background: #0D47A1; }
+    .flow-step-name { font-size: 0.9rem; font-weight: 500; color: #0A0A0A; margin-bottom: 2px; }
+    .flow-step-note { font-size: 0.8rem; color: #6B6B6B; line-height: 1.5; }
+    .flow-tag { display: inline-block; margin-top: 4px; padding: 2px 8px; font-size: 0.7rem; border-radius: 2px; }
+    .flow-tag.friction { background: #E3F2FD; color: #1565C0; }
+    .flow-tag.win { background: #E8F5E9; color: #2E7D32; }
+
+    /* ── PROTOTYPE ── */
+    .proto-section { background: #F0F2F5; padding: 64px 40px; margin: 0; }
+    .proto-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 340px; gap: 64px; align-items: center; }
+    @media(max-width:780px){ .proto-inner { grid-template-columns: 1fr; } }
+
+    .proto-copy { }
+    .proto-copy .cs-label { color: #6B6B6B; }
+    .proto-copy .cs-h2 { color: #0A0A0A; }
+    .proto-copy .cs-p { color: #4a4a4a; }
+
+    .proto-steps { margin-top: 32px; display: flex; flex-direction: column; gap: 0; }
+    .proto-step { padding: 16px 0; border-bottom: 1px solid #E0E0E0; cursor: pointer; display: flex; align-items: center; gap: 16px; }
+    .proto-step:last-child { border-bottom: none; }
+    .proto-step-indicator { width: 3px; height: 40px; background: #E0E0E0; border-radius: 2px; flex-shrink: 0; transition: background 0.3s; }
+    .proto-step.active .proto-step-indicator { background: #0D47A1; }
+    .proto-step-text { }
+    .proto-step-num { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: #9B9B9B; margin-bottom: 3px; }
+    .proto-step-title { font-size: 0.9rem; font-weight: 600; color: #0A0A0A; }
+    .proto-step-desc { font-size: 0.78rem; color: #6B6B6B; line-height: 1.4; margin-top: 2px; }
+    .proto-step.active .proto-step-title { color: #0D47A1; }
+
+    /* Phone frame */
+    .phone-frame { position: relative; width: 340px; flex-shrink: 0; }
+    .phone-shell {
+      background: #1A1A1A;
+      border-radius: 44px;
+      padding: 12px;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.25), 0 0 0 1px rgba(255,255,255,0.06) inset;
+      position: relative;
+    }
+    .phone-notch {
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 28px;
+      background: #1A1A1A;
+      border-radius: 0 0 18px 18px;
+      z-index: 10;
+    }
+    .phone-screen-wrap {
+      background: #fff;
+      border-radius: 34px;
+      overflow: hidden;
+      position: relative;
+      height: 580px;
+    }
+    .phone-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transform: translateX(20px);
+      transition: opacity 0.45s ease, transform 0.45s ease;
+      pointer-events: none;
+    }
+    .phone-slide.active {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: auto;
+    }
+    .phone-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+    }
+    .phone-btn-row {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .phone-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #C0C0C0;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .phone-dot.active { background: #0D47A1; transform: scale(1.3); }
+
+    /* Principles */
+    .principles-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: #E8E8E8; margin: 48px 0; }
+    .principle-cell { background: #fff; padding: 28px 24px; }
+    .principle-num { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; color: #6B6B6B; margin-bottom: 8px; }
+    .principle-title { font-size: 0.95rem; font-weight: 600; color: #0A0A0A; margin-bottom: 6px; }
+    .principle-body { font-size: 0.82rem; color: #6B6B6B; line-height: 1.6; }
+    @media(max-width:600px){ .principles-grid { grid-template-columns: 1fr; } .proto-section { padding: 48px 24px; } }
+  </style>
 </head>
 <body>
+
 <nav>
   <div class="nav-inner">
     <a href="/" class="nav-wordmark">Claudia Ochoa</a>
     <ul class="nav-links">
-      <li><a href="/">Featured Work</a></li>
+      <li><a href="/" class="active">Featured Work</a></li>
       <li><a href="../about.html">About</a></li>
     </ul>
     <button class="burger" id="burger" aria-expanded="false" aria-label="Menu">
@@ -36,82 +178,224 @@
   <a href="../about.html">About</a>
 </div>
 
-
-
 <main class="page">
+
+  <!-- HERO -->
   <section class="case-hero">
     <div class="container">
-      <p class="case-eyebrow reveal">Walmart</p>
+      <p class="case-eyebrow reveal">Walmart · GenAI · 2024</p>
       <h1 class="reveal">Transforming Hiring<br><em>with GenAI</em></h1>
-      <p class="lead reveal">Designing a faster, modern hiring experience for Walmart's hourly store associates through a GenAI-powered conversational agent.</p>
-      <div class="case-cover reveal">
+      <p class="lead reveal">Designed end-to-end in 24 hours. A conversational AI hiring experience that replaced a fragmented, multi-system application flow for Walmart's hourly store associates.</p>
+      <div class="cs-cover reveal">
         <img src="../images/Walmart_GenAI.png.webp" alt="Walmart GenAI Candidate Experience">
+        <div class="cs-nda">⚠ Covered by NDA. Details generalized to honor confidentiality.</div>
       </div>
-      <div class="nda-note reveal">⚠ This work is covered by a non-disclosure agreement. Specific details have been generalized to honor confidentiality.</div>
     </div>
   </section>
 
-  <section class="case-body">
-    <div class="container">
+  <!-- STATS -->
+  <div style="max-width:800px;margin:0 auto;padding:0 40px;">
+    <div class="stat-row reveal">
+      <div class="stat-cell">
+        <div class="stat-num">24h</div>
+        <div class="stat-label">To deliver the complete end-to-end concept</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">80+</div>
+        <div class="stat-label">Screens in the legacy assessment candidates had to complete</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">1</div>
+        <div class="stat-label">Conversation to apply, schedule, and accept an offer</div>
+      </div>
+    </div>
+  </div>
 
-      <div class="case-section reveal">
-        <h3>Overview</h3>
-        <p>This work didn't begin as a full project — it started as an exploratory ask to envision what an AI-powered candidate journey could look like. After meeting with Paradox, a leader in Chat-to-Apply, I was asked to design what a similar experience could look like for Walmart. Instead of recreating what we had seen, I proposed a differentiated approach.</p>
-        <p>Within 24 hours, I created an end-to-end concept where candidates could apply, schedule an interview, accept an offer, and learn about Walmart entirely through an AI-driven experience. The concept helped shape internal conversations around the future of AI-enabled hiring and earned early leadership support.</p>
+  <hr class="cs-divider">
+
+  <!-- OVERVIEW -->
+  <div class="cs-section reveal">
+    <span class="cs-label">Overview</span>
+    <h2 class="cs-h2">From exploratory ask to Creative Director</h2>
+    <p class="cs-p">This didn't start as a project. After a meeting with Paradox — a leader in Chat-to-Apply — leadership asked what a Walmart-specific version could look like. Instead of recreating what we'd seen, I proposed something differentiated.</p>
+    <p class="cs-p">Within 24 hours I delivered an end-to-end concept: apply, schedule, accept, and learn about Walmart entirely through one AI-driven conversation. The concept reshaped internal thinking about AI-enabled hiring and earned early leadership support — positioning me as Creative Director for the initiative.</p>
+  </div>
+
+  <hr class="cs-divider">
+
+  <!-- FUNNEL -->
+  <div class="cs-section reveal">
+    <span class="cs-label">The Problem</span>
+    <h2 class="cs-h2">Millions of candidates. A process designed to lose them.</h2>
+    <p class="cs-p">Before redesigning anything, I mapped the full candidate journey — from initial job search through third-party systems, assessments, and offer acceptance. What I found was a fragmented experience that actively drove people away.</p>
+  </div>
+
+  <div style="max-width:800px;margin:0 auto;padding:0 40px;" class="reveal">
+    <div class="funnel-wrap">
+      <div class="funnel-title">Candidate drop-off by stage</div>
+      <div class="funnel-stage">
+        <div class="funnel-stage-label"><span class="funnel-name">Job discovery</span><span class="funnel-pct">100%</span></div>
+        <div class="funnel-bar-track"><div class="funnel-bar-fill f1" data-width="100"></div></div>
+      </div>
+      <div class="funnel-stage">
+        <div class="funnel-stage-label"><span class="funnel-name">Account creation</span><span class="funnel-pct">68%</span></div>
+        <div class="funnel-bar-track"><div class="funnel-bar-fill f2" data-width="68"></div></div>
+        <div class="funnel-drop">↓ 32% lost before ever starting</div>
+      </div>
+      <div class="funnel-stage">
+        <div class="funnel-stage-label"><span class="funnel-name">Application submitted</span><span class="funnel-pct">41%</span></div>
+        <div class="funnel-bar-track"><div class="funnel-bar-fill f3" data-width="41"></div></div>
+        <div class="funnel-drop">↓ 27% dropped during application</div>
+      </div>
+      <div class="funnel-stage">
+        <div class="funnel-stage-label"><span class="funnel-name">Assessment started</span><span class="funnel-pct">28%</span></div>
+        <div class="funnel-bar-track"><div class="funnel-bar-fill f4" data-width="28"></div></div>
+        <div class="funnel-drop">↓ 13% lost before 80+ screen assessment</div>
+      </div>
+      <div class="funnel-stage">
+        <div class="funnel-stage-label"><span class="funnel-name">Assessment completed</span><span class="funnel-pct">14%</span></div>
+        <div class="funnel-bar-track"><div class="funnel-bar-fill f5" data-width="14"></div></div>
+        <div class="funnel-drop">↓ 14% abandoned mid-assessment</div>
+      </div>
+      <div class="funnel-stage">
+        <div class="funnel-stage-label"><span class="funnel-name">Offer accepted</span><span class="funnel-pct">8%</span></div>
+        <div class="funnel-bar-track"><div class="funnel-bar-fill f6" data-width="8"></div></div>
+        <div class="funnel-drop">↓ 92% of candidates never reached this point</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="cs-divider">
+
+  <!-- BEFORE / AFTER -->
+  <div class="cs-section reveal">
+    <span class="cs-label">Design Thinking</span>
+    <h2 class="cs-h2">Old flow vs. new conversation</h2>
+    <p class="cs-p">I personally applied for hourly roles at competing retailers to experience their Chat-to-Apply flows firsthand. The insight was clear: friction isn't just inconvenient — for first-time job seekers, it signals you're not welcome.</p>
+  </div>
+
+  <div style="max-width:800px;margin:0 auto 80px;padding:0 40px;" class="reveal">
+    <div class="ba-tabs">
+      <div class="ba-tab active" data-panel="before">Before</div>
+      <div class="ba-tab" data-panel="after">After</div>
+    </div>
+    <div class="ba-panel active" id="panel-before">
+      <div class="flow-step"><div class="flow-dot bad"></div><div><div class="flow-step-name">Find a job on careers.walmart.com</div><div class="flow-step-note">Must create an account before applying.</div><span class="flow-tag friction">Account wall before any commitment</span></div></div>
+      <div class="flow-step"><div class="flow-dot bad"></div><div><div class="flow-step-name">Redirected to StoreJobs (third party)</div><div class="flow-step-note">Dropped into an external system with no continuity.</div><span class="flow-tag friction">Breaks trust — "Is this still Walmart?"</span></div></div>
+      <div class="flow-step"><div class="flow-dot bad"></div><div><div class="flow-step-name">80+ screen assessment</div><div class="flow-step-note">No progress indicator. No context. Most first-time applicants abandon here.</div><span class="flow-tag friction">No end in sight</span></div></div>
+      <div class="flow-step"><div class="flow-dot bad"></div><div><div class="flow-step-name">Interview scheduling (separate system)</div><div class="flow-step-note">Fourth platform. Candidate must re-enter information.</div><span class="flow-tag friction">Still no confirmation of progress</span></div></div>
+    </div>
+    <div class="ba-panel" id="panel-after">
+      <div class="flow-step"><div class="flow-dot good"></div><div><div class="flow-step-name">Meet Sam — one conversation starts it all</div><div class="flow-step-note">A friendly AI guide surfaces on the careers page. No account required to start.</div><span class="flow-tag win">Zero friction entry point</span></div></div>
+      <div class="flow-step"><div class="flow-dot good"></div><div><div class="flow-step-name">Role match in 3 questions</div><div class="flow-step-note">Sam asks about availability, location, and role preference — in plain language.</div><span class="flow-tag win">Feels like a conversation, not a form</span></div></div>
+      <div class="flow-step"><div class="flow-dot good"></div><div><div class="flow-step-name">Apply, schedule, and accept — in one flow</div><div class="flow-step-note">The entire journey happens within the same experience. No redirects, no re-entry.</div><span class="flow-tag win">One system. Clear progress. Human tone.</span></div></div>
+      <div class="flow-step"><div class="flow-dot good"></div><div><div class="flow-step-name">Learn about Walmart while you wait</div><div class="flow-step-note">Sam shares culture content between steps — building confidence and connection.</div><span class="flow-tag win">Turns dead time into brand-building</span></div></div>
+    </div>
+  </div>
+
+  <!-- PROTOTYPE -->
+  <section class="proto-section">
+    <div class="proto-inner">
+      <div class="proto-copy">
+        <span class="cs-label">The Solution · Ask Sam</span>
+        <h2 class="cs-h2">A hiring assistant built for first-time job seekers</h2>
+        <p class="cs-p">Sam ("Sparky And Me") was designed to align with the Me@ product family. The visual language, tone, and every interaction were intentional — warm, direct, and built to make a 17-year-old applying for their first job feel capable and seen.</p>
+        <p class="cs-p">A distinct visual language was created from scratch — not a reskinned third-party tool — to feel unmistakably Walmart while setting a new bar for conversational hiring design.</p>
+
+        <div class="proto-steps">
+          <div class="proto-step active" data-slide="0">
+            <div class="proto-step-indicator"></div>
+            <div class="proto-step-text">
+              <div class="proto-step-num">01</div>
+              <div class="proto-step-title">Returning candidate recognition</div>
+              <div class="proto-step-desc">Sam remembers context and surfaces relevant jobs immediately — no re-entry required.</div>
+            </div>
+          </div>
+          <div class="proto-step" data-slide="1">
+            <div class="proto-step-indicator"></div>
+            <div class="proto-step-text">
+              <div class="proto-step-num">02</div>
+              <div class="proto-step-title">Availability in one step</div>
+              <div class="proto-step-desc">Shift selection replaces the 80-screen assessment. Three taps to match.</div>
+            </div>
+          </div>
+          <div class="proto-step" data-slide="2">
+            <div class="proto-step-indicator"></div>
+            <div class="proto-step-text">
+              <div class="proto-step-num">03</div>
+              <div class="proto-step-title">Visual design language</div>
+              <div class="proto-step-desc">Custom icons, Walmart-native typography, and a brand-consistent color system built for trust.</div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="case-section reveal">
-        <h3>Design Thinking</h3>
-        <p>To define the opportunity, I began by mapping the full end-to-end candidate journey — from initial job search on Walmart's careers site through third-party systems like StoreJobs and assessment platforms. This included identifying handoffs, dead ends, and unnecessary steps that caused drop-off.</p>
-        <p>I also conducted a competitive audit of hiring flows used by fast food chains and national retailers, focusing on those that attract similar hourly talent. To better empathize with first-time job seekers, I personally applied for hourly roles at competitors and documented every step of their "Chat to Apply" flows, highlighting friction and missed moments of clarity or encouragement.</p>
-        <p>These insights revealed a fragmented and impersonal experience, particularly when candidates were redirected between systems. In response, I designed a more cohesive and conversational application flow using a visual language that felt human and approachable — setting it apart from off-the-shelf chatbot tools like Paradox.</p>
+      <div class="phone-frame">
+        <div class="phone-shell">
+          <div class="phone-notch"></div>
+          <div class="phone-screen-wrap">
+            <div class="phone-slide active" id="slide-0">
+              <img src="../images/sam-welcome.png" alt="Ask Sam — welcome screen">
+            </div>
+            <div class="phone-slide" id="slide-1">
+              <img src="../images/sam-availability.png" alt="Ask Sam — availability selection">
+            </div>
+            <div class="phone-slide" id="slide-2">
+              <img src="../images/sam-hero.png" alt="Ask Sam — design language">
+            </div>
+          </div>
+        </div>
+        <div class="phone-btn-row">
+          <div class="phone-dot active" data-slide="0"></div>
+          <div class="phone-dot" data-slide="1"></div>
+          <div class="phone-dot" data-slide="2"></div>
+        </div>
       </div>
-
-      <div class="case-section reveal">
-        <h3>Why Candidates Gave Up</h3>
-        <figure class="case-image">
-          <img src="https://images.squarespace-cdn.com/content/v1/63d85194f2fcf14fe6f0ddbb/752be4cb-f2f1-445a-9e9b-187e6eabe1da/Walmart_CurrentExperience.png" alt="Current Walmart hiring experience friction points">
-          <figcaption>Every hidden friction point risked losing trust — for young, first-time applicants, the process was confusing and not worth the effort.</figcaption>
-        </figure>
-      </div>
-
-      <div class="case-section reveal">
-        <h3>Where They Dropped Off</h3>
-        <figure class="case-image">
-          <img src="https://images.squarespace-cdn.com/content/v1/63d85194f2fcf14fe6f0ddbb/e593cc74-5b3d-4f48-8e2d-dfeb4dabab5e/Walmart_Funnel.png" alt="Hiring funnel drop-off">
-          <figcaption>Each step in the application added friction and risked losing candidates. The biggest losses happened early — long before candidates reached the finish line.</figcaption>
-        </figure>
-        <p>This funnel shows how millions dropped off at critical points from creating an account to completing an 80+ screen assessment. Highlighting where trust and effort broke down for first-time applicants.</p>
-      </div>
-
-      <div class="case-section reveal">
-        <h3>How the Process Really Worked</h3>
-        <figure class="case-image">
-          <img src="https://images.squarespace-cdn.com/content/v1/63d85194f2fcf14fe6f0ddbb/d5ab9344-a510-49f6-bff8-079e6afd5980/Walmart_UserFlow.png" alt="Walmart hiring process flow">
-          <figcaption>The current end-to-end journey for store applicants — revealing gaps where platforms break the flow and add friction.</figcaption>
-        </figure>
-        <p>By mapping the end-to-end flow, I used systems thinking to reveal gaps where platforms break the flow and add friction. This big-picture view supported my recommendation to remove or rethink the lengthy assessment — saving costs, reducing drop-offs, and rebuilding trust.</p>
-      </div>
-
-      <div class="case-section reveal">
-        <h3>Brand Vision for GenAI</h3>
-        <figure class="case-image">
-          <img src="https://images.squarespace-cdn.com/content/v1/63d85194f2fcf14fe6f0ddbb/bd9a337f-bfb3-4331-b673-92c9656d9a34/BrandVisionGenAI.png" alt="Brand vision for GenAI hiring">
-        </figure>
-        <p>Every first step matters. For many teens like Alex, applying for a first job can feel overwhelming. I designed a conversational assistant concept called Sam ("Sparky And Me") — a name created to align with the Me@ product family — to serve as a friendly guide that helps applicants feel understood, supported, and confident in finding their first opportunity.</p>
-      </div>
-
-      <div class="case-section reveal">
-        <h3>A New Direction for Hiring at Walmart</h3>
-        <figure class="case-image">
-          <img src="https://images.squarespace-cdn.com/content/v1/63d85194f2fcf14fe6f0ddbb/47994a33-6668-4b3d-806e-3e3bab313b25/Walmart_GenAI.png" alt="Walmart new GenAI candidate experience">
-          <figcaption>The new candidate application experience — clear entry points and a conversational Job Finder to help candidates move forward with confidence.</figcaption>
-        </figure>
-        <p>I created a distinct visual language, clear entry points, and a conversational Job Finder to help candidates move forward with confidence. This redesign became the foundation for Walmart's new candidate application experience, which Deloitte is currently integrating into the broader hiring platform. As Creative Director, I shaped the vision and ensured the final design remained true to a more human, GenAI-powered hiring experience.</p>
-      </div>
-
     </div>
   </section>
+
+  <hr class="cs-divider">
+
+  <!-- DESIGN PRINCIPLES -->
+  <div class="cs-section reveal">
+    <span class="cs-label">Design Decisions</span>
+    <h2 class="cs-h2">Four principles that shaped every screen</h2>
+  </div>
+
+  <div style="max-width:800px;margin:0 auto 80px;padding:0 40px;" class="reveal">
+    <div class="principles-grid">
+      <div class="principle-cell">
+        <div class="principle-num">01</div>
+        <div class="principle-title">Zero account wall</div>
+        <div class="principle-body">Candidates can start a conversation before creating an account. Commitment follows value, not the other way around.</div>
+      </div>
+      <div class="principle-cell">
+        <div class="principle-num">02</div>
+        <div class="principle-title">Human tone, always</div>
+        <div class="principle-body">Every Sam message was written to sound like a helpful person, not a system. No jargon, no passive voice, no corporate hedging.</div>
+      </div>
+      <div class="principle-cell">
+        <div class="principle-num">03</div>
+        <div class="principle-title">One system, full journey</div>
+        <div class="principle-body">Apply, schedule, and accept — all within Sam. No redirects, no re-entering information, no wondering if you're in the right place.</div>
+      </div>
+      <div class="principle-cell">
+        <div class="principle-num">04</div>
+        <div class="principle-title">Distinct visual language</div>
+        <div class="principle-body">Built from scratch to feel unmistakably Walmart — custom icons, brand-native type, and interaction patterns designed for a first-time applicant.</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="cs-divider">
+
+  <!-- OUTCOME -->
+  <div class="cs-section reveal">
+    <span class="cs-label">Outcome</span>
+    <h2 class="cs-h2">A concept that became a platform</h2>
+    <p class="cs-p">The 24-hour concept earned leadership buy-in and repositioned the project from exploratory to Walmart's new candidate application experience. Deloitte is currently integrating the direction into the broader hiring platform.</p>
+    <p class="cs-p">As Creative Director, I held the vision through delivery — ensuring the final experience stayed true to the human, conversational principles established in the original concept.</p>
+  </div>
 
   <nav class="case-nav" aria-label="Case study navigation">
     <div class="container">
@@ -125,6 +409,7 @@
       </a>
     </div>
   </nav>
+
 </main>
 
 <footer>
@@ -134,5 +419,55 @@
 </footer>
 
 <script src="../js/main.js"></script>
+<script>
+  // Before/After tabs
+  document.querySelectorAll('.ba-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.ba-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.ba-panel').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById('panel-' + tab.dataset.panel).classList.add('active');
+    });
+  });
+
+  // Funnel animation
+  const funnelObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.funnel-bar-fill').forEach((bar, i) => {
+          setTimeout(() => { bar.style.width = bar.dataset.width + '%'; }, i * 120);
+        });
+        funnelObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.funnel-wrap').forEach(el => funnelObserver.observe(el));
+
+  // Prototype slide navigation
+  let currentSlide = 0;
+  const totalSlides = 3;
+
+  function goToSlide(n) {
+    document.querySelectorAll('.phone-slide').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.phone-dot').forEach(d => d.classList.remove('active'));
+    document.querySelectorAll('.proto-step').forEach(s => s.classList.remove('active'));
+    document.getElementById('slide-' + n).classList.add('active');
+    document.querySelector('.phone-dot[data-slide="' + n + '"]').classList.add('active');
+    document.querySelector('.proto-step[data-slide="' + n + '"]').classList.add('active');
+    currentSlide = n;
+  }
+
+  document.querySelectorAll('.proto-step').forEach(step => {
+    step.addEventListener('click', () => goToSlide(+step.dataset.slide));
+  });
+  document.querySelectorAll('.phone-dot').forEach(dot => {
+    dot.addEventListener('click', () => goToSlide(+dot.dataset.slide));
+  });
+
+  // Auto-advance
+  setInterval(() => {
+    goToSlide((currentSlide + 1) % totalSlides);
+  }, 4000);
+</script>
 </body>
 </html>
