@@ -1,4 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" shape-rendering="crispEdges">
-<rect width="32" height="32" fill="#0A0A0A"/>
-<text x="16" y="22" font-family="Georgia,serif" font-size="13" fill="#FFFFFF" text-anchor="middle" letter-spacing="1">CO</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" fill="#0A0A0A"/>
+  <!-- O drawn as two ellipses (outer minus inner) -->
+  <ellipse cx="16" cy="16" rx="8" ry="9.5" fill="#FFFFFF"/>
+  <ellipse cx="16" cy="16" rx="4.5" ry="6" fill="#0A0A0A"/>
 </svg>
