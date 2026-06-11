@@ -555,3 +555,11 @@ nav.nav-hidden {
     text-align: left;
   }
 }
+
+/* === CASE STUDY — NAV + PROGRESS STACKED === */
+.case-progress {
+  top: 64px;
+}
+.has-progress-nav {
+  padding-top: 128px;
+}
