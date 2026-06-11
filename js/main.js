@@ -1,11 +1,11 @@
 // === DARK MODE TOGGLE ===
 const root = document.documentElement;
-// On first visit, respect OS preference; after that use saved choice
+// Default is light; restore saved preference only if explicitly set
 const saved = localStorage.getItem('theme');
 if (saved) {
   root.setAttribute('data-theme', saved);
-} else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-  root.setAttribute('data-theme', 'dark');
+} else {
+  root.setAttribute('data-theme', 'light');
 }
 const toggle = document.querySelector('.theme-toggle');
 toggle?.addEventListener('click', () => {
@@ -29,13 +29,13 @@ revealEls.forEach(el => observer.observe(el));
 
 // Hide nav on scroll down, show on scroll up
 let lastScroll = 0;
-const nav = document.querySelector('nav');
+const nav = document.querySelector('body > nav');
 window.addEventListener('scroll', () => {
   const current = window.scrollY;
   if (current > 100 && current > lastScroll) {
-    nav.classList.add('nav-hidden');
+    nav?.classList.add('nav-hidden');
   } else {
-    nav.classList.remove('nav-hidden');
+    nav?.classList.remove('nav-hidden');
   }
   lastScroll = current;
 });
