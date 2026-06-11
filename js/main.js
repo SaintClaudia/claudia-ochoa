@@ -36,3 +36,13 @@ if (burger && mobileMenu) {
     a.addEventListener('click', () => mobileMenu.classList.remove('open'));
   });
 }
+
+// Progress bar scroll
+const progressFill = document.querySelector('.progress-bar-fill');
+if (progressFill) {
+  window.addEventListener('scroll', () => {
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0;
+    progressFill.style.width = pct + '%';
+  });
+}

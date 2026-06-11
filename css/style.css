@@ -473,3 +473,51 @@ nav.nav-hidden {
 .burger span {
   border-radius: 0;
 }
+
+/* === PROGRESS BAR NAV === */
+.case-progress {
+  position: fixed;
+  top: 64px;
+  left: 0; right: 0;
+  z-index: 99;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+}
+.progress-bar-track {
+  height: 2px;
+  background: var(--border);
+}
+.progress-bar-fill {
+  height: 2px;
+  background: var(--black);
+  width: 0%;
+  transition: width 0.1s linear;
+}
+.progress-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 40px;
+}
+.progress-back {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--black);
+  transition: opacity 0.2s;
+}
+.progress-back:hover { opacity: 0.5; }
+.progress-count {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  color: var(--mid);
+}
+.has-progress-nav { padding-top: 108px; }
+@media (max-width: 600px) {
+  .progress-nav { padding: 10px 24px; }
+}
