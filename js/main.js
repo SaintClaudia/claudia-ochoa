@@ -1,18 +1,30 @@
 // === DARK MODE TOGGLE ===
 const root = document.documentElement;
-// Default is light; restore saved preference only if explicitly set
 const saved = localStorage.getItem('theme');
 if (saved) {
   root.setAttribute('data-theme', saved);
 } else {
   root.setAttribute('data-theme', 'light');
 }
+
+function applyThemeColor(theme) {
+  document.querySelectorAll('meta[name="theme-color"]').forEach(el => el.remove());
+  const meta = document.createElement('meta');
+  meta.name = 'theme-color';
+  meta.content = theme === 'dark' ? '#0D0D0D' : '#FFFFFF';
+  document.head.appendChild(meta);
+}
+
+// Apply on load
+applyThemeColor(root.getAttribute('data-theme'));
+
 const toggle = document.querySelector('.theme-toggle');
 toggle?.addEventListener('click', () => {
   const isDark = root.getAttribute('data-theme') === 'dark';
   const next = isDark ? 'light' : 'dark';
   root.setAttribute('data-theme', next);
   localStorage.setItem('theme', next);
+  applyThemeColor(next);
 });
 
 // Scroll reveal
