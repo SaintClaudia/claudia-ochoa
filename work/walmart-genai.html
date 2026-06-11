@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0D0D0D" media="(prefers-color-scheme: dark)">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Walmart : GenAI Candidate Experience — CLAUDIA OCHOA</title>
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3G6X2P2669"></script>
@@ -216,6 +213,15 @@
     .principle-body { font-size: 0.82rem; color: #6B6B6B; line-height: 1.6; }
     @media(max-width:600px){ .principles-grid { grid-template-columns: 1fr; } .sam-section { padding: 48px 24px; } .cs-section { padding: 0 24px; } }
   </style>
+  <script>
+    (function(){
+      var t = localStorage.getItem('theme') || 'light';
+      var m = document.createElement('meta');
+      m.name = 'theme-color';
+      m.content = t === 'dark' ? '#0D0D0D' : '#FFFFFF';
+      document.head.appendChild(m);
+    })();
+  </script>
 </head>
 <body>
 

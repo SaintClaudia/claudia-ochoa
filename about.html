@@ -9,15 +9,21 @@
     gtag('js', new Date());
     gtag('config', 'G-3G6X2P2669');
   </script>
-  <meta charset="UTF-8">
-  <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0D0D0D" media="(prefers-color-scheme: dark)">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>About — CLAUDIA OCHOA</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@400;500;600&family=DM+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <script>
+    (function(){
+      var t = localStorage.getItem('theme') || 'light';
+      var m = document.createElement('meta');
+      m.name = 'theme-color';
+      m.content = t === 'dark' ? '#0D0D0D' : '#FFFFFF';
+      document.head.appendChild(m);
+    })();
+  </script>
 </head>
 <body>
 <nav>
@@ -37,7 +43,7 @@
     <div class="container">
       <div class="about-grid">
         <div class="about-photo reveal">
-          <img src="https://images.squarespace-cdn.com/content/v1/63d85194f2fcf14fe6f0ddbb/33306a4e-1f0e-462d-9748-812028b7f5e2/Claudia.png" alt="Claudia Ochoa">
+          <img src="/images/Claudia.png" alt="Claudia Ochoa">
         </div>
         <div class="about-content">
           <span class="hero-eyebrow reveal">About</span>
