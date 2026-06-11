@@ -1,72 +1,36 @@
 # claudiaochoa.co
 
-Portfolio site for Claudia Ochoa — UX Designer & AI Innovation specialist.
+Personal portfolio of Claudia Ochoa — UX Designer specializing in AI-powered experiences, enterprise product design, and human-centered systems.
+
+## Live site
+
+[claudiaochoa.co](https://claudiaochoa.co)
 
 ## Stack
 
-Pure HTML + CSS + vanilla JS. No frameworks, no build step, no dependencies. Fast by default.
-
-## Deploying to GitHub Pages
-
-### 1. Create your GitHub repo
-
-Go to github.com → New repository → name it exactly: `claudiaochoa.github.io`
-(or any name if you'll use a custom domain)
-
-### 2. Push this folder
-
-```bash
-cd /path/to/this/folder
-git init
-git add .
-git commit -m "Initial portfolio launch"
-git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/claudiaochoa.github.io.git
-git push -u origin main
-```
-
-### 3. Enable GitHub Pages
-
-- Go to your repo → Settings → Pages
-- Source: Deploy from a branch → main → / (root)
-- Save
-
-Your site will be live at `https://YOUR_USERNAME.github.io` within a few minutes.
-
-### 4. Add custom domain (claudiaochoa.co)
-
-In GitHub Pages settings → Custom domain → enter `claudiaochoa.co` → Save.
-
-This creates a `CNAME` file automatically. Then in GoDaddy DNS:
-
-| Type  | Name | Value                    | TTL  |
-|-------|------|--------------------------|------|
-| A     | @    | 185.199.108.153          | 600  |
-| A     | @    | 185.199.109.153          | 600  |
-| A     | @    | 185.199.110.153          | 600  |
-| A     | @    | 185.199.111.153          | 600  |
-| CNAME | www  | YOUR_USERNAME.github.io. | 600  |
-
-DNS can take up to 24 hours to propagate. Enable "Enforce HTTPS" in GitHub Pages settings after.
-
-## Updating images
-
-Right now images are loaded from the Squarespace CDN. To host them yourself:
-
-1. Download each image from your Squarespace media library
-2. Put them in an `images/` folder in this repo
-3. Update the `src` paths in each HTML file to `../images/filename.png` (or `images/` from root)
+Plain HTML, CSS, and vanilla JS. No frameworks, no build step, no dependencies. Fast and lightweight.
 
 ## Structure
 
 ```
 /
-├── index.html          # Homepage — work grid
-├── about.html          # About page
+├── index.html                        # Homepage — featured work grid
+├── about.html                        # About page
+├── favicon.svg                       # CO monogram favicon
+├── CNAME                             # Custom domain for GitHub Pages
 ├── css/
-│   └── style.css
+│   └── style.css                     # All styles
 ├── js/
-│   └── main.js
+│   └── main.js                       # Scroll reveal, nav hide, hamburger menu, progress bar
+├── images/
+│   ├── Walmart_Spark.png.webp
+│   ├── Walmart_GenAI.png.webp
+│   ├── Walmart_MyHiring.png.webp
+│   ├── Walmart_Me.png.webp
+│   ├── Walmart_CarPlay.png.webp
+│   ├── Walmart_Connect.png.webp
+│   ├── HomeDepot_GiftCards.png.webp
+│   └── THD_MilitaryDiscount.png.webp
 └── work/
     ├── walmart-careers.html
     ├── walmart-genai.html
@@ -77,3 +41,35 @@ Right now images are loaded from the Squarespace CDN. To host them yourself:
     ├── thd-giftcards.html
     └── thd-militarydiscount.html
 ```
+
+## Deploying changes
+
+```bash
+cd ~/Downloads/claudiaochoa
+git add .
+git commit -m "describe what changed"
+git push
+```
+
+GitHub Pages deploys automatically. Changes are live within 1–2 minutes.
+
+## Adding a case study
+
+1. Copy an existing file from `work/` and rename it
+2. Update the content and cover image reference
+3. Add the cover image to `images/`
+4. Add a card to `index.html`
+5. Push
+
+## Infrastructure
+
+- Hosted on **GitHub Pages**
+- Custom domain configured via GoDaddy DNS → GitHub Pages A records
+- TLS enforced via GitHub Pages
+- Analytics via **Google Analytics 4** (`G-3G6X2P2669`)
+
+## Known todos
+
+- [ ] Self-host inline case study images (currently served from Squarespace CDN)
+- [ ] Add contact section
+- [ ] Blog page
