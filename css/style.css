@@ -579,3 +579,12 @@ img { border: none !important; }
 /* === REMOVE PROGRESS NAV STYLES === */
 .case-progress { display: none; }
 .has-progress-nav { padding-top: 64px; }
+
+/* === CASE NAV HARD FIX === */
+nav.case-nav {
+  position: static !important;
+  background: none !important;
+  backdrop-filter: none !important;
+  border-bottom: none !important;
+  z-index: auto !important;
+}
