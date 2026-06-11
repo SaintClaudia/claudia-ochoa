@@ -299,6 +299,7 @@ nav {
 
 /* === CASE NAV === */
 .case-nav {
+  border-top: 1px solid var(--border);
   padding: 40px 0 48px;
 }
 .case-nav .container {
