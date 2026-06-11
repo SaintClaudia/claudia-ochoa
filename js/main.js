@@ -1,3 +1,20 @@
+// === DARK MODE TOGGLE ===
+const root = document.documentElement;
+// On first visit, respect OS preference; after that use saved choice
+const saved = localStorage.getItem('theme');
+if (saved) {
+  root.setAttribute('data-theme', saved);
+} else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  root.setAttribute('data-theme', 'dark');
+}
+const toggle = document.querySelector('.theme-toggle');
+toggle?.addEventListener('click', () => {
+  const isDark = root.getAttribute('data-theme') === 'dark';
+  const next = isDark ? 'light' : 'dark';
+  root.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+});
+
 // Scroll reveal
 const revealEls = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver((entries) => {

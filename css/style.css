@@ -240,6 +240,7 @@ nav {
 .case-image { margin: 40px 0; }
 .case-image img {
   width: 100%;
+  border: 1px solid var(--border);
 }
 .case-image figcaption {
   margin-top: 12px;
@@ -404,6 +405,7 @@ nav.nav-hidden {
   top: 64px;
   left: 0; right: 0;
   background: var(--white);
+  border-bottom: 1px solid var(--border);
   padding: 24px;
   flex-direction: column;
   gap: 24px;
@@ -452,6 +454,7 @@ nav.nav-hidden {
   letter-spacing: -0.02em;
   color: var(--black);
   text-transform: none;
+  border-bottom: 1px solid var(--border);
   padding-bottom: 24px;
 }
 
@@ -478,7 +481,8 @@ nav.nav-hidden {
   left: 0; right: 0;
   z-index: 99;
   background: var(--white);
-  }
+  border-bottom: 1px solid var(--border);
+}
 .progress-bar-track {
   height: 2px;
   background: var(--border);
@@ -558,44 +562,4 @@ nav.nav-hidden {
 }
 .has-progress-nav {
   padding-top: 128px;
-}
-
-/* === HARD OVERRIDES === */
-nav { border-bottom: none !important; }
-.case-image img { border: none !important; }
-.card-image img { border: none !important; }
-img { border: none !important; }
-
-/* === PROGRESS NAV ALIGNMENT === */
-.progress-nav {
-  max-width: var(--max);
-  margin: 0 auto;
-  padding: 10px 40px;
-}
-@media (max-width: 600px) {
-  .progress-nav { padding: 10px 24px; }
-}
-
-/* === REMOVE PROGRESS NAV STYLES === */
-.case-progress { display: none; }
-.has-progress-nav { padding-top: 64px; }
-
-/* === CASE NAV HARD FIX === */
-nav.case-nav {
-  position: static !important;
-  background: none !important;
-  backdrop-filter: none !important;
-  border-bottom: none !important;
-  z-index: auto !important;
-}
-
-/* === FOOTER CLEANUP === */
-.footer-inner {
-  justify-content: center;
-}
-.case-nav {
-  border-top: none !important;
-}
-footer {
-  border-top: none !important;
 }
