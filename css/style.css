@@ -575,3 +575,7 @@ img { border: none !important; }
 @media (max-width: 600px) {
   .progress-nav { padding: 10px 24px; }
 }
+
+/* === REMOVE PROGRESS NAV STYLES === */
+.case-progress { display: none; }
+.has-progress-nav { padding-top: 64px; }
