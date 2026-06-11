@@ -78,3 +78,40 @@ if (progressFill) {
     progressFill.style.width = pct + '%';
   });
 }
+
+// === PASSWORD GATE ===
+const gate = document.getElementById('password-gate');
+const gateForm = document.getElementById('password-gate-form');
+const gateInput = document.getElementById('password-gate-input');
+const gateClose = document.getElementById('password-gate-close');
+let pendingHref = null;
+
+document.querySelectorAll('.work-card.protected').forEach(card => {
+  card.addEventListener('click', (e) => {
+    e.preventDefault();
+    pendingHref = card.getAttribute('href');
+    gate?.classList.add('open');
+    gateInput?.focus();
+  });
+});
+
+gateForm?.addEventListener('submit', (e) => {
+  e.preventDefault();
+  if (gateInput.value === 'Christ') {
+    window.location.href = pendingHref;
+  } else {
+    gateInput.value = '';
+    gateInput.classList.remove('shake');
+    void gateInput.offsetWidth;
+    gateInput.classList.add('shake');
+  }
+});
+
+function closeGate() {
+  gate?.classList.remove('open');
+  if (gateInput) gateInput.value = '';
+}
+gateClose?.addEventListener('click', closeGate);
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && gate?.classList.contains('open')) closeGate();
+});

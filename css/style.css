@@ -590,3 +590,90 @@ body > nav.nav-hidden {
 .has-progress-nav {
   padding-top: 128px;
 }
+
+/* === PASSWORD GATE === */
+.password-gate {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+  background: var(--white);
+}
+.password-gate.open { display: flex; }
+.password-gate-inner {
+  width: 100%;
+  max-width: 360px;
+  padding: 0 24px;
+  text-align: center;
+}
+.password-gate-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 28px;
+}
+.password-gate-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+.password-gate-input {
+  width: 100%;
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  text-align: center;
+  background: none;
+  border: none;
+  border-bottom: 1.5px solid var(--border);
+  color: var(--black);
+  padding: 8px 0;
+  outline: none;
+  transition: border-color var(--transition);
+}
+.password-gate-input::placeholder { color: var(--mid); }
+.password-gate-input:focus { border-color: var(--black); }
+.password-gate-submit {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--black);
+  background: none;
+  border: 1.5px solid var(--border);
+  border-radius: 999px;
+  padding: 12px 36px;
+  cursor: pointer;
+  transition: border-color var(--transition), color var(--transition);
+}
+.password-gate-submit:hover { border-color: var(--black); }
+.password-gate-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--mid);
+  font-size: 1.5rem;
+  line-height: 1;
+  padding: 8px;
+  transition: color var(--transition);
+}
+.password-gate-close:hover { color: var(--black); }
+
+@keyframes password-shake {
+  10%, 90% { transform: translateX(-3px); }
+  20%, 80% { transform: translateX(5px); }
+  30%, 50%, 70% { transform: translateX(-9px); }
+  40%, 60% { transform: translateX(9px); }
+}
+.password-gate-input.shake {
+  animation: password-shake 0.4s;
+  border-color: var(--black);
+}
