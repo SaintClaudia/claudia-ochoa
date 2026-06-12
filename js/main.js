@@ -97,7 +97,7 @@ document.querySelectorAll('.work-card.protected').forEach(card => {
 
 gateForm?.addEventListener('submit', (e) => {
   e.preventDefault();
-  if (gateInput.value === 'Christ') {
+  if (gateInput.value === 'GammaWaves') {
     window.location.href = pendingHref;
   } else {
     gateInput.value = '';
