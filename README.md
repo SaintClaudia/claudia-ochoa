@@ -1,6 +1,6 @@
 # claudiaochoa.co
 
-Personal portfolio of Claudia Ochoa — UX Designer specializing in AI-powered experiences, enterprise product design, and human-centered systems.
+Personal portfolio of Claudia Ochoa — Product Design Leader specializing in AI-powered experiences.
 
 ## Live site
 
@@ -16,7 +16,7 @@ Plain HTML, CSS, and vanilla JS. No frameworks, no build step, no dependencies. 
 /
 ├── index.html                        # Homepage — featured work grid
 ├── about.html                        # About page
-├── favicon.svg                       # CO monogram favicon
+├── favicon.svg                       # heart favicon
 ├── CNAME                             # Custom domain for GitHub Pages
 ├── css/
 │   └── style.css                     # All styles
@@ -70,6 +70,5 @@ GitHub Pages deploys automatically. Changes are live within 1–2 minutes.
 
 ## Known todos
 
-- [ ] Self-host inline case study images (currently served from Squarespace CDN)
 - [ ] Add contact section
 - [ ] Blog page
