@@ -190,6 +190,11 @@ nav {
   color: var(--mid);
 }
 .home-hero h1 { max-width: 14ch; }
+@media (max-width: 600px) {
+  .home-hero { padding: 60px 0 16px; }
+  .case-hero { padding: 56px 0 16px; }
+  .case-hero + .case-body { padding-top: 24px; }
+}
 .hero-sub {
   font-size: 1.05rem;
   color: var(--mid);
