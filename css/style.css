@@ -43,6 +43,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
   transition: border-color var(--transition), color var(--transition);
   flex-shrink: 0;
 }
@@ -54,6 +55,38 @@
 .icon-moon { display: flex; }
 [data-theme="dark"] .icon-sun { display: flex; }
 [data-theme="dark"] .icon-moon { display: none; }
+
+/* === MASTHEAD TOOLTIPS === */
+.nav-icon::after,
+.theme-toggle::after,
+.burger::after {
+  content: attr(aria-label);
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-4px);
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: 4px 9px;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 200;
+}
+.theme-toggle::after { content: "Dark mode"; }
+[data-theme="dark"] .theme-toggle::after { content: "Light mode"; }
+.nav-icon:hover::after,
+.theme-toggle:hover::after,
+.burger:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
 
 /* === RESET === */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -111,25 +144,29 @@ nav {
   text-transform: uppercase;
   color: var(--black);
 }
-/* Nav links hidden — navigation removed */
-.nav-links { display: none; }
-.burger { display: none !important; }
-.mobile-menu { display: none !important; }
-
 /* === NAV ICONS (Blog / About) === */
 .nav-icons {
   display: flex;
   align-items: center;
-  gap: 22px;
+  gap: 12px;
 }
 .nav-icon {
   display: flex;
   align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
   color: var(--mid);
-  transition: color var(--transition);
+  position: relative;
+  transition: border-color var(--transition), color var(--transition);
 }
 .nav-icon:hover,
-.nav-icon[data-active="true"] { color: var(--black); }
+.nav-icon[data-active="true"] {
+  color: var(--black);
+  border-color: var(--black);
+}
 
 @media (max-width: 600px) {
   .nav-inner { padding: 0 24px; }
@@ -428,11 +465,21 @@ body > nav.nav-hidden {
 .burger {
   display: none;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 5px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
   background: none;
-  border: none;
   cursor: pointer;
   padding: 4px;
+  position: relative;
+  transition: border-color var(--transition);
+}
+.burger:hover {
+  border-color: var(--black);
 }
 .burger span {
   display: block;
