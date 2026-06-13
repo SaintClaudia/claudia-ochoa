@@ -1062,11 +1062,10 @@ body > nav.nav-hidden {
   text-align: center;
 }
 .contact-overlay-label {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--mid);
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 600;
+  color: var(--black);
   margin-bottom: 28px;
 }
 .contact-form {
@@ -1133,17 +1132,17 @@ body > nav.nav-hidden {
 }
 .contact-form-status.success { color: var(--black); }
 .contact-form-status.error { color: #c0392b; }
-.contact-linkedin {
-  display: inline-block;
-  margin-top: 28px;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.08em;
-  color: var(--mid);
-  text-decoration: underline;
-  transition: color var(--transition);
+.contact-form-status.success {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.4vw, 2rem);
 }
-.contact-linkedin:hover { color: var(--black); }
+.contact-form.submitted .contact-field,
+.contact-form.submitted .contact-submit {
+  display: none;
+}
+.contact-form.submitted .contact-form-status {
+  min-height: 0;
+}
 .contact-overlay-close {
   position: absolute;
   top: 24px;

@@ -159,6 +159,9 @@ function openContactOverlay() {
 function closeContactOverlay() {
   contactOverlay?.classList.remove('open');
   contactOverlay?.setAttribute('aria-hidden', 'true');
+  contactForm?.classList.remove('submitted');
+  if (contactStatus) contactStatus.textContent = '';
+  contactStatus?.classList.remove('success', 'error');
 }
 [contactToggle, mobileContactToggle].forEach((toggle) => {
   toggle?.addEventListener('click', (e) => {
@@ -167,6 +170,21 @@ function closeContactOverlay() {
     openContactOverlay();
   });
 });
+// Auto-format phone numbers in the "Email or phone" field
+const contactEmailOrPhone = document.getElementById('contact-email');
+contactEmailOrPhone?.addEventListener('input', (e) => {
+  const value = e.target.value;
+  if (/[a-zA-Z@]/.test(value)) return;
+  const digits = value.replace(/\D/g, '');
+  let formatted = digits;
+  if (digits.length > 6) {
+    formatted = `${digits.slice(0, 3)} ${digits.slice(3, 6)} ${digits.slice(6, 10)}`;
+  } else if (digits.length > 3) {
+    formatted = `${digits.slice(0, 3)} ${digits.slice(3, 6)}`;
+  }
+  e.target.value = formatted;
+});
+
 contactClose?.addEventListener('click', closeContactOverlay);
 contactOverlay?.addEventListener('click', (e) => {
   if (e.target === contactOverlay) closeContactOverlay();
@@ -194,6 +212,7 @@ contactForm?.addEventListener('submit', async (e) => {
       contactStatus.textContent = 'Message sent — thank you!';
       contactStatus.classList.add('success');
       contactForm.reset();
+      contactForm.classList.add('submitted');
     } else {
       contactStatus.textContent = 'Something went wrong. Please try again.';
       contactStatus.classList.add('error');
