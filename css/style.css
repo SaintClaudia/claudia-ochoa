@@ -1143,6 +1143,9 @@ body > nav.nav-hidden {
 .contact-form.submitted .contact-form-status {
   min-height: 0;
 }
+.contact-overlay.submitted .contact-overlay-label {
+  display: none;
+}
 .contact-overlay-close {
   position: absolute;
   top: 24px;
