@@ -162,8 +162,7 @@ nav {
   position: relative;
   transition: border-color var(--transition), color var(--transition);
 }
-.nav-icon:hover,
-.nav-icon[data-active="true"] {
+.nav-icon:hover {
   color: var(--black);
   border-color: var(--black);
 }
