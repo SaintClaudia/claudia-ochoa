@@ -136,6 +136,11 @@ nav {
   align-items: center;
   justify-content: space-between;
 }
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
 .nav-wordmark {
   font-family: var(--font-body);
   font-size: 0.82rem;
