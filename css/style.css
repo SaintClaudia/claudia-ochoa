@@ -115,6 +115,22 @@ nav {
 .nav-links { display: none; }
 .burger { display: none !important; }
 .mobile-menu { display: none !important; }
+
+/* === NAV ICONS (Blog / About) === */
+.nav-icons {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+.nav-icon {
+  display: flex;
+  align-items: center;
+  color: var(--mid);
+  transition: color var(--transition);
+}
+.nav-icon:hover,
+.nav-icon[data-active="true"] { color: var(--black); }
+
 @media (max-width: 600px) {
   .nav-inner { padding: 0 24px; }
 }
