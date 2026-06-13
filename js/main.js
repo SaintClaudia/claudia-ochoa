@@ -144,43 +144,64 @@ runButton?.addEventListener('click', () => {
   runButton.textContent = open ? '■ stop experience.sh' : '▶ run experience.sh';
 });
 
-// === CONTACT DRAWER ===
+// === CONTACT OVERLAY ===
 const contactToggle = document.getElementById('contact-toggle');
 const mobileContactToggle = document.getElementById('mobile-contact-toggle');
-const contactDrawer = document.getElementById('contact-drawer');
-const contactBackdrop = document.getElementById('contact-drawer-backdrop');
+const contactOverlay = document.getElementById('contact-drawer');
 const contactClose = document.getElementById('contact-drawer-close');
+const contactForm = document.getElementById('contact-form');
+const contactStatus = document.getElementById('contact-form-status');
 
-function openContactDrawer() {
-  contactDrawer?.classList.add('open');
-  contactBackdrop?.classList.add('open');
-  contactDrawer?.setAttribute('aria-hidden', 'false');
+function openContactOverlay() {
+  contactOverlay?.classList.add('open');
+  contactOverlay?.setAttribute('aria-hidden', 'false');
 }
-function closeContactDrawer() {
-  contactDrawer?.classList.remove('open');
-  contactBackdrop?.classList.remove('open');
-  contactDrawer?.setAttribute('aria-hidden', 'true');
+function closeContactOverlay() {
+  contactOverlay?.classList.remove('open');
+  contactOverlay?.setAttribute('aria-hidden', 'true');
 }
 [contactToggle, mobileContactToggle].forEach((toggle) => {
   toggle?.addEventListener('click', (e) => {
     e.preventDefault();
     mobileMenu?.classList.remove('open');
-    openContactDrawer();
+    openContactOverlay();
   });
 });
-contactClose?.addEventListener('click', closeContactDrawer);
-contactBackdrop?.addEventListener('click', closeContactDrawer);
+contactClose?.addEventListener('click', closeContactOverlay);
+contactOverlay?.addEventListener('click', (e) => {
+  if (e.target === contactOverlay) closeContactOverlay();
+});
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && contactDrawer?.classList.contains('open')) closeContactDrawer();
+  if (e.key === 'Escape' && contactOverlay?.classList.contains('open')) closeContactOverlay();
 });
 
-// Copy email button
-const copyEmailBtn = document.querySelector('.copy-email-btn');
-copyEmailBtn?.addEventListener('click', () => {
-  const email = copyEmailBtn.dataset.email;
-  navigator.clipboard?.writeText(email).then(() => {
-    const original = copyEmailBtn.textContent;
-    copyEmailBtn.textContent = 'Copied!';
-    setTimeout(() => { copyEmailBtn.textContent = original; }, 1500);
-  });
+// Contact form submission (Web3Forms)
+contactForm?.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const submitBtn = contactForm.querySelector('.contact-submit');
+  submitBtn.disabled = true;
+  contactStatus.textContent = 'Sending...';
+  contactStatus.className = 'contact-form-status';
+
+  try {
+    const res = await fetch(contactForm.action, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(contactForm),
+    });
+    const result = await res.json();
+    if (result.success) {
+      contactStatus.textContent = 'Message sent — thank you!';
+      contactStatus.classList.add('success');
+      contactForm.reset();
+    } else {
+      contactStatus.textContent = 'Something went wrong. Please try again.';
+      contactStatus.classList.add('error');
+    }
+  } catch (err) {
+    contactStatus.textContent = 'Something went wrong. Please try again.';
+    contactStatus.classList.add('error');
+  } finally {
+    submitBtn.disabled = false;
+  }
 });
