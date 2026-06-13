@@ -159,6 +159,7 @@ function openContactOverlay() {
 function closeContactOverlay() {
   contactOverlay?.classList.remove('open');
   contactOverlay?.setAttribute('aria-hidden', 'true');
+  contactOverlay?.classList.remove('submitted');
   contactForm?.classList.remove('submitted');
   if (contactStatus) contactStatus.textContent = '';
   contactStatus?.classList.remove('success', 'error');
@@ -213,6 +214,7 @@ contactForm?.addEventListener('submit', async (e) => {
       contactStatus.classList.add('success');
       contactForm.reset();
       contactForm.classList.add('submitted');
+      contactOverlay?.classList.add('submitted');
     } else {
       contactStatus.textContent = 'Something went wrong. Please try again.';
       contactStatus.classList.add('error');
