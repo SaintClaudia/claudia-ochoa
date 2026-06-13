@@ -22,12 +22,14 @@ function applyThemeColor(theme) {
 // Apply on load
 applyThemeColor(root.getAttribute('data-theme'));
 
-const toggle = document.querySelector('.theme-toggle');
-toggle?.addEventListener('click', () => {
-  const isDark = root.getAttribute('data-theme') === 'dark';
-  const next = isDark ? 'light' : 'dark';
-  localStorage.setItem('theme', next);
-  location.reload();
+document.querySelectorAll('.theme-toggle, .mobile-theme-toggle').forEach((toggle) => {
+  toggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    const isDark = root.getAttribute('data-theme') === 'dark';
+    const next = isDark ? 'light' : 'dark';
+    localStorage.setItem('theme', next);
+    location.reload();
+  });
 });
 
 // Scroll reveal
