@@ -514,10 +514,8 @@ body > nav.nav-hidden {
   display: flex;
 }
 .mobile-menu-main {
-  flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   gap: 32px;
   border-bottom: 1px solid var(--border);
   padding-bottom: 32px;
@@ -533,8 +531,14 @@ body > nav.nav-hidden {
   color: var(--black);
   text-transform: none;
 }
-.mobile-theme-toggle {
+.mobile-menu .mobile-theme-toggle {
   padding-top: 32px;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--black);
 }
 .mobile-menu-icon {
   display: flex;
@@ -606,20 +610,6 @@ body > nav.nav-hidden {
 .has-progress-nav { padding-top: 108px; }
 @media (max-width: 600px) {
   .progress-nav { padding: 10px 24px; }
-}
-
-/* === BURGER X FIX — hide extra lines === */
-.burger[aria-expanded="true"] span:nth-child(1) {
-  transform: translateY(6.5px) rotate(45deg);
-  width: 22px;
-}
-.burger[aria-expanded="true"] span:nth-child(2) {
-  opacity: 0;
-  width: 0;
-}
-.burger[aria-expanded="true"] span:nth-child(3) {
-  transform: translateY(-6.5px) rotate(-45deg);
-  width: 22px;
 }
 
 /* === ABOUT PAGE MOBILE FIX === */
