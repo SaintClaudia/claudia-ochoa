@@ -72,3 +72,4 @@ GitHub Pages deploys automatically. Changes are live within 1–2 minutes.
 
 - [ ] Add contact section
 - [ ] Blog page
+- [ ] Replace the per-page copy/pasted header (`<nav>` + `#mobile-menu`) with a shared partial — either JS-injected via `main.js` fetching `header.html` into a placeholder div, or a small build script that stamps a `_header.html` partial into every page. Goal: single source of truth for the nav so future nav changes don't require touching every file. Revisit after the About page redesign.

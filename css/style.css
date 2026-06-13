@@ -58,8 +58,7 @@
 
 /* === MASTHEAD TOOLTIPS === */
 .nav-icon::after,
-.theme-toggle::after,
-.burger::after {
+.theme-toggle::after {
   content: attr(aria-label);
   position: absolute;
   top: calc(100% + 10px);
@@ -82,8 +81,7 @@
 .theme-toggle::after { content: "Dark mode"; }
 [data-theme="dark"] .theme-toggle::after { content: "Light mode"; }
 .nav-icon:hover::after,
-.theme-toggle:hover::after,
-.burger:hover::after {
+.theme-toggle:hover::after {
   opacity: 1;
   transform: translateX(-50%) translateY(0);
 }
@@ -469,16 +467,11 @@ body > nav.nav-hidden {
   gap: 5px;
   width: 32px;
   height: 32px;
-  border-radius: 50%;
-  border: 1.5px solid var(--border);
   background: none;
+  border: none;
   cursor: pointer;
   padding: 4px;
   position: relative;
-  transition: border-color var(--transition);
-}
-.burger:hover {
-  border-color: var(--black);
 }
 .burger span {
   display: block;
@@ -510,12 +503,19 @@ body > nav.nav-hidden {
   background: var(--white);
   padding: 120px 40px 40px;
   flex-direction: column;
-  gap: 32px;
   z-index: 98;
-  justify-content: flex-start;
 }
 .mobile-menu.open {
   display: flex;
+}
+.mobile-menu-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 32px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 32px;
 }
 .mobile-menu a {
   display: flex;
@@ -527,8 +527,9 @@ body > nav.nav-hidden {
   letter-spacing: -0.02em;
   color: var(--black);
   text-transform: none;
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 24px;
+}
+.mobile-theme-toggle {
+  padding-top: 32px;
 }
 .mobile-menu-icon {
   display: flex;
