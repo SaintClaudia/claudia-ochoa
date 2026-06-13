@@ -62,27 +62,125 @@
 
 
 <main class="page">
-  <section class="about-page">
+  <section class="about-page about-redesign">
     <div class="container">
-      <div class="about-grid">
-        <div class="about-photo reveal">
-          <img src="/images/Claudia.png" alt="Claudia Ochoa">
-        </div>
-        <div class="about-content">
-          <span class="hero-eyebrow reveal">About</span>
-          <h2 class="reveal">Claudia Ochoa</h2>
-          <p class="reveal">With nearly 20 years of experience designing digital products and experiences, I focus on turning complexity into clear, human-centered solutions that scale. My career spans enterprise and consumer platforms across companies such as Walmart, The Home Depot, Dell, and Workday, where I've operated across disciplines to set direction, build alignment, and elevate product quality.</p>
-          <p class="reveal">I bring end-to-end ownership to my work — from shaping GenAI-powered concepts to guiding experience vision and execution — grounded in systems thinking, collaboration, and measurable outcomes.</p>
-          <p class="reveal">My path into product design was shaped by perseverance and perspective. Early in my career, I navigated the post–dot-com landscape, building experience where opportunity was scarce and learning how to lead without a playbook. Over time, I discovered that my greatest impact comes from solving real problems, iterating with intention, and helping teams turn vision into durable products. That shift — from campaign-driven design to product-led thinking — defined my identity as a designer and continues to inform how I lead today.</p>
-          <p class="reveal">I'm currently pursuing my MBA at Purdue University, where I maintain a 4.0 GPA and will graduate in August 2026. As a member of the National Society of Leadership and Success, I continue to deepen my interest in leadership, accountability, and organizational impact. I find humanity in design — balancing humility with rigor to create work that's deeply customer-centered and grounded in the realities of scale.</p>
+      <div class="about-hero">
+        <div class="profile-window-wrap reveal">
+          <div class="ai-glow" aria-hidden="true"></div>
 
-          <div class="about-flex reveal">
-            <h3>Low-key Flex 🏆</h3>
-            <p>I recently started writing about design, creativity, and the human side of systems — and one of those ideas traveled further than I expected.</p>
-            <p>One of my articles posted on <em>Medium</em> was shared by <em>Communication Arts</em>, a publication I grew up admiring, which was both unexpected and meaningful.</p>
-            <div class="feature-card">
-              <p>Featured by <strong>Communication Arts</strong> — one of the design industry's most respected publications.</p>
-              <a href="https://x.com/CommArts/status/1944841901024100641?s=20" target="_blank" rel="noopener" class="feature-link">View the feature on X →</a>
+          <div class="sticky-note note-1">
+            <strong>Fun fact</strong>
+            Nearly 20 years across enterprise &amp; consumer platforms — Walmart, The Home Depot, Dell, Workday.
+          </div>
+          <div class="sticky-note note-2">
+            <strong>MBA in progress</strong>
+            Purdue University · 4.0 GPA · Member, National Society of Leadership &amp; Success
+          </div>
+          <div class="sticky-note note-3">
+            <strong>Currently reading</strong>
+            [add book title]
+          </div>
+          <div class="sticky-note note-4">
+            <strong>Now playing</strong>
+            [add playlist/song]
+          </div>
+
+          <div class="profile-window">
+            <div class="window-titlebar">
+              <div class="window-dots">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+              </div>
+              <div class="window-filename">claudia.profile — about<span class="blink-cursor" aria-hidden="true"></span></div>
+            </div>
+            <div class="window-body">
+              <div class="profile-photo">
+                <img src="/images/Claudia.png" alt="Claudia Ochoa">
+              </div>
+              <h2>Claudia Ochoa</h2>
+              <p class="profile-role">Senior Product Designer — turning complexity into clear, human-centered systems.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-dock reveal" role="navigation" aria-label="About sections">
+          <button class="dock-item" data-panel="experience" aria-expanded="false">
+            <span class="dock-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img"><rect x="1.5" y="5" width="13" height="8.5" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M5.5 5V3.5C5.5 2.95 5.95 2.5 6.5 2.5H9.5C10.05 2.5 10.5 2.95 10.5 3.5V5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><line x1="1.5" y1="9" x2="14.5" y2="9" stroke="currentColor" stroke-width="1.2"/></svg></span>
+            <span>Experience</span>
+          </button>
+          <button class="dock-item" data-panel="education" aria-expanded="false">
+            <span class="dock-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img"><path d="M8 3L14.5 6L8 9L1.5 6L8 3Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><path d="M4 7.5V11C4 11 5.5 12.5 8 12.5C10.5 12.5 12 11 12 11V7.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><line x1="14.5" y1="6" x2="14.5" y2="10.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span>
+            <span>Education</span>
+          </button>
+          <button class="dock-item" data-panel="now" aria-expanded="false">
+            <span class="dock-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.2"/><circle cx="8" cy="8" r="2" fill="currentColor"/></svg></span>
+            <span>Now</span>
+          </button>
+          <button class="dock-item" data-panel="press" aria-expanded="false">
+            <span class="dock-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img"><path d="M8 1.5L9.8 5.2L13.8 5.8L11 8.6L11.6 12.6L8 10.7L4.4 12.6L5 8.6L2.2 5.8L6.2 5.2L8 1.5Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg></span>
+            <span>Press</span>
+          </button>
+        </div>
+
+        <div class="about-panels">
+          <div class="about-panel" id="panel-experience">
+            <div class="about-panel-inner">
+              <p>I bring end-to-end ownership to my work — from shaping GenAI-powered concepts to guiding experience vision and execution, grounded in systems thinking, collaboration, and measurable outcomes.</p>
+              <button class="run-button" type="button">▶ run experience.sh</button>
+              <div class="timeline">
+                <div class="timeline-inner">
+                  <div class="timeline-node">
+                    <h4>Dell</h4>
+                    <p>Led design across enterprise commerce experiences, balancing complex business requirements with intuitive, scalable user journeys.</p>
+                  </div>
+                  <div class="timeline-node">
+                    <h4>Workday</h4>
+                    <p>Shaped HR and finance product experiences for global enterprise teams, focused on systems thinking and durable design patterns.</p>
+                  </div>
+                  <div class="timeline-node">
+                    <h4>The Home Depot</h4>
+                    <p>Drove digital commerce design across gift cards and military discount programs, elevating product quality at scale.</p>
+                  </div>
+                  <div class="timeline-node">
+                    <h4>Walmart</h4>
+                    <p>Operated across GenAI, careers, and Connect platforms — setting direction, building alignment, and shipping experience vision for one of the world's largest retailers.</p>
+                  </div>
+                  <div class="timeline-node current">
+                    <h4>Purdue MBA <span class="timeline-tag">in progress</span></h4>
+                    <p>Pursuing an MBA at Purdue University with a 4.0 GPA, graduating August 2026 — deepening my focus on leadership, accountability, and organizational impact.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-panel" id="panel-education">
+            <div class="about-panel-inner">
+              <h4>Purdue University — MBA</h4>
+              <p>I'm currently pursuing my MBA at Purdue University, where I maintain a 4.0 GPA and will graduate in August 2026. As a member of the National Society of Leadership and Success, I continue to deepen my interest in leadership, accountability, and organizational impact.</p>
+            </div>
+          </div>
+
+          <div class="about-panel" id="panel-now">
+            <div class="about-panel-inner">
+              <h4>What I'm focused on right now</h4>
+              <p>Finishing my MBA at Purdue, exploring how GenAI is reshaping product design workflows, and writing about the human side of systems — how design, leadership, and creativity intersect at scale.</p>
+            </div>
+          </div>
+
+          <div class="about-panel" id="panel-press">
+            <div class="about-panel-inner">
+              <div class="achievement-card">
+                <div class="achievement-icon">
+                  <svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img"><path d="M8 1.5L9.8 5.2L13.8 5.8L11 8.6L11.6 12.6L8 10.7L4.4 12.6L5 8.6L2.2 5.8L6.2 5.2L8 1.5Z" fill="currentColor"/></svg>
+                </div>
+                <div>
+                  <span class="achievement-label">Achievement unlocked</span>
+                  <p>Featured by <strong>Communication Arts</strong> — one of the design industry's most respected publications. I recently started writing about design, creativity, and the human side of systems, and one article — shared on <em>Medium</em> — was picked up by a publication I grew up admiring.</p>
+                  <a href="https://x.com/CommArts/status/1944841901024100641?s=20" target="_blank" rel="noopener" class="feature-link">View the feature on X →</a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
