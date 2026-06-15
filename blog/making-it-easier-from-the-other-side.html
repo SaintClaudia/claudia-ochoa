@@ -12,11 +12,29 @@
   <meta charset="UTF-8">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Blog — CLAUDIA OCHOA</title>
+  <title>Making It Easier, From the Other Side — CLAUDIA OCHOA</title>
+  <meta name="description" content="A personal reflection on building a custom portfolio site in less than a day, what it means to find your point of view, and why AI is, for me, the washing machine of this moment.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@400;500;600&family=DM+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .video-embed {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      margin: 8px 0;
+      background: var(--off-white);
+    }
+    .video-embed iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: 0;
+    }
+  </style>
 </head>
 <body>
 <nav>
@@ -80,93 +98,66 @@
 
 
 <main class="page">
-  <section class="home-hero">
+  <section class="case-hero">
     <div class="container">
-      <span class="hero-eyebrow reveal">Blog</span>
-      <h1 class="reveal">Notes on design,<br><em>AI</em>, and systems.</h1>
-      <p class="hero-sub reveal">Thoughts on product design, working with AI, and the human side of building things — written as I figure them out.</p>
-    </div>
-  </section>
-
-  <section class="work-grid">
-    <div class="container">
-      <div class="grid">
-
-        <a href="/blog/making-it-easier-from-the-other-side.html" class="work-card reveal">
-          <div class="card-image">
-            <img src="/images/blog/blog-thumb-other-side.png" alt="Illustrated washing machine with a glowing digital display reading 10:28, set against a dark background with a soft colorful glow" loading="lazy">
-          </div>
-          <div class="card-body">
-            <p class="card-company">June 14, 2026</p>
-            <h2 class="card-title">Making It Easier, From the Other Side</h2>
-            <p class="card-desc">After years making complicated things simple for other people, I'm finally on the receiving end — and it's changed how I think about AI.</p>
-            <span class="card-arrow">Read Post →</span>
-          </div>
-        </a>
-
-        <a href="/blog/the-true-reality-of-speed.html" class="work-card reveal">
-          <div class="card-image">
-            <img src="/images/blog/kitty-thumb.png" alt="A cat in a retro tracksuit, headband, and sunglasses, ready for vacation" loading="lazy">
-          </div>
-          <div class="card-body">
-            <p class="card-company">December 25, 2025</p>
-            <h2 class="card-title">The True Reality of Speed</h2>
-            <p class="card-desc">Speed has become one of the most celebrated metrics in product organizations — but the risk isn’t speed itself, it’s how speed is defined.</p>
-            <span class="card-arrow">Read Post →</span>
-          </div>
-        </a>
-
-        <a href="/blog/from-storytelling-to-systems.html" class="work-card reveal">
-          <div class="card-image">
-            <img src="/images/blog/Stereogram.webp" alt="A stereogram pattern revealing a hidden image" loading="lazy">
-          </div>
-          <div class="card-body">
-            <p class="card-company">December 25, 2025</p>
-            <h2 class="card-title">From Storytelling to Systems: My Shift Into Product Thinking</h2>
-            <p class="card-desc">UX and product design no longer follow a single path. The strength of design comes from treating creativity and function as equals.</p>
-            <span class="card-arrow">Read Post →</span>
-          </div>
-        </a>
-
-        <a href="/blog/when-the-office-mandate-broke-my-creative-spirit.html" class="work-card reveal">
-          <div class="card-image">
-            <img src="/images/blog/remote.webp" alt="A home workspace set up for remote work" loading="lazy">
-          </div>
-          <div class="card-body">
-            <p class="card-company">July 10, 2025</p>
-            <h2 class="card-title">When the Office Mandate Broke My Creative Spirit</h2>
-            <p class="card-desc">The return-to-office mandate sweeping across the tech world isn’t just a policy shift — for some of us, it’s been life-altering.</p>
-            <span class="card-arrow">Read Post →</span>
-          </div>
-        </a>
-
-        <a href="/blog/the-new-ways-of-working-with-ai.html" class="work-card reveal">
-          <div class="card-image">
-            <img src="/images/blog/wasteland.webp" alt="A long, empty stretch of road into the distance" loading="lazy">
-          </div>
-          <div class="card-body">
-            <p class="card-company">July 10, 2025</p>
-            <h2 class="card-title">The New Ways of Working with AI: Redefining Productivity, Creativity — and Vibe Coding</h2>
-            <p class="card-desc">AI is no longer a buzzword — it’s an integral collaborator reshaping how we work, create, and solve problems.</p>
-            <span class="card-arrow">Read Post →</span>
-          </div>
-        </a>
-
-        <a href="/blog/surprise-and-delight.html" class="work-card reveal">
-          <div class="card-image">
-            <img src="/images/blog/monolith.webp" alt="A monolithic structure, evoking a quiet shift in technology" loading="lazy">
-          </div>
-          <div class="card-body">
-            <p class="card-company">July 10, 2025</p>
-            <h2 class="card-title">Surprise and Delight: The Secret Ingredient of Unforgettable Design</h2>
-            <p class="card-desc">We live in a world that runs on usability. But every now and then, a product reminds us that great design isn’t just functional — it’s emotional.</p>
-            <span class="card-arrow">Read Post →</span>
-          </div>
-        </a>
-
+      <p class="case-eyebrow reveal">Blog</p>
+      <h1 class="reveal">Making It Easier,<br><em>From the Other Side</em></h1>
+      <p class="lead reveal">June 14, 2026</p>
+      <div class="case-cover reveal">
+        <img src="/images/blog/blog-hero-other-side.png" alt="Illustrated washing machine with a glowing digital display reading 10:28, set against a dark background with a soft colorful glow">
       </div>
     </div>
   </section>
+
+  <section class="case-body">
+    <div class="container">
+
+      <div class="case-section reveal">
+        <p>After years making complicated things simple for other people, I'm finally on the receiving end — and it's changed how I think about AI. I pitched an idea for how AI could change the way we work, and now I'm watching that vision come to life.</p>
+        <p>For almost twenty years, my job has had one through-line: take something ambiguous and turn it into the best possible customer experience.</p>
+      </div>
+
+      <div class="case-section reveal">
+        <p>This past year, my primary focus has been my MBA — and intentionally evaluating what my next career step could be. My hope was that doing this wouldn't read as a gap year, or a year I couldn't find work, but as a year that would prepare me for right now.</p>
+        <p><em>I needed my point of view.</em></p>
+      </div>
+
+      <div class="case-section reveal">
+        <p>Now, I'm Catholic. I've never felt the need to say that out loud, but I've always felt my calling was design. And now I feel it's AI too. So how do you think I felt when the Pope called for AI to be disarmed? With no context, and no one to turn to ask more questions about what he meant — but God.</p>
+      </div>
+
+      <div class="case-section reveal">
+        <p>What used to take weeks, even months, to design can now be done in days — fully deployed. Iterating in Terminal. Product, design, and engineering have officially merged. I went to business school thinking I'd be merging with product. I never imagined I'd be merging with all three.</p>
+      </div>
+
+      <div class="case-section reveal">
+        <p>How did I come to that conclusion? I moved my portfolio off an all-in-one website builder and onto my own custom site — the one you're reading this from, right now. I built this in less than a day.</p>
+      </div>
+
+      <div class="case-section reveal">
+        <p>I'm aware of the conversations around data centers and their potential impact on the environment, and the backlash that comes with it. I see it being used for harm. But what I'm looking to do is bring beauty to this world.</p>
+        <p>The washing machine, once marketed as magic, was created to help people save time. It too posed a threat to the environment with its water and energy consumption. Now it's in every home — continuously updated to reduce household utility costs and cut greenhouse gas emissions.</p>
+        <p><em>AI is my washing machine.</em></p>
+      </div>
+
+      <div class="case-section reveal">
+        <div class="video-embed">
+          <iframe src="https://www.youtube.com/embed/BZoKfap4g4w?si=0PfPSKDbR8G1qC5o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="case-nav" aria-label="Post navigation">
+    <div class="container">
+      <a href="/blog/the-true-reality-of-speed.html" class="case-nav-link prev">
+        <span class="case-nav-label">← Previous</span>
+        <span class="case-nav-title">The True Reality of Speed</span>
+      </a>
+      <span></span>
+    </div>
+  </div>
 </main>
 
 <footer>
