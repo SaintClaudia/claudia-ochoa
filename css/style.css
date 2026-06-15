@@ -296,6 +296,12 @@ nav {
   max-height: 540px;
   object-fit: cover;
 }
+.case-cover figcaption {
+  margin-top: 12px;
+  font-size: 0.8rem;
+  color: var(--mid);
+  font-style: italic;
+}
 .nda-note {
   display: inline-flex;
   align-items: center;
