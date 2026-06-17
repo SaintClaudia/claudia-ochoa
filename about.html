@@ -328,7 +328,7 @@
     }
     .ab-signals-header { max-width: 36rem; }
 
-    /* Flip cards */
+    /* Flip cards — landscape glass */
     .ab-flip-outer { height: 300vh; position: relative; }
     .ab-flip-sticky {
       position: sticky;
@@ -338,105 +338,98 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 0 1.5rem;
+      padding: 0 2rem;
     }
     .ab-flip-stage {
       position: relative;
       width: 100%;
-      max-width: 42rem;
-      height: 560px;
-      perspective: 1400px;
+      max-width: 64rem;
+      height: 420px;
+      perspective: 1800px;
     }
     .ab-flip-card {
       position: absolute;
       inset: 0;
       backface-visibility: hidden;
       -webkit-backface-visibility: hidden;
-      transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
       z-index: 1;
     }
-    .ab-flip-card[data-state="active"] { transform: rotateY(0deg);   z-index: 10; }
-    .ab-flip-card[data-state="past"]   { transform: rotateY(-90deg); }
-    .ab-flip-card[data-state="future"] { transform: rotateY(90deg);  }
+    /* top-to-back flip: rotateX */
+    .ab-flip-card[data-state="active"] { transform: rotateX(0deg);    z-index: 10; }
+    .ab-flip-card[data-state="past"]   { transform: rotateX(-90deg); }
+    .ab-flip-card[data-state="future"] { transform: rotateX(90deg);  }
 
+    /* Glass card: left media panel + right text panel */
     .ab-glass-card {
       height: 100%;
       box-sizing: border-box;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: rgba(10, 14, 30, 0.88);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      display: flex;
+      flex-direction: row;
       overflow: hidden;
-      border-radius: 24px;
-      border: 1px solid var(--ab-card-border);
-      background: var(--ab-card-bg);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      padding: 24px;
       position: relative;
     }
-    .ab-glass-card::before {
-      content: '';
-      position: absolute;
-      right: -4rem; top: -4rem;
-      width: 10rem; height: 10rem;
-      border-radius: 50%;
-      background: var(--ab-violet);
-      opacity: 0.08;
-      filter: blur(48px);
-      pointer-events: none;
+    [data-theme="light"] .ab-glass-card,
+    html:not([data-theme="dark"]) .ab-glass-card {
+      background: rgba(255,255,255,0.82);
+      border-color: rgba(0,0,0,0.07);
     }
-    .ab-card-h3 {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 1.55rem;
-      font-weight: 300;
-      color: var(--ab-fg);
-      margin: 0.5rem 0 0;
+    .ab-card-media {
+      flex: 0 0 55%;
+      margin: 12px;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      background: rgba(0,0,0,0.25);
+    }
+    .ab-card-media img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .ab-card-media iframe {
+      width: 100%; height: 100%;
+      display: block;
+      border: 0;
+    }
+    .ab-card-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 2.5rem 2.5rem 2.5rem 1.5rem;
     }
     .ab-card-eyebrow { margin-bottom: 0; }
-    .ab-spotify-wrap {
-      margin-top: 1.25rem;
-      overflow: hidden;
-      border-radius: 14px;
-      border: 1px solid var(--ab-card-border);
-    }
-    .ab-reading-body { display: flex; gap: 1.25rem; margin-top: 1.25rem; }
-    .ab-book-cover {
-      width: 88px; flex-shrink: 0;
-      border-radius: 8px;
-      border: 1px solid var(--ab-card-border);
-      object-fit: cover;
-    }
-    .ab-book-title {
+    .ab-card-h3 {
       font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 1.15rem; line-height: 1.25;
-      color: var(--ab-fg); margin: 0;
+      font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--ab-fg);
+      margin: 0.75rem 0 0;
     }
-    .ab-book-author {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.7rem; color: var(--ab-muted); margin-top: 0.25rem;
-    }
-    .ab-book-takeaway {
-      font-size: 0.88rem; color: var(--ab-muted);
-      line-height: 1.7; margin-top: 0.9rem;
-    }
-    .ab-recipe-img-wrap {
-      position: relative; margin-top: 1.25rem;
-      overflow: hidden; border-radius: 14px;
-      border: 1px solid var(--ab-card-border);
-    }
-    .ab-recipe-img { width: 100%; height: 11rem; object-fit: cover; display: block; }
-    .ab-recipe-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, var(--ab-overlay), transparent);
-    }
-    .ab-recipe-note {
-      display: flex; align-items: center; gap: 0.5rem;
+    [data-theme="dark"] .ab-card-h3,
+    body.ab-page .ab-card-h3 { color: #F0F0F0; }
+    [data-theme="light"] .ab-card-h3,
+    html:not([data-theme="dark"]) .ab-glass-card .ab-card-h3 { color: #0A0A0A; }
+    .ab-card-desc {
+      font-size: 0.9rem;
+      color: rgba(240,240,240,0.6);
       margin-top: 1rem;
-      font-family: 'DM Mono', monospace;
-      font-size: 0.7rem; color: var(--ab-muted);
+      line-height: 1.7;
     }
-    .ab-recipe-note::before {
-      content: ''; width: 6px; height: 6px;
-      border-radius: 50%; background: var(--ab-violet); flex-shrink: 0;
-    }
-    .ab-flip-dots { display: flex; gap: 0.5rem; margin-top: 2.5rem; }
+    [data-theme="light"] .ab-card-desc,
+    html:not([data-theme="dark"]) .ab-glass-card .ab-card-desc { color: rgba(10,10,10,0.6); }
+
+    /* Card eyebrow always cyan */
+    .ab-glass-card .ab-eyebrow { color: oklch(0.78 0.16 205); opacity: 0.9; }
+
+    .ab-flip-dots { display: flex; gap: 0.5rem; margin-top: 2rem; }
     .ab-flip-dot {
       height: 6px; width: 6px; border-radius: 999px;
       background: var(--ab-badge-border);
@@ -675,19 +668,18 @@
           <!-- Card 0: Spotify -->
           <div class="ab-flip-card" data-card="0" data-state="active">
             <div class="ab-glass-card">
-              <p class="ab-eyebrow ab-card-eyebrow">Soundtrack to building</p>
-              <h3 class="ab-card-h3">Currently scoring this chapter</h3>
-              <div class="ab-spotify-wrap">
+              <div class="ab-card-media">
                 <iframe
-                  data-testid="embed-iframe"
                   title="Spotify playlist"
-                  style="border-radius:12px"
                   src="https://open.spotify.com/embed/playlist/4fC8ytJHg1fU0ZzoTswuwG?utm_source=generator&si=02143e058db44132"
-                  width="100%" height="352"
                   frameborder="0"
                   loading="lazy"
                   allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                 ></iframe>
+              </div>
+              <div class="ab-card-body">
+                <p class="ab-eyebrow ab-card-eyebrow">Soundtrack to building</p>
+                <h3 class="ab-card-h3">Currently on repeat.</h3>
               </div>
             </div>
           </div>
@@ -695,15 +687,12 @@
           <!-- Card 1: Reading -->
           <div class="ab-flip-card" data-card="1" data-state="future">
             <div class="ab-glass-card">
-              <p class="ab-eyebrow ab-card-eyebrow">Reframing my thinking</p>
-              <h3 class="ab-card-h3">On the nightstand</h3>
-              <div class="ab-reading-body">
-                <img src="/images/book-cover.png" alt="Cover of Reframing My Thinking" class="ab-book-cover">
-                <div>
-                  <p class="ab-book-title">Reframing My Thinking</p>
-                  <p class="ab-book-author">Replace · Author Name</p>
-                  <p class="ab-book-takeaway">The constraint isn't the problem — it's the prompt. Most stuck moments are just the wrong question, asked confidently.</p>
-                </div>
+              <div class="ab-card-media">
+                <img src="/images/book-cover.png" alt="Book cover">
+              </div>
+              <div class="ab-card-body">
+                <p class="ab-eyebrow ab-card-eyebrow">Recommended reading</p>
+                <h3 class="ab-card-h3">On the nightstand.</h3>
               </div>
             </div>
           </div>
@@ -711,13 +700,14 @@
           <!-- Card 2: Recipe -->
           <div class="ab-flip-card" data-card="2" data-state="future">
             <div class="ab-glass-card">
-              <p class="ab-eyebrow ab-card-eyebrow">Testing the algorithm</p>
-              <h3 class="ab-card-h3">Charred citrus + miso glaze</h3>
-              <div class="ab-recipe-img-wrap">
-                <img src="/images/recipe-dish.png" alt="Charred citrus and miso glaze dish" class="ab-recipe-img">
-                <div class="ab-recipe-overlay" aria-hidden="true"></div>
+              <div class="ab-card-media">
+                <img src="/images/recipe-dish.png" alt="A dish recreated with AI guidance">
               </div>
-              <p class="ab-recipe-note">Prompted by AI. Adjusted by instinct.</p>
+              <div class="ab-card-body">
+                <p class="ab-eyebrow ab-card-eyebrow">Testing the algorithm</p>
+                <h3 class="ab-card-h3">Prompted by AI.<br>Adjusted by instinct.</h3>
+                <p class="ab-card-desc">I recreate dishes from all over the world with one screenshot, AI, and a taste for nostalgia.</p>
+              </div>
             </div>
           </div>
 
