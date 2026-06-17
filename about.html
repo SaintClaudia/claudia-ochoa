@@ -321,7 +321,7 @@
     .ab-signals-header-wrap {
       max-width: 72rem;
       margin: 0 auto;
-      padding: 6rem 1.5rem 3rem;
+      padding: 4rem 1.5rem 1rem;
     }
     .ab-signals-header { max-width: 36rem; }
 
@@ -423,13 +423,13 @@
     [data-theme="light"] .ab-card-desc,
     html:not([data-theme="dark"]) .ab-glass-card .ab-card-desc { color: rgba(10,10,10,0.6); }
 
-.ab-flip-dots { display: flex; gap: 0.5rem; margin-top: 2rem; }
+    .ab-flip-dots { display: flex; gap: 0.5rem; margin-top: 2rem; }
     .ab-flip-dot {
       height: 6px; width: 6px; border-radius: 999px;
-      background: var(--ab-badge-border);
+      background: rgba(128, 128, 128, 0.3);
       transition: width 0.4s ease, background 0.4s ease;
     }
-    .ab-flip-dot.active { width: 24px; background: var(--ab-cyan); }
+    .ab-flip-dot.active { width: 24px; background: var(--mid); }
 
     /* ---- FUTURE ---- */
     .ab-future {
