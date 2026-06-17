@@ -81,11 +81,10 @@
     /* -- Shared type helpers -- */
     .ab-eyebrow {
       font-family: 'DM Mono', monospace;
-      font-size: 0.68rem;
+      font-size: 0.72rem;
       text-transform: uppercase;
-      letter-spacing: 0.38em;
-      color: var(--ab-cyan);
-      opacity: 0.9;
+      letter-spacing: 0.14em;
+      color: var(--mid);
       margin: 0;
     }
     .ab-section-h2 {
@@ -426,10 +425,7 @@
     [data-theme="light"] .ab-card-desc,
     html:not([data-theme="dark"]) .ab-glass-card .ab-card-desc { color: rgba(10,10,10,0.6); }
 
-    /* Card eyebrow always cyan */
-    .ab-glass-card .ab-eyebrow { color: oklch(0.78 0.16 205); opacity: 0.9; }
-
-    .ab-flip-dots { display: flex; gap: 0.5rem; margin-top: 2rem; }
+.ab-flip-dots { display: flex; gap: 0.5rem; margin-top: 2rem; }
     .ab-flip-dot {
       height: 6px; width: 6px; border-radius: 999px;
       background: var(--ab-badge-border);
