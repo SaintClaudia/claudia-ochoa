@@ -212,7 +212,7 @@
     @media (min-width: 768px) {
       .ab-spine, .ab-spine-glow { left: calc(50% - 0.5px); }
     }
-    .ab-spine-glow { transform: scaleY(0); }
+    .ab-spine-glow { animation: none; transform: scaleY(0); }
 
     .ab-milestones { list-style: none; margin: 0; padding: 0; }
     .ab-milestone {
@@ -869,16 +869,19 @@
     var track = document.querySelector('.ab-timeline-track');
     if (!glow || !track) return;
 
+    /* Cancel any CSS scroll-driven animation that may still be cached */
+    glow.style.animation = 'none';
+
     function update() {
+      var h = track.offsetHeight;
+      if (!h) return;
       var rect = track.getBoundingClientRect();
-      var vh   = window.innerHeight;
-      /* 0 when track top enters viewport bottom, 1 when track bottom hits viewport bottom */
-      var progress = Math.max(0, Math.min(1, (vh - rect.top) / track.offsetHeight));
+      var progress = Math.max(0, Math.min(1, (window.innerHeight - rect.top) / h));
       glow.style.transform = 'scaleY(' + progress + ')';
     }
 
     window.addEventListener('scroll', update, { passive: true });
-    update();
+    requestAnimationFrame(update); /* defer first paint until layout is settled */
   })();
 
   /* ── Flip cards ── */
