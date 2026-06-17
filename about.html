@@ -21,12 +21,573 @@
       var t = localStorage.getItem('theme') || 'light';
       var m = document.createElement('meta');
       m.name = 'theme-color';
-      m.content = t === 'dark' ? '#0D0D0D' : '#FFFFFF';
+      m.content = '#0D0D0D';
       document.head.appendChild(m);
     })();
   </script>
+
+  <style>
+    /* ============================================================
+       ABOUT V2 — dark-canvas page
+       All selectors prefixed ab- to avoid conflicts
+    ============================================================ */
+
+    body.ab-page {
+      background: #0D0D0D;
+    }
+
+    .ab-page {
+      --ab-cyan:   oklch(0.78 0.16 205);
+      --ab-violet: oklch(0.63 0.21 290);
+      --ab-blue:   oklch(0.68 0.19 255);
+      --ab-fg:     #F0F0F0;
+      --ab-muted:  rgba(240, 240, 240, 0.55);
+      --ab-card-bg:     rgba(255, 255, 255, 0.05);
+      --ab-card-border: rgba(200, 200, 255, 0.10);
+    }
+
+    /* -- shared type helpers -- */
+    .ab-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.38em;
+      color: var(--ab-cyan);
+      opacity: 0.85;
+      margin: 0;
+    }
+    .ab-section-h2 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--ab-fg);
+      margin: 0.75rem 0 0;
+    }
+    .ab-section-desc {
+      font-size: 0.97rem;
+      color: var(--ab-muted);
+      margin-top: 1rem;
+      line-height: 1.7;
+      max-width: 32rem;
+    }
+
+    /* ---- HERO ---- */
+    .ab-hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0 1.5rem;
+      text-align: center;
+      overflow: hidden;
+    }
+    .ab-hero-glow {
+      position: absolute;
+      left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+      width: min(42rem, 90vw); height: min(42rem, 90vw);
+      border-radius: 50%;
+      background: var(--ab-blue);
+      opacity: 0.16;
+      filter: blur(100px);
+      pointer-events: none;
+      z-index: 0;
+      animation: ab-pulse 6s ease-in-out infinite;
+    }
+    .ab-hero-ring {
+      position: absolute;
+      left: 50%; top: 50%;
+      transform: translate(-50%, -50%) rotate(0deg);
+      width: min(36rem, 80vw); height: min(36rem, 80vw);
+      border-radius: 50%;
+      border: 1px solid rgba(130, 220, 230, 0.14);
+      pointer-events: none;
+      z-index: 0;
+      animation: ab-spin 40s linear infinite;
+    }
+    @keyframes ab-pulse {
+      0%,100% { opacity: 0.16; transform: translate(-50%,-50%) scale(1); }
+      50%      { opacity: 0.28; transform: translate(-50%,-50%) scale(1.08); }
+    }
+    @keyframes ab-spin {
+      to { transform: translate(-50%,-50%) rotate(360deg); }
+    }
+    .ab-hero-eyebrow {
+      position: relative; z-index: 1;
+      margin-bottom: 2rem;
+    }
+    .ab-hero-h1 {
+      position: relative; z-index: 1;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2.8rem, 9vw, 6rem);
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--ab-fg);
+      min-height: 1.1em;
+    }
+    .ab-tw-cursor {
+      display: inline-block;
+      width: 3px;
+      height: 0.8em;
+      background: currentColor;
+      margin-left: 3px;
+      vertical-align: middle;
+      animation: ab-blink 1s step-end infinite;
+    }
+    @keyframes ab-blink {
+      0%,100% { opacity: 1; }
+      50%      { opacity: 0; }
+    }
+    .ab-hero-tagline {
+      position: relative; z-index: 1;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      font-size: clamp(1.05rem, 2.4vw, 1.35rem);
+      color: var(--ab-muted);
+      max-width: 36rem;
+      margin-top: 2rem;
+      line-height: 1.65;
+    }
+    .ab-scroll-cue {
+      position: absolute;
+      bottom: 2.5rem; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 0.75rem;
+      z-index: 1;
+    }
+    .ab-scroll-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.35em;
+      color: var(--ab-muted);
+    }
+    .ab-scroll-track {
+      position: relative;
+      width: 1px; height: 3rem;
+      background: rgba(200,200,255,0.18);
+      overflow: hidden;
+    }
+    .ab-scroll-bar {
+      position: absolute;
+      inset-x: 0; top: 0;
+      height: 33%;
+      background: var(--ab-cyan);
+      animation: ab-scroll-cue 2.4s ease-in-out infinite;
+    }
+    @keyframes ab-scroll-cue {
+      0%   { transform: translateY(-100%); }
+      100% { transform: translateY(300%); }
+    }
+
+    /* ---- TIMELINE ---- */
+    .ab-timeline-section {
+      max-width: 56rem;
+      margin: 0 auto;
+      padding: 6rem 1.5rem 5rem;
+      position: relative;
+    }
+    .ab-timeline-header {
+      margin-bottom: 5rem;
+    }
+    .ab-timeline-track {
+      position: relative;
+      padding-left: 2rem;
+    }
+    @media (min-width: 768px) {
+      .ab-timeline-track { padding-left: 0; }
+    }
+    .ab-spine {
+      position: absolute;
+      left: 7px; top: 0.5rem; bottom: 0.5rem;
+      width: 1px;
+      background: rgba(200,200,255,0.1);
+    }
+    .ab-spine-glow {
+      position: absolute;
+      left: 7px; top: 0.5rem; bottom: 0.5rem;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--ab-cyan), var(--ab-blue), var(--ab-violet));
+      box-shadow: 0 0 10px var(--ab-blue);
+      transform-origin: top;
+    }
+    @media (min-width: 768px) {
+      .ab-spine, .ab-spine-glow {
+        left: calc(50% - 0.5px);
+      }
+    }
+    /* Scroll-driven: illuminate spine as page scrolls */
+    @supports (animation-timeline: scroll()) {
+      .ab-spine-glow {
+        animation: ab-spine-grow linear both;
+        animation-timeline: scroll(root block);
+      }
+      @keyframes ab-spine-grow {
+        from { transform: scaleY(0); }
+        to   { transform: scaleY(1); }
+      }
+    }
+    @supports not (animation-timeline: scroll()) {
+      .ab-spine-glow { transform: scaleY(1); }
+    }
+
+    .ab-milestones {
+      list-style: none;
+      margin: 0; padding: 0;
+    }
+    .ab-milestone {
+      position: relative;
+      margin-bottom: 4rem;
+    }
+    @media (min-width: 768px) {
+      .ab-milestone {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        margin-bottom: 7rem;
+      }
+    }
+    .ab-milestone-dot {
+      position: absolute;
+      left: 7px; top: 0.375rem;
+      width: 1rem; height: 1rem;
+      border-radius: 50%;
+      background: rgba(200,200,255,0.15);
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.6s ease, box-shadow 0.6s ease;
+    }
+    .ab-milestone-dot::after {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #0D0D0D;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+    .ab-milestone.reveal.visible .ab-milestone-dot {
+      background: var(--ab-cyan);
+      box-shadow: 0 0 18px 4px var(--ab-cyan);
+    }
+    .ab-milestone.reveal.visible .ab-milestone-dot::after {
+      opacity: 1;
+    }
+    @media (min-width: 768px) {
+      .ab-milestone-dot { left: 50%; }
+    }
+
+    .ab-milestone-content {
+      padding-left: 2rem;
+    }
+    @media (min-width: 768px) {
+      .ab-milestone-content { padding-left: 0; }
+      .ab-milestone-left  { grid-column: 1; padding-right: 3rem; text-align: right; }
+      .ab-milestone-right { grid-column: 2; padding-left: 3rem; text-align: left; }
+      .ab-milestone-right .ab-milestone-metric { text-align: left; }
+    }
+    .ab-milestone-year {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.82rem;
+      letter-spacing: 0.2em;
+      color: var(--ab-cyan);
+      display: block;
+    }
+    .ab-milestone-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      font-weight: 300;
+      line-height: 1.2;
+      color: var(--ab-fg);
+      margin: 0.6rem 0 0;
+    }
+    .ab-milestone-impact {
+      color: var(--ab-muted);
+      line-height: 1.7;
+      margin-top: 0.75rem;
+      font-size: 0.93rem;
+    }
+    .ab-milestone-metric {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      padding: 0.35rem 1rem;
+      border-radius: 999px;
+      border: 1px solid rgba(200,200,255,0.12);
+      background: rgba(255,255,255,0.03);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(240,240,240,0.65);
+    }
+    .ab-milestone-metric::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--ab-violet);
+      flex-shrink: 0;
+    }
+
+    /* ---- SIGNALS ---- */
+    .ab-signals-section { position: relative; }
+    .ab-signals-header-wrap {
+      max-width: 72rem;
+      margin: 0 auto;
+      padding: 6rem 1.5rem 3rem;
+      position: relative;
+    }
+    .ab-signals-header { max-width: 36rem; }
+
+    /* Floating character */
+    .ab-char {
+      position: absolute;
+      pointer-events: none;
+      user-select: none;
+    }
+    .ab-char img {
+      display: block;
+      opacity: 0.6;
+      mix-blend-mode: screen;
+    }
+    .ab-float  { animation: ab-float  9s ease-in-out infinite; }
+    .ab-float2 { animation: ab-float 13s ease-in-out infinite; }
+    @keyframes ab-float {
+      0%,100% { transform: translateY(0); }
+      50%     { transform: translateY(-14px); }
+    }
+
+    /* Flip cards */
+    .ab-flip-outer {
+      height: 300vh;
+      position: relative;
+    }
+    .ab-flip-sticky {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0 1.5rem;
+    }
+    .ab-flip-stage {
+      position: relative;
+      width: 100%;
+      max-width: 42rem;
+      height: 560px;
+      perspective: 1400px;
+    }
+    .ab-flip-card {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 1;
+    }
+    .ab-flip-card[data-state="active"] { transform: rotateY(0deg);   z-index: 10; }
+    .ab-flip-card[data-state="past"]   { transform: rotateY(-90deg); }
+    .ab-flip-card[data-state="future"] { transform: rotateY(90deg);  }
+
+    .ab-glass-card {
+      height: 100%;
+      box-sizing: border-box;
+      overflow: hidden;
+      border-radius: 24px;
+      border: 1px solid var(--ab-card-border);
+      background: var(--ab-card-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: 24px;
+      position: relative;
+    }
+    .ab-glass-card::before {
+      content: '';
+      position: absolute;
+      right: -4rem; top: -4rem;
+      width: 10rem; height: 10rem;
+      border-radius: 50%;
+      background: var(--ab-violet);
+      opacity: 0.08;
+      filter: blur(48px);
+      pointer-events: none;
+    }
+    .ab-card-h3 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.55rem;
+      font-weight: 300;
+      color: var(--ab-fg);
+      margin: 0.5rem 0 0;
+    }
+    .ab-card-eyebrow { margin-bottom: 0; }
+    .ab-spotify-wrap {
+      margin-top: 1.25rem;
+      overflow: hidden;
+      border-radius: 14px;
+      border: 1px solid var(--ab-card-border);
+    }
+    .ab-reading-body {
+      display: flex;
+      gap: 1.25rem;
+      margin-top: 1.25rem;
+    }
+    .ab-book-cover {
+      width: 88px;
+      flex-shrink: 0;
+      border-radius: 8px;
+      border: 1px solid var(--ab-card-border);
+      object-fit: cover;
+    }
+    .ab-book-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.15rem;
+      line-height: 1.25;
+      color: var(--ab-fg);
+      margin: 0;
+    }
+    .ab-book-author {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--ab-muted);
+      margin-top: 0.25rem;
+    }
+    .ab-book-takeaway {
+      font-size: 0.88rem;
+      color: var(--ab-muted);
+      line-height: 1.7;
+      margin-top: 0.9rem;
+    }
+    .ab-recipe-img-wrap {
+      position: relative;
+      margin-top: 1.25rem;
+      overflow: hidden;
+      border-radius: 14px;
+      border: 1px solid var(--ab-card-border);
+    }
+    .ab-recipe-img {
+      width: 100%; height: 11rem;
+      object-fit: cover;
+      display: block;
+    }
+    .ab-recipe-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(13,13,13,0.65), transparent);
+    }
+    .ab-recipe-note {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--ab-muted);
+    }
+    .ab-recipe-note::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--ab-violet);
+      flex-shrink: 0;
+    }
+    .ab-flip-dots {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 2.5rem;
+    }
+    .ab-flip-dot {
+      height: 6px;
+      width: 6px;
+      border-radius: 999px;
+      background: rgba(200,200,255,0.2);
+      transition: width 0.4s ease, background 0.4s ease;
+    }
+    .ab-flip-dot.active {
+      width: 24px;
+      background: var(--ab-cyan);
+    }
+
+    /* ---- FUTURE ---- */
+    .ab-future {
+      position: relative;
+      min-height: 90svh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 1.5rem;
+      overflow: hidden;
+    }
+    .ab-future-line-top {
+      position: absolute;
+      left: 50%; top: 0;
+      transform: translateX(-50%);
+      width: 1px; height: 12rem;
+      background: linear-gradient(to bottom, transparent, var(--ab-blue), var(--ab-cyan));
+      opacity: 0.65;
+    }
+    .ab-future-glow {
+      position: absolute;
+      left: 50%; top: 50%;
+      transform: translate(-50%,-50%);
+      width: 34rem; height: 34rem;
+      border-radius: 50%;
+      background: var(--ab-violet);
+      opacity: 0.08;
+      filter: blur(120px);
+      pointer-events: none;
+    }
+    .ab-future-h2 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(3rem, 10vw, 6rem);
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--ab-fg);
+      margin: 2rem 0 0;
+      max-width: 22ch;
+    }
+    .ab-future-tagline {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      color: var(--ab-muted);
+      max-width: 30rem;
+      margin-top: 2rem;
+      line-height: 1.65;
+    }
+    .ab-future-line-bottom {
+      margin-top: 4rem;
+      width: 1px; height: 10rem;
+      background: linear-gradient(to top, transparent, var(--ab-blue) 40%, var(--ab-cyan));
+    }
+
+    /* ---- Footer tweak for dark page ---- */
+    body.ab-page footer {
+      border-top: 1px solid rgba(200,200,255,0.08);
+    }
+
+    /* ---- Reduced motion ---- */
+    @media (prefers-reduced-motion: reduce) {
+      .ab-hero-glow, .ab-hero-ring,
+      .ab-tw-cursor, .ab-scroll-bar,
+      .ab-char, .ab-float, .ab-float2 {
+        animation: none !important;
+      }
+      .ab-flip-card { transition: none !important; }
+    }
+  </style>
 </head>
-<body>
+
+<body class="ab-page">
+
 <nav>
   <div class="nav-inner">
     <a href="/" class="nav-wordmark">Claudia Ochoa</a>
@@ -45,17 +606,18 @@
     </div>
   </div>
 </nav>
+
 <div class="mobile-menu" id="mobile-menu">
   <div class="mobile-menu-main">
   <a href="/"><span class="mobile-menu-icon"><svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img"><path d="M2 7.2L8 2L14 7.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.5 6.5V13C3.5 13.3 3.7 13.5 4 13.5H6.5V10C6.5 9.4 7 9 7.5 9H8.5C9 9 9.5 9.4 9.5 10V13.5H12C12.3 13.5 12.5 13.3 12.5 13V6.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Home</span></a>
   <a href="/blog/index.html"><span class="mobile-menu-icon"><svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img"><rect x="2" y="2.5" width="9" height="11" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M11 5.5H13.5V11.5C13.5 12.6 12.6 13.5 11.5 13.5H11" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><line x1="4" y1="5.5" x2="8.5" y2="5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="4" y1="8" x2="8.5" y2="8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="4" y1="10.5" x2="7" y2="10.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span><span>Blog</span></a>
   <a href="/about.html"><span class="mobile-menu-icon"><svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img"><rect x="1.5" y="3" width="13" height="10" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M6 2.2H10C10.3 2.2 10.5 2.4 10.5 2.7V3.8H5.5V2.7C5.5 2.4 5.7 2.2 6 2.2Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><circle cx="5.2" cy="7.6" r="1.3" stroke="currentColor" stroke-width="1.2"/><path d="M3 11C3 9.6 4 9 5.2 9C6.4 9 7.4 9.6 7.4 11" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="9.2" y1="6.7" x2="12.5" y2="6.7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="9.2" y1="9" x2="12.5" y2="9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="9.2" y1="11" x2="11.2" y2="11" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span><span>About</span></a>
-  <a href="#" id="mobile-contact-toggle"><span class="mobile-menu-icon"><svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img"><rect x="1.5" y="3.5" width="13" height="9" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M2 4.5L7.4 8.6C7.76 8.86 8.24 8.86 8.6 8.6L14 4.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Contact</span></a>  </div>
-
+  <a href="#" id="mobile-contact-toggle"><span class="mobile-menu-icon"><svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img"><rect x="1.5" y="3.5" width="13" height="9" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M2 4.5L7.4 8.6C7.76 8.86 8.24 8.86 8.6 8.6L14 4.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Contact</span></a>
+  </div>
   <a href="#" class="mobile-theme-toggle">
     <span class="mobile-menu-icon">
       <span class="icon-moon"><svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 10.5A6 6 0 0 1 5.5 2.5a6 6 0 1 0 8 8z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      <span class="icon-sun"><svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="1.6" fill="currentColor"/><line x1="8" y1="1" x2="8" y2="3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="8" y1="13" x2="8" y2="15" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="1" y1="8" x2="3" y2="8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="13" y1="8" x2="15" y2="8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="3.05" y1="3.05" x2="4.46" y2="4.46" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="11.54" y1="11.54" x2="12.95" y2="12.95" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="12.95" y1="3.05" x2="11.54" y2="4.46" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="4.46" y1="11.54" x2="3.05" y2="12.95" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span>
+      <span class="icon-sun"><svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="1.6" fill="currentColor"/><line x1="8" y1="1" x2="8" y2="3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="8" y1="13" x2="8" y2="15" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="1" y1="8" x2="3" y2="8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="13" y1="8" x2="15" y2="8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span>
     </span>
     <span><span class="theme-label-dark">Dark Mode</span><span class="theme-label-light">Light Mode</span></span>
   </a>
@@ -85,133 +647,225 @@
   </div>
 </div>
 
+<main class="page ab-page">
 
-<main class="page">
-  <section class="about-page about-redesign">
-    <div class="container">
-      <div class="about-hero">
-        <div class="profile-window-wrap reveal">
-          <div class="ai-glow" aria-hidden="true"></div>
+  <!-- ═══════════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════════ -->
+  <section class="ab-hero">
+    <div class="ab-hero-glow" aria-hidden="true"></div>
+    <div class="ab-hero-ring" aria-hidden="true"></div>
 
-          <div class="sticky-note note-1">
-            <strong>Fun fact</strong>
-            I reverse-engineer recipes from food photos using AI. Snap a picture of a dish, get 90% of a recipe, tweak the rest.
-          </div>
-          <div class="sticky-note note-2">
-            <strong>MBA in progress</strong>
-            Purdue University · 4.0 GPA · Member, National Society of Leadership &amp; Success
-          </div>
-          <div class="sticky-note note-3">
-            <strong>Currently reading</strong>
-            Thinking in Systems by Donella Meadows
-          </div>
-          <div class="sticky-note note-4">
-            <strong>Now playing</strong>
-            <a href="https://open.spotify.com/playlist/4fC8ytJHg1fU0ZzoTswuwG?si=fc786fe0576444d8" target="_blank" rel="noopener">Gamma Waves 40 Hz</a>
-          </div>
+    <p class="ab-eyebrow ab-hero-eyebrow">About</p>
 
-          <div class="profile-window">
-            <div class="window-titlebar">
-              <div class="window-dots">
-                <span class="dot dot-red"></span>
-                <span class="dot dot-yellow"></span>
-                <span class="dot dot-green"></span>
+    <h1 class="ab-hero-h1">
+      <span id="ab-typewriter"></span><span class="ab-tw-cursor" aria-hidden="true"></span>
+    </h1>
+
+    <p class="ab-hero-tagline">
+      Designing systems. Growing as a leader. Exploring what's possible with AI.
+    </p>
+
+    <div class="ab-scroll-cue" aria-hidden="true">
+      <span class="ab-scroll-label">Scroll</span>
+      <span class="ab-scroll-track"><span class="ab-scroll-bar"></span></span>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       TIMELINE
+  ═══════════════════════════════════════════════ -->
+  <section class="ab-timeline-section">
+
+    <div class="ab-char ab-float2" aria-hidden="true"
+         style="right:-2rem; top:8%; display:none;"
+         id="ab-char-star">
+      <img src="/images/char-stargazer.png" alt="" width="96" height="96">
+    </div>
+    <div class="ab-char ab-float" aria-hidden="true"
+         style="left:-4rem; top:60%; display:none;"
+         id="ab-char-garden">
+      <img src="/images/char-gardener.png" alt="" width="88" height="88">
+    </div>
+
+    <header class="ab-timeline-header reveal">
+      <p class="ab-eyebrow">The Work</p>
+      <h2 class="ab-section-h2">15 years. Millions of interactions shaped.</h2>
+      <p class="ab-section-desc">A story of impact, not a list of jobs. Walk it like an exhibit.</p>
+    </header>
+
+    <div class="ab-timeline-track">
+      <div class="ab-spine" aria-hidden="true"></div>
+      <div class="ab-spine-glow" aria-hidden="true"></div>
+
+      <ol class="ab-milestones">
+
+        <li class="ab-milestone reveal">
+          <div class="ab-milestone-dot" aria-hidden="true"></div>
+          <div class="ab-milestone-content ab-milestone-left">
+            <span class="ab-milestone-year">2010</span>
+            <h3 class="ab-milestone-title">Designed where people want to work</h3>
+            <p class="ab-milestone-impact">Shaped a physical experience that helped land a Top 50 ranking — and learned that design lives off-screen too.</p>
+            <span class="ab-milestone-metric">Top 50 · Best Places to Work</span>
+          </div>
+        </li>
+
+        <li class="ab-milestone reveal">
+          <div class="ab-milestone-dot" aria-hidden="true"></div>
+          <div class="ab-milestone-content ab-milestone-right">
+            <span class="ab-milestone-year">2012</span>
+            <h3 class="ab-milestone-title">A public face, built alone</h3>
+            <p class="ab-milestone-impact">Solely designed a flagship marketing site ahead of an IPO, delivered under tight timelines with zero requested changes.</p>
+            <span class="ab-milestone-metric">Shipped pre-IPO · 0 revisions</span>
+          </div>
+        </li>
+
+        <li class="ab-milestone reveal">
+          <div class="ab-milestone-dot" aria-hidden="true"></div>
+          <div class="ab-milestone-content ab-milestone-left">
+            <span class="ab-milestone-year">2016</span>
+            <h3 class="ab-milestone-title">Founder, then product thinker</h3>
+            <p class="ab-milestone-impact">Started a niche streaming startup for independent artists. It taught me a business-first instinct and pulled me into product design.</p>
+            <span class="ab-milestone-metric">Founder · business-first pivot</span>
+          </div>
+        </li>
+
+        <li class="ab-milestone reveal">
+          <div class="ab-milestone-dot" aria-hidden="true"></div>
+          <div class="ab-milestone-content ab-milestone-right">
+            <span class="ab-milestone-year">2023</span>
+            <h3 class="ab-milestone-title">Design that leads the question</h3>
+            <p class="ab-milestone-impact">Introduced designer-led research during a leadership transition, nudging the org toward full-stack design practices.</p>
+            <span class="ab-milestone-metric">Designer-led research adopted</span>
+          </div>
+        </li>
+
+        <li class="ab-milestone reveal">
+          <div class="ab-milestone-dot" aria-hidden="true"></div>
+          <div class="ab-milestone-content ab-milestone-left">
+            <span class="ab-milestone-year">2025</span>
+            <h3 class="ab-milestone-title">Millions of interactions shaped</h3>
+            <p class="ab-milestone-impact">Led the vision for a careers experience, earned leadership buy-in, and delivered a site relied on by millions every year.</p>
+            <span class="ab-milestone-metric">30M candidates / year</span>
+          </div>
+        </li>
+
+      </ol>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       SIGNALS
+  ═══════════════════════════════════════════════ -->
+  <section class="ab-signals-section">
+
+    <div class="ab-signals-header-wrap">
+      <div class="ab-char ab-float2" aria-hidden="true"
+           style="right:0.5rem; top:1rem; display:none;"
+           id="ab-char-cook">
+        <img src="/images/char-cook.png" alt="" width="120" height="120">
+      </div>
+
+      <header class="ab-signals-header reveal">
+        <p class="ab-eyebrow">Signals</p>
+        <h2 class="ab-section-h2">Who I am beyond the resume.</h2>
+        <p class="ab-section-desc">Satellites orbiting the work — sound, ideas, and experiments that keep the universe in motion.</p>
+      </header>
+    </div>
+
+    <!-- Flip card stack -->
+    <div class="ab-flip-outer" id="ab-flip-outer">
+      <div class="ab-flip-sticky">
+        <div class="ab-flip-stage">
+
+          <!-- Card 0: Spotify -->
+          <div class="ab-flip-card" data-card="0" data-state="active">
+            <div class="ab-glass-card">
+              <p class="ab-eyebrow ab-card-eyebrow">Soundtrack to building</p>
+              <h3 class="ab-card-h3">Currently scoring this chapter</h3>
+              <div class="ab-spotify-wrap">
+                <iframe
+                  data-testid="embed-iframe"
+                  title="Spotify playlist"
+                  style="border-radius:12px"
+                  src="https://open.spotify.com/embed/playlist/4fC8ytJHg1fU0ZzoTswuwG?utm_source=generator&si=02143e058db44132"
+                  width="100%" height="352"
+                  frameborder="0"
+                  loading="lazy"
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                ></iframe>
               </div>
-              <div class="window-filename">claudia.profile — about<span class="blink-cursor" aria-hidden="true"></span></div>
-            </div>
-            <div class="window-body">
-              <div class="profile-photo">
-                <img src="/images/claudia-ochoa.jpeg" alt="Claudia Ochoa">
-              </div>
-              <h2>Claudia Ochoa</h2>
-              <p class="profile-role">Two decades in product design, currently experimenting with AI everywhere — including dinner.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="about-dock reveal" role="navigation" aria-label="About sections">
-          <button class="dock-item" data-panel="experience" aria-expanded="false">
-            <span class="dock-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img"><rect x="1.5" y="5" width="13" height="8.5" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M5.5 5V3.5C5.5 2.95 5.95 2.5 6.5 2.5H9.5C10.05 2.5 10.5 2.95 10.5 3.5V5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><line x1="1.5" y1="9" x2="14.5" y2="9" stroke="currentColor" stroke-width="1.2"/></svg></span>
-            <span>Experience</span>
-          </button>
-          <button class="dock-item" data-panel="education" aria-expanded="false">
-            <span class="dock-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img"><path d="M8 3L14.5 6L8 9L1.5 6L8 3Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><path d="M4 7.5V11C4 11 5.5 12.5 8 12.5C10.5 12.5 12 11 12 11V7.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><line x1="14.5" y1="6" x2="14.5" y2="10.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span>
-            <span>Education</span>
-          </button>
-          <button class="dock-item" data-panel="now" aria-expanded="false">
-            <span class="dock-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.2"/><circle cx="8" cy="8" r="2" fill="currentColor"/></svg></span>
-            <span>Now</span>
-          </button>
-          <button class="dock-item" data-panel="press" aria-expanded="false">
-            <span class="dock-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img"><path d="M8 1.5L9.8 5.2L13.8 5.8L11 8.6L11.6 12.6L8 10.7L4.4 12.6L5 8.6L2.2 5.8L6.2 5.2L8 1.5Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg></span>
-            <span>Press</span>
-          </button>
-        </div>
-
-        <div class="about-panels">
-          <div class="about-panel" id="panel-experience">
-            <div class="about-panel-inner">
-              <p>I bring end-to-end ownership to my work — from shaping GenAI-powered concepts to guiding experience vision and execution, grounded in systems thinking, collaboration, and measurable outcomes.</p>
-              <button class="run-button" type="button">▶ run experience.sh</button>
-              <div class="timeline">
-                <div class="timeline-inner">
-                  <div class="timeline-node">
-                    <h4>Dell</h4>
-                    <p>Led design across enterprise commerce experiences, balancing complex business requirements with intuitive, scalable user journeys.</p>
-                  </div>
-                  <div class="timeline-node">
-                    <h4>Workday</h4>
-                    <p>Shaped HR and finance product experiences for global enterprise teams, focused on systems thinking and durable design patterns.</p>
-                  </div>
-                  <div class="timeline-node">
-                    <h4>The Home Depot</h4>
-                    <p>Drove digital commerce design across gift cards and military discount programs, elevating product quality at scale.</p>
-                  </div>
-                  <div class="timeline-node">
-                    <h4>Walmart</h4>
-                    <p>Operated across GenAI, careers, and Connect platforms — setting direction, building alignment, and shipping experience vision for one of the world's largest retailers.</p>
-                  </div>
-                  <div class="timeline-node current">
-                    <h4>Purdue MBA <span class="timeline-tag">in progress</span></h4>
-                    <p>Pursuing an MBA at Purdue University with a 4.0 GPA, graduating August 2026 — deepening my focus on leadership, accountability, and organizational impact.</p>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
 
-          <div class="about-panel" id="panel-education">
-            <div class="about-panel-inner">
-              <h4>Purdue University — MBA</h4>
-              <p>I'm currently pursuing my MBA at Purdue University, where I maintain a 4.0 GPA and will graduate in August 2026. As a member of the National Society of Leadership and Success, I continue to deepen my interest in leadership, accountability, and organizational impact.</p>
-            </div>
-          </div>
-
-          <div class="about-panel" id="panel-now">
-            <div class="about-panel-inner">
-              <h4>What I'm focused on right now</h4>
-              <p>Finishing my MBA at Purdue, exploring how GenAI is reshaping product design workflows, and writing about the human side of systems — how design, leadership, and creativity intersect at scale.</p>
-            </div>
-          </div>
-
-          <div class="about-panel" id="panel-press">
-            <div class="about-panel-inner">
-              <div class="achievement-card">
-                <div class="achievement-icon">
-                  <svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img"><path d="M8 1.5L9.8 5.2L13.8 5.8L11 8.6L11.6 12.6L8 10.7L4.4 12.6L5 8.6L2.2 5.8L6.2 5.2L8 1.5Z" fill="currentColor"/></svg>
-                </div>
+          <!-- Card 1: Reading -->
+          <div class="ab-flip-card" data-card="1" data-state="future">
+            <div class="ab-glass-card">
+              <p class="ab-eyebrow ab-card-eyebrow">Reframing my thinking</p>
+              <h3 class="ab-card-h3">On the nightstand</h3>
+              <div class="ab-reading-body">
+                <img src="/images/book-cover.png" alt="Cover of Reframing My Thinking" class="ab-book-cover">
                 <div>
-                  <span class="achievement-label">Achievement unlocked</span>
-                  <p>Featured by <strong>Communication Arts</strong> — one of the design industry's most respected publications. I recently started writing about design, creativity, and the human side of systems, and one article — shared on <em>Medium</em> — was picked up by a publication I grew up admiring.</p>
-                  <a href="https://x.com/CommArts/status/1944841901024100641?s=20" target="_blank" rel="noopener" class="feature-link">View the feature on X →</a>
+                  <p class="ab-book-title">Reframing My Thinking</p>
+                  <p class="ab-book-author">Replace · Author Name</p>
+                  <p class="ab-book-takeaway">The constraint isn't the problem — it's the prompt. Most stuck moments are just the wrong question, asked confidently.</p>
                 </div>
               </div>
             </div>
           </div>
+
+          <!-- Card 2: Recipe -->
+          <div class="ab-flip-card" data-card="2" data-state="future">
+            <div class="ab-glass-card">
+              <p class="ab-eyebrow ab-card-eyebrow">Testing the algorithm</p>
+              <h3 class="ab-card-h3">Charred citrus + miso glaze</h3>
+              <div class="ab-recipe-img-wrap">
+                <img src="/images/recipe-dish.png" alt="Charred citrus and miso glaze dish" class="ab-recipe-img">
+                <div class="ab-recipe-overlay" aria-hidden="true"></div>
+              </div>
+              <p class="ab-recipe-note">Prompted by AI. Adjusted by instinct.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Progress dots -->
+        <div class="ab-flip-dots" role="tablist" aria-label="Signal cards">
+          <div class="ab-flip-dot active" data-dot="0"></div>
+          <div class="ab-flip-dot" data-dot="1"></div>
+          <div class="ab-flip-dot" data-dot="2"></div>
         </div>
       </div>
     </div>
+
   </section>
+
+  <!-- ═══════════════════════════════════════════════
+       FUTURE
+  ═══════════════════════════════════════════════ -->
+  <section class="ab-future">
+    <div class="ab-future-line-top" aria-hidden="true"></div>
+    <div class="ab-future-glow" aria-hidden="true"></div>
+
+    <div class="ab-char ab-float" aria-hidden="true"
+         style="left:12%; top:18%; display:none;"
+         id="ab-char-star2">
+      <img src="/images/char-stargazer.png" alt="" width="140" height="140">
+    </div>
+
+    <div class="reveal">
+      <p class="ab-eyebrow">The End</p>
+    </div>
+    <div class="reveal">
+      <h2 class="ab-future-h2">Or is it just the beginning.</h2>
+    </div>
+    <div class="reveal">
+      <p class="ab-future-tagline">Designing systems. Growing as a leader. Exploring what's possible with AI.</p>
+    </div>
+
+    <div class="ab-future-line-bottom" aria-hidden="true"></div>
+  </section>
+
 </main>
 
 <footer>
@@ -221,5 +875,81 @@
 </footer>
 
 <script src="/js/main.js"></script>
+<script>
+  /* ── Typewriter ── */
+  (function () {
+    var el = document.getElementById('ab-typewriter');
+    var phrases = [
+      'I am a designer.',
+      'I am a product manager.',
+      'I am a developer.',
+      'I am everything with AI.'
+    ];
+    var idx = 0, text = '', deleting = false;
+
+    function tick() {
+      var phrase = phrases[idx];
+      if (!deleting && text.length < phrase.length) {
+        text = phrase.slice(0, text.length + 1);
+        el.textContent = text;
+        setTimeout(tick, 80);
+      } else if (!deleting) {
+        setTimeout(function () { deleting = true; tick(); }, 1800);
+      } else if (text.length > 0) {
+        text = text.slice(0, -1);
+        el.textContent = text;
+        setTimeout(tick, 45);
+      } else {
+        deleting = false;
+        idx = (idx + 1) % phrases.length;
+        setTimeout(tick, 200);
+      }
+    }
+    tick();
+  })();
+
+  /* ── Flip cards ── */
+  (function () {
+    var outer = document.getElementById('ab-flip-outer');
+    if (!outer) return;
+    var cards = outer.querySelectorAll('.ab-flip-card');
+    var dots  = outer.querySelectorAll('.ab-flip-dot');
+    var active = 0;
+
+    function setStates(idx) {
+      if (idx === active && cards[0].dataset.state) return;
+      active = idx;
+      cards.forEach(function (card, i) {
+        card.dataset.state = i < idx ? 'past' : i > idx ? 'future' : 'active';
+      });
+      dots.forEach(function (dot, i) {
+        dot.classList.toggle('active', i === idx);
+      });
+    }
+
+    setStates(0);
+
+    window.addEventListener('scroll', function () {
+      var rect = outer.getBoundingClientRect();
+      var scrollable = outer.offsetHeight - window.innerHeight;
+      if (scrollable <= 0) return;
+      var progress = Math.max(0, Math.min(1, -rect.top / scrollable));
+      var idx = Math.min(cards.length - 1, Math.floor(progress * cards.length));
+      setStates(idx);
+    }, { passive: true });
+  })();
+
+  /* ── Show decorative characters on large screens ── */
+  (function () {
+    if (window.innerWidth >= 1024) {
+      ['ab-char-star','ab-char-garden','ab-char-cook','ab-char-star2']
+        .forEach(function (id) {
+          var el = document.getElementById(id);
+          if (el) el.style.display = '';
+        });
+    }
+  })();
+</script>
+
 </body>
 </html>
