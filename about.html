@@ -503,6 +503,34 @@
       border-top: none;
     }
 
+    /* ---- Mobile ---- */
+    @media (max-width: 767px) {
+      /* Hero */
+      .ab-hero-tagline { font-size: 1rem; }
+
+      /* Timeline */
+      .ab-timeline-section { padding: 4rem 1.25rem 3rem; }
+
+      /* Signal cards: stack vertically */
+      .ab-flip-stage { height: 520px; }
+      .ab-glass-card { flex-direction: column; }
+      .ab-card-media {
+        flex: 0 0 200px;
+        margin: 10px 10px 0;
+      }
+      .ab-card-body {
+        flex: 1;
+        padding: 1.25rem 1.25rem 1rem;
+        justify-content: flex-start;
+      }
+      .ab-card-h3 { font-size: 1.35rem; }
+      .ab-card-desc { font-size: 0.85rem; }
+
+      /* Future */
+      .ab-future { padding: 5rem 1.25rem; }
+      .ab-future-line-top { height: 6rem; }
+    }
+
     /* ---- Reduced motion ---- */
     @media (prefers-reduced-motion: reduce) {
       .ab-tw-cursor, .ab-scroll-bar { animation: none !important; }
