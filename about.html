@@ -364,10 +364,10 @@
       height: 100%;
       box-sizing: border-box;
       border-radius: 20px;
-      border: 1px solid rgba(255,255,255,0.07);
-      background: rgba(10, 14, 30, 0.88);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(12, 12, 12, 0.55);
+      backdrop-filter: blur(28px) saturate(1.4);
+      -webkit-backdrop-filter: blur(28px) saturate(1.4);
       display: flex;
       flex-direction: row;
       overflow: hidden;
@@ -375,8 +375,8 @@
     }
     [data-theme="light"] .ab-glass-card,
     html:not([data-theme="dark"]) .ab-glass-card {
-      background: rgba(255,255,255,0.82);
-      border-color: rgba(0,0,0,0.07);
+      background: rgba(255, 255, 255, 0.55);
+      border-color: rgba(0,0,0,0.06);
     }
     .ab-card-media {
       flex: 0 0 55%;
