@@ -21,7 +21,7 @@
       var t = localStorage.getItem('theme') || 'light';
       var m = document.createElement('meta');
       m.name = 'theme-color';
-      m.content = t === 'dark' ? '#0D1117' : '#F5F5F7';
+      m.content = t === 'dark' ? '#000000' : '#ffffff';
       document.head.appendChild(m);
     })();
   </script>
@@ -34,10 +34,10 @@
 
     /* -- Light mode (default) -- */
     body.ab-page {
-      background: #F5F5F7;
+      background: #ffffff;
     }
     .ab-page {
-      --ab-bg:          #F5F5F7;
+      --ab-bg:          #ffffff;
       --ab-fg:          #0A0A0A;
       --ab-muted:       rgba(10, 10, 10, 0.52);
       --ab-cyan:        oklch(0.48 0.14 205);
@@ -57,10 +57,10 @@
 
     /* -- Dark mode -- */
     [data-theme="dark"] body.ab-page {
-      background: #0D1117;
+      background: #000000;
     }
     [data-theme="dark"] .ab-page {
-      --ab-bg:          #0D1117;
+      --ab-bg:          #000000;
       --ab-fg:          #F0F0F0;
       --ab-muted:       rgba(240, 240, 240, 0.55);
       --ab-cyan:        oklch(0.78 0.16 205);
@@ -112,7 +112,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 0 1.5rem;
+      padding: 0 1.5rem 60px;
       text-align: center;
     }
     .ab-hero-eyebrow {
