@@ -16,6 +16,25 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@400;500;600&family=DM+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .case-cover img { max-height: none; object-fit: initial; }
+
+    .insight-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); margin: 24px 0 8px; }
+    .insight-cell { background: var(--white); padding: 24px; }
+    .insight-cell .label { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); margin-bottom: 8px; }
+    .insight-cell .body { font-size: 0.88rem; color: var(--black); line-height: 1.6; }
+    @media (max-width: 720px) { .insight-grid { grid-template-columns: 1fr; } }
+
+    .harvey-wrap { margin: 24px 0 8px; overflow-x: auto; }
+    table.harvey { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    table.harvey th, table.harvey td { padding: 12px 16px; text-align: center; border-bottom: 1px solid var(--border); }
+    table.harvey th:first-child, table.harvey td:first-child { text-align: left; font-weight: 500; color: var(--black); }
+    table.harvey thead th { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mid); font-weight: 500; border-bottom: 2px solid var(--black); }
+    .harvey-ball { display: inline-block; width: 16px; height: 16px; border-radius: 50%; border: 1.3px solid var(--black); }
+    .harvey-full { background: var(--black); }
+    .harvey-empty { background: none; }
+    .harvey-caption { font-size: 0.8rem; color: var(--mid); font-style: italic; margin-top: 12px; }
+  </style>
   <script>
     (function(){
       var t = localStorage.getItem('theme') || 'light';
@@ -121,19 +140,41 @@
 
       <div class="case-section reveal">
         <h3>Research &amp; Insights</h3>
-        <figure class="case-image">
-          <img src="/images/HD-gift-card-heat-map.png" alt="User research insights">
-        </figure>
-        <p>User behavior showed high reliance on search and navigation links to find gift cards, many visits for balance checking, and confusion over the hero banner leading to misdirected clicks.</p>
+        <p>Before redesigning anything, I looked at how customers were actually behaving on the existing gift card page. Three patterns stood out.</p>
+        <div class="insight-grid">
+          <div class="insight-cell">
+            <div class="label">Discovery</div>
+            <div class="body">Most visitors reached the page through search or navigation links — not by browsing.</div>
+          </div>
+          <div class="insight-cell">
+            <div class="label">Return Visits</div>
+            <div class="body">A large share of repeat visits were simply to check a card balance — a fast, transactional need.</div>
+          </div>
+          <div class="insight-cell">
+            <div class="label">Hero Confusion</div>
+            <div class="body">The existing hero banner caused misdirected clicks, signaling unclear cues at the top of the page.</div>
+          </div>
+        </div>
       </div>
 
       <div class="case-section reveal">
         <h3>Competitive Analysis</h3>
-        <figure class="case-image">
-          <img src="/images/HD-gift-card-chart.png" alt="Feature comparison across retail leaders">
-          <figcaption>Feature comparison across retail leaders — Walmart, Target, and others.</figcaption>
-        </figure>
-        <p>A competitive review of leading retailer gift card experiences revealed key differentiators. Walmart stood out for its adjustable pricing, Walmart Pay integration, and embedded ratings and reviews. Target offered strong merchandising with themed designs and multiple delivery options. Together, these insights highlighted the importance of clear merchandising, variety, and seamless payment integration.</p>
+        <p>A competitive review of leading retailer gift card experiences revealed key differentiators that shaped our direction.</p>
+        <div class="harvey-wrap">
+          <table class="harvey">
+            <thead>
+              <tr><th>Feature</th><th>Walmart</th><th>Target</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Adjustable price amounts</td><td><span class="harvey-ball harvey-full"></span></td><td><span class="harvey-ball harvey-empty"></span></td></tr>
+              <tr><td>Wallet / mobile payment integration</td><td><span class="harvey-ball harvey-full"></span></td><td><span class="harvey-ball harvey-empty"></span></td></tr>
+              <tr><td>Ratings &amp; reviews on the card page</td><td><span class="harvey-ball harvey-full"></span></td><td><span class="harvey-ball harvey-empty"></span></td></tr>
+              <tr><td>Themed, occasion-based designs</td><td><span class="harvey-ball harvey-empty"></span></td><td><span class="harvey-ball harvey-full"></span></td></tr>
+              <tr><td>Multiple delivery options</td><td><span class="harvey-ball harvey-empty"></span></td><td><span class="harvey-ball harvey-full"></span></td></tr>
+            </tbody>
+          </table>
+          <p class="harvey-caption">Differentiators identified during this review — not an exhaustive feature audit. Together, they highlighted the importance of clear merchandising, variety, and seamless payment integration.</p>
+        </div>
       </div>
 
       <div class="case-section reveal">
