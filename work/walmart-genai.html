@@ -28,53 +28,53 @@
     }
 
     .cs-section { max-width: 800px; margin: 0 auto 80px; padding: 0 40px; }
-    .cs-label { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: #6B6B6B; margin-bottom: 12px; display: block; }
-    .cs-h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.2rem); font-weight: 400; line-height: 1.2; color: #0A0A0A; margin-bottom: 20px; }
-    .cs-p { font-size: 1rem; line-height: 1.8; color: #4a4a4a; margin-bottom: 16px; max-width: 68ch; }
-    .cs-divider { border: none; border-top: 1px solid #E8E8E8; margin: 80px auto; max-width: 800px; }
+    .cs-label { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mid); margin-bottom: 12px; display: block; }
+    .cs-h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.2rem); font-weight: 400; line-height: 1.2; color: var(--black); margin-bottom: 20px; }
+    .cs-p { font-size: 1rem; line-height: 1.8; color: var(--mid); margin-bottom: 16px; max-width: 68ch; }
+    .cs-divider { border: none; border-top: 1px solid var(--border); margin: 80px auto; max-width: 800px; }
     .cs-cover { margin: 48px 0 0; }
     .cs-cover img { width: 100%; display: block; }
-    .cs-nda { display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; padding: 10px 16px; background: #F7F7F7; border-left: 3px solid #0A0A0A; font-size: 0.82rem; color: #6B6B6B; }
+    .cs-nda { display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; padding: 10px 16px; background: var(--off-white); border-left: 3px solid var(--black); font-size: 0.82rem; color: var(--mid); }
 
     /* Stats */
-    .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #E8E8E8; margin: 48px 0; }
-    .stat-cell { background: #fff; padding: 32px 24px; }
-    .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; color: #0A0A0A; line-height: 1; }
-    .stat-label { font-size: 0.8rem; color: #6B6B6B; margin-top: 6px; line-height: 1.4; }
+    .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); margin: 48px 0; }
+    .stat-cell { background: var(--white); padding: 32px 24px; }
+    .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; color: var(--black); line-height: 1; }
+    .stat-label { font-size: 0.8rem; color: var(--mid); margin-top: 6px; line-height: 1.4; }
     @media(max-width:600px){ .stat-row { grid-template-columns: 1fr; } }
 
     /* Funnel */
-    .funnel-wrap { background: #F7F7F7; padding: 48px 40px; margin: 48px 0; }
-    .funnel-title { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: #6B6B6B; margin-bottom: 32px; }
+    .funnel-wrap { background: var(--off-white); padding: 48px 40px; margin: 48px 0; }
+    .funnel-title { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mid); margin-bottom: 32px; }
     .funnel-stage { margin-bottom: 20px; }
     .funnel-stage-label { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; }
-    .funnel-name { font-size: 0.85rem; font-weight: 500; color: #0A0A0A; }
-    .funnel-pct { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: #6B6B6B; }
-    .funnel-bar-track { height: 6px; background: #E8E8E8; }
+    .funnel-name { font-size: 0.85rem; font-weight: 500; color: var(--black); }
+    .funnel-pct { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--mid); }
+    .funnel-bar-track { height: 6px; background: var(--border); }
     .funnel-bar-fill { height: 6px; width: 0; transition: width 1.4s cubic-bezier(0.25,0.46,0.45,0.94); }
     .f1{background:#001E60;} .f2{background:#0053E2;} .f3{background:#1E6FD9;}
     .f4{background:#4DBDF5;} .f5{background:#A9DDF7;} .f6{background:#FFC220;}
     .funnel-drop { font-size: 0.75rem; color: #0053E2; margin-top: 4px; opacity: 0.8; }
 
     /* Before/After */
-    .ba-tabs { display: flex; border-bottom: 1px solid #E8E8E8; }
-    .ba-tab { padding: 12px 24px; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; color: #6B6B6B; transition: all 0.2s; }
-    .ba-tab.active { color: #0A0A0A; border-bottom-color: #0A0A0A; }
-    .ba-panel { display: none; padding: 32px; background: #F7F7F7; }
+    .ba-tabs { display: flex; border-bottom: 1px solid var(--border); }
+    .ba-tab { padding: 12px 24px; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; color: var(--mid); transition: all 0.2s; }
+    .ba-tab.active { color: var(--black); border-bottom-color: var(--black); }
+    .ba-panel { display: none; padding: 32px; background: var(--off-white); }
     .ba-panel.active { display: block; }
-    .flow-step { display: flex; gap: 16px; padding: 16px 0; border-bottom: 1px solid #E8E8E8; }
+    .flow-step { display: flex; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--border); }
     .flow-step:last-child { border-bottom: none; }
     .flow-dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
     .flow-dot.bad { background: #0053E2; opacity: 0.3; }
     .flow-dot.good { background: #001E60; }
-    .flow-step-name { font-size: 0.9rem; font-weight: 500; color: #0A0A0A; margin-bottom: 2px; }
-    .flow-step-note { font-size: 0.8rem; color: #6B6B6B; line-height: 1.5; }
+    .flow-step-name { font-size: 0.9rem; font-weight: 500; color: var(--black); margin-bottom: 2px; }
+    .flow-step-note { font-size: 0.8rem; color: var(--mid); line-height: 1.5; }
     .flow-tag { display: inline-block; margin-top: 4px; padding: 2px 8px; font-size: 0.7rem; border-radius: 2px; }
     .flow-tag.friction { background: #EEF3FF; color: #0053E2; }
     .flow-tag.win { background: #E8F5E9; color: #2E7D32; }
 
     /* ── ASK SAM PROTOTYPE ── */
-    .sam-section { background: var(--wm-light); padding: 72px 40px; margin: 0; }
+    .sam-section { background: var(--off-white); padding: 72px 40px; margin: 0; }
     .sam-inner { max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: 1fr 300px; gap: 72px; align-items: center; }
     @media(max-width:800px){ .sam-inner { grid-template-columns: 1fr; gap: 40px; } }
 
@@ -196,22 +196,29 @@
 
     /* Step navigator */
     .sam-steps { display: flex; flex-direction: column; gap: 0; }
-    .sam-step { padding: 18px 0; border-bottom: 1px solid #E8E8E8; cursor: pointer; display: flex; gap: 16px; align-items: flex-start; }
+    .sam-step { padding: 18px 0; border-bottom: 1px solid var(--border); cursor: pointer; display: flex; gap: 16px; align-items: flex-start; }
     .sam-step:last-child { border-bottom: none; }
-    .sam-step-bar { width: 3px; height: 44px; background: #E8E8E8; border-radius: 2px; flex-shrink: 0; margin-top: 2px; transition: background 0.3s; }
+    .sam-step-bar { width: 3px; height: 44px; background: var(--border); border-radius: 2px; flex-shrink: 0; margin-top: 2px; transition: background 0.3s; }
     .sam-step.active .sam-step-bar { background: var(--wm-blue); }
-    .sam-step-num { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: #aaa; margin-bottom: 4px; }
-    .sam-step-title { font-size: 0.88rem; font-weight: 600; color: #0A0A0A; }
+    .sam-step-num { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); margin-bottom: 4px; }
+    .sam-step-title { font-size: 0.88rem; font-weight: 600; color: var(--black); }
     .sam-step.active .sam-step-title { color: var(--wm-blue); }
-    .sam-step-desc { font-size: 0.76rem; color: #6B6B6B; line-height: 1.45; margin-top: 2px; }
+    .sam-step-desc { font-size: 0.76rem; color: var(--mid); line-height: 1.45; margin-top: 2px; }
 
     /* Principles */
-    .principles-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: #E8E8E8; margin: 48px 0; }
-    .principle-cell { background: #fff; padding: 28px 24px; }
-    .principle-num { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; color: #6B6B6B; margin-bottom: 8px; }
-    .principle-title { font-size: 0.95rem; font-weight: 600; color: #0A0A0A; margin-bottom: 6px; }
-    .principle-body { font-size: 0.82rem; color: #6B6B6B; line-height: 1.6; }
+    .principles-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border); margin: 48px 0; }
+    .principle-cell { background: var(--white); padding: 28px 24px; }
+    .principle-num { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; color: var(--mid); margin-bottom: 8px; }
+    .principle-title { font-size: 0.95rem; font-weight: 600; color: var(--black); margin-bottom: 6px; }
+    .principle-body { font-size: 0.82rem; color: var(--mid); line-height: 1.6; }
     @media(max-width:600px){ .principles-grid { grid-template-columns: 1fr; } .sam-section { padding: 48px 24px; } .cs-section { padding: 0 24px; } }
+
+    /* Dark-mode adjustments for brand-colored elements with no neutral equivalent */
+    [data-theme="dark"] .flow-tag.friction { background: rgba(0,113,206,0.22); color: #8ec3f5; }
+    [data-theme="dark"] .flow-tag.win { background: rgba(46,125,50,0.26); color: #93dd93; }
+    [data-theme="dark"] .flow-dot.bad { background: #A9DDF7; opacity: 0.35; }
+    [data-theme="dark"] .flow-dot.good { background: #4DBDF5; }
+    [data-theme="dark"] .funnel-drop { color: #4DBDF5; }
   </style>
   <script>
     (function(){
@@ -338,7 +345,7 @@
   <div style="max-width:800px;margin:0 auto;padding:0 40px;" class="reveal">
     <div class="funnel-wrap">
       <div class="funnel-title">Candidate drop-off by stage</div>
-      <p style="font-size:0.72rem;color:#6B6B6B;font-style:italic;margin:-22px 0 26px;">Estimated from the candidate journey I mapped at the time — directionally accurate, not exact measured analytics.</p>
+      <p style="font-size:0.72rem;color:var(--mid);font-style:italic;margin:-22px 0 26px;">Estimated from the candidate journey I mapped at the time — directionally accurate, not exact measured analytics.</p>
       <div class="funnel-stage">
         <div class="funnel-stage-label"><span class="funnel-name">Job discovery</span><span class="funnel-pct">100%</span></div>
         <div class="funnel-bar-track"><div class="funnel-bar-fill f1" data-width="100"></div></div>
@@ -403,20 +410,20 @@
   <section class="sam-section">
     <div style="max-width:960px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;align-items:start;">
       <div style="text-align:center;">
-        <div style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:#6B6B6B;margin-bottom:12px;">01 · Recognition</div>
+        <div style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);margin-bottom:12px;">01 · Recognition</div>
         <img src="/images/sam-genai-intro.png" alt="Ask Sam welcome screen" style="width:100%;border-radius:20px;box-shadow:0 24px 48px rgba(0,0,0,0.18);">
       </div>
       <div style="text-align:center;">
-        <div style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:#6B6B6B;margin-bottom:12px;">02 · Availability</div>
+        <div style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);margin-bottom:12px;">02 · Availability</div>
         <img src="/images/sam-genai-avail.png" alt="Ask Sam availability screen" style="width:100%;border-radius:20px;box-shadow:0 24px 48px rgba(0,0,0,0.18);">
       </div>
       <div style="text-align:center;">
-        <div style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:#6B6B6B;margin-bottom:12px;">03 · Selection</div>
+        <div style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);margin-bottom:12px;">03 · Selection</div>
         <img src="/images/sam-genai-avail-active.png" alt="Ask Sam shift selected" style="width:100%;border-radius:20px;box-shadow:0 24px 48px rgba(0,0,0,0.18);">
       </div>
     </div>
     <div style="max-width:960px;margin:40px auto 0;">
-      <p style="font-size:0.85rem;color:#6B6B6B;line-height:1.7;max-width:none;">Sam — "Sparky And Me" — was named to align with Walmart's Me@ product family. A distinct visual language was built from scratch: custom illustrated icons, Walmart's brand color system, and a conversational tone designed to make a first-time applicant feel capable and seen. Not a reskinned off-the-shelf tool.</p>
+      <p style="font-size:0.85rem;color:var(--mid);line-height:1.7;max-width:none;">Sam — "Sparky And Me" — was named to align with Walmart's Me@ product family. A distinct visual language was built from scratch: custom illustrated icons, Walmart's brand color system, and a conversational tone designed to make a first-time applicant feel capable and seen. Not a reskinned off-the-shelf tool.</p>
     </div>
   </section>
 
