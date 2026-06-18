@@ -118,28 +118,47 @@
         <p>For me, this became an important validation point. While the project began with my own experience, the data suggested a broader opportunity. As more people enter formation from different backgrounds, experiences, and levels of familiarity with the faith, the need for accessible guidance and ongoing support grows as well.</p>
         <p>The question shifted from <em>"Would this have helped me?"</em> to <em>"How might this support the growing number of people beginning their own journey?"</em></p>
         <figure class="case-image reveal">
-          <div style="background: var(--off-white); border-radius: 4px; padding: 40px 48px;">
-            <div style="margin-bottom: 40px;">
-              <div style="font-family: var(--font-display); font-size: clamp(3.2rem, 8vw, 5.5rem); font-weight: 300; color: var(--black); line-height: 1;">38%</div>
-              <div style="font-family: var(--font-body); font-size: 0.82rem; color: var(--mid); margin-top: 10px; max-width: 44ch;">average increase in adult OCIA entrants across U.S. dioceses, 2025–2026</div>
-            </div>
-            <div style="display: flex; flex-direction: column; gap: 18px;">
-              <div style="display: flex; align-items: center; gap: 20px;">
-                <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--mid); width: 36px; flex-shrink: 0;">2025</div>
-                <div style="flex: 1; height: 6px; background: var(--border); border-radius: 3px; overflow: hidden;">
-                  <div style="width: 72.5%; height: 100%; background: var(--mid); border-radius: 3px;"></div>
-                </div>
-              </div>
-              <div style="display: flex; align-items: center; gap: 20px;">
-                <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--black); width: 36px; flex-shrink: 0; font-weight: 500;">2026</div>
-                <div style="flex: 1; height: 6px; background: var(--border); border-radius: 3px; overflow: hidden;">
-                  <div style="width: 100%; height: 100%; background: var(--black); border-radius: 3px;"></div>
-                </div>
-              </div>
-            </div>
+          <div style="background: var(--off-white); border-radius: 4px; padding: 48px; display: flex; flex-direction: column; align-items: center; text-align: center;">
+            <div style="font-family: var(--font-body); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mid); margin-bottom: 24px;">Adult OCIA entrants · U.S. dioceses · 2025–2026</div>
+            <svg id="ocia-ring" width="220" height="220" viewBox="0 0 220 220" aria-label="Ring chart showing 38% average increase in adult OCIA entrants across U.S. dioceses, 2025 to 2026" role="img">
+              <title>38% increase in OCIA entrants</title>
+              <circle cx="110" cy="110" r="90" fill="none" stroke="currentColor" stroke-opacity="0.15" stroke-width="1.5" stroke-dasharray="4 6" stroke-linecap="round"/>
+              <circle id="ocia-arc" cx="110" cy="110" r="90" fill="none" stroke="#572BAB" stroke-width="10" stroke-linecap="round" stroke-dasharray="0 566" transform="rotate(-90 110 110)"/>
+              <text id="ocia-num" x="110" y="104" text-anchor="middle" font-family="var(--font-display)" font-size="48" font-weight="300" fill="currentColor">0%</text>
+              <text x="110" y="126" text-anchor="middle" font-family="var(--font-body)" font-size="11" fill="currentColor" opacity="0.5">average increase</text>
+              <text x="110" y="141" text-anchor="middle" font-family="var(--font-body)" font-size="11" fill="currentColor" opacity="0.5">year over year</text>
+            </svg>
           </div>
           <figcaption>Source: Hallow (2026), analysis of diocesan OCIA and adult initiation data.</figcaption>
         </figure>
+        <script>
+          (function() {
+            var circ = 2 * Math.PI * 90;
+            var arc = document.getElementById('ocia-arc');
+            var num = document.getElementById('ocia-num');
+            var animated = false;
+            function animate() {
+              if (animated) return;
+              animated = true;
+              var target = (38 / 100) * circ;
+              var start = null;
+              var dur = 1600;
+              function step(ts) {
+                if (!start) start = ts;
+                var p = Math.min((ts - start) / dur, 1);
+                var e = 1 - Math.pow(1 - p, 3);
+                arc.setAttribute('stroke-dasharray', (target * e).toFixed(2) + ' ' + circ);
+                num.textContent = Math.round(38 * e) + '%';
+                if (p < 1) requestAnimationFrame(step);
+              }
+              requestAnimationFrame(step);
+            }
+            var observer = new IntersectionObserver(function(entries) {
+              if (entries[0].isIntersecting) animate();
+            }, { threshold: 0.3 });
+            observer.observe(document.getElementById('ocia-ring'));
+          })();
+        </script>
         <p>Growth alone, however, was not the only insight.</p>
         <p>Before OCIA classes began in September, our parish offered a Bible study for participants throughout the summer. It was during those sessions that I was introduced to <em>The Chosen</em>. Until then, I had never heard of the series, nor had I considered television, podcasts, books, or other forms of media as ways to deepen my understanding of the faith.</p>
         <p>Watching <em>The Chosen</em> during my formation journey made the experience richer and more meaningful. It helped bring the stories of Scripture to life in a way that complemented what I was learning elsewhere.</p>
