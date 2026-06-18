@@ -52,28 +52,49 @@
       color: var(--black);
     }
 
-    .harvey-wrap { overflow-x: auto; margin: 32px 0 16px; }
-    table.harvey { width: 100%; border-collapse: collapse; font-size: 0.84rem; min-width: 600px; }
+    .harvey-wrap { overflow-x: auto; margin: 36px 0 18px; }
+    table.harvey { width: 100%; border-collapse: collapse; font-size: 0.86rem; min-width: 620px; }
     table.harvey th, table.harvey td {
-      padding: 12px 14px;
+      padding: 18px 16px;
       border-bottom: 1px solid var(--border);
-      text-align: left;
-      white-space: nowrap;
+      vertical-align: middle;
     }
-    table.harvey td.crit { color: var(--black); font-weight: 500; white-space: normal; max-width: 220px; }
+    table.harvey thead th {
+      border-bottom: 1.5px solid var(--black);
+      padding-bottom: 16px;
+    }
+    table.harvey td.crit {
+      color: var(--black);
+      font-weight: 500;
+      white-space: normal;
+      line-height: 1.5;
+      text-align: left;
+      width: 30%;
+    }
+    table.harvey th:not(:first-child),
+    table.harvey td:not(.crit) {
+      text-align: center;
+      white-space: normal;
+      line-height: 1.4;
+    }
     table.harvey th {
       font-family: var(--font-mono);
-      font-size: 0.64rem;
-      letter-spacing: 0.05em;
+      font-size: 0.66rem;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
       color: var(--mid);
       font-weight: 500;
-      white-space: normal;
+      text-align: left;
+    }
+    table.harvey tbody tr:hover { background: var(--off-white); }
+    table.harvey th:last-child,
+    table.harvey td:last-child {
+      background: var(--off-white);
     }
     .harvey-ball {
       display: inline-block;
-      width: 13px;
-      height: 13px;
+      width: 16px;
+      height: 16px;
       border-radius: 50%;
       border: 1.4px solid var(--black);
       vertical-align: middle;
@@ -83,12 +104,13 @@
     .harvey-empty { background: transparent; }
     .harvey-legend {
       display: flex;
-      gap: 20px;
-      font-size: 0.78rem;
+      gap: 24px;
+      font-size: 0.8rem;
       color: var(--mid);
       flex-wrap: wrap;
+      margin-top: 2px;
     }
-    .harvey-legend span { display: inline-flex; align-items: center; gap: 6px; }
+    .harvey-legend span { display: inline-flex; align-items: center; gap: 8px; }
 
     .process-note {
       font-size: 0.82rem;
