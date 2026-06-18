@@ -16,6 +16,35 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@400;500;600&family=DM+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
+  <style>
+    /* This page's cover image is a tall collage that crops badly under the
+       shared .case-cover mask — let it run full height instead, like the
+       GenAI page's .cs-cover treatment. Scoped to this page only. */
+    .case-cover img { max-height: none; object-fit: initial; }
+
+    .fragment-wrap { margin: 32px 0 8px; border: 1px solid var(--border); padding: 24px; }
+    .fragment-wrap svg { width: 100%; display: block; }
+    .fragment-caption { font-size: 0.82rem; color: var(--mid); margin-top: 14px; }
+
+    .needs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); margin: 28px 0; }
+    .needs-cell { background: var(--white); padding: 24px 22px; }
+    .needs-label { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); margin-bottom: 10px; }
+    .needs-title { font-size: 0.98rem; font-weight: 600; color: var(--black); margin-bottom: 8px; }
+    .needs-body { font-size: 0.85rem; color: var(--mid); line-height: 1.6; }
+    @media (max-width: 720px) { .needs-grid { grid-template-columns: 1fr; } }
+
+    .process-note { font-size: 0.82rem; color: var(--mid); font-style: italic; margin-bottom: 20px; }
+    .process-filmstrip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 0 0 12px; }
+    .process-frame { border: 1px solid var(--border); }
+    .process-frame svg { width: 100%; display: block; }
+    .process-caption { padding: 14px 16px; }
+    .process-caption .stage { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); }
+    .process-caption p { font-size: 0.82rem; color: var(--mid); margin-top: 4px; max-width: none; }
+    @media (max-width: 720px) { .process-filmstrip { grid-template-columns: 1fr; } }
+
+    .dashboard-mockup-wrap { border: 1px solid var(--border); margin: 32px 0 12px; }
+    .dashboard-mockup-wrap svg { width: 100%; display: block; }
+  </style>
   <script>
     (function(){
       var t = localStorage.getItem('theme') || 'light';
@@ -113,6 +142,27 @@
         <h3>Problem Statement</h3>
         <p>Corporate hiring managers were required to navigate multiple disconnected systems and communication channels to manage job postings, interviews, candidate progress, and onboarding steps. There was no single, centralized view of hiring status, making it difficult to identify bottlenecks, take timely action, or maintain accountability across teams.</p>
         <p>This fragmentation resulted in duplicated effort, missed follow-ups, and longer time-to-fill for critical roles — particularly as hiring activity increased ahead of the new Home Office opening.</p>
+
+        <div class="fragment-wrap">
+          <svg viewBox="0 0 640 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Four disconnected systems with no single view of hiring status">
+            <rect x="10" y="16" width="140" height="46" rx="4" style="fill:none;stroke:var(--black);stroke-width:1.2"/>
+            <text x="80" y="44" text-anchor="middle" font-family="DM Mono, monospace" font-size="11" style="fill:var(--black)">ATS</text>
+            <rect x="170" y="16" width="140" height="46" rx="4" style="fill:none;stroke:var(--black);stroke-width:1.2"/>
+            <text x="240" y="44" text-anchor="middle" font-family="DM Mono, monospace" font-size="11" style="fill:var(--black)">Email threads</text>
+            <rect x="330" y="16" width="140" height="46" rx="4" style="fill:none;stroke:var(--black);stroke-width:1.2"/>
+            <text x="400" y="44" text-anchor="middle" font-family="DM Mono, monospace" font-size="11" style="fill:var(--black)">Spreadsheets</text>
+            <rect x="490" y="16" width="140" height="46" rx="4" style="fill:none;stroke:var(--black);stroke-width:1.2"/>
+            <text x="560" y="44" text-anchor="middle" font-family="DM Mono, monospace" font-size="11" style="fill:var(--black)">Calendar invites</text>
+            <path d="M80 62 L320 128" style="stroke:var(--mid);stroke-width:1;stroke-dasharray:3 4"/>
+            <path d="M240 62 L310 128" style="stroke:var(--mid);stroke-width:1;stroke-dasharray:3 4"/>
+            <path d="M400 62 L330 128" style="stroke:var(--mid);stroke-width:1;stroke-dasharray:3 4"/>
+            <path d="M560 62 L320 128" style="stroke:var(--mid);stroke-width:1;stroke-dasharray:3 4"/>
+            <rect x="220" y="128" width="200" height="50" rx="4" style="fill:none;stroke:var(--black);stroke-width:1.5"/>
+            <text x="320" y="148" text-anchor="middle" font-family="DM Mono, monospace" font-size="10" style="fill:var(--black)">NO SINGLE VIEW</text>
+            <text x="320" y="164" text-anchor="middle" font-family="DM Mono, monospace" font-size="10" style="fill:var(--mid)">of hiring status</text>
+          </svg>
+          <p class="fragment-caption">Recreated for this case study — illustrates the system fragmentation described above, not specific Walmart tooling.</p>
+        </div>
       </div>
 
       <div class="case-section reveal">
@@ -123,6 +173,24 @@
           <li>Identified gaps between recruiting, HR partners, and hiring managers</li>
           <li>Synthesized findings into core user needs: visibility, accountability, and clear next steps</li>
         </ul>
+
+        <div class="needs-grid">
+          <div class="needs-cell">
+            <p class="needs-label">Visibility</p>
+            <p class="needs-title">See where things stand</p>
+            <p class="needs-body">A single place to check the status of every open role and candidate, instead of piecing it together across systems.</p>
+          </div>
+          <div class="needs-cell">
+            <p class="needs-label">Accountability</p>
+            <p class="needs-title">Know who owns what</p>
+            <p class="needs-body">Clear ownership when something stalled, instead of a gap that's easy for any one team to assume someone else is covering.</p>
+          </div>
+          <div class="needs-cell">
+            <p class="needs-label">Clear next steps</p>
+            <p class="needs-title">Know what to do next</p>
+            <p class="needs-body">Not just a status, but the next action — schedule, follow up, give feedback — surfaced without having to go looking for it.</p>
+          </div>
+        </div>
       </div>
 
       <div class="case-section reveal">
@@ -134,6 +202,75 @@
           <li>Ran usability testing with managers to validate clarity, task completion, and cognitive load</li>
           <li>Iterated based on feedback from stakeholders across People Product &amp; Design to align with evolving roadmap priorities</li>
         </ul>
+
+        <p class="process-note">Recreated for this case study — original working files are confidential and were not retained.</p>
+        <div class="process-filmstrip">
+          <div class="process-frame">
+            <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sketch mapping how a hiring request moves between teams">
+              <rect width="320" height="200" style="fill:var(--off-white)"/>
+              <rect x="16" y="80" width="56" height="34" rx="4" style="fill:none;stroke:var(--black);stroke-width:1.3"/>
+              <path d="M76 97 Q92 95 108 97" style="stroke:var(--black);stroke-width:1.3;fill:none" marker-end="url(#arrow1)"/>
+              <rect x="112" y="80" width="56" height="34" rx="4" style="fill:none;stroke:var(--black);stroke-width:1.3"/>
+              <path d="M172 97 Q188 95 204 97" style="stroke:var(--black);stroke-width:1.3;fill:none" marker-end="url(#arrow1)"/>
+              <rect x="208" y="80" width="56" height="34" rx="4" style="fill:none;stroke:var(--black);stroke-width:1.3"/>
+              <path d="M268 97 Q278 95 286 97" style="stroke:var(--black);stroke-width:1.3;fill:none" marker-end="url(#arrow1)"/>
+              <circle cx="300" cy="97" r="10" style="fill:none;stroke:var(--black);stroke-width:1.3"/>
+              <path d="M28 95 Q44 92 60 96" style="stroke:var(--mid);stroke-width:2.2;fill:none" stroke-linecap="round"/>
+              <path d="M124 95 Q140 92 156 96" style="stroke:var(--mid);stroke-width:2.2;fill:none" stroke-linecap="round"/>
+              <path d="M220 95 Q236 92 252 96" style="stroke:var(--mid);stroke-width:2.2;fill:none" stroke-linecap="round"/>
+              <defs><marker id="arrow1" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 Z" style="fill:var(--black)"/></marker></defs>
+            </svg>
+            <div class="process-caption">
+              <p class="stage">01 · Flow mapping</p>
+              <p>Mapping how a request actually moved between recruiting, HR, and the hiring manager before any screen existed.</p>
+            </div>
+          </div>
+          <div class="process-frame">
+            <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Structured wireframe with pipeline, alerts, and action zones labeled">
+              <rect width="320" height="200" style="fill:var(--off-white)"/>
+              <rect x="16" y="16" width="288" height="20" style="fill:none;stroke:var(--black);stroke-width:1.1"/>
+              <rect x="16" y="46" width="170" height="138" style="fill:none;stroke:var(--black);stroke-width:1.2"/>
+              <text x="101" y="62" text-anchor="middle" font-family="DM Mono, monospace" font-size="8" style="fill:var(--mid)">PIPELINE</text>
+              <rect x="28" y="70" width="146" height="18" style="fill:none;stroke:var(--mid);stroke-width:0.8"/>
+              <rect x="28" y="94" width="146" height="18" style="fill:none;stroke:var(--mid);stroke-width:0.8"/>
+              <rect x="28" y="118" width="146" height="18" style="fill:none;stroke:var(--mid);stroke-width:0.8"/>
+              <rect x="196" y="46" width="108" height="64" style="fill:none;stroke:var(--black);stroke-width:1.2"/>
+              <text x="250" y="62" text-anchor="middle" font-family="DM Mono, monospace" font-size="8" style="fill:var(--mid)">ALERTS</text>
+              <rect x="206" y="70" width="88" height="14" style="fill:none;stroke:var(--mid);stroke-width:0.8"/>
+              <rect x="206" y="88" width="88" height="14" style="fill:none;stroke:var(--mid);stroke-width:0.8"/>
+              <rect x="196" y="120" width="108" height="30" rx="4" style="fill:none;stroke:var(--black);stroke-width:1.2"/>
+              <text x="250" y="139" text-anchor="middle" font-family="DM Mono, monospace" font-size="8" style="fill:var(--mid)">ACTION</text>
+            </svg>
+            <div class="process-caption">
+              <p class="stage">02 · Wireframe</p>
+              <p>Locking the core layout: pipeline at the center, alerts and quick actions surfaced around it, not buried in a menu.</p>
+            </div>
+          </div>
+          <div class="process-frame">
+            <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Higher fidelity pass with filled blocks and brand-ready treatment">
+              <rect width="320" height="200" style="fill:var(--off-white)"/>
+              <rect x="16" y="16" width="288" height="20" style="fill:var(--black)"/>
+              <rect x="16" y="46" width="170" height="138" style="fill:none;stroke:var(--black);stroke-width:1.2"/>
+              <rect x="28" y="58" width="80" height="8" style="fill:var(--black)"/>
+              <rect x="28" y="74" width="146" height="22" rx="3" style="fill:none;stroke:var(--black);stroke-width:1"/>
+              <circle cx="38" cy="85" r="4" style="fill:var(--black)"/>
+              <rect x="28" y="100" width="146" height="22" rx="3" style="fill:none;stroke:var(--black);stroke-width:1"/>
+              <circle cx="38" cy="111" r="4" style="fill:none;stroke:var(--black);stroke-width:1.2"/>
+              <rect x="28" y="126" width="146" height="22" rx="3" style="fill:none;stroke:var(--black);stroke-width:1"/>
+              <circle cx="38" cy="137" r="4" style="fill:var(--black)"/>
+              <rect x="196" y="46" width="108" height="64" style="fill:none;stroke:var(--black);stroke-width:1.2"/>
+              <rect x="206" y="58" width="60" height="7" style="fill:var(--black)"/>
+              <rect x="206" y="72" width="88" height="13" style="fill:none;stroke:var(--mid);stroke-width:0.8"/>
+              <rect x="206" y="90" width="88" height="13" style="fill:none;stroke:var(--mid);stroke-width:0.8"/>
+              <rect x="196" y="120" width="108" height="30" rx="6" style="fill:var(--black)"/>
+              <rect x="222" y="131" width="56" height="8" style="fill:var(--off-white)"/>
+            </svg>
+            <div class="process-caption">
+              <p class="stage">03 · High-fidelity direction</p>
+              <p>Refined for Walmart's newly launched brand system — with no existing tokens or components to start from.</p>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="case-section reveal">
@@ -145,6 +282,57 @@
           <li>Shortcuts to related tasks, including onboarding and internal communications</li>
           <li>A consistent experience connected to Walmart's secure internal HR and productivity ecosystem</li>
         </ul>
+
+        <p class="process-note">Recreated for this case study — generalized to honor confidentiality, not the literal delivered screen.</p>
+        <div class="dashboard-mockup-wrap">
+          <svg viewBox="0 0 700 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="My Hiring Dashboard mockup with a pipeline list, alerts panel, and quick actions">
+            <rect width="700" height="420" style="fill:var(--white)"/>
+            <rect x="0" y="0" width="700" height="44" style="fill:var(--off-white)"/>
+            <text x="28" y="27" font-family="DM Mono, monospace" font-size="11" style="fill:var(--black)">MY HIRING DASHBOARD</text>
+            <circle cx="664" cy="22" r="12" style="fill:none;stroke:var(--black);stroke-width:1.2"/>
+
+            <text x="28" y="78" font-family="DM Mono, monospace" font-size="10" style="fill:var(--mid)">PIPELINE</text>
+
+            <rect x="28" y="92" width="412" height="62" rx="6" style="fill:none;stroke:var(--border);stroke-width:1.2"/>
+            <circle cx="50" cy="123" r="6" style="fill:var(--black)"/>
+            <text x="68" y="118" font-family="Inter, sans-serif" font-size="13" style="fill:var(--black)">Store Manager — DC 12</text>
+            <text x="68" y="136" font-family="Inter, sans-serif" font-size="11" style="fill:var(--mid)">14 candidates in progress</text>
+            <path d="M420 123 L430 123 M425 118 L430 123 L425 128" style="stroke:var(--mid);stroke-width:1.3;fill:none"/>
+
+            <rect x="28" y="164" width="412" height="62" rx="6" style="fill:none;stroke:var(--border);stroke-width:1.2"/>
+            <circle cx="50" cy="195" r="6" style="fill:none;stroke:var(--black);stroke-width:1.3"/>
+            <text x="68" y="190" font-family="Inter, sans-serif" font-size="13" style="fill:var(--black)">Replenishment Lead</text>
+            <text x="68" y="208" font-family="Inter, sans-serif" font-size="11" style="fill:var(--mid)">6 candidates in progress</text>
+            <path d="M420 195 L430 195 M425 190 L430 195 L425 200" style="stroke:var(--mid);stroke-width:1.3;fill:none"/>
+
+            <rect x="28" y="236" width="412" height="62" rx="6" style="fill:none;stroke:var(--border);stroke-width:1.2"/>
+            <circle cx="50" cy="267" r="6" style="fill:var(--black)"/>
+            <text x="68" y="262" font-family="Inter, sans-serif" font-size="13" style="fill:var(--black)">Freight Associate</text>
+            <text x="68" y="280" font-family="Inter, sans-serif" font-size="11" style="fill:var(--mid)">22 candidates in progress</text>
+            <path d="M420 267 L430 267 M425 262 L430 267 L425 272" style="stroke:var(--mid);stroke-width:1.3;fill:none"/>
+
+            <rect x="28" y="308" width="412" height="62" rx="6" style="fill:none;stroke:var(--border);stroke-width:1.2"/>
+            <circle cx="50" cy="339" r="6" style="fill:none;stroke:var(--black);stroke-width:1.3"/>
+            <text x="68" y="334" font-family="Inter, sans-serif" font-size="13" style="fill:var(--black)">Maintenance Tech</text>
+            <text x="68" y="352" font-family="Inter, sans-serif" font-size="11" style="fill:var(--mid)">3 candidates in progress</text>
+            <path d="M420 339 L430 339 M425 334 L430 339 L425 344" style="stroke:var(--mid);stroke-width:1.3;fill:none"/>
+
+            <text x="468" y="78" font-family="DM Mono, monospace" font-size="10" style="fill:var(--mid)">ALERTS</text>
+            <rect x="468" y="92" width="204" height="58" rx="6" style="fill:var(--off-white)"/>
+            <text x="482" y="114" font-family="Inter, sans-serif" font-size="12" style="fill:var(--black)" font-weight="600">Interview today, 2:00pm</text>
+            <text x="482" y="130" font-family="Inter, sans-serif" font-size="11" style="fill:var(--mid)">Store Manager candidate</text>
+
+            <rect x="468" y="160" width="204" height="58" rx="6" style="fill:var(--off-white)"/>
+            <text x="482" y="182" font-family="Inter, sans-serif" font-size="12" style="fill:var(--black)" font-weight="600">Feedback overdue</text>
+            <text x="482" y="198" font-family="Inter, sans-serif" font-size="11" style="fill:var(--mid)">Freight Associate, 2 days</text>
+
+            <text x="468" y="248" font-family="DM Mono, monospace" font-size="10" style="fill:var(--mid)">QUICK ACTIONS</text>
+            <rect x="468" y="262" width="204" height="34" rx="17" style="fill:var(--black)"/>
+            <text x="570" y="284" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" style="fill:var(--white)" font-weight="600">Schedule interview</text>
+            <rect x="468" y="304" width="204" height="34" rx="17" style="fill:none;stroke:var(--black);stroke-width:1.3"/>
+            <text x="570" y="326" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" style="fill:var(--black)" font-weight="600">Send candidate update</text>
+          </svg>
+        </div>
       </div>
 
       <div class="case-section reveal">
