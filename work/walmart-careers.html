@@ -16,6 +16,141 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@400;500;600&family=DM+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .context-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 40px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+    .context-cell .label {
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 8px;
+    }
+    .context-cell .value {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      color: var(--black);
+      line-height: 1.35;
+    }
+    @media (max-width: 720px) {
+      .context-strip { grid-template-columns: 1fr; gap: 22px; }
+    }
+
+    .research-question {
+      background: var(--off-white);
+      border-left: 3px solid var(--black);
+      padding: 18px 22px;
+      margin: 28px 0;
+      font-size: 0.95rem;
+      color: var(--black);
+    }
+
+    .harvey-wrap { overflow-x: auto; margin: 32px 0 16px; }
+    table.harvey { width: 100%; border-collapse: collapse; font-size: 0.84rem; min-width: 600px; }
+    table.harvey th, table.harvey td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      white-space: nowrap;
+    }
+    table.harvey td.crit { color: var(--black); font-weight: 500; white-space: normal; max-width: 220px; }
+    table.harvey th {
+      font-family: var(--font-mono);
+      font-size: 0.64rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--mid);
+      font-weight: 500;
+      white-space: normal;
+    }
+    .harvey-ball {
+      display: inline-block;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      border: 1.4px solid var(--black);
+      vertical-align: middle;
+    }
+    .harvey-full { background: var(--black); }
+    .harvey-half { background: linear-gradient(90deg, var(--black) 50%, transparent 50%); }
+    .harvey-empty { background: transparent; }
+    .harvey-legend {
+      display: flex;
+      gap: 20px;
+      font-size: 0.78rem;
+      color: var(--mid);
+      flex-wrap: wrap;
+    }
+    .harvey-legend span { display: inline-flex; align-items: center; gap: 6px; }
+
+    .process-note {
+      font-size: 0.82rem;
+      color: var(--mid);
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+    .process-filmstrip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin: 0 0 40px;
+    }
+    .process-frame { border: 1px solid var(--border); }
+    .process-frame svg { width: 100%; display: block; }
+    .process-caption { padding: 14px 16px; }
+    .process-caption .stage {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid);
+    }
+    .process-caption p { font-size: 0.82rem; color: var(--mid); margin-top: 4px; max-width: none; }
+    @media (max-width: 720px) {
+      .process-filmstrip { grid-template-columns: 1fr; }
+    }
+
+    .annotation-list { margin: 24px 0 0; display: flex; flex-direction: column; gap: 14px; padding: 0; }
+    .annotation-list li { display: flex; gap: 14px; font-size: 0.88rem; color: var(--mid); list-style: none; line-height: 1.6; }
+    .annotation-list .pin-num {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+
+    .scope-line { margin: 44px 0 8px; }
+    .scope-track { height: 2px; background: var(--border); position: relative; }
+    .scope-fill { position: absolute; left: 0; top: 0; height: 2px; background: var(--black); }
+    .scope-marker {
+      position: absolute;
+      top: -4px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--black);
+      transform: translateX(-50%);
+    }
+    .scope-stops { display: flex; justify-content: space-between; gap: 16px; margin-top: 16px; }
+    .scope-stop { font-size: 0.8rem; color: var(--mid); max-width: 32%; }
+    .scope-stop strong { display: block; color: var(--black); font-size: 0.88rem; margin-bottom: 4px; font-weight: 600; }
+    .scope-caption { font-size: 0.78rem; color: var(--mid); margin-top: 14px; }
+  </style>
   <script>
     (function(){
       var t = localStorage.getItem('theme') || 'light';
@@ -96,6 +231,21 @@
       <div class="case-cover reveal">
         <img src="/images/Walmart_Spark.png.webp" alt="Walmart Careers Redesign">
       </div>
+
+      <div class="context-strip reveal">
+        <div class="context-cell">
+          <p class="label">The ask</p>
+          <p class="value">"Make it feel more modern" — no further brief</p>
+        </div>
+        <div class="context-cell">
+          <p class="label">What I started with</p>
+          <p class="value">No existing data, roadmap, or creative brief</p>
+        </div>
+        <div class="context-cell">
+          <p class="label">How it ended</p>
+          <p class="value">Promoted to creative director, mid-project</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -109,10 +259,144 @@
       </div>
 
       <div class="case-section reveal">
+        <h3>Research: one brand voice, or two?</h3>
+        <p>Walmart's hiring needs span two consumer-facing retail brands — Walmart and Sam's Club — both drawing from the same associate benefits and People systems, but carrying distinct names in the market. Before locking the new direction, I needed an answer to a question the brief never raised:</p>
+        <div class="research-question">Should the new careers experience speak with one voice for both brands, or treat them as separate destinations?</div>
+        <p>Rather than guess, I looked at how other companies handle a parent organization with more than one consumer brand underneath it — deliberately including cases with far more brands than Walmart's two, to see where the pattern held and where it broke.</p>
+
+        <div class="harvey-wrap">
+          <table class="harvey">
+            <thead>
+              <tr>
+                <th>What I compared</th>
+                <th>Amazon + Whole Foods</th>
+                <th>Marriott (30+ hotel brands)</th>
+                <th>Yum! Brands (KFC, Taco Bell, Pizza Hut)</th>
+                <th>Walmart + Sam's Club</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="crit">Separate URL or domain for the second brand</td>
+                <td><span class="harvey-ball harvey-full" aria-label="fully true"></span></td>
+                <td><span class="harvey-ball harvey-empty" aria-label="not true"></span></td>
+                <td><span class="harvey-ball harvey-half" aria-label="partially true"></span></td>
+                <td><span class="harvey-ball harvey-empty" aria-label="not true"></span></td>
+              </tr>
+              <tr>
+                <td class="crit">Distinct visual identity per brand</td>
+                <td><span class="harvey-ball harvey-full" aria-label="fully true"></span></td>
+                <td><span class="harvey-ball harvey-half" aria-label="partially true"></span></td>
+                <td><span class="harvey-ball harvey-full" aria-label="fully true"></span></td>
+                <td><span class="harvey-ball harvey-half" aria-label="partially true"></span></td>
+              </tr>
+              <tr>
+                <td class="crit">One shared hiring &amp; application system</td>
+                <td><span class="harvey-ball harvey-half" aria-label="partially true"></span></td>
+                <td><span class="harvey-ball harvey-full" aria-label="fully true"></span></td>
+                <td><span class="harvey-ball harvey-half" aria-label="partially true"></span></td>
+                <td><span class="harvey-ball harvey-full" aria-label="fully true"></span></td>
+              </tr>
+              <tr>
+                <td class="crit">Shared employment terms &amp; benefits</td>
+                <td><span class="harvey-ball harvey-empty" aria-label="not true"></span></td>
+                <td><span class="harvey-ball harvey-full" aria-label="fully true"></span></td>
+                <td><span class="harvey-ball harvey-empty" aria-label="not true"></span></td>
+                <td><span class="harvey-ball harvey-full" aria-label="fully true"></span></td>
+              </tr>
+              <tr>
+                <td class="crit">Parent company name visible to applicants</td>
+                <td><span class="harvey-ball harvey-half" aria-label="partially true"></span></td>
+                <td><span class="harvey-ball harvey-full" aria-label="fully true"></span></td>
+                <td><span class="harvey-ball harvey-empty" aria-label="not true"></span></td>
+                <td><span class="harvey-ball harvey-full" aria-label="fully true"></span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="harvey-legend">
+          <span><span class="harvey-ball harvey-full"></span> fully true</span>
+          <span><span class="harvey-ball harvey-half"></span> partially true</span>
+          <span><span class="harvey-ball harvey-empty"></span> not true</span>
+        </div>
+
+        <p style="margin-top:24px;">A pattern held across every example: the more two brands diverge in employment terms and benefits, the more their hiring experiences split into fully separate destinations. The more they share infrastructure, the more they consolidate into one experience with brand-flavored sections, the way Marriott folds 30-plus hotel brands into a single <em>careers.marriott.com</em>.</p>
+        <p>Since Walmart and Sam's Club associates share the same benefits and People systems, the comparison pointed toward one shared Walmart Careers experience with a distinct Sam's Club section inside it, rather than a separate site.</p>
+      </div>
+
+      <div class="case-section reveal">
         <h3>Design Thinking</h3>
         <p>As a UX designer with a background in art direction, I made sure the experience solved for more than just pain points; it created an emotional connection that felt cohesive and holistic from first impression to final click. Drawing from my own experience of being newly hired and relocating to Bentonville — I infused what genuinely drew me to Walmart.</p>
         <p>I did a competitive analysis of top tech companies and leading "Best Places to Work" employers to understand how they present their people and culture. Aligning to Walmart's mission of being <em>People-led, Tech-powered</em>, I designed a new homepage and hero section that broke away from its current experience, replacing it with authentic, relatable moments of associates in their real lives.</p>
         <p>I presented this direction to leadership through a personal story that brought the vision to life, earning their buy-in and helping shift the focus from incremental updates to a bold, forward-looking redesign.</p>
+      </div>
+
+      <div class="case-section reveal">
+        <h3>From idea to artifact</h3>
+        <p class="process-note">Recreated for this case study — original working files were not retained.</p>
+        <div class="process-filmstrip">
+          <div class="process-frame">
+            <svg viewBox="0 0 240 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Loose sketch testing the phone card concept">
+              <rect width="240" height="420" style="fill:var(--off-white)"/>
+              <g transform="rotate(-0.7 120 210)">
+                <rect x="14" y="12" width="212" height="396" rx="20" style="fill:none;stroke:var(--black);stroke-width:1.4"/>
+              </g>
+              <circle cx="34" cy="34" r="6" style="fill:none;stroke:var(--black);stroke-width:1.2"/>
+              <path d="M188 31 Q198 29 208 32" style="stroke:var(--black);stroke-width:1.2;fill:none" stroke-linecap="round"/>
+              <path d="M40 58 L210 290 M210 58 L40 290" style="stroke:var(--black);stroke-width:1;stroke-dasharray:2 3"/>
+              <rect x="40" y="58" width="170" height="232" style="fill:none;stroke:var(--black);stroke-width:1.3"/>
+              <path d="M48 265 Q70 263 88 266" style="stroke:var(--black);stroke-width:2;fill:none" stroke-linecap="round"/>
+              <path d="M48 276 Q62 274 76 277" style="stroke:var(--black);stroke-width:1.5;fill:none;opacity:0.55" stroke-linecap="round"/>
+              <path d="M44 312 Q110 307 176 314" style="stroke:var(--black);stroke-width:3.2;fill:none" stroke-linecap="round"/>
+              <path d="M44 330 Q90 327 130 331" style="stroke:var(--black);stroke-width:2.4;fill:none;opacity:0.55" stroke-linecap="round"/>
+              <path d="M44 364 Q120 359 196 365" style="stroke:var(--black);stroke-width:2;fill:none" stroke-linecap="round"/>
+            </svg>
+            <div class="process-caption">
+              <p class="stage">01 · Exploration</p>
+              <p>Loose sketches testing a phone-card format — real associate up top, headline and search below.</p>
+            </div>
+          </div>
+          <div class="process-frame">
+            <svg viewBox="0 0 240 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Clean wireframe with labeled photo, name, headline, and search blocks">
+              <rect width="240" height="420" style="fill:var(--off-white)"/>
+              <rect x="14" y="12" width="212" height="396" rx="20" style="fill:none;stroke:var(--black);stroke-width:1.3"/>
+              <rect x="32" y="32" width="14" height="14" style="fill:none;stroke:var(--black);stroke-width:1"/>
+              <path d="M188 36 H208 M188 41 H208" style="stroke:var(--black);stroke-width:1"/>
+              <rect x="40" y="58" width="170" height="232" style="fill:none;stroke:var(--black);stroke-width:1.2"/>
+              <path d="M40 58 L210 290 M210 58 L40 290" style="stroke:var(--black);stroke-width:0.8"/>
+              <text x="125" y="178" text-anchor="middle" font-family="DM Mono, monospace" font-size="8" style="fill:var(--mid)">PHOTO</text>
+              <rect x="46" y="262" width="60" height="6" style="fill:var(--black)"/>
+              <rect x="46" y="273" width="40" height="5" style="fill:var(--black);opacity:0.45"/>
+              <rect x="44" y="306" width="150" height="14" style="fill:none;stroke:var(--black);stroke-width:1.1"/>
+              <text x="119" y="316" text-anchor="middle" font-family="DM Mono, monospace" font-size="7.5" style="fill:var(--mid)">HEADLINE</text>
+              <rect x="44" y="354" width="152" height="22" rx="11" style="fill:none;stroke:var(--black);stroke-width:1.2"/>
+              <text x="120" y="368" text-anchor="middle" font-family="DM Mono, monospace" font-size="7.5" style="fill:var(--mid)">SEARCH JOBS</text>
+            </svg>
+            <div class="process-caption">
+              <p class="stage">02 · Structure</p>
+              <p>Once the format held up, I locked hierarchy: photo, identity, headline, one search action — repeatable across people.</p>
+            </div>
+          </div>
+          <div class="process-frame">
+            <svg viewBox="0 0 240 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Higher fidelity pass with a photography block and refined type">
+              <rect width="240" height="420" style="fill:var(--off-white)"/>
+              <rect x="14" y="12" width="212" height="396" rx="20" style="fill:none;stroke:var(--black);stroke-width:1.3"/>
+              <rect x="32" y="32" width="14" height="14" style="fill:var(--black)"/>
+              <path d="M188 36 H208 M188 41 H208" style="stroke:var(--black);stroke-width:1.4"/>
+              <rect x="40" y="58" width="170" height="232" style="fill:var(--black);opacity:0.82"/>
+              <text x="125" y="178" text-anchor="middle" font-family="DM Mono, monospace" font-size="8" style="fill:var(--off-white);opacity:0.85">ASSOCIATE PHOTOGRAPHY</text>
+              <rect x="46" y="258" width="64" height="7" style="fill:var(--off-white)"/>
+              <rect x="46" y="270" width="44" height="6" style="fill:var(--off-white);opacity:0.7"/>
+              <rect x="44" y="306" width="172" height="16" style="fill:var(--black)"/>
+              <rect x="44" y="354" width="152" height="24" rx="12" style="fill:var(--black)"/>
+              <rect x="78" y="362" width="84" height="8" style="fill:var(--off-white)"/>
+            </svg>
+            <div class="process-caption">
+              <p class="stage">03 · Approved direction</p>
+              <p>Same structure, now built for real associate photography and a real name and title — this is what went to leadership.</p>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="case-section reveal">
@@ -122,6 +406,11 @@
           <figcaption>The proposed hero series showcased associates through authentic "day in the life" moments.</figcaption>
         </figure>
         <p>To communicate the vision clearly, I curated representative imagery and crafted a visual language that puts associates front and center — creating a warm, human-first experience that builds trust and invites job seekers to see themselves in the story.</p>
+        <ul class="annotation-list">
+          <li><span class="pin-num">1</span><span>Each card uses a real associate in a real setting — a balcony breakfast, a living room with a child, a casual portrait — instead of one studio shot repeated. That variety is what sells "day in the life" over "stock photo."</span></li>
+          <li><span class="pin-num">2</span><span>Every card names the actual person and their real title — Willow Smith, Walmart Team Lead; Kim Gordon, Walmart Store Manager; Tyler Cole, Product Manager — turning "real people" from a tagline into something a job seeker can actually verify.</span></li>
+          <li><span class="pin-num">3</span><span>The headline and search bar stay identical across every variation. Only the photography and the person change, which let us test imagery directions without re-testing the job search flow itself.</span></li>
+        </ul>
       </div>
 
       <div class="case-section reveal">
@@ -131,6 +420,19 @@
           <figcaption>The final live experience, reflecting the human-first direction established during the initial phase.</figcaption>
         </figure>
         <p>Following the proposal and early delivery phases, the careers experience was completed and launched after my involvement concluded. While I was not part of the full project lifecycle, the final experience reflects the human-first direction and core principles established during the initial phase of the work.</p>
+
+        <div class="scope-line">
+          <div class="scope-track">
+            <div class="scope-fill" style="width:58%"></div>
+            <div class="scope-marker" style="left:58%"></div>
+          </div>
+          <div class="scope-stops">
+            <div class="scope-stop"><strong>Concept &amp; direction</strong>Proposal that won leadership buy-in over the original direction.</div>
+            <div class="scope-stop"><strong>Early delivery</strong>Guided Deloitte's execution to keep the creative vision intact.</div>
+            <div class="scope-stop"><strong>Build &amp; launch</strong>Completed by Deloitte after my involvement on the project ended.</div>
+          </div>
+        </div>
+        <p class="scope-caption">— marks roughly where my hands-on involvement ended.</p>
       </div>
 
     </div>
