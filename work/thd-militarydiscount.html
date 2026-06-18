@@ -16,6 +16,22 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@400;500;600&family=DM+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .case-cover img { max-height: none; object-fit: initial; }
+
+    .flow-wrap { display: flex; align-items: stretch; gap: 0; margin: 28px 0 8px; overflow-x: auto; }
+    .flow-step { flex: 1; min-width: 150px; border: 1px solid var(--border); padding: 20px 16px; text-align: center; }
+    .flow-step .flow-label { font-size: 0.9rem; font-weight: 600; color: var(--black); margin-top: 12px; }
+    .flow-step .flow-sub { font-size: 0.76rem; color: var(--mid); margin-top: 6px; line-height: 1.5; }
+    .flow-arrow { flex: 0 0 32px; display: flex; align-items: center; justify-content: center; color: var(--mid); }
+    @media (max-width: 720px) { .flow-wrap { flex-direction: column; } .flow-arrow { flex: 0 0 24px; transform: rotate(90deg); } }
+
+    .ba-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); margin: 28px 0 8px; }
+    .ba-panel { background: var(--white); padding: 28px 24px; text-align: center; }
+    .ba-panel .ba-label { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); margin-bottom: 14px; }
+    .ba-panel p { font-size: 0.9rem; color: var(--black); line-height: 1.6; margin-top: 14px; max-width: none; }
+    @media (max-width: 600px) { .ba-pair { grid-template-columns: 1fr; } }
+  </style>
   <script>
     (function(){
       var t = localStorage.getItem('theme') || 'light';
@@ -139,6 +155,32 @@
           <li>Iterated designs in partnership with stakeholders, incorporating usability testing insights and addressing technical constraints</li>
           <li>Contributed to a scalable design framework, enabling future program enhancements without sacrificing clarity</li>
         </ul>
+
+        <div class="flow-wrap">
+          <div class="flow-step">
+            <svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><rect x="5" y="3" width="18" height="22" rx="2" style="fill:none;stroke:var(--black);stroke-width:1.3"/><line x1="9" y1="9" x2="19" y2="9" style="stroke:var(--black);stroke-width:1.2"/><line x1="9" y1="13" x2="19" y2="13" style="stroke:var(--mid);stroke-width:1.1"/><line x1="9" y1="17" x2="15" y2="17" style="stroke:var(--mid);stroke-width:1.1"/></svg>
+            <div class="flow-label">Landing Page</div>
+            <div class="flow-sub">Benefit-focused messaging, clear from the first screen</div>
+          </div>
+          <div class="flow-arrow"><svg width="20" height="14" viewBox="0 0 20 14"><path d="M0 7h17M11 1l6 6-6 6" style="fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round"/></svg></div>
+          <div class="flow-step">
+            <svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><path d="M14 3l9 4v6c0 6-4 10-9 12-5-2-9-6-9-12V7z" style="fill:none;stroke:var(--black);stroke-width:1.3;stroke-linejoin:round"/><path d="M9.5 14l3 3 6-6.5" style="fill:none;stroke:var(--black);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round"/></svg>
+            <div class="flow-label">SheerID Verification</div>
+            <div class="flow-sub">One-time digital ID check, done online</div>
+          </div>
+          <div class="flow-arrow"><svg width="20" height="14" viewBox="0 0 20 14"><path d="M0 7h17M11 1l6 6-6 6" style="fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round"/></svg></div>
+          <div class="flow-step">
+            <svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><rect x="4" y="4" width="8" height="8" style="fill:none;stroke:var(--black);stroke-width:1.3"/><rect x="16" y="4" width="8" height="8" style="fill:none;stroke:var(--black);stroke-width:1.3"/><rect x="4" y="16" width="8" height="8" style="fill:none;stroke:var(--black);stroke-width:1.3"/><rect x="17" y="17" width="2.5" height="2.5" style="fill:var(--black)"/><rect x="21.5" y="17" width="2.5" height="2.5" style="fill:var(--black)"/><rect x="17" y="21.5" width="2.5" height="2.5" style="fill:var(--black)"/></svg>
+            <div class="flow-label">Account + QR Code</div>
+            <div class="flow-sub">Status saved once, ready to scan anytime</div>
+          </div>
+          <div class="flow-arrow"><svg width="20" height="14" viewBox="0 0 20 14"><path d="M0 7h17M11 1l6 6-6 6" style="fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round"/></svg></div>
+          <div class="flow-step">
+            <svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="11" style="fill:none;stroke:var(--black);stroke-width:1.3"/><path d="M3 14h22M14 3c3 3 4.5 7 4.5 11s-1.5 8-4.5 11c-3-3-4.5-7-4.5-11s1.5-8 4.5-11z" style="fill:none;stroke:var(--black);stroke-width:1;opacity:0.6"/></svg>
+            <div class="flow-label">Redeem Anywhere</div>
+            <div class="flow-sub">Online · in-store · app</div>
+          </div>
+        </div>
       </div>
 
       <div class="case-section reveal">
@@ -150,6 +192,19 @@
           <li>Replaced a repetitive, in-store-only ID check with a one-time digital verification — removing a major barrier for military shoppers and strengthening Home Depot's competitive position</li>
           <li>Earned positive feedback from leadership for the human-centered design and seamless UX</li>
         </ul>
+
+        <div class="ba-pair">
+          <div class="ba-panel">
+            <div class="ba-label">Before</div>
+            <svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><path d="M9 9a9 9 0 0 1 14 7M23 23a9 9 0 0 1-14-7" style="fill:none;stroke:var(--mid);stroke-width:1.4;stroke-linecap:round"/><path d="M23 9l0 5-5 0M9 23l0-5 5 0" style="fill:none;stroke:var(--mid);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round"/></svg>
+            <p>Show ID at the register — every single visit, in-store only.</p>
+          </div>
+          <div class="ba-panel">
+            <div class="ba-label">After</div>
+            <svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="5" width="9" height="9" style="fill:none;stroke:var(--black);stroke-width:1.4"/><rect x="18" y="5" width="9" height="9" style="fill:none;stroke:var(--black);stroke-width:1.4"/><rect x="5" y="18" width="9" height="9" style="fill:none;stroke:var(--black);stroke-width:1.4"/><rect x="19.5" y="19.5" width="3" height="3" style="fill:var(--black)"/><rect x="24.5" y="19.5" width="3" height="3" style="fill:var(--black)"/><rect x="19.5" y="24.5" width="3" height="3" style="fill:var(--black)"/></svg>
+            <p>Verify once. Scan a QR code anywhere — online, in-store, or in the app.</p>
+          </div>
+        </div>
       </div>
 
       <div class="case-section reveal">
