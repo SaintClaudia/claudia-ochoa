@@ -119,7 +119,8 @@
         <p>The question shifted from <em>"Would this have helped me?"</em> to <em>"How might this support the growing number of people beginning their own journey?"</em></p>
         <figure class="case-image reveal" style="margin-bottom: 56px;">
           <div style="padding: 40px 0; text-align: center;">
-            <div style="font-family: var(--font-body); font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mid); margin-bottom: 28px;">Adult OCIA entrants · U.S. dioceses · 2025–2026</div>
+            <div style="font-family: var(--font-body); font-size: 1rem; font-weight: 500; color: currentColor; margin-bottom: 4px;">Catholic Church membership — U.S. dioceses</div>
+            <div style="font-family: var(--font-body); font-size: 0.85rem; color: var(--mid); margin-bottom: 28px;">Average year-over-year growth in adult OCIA entrants, 2025–2026</div>
             <svg id="ocia-ring" width="300" height="300" viewBox="0 0 300 300" aria-label="Ring chart showing 38% average increase in adult OCIA entrants across U.S. dioceses, 2025 to 2026" role="img" style="display: block; margin: 0 auto;">
               <title>38% increase in OCIA entrants</title>
               <circle cx="150" cy="150" r="120" fill="none" stroke="currentColor" stroke-opacity="0.15" stroke-width="1.5" stroke-dasharray="4 6" stroke-linecap="round"/>
@@ -129,7 +130,7 @@
               <text x="150" y="200" text-anchor="middle" font-family="var(--font-body)" font-size="13" fill="currentColor" opacity="0.5">year over year</text>
             </svg>
           </div>
-          <figcaption style="margin-bottom: 48px;">Source: Hallow (2026), analysis of diocesan OCIA and adult initiation data.</figcaption>
+          <figcaption>Source: Hallow (2026), analysis of diocesan OCIA and adult initiation data.</figcaption>
         </figure>
         <script>
           (function() {
@@ -159,6 +160,93 @@
             observer.observe(document.getElementById('ocia-ring'));
           })();
         </script>
+        <figure class="case-image reveal" id="hallow-chart" style="margin-bottom: 56px;">
+          <div style="padding: 40px 0;">
+            <div style="font-family: var(--font-body); font-size: 1rem; font-weight: 500; color: currentColor; margin-bottom: 4px;">Hallow vs. ChatGPT — Apple App Store</div>
+            <div style="font-family: var(--font-body); font-size: 0.85rem; color: var(--mid); margin-bottom: 32px;">Overall most downloaded rankings during Lent season</div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+              <div>
+                <div style="font-family: var(--font-body); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); margin-bottom: 16px;">Lent 2025</div>
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                  <span style="font-family: var(--font-body); font-size: 0.8rem; color: var(--mid); width: 12px;">1</span>
+                  <span style="font-size: 1.1rem;">🤖</span>
+                  <div style="flex: 1;">
+                    <div style="font-family: var(--font-body); font-size: 0.85rem; font-weight: 500; color: currentColor;">ChatGPT</div>
+                    <div style="font-family: var(--font-body); font-size: 0.72rem; color: var(--mid);">OpenAI</div>
+                  </div>
+                  <div style="flex: 2; height: 4px; background: currentColor; opacity: 0.12; border-radius: 2px; position: relative;">
+                    <div class="hallow-bar" data-target="100" data-color="#378ADD" style="position: absolute; left: 0; top: 0; height: 100%; width: 0; background: #378ADD; border-radius: 2px; transition: width 1.2s cubic-bezier(0.16,1,0.3,1);"></div>
+                  </div>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                  <span style="font-family: var(--font-body); font-size: 0.8rem; color: var(--mid); width: 12px;">2</span>
+                  <span style="font-size: 1.1rem;">🙏</span>
+                  <div style="flex: 1;">
+                    <div style="font-family: var(--font-body); font-size: 0.85rem; font-weight: 500; color: currentColor;">Hallow</div>
+                    <div style="font-family: var(--font-body); font-size: 0.72rem; color: var(--mid);">~2M Pray40 participants</div>
+                  </div>
+                  <div style="flex: 2; height: 4px; background: currentColor; opacity: 0.12; border-radius: 2px; position: relative;">
+                    <div class="hallow-bar" data-target="82" data-color="#572BAB" style="position: absolute; left: 0; top: 0; height: 100%; width: 0; background: #572BAB; border-radius: 2px; transition: width 1.2s cubic-bezier(0.16,1,0.3,1) 0.1s;"></div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div style="font-family: var(--font-body); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); margin-bottom: 16px;">Lent 2026 · Ash Wednesday</div>
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                  <span style="font-family: var(--font-body); font-size: 0.8rem; color: var(--mid); width: 12px;">1</span>
+                  <span style="font-size: 1.1rem;">🙏</span>
+                  <div style="flex: 1;">
+                    <div style="font-family: var(--font-body); font-size: 0.85rem; font-weight: 500; color: currentColor;">Hallow</div>
+                    <div style="font-family: var(--font-body); font-size: 0.72rem; color: var(--mid);">Feb 18, 2026</div>
+                  </div>
+                  <div style="flex: 2; height: 4px; background: currentColor; opacity: 0.12; border-radius: 2px; position: relative;">
+                    <div class="hallow-bar" data-target="100" data-color="#572BAB" style="position: absolute; left: 0; top: 0; height: 100%; width: 0; background: #572BAB; border-radius: 2px; transition: width 1.2s cubic-bezier(0.16,1,0.3,1) 0.2s;"></div>
+                  </div>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                  <span style="font-family: var(--font-body); font-size: 0.8rem; color: var(--mid); width: 12px;">2</span>
+                  <span style="font-size: 1.1rem;">🤖</span>
+                  <div style="flex: 1;">
+                    <div style="font-family: var(--font-body); font-size: 0.85rem; font-weight: 500; color: currentColor;">ChatGPT</div>
+                    <div style="font-family: var(--font-body); font-size: 0.72rem; color: var(--mid);">OpenAI</div>
+                  </div>
+                  <div style="flex: 2; height: 4px; background: currentColor; opacity: 0.12; border-radius: 2px; position: relative;">
+                    <div class="hallow-bar" data-target="80" data-color="#378ADD" style="position: absolute; left: 0; top: 0; height: 100%; width: 0; background: #378ADD; border-radius: 2px; transition: width 1.2s cubic-bezier(0.16,1,0.3,1) 0.3s;"></div>
+                  </div>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                  <span style="font-family: var(--font-body); font-size: 0.8rem; color: var(--mid); width: 12px;">3</span>
+                  <span style="font-size: 1.1rem;">💬</span>
+                  <div style="flex: 1;">
+                    <div style="font-family: var(--font-body); font-size: 0.85rem; font-weight: 500; color: currentColor;">WhatsApp</div>
+                    <div style="font-family: var(--font-body); font-size: 0.72rem; color: var(--mid);">Meta</div>
+                  </div>
+                  <div style="flex: 2; height: 4px; background: currentColor; opacity: 0.12; border-radius: 2px; position: relative;">
+                    <div class="hallow-bar" data-target="60" data-color="#888780" style="position: absolute; left: 0; top: 0; height: 100%; width: 0; background: #888780; border-radius: 2px; transition: width 1.2s cubic-bezier(0.16,1,0.3,1) 0.4s;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <figcaption>Sources: Aleteia (2026); ZENIT (2026); Hallow, <em>Pray40: The Return</em> (2026). Apple App Store overall download rankings, U.S.</figcaption>
+        </figure>
+        <script>
+          (function() {
+            var chart = document.getElementById('hallow-chart');
+            var bars = chart.querySelectorAll('.hallow-bar');
+            var animated = false;
+            var observer = new IntersectionObserver(function(entries) {
+              if (entries[0].isIntersecting && !animated) {
+                animated = true;
+                bars.forEach(function(bar) {
+                  bar.style.width = bar.getAttribute('data-target') + '%';
+                });
+              }
+            }, { threshold: 0.3 });
+            observer.observe(chart);
+          })();
+        </script>
+
         <p>Growth alone, however, was not the only insight.</p>
         <p>Before OCIA classes begin in September, our parish offers a Bible study for participants throughout the summer. It was during those sessions that I was introduced to <em>The Chosen</em>. Until then, I had never heard of the series, nor had I considered shows,books, or other forms of media as ways to deepen my understanding of the faith.</p>
         <p>Watching <em>The Chosen</em> during my formation journey made the experience richer and more meaningful. It helped bring the stories of Scripture to life in a way that complemented what I was learning elsewhere.</p>
@@ -175,9 +263,12 @@
       </div>
 
       <div class="case-section reveal">
-        <h3>Source</h3>
+        <h3>Sources</h3>
         <ul>
           <li>Hallow. (2026). Catholic Church sees massive growth in new members in 2026. <a href="https://hallow.com/blog/catholic-church-sees-massive-growth-in-new-members/" target="_blank" rel="noopener" style="color: var(--black); text-decoration: underline; text-underline-offset: 3px;">hallow.com</a></li>
+          <li>Hallow. (2026). Pray40: The Return — Lent community prayer challenge. <a href="https://hallow.com/pray40/" target="_blank" rel="noopener" style="color: var(--black); text-decoration: underline; text-underline-offset: 3px;">hallow.com</a></li>
+          <li>Aleteia. (2026). Hallow Catholic prayer app tops charts at #1. <a href="https://aleteia.org/2026/02/20/hallow-catholic-prayer-app-tops-charts-at-1/" target="_blank" rel="noopener" style="color: var(--black); text-decoration: underline; text-underline-offset: 3px;">aleteia.org</a></li>
+          <li>ZENIT. (2026). Hallow surpasses WhatsApp and ChatGPT to become the most downloaded app in the Apple Store. <a href="https://zenit.org/2026/02/22/hallow-surpasses-whatsapp-and-chatgpt-to-become-the-most-downloaded-app-in-the-apple-store/" target="_blank" rel="noopener" style="color: var(--black); text-decoration: underline; text-underline-offset: 3px;">zenit.org</a></li>
         </ul>
       </div>
     </div>
@@ -187,9 +278,12 @@
     <div class="container">
       <a href="personal-portfolio.html" class="case-nav-link prev">
         <span class="case-nav-label">← Previous</span>
-        <span class="case-nav-title">Personal : Designing My Own Stage</span>
+        <span class="case-nav-title">From Template to Code</span>
       </a>
-      <span></span>
+      <a href="walmart-careers.html" class="case-nav-link next">
+        <span class="case-nav-label">Next →</span>
+        <span class="case-nav-title">Redesigning Walmart's Candidate Experience</span>
+      </a>
     </div>
   </div>
 </main>
