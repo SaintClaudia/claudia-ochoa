@@ -86,6 +86,14 @@
   transform: translateX(-50%) translateY(0);
 }
 
+/* === READING TIME === */
+.read-time {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--mid);
+  letter-spacing: 0.04em;
+}
+
 /* === SKIP LINK === */
 .skip-link {
   position: absolute;

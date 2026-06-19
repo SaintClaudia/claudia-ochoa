@@ -57,6 +57,15 @@ git push
 
 GitHub Pages deploys automatically. Changes are live within 1–2 minutes.
 
+## Updating the nav
+
+The nav (skip link, top nav, mobile menu, contact overlay) lives in one place: `_nav.html`.
+
+To change it:
+1. Edit `_nav.html`
+2. Run `python3 build.py` — this stamps the updated nav into every page
+3. Commit and push all changed files
+
 ## Adding a case study
 
 1. Copy an existing file from `work/` and rename it
