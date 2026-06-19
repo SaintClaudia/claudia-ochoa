@@ -85,6 +85,20 @@ Every page has:
 
 `sitemap.xml` lists all pages and is referenced in `robots.txt`. Submit the sitemap to Google Search Console for faster indexing: `https://claudiaochoa.co/sitemap.xml`
 
+## Accessibility
+
+Targets **WCAG 2.1 AA**. Implemented across all pages:
+
+- **Skip link** — visually hidden "Skip to main content" link is the first focusable element on every page; appears on keyboard focus
+- **Focus indicators** — `:focus-visible` styles on all interactive elements (nav icons, buttons, links, form inputs)
+- **Reduced motion** — `@media (prefers-reduced-motion: reduce)` disables all transitions and animations (scroll reveal, glow, blinking cursor) for users with that OS setting enabled
+- **Heading hierarchy** — all pages follow a clean h1 → h2 structure; no skipped levels
+- **Image alt text** — all images have descriptive alt text
+- **ARIA labels** — nav icon buttons and interactive controls have `aria-label` attributes
+- **Semantic landmarks** — `<main id="main-content">` on every page
+
+When adding new pages, maintain these patterns: use `<h2>` for section headings under the page `<h1>`, include `alt` on all images, and add `aria-label` to any icon-only buttons.
+
 ## Infrastructure
 
 - Hosted on **GitHub Pages**
