@@ -20,7 +20,7 @@
   --mid: #888888;
   --border: #2A2A2A;
 }
-[data-theme="dark"] nav {
+[data-theme="dark"] body > nav {
   background: rgba(13,13,13,0.96);
 }
 [data-theme="dark"] .mobile-menu {
@@ -170,12 +170,11 @@ strong { color: var(--black); font-weight: 600; }
 @media (max-width: 768px) { .container { padding: 0 24px; } }
 
 /* === NAV === */
-nav {
+body > nav {
   position: fixed; top: 0; left: 0; right: 0;
   z-index: 100;
   background: rgba(255,255,255,0.96);
   backdrop-filter: blur(12px);
-  
 }
 .nav-inner {
   max-width: var(--max);
