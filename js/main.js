@@ -164,6 +164,7 @@ runButton?.addEventListener('click', () => {
 // === CONTACT OVERLAY ===
 const contactToggle = document.getElementById('contact-toggle');
 const mobileContactToggle = document.getElementById('mobile-contact-toggle');
+const footerContactToggle = document.getElementById('footer-contact-toggle');
 const contactOverlay = document.getElementById('contact-drawer');
 const contactClose = document.getElementById('contact-drawer-close');
 const contactForm = document.getElementById('contact-form');
@@ -181,7 +182,7 @@ function closeContactOverlay() {
   if (contactStatus) contactStatus.textContent = '';
   contactStatus?.classList.remove('success', 'error');
 }
-[contactToggle, mobileContactToggle].forEach((toggle) => {
+[contactToggle, mobileContactToggle, footerContactToggle].forEach((toggle) => {
   toggle?.addEventListener('click', (e) => {
     e.preventDefault();
     mobileMenu?.classList.remove('open');
