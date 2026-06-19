@@ -18,7 +18,8 @@ Plain HTML, CSS, and vanilla JS. No frameworks, no build step, no dependencies. 
 ├── about.html                        # About page
 ├── 404.html                          # Custom error page
 ├── _nav.html                         # Shared nav partial (single source of truth)
-├── build.py                          # Stamps _nav.html into all pages
+├── _footer.html                      # Shared footer partial (single source of truth)
+├── build.py                          # Stamps _nav.html and _footer.html into all pages
 ├── favicon.svg                       # Heart favicon (SVG)
 ├── favicon-192.png                   # Heart favicon (PNG, for Google Search)
 ├── favicon-32.png                    # Heart favicon (PNG, browser tab fallback)
@@ -62,13 +63,16 @@ git push
 
 GitHub Pages deploys automatically. Changes are live within 1–2 minutes.
 
-## Updating the nav
+## Updating the nav or footer
 
-The nav (skip link, top nav, mobile menu, contact overlay) lives in one place: `_nav.html`.
+The nav and footer each live in a single file:
 
-To change it:
-1. Edit `_nav.html`
-2. Run `python3 build.py` — this stamps the updated nav into every page
+- **`_nav.html`** — skip link, top nav, mobile menu, contact overlay
+- **`_footer.html`** — footer links (Home, About, Blog, Contact) and copyright
+
+To change either:
+1. Edit `_nav.html` or `_footer.html`
+2. Run `python3 build.py` — stamps the update into every page
 3. Commit and push all changed files
 
 ## Adding a case study
