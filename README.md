@@ -16,37 +16,41 @@ Plain HTML, CSS, and vanilla JS. No frameworks, no build step, no dependencies. 
 /
 ├── index.html                        # Homepage — featured work grid
 ├── about.html                        # About page
-├── favicon.svg                       # heart favicon
+├── favicon.svg                       # Heart favicon
+├── sitemap.xml                       # All pages for search engine discovery
+├── robots.txt                        # Crawl directives
 ├── CNAME                             # Custom domain for GitHub Pages
 ├── css/
 │   └── style.css                     # All styles
 ├── js/
 │   └── main.js                       # Scroll reveal, nav hide, hamburger menu, progress bar
 ├── images/
-│   ├── Walmart_Spark.png.webp
-│   ├── Walmart_GenAI.png.webp
-│   ├── Walmart_MyHiring.png.webp
-│   ├── Walmart_Me.png.webp
-│   ├── Walmart_CarPlay.png.webp
-│   ├── Walmart_Connect.png.webp
-│   ├── HomeDepot_GiftCards.png.webp
-│   └── THD_MilitaryDiscount.png.webp
-└── work/
-    ├── walmart-careers.html
-    ├── walmart-genai.html
-    ├── walmart-my-hiring-dashboard.html
-    ├── walmart-mecampus-redesign.html
-    ├── walmart-carplay.html
-    ├── walmart-connect.html
-    ├── thd-giftcards.html
-    └── thd-militarydiscount.html
+│   └── blog/                         # Blog post images
+├── work/
+│   ├── walmart-careers.html          # Redesigning Walmart's Candidate Experience
+│   ├── walmart-genai.html            # Transforming Hiring with GenAI
+│   ├── walmart-my-hiring-dashboard.html  # My Hiring Dashboard
+│   ├── walmart-mecampus-redesign.html    # Me@Campus Redesign
+│   ├── walmart-carplay.html          # CarPlay Experience for Associates
+│   ├── walmart-connect.html          # Building Community for Relocating Associates
+│   ├── thd-giftcards.html            # The Home Depot Gift Cards
+│   ├── thd-militarydiscount.html     # The Home Depot Military Discount
+│   ├── bible-study.html              # Designing for Formation (personal)
+│   └── personal-portfolio.html       # From Template to Code (personal)
+└── blog/
+    ├── index.html                    # Blog index
+    ├── surprise-and-delight.html
+    ├── the-true-reality-of-speed.html
+    ├── when-the-office-mandate-broke-my-creative-spirit.html
+    ├── the-new-ways-of-working-with-ai.html
+    ├── from-storytelling-to-systems.html
+    └── making-it-easier-from-the-other-side.html
 ```
 
 ## Deploying changes
 
 ```bash
-cd ~/Downloads/claudiaochoa
-git add .
+git add <files>
 git commit -m "describe what changed"
 git push
 ```
@@ -56,10 +60,30 @@ GitHub Pages deploys automatically. Changes are live within 1–2 minutes.
 ## Adding a case study
 
 1. Copy an existing file from `work/` and rename it
-2. Update the content and cover image reference
-3. Add the cover image to `images/`
-4. Add a card to `index.html`
-5. Push
+2. Update the title, meta description, and Open Graph tags in `<head>`
+3. Update content and cover image reference
+4. Add the cover image to `images/`
+5. Add a card to `index.html`
+6. Add the URL to `sitemap.xml`
+7. Push
+
+## Adding a blog post
+
+1. Copy an existing file from `blog/` and rename it
+2. Update the title, meta description, and Open Graph tags in `<head>` (use `og:type` = `article`)
+3. Update the content and hero image
+4. Add a card to `blog/index.html`
+5. Add the URL to `sitemap.xml`
+6. Push
+
+## SEO
+
+Every page has:
+- Unique `<meta name="description">` tag
+- Open Graph tags (`og:title`, `og:description`, `og:url`, `og:type`, `og:image`)
+- Twitter Card tags (`twitter:card`, `twitter:title`, `twitter:description`, `twitter:image`)
+
+`sitemap.xml` lists all pages and is referenced in `robots.txt`. Submit the sitemap to Google Search Console for faster indexing: `https://claudiaochoa.co/sitemap.xml`
 
 ## Infrastructure
 
@@ -67,9 +91,3 @@ GitHub Pages deploys automatically. Changes are live within 1–2 minutes.
 - Custom domain configured via GoDaddy DNS → GitHub Pages A records
 - TLS enforced via GitHub Pages
 - Analytics via **Google Analytics 4** (`G-3G6X2P2669`)
-
-## Known todos
-
-- [ ] Add contact section
-- [ ] Blog page
-- [ ] Replace the per-page copy/pasted header (`<nav>` + `#mobile-menu`) with a shared partial — either JS-injected via `main.js` fetching `header.html` into a placeholder div, or a small build script that stamps a `_header.html` partial into every page. Goal: single source of truth for the nav so future nav changes don't require touching every file. Revisit after the About page redesign.
