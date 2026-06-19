@@ -16,16 +16,21 @@ Plain HTML, CSS, and vanilla JS. No frameworks, no build step, no dependencies. 
 /
 ├── index.html                        # Homepage — featured work grid
 ├── about.html                        # About page
-├── favicon.svg                       # Heart favicon
+├── 404.html                          # Custom error page
+├── _nav.html                         # Shared nav partial (single source of truth)
+├── build.py                          # Stamps _nav.html into all pages
+├── favicon.svg                       # Heart favicon (SVG)
+├── favicon-192.png                   # Heart favicon (PNG, for Google Search)
+├── favicon-32.png                    # Heart favicon (PNG, browser tab fallback)
 ├── sitemap.xml                       # All pages for search engine discovery
 ├── robots.txt                        # Crawl directives
 ├── CNAME                             # Custom domain for GitHub Pages
 ├── css/
 │   └── style.css                     # All styles
 ├── js/
-│   └── main.js                       # Scroll reveal, nav hide, hamburger menu, progress bar
+│   └── main.js                       # Scroll reveal, nav, reading time, contact form
 ├── images/
-│   └── blog/                         # Blog post images
+│   └── blog/                         # Blog post images (WebP)
 ├── work/
 │   ├── walmart-careers.html          # Redesigning Walmart's Candidate Experience
 │   ├── walmart-genai.html            # Transforming Hiring with GenAI
@@ -69,7 +74,7 @@ To change it:
 ## Adding a case study
 
 1. Copy an existing file from `work/` and rename it
-2. Update the title, meta description, and Open Graph tags in `<head>`
+2. Update the title, meta description, Open Graph tags, and canonical URL in `<head>`
 3. Update content and cover image reference
 4. Add the cover image to `images/`
 5. Add a card to `index.html`
@@ -79,20 +84,31 @@ To change it:
 ## Adding a blog post
 
 1. Copy an existing file from `blog/` and rename it
-2. Update the title, meta description, and Open Graph tags in `<head>` (use `og:type` = `article`)
-3. Update the content and hero image
-4. Add a card to `blog/index.html`
-5. Add the URL to `sitemap.xml`
-6. Push
+2. Update the title, meta description, Open Graph tags, canonical URL, and JSON-LD Article schema in `<head>`
+3. Update the `<time datetime="YYYY-MM-DD">` date in the body
+4. Update the content and hero image (use WebP format)
+5. Add a card to `blog/index.html`
+6. Add the URL to `sitemap.xml`
+7. Push
+
+Reading time is calculated automatically from word count — no manual step needed.
 
 ## SEO
 
 Every page has:
 - Unique `<meta name="description">` tag
 - Open Graph tags (`og:title`, `og:description`, `og:url`, `og:type`, `og:image`)
-- Twitter Card tags (`twitter:card`, `twitter:title`, `twitter:description`, `twitter:image`)
+- Twitter Card tags for link preview on X/Twitter and iMessage
+- `<link rel="canonical">` to prevent duplicate content issues
+- PNG favicons at 192×192 and 32×32 for Google Search and browser tabs
 
-`sitemap.xml` lists all pages and is referenced in `robots.txt`. Submit the sitemap to Google Search Console for faster indexing: `https://claudiaochoa.co/sitemap.xml`
+Blog posts additionally have:
+- JSON-LD `Article` schema (headline, description, author, datePublished, image)
+- `<time datetime="YYYY-MM-DD">` on the publish date
+
+The homepage has JSON-LD `Person` schema.
+
+`sitemap.xml` lists all pages and is referenced in `robots.txt`. The sitemap is submitted to Google Search Console at `https://claudiaochoa.co/sitemap.xml`.
 
 ## Accessibility
 
@@ -100,13 +116,20 @@ Targets **WCAG 2.1 AA**. Implemented across all pages:
 
 - **Skip link** — visually hidden "Skip to main content" link is the first focusable element on every page; appears on keyboard focus
 - **Focus indicators** — `:focus-visible` styles on all interactive elements (nav icons, buttons, links, form inputs)
-- **Reduced motion** — `@media (prefers-reduced-motion: reduce)` disables all transitions and animations (scroll reveal, glow, blinking cursor) for users with that OS setting enabled
+- **Reduced motion** — `@media (prefers-reduced-motion: reduce)` disables all transitions and animations for users with that OS setting enabled
 - **Heading hierarchy** — all pages follow a clean h1 → h2 structure; no skipped levels
 - **Image alt text** — all images have descriptive alt text
 - **ARIA labels** — nav icon buttons and interactive controls have `aria-label` attributes
 - **Semantic landmarks** — `<main id="main-content">` on every page
 
-When adding new pages, maintain these patterns: use `<h2>` for section headings under the page `<h1>`, include `alt` on all images, and add `aria-label` to any icon-only buttons.
+When adding new pages: use `<h2>` for section headings under the page `<h1>`, include `alt` on all images, and add `aria-label` to icon-only buttons.
+
+## Performance
+
+- All blog images are WebP (avg 92% smaller than original PNGs, ~17MB saved)
+- Work case study thumbnails are already WebP
+- Fonts are preconnected via `<link rel="preconnect">`
+- No external JS dependencies
 
 ## Infrastructure
 
@@ -114,3 +137,4 @@ When adding new pages, maintain these patterns: use `<h2>` for section headings 
 - Custom domain configured via GoDaddy DNS → GitHub Pages A records
 - TLS enforced via GitHub Pages
 - Analytics via **Google Analytics 4** (`G-3G6X2P2669`)
+- Domain verified with Google Search Console
