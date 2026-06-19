@@ -86,6 +86,49 @@
   transform: translateX(-50%) translateY(0);
 }
 
+/* === SKIP LINK === */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 24px;
+  z-index: 9999;
+  padding: 12px 20px;
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 0 0 6px 6px;
+  transition: top 0.2s;
+}
+.skip-link:focus {
+  top: 0;
+  outline: 2px solid var(--white);
+  outline-offset: -4px;
+}
+
+/* === FOCUS STYLES === */
+:focus-visible {
+  outline: 2px solid var(--black);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+[data-theme="dark"] :focus-visible {
+  outline-color: var(--black);
+}
+.nav-icon:focus-visible,
+.theme-toggle:focus-visible {
+  border-color: var(--black);
+  color: var(--black);
+}
+.contact-input:focus-visible,
+.password-gate-input:focus-visible {
+  border-color: var(--black);
+  outline: none;
+  box-shadow: 0 2px 0 0 var(--black);
+}
+
 /* === RESET === */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -1169,4 +1212,22 @@ body > nav.nav-hidden {
 
 @media (max-width: 600px) {
   .contact-overlay-inner { max-width: 100%; padding: 48px 24px; }
+}
+
+/* === REDUCED MOTION === */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html { scroll-behavior: auto; }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .ai-glow { animation: none; }
+  .blink-cursor { animation: none; }
+  .skip-link { transition: none; }
 }
