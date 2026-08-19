@@ -74,47 +74,5 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- Blog -->
-  <url>
-    <loc>https://claudiaochoa.co/blog/</loc>
-    <lastmod>2026-06-19</lastmod>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://claudiaochoa.co/blog/surprise-and-delight.html</loc>
-    <lastmod>2026-06-19</lastmod>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://claudiaochoa.co/blog/the-true-reality-of-speed.html</loc>
-    <lastmod>2026-06-19</lastmod>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://claudiaochoa.co/blog/when-the-office-mandate-broke-my-creative-spirit.html</loc>
-    <lastmod>2026-06-19</lastmod>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://claudiaochoa.co/blog/the-new-ways-of-working-with-ai.html</loc>
-    <lastmod>2026-06-19</lastmod>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://claudiaochoa.co/blog/from-storytelling-to-systems.html</loc>
-    <lastmod>2026-06-19</lastmod>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://claudiaochoa.co/blog/making-it-easier-from-the-other-side.html</loc>
-    <lastmod>2026-06-19</lastmod>
-    <priority>0.7</priority>
-  </url>
 
 </urlset>

@@ -29,9 +29,8 @@ Plain HTML, CSS, and vanilla JS. No frameworks, no build step, no dependencies. 
 ├── css/
 │   └── style.css                     # All styles
 ├── js/
-│   └── main.js                       # Scroll reveal, nav, reading time, contact form
+│   └── main.js                       # Scroll reveal, nav, contact form
 ├── images/
-│   └── blog/                         # Blog post images (WebP)
 ├── work/
 │   ├── walmart-careers.html          # Redesigning Walmart's Candidate Experience
 │   ├── walmart-genai.html            # Transforming Hiring with GenAI
@@ -43,14 +42,6 @@ Plain HTML, CSS, and vanilla JS. No frameworks, no build step, no dependencies. 
 │   ├── thd-militarydiscount.html     # The Home Depot Military Discount
 │   ├── bible-study.html              # Designing for Formation (personal)
 │   └── personal-portfolio.html       # From Template to Code (personal)
-└── blog/
-    ├── index.html                    # Blog index
-    ├── surprise-and-delight.html
-    ├── the-true-reality-of-speed.html
-    ├── when-the-office-mandate-broke-my-creative-spirit.html
-    ├── the-new-ways-of-working-with-ai.html
-    ├── from-storytelling-to-systems.html
-    └── making-it-easier-from-the-other-side.html
 ```
 
 ## Deploying changes
@@ -68,7 +59,7 @@ GitHub Pages deploys automatically. Changes are live within 1–2 minutes.
 The nav and footer each live in a single file:
 
 - **`_nav.html`** — skip link, top nav, mobile menu, contact overlay
-- **`_footer.html`** — footer links (Home, About, Blog, Contact) and copyright
+- **`_footer.html`** — footer links (Home, About, Contact) and copyright
 
 To change either:
 1. Edit `_nav.html` or `_footer.html`
@@ -85,18 +76,6 @@ To change either:
 6. Add the URL to `sitemap.xml`
 7. Push
 
-## Adding a blog post
-
-1. Copy an existing file from `blog/` and rename it
-2. Update the title, meta description, Open Graph tags, canonical URL, and JSON-LD Article schema in `<head>`
-3. Update the `<time datetime="YYYY-MM-DD">` date in the body
-4. Update the content and hero image (use WebP format)
-5. Add a card to `blog/index.html`
-6. Add the URL to `sitemap.xml`
-7. Push
-
-Reading time is calculated automatically from word count — no manual step needed.
-
 ## SEO
 
 Every page has:
@@ -105,10 +84,6 @@ Every page has:
 - Twitter Card tags for link preview on X/Twitter and iMessage
 - `<link rel="canonical">` to prevent duplicate content issues
 - PNG favicons at 192×192 and 32×32 for Google Search and browser tabs
-
-Blog posts additionally have:
-- JSON-LD `Article` schema (headline, description, author, datePublished, image)
-- `<time datetime="YYYY-MM-DD">` on the publish date
 
 The homepage has JSON-LD `Person` schema.
 
@@ -130,8 +105,7 @@ When adding new pages: use `<h2>` for section headings under the page `<h1>`, in
 
 ## Performance
 
-- All blog images are WebP (avg 92% smaller than original PNGs, ~17MB saved)
-- Work case study thumbnails are already WebP
+- Work case study thumbnails are WebP
 - Fonts are preconnected via `<link rel="preconnect">`
 - No external JS dependencies
 

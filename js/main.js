@@ -1,20 +1,3 @@
-// === READING TIME (blog posts only) ===
-(function() {
-  const eyebrow = document.querySelector('.case-eyebrow');
-  if (!eyebrow || eyebrow.textContent.trim() !== 'Blog') return;
-  const body = document.querySelector('.case-body');
-  if (!body) return;
-  const words = (body.innerText || body.textContent).trim().split(/\s+/).length;
-  const mins = Math.max(1, Math.ceil(words / 200));
-  const timeEl = document.querySelector('time');
-  if (timeEl) {
-    const sep = document.createElement('span');
-    sep.className = 'read-time';
-    sep.textContent = ` · ${mins} min read`;
-    timeEl.insertAdjacentElement('afterend', sep);
-  }
-})();
-
 // === DARK MODE TOGGLE ===
 const root = document.documentElement;
 const saved = localStorage.getItem('theme');

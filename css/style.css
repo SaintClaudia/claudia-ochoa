@@ -193,7 +193,7 @@ body > nav {
   text-transform: uppercase;
   color: var(--black);
 }
-/* === NAV ICONS (Blog / About) === */
+/* === NAV ICONS (About) === */
 .nav-icons {
   display: flex;
   align-items: center;
