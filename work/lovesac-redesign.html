@@ -96,7 +96,10 @@
     background:rgba(231,225,210,0.92);
     backdrop-filter:blur(8px);
     border-bottom:1px solid var(--line);
+    transform:translateY(0);
+    transition:transform .3s ease;
   }
+  nav.nav-hidden{transform:translateY(-100%);}
   nav .wrap{
     display:grid; grid-template-columns:1fr auto 1fr; align-items:center;
     height:76px;
@@ -771,6 +774,35 @@
   window.addEventListener('scroll', onScroll, {passive:true});
   window.addEventListener('resize', onScroll);
   onScroll();
+})();
+</script>
+<script>
+(function(){
+  var nav = document.querySelector('nav');
+  var menu = document.getElementById('mobileMenu');
+  if(!nav || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var lastY = window.scrollY;
+  var ticking = false;
+  function update(){
+    var y = Math.max(window.scrollY, 0);
+    var menuOpen = menu && menu.classList.contains('open');
+    if(menuOpen || y <= nav.offsetHeight){
+      nav.classList.remove('nav-hidden');
+    } else if(y > lastY + 4){
+      nav.classList.add('nav-hidden');
+    } else if(y < lastY - 4){
+      nav.classList.remove('nav-hidden');
+    }
+    lastY = y;
+    ticking = false;
+  }
+  function onScroll(){
+    if(!ticking){
+      requestAnimationFrame(update);
+      ticking = true;
+    }
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
 })();
 </script>
 <script>
