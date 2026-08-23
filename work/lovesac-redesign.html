@@ -290,6 +290,19 @@
     font-size:0.82rem; font-weight:500; letter-spacing:0.01em;
   }
   .promo-bar strong{color:#E8C9A8; font-weight:700;}
+
+  /* ---------- TOAST ---------- */
+  .toast{
+    position:fixed; left:50%; bottom:28px; z-index:200;
+    transform:translate(-50%, 16px);
+    background:var(--ink); color:var(--canvas);
+    padding:13px 22px; border-radius:8px;
+    font-size:0.88rem; font-weight:500;
+    box-shadow:0 12px 30px rgba(31,36,33,0.22);
+    opacity:0; pointer-events:none;
+    transition:opacity .25s ease, transform .25s ease;
+  }
+  .toast.show{opacity:1; transform:translate(-50%, 0);}
 </style>
 </head>
 <body>
@@ -302,8 +315,8 @@
   <div class="wrap">
     <div class="logo"><img src="../images/lovesac-wordmark.png" alt="Lovesac"></div>
     <div class="nav-links">
-      <a href="#lives">Configurations</a>
-      <a href="#trust">Materials</a>
+      <a href="#" class="nav-mock">Furniture</a>
+      <a href="#" class="nav-mock">Accessories</a>
       <a href="#expect">What to expect</a>
       <div class="nav-icons">
         <a href="#" aria-label="Find a store">
@@ -482,6 +495,26 @@
   </div>
 </footer>
 
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  var toast = document.getElementById('toast');
+  var timer;
+  function showToast(msg){
+    toast.textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(timer);
+    timer = setTimeout(function(){ toast.classList.remove('show'); }, 2600);
+  }
+  document.querySelectorAll('.nav-mock').forEach(function(el){
+    el.addEventListener('click', function(e){
+      e.preventDefault();
+      showToast("Just a mockup — this link isn't wired up.");
+    });
+  });
+})();
+</script>
 <script>
 (function(){
   var bg = document.querySelector('.hero-bg');
