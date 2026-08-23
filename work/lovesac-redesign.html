@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3G6X2P2669"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3G6X2P2669');
+</script>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lovesac — Redesign Concept | Claudia Ochoa</title>
+<meta name="description" content="A speculative redesign concept for Lovesac — pulling the emotional 'it grows with your life' story above the fold and giving customers a visible answer to what happens if something goes wrong.">
+<meta property="og:title" content="Lovesac — Redesign Concept | Claudia Ochoa">
+<meta property="og:description" content="A speculative redesign concept for Lovesac — pulling the emotional 'it grows with your life' story above the fold and giving customers a visible answer to what happens if something goes wrong.">
+<meta property="og:url" content="https://claudiaochoa.co/work/lovesac-redesign.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://claudiaochoa.co/images/lovesac-redesign-thumb.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Lovesac — Redesign Concept | Claudia Ochoa">
+<meta name="twitter:description" content="A speculative redesign concept for Lovesac — pulling the emotional 'it grows with your life' story above the fold and giving customers a visible answer to what happens if something goes wrong.">
+<meta name="twitter:image" content="https://claudiaochoa.co/images/lovesac-redesign-thumb.png">
+<link rel="canonical" href="https://claudiaochoa.co/work/lovesac-redesign.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --canvas:#E7E1D2;
+    --canvas-2:#DED5C0;
+    --ink:#1F2421;
+    --ink-soft:#3A3F3A;
+    --clay:#A8462F;
+    --clay-dark:#8A3A26;
+    --moss:#5C6B4F;
+    --brass:#B08A3E;
+    --denim:#3D4F5C;
+    --line: rgba(31,36,33,0.14);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--canvas);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{
+    font-family:'Bricolage Grotesque', sans-serif;
+    font-weight:700;
+    letter-spacing:-0.02em;
+    line-height:1.02;
+  }
+  .mono{
+    font-family:'IBM Plex Mono', monospace;
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    font-size:0.72rem;
+  }
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1240px; margin:0 auto; padding:0 32px;}
+  img{display:block; width:100%; height:100%; object-fit:cover;}
+
+  :focus-visible{outline:3px solid var(--clay); outline-offset:3px;}
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(231,225,210,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:76px;
+  }
+  .logo{
+    font-family:'Bricolage Grotesque', sans-serif;
+    font-weight:700;
+    font-size:1.15rem;
+    letter-spacing:-0.01em;
+  }
+  footer .logo{font-size:1.05rem;}
+  .nav-links{display:flex; gap:36px; align-items:center;}
+  .nav-links a{font-size:0.92rem; font-weight:500; opacity:0.8; transition:opacity .2s;}
+  .nav-links a:hover{opacity:1;}
+  .nav-cta{
+    background:var(--ink); color:var(--canvas);
+    padding:11px 22px; border-radius:6px; font-size:0.85rem; font-weight:600;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:88px 0 40px;
+    position:relative;
+  }
+  .hero .wrap{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:56px;
+    align-items:center;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    color:var(--clay); margin-bottom:22px;
+  }
+  .eyebrow::before{content:''; width:20px; height:2px; background:var(--clay);}
+  .hero h1{
+    font-size:clamp(2.6rem, 5vw, 4.1rem);
+    margin-bottom:24px;
+  }
+  .hero h1 em{
+    font-style:normal; color:var(--clay);
+  }
+  .hero p{
+    font-size:1.12rem; color:var(--ink-soft); max-width:460px; margin-bottom:32px;
+  }
+  .btn-row{display:flex; gap:14px; align-items:center;}
+  .btn-primary{
+    background:var(--clay); color:var(--canvas);
+    padding:15px 28px; border-radius:6px; font-weight:600; font-size:0.95rem;
+    display:inline-block; transition:background .2s, transform .2s;
+  }
+  .btn-primary:hover{background:var(--clay-dark); transform:translateY(-1px);}
+  .btn-ghost{
+    font-weight:600; font-size:0.95rem; padding:15px 8px;
+    border-bottom:2px solid var(--ink);
+  }
+
+  /* block-assembly visual */
+  .block-stage{
+    position:relative;
+    aspect-ratio:1/1;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    grid-template-rows:repeat(3,1fr);
+    gap:10px;
+  }
+  .block-stage .cell{
+    border-radius:14px;
+    background:var(--denim);
+    opacity:0;
+    transform:scale(0.6);
+    animation:snap 0.6s cubic-bezier(.2,.9,.3,1.3) forwards;
+  }
+  .block-stage .cell.photo{background-size:cover; background-position:center;}
+  .block-stage .cell:nth-child(1){animation-delay:.05s; background:var(--moss);}
+  .block-stage .cell:nth-child(2){animation-delay:.12s; grid-column:span 2; background:var(--denim);}
+  .block-stage .cell:nth-child(3){animation-delay:.19s; background:var(--brass);}
+  .block-stage .cell:nth-child(4){animation-delay:.26s; grid-row:span 2; background:var(--ink);}
+  .block-stage .cell:nth-child(5){animation-delay:.33s; background:var(--clay);}
+  .block-stage .cell:nth-child(6){animation-delay:.4s; background:var(--moss);}
+  .block-stage .cell:nth-child(7){animation-delay:.47s; grid-column:span 2; background:var(--brass);}
+  @keyframes snap{
+    to{opacity:1; transform:scale(1);}
+  }
+
+  /* ---------- SECTION LABEL ---------- */
+  .section-label{
+    display:flex; align-items:center; gap:16px; margin-bottom:16px;
+  }
+  .section-label .tag{
+    background:var(--ink); color:var(--canvas); padding:5px 11px; border-radius:5px;
+  }
+  .section-label .rule{flex:1; height:1px; background:var(--line);}
+
+  /* ---------- LIVES SECTION (configurator scrubber) ---------- */
+  .lives{
+    padding:110px 0;
+    background:var(--canvas-2);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .lives h2{
+    font-size:clamp(2rem, 3.4vw, 2.8rem);
+    max-width:640px;
+    margin-bottom:56px;
+  }
+  .life-track{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:20px;
+  }
+  .life-card{
+    background:var(--canvas);
+    border-radius:16px;
+    overflow:hidden;
+    border:1px solid var(--line);
+    transition:transform .3s ease, box-shadow .3s ease;
+  }
+  .life-card:hover{transform:translateY(-6px); box-shadow:0 18px 40px rgba(31,36,33,0.14);}
+  .life-card .img{aspect-ratio:4/5; background-size:cover; background-position:center;}
+  .life-card .body{padding:20px;}
+  .life-card .stage{color:var(--clay); margin-bottom:8px; display:block;}
+  .life-card h3{font-size:1.15rem; margin-bottom:8px;}
+  .life-card p{font-size:0.9rem; color:var(--ink-soft);}
+
+  /* ---------- TRUST / SPECS ---------- */
+  .trust{padding:110px 0;}
+  .trust-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    border-radius:16px;
+    overflow:hidden;
+  }
+  .trust-cell{background:var(--canvas); padding:36px 28px;}
+  .trust-cell .num{
+    font-family:'IBM Plex Mono', monospace;
+    color:var(--brass); font-size:2.4rem; font-weight:500; display:block; margin-bottom:10px;
+  }
+  .trust-cell h4{font-family:'Bricolage Grotesque'; font-size:1.05rem; margin-bottom:8px;}
+  .trust-cell p{font-size:0.88rem; color:var(--ink-soft);}
+
+  /* ---------- EXPECT TIMELINE ---------- */
+  .expect{
+    padding:110px 0;
+    background:var(--ink);
+    color:var(--canvas);
+  }
+  .expect .section-label .tag{background:var(--clay); color:var(--canvas);}
+  .expect .section-label .rule{background:rgba(231,225,210,0.18);}
+  .expect h2{font-size:clamp(2rem,3.4vw,2.8rem); max-width:600px; margin-bottom:16px;}
+  .expect > .wrap > p{color:rgba(231,225,210,0.7); max-width:560px; margin-bottom:64px; font-size:1.05rem;}
+  .timeline{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:24px;
+    position:relative;
+  }
+  .timeline::before{
+    content:'';
+    position:absolute; top:17px; left:0; right:0; height:1px;
+    background:rgba(231,225,210,0.2);
+  }
+  .t-step{position:relative;}
+  .t-dot{
+    width:34px; height:34px; border-radius:9px;
+    background:var(--clay);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'IBM Plex Mono'; font-size:0.8rem; font-weight:500;
+    margin-bottom:22px; position:relative; z-index:2;
+  }
+  .t-step h4{font-family:'Bricolage Grotesque'; font-size:1.1rem; margin-bottom:10px;}
+  .t-step p{font-size:0.88rem; color:rgba(231,225,210,0.65);}
+
+  /* ---------- CTA BAND ---------- */
+  .cta-band{
+    padding:120px 0;
+    text-align:center;
+  }
+  .cta-band h2{
+    font-size:clamp(2.2rem, 5vw, 3.6rem);
+    max-width:760px;
+    margin:0 auto 32px;
+  }
+  .cta-band h2 em{font-style:normal; color:var(--clay);}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--canvas-2);
+    border-top:1px solid var(--line);
+    padding:56px 0 32px;
+  }
+  footer .wrap{
+    display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:32px;
+  }
+  .footer-cols{display:flex; gap:64px; flex-wrap:wrap;}
+  .footer-col h5{font-size:0.8rem; margin-bottom:14px; opacity:0.6; letter-spacing:0.06em; text-transform:uppercase;}
+  .footer-col a{display:block; font-size:0.9rem; margin-bottom:9px; opacity:0.8;}
+  .footer-bottom{
+    margin-top:48px; padding-top:24px; border-top:1px solid var(--line);
+    font-size:0.8rem; opacity:0.55;
+  }
+
+  /* ---------- ANNOTATION CHIP (portfolio context) ---------- */
+  .note{
+    position:fixed; bottom:20px; right:20px; z-index:100;
+    background:var(--ink); color:var(--canvas);
+    padding:12px 16px; border-radius:10px; max-width:260px;
+    font-size:0.78rem; line-height:1.4; box-shadow:0 10px 30px rgba(0,0,0,0.25);
+  }
+  .note b{color:var(--brass);}
+  .back-link{
+    position:fixed; top:20px; left:20px; z-index:100;
+    background:var(--canvas); color:var(--ink);
+    padding:10px 16px; border-radius:8px; border:1px solid var(--line);
+    font-size:0.82rem; font-weight:600; box-shadow:0 6px 20px rgba(31,36,33,0.12);
+  }
+
+  @media (max-width:860px){
+    .hero .wrap{grid-template-columns:1fr;}
+    .life-track{grid-template-columns:repeat(2,1fr);}
+    .trust-grid{grid-template-columns:repeat(2,1fr);}
+    .timeline{grid-template-columns:repeat(2,1fr); row-gap:40px;}
+    .timeline::before{display:none;}
+    .nav-links{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<a href="/" class="back-link">← Claudia Ochoa</a>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">Lovesac</div>
+    <div class="nav-links">
+      <a href="#lives">Configurations</a>
+      <a href="#trust">Materials</a>
+      <a href="#expect">What to expect</a>
+      <a href="#" class="nav-cta">Build yours</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow mono">Designed for life</div>
+      <h1>One couch.<br>Built to become <em>whatever your life needs next.</em></h1>
+      <p>Sactionals rearrange, re-cover, and grow with you — from a studio apartment to a family room, without buying furniture twice.</p>
+      <div class="btn-row">
+        <a href="#" class="btn-primary">Start building</a>
+        <a href="#lives" class="btn-ghost">See it reconfigure ↓</a>
+      </div>
+    </div>
+    <div class="block-stage" aria-hidden="true">
+      <div class="cell"></div>
+      <div class="cell photo"></div>
+      <div class="cell"></div>
+      <div class="cell photo"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell photo"></div>
+    </div>
+  </div>
+</header>
+
+<section class="lives" id="lives">
+  <div class="wrap">
+    <div class="section-label"><span class="tag mono">Same couch</span><div class="rule"></div></div>
+    <h2>Your life changes shape. So does this.</h2>
+    <div class="life-track">
+      <div class="life-card">
+        <div class="img" style="background:var(--denim)"></div>
+        <div class="body">
+          <span class="stage mono">Stage 01</span>
+          <h3>First apartment</h3>
+          <p>A loveseat and an ottoman. Nothing more than the room can hold.</p>
+        </div>
+      </div>
+      <div class="life-card">
+        <div class="img" style="background:var(--clay)"></div>
+        <div class="body">
+          <span class="stage mono">Stage 02</span>
+          <h3>Moving in together</h3>
+          <p>Add two sides, flip the chaise. Same pieces, new shape.</p>
+        </div>
+      </div>
+      <div class="life-card">
+        <div class="img" style="background:var(--moss)"></div>
+        <div class="body">
+          <span class="stage mono">Stage 03</span>
+          <h3>Kids, dogs, chaos</h3>
+          <p>Washable covers. Reinforced seams. Built for the version of home that gets used hard.</p>
+        </div>
+      </div>
+      <div class="life-card">
+        <div class="img" style="background:var(--brass)"></div>
+        <div class="body">
+          <span class="stage mono">Stage 04</span>
+          <h3>The house you'll stay in</h3>
+          <p>Split it into two rooms. It was never one couch — it was always a system.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="trust" id="trust">
+  <div class="wrap">
+    <div class="section-label"><span class="tag mono">What it's made of</span><div class="rule"></div></div>
+    <div class="trust-grid">
+      <div class="trust-cell">
+        <span class="num">Forever</span>
+        <h4>Warranty</h4>
+        <p>On the frame, for as long as you own it. Not a promo — a policy.</p>
+      </div>
+      <div class="trust-cell">
+        <span class="num">60</span>
+        <h4>Day home trial</h4>
+        <p>Live with it before it's final. Return it if it isn't right.</p>
+      </div>
+      <div class="trust-cell">
+        <span class="num">100%</span>
+        <h4>Machine washable</h4>
+        <p>Covers come off, go in the wash, go back on. No professional cleaner required.</p>
+      </div>
+      <div class="trust-cell">
+        <span class="num">Recycled</span>
+        <h4>Fill material</h4>
+        <p>Foam made from reclaimed plastic bottles — real material sourcing, not a footnote.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="expect" id="expect">
+  <div class="wrap">
+    <div class="section-label"><span class="tag mono">Before you buy</span><div class="rule"></div></div>
+    <h2>Here's exactly what happens after you order.</h2>
+    <p>No surprises, no fine print you find out about later. This is the whole path, start to finish.</p>
+    <div class="timeline">
+      <div class="t-step">
+        <div class="t-dot mono">01</div>
+        <h4>You configure it</h4>
+        <p>Pick your shape, your fabric, your size. See the real price before you check out — no hidden fees added later.</p>
+      </div>
+      <div class="t-step">
+        <div class="t-dot mono">02</div>
+        <h4>It ships in weeks, not months</h4>
+        <p>You'll get a real delivery window when you order, and updates if anything changes — not silence.</p>
+      </div>
+      <div class="t-step">
+        <div class="t-dot mono">03</div>
+        <h4>You trial it for 60 days</h4>
+        <p>If it's wrong for your space, tell us and we'll make it right — that's the policy, not a favor.</p>
+      </div>
+      <div class="t-step">
+        <div class="t-dot mono">04</div>
+        <h4>If something's wrong, a person responds</h4>
+        <p>Support is a person, not a script — and if we get it wrong publicly, we fix it the same way: directly, not defensively.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Stop buying furniture <em>for the life you have right now.</em></h2>
+    <a href="#" class="btn-primary">Start building yours</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="logo">Lovesac</div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h5>Shop</h5>
+        <a href="#">Sactionals</a>
+        <a href="#">Sacs</a>
+        <a href="#">StealthTech</a>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <a href="#">Our philosophy</a>
+        <a href="#">Sustainability</a>
+        <a href="#">Careers</a>
+      </div>
+      <div class="footer-col">
+        <h5>Support</h5>
+        <a href="#">What to expect</a>
+        <a href="#">Warranty</a>
+        <a href="#">Contact a person</a>
+      </div>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    Concept redesign — not an official Lovesac property.
+  </div>
+</footer>
+
+<div class="note">
+  <b>Redesign concept</b> by Claudia Ochoa — addresses two problems: emotional storytelling buried below the fold, and no visible answer to "what happens if something goes wrong."
+</div>
+
+</body>
+</html>
