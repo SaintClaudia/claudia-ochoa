@@ -705,14 +705,14 @@
   document.querySelectorAll('.nav-mock').forEach(function(el){
     el.addEventListener('click', function(e){
       e.preventDefault();
-      showToast("Just a mockup — this link isn't wired up.");
+      showToast("Non-functional prototype — for demonstration purposes only");
     });
   });
   var mobileSearch = document.querySelector('.mobile-search');
   if(mobileSearch){
     mobileSearch.addEventListener('submit', function(e){
       e.preventDefault();
-      showToast("Just a mockup — search isn't wired up.");
+      showToast("Non-functional prototype — for demonstration purposes only");
       var menu = document.getElementById('mobileMenu');
       var btn = document.getElementById('hamburgerBtn');
       if(menu) menu.classList.remove('open');
