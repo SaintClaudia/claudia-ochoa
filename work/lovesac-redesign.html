@@ -370,6 +370,12 @@
     transition:opacity .25s ease, transform .25s ease;
   }
 
+  @media (min-width:861px) and (max-width:1024px){
+    .life-track{grid-template-columns:repeat(2,1fr);}
+    .timeline{grid-template-columns:repeat(2,1fr); row-gap:40px;}
+    .timeline::before{display:none;}
+  }
+
   @media (max-width:860px){
     .hero{min-height:520px; padding-bottom:48px;}
     .lives, .expect, .reviews, .cta-band{padding:56px 0;}
@@ -480,7 +486,7 @@
         <line x1="16" y1="20" x2="16" y2="13"/>
         <line x1="24" y1="20" x2="24" y2="13"/>
       </svg>
-      <p><strong>60-Day Trial</strong> — Try it at home, then decide</p>
+      <p><strong>60-Day Trial</strong> — try it at home, then decide</p>
     </div>
     <div class="trust-item">
       <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -490,7 +496,7 @@
         <circle cx="12" cy="10" r="1.1" fill="currentColor" stroke="none"/>
         <circle cx="16" cy="10" r="1.1" fill="currentColor" stroke="none"/>
       </svg>
-      <p><strong>Machine Washable</strong> — Easy to remove, easy to put back on</p>
+      <p><strong>Machine Washable</strong> — easy to remove, easy to wash</p>
     </div>
     <div class="trust-item">
       <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
