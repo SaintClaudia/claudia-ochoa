@@ -211,28 +211,35 @@
   }
   .expect .section-label .tag{background:var(--clay); color:var(--canvas);}
   .expect .section-label .rule{background:rgba(231,225,210,0.18);}
-  .expect h2{font-size:clamp(2rem,3.4vw,2.8rem); max-width:600px; margin-bottom:64px;}
+  .expect h2{font-size:clamp(2rem,3.4vw,2.8rem); max-width:640px; margin-bottom:20px;}
+  .expect-intro{font-size:1.05rem; max-width:600px; color:rgba(231,225,210,0.7); margin-bottom:64px;}
   .timeline{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:24px;
+    display:flex; flex-direction:column;
     position:relative;
   }
   .timeline::before{
     content:'';
-    position:absolute; top:17px; left:0; right:0; height:1px;
+    position:absolute; top:17px; bottom:17px; left:17px; width:1px;
     background:rgba(231,225,210,0.2);
   }
-  .t-step{position:relative;}
+  .t-step{
+    position:relative;
+    display:flex; gap:28px; align-items:flex-start;
+    padding:28px 0;
+    border-bottom:1px solid rgba(231,225,210,0.12);
+  }
+  .t-step:first-child{padding-top:0;}
+  .t-step:last-child{padding-bottom:0; border-bottom:none;}
   .t-dot{
     width:34px; height:34px; border-radius:9px;
     background:var(--clay);
     display:flex; align-items:center; justify-content:center;
     font-family:'IBM Plex Mono'; font-size:0.8rem; font-weight:500;
-    margin-bottom:22px; position:relative; z-index:2;
+    position:relative; z-index:2; flex-shrink:0;
   }
-  .t-step h4{font-family:'Bricolage Grotesque'; font-size:1.1rem; margin-bottom:10px;}
-  .t-step p{font-size:0.88rem; color:rgba(231,225,210,0.65);}
+  .t-body{max-width:620px;}
+  .t-step h4{font-family:'Bricolage Grotesque'; font-size:1.15rem; margin-bottom:8px;}
+  .t-step p{font-size:0.92rem; color:rgba(231,225,210,0.65);}
 
   /* ---------- CTA BAND ---------- */
   .cta-band{
@@ -275,8 +282,7 @@
     .life-track{grid-template-columns:repeat(2,1fr);}
     .trust-band .wrap{flex-direction:column; align-items:flex-start; gap:20px;}
     .trust-item{border-left:none !important; padding:0 !important; width:100%;}
-    .timeline{grid-template-columns:repeat(2,1fr); row-gap:40px;}
-    .timeline::before{display:none;}
+    .t-step{gap:18px;}
     .nav-links{display:none;}
   }
 
@@ -429,27 +435,43 @@
 <section class="expect" id="expect">
   <div class="wrap">
     <div class="section-label"><span class="tag mono">Before you buy</span><div class="rule"></div></div>
-    <h2>Here's exactly what happens after you order.</h2>
+    <h2>Here's what happens after you order.</h2>
+    <p class="expect-intro">We want you to know what to expect from the moment you click order to the moment you settle in. No surprises. Just a clear, straightforward experience from start to finish.</p>
     <div class="timeline">
       <div class="t-step">
         <div class="t-dot mono">01</div>
-        <h4>It ships in weeks, not months</h4>
-        <p>You'll get a real delivery window when you order, and updates if anything changes.</p>
+        <div class="t-body">
+          <h4>You make it yours</h4>
+          <p>Choose your shape, fabric, and size. You'll see the full price before you order, so what you see is what you pay.</p>
+        </div>
       </div>
       <div class="t-step">
         <div class="t-dot mono">02</div>
-        <h4>It arrives boxed, you build it</h4>
-        <p>No delivery crew, no assembly fee. Just a labor of love.</p>
+        <div class="t-body">
+          <h4>We keep you in the loop</h4>
+          <p>Your order comes with a real delivery window, and we'll keep you updated along the way. If anything changes, you'll hear from us.</p>
+        </div>
       </div>
       <div class="t-step">
         <div class="t-dot mono">03</div>
-        <h4>You get 60 days to try it out</h4>
-        <p>If it's wrong for your space, tell us and we'll make it right — that's the policy, not a favor.</p>
+        <div class="t-body">
+          <h4>It arrives in boxes, ready to put together</h4>
+          <p>Each piece takes about 15 minutes to assemble, so larger configurations take longer. No tools, delivery crew, or installation fee.</p>
+        </div>
       </div>
       <div class="t-step">
         <div class="t-dot mono">04</div>
-        <h4>If something's wrong, we'll fix it</h4>
-        <p>Tell us what happened, and we'll make it right.</p>
+        <div class="t-body">
+          <h4>You have 60 days to live with it</h4>
+          <p>Take your time. See how it feels in your space, how you use it, and whether it's right for you. If it isn't, let us know. We'll make it right.</p>
+        </div>
+      </div>
+      <div class="t-step">
+        <div class="t-dot mono">05</div>
+        <div class="t-body">
+          <h4>And when you need us, there's a person here</h4>
+          <p>Questions, problems, second thoughts — we're here. You'll talk to a real person who will listen, help, and take responsibility when something doesn't go as planned.</p>
+        </div>
       </div>
     </div>
   </div>
