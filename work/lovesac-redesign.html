@@ -51,7 +51,7 @@
     --canvas:#EDE7DA;
     --canvas-2:#E1D6C4;
     --ink:#3D3128;
-    --ink-soft:#6B5D4F;
+    --ink-soft:#5C4F42;
     --clay:#835844;
     --clay-dark:#6B4736;
     --moss:#8E8D7E;
@@ -303,7 +303,7 @@
     font-family:'IBM Plex Mono'; font-size:0.8rem; font-weight:500;
     margin-bottom:22px; position:relative; z-index:2;
   }
-  .t-step h4{font-family:'Bricolage Grotesque'; font-size:1.05rem; margin-bottom:8px;}
+  .t-step h3{font-family:'Bricolage Grotesque'; font-size:1.05rem; margin-bottom:8px;}
   .t-step p{font-size:0.86rem; color:rgba(231,225,210,0.65);}
 
   /* ---------- REVIEWS ---------- */
@@ -358,11 +358,11 @@
     display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:32px;
   }
   .footer-cols{display:flex; gap:64px; flex-wrap:wrap;}
-  .footer-col h5{font-size:0.8rem; margin-bottom:14px; opacity:0.6; letter-spacing:0.06em; text-transform:uppercase;}
+  .footer-col h3{font-size:0.8rem; margin-bottom:14px; opacity:0.78; letter-spacing:0.06em; text-transform:uppercase;}
   .footer-col a{display:block; font-size:0.9rem; margin-bottom:9px; opacity:0.8;}
   .footer-bottom{
     margin-top:48px; padding-top:24px; border-top:1px solid var(--line);
-    font-size:0.8rem; opacity:0.55;
+    font-size:0.8rem; opacity:0.78;
   }
 
   .back-link{
@@ -422,7 +422,7 @@
 </head>
 <body>
 
-<a href="/" class="back-link">← Back to Portfolio</a>
+<header>
 
 <div class="promo-bar">Labor Day Sale — up to <strong>40% off</strong>*</div>
 
@@ -467,7 +467,11 @@
   </div>
 </nav>
 
-<header class="hero">
+</header>
+
+<main>
+
+<section class="hero">
   <div class="hero-bg" aria-hidden="true"></div>
   <div class="wrap">
     <div class="hero-copy">
@@ -478,7 +482,7 @@
       </div>
     </div>
   </div>
-</header>
+</section>
 
 <section class="trust-band" id="trust">
   <div class="wrap">
@@ -569,35 +573,35 @@
       <div class="t-step">
         <div class="t-dot mono">01</div>
         <div class="t-body">
-          <h4>You make it yours</h4>
+          <h3>You make it yours</h3>
           <p>Choose your shape, fabric, and size. You'll see the full price before you order.</p>
         </div>
       </div>
       <div class="t-step">
         <div class="t-dot mono">02</div>
         <div class="t-body">
-          <h4>We keep you in the loop</h4>
+          <h3>We keep you in the loop</h3>
           <p>Your order comes with a delivery window, and we'll keep you updated along the way.</p>
         </div>
       </div>
       <div class="t-step">
         <div class="t-dot mono">03</div>
         <div class="t-body">
-          <h4>It arrives in boxes</h4>
+          <h3>It arrives in boxes</h3>
           <p>Each piece takes about 15 minutes to assemble. Times will vary based on the configuration.</p>
         </div>
       </div>
       <div class="t-step">
         <div class="t-dot mono">04</div>
         <div class="t-body">
-          <h4>You have a 60-day trial</h4>
+          <h3>You have a 60-day trial</h3>
           <p>Live with it, see how it feels, and decide if it's right for you.</p>
         </div>
       </div>
       <div class="t-step">
         <div class="t-dot mono">05</div>
         <div class="t-body">
-          <h4>If something goes wrong</h4>
+          <h3>If something goes wrong</h3>
           <p>Questions, problems, second thoughts — we're here. You'll always speak with a real person.</p>
         </div>
       </div>
@@ -664,24 +668,26 @@
   </div>
 </section>
 
+</main>
+
 <footer>
   <div class="wrap">
     <div class="logo"><img src="../images/lovesac-wordmark.png" alt="Lovesac"></div>
     <div class="footer-cols">
       <div class="footer-col">
-        <h5>Shop</h5>
+        <h3>Shop</h3>
         <a href="#" class="nav-mock">Sactionals</a>
         <a href="#" class="nav-mock">Sacs</a>
         <a href="#" class="nav-mock">StealthTech</a>
       </div>
       <div class="footer-col">
-        <h5>Company</h5>
+        <h3>Company</h3>
         <a href="#" class="nav-mock">Our philosophy</a>
         <a href="#" class="nav-mock">Sustainability</a>
         <a href="#" class="nav-mock">Careers</a>
       </div>
       <div class="footer-col">
-        <h5>Support</h5>
+        <h3>Support</h3>
         <a href="#" class="nav-mock">What to expect</a>
         <a href="#" class="nav-mock">Warranty</a>
         <a href="#" class="nav-mock">Contact us</a>
@@ -691,6 +697,7 @@
   <div class="wrap footer-bottom">
     Concept redesign — not an official Lovesac property.
   </div>
+  <a href="/" class="back-link">← Back to Portfolio</a>
 </footer>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -769,6 +776,7 @@
       link.classList.remove('show');
     }
   }
+  link.addEventListener('focus', function(){ link.classList.add('show'); });
   window.addEventListener('scroll', onScroll, {passive:true});
   window.addEventListener('resize', onScroll);
   onScroll();
@@ -779,6 +787,7 @@
   var nav = document.querySelector('nav');
   var menu = document.getElementById('mobileMenu');
   if(!nav || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  nav.addEventListener('focusin', function(){ nav.classList.remove('nav-hidden'); });
   var lastY = window.scrollY;
   var ticking = false;
   function update(){
