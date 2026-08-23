@@ -371,7 +371,9 @@
     padding:10px 16px; border-radius:8px; border:1px solid var(--line);
     font-size:0.82rem; font-weight:600; box-shadow:0 6px 20px rgba(31,36,33,0.12);
     transition:opacity .25s ease, transform .25s ease;
+    opacity:0; transform:translateY(12px); pointer-events:none;
   }
+  .back-link.show{opacity:1; transform:translateY(0); pointer-events:auto;}
 
   @media (min-width:861px) and (max-width:1024px){
     .life-track{grid-template-columns:repeat(2,1fr);}
@@ -394,8 +396,6 @@
     .hamburger{display:flex;}
     nav .logo{position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); justify-self:auto;}
     .nav-icons a.icon-store, .nav-icons a.icon-account, .nav-icons a.icon-search{display:none;}
-    .back-link{opacity:0; transform:translateY(12px); pointer-events:none;}
-    .back-link.show{opacity:1; transform:translateY(0); pointer-events:auto;}
   }
 
   /* ---------- PROMO BAR ---------- */
@@ -761,9 +761,7 @@
   var link = document.querySelector('.back-link');
   var ctaBand = document.querySelector('.cta-band');
   if(!link || !ctaBand) return;
-  var mq = window.matchMedia('(max-width:860px)');
   function onScroll(){
-    if(!mq.matches){ link.classList.remove('show'); return; }
     var threshold = ctaBand.offsetTop;
     if(window.scrollY > threshold){
       link.classList.add('show');
