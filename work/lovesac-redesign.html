@@ -184,24 +184,24 @@
   .life-card h3{font-size:1.15rem; margin-bottom:8px;}
   .life-card p{font-size:0.9rem; color:var(--ink-soft);}
 
-  /* ---------- TRUST / SPECS ---------- */
-  .trust{padding:110px 0;}
-  .trust-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:1px;
-    background:var(--line);
-    border:1px solid var(--line);
-    border-radius:16px;
-    overflow:hidden;
+  /* ---------- TRUST BAND ---------- */
+  .trust-band{
+    background:var(--canvas-2);
+    border-bottom:1px solid var(--line);
+    padding:34px 0;
   }
-  .trust-cell{background:var(--canvas); padding:36px 28px;}
-  .trust-cell .num{
-    font-family:'IBM Plex Mono', monospace;
-    color:var(--brass); font-size:2.4rem; font-weight:500; display:block; margin-bottom:10px;
+  .trust-band .wrap{display:flex; align-items:center;}
+  .trust-item{
+    flex:1;
+    display:flex; align-items:center; gap:16px;
+    padding:0 28px;
   }
-  .trust-cell h4{font-family:'Bricolage Grotesque'; font-size:1.05rem; margin-bottom:8px;}
-  .trust-cell p{font-size:0.88rem; color:var(--ink-soft);}
+  .trust-item:first-child{padding-left:0;}
+  .trust-item:last-child{padding-right:0;}
+  .trust-item + .trust-item{border-left:1px solid var(--line);}
+  .trust-item svg{width:34px; height:34px; flex-shrink:0; color:var(--ink-soft);}
+  .trust-item p{font-size:0.88rem; color:var(--ink-soft); line-height:1.45;}
+  .trust-item p strong{color:var(--ink); font-weight:700;}
 
   /* ---------- EXPECT TIMELINE ---------- */
   .expect{
@@ -273,7 +273,8 @@
   @media (max-width:860px){
     .hero{min-height:520px; padding-bottom:48px;}
     .life-track{grid-template-columns:repeat(2,1fr);}
-    .trust-grid{grid-template-columns:repeat(2,1fr);}
+    .trust-band .wrap{flex-direction:column; align-items:flex-start; gap:20px;}
+    .trust-item{border-left:none !important; padding:0 !important; width:100%;}
     .timeline{grid-template-columns:repeat(2,1fr); row-gap:40px;}
     .timeline::before{display:none;}
     .nav-links{display:none;}
@@ -308,6 +309,46 @@
     </div>
   </div>
 </header>
+
+<section class="trust-band" id="trust">
+  <div class="wrap">
+    <div class="trust-item">
+      <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M8 22v-6a3 3 0 0 1 3-3h18a3 3 0 0 1 3 3v6"/>
+        <rect x="5" y="20" width="30" height="9" rx="3"/>
+        <path d="M8 29v3M32 29v3"/>
+        <line x1="16" y1="20" x2="16" y2="13"/>
+        <line x1="24" y1="20" x2="24" y2="13"/>
+      </svg>
+      <p><strong>60-Day Trial</strong> — live with it before it's final</p>
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="7" y="6" width="26" height="28" rx="4"/>
+        <circle cx="20" cy="22" r="8"/>
+        <circle cx="20" cy="22" r="3.5"/>
+        <circle cx="12" cy="10" r="1.1" fill="currentColor" stroke="none"/>
+        <circle cx="16" cy="10" r="1.1" fill="currentColor" stroke="none"/>
+      </svg>
+      <p><strong>Machine Washable</strong> — covers off, in the wash, back on</p>
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M20 3 L31 7.5 V16 C31 24 26.5 29.5 20 32.5 C13.5 29.5 9 24 9 16 V7.5 Z"/>
+        <path d="M14 17 L18 21 L27 12"/>
+      </svg>
+      <p><strong>Forever Warranty</strong> — covers the frame for as long as you own it</p>
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M20 33C13 30 9 24 11 16C13 9 20 6 20 6"/>
+        <path d="M20 33C27 30 31 24 29 16C27 9 20 6 20 6"/>
+        <path d="M20 6V33"/>
+      </svg>
+      <p><strong>Recycled Fill</strong> — foam made from reclaimed plastic bottles</p>
+    </div>
+  </div>
+</section>
 
 <section class="lives" id="lives">
   <div class="wrap">
@@ -345,34 +386,6 @@
           <h3>The house you'll stay in</h3>
           <p>Split it into two rooms. It was never one couch — it was always a system.</p>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="trust" id="trust">
-  <div class="wrap">
-    <div class="section-label"><span class="tag mono">What it's made of</span><div class="rule"></div></div>
-    <div class="trust-grid">
-      <div class="trust-cell">
-        <span class="num">Forever</span>
-        <h4>Warranty</h4>
-        <p>On the frame, for as long as you own it. Not a promo — a policy.</p>
-      </div>
-      <div class="trust-cell">
-        <span class="num">60</span>
-        <h4>Day home trial</h4>
-        <p>Live with it before it's final. Return it if it isn't right.</p>
-      </div>
-      <div class="trust-cell">
-        <span class="num">100%</span>
-        <h4>Machine washable</h4>
-        <p>Covers come off, go in the wash, go back on. No professional cleaner required.</p>
-      </div>
-      <div class="trust-cell">
-        <span class="num">Recycled</span>
-        <h4>Fill material</h4>
-        <p>Foam made from reclaimed plastic bottles — real material sourcing, not a footnote.</p>
       </div>
     </div>
   </div>
