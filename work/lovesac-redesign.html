@@ -83,13 +83,9 @@
     display:flex; align-items:center; justify-content:space-between;
     height:76px;
   }
-  .logo{
-    font-family:'Bricolage Grotesque', sans-serif;
-    font-weight:700;
-    font-size:1.15rem;
-    letter-spacing:-0.01em;
-  }
-  footer .logo{font-size:1.05rem;}
+  .logo{display:flex; align-items:center;}
+  .logo img{width:auto; height:20px;}
+  footer .logo img{height:24px;}
   .nav-links{display:flex; gap:36px; align-items:center;}
   .nav-links a{font-size:0.92rem; font-weight:500; opacity:0.8; transition:opacity .2s;}
   .nav-links a:hover{opacity:1;}
@@ -283,16 +279,8 @@
     font-size:0.8rem; opacity:0.55;
   }
 
-  /* ---------- ANNOTATION CHIP (portfolio context) ---------- */
-  .note{
-    position:fixed; bottom:20px; right:20px; z-index:100;
-    background:var(--ink); color:var(--canvas);
-    padding:12px 16px; border-radius:10px; max-width:260px;
-    font-size:0.78rem; line-height:1.4; box-shadow:0 10px 30px rgba(0,0,0,0.25);
-  }
-  .note b{color:var(--brass);}
   .back-link{
-    position:fixed; top:20px; left:20px; z-index:100;
+    position:fixed; bottom:20px; left:20px; z-index:100;
     background:var(--canvas); color:var(--ink);
     padding:10px 16px; border-radius:8px; border:1px solid var(--line);
     font-size:0.82rem; font-weight:600; box-shadow:0 6px 20px rgba(31,36,33,0.12);
@@ -314,7 +302,7 @@
 
 <nav>
   <div class="wrap">
-    <div class="logo">Lovesac</div>
+    <div class="logo"><img src="../images/lovesac-logo.png" alt="Lovesac"></div>
     <div class="nav-links">
       <a href="#lives">Configurations</a>
       <a href="#trust">Materials</a>
@@ -454,7 +442,7 @@
 
 <footer>
   <div class="wrap">
-    <div class="logo">Lovesac</div>
+    <div class="logo"><img src="../images/lovesac-logo.png" alt="Lovesac"></div>
     <div class="footer-cols">
       <div class="footer-col">
         <h5>Shop</h5>
@@ -480,10 +468,6 @@
     Concept redesign — not an official Lovesac property.
   </div>
 </footer>
-
-<div class="note">
-  <b>Redesign concept</b> by Claudia Ochoa — addresses two problems: emotional storytelling buried below the fold, and no visible answer to "what happens if something goes wrong."
-</div>
 
 </body>
 </html>
