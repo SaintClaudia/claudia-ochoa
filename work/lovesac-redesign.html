@@ -135,6 +135,20 @@
     border-bottom:1px solid var(--line);
   }
   .mobile-menu a:last-child{border-bottom:none;}
+  .mobile-search{
+    display:flex; align-items:center; gap:10px;
+    padding:18px 32px 22px;
+  }
+  .mobile-search svg{width:20px; height:20px; color:var(--ink-soft); flex-shrink:0;}
+  .mobile-search input{
+    flex:1; width:100%; min-width:0;
+    border:none; border-bottom:1.5px solid var(--ink-soft);
+    background:none; outline:none;
+    font-family:'Work Sans', sans-serif; font-size:1rem; color:var(--ink);
+    padding:6px 2px 8px;
+  }
+  .mobile-search input::placeholder{color:var(--ink-soft); opacity:0.65;}
+  .mobile-search input:focus{border-bottom-color:var(--clay);}
   @media (min-width:861px){
     .mobile-menu{display:none !important;}
   }
@@ -369,7 +383,7 @@
     nav .wrap{display:flex; justify-content:space-between; position:relative;}
     .hamburger{display:flex;}
     .logo{position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); justify-self:auto;}
-    .nav-icons a.icon-store, .nav-icons a.icon-account{display:none;}
+    .nav-icons a.icon-store, .nav-icons a.icon-account, .nav-icons a.icon-search{display:none;}
     .back-link{opacity:0; transform:translateY(12px); pointer-events:none;}
     .back-link.show{opacity:1; transform:translateY(0); pointer-events:auto;}
   }
@@ -430,6 +444,10 @@
     </div>
   </div>
   <div class="mobile-menu" id="mobileMenu">
+    <form class="mobile-search" role="search" action="#">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.2" y2="16.2"/></svg>
+      <input type="search" placeholder="Search" aria-label="Search">
+    </form>
     <a href="#" class="nav-mock">Furniture</a>
     <a href="#" class="nav-mock">Accessories</a>
     <a href="#expect">What to expect</a>
@@ -683,6 +701,20 @@
       showToast("Just a mockup — this link isn't wired up.");
     });
   });
+  var mobileSearch = document.querySelector('.mobile-search');
+  if(mobileSearch){
+    mobileSearch.addEventListener('submit', function(e){
+      e.preventDefault();
+      showToast("Just a mockup — search isn't wired up.");
+      var menu = document.getElementById('mobileMenu');
+      var btn = document.getElementById('hamburgerBtn');
+      if(menu) menu.classList.remove('open');
+      if(btn){
+        btn.setAttribute('aria-expanded', 'false');
+        btn.setAttribute('aria-label', 'Open menu');
+      }
+    });
+  }
 })();
 </script>
 <script>
