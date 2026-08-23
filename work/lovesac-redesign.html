@@ -770,7 +770,7 @@
   if(!link || !ctaBand) return;
   function onScroll(){
     var threshold = ctaBand.offsetTop;
-    if(window.scrollY > threshold){
+    if(window.scrollY + window.innerHeight > threshold){
       link.classList.add('show');
     } else {
       link.classList.remove('show');
