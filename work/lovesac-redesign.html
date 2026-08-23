@@ -360,10 +360,12 @@
   .footer-cols{display:flex; gap:64px; flex-wrap:wrap;}
   .footer-col h3{font-size:0.8rem; margin-bottom:14px; opacity:0.78; letter-spacing:0.06em; text-transform:uppercase;}
   .footer-col a{display:block; font-size:0.9rem; margin-bottom:9px; opacity:0.8;}
-  .footer-social{display:flex; gap:16px;}
+  .footer-brand{display:flex; flex-direction:column; gap:20px;}
+  .footer-social{display:flex; align-items:center; gap:18px;}
   .footer-social a{display:flex; opacity:0.75; transition:opacity .2s; color:var(--ink);}
   .footer-social a:hover{opacity:1;}
   .footer-social svg{width:19px; height:19px;}
+  .footer-social svg.icon-lg{width:24px; height:24px;}
   .footer-bottom{
     margin-top:48px; padding-top:24px; border-top:1px solid var(--line);
     font-size:0.8rem; opacity:0.78;
@@ -676,7 +678,23 @@
 
 <footer>
   <div class="wrap">
-    <div class="logo"><img src="../images/lovesac-wordmark.png" alt="Lovesac"></div>
+    <div class="footer-brand">
+      <div class="logo"><img src="../images/lovesac-wordmark.png" alt="Lovesac"></div>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/lovesac/" target="_blank" rel="noopener noreferrer" aria-label="Lovesac on Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="0.6" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://www.tiktok.com/@lovesac" target="_blank" rel="noopener noreferrer" aria-label="Lovesac on TikTok">
+          <svg class="icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 2v11.6a4 4 0 1 1-4-4"/><path d="M16 2c0 2.8 2.3 5.1 5.1 5.1"/></svg>
+        </a>
+        <a href="https://x.com/Lovesac" target="_blank" rel="noopener noreferrer" aria-label="Lovesac on X">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
+        </a>
+        <a href="https://www.facebook.com/Lovesac/" target="_blank" rel="noopener noreferrer" aria-label="Lovesac on Facebook">
+          <svg class="icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13.8 4.2h-1.9a3 3 0 0 0-3 3V10H6.4v3.5h2.5V21h3.6v-7.5h2.8l.5-3.5h-3.3V7.6c0-.7.3-1 1-1h2.3z"/></svg>
+        </a>
+      </div>
+    </div>
     <div class="footer-cols">
       <div class="footer-col">
         <h3>Shop</h3>
@@ -695,23 +713,6 @@
         <a href="#" class="nav-mock">What to expect</a>
         <a href="#" class="nav-mock">Warranty</a>
         <a href="#" class="nav-mock">Contact us</a>
-      </div>
-      <div class="footer-col">
-        <h3>Follow</h3>
-        <div class="footer-social">
-          <a href="https://www.instagram.com/lovesac/" target="_blank" rel="noopener noreferrer" aria-label="Lovesac on Instagram">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="0.6" fill="currentColor" stroke="none"/></svg>
-          </a>
-          <a href="https://www.tiktok.com/@lovesac" target="_blank" rel="noopener noreferrer" aria-label="Lovesac on TikTok">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3v10.8a3.7 3.7 0 1 1-3.7-3.7"/><path d="M16 3c0 2.6 2.1 4.7 4.7 4.7"/></svg>
-          </a>
-          <a href="https://x.com/Lovesac" target="_blank" rel="noopener noreferrer" aria-label="Lovesac on X">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
-          </a>
-          <a href="https://www.facebook.com/Lovesac/" target="_blank" rel="noopener noreferrer" aria-label="Lovesac on Facebook">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 8.5h-1.8a1.8 1.8 0 0 0-1.8 1.8V12H9v3h1.9v6h2.8v-6h2.1l.4-3h-2.5v-1.3c0-.5.3-.7.8-.7h1.7z"/></svg>
-          </a>
-        </div>
       </div>
     </div>
   </div>
