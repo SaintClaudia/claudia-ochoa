@@ -749,12 +749,12 @@
 <script>
 (function(){
   var link = document.querySelector('.back-link');
-  var hero = document.querySelector('.hero');
-  if(!link || !hero) return;
+  var ctaBand = document.querySelector('.cta-band');
+  if(!link || !ctaBand) return;
   var mq = window.matchMedia('(max-width:860px)');
   function onScroll(){
     if(!mq.matches){ link.classList.remove('show'); return; }
-    var threshold = hero.offsetTop + hero.offsetHeight;
+    var threshold = ctaBand.offsetTop;
     if(window.scrollY > threshold){
       link.classList.add('show');
     } else {
