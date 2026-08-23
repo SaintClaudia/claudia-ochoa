@@ -240,7 +240,6 @@ body > nav {
   text-transform: uppercase;
   color: var(--mid);
 }
-.home-hero h1 { max-width: 14ch; }
 @media (max-width: 600px) {
   .home-hero { padding: 60px 0 16px; }
   .case-hero { padding: 56px 0 16px; }
