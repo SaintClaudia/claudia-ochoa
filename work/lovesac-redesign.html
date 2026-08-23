@@ -235,6 +235,36 @@
   .t-step h4{font-family:'Bricolage Grotesque'; font-size:1.05rem; margin-bottom:8px;}
   .t-step p{font-size:0.86rem; color:rgba(231,225,210,0.65);}
 
+  /* ---------- REVIEWS ---------- */
+  .reviews{padding:110px 0; text-align:center;}
+  .reviews-eyebrow{color:var(--clay); margin-bottom:20px;}
+  .reviews h2{font-size:clamp(2rem,3.6vw,3rem); max-width:700px; margin:0 auto 20px;}
+  .reviews-rating{
+    display:flex; justify-content:center; align-items:center; gap:8px;
+    color:var(--ink-soft); font-size:0.95rem; margin-bottom:56px;
+  }
+  .reviews-rating .stars{color:var(--brass); letter-spacing:2px; font-size:1.05rem;}
+  .review-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  .review-card{
+    background:var(--canvas-2); border:1px solid var(--line); border-radius:16px;
+    padding:32px 28px; text-align:left;
+  }
+  .review-card .stars{color:var(--brass); font-size:1rem; letter-spacing:3px; margin-bottom:20px; display:block;}
+  .review-card blockquote{
+    font-style:italic; font-size:1.02rem; line-height:1.55;
+    border-left:2px solid var(--clay); padding-left:16px; margin-bottom:26px; color:var(--ink);
+  }
+  .reviewer{display:flex; align-items:center; gap:12px;}
+  .review-avatar{
+    width:38px; height:38px; border-radius:50%; flex-shrink:0;
+    background:var(--clay); color:var(--canvas);
+    display:flex; align-items:center; justify-content:center;
+    font-weight:700; font-size:0.95rem;
+  }
+  .reviewer-name{display:flex; align-items:center; gap:6px; font-weight:700; font-size:0.95rem;}
+  .reviewer-name svg{width:14px; height:14px; color:var(--moss); flex-shrink:0;}
+  .reviewer-meta{font-size:0.82rem; color:var(--ink-soft);}
+
   /* ---------- CTA BAND ---------- */
   .cta-band{
     padding:120px 0;
@@ -274,6 +304,7 @@
   @media (max-width:860px){
     .hero{min-height:520px; padding-bottom:48px;}
     .life-track{grid-template-columns:repeat(2,1fr);}
+    .review-grid{grid-template-columns:1fr;}
     .trust-band .wrap{flex-direction:column; align-items:flex-start; gap:20px;}
     .trust-item{border-left:none !important; padding:0 !important; width:100%;}
     .timeline{grid-template-columns:repeat(2,1fr); row-gap:40px;}
@@ -466,6 +497,58 @@
         <div class="t-body">
           <h4>If something goes wrong</h4>
           <p>Questions, problems, second thoughts — we're here. You'll talk to a real person who will listen, help, and take responsibility when something doesn't go as planned.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews">
+  <div class="wrap">
+    <div class="reviews-eyebrow mono">Real reviews</div>
+    <h2>Loved by the people who live on it.</h2>
+    <div class="reviews-rating">
+      <span class="stars" aria-hidden="true">★★★★☆</span>
+      <span>4.3 (8,509 Reviews)</span>
+    </div>
+    <div class="review-grid">
+      <div class="review-card">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <blockquote>"Couch is fantastic. Every option and every part of it. Insanely comfortable."</blockquote>
+        <div class="reviewer">
+          <div class="review-avatar">P</div>
+          <div>
+            <div class="reviewer-name">Patty F.
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            </div>
+            <div class="reviewer-meta">Verified Buyer</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <blockquote>"I live in a very small condo, and hidden storage is a must. These storage seats are a total game changer."</blockquote>
+        <div class="reviewer">
+          <div class="review-avatar">L</div>
+          <div>
+            <div class="reviewer-name">Lauren
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            </div>
+            <div class="reviewer-meta">Verified Buyer</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <blockquote>"Lovesac was the perfect choice. The look, comfort, flexibility, and price were all better than imagined."</blockquote>
+        <div class="reviewer">
+          <div class="review-avatar">L</div>
+          <div>
+            <div class="reviewer-name">Libby
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            </div>
+            <div class="reviewer-meta">Verified Buyer</div>
+          </div>
         </div>
       </div>
     </div>
