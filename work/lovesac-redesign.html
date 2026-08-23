@@ -119,11 +119,16 @@
   }
   .hero .wrap{position:relative; z-index:2; width:100%;}
   .hero-copy{max-width:460px;}
+  @keyframes rise{
+    from{opacity:0; transform:translateY(18px);}
+    to{opacity:1; transform:translateY(0);}
+  }
   .hero h1{
     font-size:clamp(2.6rem, 5vw, 4.1rem);
     margin-bottom:24px;
     color:var(--canvas);
     text-shadow:0 2px 20px rgba(20,14,12,0.4);
+    opacity:0; animation:rise 0.7s cubic-bezier(.2,.9,.3,1.1) 0.1s forwards;
   }
   .hero h1 em{
     font-style:normal; color:#E8C9A8;
@@ -131,8 +136,12 @@
   .hero p{
     font-size:1.12rem; color:rgba(237,231,218,0.92); max-width:460px; margin-bottom:32px;
     text-shadow:0 1px 14px rgba(20,14,12,0.35);
+    opacity:0; animation:rise 0.7s cubic-bezier(.2,.9,.3,1.1) 0.25s forwards;
   }
-  .btn-row{display:flex; gap:14px; align-items:center;}
+  .btn-row{
+    display:flex; gap:14px; align-items:center;
+    opacity:0; animation:rise 0.7s cubic-bezier(.2,.9,.3,1.1) 0.4s forwards;
+  }
   .btn-primary{
     background:var(--clay); color:var(--canvas);
     padding:15px 28px; border-radius:6px; font-weight:600; font-size:0.95rem;
@@ -336,7 +345,7 @@
 </head>
 <body>
 
-<a href="/" class="back-link">← Claudia Ochoa</a>
+<a href="/" class="back-link">← Back to Portfolio</a>
 
 <div class="promo-bar">Labor Day Sale — up to <strong>40% off</strong>*</div>
 
@@ -461,7 +470,7 @@
 <section class="expect" id="expect">
   <div class="wrap">
     <div class="section-label"><span class="tag mono">Before you buy</span><div class="rule"></div></div>
-    <h2>Here's what happens after you order.</h2>
+    <h2>Here's what happens.</h2>
     <p class="expect-intro">We want you to know what to expect from the moment you click order to the moment you settle in. No surprises. Just a clear, straightforward experience from start to finish.</p>
     <div class="timeline">
       <div class="t-step">
