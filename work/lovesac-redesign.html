@@ -127,32 +127,24 @@
     border-bottom:2px solid var(--ink);
   }
 
-  /* block-assembly visual */
-  .block-stage{
+  /* hero sectional illustration */
+  .hero-visual{
     position:relative;
-    aspect-ratio:1/1;
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    grid-template-rows:repeat(3,1fr);
-    gap:10px;
-  }
-  .block-stage .cell{
-    border-radius:14px;
-    background:var(--denim);
+    display:flex;
+    align-items:center;
+    justify-content:center;
     opacity:0;
-    transform:scale(0.6);
-    animation:snap 0.6s cubic-bezier(.2,.9,.3,1.3) forwards;
+    transform:translateY(14px) scale(0.97);
+    animation:rise 0.7s cubic-bezier(.2,.9,.3,1.1) 0.15s forwards;
   }
-  .block-stage .cell.photo{background-size:cover; background-position:center;}
-  .block-stage .cell:nth-child(1){animation-delay:.05s; background:var(--moss);}
-  .block-stage .cell:nth-child(2){animation-delay:.12s; grid-column:span 2; background:var(--denim);}
-  .block-stage .cell:nth-child(3){animation-delay:.19s; background:var(--brass);}
-  .block-stage .cell:nth-child(4){animation-delay:.26s; grid-row:span 2; background:var(--ink);}
-  .block-stage .cell:nth-child(5){animation-delay:.33s; background:var(--clay);}
-  .block-stage .cell:nth-child(6){animation-delay:.4s; background:var(--moss);}
-  .block-stage .cell:nth-child(7){animation-delay:.47s; grid-column:span 2; background:var(--brass);}
-  @keyframes snap{
-    to{opacity:1; transform:scale(1);}
+  .hero-visual svg{width:100%; height:auto; max-width:480px;}
+  .hero-visual-tag{
+    position:absolute; bottom:6%; left:6%;
+    font-family:'IBM Plex Mono'; font-size:0.7rem; letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--ink-soft);
+  }
+  @keyframes rise{
+    to{opacity:1; transform:translateY(0) scale(1);}
   }
 
   /* ---------- SECTION LABEL ---------- */
@@ -317,14 +309,24 @@
         <a href="#lives" class="btn-ghost">See it reconfigure ↓</a>
       </div>
     </div>
-    <div class="block-stage" aria-hidden="true">
-      <div class="cell"></div>
-      <div class="cell photo"></div>
-      <div class="cell"></div>
-      <div class="cell photo"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell photo"></div>
+    <div class="hero-visual" aria-hidden="true">
+      <svg viewBox="0 0 480 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="240" cy="298" rx="185" ry="12" fill="var(--ink)" opacity="0.08"/>
+        <rect x="18" y="70" width="46" height="185" rx="20" fill="var(--canvas-2)" stroke="var(--ink)" stroke-width="2.5"/>
+        <rect x="416" y="70" width="46" height="185" rx="20" fill="var(--canvas-2)" stroke="var(--ink)" stroke-width="2.5"/>
+        <rect x="72" y="55" width="112" height="115" rx="20" fill="var(--moss)" stroke="var(--ink)" stroke-width="2.5"/>
+        <rect x="186" y="55" width="112" height="115" rx="20" fill="var(--clay)" stroke="var(--ink)" stroke-width="2.5"/>
+        <rect x="300" y="55" width="112" height="115" rx="20" fill="var(--denim)" stroke="var(--ink)" stroke-width="2.5"/>
+        <rect x="64" y="150" width="352" height="95" rx="18" fill="var(--canvas-2)" stroke="var(--ink)" stroke-width="2.5"/>
+        <line x1="176" y1="152" x2="176" y2="243" stroke="var(--ink)" stroke-width="1.5" opacity="0.5"/>
+        <line x1="304" y1="152" x2="304" y2="243" stroke="var(--ink)" stroke-width="1.5" opacity="0.5"/>
+        <circle cx="112" cy="78" r="29" fill="var(--brass)" stroke="var(--ink)" stroke-width="2.5"/>
+        <line x1="40" y1="247" x2="40" y2="270" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/>
+        <line x1="156" y1="247" x2="156" y2="268" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/>
+        <line x1="324" y1="247" x2="324" y2="268" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/>
+        <line x1="440" y1="247" x2="440" y2="270" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      <span class="hero-visual-tag">The Sactional — modular by design</span>
     </div>
   </div>
 </header>
