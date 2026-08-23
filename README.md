@@ -1,6 +1,6 @@
 # claudiaochoa.co
 
-Personal portfolio of Claudia Ochoa — Product Design Leader specializing in AI-powered experiences.
+Personal portfolio of Claudia Ochoa — Product Design Leader blending business strategy with human-centered design.
 
 ## Live site
 
@@ -32,6 +32,7 @@ Plain HTML, CSS, and vanilla JS. No frameworks, no build step, no dependencies. 
 │   └── main.js                       # Scroll reveal, nav, contact form
 ├── images/
 ├── work/
+│   ├── lovesac-redesign.html         # Lovesac — Redesign (featured concept case study)
 │   ├── walmart-careers.html          # Redesigning Walmart's Candidate Experience
 │   ├── walmart-genai.html            # Transforming Hiring with GenAI
 │   ├── walmart-my-hiring-dashboard.html  # My Hiring Dashboard
@@ -85,9 +86,9 @@ Every page has:
 - `<link rel="canonical">` to prevent duplicate content issues
 - PNG favicons at 192×192 and 32×32 for Google Search and browser tabs
 
-The homepage has JSON-LD `Person` schema.
+The homepage has JSON-LD `Person` schema. The Lovesac case study additionally has JSON-LD `CreativeWork` schema (with a nested `author` referencing the Person) — the featured piece, prioritized in `sitemap.xml` at 0.9 and kept with a current `lastmod` whenever it's meaningfully updated.
 
-`sitemap.xml` lists all pages and is referenced in `robots.txt`. The sitemap is submitted to Google Search Console at `https://claudiaochoa.co/sitemap.xml`.
+`sitemap.xml` lists all pages and is referenced in `robots.txt`. The sitemap is submitted to Google Search Console at `https://claudiaochoa.co/sitemap.xml`. Bump a page's `lastmod` (and `priority`, if it's a piece you want surfaced) whenever its content changes materially — stale dates and generic priorities give search engines less reason to recrawl or rank it.
 
 ## Accessibility
 
@@ -105,7 +106,7 @@ When adding new pages: use `<h2>` for section headings under the page `<h1>`, in
 
 ## Performance
 
-- Work case study thumbnails are WebP
+- Case study thumbnails are compressed JPEG or WebP (photographic content) or PNG (flat UI screenshots) — never an uncompressed PNG of a photo
 - Fonts are preconnected via `<link rel="preconnect">`
 - No external JS dependencies
 
