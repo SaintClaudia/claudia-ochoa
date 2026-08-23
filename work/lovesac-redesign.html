@@ -147,9 +147,28 @@
   .mega-tile span.mega-label{font-size:0.82rem; font-weight:500; opacity:0.85;}
   .mega-tile:hover span.mega-label{opacity:1;}
   .nav-icons{display:flex; align-items:center; gap:18px; justify-self:end;}
-  .nav-icons a{display:flex; opacity:0.75; transition:opacity .2s;}
-  .nav-icons a:hover{opacity:1;}
+  .nav-icons a, .nav-icons button{display:flex; opacity:0.75; transition:opacity .2s; background:none; border:none; padding:0; cursor:pointer; color:inherit;}
+  .nav-icons a:hover, .nav-icons button:hover{opacity:1;}
+  .nav-icons button.icon-search[aria-expanded="true"]{opacity:1;}
   .nav-icons svg{width:23px; height:23px;}
+
+  .desktop-search{max-height:0; overflow:hidden; border-top:1px solid transparent; transition:max-height .28s ease, border-color .28s ease;}
+  .desktop-search.open{max-height:84px; border-top:1px solid var(--line);}
+  .desktop-search-inner{display:flex; align-items:center; gap:14px; max-width:520px; margin:0 auto; padding:20px 0;}
+  .desktop-search-inner svg{width:20px; height:20px; color:var(--ink-soft); flex-shrink:0;}
+  .desktop-search-inner input{
+    flex:1; width:100%; min-width:0;
+    border:none; border-bottom:1.5px solid var(--ink-soft);
+    background:none; outline:none;
+    font-family:'Work Sans', sans-serif; font-size:1rem; color:var(--ink);
+    padding:6px 2px 8px;
+  }
+  .desktop-search-inner input::placeholder{color:var(--ink-soft); opacity:0.65;}
+  .desktop-search-inner input:focus{border-bottom-color:var(--clay);}
+  .desktop-search-close{display:flex; background:none; border:none; padding:0; margin:0; cursor:pointer; color:inherit; opacity:0.65; flex-shrink:0; transition:opacity .2s;}
+  .desktop-search-close:hover{opacity:1;}
+  .desktop-search-close svg{width:18px; height:18px;}
+  @media (max-width:860px){ .desktop-search{display:none !important;} }
 
   /* ---------- HAMBURGER + MOBILE MENU ---------- */
   .hamburger{
@@ -438,7 +457,7 @@
     nav .wrap{display:flex; justify-content:space-between; position:relative;}
     .hamburger{display:flex;}
     nav .logo{position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); justify-self:auto;}
-    .nav-icons a.icon-store, .nav-icons a.icon-account, .nav-icons a.icon-search{display:none;}
+    .nav-icons a.icon-store, .nav-icons a.icon-account, .nav-icons .icon-search{display:none;}
   }
 
   /* ---------- PROMO BAR ---------- */
@@ -544,11 +563,11 @@
       <a href="#expect">What to expect</a>
     </div>
     <div class="nav-icons">
+      <button type="button" class="icon-search" id="searchToggle" aria-label="Search" aria-expanded="false" aria-controls="desktopSearch">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.2" y2="16.2"/></svg>
+      </button>
       <a href="#" class="nav-mock icon-store" aria-label="Find a store">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.1 7-12a7 7 0 0 0-14 0c0 5.9 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg>
-      </a>
-      <a href="#" class="nav-mock icon-search" aria-label="Search">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.2" y2="16.2"/></svg>
       </a>
       <a href="#" class="nav-mock icon-account" aria-label="Account">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c1.6-3.8 5-6 8-6s6.4 2.2 8 6"/></svg>
@@ -556,6 +575,17 @@
       <a href="#" class="nav-mock icon-cart" aria-label="Cart">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
       </a>
+    </div>
+  </div>
+  <div class="desktop-search" id="desktopSearch">
+    <div class="wrap">
+      <form class="desktop-search-inner" role="search" action="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.2" y2="16.2"/></svg>
+        <input type="search" id="desktopSearchInput" placeholder="What can we help you find?" aria-label="Search">
+        <button type="button" class="desktop-search-close" id="desktopSearchClose" aria-label="Close search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+        </button>
+      </form>
     </div>
   </div>
   <div class="mobile-menu" id="mobileMenu">
@@ -853,6 +883,39 @@
       }
     });
   }
+  var desktopSearchForm = document.querySelector('.desktop-search-inner');
+  if(desktopSearchForm){
+    desktopSearchForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      showToast("Non-functional prototype — for demonstration purposes only");
+    });
+  }
+})();
+</script>
+<script>
+(function(){
+  var toggle = document.getElementById('searchToggle');
+  var panel = document.getElementById('desktopSearch');
+  var closeBtn = document.getElementById('desktopSearchClose');
+  var input = document.getElementById('desktopSearchInput');
+  if(!toggle || !panel) return;
+  function openSearch(){
+    panel.classList.add('open');
+    toggle.setAttribute('aria-expanded', 'true');
+    setTimeout(function(){ input.focus(); }, 200);
+  }
+  function closeSearch(){
+    panel.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+    input.value = '';
+  }
+  toggle.addEventListener('click', function(){
+    if(panel.classList.contains('open')) closeSearch(); else openSearch();
+  });
+  if(closeBtn) closeBtn.addEventListener('click', closeSearch);
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && panel.classList.contains('open')) closeSearch();
+  });
 })();
 </script>
 <script>
