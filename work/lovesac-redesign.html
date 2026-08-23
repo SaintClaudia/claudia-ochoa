@@ -112,6 +112,33 @@
   .nav-icons a:hover{opacity:1;}
   .nav-icons svg{width:23px; height:23px;}
 
+  /* ---------- HAMBURGER + MOBILE MENU ---------- */
+  .hamburger{
+    display:none;
+    align-items:center; justify-self:start;
+    background:none; border:none; padding:6px; margin:-6px; cursor:pointer; color:var(--ink);
+  }
+  .hamburger svg{width:24px; height:24px; display:block;}
+  .hamburger .icon-close{display:none;}
+  .hamburger[aria-expanded="true"] .icon-menu{display:none;}
+  .hamburger[aria-expanded="true"] .icon-close{display:block;}
+  .mobile-menu{
+    display:none;
+    flex-direction:column;
+    background:var(--canvas);
+    border-top:1px solid var(--line);
+  }
+  .mobile-menu.open{display:flex;}
+  .mobile-menu a{
+    padding:16px 32px;
+    font-size:1rem; font-weight:500;
+    border-bottom:1px solid var(--line);
+  }
+  .mobile-menu a:last-child{border-bottom:none;}
+  @media (min-width:861px){
+    .mobile-menu{display:none !important;}
+  }
+
   /* ---------- HERO ---------- */
   .hero{
     position:relative;
@@ -326,17 +353,25 @@
     background:var(--canvas); color:var(--ink);
     padding:10px 16px; border-radius:8px; border:1px solid var(--line);
     font-size:0.82rem; font-weight:600; box-shadow:0 6px 20px rgba(31,36,33,0.12);
+    transition:opacity .25s ease, transform .25s ease;
   }
 
   @media (max-width:860px){
     .hero{min-height:520px; padding-bottom:48px;}
-    .life-track{grid-template-columns:repeat(2,1fr);}
+    .lives{padding-top:56px;}
+    .life-track{grid-template-columns:1fr;}
     .review-grid{grid-template-columns:1fr;}
     .trust-band .wrap{flex-direction:column; align-items:flex-start; gap:20px;}
     .trust-item{border-left:none !important; padding:0 !important; width:100%;}
-    .timeline{grid-template-columns:repeat(2,1fr); row-gap:40px;}
+    .timeline{grid-template-columns:1fr; row-gap:32px;}
     .timeline::before{display:none;}
     .nav-links{display:none;}
+    nav .wrap{display:flex; justify-content:space-between; position:relative;}
+    .hamburger{display:flex;}
+    .logo{position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); justify-self:auto;}
+    .nav-icons a.icon-store, .nav-icons a.icon-account{display:none;}
+    .back-link{opacity:0; transform:translateY(12px); pointer-events:none;}
+    .back-link.show{opacity:1; transform:translateY(0); pointer-events:auto;}
   }
 
   /* ---------- PROMO BAR ---------- */
@@ -369,6 +404,10 @@
 
 <nav>
   <div class="wrap">
+    <button type="button" class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+    </button>
     <div class="logo"><img src="../images/lovesac-wordmark.png" alt="Lovesac"></div>
     <div class="nav-links">
       <a href="#" class="nav-mock">Furniture</a>
@@ -376,19 +415,27 @@
       <a href="#expect">What to expect</a>
     </div>
     <div class="nav-icons">
-      <a href="#" class="nav-mock" aria-label="Find a store">
+      <a href="#" class="nav-mock icon-store" aria-label="Find a store">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.1 7-12a7 7 0 0 0-14 0c0 5.9 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg>
       </a>
-      <a href="#" class="nav-mock" aria-label="Search">
+      <a href="#" class="nav-mock icon-search" aria-label="Search">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.2" y2="16.2"/></svg>
       </a>
-      <a href="#" class="nav-mock" aria-label="Account">
+      <a href="#" class="nav-mock icon-account" aria-label="Account">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c1.6-3.8 5-6 8-6s6.4 2.2 8 6"/></svg>
       </a>
-      <a href="#" class="nav-mock" aria-label="Cart">
+      <a href="#" class="nav-mock icon-cart" aria-label="Cart">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
       </a>
     </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#" class="nav-mock">Furniture</a>
+    <a href="#" class="nav-mock">Accessories</a>
+    <a href="#expect">What to expect</a>
+    <a href="#" class="nav-mock">Find a store near you</a>
+    <a href="#" class="nav-mock">Customer support</a>
+    <a href="#" class="nav-mock">Sign in</a>
   </div>
 </nav>
 
@@ -636,6 +683,55 @@
       showToast("Just a mockup — this link isn't wired up.");
     });
   });
+})();
+</script>
+<script>
+(function(){
+  var btn = document.getElementById('hamburgerBtn');
+  var menu = document.getElementById('mobileMenu');
+  if(!btn || !menu) return;
+  function closeMenu(){
+    menu.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+    btn.setAttribute('aria-label', 'Open menu');
+  }
+  function openMenu(){
+    menu.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+    btn.setAttribute('aria-label', 'Close menu');
+  }
+  btn.addEventListener('click', function(){
+    if(menu.classList.contains('open')){ closeMenu(); } else { openMenu(); }
+  });
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', closeMenu);
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeMenu();
+  });
+  window.addEventListener('resize', function(){
+    if(window.innerWidth > 860) closeMenu();
+  });
+})();
+</script>
+<script>
+(function(){
+  var link = document.querySelector('.back-link');
+  var hero = document.querySelector('.hero');
+  if(!link || !hero) return;
+  var mq = window.matchMedia('(max-width:860px)');
+  function onScroll(){
+    if(!mq.matches){ link.classList.remove('show'); return; }
+    var threshold = hero.offsetTop + hero.offsetHeight;
+    if(window.scrollY > threshold){
+      link.classList.add('show');
+    } else {
+      link.classList.remove('show');
+    }
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll);
+  onScroll();
 })();
 </script>
 <script>
