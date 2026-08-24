@@ -93,7 +93,7 @@
 
   /* ---------- NAV ---------- */
   nav{
-    position:sticky; top:0; z-index:310;
+    position:sticky; top:0; z-index:50;
   }
   .nav-bar{
     background:rgba(231,225,210,0.92);
@@ -1454,6 +1454,7 @@
     if(!isOpen){
       var navBottom = document.querySelector('nav').getBoundingClientRect().bottom;
       drop.style.top = navBottom + 'px';
+      backdrop.style.top = navBottom + 'px';
       drop.classList.add('open');
       backdrop.classList.add('open');
       toggle.setAttribute('aria-expanded', 'true');
@@ -1516,6 +1517,7 @@
     if(!isOpen){
       var navBottom = document.querySelector('nav').getBoundingClientRect().bottom;
       drop.style.top = navBottom + 'px';
+      backdrop.style.top = navBottom + 'px';
       drop.classList.add('open');
       backdrop.classList.add('open');
       toggle.setAttribute('aria-expanded', 'true');
@@ -1573,6 +1575,7 @@
     if(!isOpen){
       var navBottom = document.querySelector('nav').getBoundingClientRect().bottom;
       drop.style.top = navBottom + 'px';
+      backdrop.style.top = navBottom + 'px';
       drop.classList.add('open');
       backdrop.classList.add('open');
       toggle.setAttribute('aria-expanded', 'true');
