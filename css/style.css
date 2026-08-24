@@ -263,6 +263,9 @@ body > nav {
 
 .work-card.featured { grid-column: 1 / -1; }
 .work-card.featured .card-image { aspect-ratio: 2/1; }
+@media (max-width: 720px) {
+  .work-card.featured .card-image { aspect-ratio: auto; height: calc((100vw - 48px) / 2 + 50px); }
+}
 
 .work-card {
   position: relative;
