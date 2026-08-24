@@ -183,6 +183,27 @@
   .browse-filters .filter-chip{border-radius:8px;}
   .filter-count{font-size:12.5px;color:var(--muted);margin-left:auto;}
 
+  .filter-dropdown-wrap{position:relative; display:inline-flex;}
+  .filter-dropdown{
+    position:absolute; top:calc(100% + 8px); left:0;
+    background:var(--ls-canvas); border:1px solid var(--ls-line); border-radius:12px;
+    box-shadow:0 30px 45px -20px rgba(31,36,33,0.22);
+    padding:16px; z-index:20;
+    opacity:0; visibility:hidden; pointer-events:none;
+    transform:translateY(-4px);
+    transition:opacity .16s ease, transform .16s ease, visibility .16s;
+  }
+  .filter-dropdown.open{opacity:1; visibility:visible; pointer-events:auto; transform:translateY(0);}
+  .filter-swatch-grid{display:grid; grid-template-columns:repeat(5, 56px); gap:14px 10px;}
+  .filter-swatch{display:flex; flex-direction:column; align-items:center; gap:6px; background:none; border:none; cursor:pointer; font-size:11px; color:var(--muted); padding:0;}
+  .filter-swatch-color{width:32px; height:32px; border-radius:50%; border:1px solid var(--ls-line);}
+  .filter-swatch.selected .filter-swatch-color{box-shadow:0 0 0 2px var(--ls-canvas), 0 0 0 4px var(--ls-ink);}
+  .filter-swatch.selected{color:var(--ink); font-weight:600;}
+  .filter-price-list{display:flex; flex-direction:column; gap:2px; min-width:180px;}
+  .filter-price-option{text-align:left; background:none; border:none; padding:9px 10px; border-radius:8px; font-size:13px; color:var(--ink); cursor:pointer;}
+  .filter-price-option:hover{background:var(--ls-canvas-2);}
+  .filter-price-option.selected{background:var(--ls-ink); color:#fff;}
+
   .product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
   .product-card{cursor:pointer;}
   .product-thumb{background:linear-gradient(180deg,#F4F1EA,#E6E1D3);border-radius:12px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;margin-bottom:12px;overflow:hidden;}
@@ -216,6 +237,7 @@
     .space-check-text p{max-width:none;}
     .space-check-cta{width:100%;}
     .space-check-cta .btn{width:100%;}
+    .filter-swatch-grid{grid-template-columns:repeat(3, 1fr); width:162px;}
   }
   @media(max-width:880px){
     .stage{grid-template-columns:1fr;}
@@ -1050,12 +1072,41 @@
     </div>
 
     <div class="browse-filters" id="filtersAnchor">
-      <button class="filter-chip active" onclick="applySizeFilter('all', this)">All Sizes</button>
-      <button class="filter-chip" onclick="applySizeFilter('small', this)">Loveseat – Small</button>
-      <button class="filter-chip" onclick="applySizeFilter('medium', this)">Medium</button>
-      <button class="filter-chip" onclick="applySizeFilter('large', this)">Large</button>
-      <button class="filter-chip nav-mock">Color</button>
-      <button class="filter-chip nav-mock">Price</button>
+      <button class="filter-chip size-chip active" onclick="applySizeFilter('all', this)">All Sizes</button>
+      <button class="filter-chip size-chip" onclick="applySizeFilter('small', this)">Loveseat – Small</button>
+      <button class="filter-chip size-chip" onclick="applySizeFilter('medium', this)">Medium</button>
+      <button class="filter-chip size-chip" onclick="applySizeFilter('large', this)">Large</button>
+
+      <div class="filter-dropdown-wrap">
+        <button type="button" class="filter-chip" id="colorFilterToggle" aria-expanded="false" aria-controls="colorFilterDrop">Color</button>
+        <div class="filter-dropdown" id="colorFilterDrop">
+          <div class="filter-swatch-grid">
+            <button type="button" class="filter-swatch" data-name="Sand"><span class="filter-swatch-color" style="background:#C9B79A"></span>Sand</button>
+            <button type="button" class="filter-swatch" data-name="Charcoal"><span class="filter-swatch-color" style="background:#4A4C4A"></span>Charcoal</button>
+            <button type="button" class="filter-swatch" data-name="Lagoon"><span class="filter-swatch-color" style="background:#3F6E77"></span>Lagoon</button>
+            <button type="button" class="filter-swatch" data-name="Terracotta"><span class="filter-swatch-color" style="background:#B26A4A"></span>Terracotta</button>
+            <button type="button" class="filter-swatch" data-name="Midnight"><span class="filter-swatch-color" style="background:#1F2A44"></span>Midnight</button>
+            <button type="button" class="filter-swatch" data-name="Oatmeal"><span class="filter-swatch-color" style="background:#DCD3C4"></span>Oatmeal</button>
+            <button type="button" class="filter-swatch" data-name="Stone"><span class="filter-swatch-color" style="background:#A9A9A2"></span>Stone</button>
+            <button type="button" class="filter-swatch" data-name="Forest"><span class="filter-swatch-color" style="background:#2F4A3B"></span>Forest</button>
+            <button type="button" class="filter-swatch" data-name="Espresso"><span class="filter-swatch-color" style="background:#3B2A22"></span>Espresso</button>
+            <button type="button" class="filter-swatch" data-name="Fog"><span class="filter-swatch-color" style="background:#B7AE9C"></span>Fog</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="filter-dropdown-wrap">
+        <button type="button" class="filter-chip" id="priceFilterToggle" aria-expanded="false" aria-controls="priceFilterDrop">Price</button>
+        <div class="filter-dropdown" id="priceFilterDrop">
+          <div class="filter-price-list">
+            <button type="button" class="filter-price-option">Under $2,500</button>
+            <button type="button" class="filter-price-option">$2,500 – $4,500</button>
+            <button type="button" class="filter-price-option">$4,500 – $6,500</button>
+            <button type="button" class="filter-price-option">$6,500+</button>
+          </div>
+        </div>
+      </div>
+
       <span class="filter-count" id="filterCount"></span>
     </div>
 
@@ -2180,7 +2231,7 @@ var currentSizeFilter = 'all';
 function applySizeFilter(key, btn){
   currentSizeFilter = key;
   if(btn){
-    document.querySelectorAll('#filtersAnchor .filter-chip').forEach(function(c){ c.classList.remove('active'); });
+    document.querySelectorAll('#filtersAnchor .size-chip').forEach(function(c){ c.classList.remove('active'); });
     btn.classList.add('active');
   }
   var visible = 0;
@@ -2194,6 +2245,54 @@ function applySizeFilter(key, btn){
   if(countEl) countEl.textContent = visible + (visible === 1 ? ' setup' : ' setups');
 }
 renderProductGrid();
+
+(function(){
+  var colorToggle = document.getElementById('colorFilterToggle');
+  var colorDrop = document.getElementById('colorFilterDrop');
+  var priceToggle = document.getElementById('priceFilterToggle');
+  var priceDrop = document.getElementById('priceFilterDrop');
+  if(!colorToggle || !priceToggle) return;
+
+  function closeAllFilterDrops(){
+    [colorDrop, priceDrop].forEach(function(d){ if(d) d.classList.remove('open'); });
+    [colorToggle, priceToggle].forEach(function(t){ if(t) t.setAttribute('aria-expanded', 'false'); });
+  }
+
+  function bindToggle(toggle, drop){
+    toggle.addEventListener('click', function(e){
+      e.stopPropagation();
+      var isOpen = drop.classList.contains('open');
+      closeAllFilterDrops();
+      if(!isOpen){
+        drop.classList.add('open');
+        toggle.setAttribute('aria-expanded', 'true');
+      }
+    });
+    drop.addEventListener('click', function(e){ e.stopPropagation(); });
+  }
+  bindToggle(colorToggle, colorDrop);
+  bindToggle(priceToggle, priceDrop);
+
+  document.addEventListener('click', closeAllFilterDrops);
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeAllFilterDrops(); });
+
+  document.querySelectorAll('.filter-swatch').forEach(function(sw){
+    sw.addEventListener('click', function(){
+      var wasSelected = sw.classList.contains('selected');
+      document.querySelectorAll('.filter-swatch').forEach(function(s){ s.classList.remove('selected'); });
+      if(!wasSelected) sw.classList.add('selected');
+      colorToggle.classList.toggle('active', !wasSelected);
+    });
+  });
+  document.querySelectorAll('.filter-price-option').forEach(function(opt){
+    opt.addEventListener('click', function(){
+      var wasSelected = opt.classList.contains('selected');
+      document.querySelectorAll('.filter-price-option').forEach(function(o){ o.classList.remove('selected'); });
+      if(!wasSelected) opt.classList.add('selected');
+      priceToggle.classList.toggle('active', !wasSelected);
+    });
+  });
+})();
 
 function showConfigurator(){
   document.getElementById('view-browse').style.display='none';
