@@ -26,6 +26,7 @@
 <meta name="twitter:description" content="A UX case study reimagining Lovesac's e-commerce site with real lifestyle photography, transparent trust signals, and a clear order-to-delivery experience.">
 <meta name="twitter:image" content="https://claudiaochoa.co/images/lovesac-redesign-thumb.jpg">
 <link rel="canonical" href="https://claudiaochoa.co/work/lovesac-redesign.html">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -163,7 +164,7 @@
   .mega-shopall{font-size:0.85rem; font-weight:600; color:var(--clay); text-decoration:underline; text-underline-offset:3px; opacity:1;}
   .mega-shopall:hover{opacity:0.75;}
   .mega-grid-4{display:grid; grid-template-columns:repeat(4, 144px); gap:28px 40px;}
-  .mega-tile-wide{display:flex; flex-direction:column; align-items:flex-start; width:144px; text-align:left;}
+  .mega-grid-4 .mega-tile-wide{display:flex; flex-direction:column; align-items:flex-start; width:144px; text-align:left; opacity:1;}
   .mega-tile-color{
     width:144px; height:144px; border-radius:12px; margin-bottom:12px;
     background:var(--canvas-2);
@@ -178,7 +179,7 @@
   .mega-clearance{font-size:0.85rem; font-weight:600; color:var(--clay); text-decoration:underline; text-underline-offset:3px; opacity:1;}
   .mega-clearance:hover{opacity:0.75;}
   .mega-featured{display:flex; flex-direction:column; gap:16px; width:230px; flex-shrink:0;}
-  .mega-featured-link{display:flex; flex-direction:column; gap:14px;}
+  .mega-featured .mega-featured-link{display:flex; flex-direction:column; gap:14px; opacity:1;}
   .mega-featured-img{
     width:100%; aspect-ratio:2/3; border-radius:12px;
     background:var(--canvas-2);
@@ -192,10 +193,10 @@
   .mega-featured-links{display:flex; flex-direction:column; gap:11px;}
   .mega-featured-links a{font-size:0.85rem; opacity:0.7; transition:opacity .2s;}
   .mega-featured-links a:hover{opacity:1;}
-  .nav-icons{display:flex; align-items:center; gap:18px; justify-self:end;}
+  .nav-icons{display:flex; align-items:center; gap:18px; justify-self:end; align-self:stretch;}
   .nav-icons a, .nav-icons button{display:flex; opacity:0.75; transition:opacity .2s; background:none; border:none; padding:0; cursor:pointer; color:inherit;}
   .nav-icons a:hover, .nav-icons button:hover{opacity:1;}
-  .nav-icons button.icon-search[aria-expanded="true"]{opacity:1;}
+  .nav-icons button.icon-search[aria-expanded="true"], .nav-icons button.icon-store[aria-expanded="true"]{opacity:1;}
   .nav-icons svg{width:23px; height:23px;}
 
   .desktop-search{max-height:0; overflow:hidden; border-top:1px solid transparent; transition:max-height .28s ease, border-color .28s ease;}
@@ -215,6 +216,139 @@
   .desktop-search-close:hover{opacity:1;}
   .desktop-search-close svg{width:18px; height:18px;}
   @media (max-width:860px){ .desktop-search{display:none !important;} }
+
+  /* ---------- STORE LOCATOR DRAWER ---------- */
+  .store-backdrop{
+    position:fixed; inset:0; z-index:290;
+    background:rgba(31,26,20,0.5);
+    opacity:0; visibility:hidden; pointer-events:none;
+    transition:opacity .25s ease, visibility .25s;
+  }
+  .store-backdrop.open{opacity:1; visibility:visible; pointer-events:auto;}
+  .store-drop{
+    position:fixed; top:0; right:0; left:auto; bottom:0;
+    width:420px; max-width:90vw; max-height:none;
+    background:var(--canvas);
+    box-shadow:-24px 0 48px -24px rgba(31,26,20,0.3);
+    transform:translateX(100%);
+    transition:transform .32s cubic-bezier(.2,.9,.3,1);
+    overflow-y:auto; padding:0; z-index:300;
+  }
+  .store-drop.open{transform:translateX(0);}
+  .store-drop-header{display:flex; align-items:center; justify-content:space-between; padding:22px 24px 0;}
+  .store-drop-header h3{font-size:1.15rem;}
+  .store-drop-close{display:flex; background:none; border:none; padding:4px; margin:-4px; cursor:pointer; color:var(--ink-soft); transition:color .2s;}
+  .store-drop-close:hover{color:var(--ink);}
+  .store-drop-close svg{width:20px; height:20px;}
+  .store-drop-map{width:100%; height:260px; margin-top:14px; background:var(--canvas-2);}
+  .store-drop-body{padding:18px 24px 20px;}
+  .store-drop-search{
+    display:flex; align-items:center; gap:10px; margin-bottom:16px;
+    border-bottom:1.5px solid var(--ink-soft); padding-bottom:9px;
+  }
+  .store-drop-search svg{width:18px; height:18px; color:var(--ink-soft); flex-shrink:0;}
+  .store-drop-search input{
+    flex:1; border:none; outline:none; background:none;
+    font-family:'Work Sans', sans-serif; font-size:0.92rem; color:var(--ink);
+  }
+  .store-drop-search input::placeholder{color:var(--ink-soft); opacity:0.65;}
+  .store-list{display:flex; flex-direction:column; gap:3px;}
+  .store-list .store-item{
+    display:block; text-align:left; width:100%;
+    padding:12px 12px; border-radius:10px; cursor:pointer;
+    background:none; border:1px solid transparent; font-family:inherit;
+    opacity:1; transition:background .15s ease, border-color .15s ease;
+  }
+  .store-list .store-item:hover, .store-list .store-item.active{background:var(--canvas-2); border-color:var(--line);}
+  .store-list .store-item h4{font-size:0.92rem; margin-bottom:3px; color:var(--ink);}
+  .store-list .store-item p{font-size:0.8rem; color:var(--ink-soft); margin-bottom:4px;}
+  .store-list .store-item .store-distance{color:var(--clay); font-weight:600; font-size:0.76rem;}
+  .leaflet-popup-content{font-family:'Work Sans', sans-serif; font-size:0.85rem;}
+  @media (max-width:540px){
+    .store-drop{width:100vw; max-width:100vw;}
+    .store-drop-map{height:200px;}
+  }
+
+  /* ---------- ACCOUNT DRAWER ---------- */
+  .account-backdrop{
+    position:fixed; inset:0; z-index:290;
+    background:rgba(31,26,20,0.5);
+    opacity:0; visibility:hidden; pointer-events:none;
+    transition:opacity .25s ease, visibility .25s;
+  }
+  .account-backdrop.open{opacity:1; visibility:visible; pointer-events:auto;}
+  .account-drop{
+    position:fixed; top:0; right:0; left:auto; bottom:0;
+    width:420px; max-width:90vw;
+    background:var(--canvas);
+    box-shadow:-24px 0 48px -24px rgba(31,26,20,0.3);
+    transform:translateX(100%);
+    transition:transform .32s cubic-bezier(.2,.9,.3,1);
+    overflow-y:auto; z-index:300;
+  }
+  .account-drop.open{transform:translateX(0);}
+  .account-drop-header{display:flex; align-items:center; justify-content:space-between; padding:24px 26px 0;}
+  .account-drop-header h3{font-size:1.1rem; max-width:280px;}
+  .account-drop-close{display:flex; background:none; border:none; padding:4px; margin:-4px; cursor:pointer; color:var(--ink-soft); transition:color .2s; flex-shrink:0;}
+  .account-drop-close:hover{color:var(--ink);}
+  .account-drop-close svg{width:20px; height:20px;}
+  .account-drop-actions{display:flex; gap:12px; padding:22px 26px 24px; border-bottom:1px solid var(--line);}
+  .account-drop-actions a{flex:1; text-align:center; padding:13px 16px; font-size:0.88rem;}
+  .btn-outline{
+    background:none; color:var(--clay); border:1.5px solid var(--clay);
+    border-radius:6px; font-weight:600; display:inline-block;
+    transition:background .2s, color .2s;
+  }
+  .btn-outline:hover{background:var(--clay); color:var(--canvas);}
+  .account-drop-list{display:flex; flex-direction:column; padding:6px 26px 20px;}
+  .account-drop-list a{
+    padding:15px 0; font-size:0.95rem; color:var(--ink);
+    border-bottom:1px solid var(--line);
+  }
+  .account-drop-list a:last-child{border-bottom:none;}
+  @media (max-width:540px){
+    .account-drop{width:100vw; max-width:100vw;}
+  }
+
+  /* ---------- CART DRAWER ---------- */
+  .cart-backdrop{
+    position:fixed; inset:0; z-index:290;
+    background:rgba(31,26,20,0.5);
+    opacity:0; visibility:hidden; pointer-events:none;
+    transition:opacity .25s ease, visibility .25s;
+  }
+  .cart-backdrop.open{opacity:1; visibility:visible; pointer-events:auto;}
+  .cart-drop{
+    position:fixed; top:0; right:0; left:auto; bottom:0;
+    width:420px; max-width:90vw;
+    background:var(--canvas);
+    box-shadow:-24px 0 48px -24px rgba(31,26,20,0.3);
+    transform:translateX(100%);
+    transition:transform .32s cubic-bezier(.2,.9,.3,1);
+    overflow-y:auto; z-index:300;
+    display:flex; flex-direction:column;
+  }
+  .cart-drop.open{transform:translateX(0);}
+  .cart-drop-header{display:flex; align-items:center; justify-content:space-between; padding:24px 26px;}
+  .cart-drop-header h3{font-size:1.15rem;}
+  .cart-drop-close{display:flex; background:none; border:none; padding:4px; margin:-4px; cursor:pointer; color:var(--ink-soft); transition:color .2s;}
+  .cart-drop-close:hover{color:var(--ink);}
+  .cart-drop-close svg{width:20px; height:20px;}
+  .cart-drop-empty{
+    flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; padding:40px 32px; gap:6px;
+  }
+  .cart-drop-empty-icon{
+    width:76px; height:76px; border-radius:50%;
+    background:var(--canvas-2); display:flex; align-items:center; justify-content:center;
+    color:var(--ink-soft); margin-bottom:14px;
+  }
+  .cart-drop-empty-icon svg{width:34px; height:34px;}
+  .cart-drop-empty h4{font-size:1.1rem; margin-bottom:4px;}
+  .cart-drop-empty p{font-size:0.88rem; color:var(--ink-soft); max-width:260px; margin-bottom:22px;}
+  @media (max-width:540px){
+    .cart-drop{width:100vw; max-width:100vw;}
+  }
 
   /* ---------- HAMBURGER + MOBILE MENU ---------- */
   .hamburger{
@@ -504,7 +638,7 @@
     nav > .wrap{display:flex; justify-content:space-between; position:relative;}
     .hamburger{display:flex;}
     nav .logo{position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); justify-self:auto;}
-    .nav-icons a.icon-store, .nav-icons a.icon-account, .nav-icons .icon-search{display:none;}
+    .nav-icons .icon-store, .nav-icons .icon-account, .nav-icons .icon-search{display:none;}
   }
 
   /* ---------- PROMO BAR ---------- */
@@ -673,15 +807,21 @@
       <button type="button" class="icon-search" id="searchToggle" aria-label="Search" aria-expanded="false" aria-controls="desktopSearch">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.2" y2="16.2"/></svg>
       </button>
-      <a href="#" class="nav-mock icon-store" aria-label="Find a store">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.1 7-12a7 7 0 0 0-14 0c0 5.9 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg>
-      </a>
-      <a href="#" class="nav-mock icon-account" aria-label="Account">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c1.6-3.8 5-6 8-6s6.4 2.2 8 6"/></svg>
-      </a>
-      <a href="#" class="nav-mock icon-cart" aria-label="Cart">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
-      </a>
+      <div class="nav-item">
+        <button type="button" class="icon-store" id="storeToggle" aria-label="Find a store" aria-expanded="false" aria-controls="storeDropdown">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.1 7-12a7 7 0 0 0-14 0c0 5.9 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        </button>
+      </div>
+      <div class="nav-item">
+        <button type="button" class="icon-account" id="accountToggle" aria-label="Account" aria-expanded="false" aria-controls="accountDropdown">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c1.6-3.8 5-6 8-6s6.4 2.2 8 6"/></svg>
+        </button>
+      </div>
+      <div class="nav-item">
+        <button type="button" class="icon-cart" id="cartToggle" aria-label="Cart" aria-expanded="false" aria-controls="cartDropdown">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+        </button>
+      </div>
     </div>
   </div>
   <div class="desktop-search" id="desktopSearch">
@@ -960,6 +1100,83 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+<div class="store-backdrop" id="storeBackdrop"></div>
+<div class="store-drop" id="storeDropdown">
+  <div class="store-drop-header">
+    <h3>Find a store near you</h3>
+    <button type="button" class="store-drop-close" id="storeDropClose" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="store-drop-map" id="storeMap"></div>
+  <div class="store-drop-body">
+    <form class="store-drop-search" id="storeModalForm">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.2" y2="16.2"/></svg>
+      <input type="text" id="storeModalInput" placeholder="Enter your zip code or city">
+    </form>
+    <div class="store-list" id="storeList">
+      <button type="button" class="store-item" data-lat="33.8462" data-lng="-84.3621">
+        <h4>Lovesac – Lenox Square</h4>
+        <p>3393 Peachtree Rd NE, Atlanta, GA</p>
+        <span class="store-distance">2.1 mi away</span>
+      </button>
+      <button type="button" class="store-item" data-lat="33.9304" data-lng="-84.3421">
+        <h4>Lovesac – Perimeter Mall</h4>
+        <p>4400 Ashford Dunwoody Rd, Dunwoody, GA</p>
+        <span class="store-distance">6.4 mi away</span>
+      </button>
+      <button type="button" class="store-item" data-lat="33.8843" data-lng="-84.4649">
+        <h4>Lovesac – Cumberland Mall</h4>
+        <p>1000 Cumberland Mall SE, Atlanta, GA</p>
+        <span class="store-distance">9.8 mi away</span>
+      </button>
+      <button type="button" class="store-item" data-lat="34.0754" data-lng="-84.2963">
+        <h4>Lovesac – North Point Mall</h4>
+        <p>1000 North Point Cir, Alpharetta, GA</p>
+        <span class="store-distance">15.2 mi away</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="account-backdrop" id="accountBackdrop"></div>
+<div class="account-drop" id="accountDropdown">
+  <div class="account-drop-header">
+    <h3>Sign In or Create an Account</h3>
+    <button type="button" class="account-drop-close" id="accountDropClose" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="account-drop-actions">
+    <a href="#" class="btn-primary nav-mock">Sign in</a>
+    <a href="#" class="btn-outline nav-mock">Create an Account</a>
+  </div>
+  <div class="account-drop-list">
+    <a href="#" class="nav-mock">Order Status</a>
+    <a href="#" class="nav-mock">Quote Lookup</a>
+    <a href="#" id="accountStoreLink">Store Locator</a>
+  </div>
+</div>
+
+<div class="cart-backdrop" id="cartBackdrop"></div>
+<div class="cart-drop" id="cartDropdown">
+  <div class="cart-drop-header">
+    <h3>Your Cart</h3>
+    <button type="button" class="cart-drop-close" id="cartDropClose" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="cart-drop-empty">
+    <span class="cart-drop-empty-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+    </span>
+    <h4>Your cart is empty</h4>
+    <p>Looks like you haven't added anything yet. Start building your perfect setup.</p>
+    <a href="#" class="btn-primary nav-mock">Continue Shopping</a>
+  </div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script>
 (function(){
   var toast = document.getElementById('toast');
@@ -990,38 +1207,240 @@
       }
     });
   }
-  var desktopSearchForm = document.querySelector('.desktop-search-inner');
-  if(desktopSearchForm){
-    desktopSearchForm.addEventListener('submit', function(e){
+  document.querySelectorAll('.desktop-search-inner').forEach(function(form){
+    form.addEventListener('submit', function(e){
       e.preventDefault();
       showToast("Non-functional prototype — for demonstration purposes only");
+    });
+  });
+})();
+</script>
+<script>
+(function(){
+  var bars = [
+    { toggle: document.getElementById('searchToggle'), panel: document.getElementById('desktopSearch'), closeBtn: document.getElementById('desktopSearchClose'), input: document.getElementById('desktopSearchInput') }
+  ].filter(function(b){ return b.toggle && b.panel; });
+  if(!bars.length) return;
+  function closeAllBars(){
+    bars.forEach(function(b){
+      b.panel.classList.remove('open');
+      b.toggle.setAttribute('aria-expanded', 'false');
+      b.input.value = '';
+    });
+  }
+  function openBar(b){
+    closeAllBars();
+    document.querySelectorAll('.nav-item.open').forEach(function(item){
+      item.classList.remove('open');
+      var t = item.querySelector('.nav-trigger, .icon-store');
+      if(t) t.setAttribute('aria-expanded', 'false');
+    });
+    if(window.__closeStoreDrop) window.__closeStoreDrop();
+    if(window.__closeAccountDrop) window.__closeAccountDrop();
+    if(window.__closeCartDrop) window.__closeCartDrop();
+    b.panel.classList.add('open');
+    b.toggle.setAttribute('aria-expanded', 'true');
+    setTimeout(function(){ b.input.focus(); }, 200);
+  }
+  bars.forEach(function(b){
+    b.toggle.addEventListener('click', function(){
+      if(b.panel.classList.contains('open')) closeAllBars(); else openBar(b);
+    });
+    if(b.closeBtn) b.closeBtn.addEventListener('click', closeAllBars);
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeAllBars();
+  });
+})();
+</script>
+<script>
+(function(){
+  var toggle = document.getElementById('storeToggle');
+  var drop = document.getElementById('storeDropdown');
+  var backdrop = document.getElementById('storeBackdrop');
+  var closeBtn = document.getElementById('storeDropClose');
+  var form = document.getElementById('storeModalForm');
+  if(!toggle || !drop || !backdrop || typeof L === 'undefined') return;
+  var map;
+
+  function initMap(){
+    if(map) return;
+    map = L.map('storeMap', { scrollWheelZoom: false }).setView([33.93, -84.38], 10);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      maxZoom: 18
+    }).addTo(map);
+    document.querySelectorAll('.store-item').forEach(function(item){
+      var lat = parseFloat(item.dataset.lat), lng = parseFloat(item.dataset.lng);
+      var marker = L.marker([lat, lng]).addTo(map).bindPopup(item.querySelector('h4').textContent);
+      item.addEventListener('click', function(){
+        map.flyTo([lat, lng], 13);
+        marker.openPopup();
+        document.querySelectorAll('.store-item').forEach(function(i){ i.classList.remove('active'); });
+        item.classList.add('active');
+      });
+    });
+  }
+
+  function closeStoreDrop(){
+    drop.classList.remove('open');
+    backdrop.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }
+  window.__closeStoreDrop = closeStoreDrop;
+
+  toggle.addEventListener('click', function(){
+    var isOpen = drop.classList.contains('open');
+    document.querySelectorAll('.nav-item').forEach(function(item){
+      item.classList.remove('open');
+      var trig = item.querySelector('.nav-trigger');
+      if(trig) trig.setAttribute('aria-expanded', 'false');
+    });
+    document.querySelectorAll('.desktop-search.open').forEach(function(bar){
+      bar.classList.remove('open');
+      var input = bar.querySelector('input');
+      if(input) input.value = '';
+    });
+    var searchToggle = document.getElementById('searchToggle');
+    if(searchToggle) searchToggle.setAttribute('aria-expanded', 'false');
+    if(window.__closeAccountDrop) window.__closeAccountDrop();
+    if(window.__closeCartDrop) window.__closeCartDrop();
+    if(!isOpen){
+      var navBottom = document.querySelector('nav').getBoundingClientRect().bottom;
+      drop.style.top = navBottom + 'px';
+      backdrop.style.top = navBottom + 'px';
+      drop.classList.add('open');
+      backdrop.classList.add('open');
+      toggle.setAttribute('aria-expanded', 'true');
+      initMap();
+      setTimeout(function(){ if(map) map.invalidateSize(); }, 220);
+    } else {
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+  if(closeBtn) closeBtn.addEventListener('click', closeStoreDrop);
+  backdrop.addEventListener('click', closeStoreDrop);
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeStoreDrop();
+  });
+  if(form){
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var toast = document.getElementById('toast');
+      if(!toast) return;
+      toast.textContent = "Non-functional prototype — for demonstration purposes only";
+      toast.classList.add('show');
+      clearTimeout(window.__storeToastTimer);
+      window.__storeToastTimer = setTimeout(function(){ toast.classList.remove('show'); }, 2600);
     });
   }
 })();
 </script>
 <script>
 (function(){
-  var toggle = document.getElementById('searchToggle');
-  var panel = document.getElementById('desktopSearch');
-  var closeBtn = document.getElementById('desktopSearchClose');
-  var input = document.getElementById('desktopSearchInput');
-  if(!toggle || !panel) return;
-  function openSearch(){
-    panel.classList.add('open');
-    toggle.setAttribute('aria-expanded', 'true');
-    setTimeout(function(){ input.focus(); }, 200);
-  }
-  function closeSearch(){
-    panel.classList.remove('open');
+  var toggle = document.getElementById('accountToggle');
+  var drop = document.getElementById('accountDropdown');
+  var backdrop = document.getElementById('accountBackdrop');
+  var closeBtn = document.getElementById('accountDropClose');
+  var storeLink = document.getElementById('accountStoreLink');
+  if(!toggle || !drop || !backdrop) return;
+
+  function closeAccountDrop(){
+    drop.classList.remove('open');
+    backdrop.classList.remove('open');
     toggle.setAttribute('aria-expanded', 'false');
-    input.value = '';
   }
+  window.__closeAccountDrop = closeAccountDrop;
+
   toggle.addEventListener('click', function(){
-    if(panel.classList.contains('open')) closeSearch(); else openSearch();
+    var isOpen = drop.classList.contains('open');
+    document.querySelectorAll('.nav-item').forEach(function(item){
+      item.classList.remove('open');
+      var trig = item.querySelector('.nav-trigger');
+      if(trig) trig.setAttribute('aria-expanded', 'false');
+    });
+    document.querySelectorAll('.desktop-search.open').forEach(function(bar){
+      bar.classList.remove('open');
+      var input = bar.querySelector('input');
+      if(input) input.value = '';
+    });
+    var searchToggle = document.getElementById('searchToggle');
+    if(searchToggle) searchToggle.setAttribute('aria-expanded', 'false');
+    if(window.__closeStoreDrop) window.__closeStoreDrop();
+    if(window.__closeCartDrop) window.__closeCartDrop();
+    if(!isOpen){
+      var navBottom = document.querySelector('nav').getBoundingClientRect().bottom;
+      drop.style.top = navBottom + 'px';
+      backdrop.style.top = navBottom + 'px';
+      drop.classList.add('open');
+      backdrop.classList.add('open');
+      toggle.setAttribute('aria-expanded', 'true');
+    } else {
+      toggle.setAttribute('aria-expanded', 'false');
+    }
   });
-  if(closeBtn) closeBtn.addEventListener('click', closeSearch);
+  if(closeBtn) closeBtn.addEventListener('click', closeAccountDrop);
+  backdrop.addEventListener('click', closeAccountDrop);
   document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape' && panel.classList.contains('open')) closeSearch();
+    if(e.key === 'Escape') closeAccountDrop();
+  });
+  if(storeLink){
+    storeLink.addEventListener('click', function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      closeAccountDrop();
+      var storeToggle = document.getElementById('storeToggle');
+      if(storeToggle) storeToggle.click();
+    });
+  }
+})();
+</script>
+<script>
+(function(){
+  var toggle = document.getElementById('cartToggle');
+  var drop = document.getElementById('cartDropdown');
+  var backdrop = document.getElementById('cartBackdrop');
+  var closeBtn = document.getElementById('cartDropClose');
+  if(!toggle || !drop || !backdrop) return;
+
+  function closeCartDrop(){
+    drop.classList.remove('open');
+    backdrop.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }
+  window.__closeCartDrop = closeCartDrop;
+
+  toggle.addEventListener('click', function(){
+    var isOpen = drop.classList.contains('open');
+    document.querySelectorAll('.nav-item').forEach(function(item){
+      item.classList.remove('open');
+      var trig = item.querySelector('.nav-trigger');
+      if(trig) trig.setAttribute('aria-expanded', 'false');
+    });
+    document.querySelectorAll('.desktop-search.open').forEach(function(bar){
+      bar.classList.remove('open');
+      var input = bar.querySelector('input');
+      if(input) input.value = '';
+    });
+    var searchToggle = document.getElementById('searchToggle');
+    if(searchToggle) searchToggle.setAttribute('aria-expanded', 'false');
+    if(window.__closeStoreDrop) window.__closeStoreDrop();
+    if(window.__closeAccountDrop) window.__closeAccountDrop();
+    if(!isOpen){
+      var navBottom = document.querySelector('nav').getBoundingClientRect().bottom;
+      drop.style.top = navBottom + 'px';
+      backdrop.style.top = navBottom + 'px';
+      drop.classList.add('open');
+      backdrop.classList.add('open');
+      toggle.setAttribute('aria-expanded', 'true');
+    } else {
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+  if(closeBtn) closeBtn.addEventListener('click', closeCartDrop);
+  backdrop.addEventListener('click', closeCartDrop);
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeCartDrop();
   });
 })();
 </script>
@@ -1066,6 +1485,9 @@
       if(trigger) trigger.setAttribute('aria-expanded', 'false');
     });
     if(navEl) navEl.classList.remove('dropdown-open');
+    if(window.__closeStoreDrop) window.__closeStoreDrop();
+    if(window.__closeAccountDrop) window.__closeAccountDrop();
+    if(window.__closeCartDrop) window.__closeCartDrop();
   }
   navItems.forEach(function(item){
     var trigger = item.querySelector('.nav-trigger');
