@@ -365,14 +365,59 @@
     flex-direction:column;
     background:var(--canvas);
     border-top:1px solid var(--line);
+    max-height:calc(100vh - 76px);
+    overflow-y:auto;
   }
   .mobile-menu.open{display:flex;}
+  .mobile-menu-tiers{position:relative;}
+  .mobile-tier-1{display:flex; flex-direction:column;}
   .mobile-menu a{
     padding:16px 32px;
     font-size:1rem; font-weight:500;
     border-bottom:1px solid var(--line);
   }
   .mobile-menu a:last-child{border-bottom:none;}
+  .mobile-nav-row{
+    display:flex; align-items:center; justify-content:space-between; width:100%;
+    padding:16px 32px; font-size:1rem; font-weight:500;
+    border:none; border-bottom:1px solid var(--line);
+    background:none; font-family:inherit; color:inherit; text-align:left; cursor:pointer;
+  }
+  .mobile-nav-row svg{width:16px; height:16px; color:var(--ink-soft); flex-shrink:0;}
+  .mobile-tier-2{
+    position:absolute; top:0; left:0; right:0;
+    background:var(--canvas);
+    transform:translateX(100%);
+    transition:transform .28s ease;
+    padding-bottom:8px;
+  }
+  .mobile-tier-2.active{transform:translateX(0);}
+  .mobile-tier-back{
+    display:flex; align-items:center; gap:8px; width:100%;
+    padding:16px 32px; font-size:1.05rem; font-weight:700;
+    border:none; border-bottom:1px solid var(--line);
+    background:none; font-family:inherit; color:inherit; text-align:left; cursor:pointer;
+  }
+  .mobile-tier-back svg{width:18px; height:18px; flex-shrink:0; color:var(--ink-soft);}
+  .mobile-tile-grid{
+    display:grid; grid-template-columns:repeat(2, 1fr); gap:20px;
+    padding:20px 24px;
+  }
+  .mobile-tile-grid .mobile-tile{
+    display:flex; flex-direction:column; align-items:flex-start; gap:8px;
+    padding:0; border-bottom:none; font-weight:500;
+  }
+  .mobile-tile-img{
+    width:100%; aspect-ratio:1; border-radius:10px;
+    background-size:contain; background-position:center; background-repeat:no-repeat;
+  }
+  .mobile-tile-label{font-size:0.85rem; line-height:1.3;}
+  .mobile-tier-2 .mobile-clearance-row{
+    display:block; padding:14px 24px 6px;
+    font-size:0.9rem; font-weight:600; color:var(--clay);
+    text-decoration:underline; text-underline-offset:3px;
+    border-bottom:none;
+  }
   .mobile-search{
     display:flex; align-items:center; gap:10px;
     padding:18px 32px 22px;
@@ -836,16 +881,110 @@
     </div>
   </div>
   <div class="mobile-menu" id="mobileMenu">
-    <form class="mobile-search" role="search" action="#">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.2" y2="16.2"/></svg>
-      <input type="search" placeholder="Search" aria-label="Search">
-    </form>
-    <a href="#" class="nav-mock">Furniture</a>
-    <a href="#" class="nav-mock">Accessories</a>
-    <a href="#expect">What to expect</a>
-    <a href="#" class="nav-mock">Find a store near you</a>
-    <a href="#" class="nav-mock">Customer support</a>
-    <a href="#" class="nav-mock">Sign in</a>
+    <div class="mobile-menu-tiers" id="mobileTiers">
+      <div class="mobile-tier-1">
+        <form class="mobile-search" role="search" action="#">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.2" y2="16.2"/></svg>
+          <input type="search" placeholder="Search" aria-label="Search">
+        </form>
+        <button type="button" class="mobile-nav-row" data-tier="mobileTierFurniture">
+          <span>Furniture</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+        <button type="button" class="mobile-nav-row" data-tier="mobileTierAccessories">
+          <span>Accessories</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+        <a href="#expect">What to expect</a>
+        <a href="#" class="nav-mock" id="mobileStoreLink">Find a store near you</a>
+        <a href="#" class="nav-mock">Customer support</a>
+        <a href="#" class="nav-mock" id="mobileSignInLink">Sign in</a>
+      </div>
+
+      <div class="mobile-tier-2" id="mobileTierFurniture">
+        <button type="button" class="mobile-tier-back">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+          <span>Furniture</span>
+        </button>
+        <div class="mobile-tile-grid">
+          <a href="#" class="mobile-tile nav-mock">
+            <span class="mobile-tile-img" style="background-color:#F6F6F6; background-image:url('../images/nav-sactionals.webp')" aria-hidden="true"></span>
+            <span class="mobile-tile-label">Sactionals</span>
+          </a>
+          <a href="#" class="mobile-tile nav-mock">
+            <span class="mobile-tile-img" style="background-color:#FFFFFF; background-image:url('../images/nav-stealthtech.webp')" aria-hidden="true"></span>
+            <span class="mobile-tile-label">Sactionals with StealthTech</span>
+          </a>
+          <a href="#" class="mobile-tile nav-mock">
+            <span class="mobile-tile-img" style="background-color:#F6F6F6; background-image:url('../images/nav-snugg-sofa.webp')" aria-hidden="true"></span>
+            <span class="mobile-tile-label">Snugg sofas</span>
+          </a>
+          <a href="#" class="mobile-tile nav-mock">
+            <span class="mobile-tile-img" style="background-color:#F6F6F6; background-image:url('../images/nav-snugg-loveseat.webp')" aria-hidden="true"></span>
+            <span class="mobile-tile-label">Snugg loveseats</span>
+          </a>
+          <a href="#" class="mobile-tile nav-mock">
+            <span class="mobile-tile-img" style="background-color:#F6F6F6; background-image:url('../images/nav-snugg-chair.webp')" aria-hidden="true"></span>
+            <span class="mobile-tile-label">Snugg chairs</span>
+          </a>
+          <a href="#" class="mobile-tile nav-mock">
+            <span class="mobile-tile-img" style="background-color:#F5F5F5; background-image:url('../images/nav-pillowsac-chair.jpeg')" aria-hidden="true"></span>
+            <span class="mobile-tile-label">PillowSac chairs</span>
+          </a>
+          <a href="#" class="mobile-tile nav-mock">
+            <span class="mobile-tile-img" style="background-color:#FFFFFF; background-image:url('../images/nav-sac.webp')" aria-hidden="true"></span>
+            <span class="mobile-tile-label">Sacs</span>
+          </a>
+          <a href="#" class="mobile-tile nav-mock">
+            <span class="mobile-tile-img" style="background-color:#FFFFFF; background-image:url('../images/nav-sac-bundle.webp')" aria-hidden="true"></span>
+            <span class="mobile-tile-label">Sac bundles</span>
+          </a>
+        </div>
+        <a href="#" class="mobile-clearance-row nav-mock">Clearance</a>
+      </div>
+
+      <div class="mobile-tier-2" id="mobileTierAccessories">
+        <button type="button" class="mobile-tier-back">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+          <span>Accessories</span>
+        </button>
+        <div class="mobile-tile-grid">
+          <a href="#" class="mobile-tile nav-mock">
+            <span class="mobile-tile-img" style="background-color:#FFFFFF; background-image:url('../images/nav-anytables.webp')" aria-hidden="true"></span>
+            <span class="mobile-tile-label">AnyTables</span>
+          </a>
+          <a href="#" class="mobile-tile nav-mock">
+            <span class="mobile-tile-img" style="background-color:#FFFFFF; background-image:url('../images/nav-drink-holders.webp')" aria-hidden="true"></span>
+            <span class="mobile-tile-label">Drink holders</span>
+          </a>
+          <a href="#" class="mobile-tile nav-mock">
+            <span class="mobile-tile-img" style="background-color:#FFFFFF; background-image:url('../images/nav-coasters-and-trays.webp')" aria-hidden="true"></span>
+            <span class="mobile-tile-label">Coasters and trays</span>
+          </a>
+          <a href="#" class="mobile-tile nav-mock">
+            <span class="mobile-tile-img" style="background-color:#FFFFFF; background-image:url('../images/nav-squattomans.webp')" aria-hidden="true"></span>
+            <span class="mobile-tile-label">Squattomans</span>
+          </a>
+          <a href="#" class="mobile-tile nav-mock">
+            <span class="mobile-tile-img" style="background-color:#FFFFFF; background-image:url('../images/nav-pillowsac-frames.webp')" aria-hidden="true"></span>
+            <span class="mobile-tile-label">PillowSac frames</span>
+          </a>
+          <a href="#" class="mobile-tile nav-mock">
+            <span class="mobile-tile-img" style="background-color:#FFFFFF; background-image:url('../images/nav-footsac-blanket.webp')" aria-hidden="true"></span>
+            <span class="mobile-tile-label">Footsac blankets</span>
+          </a>
+          <a href="#" class="mobile-tile nav-mock">
+            <span class="mobile-tile-img" style="background-color:#FFFFFF; background-image:url('../images/nav-throw-pillows.webp')" aria-hidden="true"></span>
+            <span class="mobile-tile-label">Throw pillows</span>
+          </a>
+          <a href="#" class="mobile-tile nav-mock">
+            <span class="mobile-tile-img" style="background-color:#F6F6F6; background-image:url('../images/nav-covers-and-inserts.webp')" aria-hidden="true"></span>
+            <span class="mobile-tile-label">Covers and inserts</span>
+          </a>
+        </div>
+        <a href="#" class="mobile-clearance-row nav-mock">Clearance</a>
+      </div>
+    </div>
   </div>
 </nav>
 
@@ -1449,10 +1588,14 @@
   var btn = document.getElementById('hamburgerBtn');
   var menu = document.getElementById('mobileMenu');
   if(!btn || !menu) return;
+  function resetTiers(){
+    menu.querySelectorAll('.mobile-tier-2.active').forEach(function(t){ t.classList.remove('active'); });
+  }
   function closeMenu(){
     menu.classList.remove('open');
     btn.setAttribute('aria-expanded', 'false');
     btn.setAttribute('aria-label', 'Open menu');
+    setTimeout(resetTiers, 300);
   }
   function openMenu(){
     menu.classList.add('open');
@@ -1471,6 +1614,35 @@
   window.addEventListener('resize', function(){
     if(window.innerWidth > 860) closeMenu();
   });
+  menu.querySelectorAll('.mobile-nav-row[data-tier]').forEach(function(row){
+    row.addEventListener('click', function(){
+      var target = document.getElementById(row.dataset.tier);
+      if(target) target.classList.add('active');
+    });
+  });
+  menu.querySelectorAll('.mobile-tier-back').forEach(function(backBtn){
+    backBtn.addEventListener('click', function(){
+      backBtn.closest('.mobile-tier-2').classList.remove('active');
+    });
+  });
+  var mobileStoreLink = document.getElementById('mobileStoreLink');
+  if(mobileStoreLink){
+    mobileStoreLink.addEventListener('click', function(e){
+      e.preventDefault();
+      closeMenu();
+      var storeToggle = document.getElementById('storeToggle');
+      if(storeToggle) setTimeout(function(){ storeToggle.click(); }, 260);
+    });
+  }
+  var mobileSignInLink = document.getElementById('mobileSignInLink');
+  if(mobileSignInLink){
+    mobileSignInLink.addEventListener('click', function(e){
+      e.preventDefault();
+      closeMenu();
+      var accountToggle = document.getElementById('accountToggle');
+      if(accountToggle) setTimeout(function(){ accountToggle.click(); }, 260);
+    });
+  }
 })();
 </script>
 <script>
