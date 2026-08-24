@@ -365,12 +365,11 @@
     flex-direction:column;
     background:var(--canvas);
     border-top:1px solid var(--line);
-    max-height:calc(100vh - 76px);
     overflow-y:auto;
   }
   .mobile-menu.open{display:flex;}
-  .mobile-menu-tiers{position:relative;}
-  .mobile-tier-1{display:flex; flex-direction:column;}
+  .mobile-menu-tiers{position:relative; overflow:hidden; transition:height .28s ease;}
+  .mobile-tier-1{position:absolute; top:0; left:0; right:0; display:flex; flex-direction:column;}
   .mobile-menu a{
     padding:16px 32px;
     font-size:1rem; font-weight:500;
@@ -1588,8 +1587,17 @@
   var btn = document.getElementById('hamburgerBtn');
   var menu = document.getElementById('mobileMenu');
   if(!btn || !menu) return;
+  var tiers = document.getElementById('mobileTiers');
+  var tier1 = menu.querySelector('.mobile-tier-1');
+  var activeTier = tier1;
+  function syncHeight(el){
+    if(!tiers || !el) return;
+    activeTier = el;
+    tiers.style.height = el.scrollHeight + 'px';
+  }
   function resetTiers(){
     menu.querySelectorAll('.mobile-tier-2.active').forEach(function(t){ t.classList.remove('active'); });
+    syncHeight(tier1);
   }
   function closeMenu(){
     menu.classList.remove('open');
@@ -1601,6 +1609,7 @@
     menu.classList.add('open');
     btn.setAttribute('aria-expanded', 'true');
     btn.setAttribute('aria-label', 'Close menu');
+    syncHeight(tier1);
   }
   btn.addEventListener('click', function(){
     if(menu.classList.contains('open')){ closeMenu(); } else { openMenu(); }
@@ -1613,16 +1622,21 @@
   });
   window.addEventListener('resize', function(){
     if(window.innerWidth > 860) closeMenu();
+    else if(menu.classList.contains('open')) syncHeight(activeTier);
   });
   menu.querySelectorAll('.mobile-nav-row[data-tier]').forEach(function(row){
     row.addEventListener('click', function(){
       var target = document.getElementById(row.dataset.tier);
-      if(target) target.classList.add('active');
+      if(target){
+        target.classList.add('active');
+        syncHeight(target);
+      }
     });
   });
   menu.querySelectorAll('.mobile-tier-back').forEach(function(backBtn){
     backBtn.addEventListener('click', function(){
       backBtn.closest('.mobile-tier-2').classList.remove('active');
+      syncHeight(tier1);
     });
   });
   var mobileStoreLink = document.getElementById('mobileStoreLink');
