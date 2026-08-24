@@ -201,6 +201,12 @@
   #view-configurator{display:none;}
   .back-link{font-size:13px;color:var(--muted);cursor:pointer;display:flex;align-items:center;gap:4px;margin-bottom:2px;}
 
+  .breadcrumbs{display:flex; flex-wrap:wrap; align-items:center; gap:6px; font-size:13px; color:var(--muted); margin:20px 0 4px;}
+  .breadcrumbs a{color:var(--muted); text-decoration:none;}
+  .breadcrumbs a:hover{color:var(--ink); text-decoration:underline; text-underline-offset:3px;}
+  .breadcrumbs .crumb-sep{opacity:0.45;}
+  .breadcrumbs .crumb-current{color:var(--ink); font-weight:600;}
+
   @media(max-width:880px){
     .product-grid{grid-template-columns:1fr 1fr;}
     .browse-hero{grid-template-columns:1fr;}
@@ -731,7 +737,7 @@
       <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
     </button>
-    <div class="logo"><img src="../images/lovesac-wordmark.png" alt="Lovesac"></div>
+    <a href="lovesac-redesign.html" class="logo" aria-label="Lovesac home"><img src="../images/lovesac-wordmark.png" alt="Lovesac"></a>
     <div class="nav-links">
       <div class="nav-item">
         <button type="button" class="nav-trigger" aria-haspopup="true" aria-expanded="false">
@@ -1003,6 +1009,14 @@
 <!-- ================= BROWSE / LANDING VIEW ================= -->
 <div id="view-browse">
   <div class="browse-wrap">
+
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="lovesac-redesign.html">Home</a>
+      <span class="crumb-sep" aria-hidden="true">/</span>
+      <a href="#" class="nav-mock">Furniture</a>
+      <span class="crumb-sep" aria-hidden="true">/</span>
+      <span class="crumb-current" aria-current="page">Sactionals</span>
+    </nav>
 
     <div class="browse-hero">
       <div>
