@@ -156,7 +156,8 @@
   .browse-hero h1{font-size:34px;margin:0 0 10px;}
   .browse-hero p{color:var(--muted);font-size:15px;max-width:440px;margin:0 0 22px;}
   .hero-actions{display:flex;gap:12px;}
-  .hero-img{background:linear-gradient(135deg,#DED6C4,#C9BFA9);border-radius:16px;height:220px;}
+  .hero-img{background:linear-gradient(135deg,#DED6C4,#C9BFA9);border-radius:16px;height:220px;overflow:hidden;}
+  .hero-img img{width:100%;height:100%;object-fit:cover;display:block;}
 
   .space-check{
     display:flex; align-items:center; gap:24px;
@@ -1010,7 +1011,7 @@
           <button class="btn btn-ghost" onclick="document.getElementById('productGrid').scrollIntoView({behavior:'smooth'})">Browse Setups</button>
         </div>
       </div>
-      <div class="hero-img"></div>
+      <div class="hero-img"><img src="../images/sactionals-hero.webp" alt="Sactionals sectional and ottomans in a living room"></div>
     </div>
 
     <div class="space-check">
