@@ -365,10 +365,12 @@
     flex-direction:column;
     background:var(--canvas);
     border-top:1px solid var(--line);
-    overflow-y:auto;
+    position:fixed; top:76px; left:0; right:0; bottom:0;
+    overflow-y:auto; overscroll-behavior:contain;
   }
   .mobile-menu.open{display:flex;}
-  .mobile-menu-tiers{position:relative; overflow:hidden; transition:height .28s ease;}
+  html.menu-open-lock{overflow:hidden;}
+  .mobile-menu-tiers{position:relative; overflow:hidden; flex-shrink:0; transition:height .28s ease;}
   .mobile-tier-1{position:absolute; top:0; left:0; right:0; display:flex; flex-direction:column;}
   .mobile-menu a{
     padding:16px 32px;
@@ -1585,6 +1587,7 @@
   var btn = document.getElementById('hamburgerBtn');
   var menu = document.getElementById('mobileMenu');
   if(!btn || !menu) return;
+  var navEl = document.querySelector('nav');
   var tiers = document.getElementById('mobileTiers');
   var tier1 = menu.querySelector('.mobile-tier-1');
   var activeTier = tier1;
@@ -1601,12 +1604,15 @@
     menu.classList.remove('open');
     btn.setAttribute('aria-expanded', 'false');
     btn.setAttribute('aria-label', 'Open menu');
+    document.documentElement.classList.remove('menu-open-lock');
     setTimeout(resetTiers, 300);
   }
   function openMenu(){
+    if(navEl) menu.style.top = navEl.getBoundingClientRect().bottom + 'px';
     menu.classList.add('open');
     btn.setAttribute('aria-expanded', 'true');
     btn.setAttribute('aria-label', 'Close menu');
+    document.documentElement.classList.add('menu-open-lock');
     syncHeight(tier1);
   }
   btn.addEventListener('click', function(){
