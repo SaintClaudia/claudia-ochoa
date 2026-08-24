@@ -95,17 +95,19 @@
   nav{
     position:sticky; top:0; z-index:50;
   }
-  nav > .wrap{
-    display:grid; grid-template-columns:1fr auto 1fr; align-items:center;
-    height:76px;
+  .nav-bar{
     background:rgba(231,225,210,0.92);
     backdrop-filter:blur(8px);
     border-bottom:1px solid var(--line);
     transform:translateY(0);
     transition:transform .3s ease, background .15s ease;
   }
-  nav.nav-hidden > .wrap{transform:translateY(-100%);}
-  nav.dropdown-open > .wrap{background:var(--canvas); backdrop-filter:none;}
+  nav.nav-hidden .nav-bar{transform:translateY(-100%);}
+  nav.dropdown-open .nav-bar{background:var(--canvas); backdrop-filter:none;}
+  .nav-bar > .wrap{
+    display:grid; grid-template-columns:1fr auto 1fr; align-items:center;
+    height:76px;
+  }
   .logo{display:flex; align-items:center; justify-self:start;}
   .logo img{width:auto; height:20px;}
   footer .logo img{height:24px;}
@@ -678,7 +680,7 @@
     .timeline{grid-template-columns:1fr; row-gap:32px;}
     .timeline::before{display:none;}
     .nav-links{display:none;}
-    nav > .wrap{display:flex; justify-content:space-between; position:relative;}
+    .nav-bar > .wrap{display:flex; justify-content:space-between; position:relative;}
     .hamburger{display:flex;}
     nav .logo{position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); justify-self:auto;}
     .nav-icons .icon-store, .nav-icons .icon-account, .nav-icons .icon-search{display:none;}
@@ -713,6 +715,7 @@
 </header>
 
 <nav>
+  <div class="nav-bar">
   <div class="wrap">
     <button type="button" class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
       <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
@@ -866,6 +869,7 @@
         </button>
       </div>
     </div>
+  </div>
   </div>
   <div class="desktop-search" id="desktopSearch">
     <div class="wrap">
