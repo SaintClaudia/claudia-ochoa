@@ -68,7 +68,7 @@
     font-family:'Work Sans', sans-serif;
     line-height:1.5;
     -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
+    overflow-x:clip;
   }
   h1,h2,h3{
     font-family:'Bricolage Grotesque', sans-serif;
@@ -94,18 +94,18 @@
   /* ---------- NAV ---------- */
   nav{
     position:sticky; top:0; z-index:50;
+  }
+  nav > .wrap{
+    display:grid; grid-template-columns:1fr auto 1fr; align-items:center;
+    height:76px;
     background:rgba(231,225,210,0.92);
     backdrop-filter:blur(8px);
     border-bottom:1px solid var(--line);
     transform:translateY(0);
     transition:transform .3s ease, background .15s ease;
   }
-  nav.nav-hidden{transform:translateY(-100%);}
-  nav.dropdown-open{background:var(--canvas); backdrop-filter:none;}
-  nav > .wrap{
-    display:grid; grid-template-columns:1fr auto 1fr; align-items:center;
-    height:76px;
-  }
+  nav.nav-hidden > .wrap{transform:translateY(-100%);}
+  nav.dropdown-open > .wrap{background:var(--canvas); backdrop-filter:none;}
   .logo{display:flex; align-items:center; justify-self:start;}
   .logo img{width:auto; height:20px;}
   footer .logo img{height:24px;}
@@ -710,8 +710,8 @@
 <body>
 
 <header>
-
 <div class="promo-bar">Labor Day Sale — up to <strong>40% off</strong>*</div>
+</header>
 
 <nav>
   <div class="wrap">
@@ -986,8 +986,6 @@
     </div>
   </div>
 </nav>
-
-</header>
 
 <main>
 
