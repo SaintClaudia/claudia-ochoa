@@ -183,9 +183,10 @@
 
   .product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
   .product-card{cursor:pointer;}
-  .product-thumb{background:linear-gradient(180deg,#F4F1EA,#E6E1D3);border-radius:12px;height:150px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;overflow:hidden;}
+  .product-thumb{background:linear-gradient(180deg,#F4F1EA,#E6E1D3);border-radius:12px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;margin-bottom:12px;overflow:hidden;}
   .product-thumb svg{width:78%;}
-  .product-thumb img{width:88%;height:88%;object-fit:contain;display:block;}
+  .product-thumb.has-photo{background:#FDFCFA;}
+  .product-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
   .product-name{font-weight:600;font-size:14px;}
   .product-meta{font-size:12px;color:var(--muted);margin:3px 0 8px;}
   .product-swatches{display:flex;gap:5px;margin-bottom:8px;}
@@ -1029,7 +1030,6 @@
       </div>
       <div class="space-check-cta">
         <button class="btn btn-primary" id="spaceToggle" aria-expanded="false" aria-controls="spaceDropdown">Check Your Space</button>
-        <span class="space-check-note">Takes 30 seconds</span>
       </div>
     </div>
 
@@ -2119,7 +2119,7 @@ const products = [
   {name:'The Everyday L-Shape', meta:'Fits 4 · Deep seats for lounging', price:3250, hex:['#A9A9A2','#2F4A3B'], w:112, d:88, img:'../images/sactionals-everyday-l-shape.webp'},
   {name:'The Family Room Corner', meta:'Fits 6 · 1-deep chaise', price:5024, hex:['#C9B79A','#3B2A22','#B7AE9C'], badge:'Customer Favorite', w:128, d:66, img:'../images/sactionals-family-room-corner.jpeg'},
   {name:'The Game Day U-Shape', meta:'Fits 8 · Room for the whole crew', price:6112, hex:['#4A4C4A','#1F2A44'], w:156, d:96, img:'../images/sactionals-game-day-u-shape.webp'},
-  {name:'The Compact Loveseat', meta:'Fits 2 · Small-space friendly', price:1816, hex:['#DCD3C4','#C9B79A'], w:64, d:38},
+  {name:'The Compact Loveseat', meta:'Fits 2 · Small-space friendly', price:1816, hex:['#DCD3C4','#C9B79A'], w:64, d:38, img:'../images/sactionals-compact-loveseat.webp'},
   {name:'The Reading Nook', meta:'Fits 3 · 1-deep, cozy footprint', price:2532, hex:['#B7AE9C','#3F6E77'], w:84, d:38, img:'../images/sactionals-reading-nook.webp'},
   {name:'The Grand Sectional', meta:'Fits 10 · Statement piece for open floor plans', price:7676, hex:['#1F2A44','#4A4C4A','#B26A4A'], w:180, d:100, img:'../images/sactionals-grand-sectional.webp'},
   {name:'The Media Room Wrap', meta:'Fits 7 · 4-deep, built for binge nights', price:7440, hex:['#B7AE9C','#3B2A22'], w:140, d:100},
@@ -2128,7 +2128,7 @@ const products = [
 function renderProductGrid(){
   document.getElementById('productGrid').innerHTML = products.map((p,i)=>`
     <div class="product-card" data-idx="${i}" onclick="showConfigurator()">
-      <div class="product-thumb">
+      <div class="product-thumb${p.img ? ' has-photo' : ''}">
         ${p.img ? `<img src="${p.img}" alt="${p.name}">` : `<svg viewBox="0 0 130 60"><path d="M0,20 h90 v20 h30 v40 h-120 Z" fill="${p.hex[0]}"/></svg>`}
       </div>
       ${p.badge?`<div class="product-badge">${p.badge}</div>`:''}
