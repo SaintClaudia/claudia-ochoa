@@ -1432,6 +1432,7 @@
     drop.classList.remove('open');
     backdrop.classList.remove('open');
     toggle.setAttribute('aria-expanded', 'false');
+    document.querySelector('nav').classList.remove('dropdown-open');
   }
   window.__closeStoreDrop = closeStoreDrop;
 
@@ -1458,6 +1459,7 @@
       drop.classList.add('open');
       backdrop.classList.add('open');
       toggle.setAttribute('aria-expanded', 'true');
+      document.querySelector('nav').classList.add('dropdown-open');
       initMap();
       setTimeout(function(){ if(map) map.invalidateSize(); }, 220);
     } else {
@@ -1495,6 +1497,7 @@
     drop.classList.remove('open');
     backdrop.classList.remove('open');
     toggle.setAttribute('aria-expanded', 'false');
+    document.querySelector('nav').classList.remove('dropdown-open');
   }
   window.__closeAccountDrop = closeAccountDrop;
 
@@ -1521,6 +1524,7 @@
       drop.classList.add('open');
       backdrop.classList.add('open');
       toggle.setAttribute('aria-expanded', 'true');
+      document.querySelector('nav').classList.add('dropdown-open');
     } else {
       toggle.setAttribute('aria-expanded', 'false');
     }
@@ -1553,6 +1557,7 @@
     drop.classList.remove('open');
     backdrop.classList.remove('open');
     toggle.setAttribute('aria-expanded', 'false');
+    document.querySelector('nav').classList.remove('dropdown-open');
   }
   window.__closeCartDrop = closeCartDrop;
 
@@ -1579,6 +1584,7 @@
       drop.classList.add('open');
       backdrop.classList.add('open');
       toggle.setAttribute('aria-expanded', 'true');
+      document.querySelector('nav').classList.add('dropdown-open');
     } else {
       toggle.setAttribute('aria-expanded', 'false');
     }
@@ -1766,7 +1772,8 @@
   function update(){
     var y = Math.max(window.scrollY, 0);
     var menuOpen = menu && menu.classList.contains('open');
-    if(menuOpen || y <= nav.offsetHeight){
+    var dropdownOpen = nav.classList.contains('dropdown-open');
+    if(menuOpen || dropdownOpen || y <= nav.offsetHeight){
       nav.classList.remove('nav-hidden');
     } else if(y > lastY + 4){
       nav.classList.add('nav-hidden');
