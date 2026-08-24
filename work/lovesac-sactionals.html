@@ -1050,13 +1050,13 @@
     </div>
 
     <div class="browse-filters" id="filtersAnchor">
-      <button class="filter-chip active" onclick="toggleFilter(this)">All Sizes</button>
-      <button class="filter-chip" onclick="toggleFilter(this)">Loveseat – Small</button>
-      <button class="filter-chip" onclick="toggleFilter(this)">Medium</button>
-      <button class="filter-chip" onclick="toggleFilter(this)">Large</button>
-      <button class="filter-chip" onclick="toggleFilter(this)">Color</button>
-      <button class="filter-chip" onclick="toggleFilter(this)">Price</button>
-      <span class="filter-count">24 setups</span>
+      <button class="filter-chip active" onclick="applySizeFilter('all', this)">All Sizes</button>
+      <button class="filter-chip" onclick="applySizeFilter('small', this)">Loveseat – Small</button>
+      <button class="filter-chip" onclick="applySizeFilter('medium', this)">Medium</button>
+      <button class="filter-chip" onclick="applySizeFilter('large', this)">Large</button>
+      <button class="filter-chip nav-mock">Color</button>
+      <button class="filter-chip nav-mock">Price</button>
+      <span class="filter-count" id="filterCount"></span>
     </div>
 
     <div class="product-grid" id="productGrid"></div>
@@ -2157,6 +2157,10 @@ const products = [
   {name:'The Media Room Wrap', meta:'Fits 7 · 4-deep, built for binge nights', price:7440, hex:['#B7AE9C','#3B2A22'], w:140, d:100, img:'../images/sactionals-media-room-wrap.webp'},
 ];
 
+function sizeOf(p){
+  return p.w <= 90 ? 'small' : (p.w <= 130 ? 'medium' : 'large');
+}
+
 function renderProductGrid(){
   document.getElementById('productGrid').innerHTML = products.map((p,i)=>`
     <div class="product-card nav-mock" data-idx="${i}">
@@ -2169,6 +2173,25 @@ function renderProductGrid(){
       <div class="product-swatches">${p.hex.map(h=>`<div class="pswatch" style="background:${h}"></div>`).join('')}</div>
       <div class="product-price">$${p.price.toLocaleString()}.00</div>
     </div>`).join('');
+  applySizeFilter(currentSizeFilter);
+}
+
+var currentSizeFilter = 'all';
+function applySizeFilter(key, btn){
+  currentSizeFilter = key;
+  if(btn){
+    document.querySelectorAll('#filtersAnchor .filter-chip').forEach(function(c){ c.classList.remove('active'); });
+    btn.classList.add('active');
+  }
+  var visible = 0;
+  document.querySelectorAll('#productGrid .product-card').forEach(function(card){
+    var p = products[parseInt(card.dataset.idx, 10)];
+    var show = key === 'all' || sizeOf(p) === key;
+    card.style.display = show ? '' : 'none';
+    if(show) visible++;
+  });
+  var countEl = document.getElementById('filterCount');
+  if(countEl) countEl.textContent = visible + (visible === 1 ? ' setup' : ' setups');
 }
 renderProductGrid();
 
