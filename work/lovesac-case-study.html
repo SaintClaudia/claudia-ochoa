@@ -205,12 +205,10 @@
   }
 
   /* Before / After */
-  .compare-label-row{
-    display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-bottom:14px;
-  }
   .compare-label{
     display:flex; align-items:center; gap:10px;
     font-size:13px; letter-spacing:0.06em; text-transform:uppercase; font-weight:700;
+    margin-bottom:14px;
   }
   .compare-label.before{color:var(--ink-soft);}
   .compare-label.after{color:var(--clay-deep);}
@@ -220,6 +218,7 @@
   .compare-grid{
     display:grid; grid-template-columns:1fr 1fr; gap:28px;
   }
+  .compare-col{display:flex; flex-direction:column;}
   .compare-frame{
     position:relative;
     display:block;
@@ -366,7 +365,7 @@
     .wrap{padding:0 20px;}
     .section-head{grid-template-columns:1fr; gap:14px;}
     .problem-grid, .pillars, .outcomes{grid-template-columns:1fr;}
-    .compare-grid, .compare-label-row{grid-template-columns:1fr;}
+    .compare-grid{grid-template-columns:1fr;}
     .meta-row{grid-template-columns:repeat(2,1fr); row-gap:24px;}
     .spark{padding:32px;}
     footer{flex-direction:column; align-items:flex-start;}
@@ -470,19 +469,21 @@
       </div>
     </div>
 
-    <div class="compare-label-row">
-      <div class="compare-label before"><span class="sw"></span>Lovesac.com — as shipped</div>
-      <div class="compare-label after"><span class="sw"></span>Redesign concept</div>
-    </div>
     <div class="compare-grid">
-      <a class="compare-frame" href="/images/lovesac-before-full.jpg" target="_blank" rel="noopener" data-caption="Lovesac.com — as shipped (full page)" aria-label="View the full Lovesac.com homepage screenshot">
-        <img src="/images/lovesac-before-hero.jpg" alt="Original Lovesac homepage hero: dark textured background, promotional banner, and dense navigation.">
-        <span class="compare-frame-hint">View full page &#8599;</span>
-      </a>
-      <a class="compare-frame" href="/images/lovesac-after-full.jpg" target="_blank" rel="noopener" data-caption="Redesign concept (full page)" aria-label="View the full redesign concept homepage screenshot">
-        <img src="/images/lovesac-after-hero.jpg" alt="Redesigned Lovesac homepage hero: real lifestyle photograph, single headline, simplified navigation, and a trust-signal bar.">
-        <span class="compare-frame-hint">View full page &#8599;</span>
-      </a>
+      <div class="compare-col">
+        <div class="compare-label before"><span class="sw"></span>Lovesac.com — as shipped</div>
+        <a class="compare-frame" href="/images/lovesac-before-full.jpg" target="_blank" rel="noopener" data-caption="Lovesac.com — as shipped (full page)" aria-label="View the full Lovesac.com homepage screenshot">
+          <img src="/images/lovesac-before-hero.jpg" alt="Original Lovesac homepage hero: dark textured background, promotional banner, and dense navigation.">
+          <span class="compare-frame-hint">View full page &#8599;</span>
+        </a>
+      </div>
+      <div class="compare-col">
+        <div class="compare-label after"><span class="sw"></span>Redesign concept</div>
+        <a class="compare-frame" href="/images/lovesac-after-full.jpg" target="_blank" rel="noopener" data-caption="Redesign concept (full page)" aria-label="View the full redesign concept homepage screenshot">
+          <img src="/images/lovesac-after-hero.jpg" alt="Redesigned Lovesac homepage hero: real lifestyle photograph, single headline, simplified navigation, and a trust-signal bar.">
+          <span class="compare-frame-hint">View full page &#8599;</span>
+        </a>
+      </div>
     </div>
     <p class="compare-note">
       The redesign replaces the abstract hero pattern with a single lifestyle photograph and a plain-language headline — <strong>"One couch. Built for life."</strong> — then immediately backs it up with four scannable trust signals (60-day trial, machine washable, forever warranty, recycled fill) instead of burying those claims in copy further down the page. The sale is still there; it's just no longer the first thing the visitor has to process.
