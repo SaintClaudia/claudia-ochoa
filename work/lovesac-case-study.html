@@ -221,12 +221,28 @@
     display:grid; grid-template-columns:1fr 1fr; gap:28px;
   }
   .compare-frame{
+    position:relative;
+    display:block;
     border-radius:14px;
     overflow:hidden;
     border:1px solid var(--line);
     background:var(--paper);
+    cursor:zoom-in;
   }
-  .compare-frame img{width:100%; height:auto; display:block;}
+  .compare-frame img{width:100%; height:auto; display:block; transition:transform .3s ease;}
+  .compare-frame:hover img, .compare-frame:focus-visible img{transform:scale(1.02);}
+  .compare-frame-hint{
+    position:absolute; right:12px; bottom:12px;
+    display:flex; align-items:center; gap:6px;
+    background:var(--espresso); color:var(--paper);
+    font-size:12px; font-weight:600;
+    padding:7px 13px; border-radius:999px;
+    opacity:0; transform:translateY(4px);
+    transition:opacity .2s ease, transform .2s ease;
+  }
+  .compare-frame:hover .compare-frame-hint, .compare-frame:focus-visible .compare-frame-hint{
+    opacity:1; transform:translateY(0);
+  }
   .compare-note{
     margin-top:44px;
     font-size:15px; line-height:1.7; color:var(--ink-soft);
@@ -417,8 +433,14 @@
       <div class="compare-label after"><span class="sw"></span>Redesign concept</div>
     </div>
     <div class="compare-grid">
-      <div class="compare-frame"><img src="/images/lovesac-before-hero.jpg" alt="Original Lovesac homepage hero: dark textured background, promotional banner, and dense navigation."></div>
-      <div class="compare-frame"><img src="/images/lovesac-after-hero.jpg" alt="Redesigned Lovesac homepage hero: real lifestyle photograph, single headline, simplified navigation, and a trust-signal bar."></div>
+      <a class="compare-frame" href="/images/lovesac-before-full.jpg" target="_blank" rel="noopener" aria-label="View the full Lovesac.com homepage screenshot">
+        <img src="/images/lovesac-before-hero.jpg" alt="Original Lovesac homepage hero: dark textured background, promotional banner, and dense navigation.">
+        <span class="compare-frame-hint">View full page &#8599;</span>
+      </a>
+      <a class="compare-frame" href="/images/lovesac-after-full.jpg" target="_blank" rel="noopener" aria-label="View the full redesign concept homepage screenshot">
+        <img src="/images/lovesac-after-hero.jpg" alt="Redesigned Lovesac homepage hero: real lifestyle photograph, single headline, simplified navigation, and a trust-signal bar.">
+        <span class="compare-frame-hint">View full page &#8599;</span>
+      </a>
     </div>
     <p class="compare-note">
       The redesign replaces the abstract hero pattern with a single lifestyle photograph and a plain-language headline — <strong>"One couch. Built for life."</strong> — then immediately backs it up with four scannable trust signals (60-day trial, machine washable, forever warranty, recycled fill) instead of burying those claims in copy further down the page. The sale is still there; it's just no longer the first thing the visitor has to process.
