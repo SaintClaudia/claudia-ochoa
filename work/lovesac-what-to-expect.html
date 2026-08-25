@@ -534,7 +534,12 @@
   .gift-band-inner{
     display:flex; align-items:center; gap:36px;
   }
-  .gift-band-visual{flex:0 0 auto;}
+  .gift-band-visual{
+    flex:0 0 auto;
+    position:relative;
+    width:245px; height:170px;
+    overflow:hidden;
+  }
   .gift-band-copy{flex:1 1 auto; min-width:0;}
   .gift-band-eyebrow{color:var(--clay); display:block; margin-bottom:6px;}
   .gift-band h2{
@@ -547,12 +552,10 @@
   .gift-band-terms{color:var(--clay); text-decoration:underline; text-underline-offset:3px;}
   .gift-band-cta{flex:0 0 auto; white-space:nowrap;}
   .gift-band-visual img{
-    width:130px;
+    position:absolute; top:50%; left:50%;
+    width:240px; height:auto;
     aspect-ratio:1000/602;
-    transform:rotate(-7.19deg);
-  }
-  @media (min-width:861px){
-    .gift-band-visual img{transform:rotate(7.19deg);}
+    transform:translate(-50%, -50%) rotate(-7.19deg);
   }
   @media (max-width:700px){
     .gift-band-inner{flex-wrap:wrap;}
