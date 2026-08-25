@@ -93,6 +93,8 @@
     display:flex; align-items:center; justify-content:center; text-align:center;
     padding:24px; color:var(--ink-soft); font-size:13.5px; line-height:1.6;
   }
+  .detail-frame{border:1px solid var(--line); border-radius:16px; overflow:hidden; background:var(--paper);}
+  .detail-frame img{width:100%; height:auto; display:block;}
   .nav-note{margin-top:32px; font-size:15px; line-height:1.7; color:var(--ink-soft); max-width:70ch;}
 
   /* Room fit */
@@ -324,6 +326,31 @@
     </div>
     <p class="nav-note">This reads like a keyword-stuffing pattern from over fifteen years ago — the belief that visibly listing every trademarked term on the page would boost search rankings. Modern search engines have long since discounted (and can penalize) exactly this kind of content: dense, unstructured keyword lists with no navigational value to an actual visitor. It's also an accessibility cost with no SEO upside — a screen reader has to read through dozens of product names before reaching the copyright line and legal links beneath them.</p>
     <p class="nav-note">The fix isn't removing the trademark disclosure — that's a legitimate legal requirement. It's separating legal necessity from SEO strategy: move the list off the visible page and behind a single "Trademarks" link next to Privacy Policy and Terms — the same legal-row pattern the original site already uses, just extended by one link. The disclosure is still one tap away for anyone who needs it; it's no longer doing double duty as a keyword-stuffing block for search engines that stopped rewarding this years ago.</p>
+  </div>
+</section>
+
+<section class="divider">
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="num">05 · Trust Signals</span></div>
+      <div>
+        <h2>Confidence signals shouldn't be a scavenger hunt.</h2>
+        <p class="lede">The real site's trust content — warranty, trial period, shipping, delivery — doesn't live on the homepage at all. It's on the Sactionals product page, collapsed behind four separate accordions a visitor has to find and tap open one at a time.</p>
+      </div>
+    </div>
+
+    <div class="nav-compare">
+      <div class="nav-col before">
+        <div class="nav-label"><span class="sw"></span>Lovesac.com — Sactionals PDP</div>
+        <div class="detail-frame"><img src="/images/lovesac-trust-band-before.jpg" alt="Lovesac.com Sactionals product page showing a founder-story photo followed by four collapsed accordion rows: Guaranteed For Life, 60-Day Home Trial, Free Shipping and Returns, and Room of Choice Delivery, each hidden behind a plus icon."></div>
+      </div>
+      <div class="nav-col after">
+        <div class="nav-label"><span class="sw"></span>Redesign — homepage</div>
+        <div class="detail-frame"><img src="/images/lovesac-trust-band-after.jpg" alt="Redesigned homepage trust band with four always-visible rows, each pairing an icon with a bolded claim and its specific terms: 60-Day Trial, Machine Washable, Forever Warranty, and Recycled Fill."></div>
+      </div>
+    </div>
+    <p class="nav-note">Reaching this section already takes knowing to scroll past a founder-story photo on a specific product page — a shopper browsing the homepage never sees it. And even there, nothing is actually answered until it's tapped: "Guaranteed For Life," "60-Day Home Trial," "Free Shipping and Returns," and "Room of Choice Delivery" are collapsed by default, hiding behind a plus icon instead of stating the terms.</p>
+    <p class="nav-note">The redesign moves the same four claims to a scannable row directly under the homepage hero — visible on arrival, with the specific benefit spelled out inline instead of gated behind a tap. A shopper shouldn't have to dig for reasons to trust the brand; here, they're the first thing after the fold.</p>
   </div>
 </section>
 
