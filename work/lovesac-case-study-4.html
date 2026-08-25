@@ -162,6 +162,7 @@
   .outcome-photo{margin-top:40px; max-width:560px;}
   .outcome-photo img{border-radius:16px; width:100%; height:auto; display:block; border:1px solid var(--line);}
   .outcome-photo-cap{margin-top:12px; font-size:13px; color:var(--ink-soft); font-style:italic;}
+  .outcome-body{display:grid; grid-template-columns:1fr 2.2fr; gap:48px;}
 
   /* Sentiment cards */
   .sentiment-grid{display:grid; grid-template-columns:1fr 1fr; gap:28px;}
@@ -213,6 +214,8 @@
       padding:22px 20px 18px;
     }
     .section-head{grid-template-columns:1fr; gap:14px;}
+    .outcome-body{grid-template-columns:1fr; gap:0;}
+    .outcome-body > div:first-child{display:none;}
     .nav-compare, .roomfit-layout{grid-template-columns:1fr;}
     .roomfit-shots{gap:16px; flex-wrap:wrap;}
     .phone-frame{width:160px;}
@@ -318,11 +321,16 @@
         <p class="lede">Derick Cahill was offered a pair of floral gardening gloves, size small. This case study is what happens when you take the actual problem seriously instead: a rebuilt information architecture, accessibility built in rather than bolted on, and a homepage that leads with the brand instead of the discount.</p>
       </div>
     </div>
-    <p class="nav-note">The gloves were a joke. The redesign isn't.</p>
+    <div class="outcome-body">
+      <div></div>
+      <div>
+        <p class="nav-note" style="margin-top:0;">The gloves were a joke. The redesign isn't.</p>
 
-    <div class="outcome-photo">
-      <img src="/images/lovesac-compensation-gloves.jpg" alt="A pair of floral gardening gloves, size small — the actual compensation offered to Derick Cahill.">
-      <p class="outcome-photo-cap">The actual gloves.</p>
+        <div class="outcome-photo">
+          <img src="/images/lovesac-compensation-gloves.jpg" alt="A pair of floral gardening gloves, size small — the actual compensation offered to Derick Cahill.">
+          <p class="outcome-photo-cap">The actual gloves.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
