@@ -140,8 +140,8 @@
   .cta p{font-size:16px; color:var(--ink-soft); max-width:48ch; margin:0 auto 30px; line-height:1.6;}
   .btn-row{display:flex; gap:14px; justify-content:center; flex-wrap:wrap;}
   .btn{display:inline-flex; align-items:center; gap:8px; padding:14px 26px; border-radius:999px; text-decoration:none; font-size:14.5px; font-weight:600;}
-  .btn.primary{background:var(--clay); color:var(--paper);}
-  .btn.primary:hover{background:var(--clay-deep);}
+  .btn.primary{background:var(--clay-deep); color:var(--paper);}
+  .btn.primary:hover{background:var(--espresso);}
   .btn.ghost{border:1px solid var(--line); color:var(--espresso);}
   .btn.ghost:hover{border-color:var(--ink-soft);}
 
@@ -158,11 +158,21 @@
     .roomfit-shots{gap:16px; flex-wrap:wrap;}
     .phone-frame{width:160px;}
   }
+  .skip-link{
+    position:absolute; top:-100%; left:24px; z-index:9999;
+    padding:12px 20px; background:var(--espresso); color:var(--paper);
+    font-family:'Inter',sans-serif; font-size:0.85rem; font-weight:600;
+    text-decoration:none; border-radius:0 0 6px 6px;
+    transition:top .2s;
+  }
+  .skip-link:focus{top:0; outline:2px solid var(--paper); outline-offset:-4px;}
   :focus-visible{outline:2px solid var(--clay); outline-offset:3px;}
   @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto;}}
 </style>
 </head>
 <body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
 <div class="topbar">
   <div class="wrap">
@@ -171,6 +181,7 @@
   </div>
 </div>
 
+<main id="main-content">
 <header class="hero">
   <div class="wrap">
     <div class="eyebrow">Case Study — 02 · Deep Dive</div>
@@ -255,6 +266,7 @@
     </div>
   </div>
 </section>
+</main>
 
 <footer>
   <div class="wrap" style="text-align:center; width:100%;">
