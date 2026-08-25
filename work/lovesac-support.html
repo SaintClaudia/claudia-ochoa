@@ -14,29 +14,29 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>What to Expect — Lovesac Redesign — CLAUDIA OCHOA</title>
-<meta name="description" content="What to expect when ordering Sactionals: delivery, assembly, and a build-time calculator based on how many people are helping.">
-<meta property="og:title" content="What to Expect — Lovesac Redesign | Claudia Ochoa">
-<meta property="og:description" content="What to expect when ordering Sactionals: delivery, assembly, and a build-time calculator based on how many people are helping.">
-<meta property="og:url" content="https://claudiaochoa.co/work/lovesac-what-to-expect.html">
+<title>Customer Support — Lovesac Redesign — CLAUDIA OCHOA</title>
+<meta name="description" content="Customer support for the Lovesac Sactionals redesign concept: shipping, returns, warranty, and assembly answers, plus how to get in touch.">
+<meta property="og:title" content="Customer Support — Lovesac Redesign | Claudia Ochoa">
+<meta property="og:description" content="Customer support for the Lovesac Sactionals redesign concept: shipping, returns, warranty, and assembly answers, plus how to get in touch.">
+<meta property="og:url" content="https://claudiaochoa.co/work/lovesac-support.html">
 <meta property="og:type" content="article">
 <meta property="og:image" content="https://claudiaochoa.co/images/lovesac-redesign-thumb.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="What to Expect — Lovesac Redesign | Claudia Ochoa">
-<meta name="twitter:description" content="What to expect when ordering Sactionals: delivery, assembly, and a build-time calculator based on how many people are helping.">
+<meta name="twitter:title" content="Customer Support — Lovesac Redesign | Claudia Ochoa">
+<meta name="twitter:description" content="Customer support for the Lovesac Sactionals redesign concept: shipping, returns, warranty, and assembly answers, plus how to get in touch.">
 <meta name="twitter:image" content="https://claudiaochoa.co/images/lovesac-redesign-thumb.jpg">
-<link rel="canonical" href="https://claudiaochoa.co/work/lovesac-what-to-expect.html">
+<link rel="canonical" href="https://claudiaochoa.co/work/lovesac-support.html">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "CreativeWork",
-  "name": "What to Expect — Lovesac Redesign",
-  "description": "What to expect when ordering Sactionals: delivery, assembly, and a build-time calculator based on how many people are helping.",
-  "url": "https://claudiaochoa.co/work/lovesac-what-to-expect.html",
+  "name": "Customer Support — Lovesac Redesign",
+  "description": "Customer support for the Lovesac Sactionals redesign concept: shipping, returns, warranty, and assembly answers, plus how to get in touch.",
+  "url": "https://claudiaochoa.co/work/lovesac-support.html",
   "image": "https://claudiaochoa.co/images/lovesac-redesign-thumb.jpg",
-  "dateModified": "2026-08-24",
-  "keywords": "Lovesac, Sactionals, e-commerce redesign, UX case study, product design, conversion design",
+  "dateModified": "2026-08-25",
+  "keywords": "Lovesac, Sactionals, e-commerce redesign, UX case study, product design, conversion design, customer support",
   "author": {
     "@type": "Person",
     "name": "Claudia Ochoa",
@@ -689,6 +689,61 @@
     .calc-size-btn small{margin-top:0; text-align:right;}
   }
 
+  /* ---------- SUPPORT INTRO ---------- */
+  .support-intro{padding-top:8px; padding-bottom:56px;}
+  .support-intro h1{font-size:clamp(2.2rem,4vw,3.2rem); max-width:640px;}
+  .support-intro p{font-size:1.05rem; color:var(--ink-soft); max-width:600px; margin-top:16px;}
+
+  /* ---------- SUPPORT CONTACT ---------- */
+  .support-contact{padding:96px 0; background:var(--ink); color:var(--canvas);}
+  .support-contact .section-label .tag{background:var(--clay); color:var(--canvas);}
+  .support-contact .section-label .rule{background:rgba(231,225,210,0.18);}
+  .support-contact h2{font-size:clamp(2rem,3.4vw,2.8rem); max-width:640px; margin-bottom:48px;}
+  .contact-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:20px;}
+  .contact-card{
+    display:flex; flex-direction:column; align-items:flex-start; gap:0;
+    background:rgba(237,231,218,0.05); border:1px solid rgba(231,225,210,0.16);
+    border-radius:14px; padding:26px 22px; text-align:left; width:100%;
+    font-family:inherit; color:inherit; cursor:pointer;
+    transition:background .2s ease, border-color .2s ease, transform .2s ease;
+  }
+  .contact-card:hover{background:rgba(237,231,218,0.09); border-color:rgba(231,225,210,0.32); transform:translateY(-2px);}
+  .contact-icon{
+    width:52px; height:52px; border-radius:50%;
+    background:rgba(237,231,218,0.1); color:var(--canvas);
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:14px;
+  }
+  .contact-icon svg{width:22px; height:22px;}
+  .contact-card h3{font-size:1.05rem; margin-bottom:2px;}
+  .contact-card p{font-size:0.92rem; color:rgba(231,225,210,0.85);}
+  .contact-meta{display:block; font-size:0.78rem; color:rgba(231,225,210,0.55); margin-top:8px;}
+  @media(max-width:860px){
+    .contact-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media(max-width:520px){
+    .contact-grid{grid-template-columns:1fr;}
+  }
+
+  /* ---------- SUPPORT FAQ ---------- */
+  .support-faq{padding:110px 0;}
+  .support-faq h2{font-size:clamp(2rem,3.4vw,2.8rem); max-width:640px; margin-bottom:48px;}
+  .faq-groups{display:grid; grid-template-columns:repeat(3,1fr); gap:40px; align-items:start;}
+  .faq-group-title{font-size:0.78rem; margin-bottom:4px; color:var(--clay);}
+  .faq-item{border-bottom:1px solid var(--line); padding:14px 0;}
+  .faq-item summary{
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    font-family:'Bricolage Grotesque'; font-weight:700; font-size:0.98rem; cursor:pointer; list-style:none;
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary .faq-chevron{width:14px; height:14px; flex-shrink:0; color:var(--ink-soft); transition:transform .2s ease;}
+  .faq-item[open] summary .faq-chevron{transform:rotate(180deg);}
+  .faq-item p{font-size:0.9rem; color:var(--ink-soft); margin-top:12px; line-height:1.55;}
+  @media(max-width:860px){
+    .faq-groups{grid-template-columns:1fr; gap:8px;}
+    .faq-group{margin-bottom:8px;}
+  }
+
   /* ---------- REVIEWS ---------- */
   .reviews{padding:110px 0; text-align:center;}
   .reviews-eyebrow{color:var(--clay); margin-bottom:20px;}
@@ -1097,111 +1152,113 @@
 <div class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
   <a href="lovesac-redesign.html">Home</a>
   <span class="crumb-sep" aria-hidden="true">/</span>
-  <span class="crumb-current" aria-current="page">What to Expect</span>
+  <span class="crumb-current" aria-current="page">Customer Support</span>
 </div>
 
-<div class="wrap intro-row">
-  <div class="intro-copy">
-    <h1>What to expect.</h1>
-    <p>From the moment you order to the day it's built and settled into your living room.</p>
-  </div>
-  <a href="#" class="intro-video nav-mock" aria-label="Watch how Sactionals comes together">
-    <img src="../images/lovesac-what-to-expect-video.webp" alt="">
-    <span class="intro-play" aria-hidden="true">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-    </span>
-  </a>
+<div class="wrap support-intro">
+  <h1>We're here to help.</h1>
+  <p>Questions about an order, a delivery, or how Sactionals goes together? Here's how to reach a real person, and answers to what we hear most.</p>
 </div>
 
-<section class="gift-band">
-  <div class="wrap gift-band-inner">
-    <div class="gift-band-visual">
-      <img src="../images/lovesac-credit-card.png" alt="Lovesac credit card with a teal and coral floral design and chip">
-    </div>
-    <div class="gift-band-copy">
-      <span class="mono gift-band-eyebrow">Lovesac Credit Card</span>
-      <h2>Make yourself <em>comfortable.</em></h2>
-      <p class="gift-band-p gift-band-fine">No interest for 24 months. Subject to credit approval. <a href="#" class="gift-band-terms nav-mock">See terms</a>.</p>
-    </div>
-    <a href="#" class="btn-primary nav-mock gift-band-cta">Apply now</a>
-  </div>
-</section>
-
-<section class="expect" id="expect">
+<section class="support-contact">
   <div class="wrap">
-    <div class="section-label"><span class="tag mono">Before you buy</span><div class="rule"></div></div>
-    <h2>Here's what happens.</h2>
-    <p class="expect-intro">We want you to know what to expect from the moment you order to the moment you settle in. No surprises. Just clear and straightforward from start to finish.</p>
-    <div class="timeline">
-      <div class="t-step">
-        <div class="t-dot mono">01</div>
-        <div class="t-body">
-          <h3>Make it yours</h3>
-          <p>Choose your shape, fabric, and size. You'll see the full price before you order.</p>
-        </div>
-      </div>
-      <div class="t-step">
-        <div class="t-dot mono">02</div>
-        <div class="t-body">
-          <h3>Stay in the loop</h3>
-          <p>Your order comes with a delivery window, and we'll keep you updated along the way.</p>
-        </div>
-      </div>
-      <div class="t-step">
-        <div class="t-dot mono">03</div>
-        <div class="t-body">
-          <h3>Labor of love</h3>
-          <p>Each piece takes about 15 minutes to assemble. Times will vary based on the configuration.</p>
-        </div>
-      </div>
-      <div class="t-step">
-        <div class="t-dot mono">04</div>
-        <div class="t-body">
-          <h3>60-day trial</h3>
-          <p>Live with it, see how it feels, and decide if it's right for you.</p>
-        </div>
-      </div>
-      <div class="t-step">
-        <div class="t-dot mono">05</div>
-        <div class="t-body">
-          <h3>We're here to help</h3>
-          <p>Questions, problems, second thoughts — we're here. You'll always speak with a real person.</p>
-        </div>
-      </div>
+    <div class="section-label"><span class="tag mono">Get in touch</span><div class="rule"></div></div>
+    <h2>Talk to a real person.</h2>
+    <div class="contact-grid">
+      <a href="#" class="contact-card nav-mock">
+        <span class="contact-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.81.3 1.6.54 2.37a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.71-1.11a2 2 0 0 1 2.11-.45c.77.24 1.56.42 2.37.54A2 2 0 0 1 22 16.92z"/></svg>
+        </span>
+        <h3>Call us</h3>
+        <p>1-844-796-1965</p>
+        <span class="contact-meta">Mon–Fri, 9am–8pm ET</span>
+      </a>
+      <a href="#" class="contact-card nav-mock">
+        <span class="contact-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        </span>
+        <h3>Chat with us</h3>
+        <p>Live chat</p>
+        <span class="contact-meta">Fastest way to reach us</span>
+      </a>
+      <a href="#" class="contact-card nav-mock">
+        <span class="contact-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+        </span>
+        <h3>Email us</h3>
+        <p>support@lovesac.com</p>
+        <span class="contact-meta">Reply within 1 business day</span>
+      </a>
+      <button type="button" class="contact-card" id="supportStoreLink">
+        <span class="contact-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.1 7-12a7 7 0 0 0-14 0c0 5.9 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        </span>
+        <h3>Visit a store</h3>
+        <p>Find a location near you</p>
+        <span class="contact-meta">See it in person</span>
+      </button>
     </div>
   </div>
 </section>
 
-<section class="calc" id="calculator">
+<section class="support-faq" id="faq">
   <div class="wrap">
-    <div class="section-label"><span class="tag mono">Assembly time</span><div class="rule"></div></div>
-    <h2>How long will it take to build?</h2>
-    <p class="calc-intro">Every Sactionals piece ships individually wrapped and snaps together by hand — no tools required. Pick a setup size and how many people are helping to see an estimate, based on times shared by people who've built one.</p>
-    <div class="calc-panel">
-      <div>
-        <div class="calc-field">
-          <div class="calc-field-label">Setup size</div>
-          <div class="calc-size-row">
-            <button type="button" class="calc-size-btn" data-hours="8">Small<small>Loveseat, compact</small></button>
-            <button type="button" class="calc-size-btn active" data-hours="16">Medium<small>Sectional, L-shape</small></button>
-            <button type="button" class="calc-size-btn" data-hours="28">Large<small>U-shape, wraparound</small></button>
-          </div>
-        </div>
-        <div class="calc-field">
-          <div class="calc-field-label">People helping</div>
-          <div class="calc-people-row">
-            <button type="button" class="calc-stepper-btn" id="calcPeopleMinus" aria-label="Fewer people">−</button>
-            <div class="calc-people-count" id="calcPeopleCount">2<span>people</span></div>
-            <button type="button" class="calc-stepper-btn" id="calcPeoplePlus" aria-label="More people">+</button>
-          </div>
-        </div>
+    <div class="section-label"><span class="tag mono">Common questions</span><div class="rule"></div></div>
+    <h2>Answers, before you ask.</h2>
+    <div class="faq-groups">
+      <div class="faq-group">
+        <h3 class="faq-group-title mono">Orders &amp; shipping</h3>
+        <details class="faq-item">
+          <summary>How long does shipping take?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <p>Most orders ship within 3–5 business days, with a delivery window confirmed by email and text as your order gets closer.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can I change or cancel my order?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <p>Yes, as long as it hasn't shipped yet. Contact us with your order number and we'll take care of it.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How do I check my order status?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <p>Use Order Status from the account menu, or reach out and we'll look it up for you.</p>
+        </details>
       </div>
-      <div class="calc-result">
-        <div class="calc-result-label mono">Estimated build time</div>
-        <div class="calc-result-value" id="calcResultValue">8 hrs</div>
-        <p class="calc-result-note">This is a rough estimate for a prototype — real build times vary by configuration and experience.</p>
+      <div class="faq-group">
+        <h3 class="faq-group-title mono">Returns &amp; warranty</h3>
+        <details class="faq-item">
+          <summary>What's your return policy?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <p>Every Sactionals piece comes with a 60-day trial. Not feeling it? We'll help arrange a return.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What does the warranty cover?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <p>Frames, connectors, and foam are covered against defects for the lifetime of the product. Fabric coverage varies by material.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How do I start a warranty claim?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <p>Message us with your order number and a few photos, and we'll walk you through next steps.</p>
+        </details>
+      </div>
+      <div class="faq-group">
+        <h3 class="faq-group-title mono">Assembly &amp; care</h3>
+        <details class="faq-item">
+          <summary>Do I need tools to assemble it?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <p>No tools required — every piece snaps together by hand. See <a href="lovesac-what-to-expect.html">what to expect</a> for a full walkthrough.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How do I clean the covers?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <p>Most covers unzip and are machine washable on cold, gentle cycle. Check the care tag for your specific fabric.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can I reconfigure my setup later?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <p>That's the point of Sactionals — rearrange pieces or add more as your space changes.</p>
+        </details>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Curious what happens <em>after</em> you order?</h2>
+    <a href="lovesac-what-to-expect.html" class="btn-primary">See what to expect</a>
   </div>
 </section>
 
@@ -1838,44 +1895,13 @@
 </script>
 <script>
 (function(){
-  var sizeBtns = document.querySelectorAll('.calc-size-btn');
-  var minusBtn = document.getElementById('calcPeopleMinus');
-  var plusBtn = document.getElementById('calcPeoplePlus');
-  var countEl = document.getElementById('calcPeopleCount');
-  var resultEl = document.getElementById('calcResultValue');
-  if(!sizeBtns.length || !minusBtn || !plusBtn || !countEl || !resultEl) return;
-
-  var people = 2;
-  var MIN_PEOPLE = 1, MAX_PEOPLE = 6;
-
-  function activeHours(){
-    var active = document.querySelector('.calc-size-btn.active');
-    return active ? parseFloat(active.dataset.hours) : 16;
-  }
-
-  function update(){
-    countEl.firstChild.textContent = people;
-    minusBtn.disabled = people <= MIN_PEOPLE;
-    plusBtn.disabled = people >= MAX_PEOPLE;
-    var hours = Math.round((activeHours() / people) * 2) / 2;
-    resultEl.textContent = (hours === 1 ? '1 hr' : hours + ' hrs');
-  }
-
-  sizeBtns.forEach(function(btn){
-    btn.addEventListener('click', function(){
-      sizeBtns.forEach(function(b){ b.classList.remove('active'); });
-      btn.classList.add('active');
-      update();
-    });
+  var storeLink = document.getElementById('supportStoreLink');
+  if(!storeLink) return;
+  storeLink.addEventListener('click', function(e){
+    e.stopPropagation();
+    var storeToggle = document.getElementById('storeToggle');
+    if(storeToggle) setTimeout(function(){ storeToggle.click(); }, 0);
   });
-  minusBtn.addEventListener('click', function(){
-    if(people > MIN_PEOPLE){ people--; update(); }
-  });
-  plusBtn.addEventListener('click', function(){
-    if(people < MAX_PEOPLE){ people++; update(); }
-  });
-
-  update();
 })();
 </script>
 </body>
