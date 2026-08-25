@@ -261,8 +261,26 @@ body > nav {
 }
 @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
 
+.featured-wrap { grid-column: 1 / -1; }
 .work-card.featured { grid-column: 1 / -1; }
 .work-card.featured .card-image { aspect-ratio: 2/1; }
+.card-links-extra {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 16px;
+  padding: 16px 32px 0;
+  font-size: 0.8rem;
+}
+.card-links-extra span { color: var(--mid); }
+.card-links-extra a {
+  color: var(--black);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  opacity: 0.75;
+  transition: opacity var(--transition);
+}
+.card-links-extra a:hover { opacity: 1; }
 @media (max-width: 720px) {
   .work-card.featured .card-image { aspect-ratio: auto; height: calc((100vw - 48px) / 2 + 50px); }
 }
