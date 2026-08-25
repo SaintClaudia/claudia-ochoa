@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3G6X2P2669"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3G6X2P2669');
+</script>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deep Dive: Mobile Nav &amp; Room Fit — CLAUDIA OCHOA</title>
+<meta name="description" content="A closer look at the Lovesac redesign: how the mobile navigation restructures, and Room Fit — a concept feature that lets shoppers check if a Sactional fits their room without leaving the page.">
+<meta property="og:title" content="Deep Dive: Mobile Nav & Room Fit | Claudia Ochoa">
+<meta property="og:description" content="A closer look at the Lovesac redesign: how the mobile navigation restructures, and Room Fit — a concept feature that lets shoppers check if a Sactional fits their room without leaving the page.">
+<meta property="og:url" content="https://claudiaochoa.co/work/lovesac-case-study-2.html">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://claudiaochoa.co/images/lovesac-redesign-thumb.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Deep Dive: Mobile Nav & Room Fit | Claudia Ochoa">
+<meta name="twitter:description" content="A closer look at the Lovesac redesign: how the mobile navigation restructures, and Room Fit — a concept feature that lets shoppers check if a Sactional fits their room without leaving the page.">
+<meta name="twitter:image" content="https://claudiaochoa.co/images/lovesac-redesign-thumb.jpg">
+<link rel="canonical" href="https://claudiaochoa.co/work/lovesac-case-study-2.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F1E8D9;
+    --sand:#E6D5B8;
+    --espresso:#241C16;
+    --ink:#3A2F26;
+    --ink-soft:#5C5044;
+    --clay:#BE5B39;
+    --clay-deep:#9C4227;
+    --sage:#6E7350;
+    --line:rgba(36,28,22,0.14);
+    --paper:#FBF6EC;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; background:var(--cream); color:var(--ink); font-family:'Inter',sans-serif; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3,.display{font-family:'Fraunces',serif; color:var(--espresso); margin:0; letter-spacing:-0.01em;}
+  a{color:inherit;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1100px; margin:0 auto; padding:0 32px;}
+
+  .topbar{position:sticky; top:0; z-index:20; background:var(--espresso); color:var(--cream); font-size:13px;}
+  .topbar .wrap{display:flex; align-items:center; justify-content:space-between; padding:14px 32px;}
+  .topbar a.back{text-decoration:none; color:var(--cream); opacity:0.85; display:flex; align-items:center; gap:6px;}
+  .topbar a.back:hover{opacity:1;}
+  .topbar .tag{letter-spacing:0.08em; text-transform:uppercase; font-size:11px; opacity:0.7;}
+
+  .hero{padding:80px 0 56px; border-bottom:1px solid var(--line);}
+  .eyebrow{font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--clay-deep); font-weight:600; margin-bottom:18px;}
+  .hero h1{font-size:clamp(34px,4.8vw,54px); font-weight:600; line-height:1.06; max-width:18ch;}
+  .hero .sub{margin-top:20px; font-size:18px; line-height:1.55; color:var(--ink-soft); max-width:56ch;}
+
+  section{padding:72px 0;}
+  section.divider{border-top:1px solid var(--line);}
+  .section-head{display:grid; grid-template-columns:1fr 2.2fr; gap:48px; margin-bottom:40px;}
+  .section-head h2{font-size:clamp(26px,3.4vw,36px); line-height:1.14;}
+  .section-head .lede{font-size:16.5px; line-height:1.6; color:var(--ink-soft); padding-top:6px;}
+  .num{font-family:'Fraunces',serif; font-weight:500; font-size:15px; color:var(--clay-deep);}
+
+  /* Mobile nav compare */
+  .nav-compare{display:grid; grid-template-columns:1fr 1fr; gap:28px;}
+  .nav-col{display:flex; flex-direction:column; gap:14px;}
+  .nav-label{display:flex; align-items:center; gap:10px; font-size:13px; letter-spacing:0.06em; text-transform:uppercase; font-weight:700;}
+  .nav-label .sw{width:10px; height:10px; border-radius:3px;}
+  .nav-col.before .sw{background:#B9AB94;}
+  .nav-col.after .sw{background:var(--clay);}
+  .nav-col.before .nav-label{color:var(--ink-soft);}
+  .nav-col.after .nav-label{color:var(--clay-deep);}
+  .phone-slot{
+    border:1px dashed var(--line);
+    border-radius:22px;
+    background:var(--paper);
+    aspect-ratio:9/17.5;
+    max-width:320px;
+    margin:0 auto;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:24px;
+    color:var(--ink-soft);
+    font-size:13.5px;
+    line-height:1.6;
+  }
+  .phone-slot img{border-radius:20px; width:100%; height:100%; object-fit:cover;}
+  .nav-note{margin-top:32px; font-size:15px; line-height:1.7; color:var(--ink-soft); max-width:70ch;}
+
+  /* Room fit */
+  .roomfit-layout{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start;}
+  .roomfit-shots{display:flex; gap:24px; justify-content:center;}
+  .phone-frame{
+    border:1px solid var(--line);
+    border-radius:24px;
+    overflow:hidden;
+    background:var(--paper);
+    width:230px;
+    box-shadow:0 18px 40px -20px rgba(36,28,22,0.35);
+  }
+  .phone-frame img{width:100%; display:block;}
+  .frame-cap{
+    text-align:center; font-size:12px; color:var(--ink-soft);
+    margin-top:12px; letter-spacing:0.03em;
+  }
+  .roomfit-copy h3{font-size:24px; margin-bottom:16px; line-height:1.2;}
+  .roomfit-copy p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin:0 0 20px;}
+  .why-list{list-style:none; margin:24px 0 0; padding:0; display:flex; flex-direction:column; gap:16px;}
+  .why-list li{
+    display:flex; gap:14px; align-items:flex-start;
+    font-size:14.5px; line-height:1.6; color:var(--ink-soft);
+  }
+  .why-list .mark{
+    flex:0 0 auto; width:22px; height:22px; border-radius:50%;
+    background:rgba(190,91,57,0.12); color:var(--clay-deep);
+    display:flex; align-items:center; justify-content:center;
+    font-size:12px; font-weight:700; margin-top:2px;
+  }
+  .why-list strong{color:var(--espresso);}
+
+  .context-strip{
+    margin-top:56px;
+    background:var(--espresso);
+    color:var(--paper);
+    border-radius:16px;
+    padding:32px 36px;
+    font-size:14.5px; line-height:1.7;
+  }
+  .context-strip strong{color:var(--paper);}
+  .context-strip .tag{
+    display:inline-block; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700;
+    color:#D9CBB8; margin-bottom:10px;
+  }
+
+  .cta{text-align:center; padding:80px 0 96px;}
+  .cta h2{font-size:clamp(28px,3.6vw,40px); max-width:22ch; margin:0 auto 16px;}
+  .cta p{font-size:16px; color:var(--ink-soft); max-width:48ch; margin:0 auto 30px; line-height:1.6;}
+  .btn-row{display:flex; gap:14px; justify-content:center; flex-wrap:wrap;}
+  .btn{display:inline-flex; align-items:center; gap:8px; padding:14px 26px; border-radius:999px; text-decoration:none; font-size:14.5px; font-weight:600;}
+  .btn.primary{background:var(--clay); color:var(--paper);}
+  .btn.primary:hover{background:var(--clay-deep);}
+  .btn.ghost{border:1px solid var(--line); color:var(--espresso);}
+  .btn.ghost:hover{border-color:var(--ink-soft);}
+
+  footer{border-top:1px solid var(--line); padding:36px 0; font-size:13px; color:var(--ink-soft); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;}
+
+  @media (max-width:820px){
+    .wrap{padding:0 20px;}
+    .topbar .wrap{
+      flex-wrap:wrap; align-items:flex-start; row-gap:8px;
+      padding:22px 20px 18px;
+    }
+    .section-head{grid-template-columns:1fr; gap:14px;}
+    .nav-compare, .roomfit-layout{grid-template-columns:1fr;}
+    .roomfit-shots{gap:16px;}
+    .phone-frame{width:180px;}
+  }
+  :focus-visible{outline:2px solid var(--clay); outline-offset:3px;}
+  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto;}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <a class="back" href="lovesac-case-study.html">&larr; Back to case study</a>
+    <span class="tag">Deep Dive · UX Detail</span>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Case Study — 02 · Deep Dive</div>
+    <h1>Mobile navigation and the Room Fit feature.</h1>
+    <p class="sub">A closer look for a UX audience: how the nav restructures on mobile, and a feature Lovesac's website doesn't currently offer &mdash; a lightweight way to check whether a Sactional actually fits the room before you buy it.</p>
+  </div>
+</header>
+
+<section class="divider">
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="num">01 · Mobile Nav</span></div>
+      <div>
+        <h2>The same IA problem, compressed to a smaller screen.</h2>
+        <p class="lede">On mobile, the original site's flat, category-heavy navigation gets worse &mdash; everything competes for the same thumb-width menu. Screenshots going in here once the device chrome is cleaned up.</p>
+      </div>
+    </div>
+
+    <div class="nav-compare">
+      <div class="nav-col before">
+        <div class="nav-label"><span class="sw"></span>Lovesac.com — mobile</div>
+        <div class="phone-slot">Original mobile nav screenshot<br>(pending)</div>
+      </div>
+      <div class="nav-col after">
+        <div class="nav-label"><span class="sw"></span>Redesign — mobile</div>
+        <div class="phone-slot">Redesign mobile nav screenshot<br>(pending)</div>
+      </div>
+    </div>
+    <p class="nav-note">Placeholder frames above — swap in the cleaned screenshots and this section is done. Keeping the same before/after pattern from the homepage comparison so the two case study pages read as one continuous piece.</p>
+  </div>
+</section>
+
+<section class="divider">
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="num">02 · New Feature</span></div>
+      <div>
+        <h2>Room Fit: answering the one question every furniture shopper actually has.</h2>
+        <p class="lede">Before someone commits to a Sactional configuration, they want to know one thing: will it fit? This feature answers that inline, without leaving the page.</p>
+      </div>
+    </div>
+
+    <div class="roomfit-layout">
+      <div>
+        <div class="roomfit-shots">
+          <div>
+            <div class="phone-frame"><img src="roomfit-closed.png" alt="Room Fit prompt card reading 'Will it fit your room?' with a Check Your Space button."></div>
+            <div class="frame-cap">Entry point</div>
+          </div>
+          <div>
+            <div class="phone-frame"><img src="roomfit-open.png" alt="Room Fit expanded form asking for room width and length, with an option to add existing furniture and a Check Fit button."></div>
+            <div class="frame-cap">Expanded state</div>
+          </div>
+        </div>
+      </div>
+      <div class="roomfit-copy">
+        <h3>Two taps from "I like this" to "I know it'll fit."</h3>
+        <p>The entry point is a simple, low-commitment card: a plain-language question and a single button, sitting right where a shopper is already evaluating a configuration. No app download, no account, no separate flow.</p>
+        <p>Opening it reveals a short form &mdash; room width and length, plus an optional section to add existing furniture so the layout accounts for what's already in the room. It's scoped to answer one question well, rather than becoming a full room-design tool.</p>
+        <ul class="why-list">
+          <li><span class="mark">1</span><span><strong>Removes a real purchase blocker.</strong> Furniture is a high-consideration purchase; "will it fit" is the anxiety that stalls a cart the most.</span></li>
+          <li><span class="mark">2</span><span><strong>Lives inline, not in a separate app.</strong> Lovesac's existing room-planning tool lives in a standalone app most shoppers never download; this puts the same idea one tap away from the product page.</span></li>
+          <li><span class="mark">3</span><span><strong>Scoped on purpose.</strong> Two fields to start, with furniture details optional &mdash; it answers the question fast instead of asking for a full room survey up front.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="context-strip">
+      <span class="tag">Worth noting</span>
+      Lovesac already has a room-visualization tool &mdash; it just lives in a separate downloadable app rather than on the site itself. Room Fit isn't inventing the idea; it's asking why that answer requires leaving the page you're already shopping on.
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2>Back to the full case study.</h2>
+    <p>This page zooms into two details &mdash; the broader teardown, before/after, and rebrand thinking live on the main write-up.</p>
+    <div class="btn-row">
+      <a class="btn primary" href="lovesac-case-study.html">&larr; Back to case study</a>
+      <a class="btn ghost" href="https://claudiaochoa.co/work/lovesac-redesign.html">View the live redesign</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="text-align:center; width:100%;">
+    <p class="footer-copy">© 2026 Claudia Ochoa</p>
+  </div>
+</footer>
+
+</body>
+</html>

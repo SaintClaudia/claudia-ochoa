@@ -33,6 +33,7 @@ Plain HTML, CSS, and vanilla JS. No frameworks, no build step, no dependencies. 
 ├── images/
 ├── work/
 │   ├── lovesac-case-study.html       # Lovesac — Redesign (featured concept case study)
+│   ├── lovesac-case-study-2.html     # Lovesac — deep dive: mobile nav & Room Fit (linked from case study 1)
 │   ├── lovesac-redesign.html         # Lovesac — working interactive prototype (linked from the case study)
 │   ├── lovesac-sactionals.html       # Lovesac prototype — product/cart page
 │   ├── lovesac-what-to-expect.html   # Lovesac prototype — what to expect page
