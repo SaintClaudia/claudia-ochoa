@@ -1088,7 +1088,7 @@
         <p>Start from a ready-made favorite, or build your own from scratch — either way, you're customizing fabric, comfort, and add-ons before it ships.</p>
         <div class="hero-actions">
           <button class="btn btn-primary nav-mock">Build Your Own</button>
-          <button class="btn btn-ghost" onclick="document.getElementById('filtersAnchor').scrollIntoView({behavior:'smooth'})">Browse Setups</button>
+          <button class="btn btn-ghost" onclick="if(window.holdNavVisible)holdNavVisible(900); document.getElementById('filtersAnchor').scrollIntoView({behavior:'smooth'})">Browse Setups</button>
         </div>
       </div>
       <div class="hero-img"><img src="../images/sactionals-hero.webp" alt="Sactionals sectional and ottomans in a living room"></div>
@@ -2043,11 +2043,16 @@
   nav.addEventListener('focusin', function(){ nav.classList.remove('nav-hidden'); });
   var lastY = window.scrollY;
   var ticking = false;
+  var holdUntil = 0;
+  window.holdNavVisible = function(ms){
+    holdUntil = Date.now() + (ms || 900);
+    nav.classList.remove('nav-hidden');
+  };
   function update(){
     var y = Math.max(window.scrollY, 0);
     var menuOpen = menu && menu.classList.contains('open');
     var dropdownOpen = nav.classList.contains('dropdown-open');
-    if(menuOpen || dropdownOpen || y <= nav.offsetHeight){
+    if(menuOpen || dropdownOpen || y <= nav.offsetHeight || Date.now() < holdUntil){
       nav.classList.remove('nav-hidden');
     } else if(y > lastY + 4){
       nav.classList.add('nav-hidden');
