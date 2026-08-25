@@ -523,6 +523,41 @@
     border-bottom:2px solid var(--canvas); color:var(--canvas);
   }
 
+  /* ---------- GIFT / CREDIT CARD BAND ---------- */
+  .gift-band{
+    background:var(--canvas-2);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    text-align:left;
+    padding:120px 0;
+  }
+  .gift-band-inner{
+    display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:72px;
+  }
+  .gift-band-copy{max-width:440px;}
+  .gift-band-eyebrow{color:var(--clay); display:block; margin-bottom:18px;}
+  .gift-band h2{
+    margin:0 0 20px; max-width:440px;
+    font-size:clamp(2rem, 3.4vw, 2.8rem);
+  }
+  .gift-band h2 em{font-style:normal; color:var(--clay);}
+  .gift-band-p{font-size:1.05rem; color:var(--ink-soft); margin-bottom:32px; max-width:400px;}
+  .gift-band-p.gift-band-fine{font-size:0.85rem; line-height:1.55;}
+  .gift-band-terms{color:var(--clay); text-decoration:underline; text-underline-offset:3px;}
+  .gift-band-visual img{
+    aspect-ratio:1000/602;
+    transform:rotate(-7.19deg);
+  }
+  @media (min-width:861px){
+    .gift-band-visual img{transform:rotate(7.19deg);}
+  }
+  @media (max-width:860px){
+    .gift-band{padding:56px 0;}
+    .gift-band-inner{grid-template-columns:1fr; gap:36px;}
+    .gift-band-visual{order:-1;}
+    .gift-band-copy, .gift-band h2, .gift-band-p{max-width:none;}
+  }
+
   /* ---------- SECTION LABEL ---------- */
   .section-label{
     display:flex; align-items:center; gap:16px; margin-bottom:16px;
@@ -1071,6 +1106,20 @@
     </span>
   </a>
 </div>
+
+<section class="gift-band">
+  <div class="wrap gift-band-inner">
+    <div class="gift-band-copy">
+      <span class="mono gift-band-eyebrow">Lovesac Credit Card</span>
+      <h2>No interest for <em>24 months.</em></h2>
+      <p class="gift-band-p gift-band-fine">No interest if paid in full within 24 months on qualifying purchases. Minimum monthly payments required. Subject to credit approval. <a href="#" class="gift-band-terms nav-mock">See terms</a>.</p>
+      <a href="#" class="btn-primary nav-mock">Apply now</a>
+    </div>
+    <div class="gift-band-visual">
+      <img src="../images/lovesac-credit-card.png" alt="Lovesac credit card with a teal and coral floral design and chip">
+    </div>
+  </div>
+</section>
 
 <section class="expect" id="expect">
   <div class="wrap">
