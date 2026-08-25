@@ -14,28 +14,28 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lovesac : Redesign — CLAUDIA OCHOA</title>
-<meta name="description" content="A UX case study reimagining Lovesac's e-commerce site with real lifestyle photography, transparent trust signals, and a clear order-to-delivery experience.">
-<meta property="og:title" content="Lovesac Redesign — UX Case Study | Claudia Ochoa">
-<meta property="og:description" content="A UX case study reimagining Lovesac's e-commerce site with real lifestyle photography, transparent trust signals, and a clear order-to-delivery experience.">
-<meta property="og:url" content="https://claudiaochoa.co/work/lovesac-redesign.html">
+<title>What to Expect — Lovesac Redesign — CLAUDIA OCHOA</title>
+<meta name="description" content="What to expect when ordering Sactionals: delivery, assembly, and a build-time calculator based on how many people are helping.">
+<meta property="og:title" content="What to Expect — Lovesac Redesign | Claudia Ochoa">
+<meta property="og:description" content="What to expect when ordering Sactionals: delivery, assembly, and a build-time calculator based on how many people are helping.">
+<meta property="og:url" content="https://claudiaochoa.co/work/lovesac-what-to-expect.html">
 <meta property="og:type" content="article">
 <meta property="og:image" content="https://claudiaochoa.co/images/lovesac-redesign-thumb.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Lovesac Redesign — UX Case Study | Claudia Ochoa">
-<meta name="twitter:description" content="A UX case study reimagining Lovesac's e-commerce site with real lifestyle photography, transparent trust signals, and a clear order-to-delivery experience.">
+<meta name="twitter:title" content="What to Expect — Lovesac Redesign | Claudia Ochoa">
+<meta name="twitter:description" content="What to expect when ordering Sactionals: delivery, assembly, and a build-time calculator based on how many people are helping.">
 <meta name="twitter:image" content="https://claudiaochoa.co/images/lovesac-redesign-thumb.jpg">
-<link rel="canonical" href="https://claudiaochoa.co/work/lovesac-redesign.html">
+<link rel="canonical" href="https://claudiaochoa.co/work/lovesac-what-to-expect.html">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "CreativeWork",
-  "name": "Lovesac Redesign — UX Case Study",
-  "description": "A UX case study reimagining Lovesac's e-commerce site with real lifestyle photography, transparent trust signals, and a clear order-to-delivery experience.",
-  "url": "https://claudiaochoa.co/work/lovesac-redesign.html",
+  "name": "What to Expect — Lovesac Redesign",
+  "description": "What to expect when ordering Sactionals: delivery, assembly, and a build-time calculator based on how many people are helping.",
+  "url": "https://claudiaochoa.co/work/lovesac-what-to-expect.html",
   "image": "https://claudiaochoa.co/images/lovesac-redesign-thumb.jpg",
-  "dateModified": "2026-08-23",
+  "dateModified": "2026-08-24",
   "keywords": "Lovesac, Sactionals, e-commerce redesign, UX case study, product design, conversion design",
   "author": {
     "@type": "Person",
@@ -90,6 +90,13 @@
   @media (prefers-reduced-motion: reduce){
     *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
   }
+
+  /* ---------- BREADCRUMBS ---------- */
+  .breadcrumbs{display:flex; flex-wrap:wrap; align-items:center; gap:6px; font-size:13px; color:var(--ink-soft); margin:20px 0; padding:0 32px; max-width:1240px; margin-left:auto; margin-right:auto;}
+  .breadcrumbs a{color:var(--ink-soft); text-decoration:none;}
+  .breadcrumbs a:hover{color:var(--ink); text-decoration:underline; text-underline-offset:3px;}
+  .breadcrumbs .crumb-sep{opacity:0.45;}
+  .breadcrumbs .crumb-current{color:var(--ink); font-weight:600;}
 
   /* ---------- NAV ---------- */
   nav{
@@ -587,6 +594,35 @@
   .t-step h3{font-family:'Bricolage Grotesque'; font-size:1.05rem; margin-bottom:8px;}
   .t-step p{font-size:0.86rem; color:rgba(231,225,210,0.65);}
 
+  /* ---------- BUILD TIME CALCULATOR ---------- */
+  .calc{padding:110px 0;}
+  .calc .section-label .tag{background:var(--clay); color:var(--canvas);}
+  .calc h2{font-size:clamp(2rem,3.4vw,2.8rem); max-width:640px; margin-bottom:20px;}
+  .calc-intro{font-size:1.05rem; max-width:620px; color:var(--ink-soft); margin-bottom:56px;}
+  .calc-panel{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center; background:var(--canvas-2); border:1px solid var(--line); border-radius:16px; padding:44px;}
+  .calc-field{margin-bottom:32px;}
+  .calc-field:last-child{margin-bottom:0;}
+  .calc-field-label{font-family:'Bricolage Grotesque'; font-weight:700; font-size:1rem; margin-bottom:14px;}
+  .calc-size-row{display:flex; gap:10px;}
+  .calc-size-btn{flex:1; padding:13px 10px; border-radius:8px; border:1.5px solid var(--line); background:var(--canvas); color:var(--ink); font-weight:600; font-size:0.86rem; cursor:pointer; text-align:center; transition:background .15s ease, border-color .15s ease, color .15s ease;}
+  .calc-size-btn:hover{border-color:var(--clay);}
+  .calc-size-btn.active{background:var(--ink); border-color:var(--ink); color:var(--canvas);}
+  .calc-size-btn small{display:block; font-weight:500; opacity:0.65; margin-top:2px; font-size:0.74rem;}
+  .calc-people-row{display:flex; align-items:center; gap:18px;}
+  .calc-stepper-btn{width:44px; height:44px; border-radius:50%; border:1.5px solid var(--line); background:var(--canvas); color:var(--ink); font-size:1.2rem; line-height:1; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:border-color .15s ease, color .15s ease;}
+  .calc-stepper-btn:hover:not(:disabled){border-color:var(--clay); color:var(--clay);}
+  .calc-stepper-btn:disabled{opacity:0.35; cursor:not-allowed;}
+  .calc-people-count{font-family:'Bricolage Grotesque'; font-weight:700; font-size:1.6rem; min-width:70px; text-align:center;}
+  .calc-people-count span{display:block; font-family:'Work Sans'; font-weight:500; font-size:0.74rem; color:var(--ink-soft); margin-top:2px;}
+  .calc-result{display:flex; flex-direction:column; align-items:flex-start; justify-content:center; padding-left:56px; border-left:1px solid var(--line);}
+  .calc-result-label{color:var(--ink-soft); margin-bottom:10px;}
+  .calc-result-value{font-family:'Bricolage Grotesque'; font-weight:700; font-size:clamp(2.4rem,5vw,3.4rem); color:var(--clay); line-height:1; margin-bottom:14px;}
+  .calc-result-note{font-size:0.84rem; color:var(--ink-soft); max-width:280px;}
+  @media(max-width:860px){
+    .calc-panel{grid-template-columns:1fr; padding:32px 24px;}
+    .calc-result{padding-left:0; border-left:none; border-top:1px solid var(--line); padding-top:32px; margin-top:8px;}
+  }
+
   /* ---------- REVIEWS ---------- */
   .reviews{padding:110px 0; text-align:center;}
   .reviews-eyebrow{color:var(--clay); margin-bottom:20px;}
@@ -992,155 +1028,92 @@
 
 <main>
 
-<section class="hero">
-  <div class="hero-bg" aria-hidden="true"></div>
-  <div class="wrap">
-    <div class="hero-copy">
-      <h1>One couch.<br>Built for <em>life.</em></h1>
-      <p>Rearrange, re-cover, and grow — from a studio apartment to a family room, without having to buy another couch again.</p>
-      <div class="btn-row">
-        <a href="lovesac-sactionals.html" class="btn-primary">Shop now</a>
-      </div>
-    </div>
-  </div>
-</section>
+<div class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+  <a href="lovesac-redesign.html">Home</a>
+  <span class="crumb-sep" aria-hidden="true">/</span>
+  <span class="crumb-current" aria-current="page">What to Expect</span>
+</div>
 
-<section class="trust-band" id="trust">
-  <div class="wrap">
-    <div class="trust-item">
-      <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M8 22v-6a3 3 0 0 1 3-3h18a3 3 0 0 1 3 3v6"/>
-        <rect x="5" y="20" width="30" height="9" rx="3"/>
-        <path d="M8 29v3M32 29v3"/>
-        <line x1="16" y1="20" x2="16" y2="13"/>
-        <line x1="24" y1="20" x2="24" y2="13"/>
-      </svg>
-      <p><strong>60-Day Trial</strong> — try it at home, then decide</p>
-    </div>
-    <div class="trust-item">
-      <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <rect x="7" y="6" width="26" height="28" rx="4"/>
-        <circle cx="20" cy="22" r="8"/>
-        <circle cx="20" cy="22" r="3.5"/>
-        <circle cx="12" cy="10" r="1.1" fill="currentColor" stroke="none"/>
-        <circle cx="16" cy="10" r="1.1" fill="currentColor" stroke="none"/>
-      </svg>
-      <p><strong>Machine Washable</strong> — easy to remove, easy to wash</p>
-    </div>
-    <div class="trust-item">
-      <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M20 3 L31 7.5 V16 C31 24 26.5 29.5 20 32.5 C13.5 29.5 9 24 9 16 V7.5 Z"/>
-        <path d="M14 17 L18 21 L27 12"/>
-      </svg>
-      <p><strong>Forever Warranty</strong> — your frame covered for life</p>
-    </div>
-    <div class="trust-item">
-      <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M20 33C13 30 9 24 11 16C13 9 20 6 20 6"/>
-        <path d="M20 33C27 30 31 24 29 16C27 9 20 6 20 6"/>
-        <path d="M20 6V33"/>
-      </svg>
-      <p><strong>Recycled Fill</strong> — made from reclaimed plastic bottles</p>
-    </div>
-  </div>
-</section>
+<div class="wrap" style="padding:8px 0 40px;">
+  <h1 style="font-size:clamp(2.2rem,4vw,3.2rem); max-width:640px;">What to expect.</h1>
+  <p style="font-size:1.05rem; color:var(--ink-soft); max-width:560px; margin-top:16px;">From the moment you order to the day it's built and settled into your living room.</p>
+</div>
 
-<section class="lives" id="lives">
+<section class="expect" id="expect">
   <div class="wrap">
-    <h2>When life changes shape, or you simply want a new look.</h2>
-    <div class="life-track">
-      <div class="life-card">
-        <div class="img" style="background-image:url('../images/lovesac-life-apartment.jpg'); background-position:center;"></div>
-        <div class="body">
-          <span class="stage mono">Stage 01</span>
-          <h3>First apartment</h3>
-          <p>A loveseat and an ottoman. Small spaces, not a problem.</p>
+    <div class="section-label"><span class="tag mono">Before you buy</span><div class="rule"></div></div>
+    <h2>Here's what happens.</h2>
+    <p class="expect-intro">We want you to know what to expect from the moment you order to the moment you settle in. No surprises. Just clear and straightforward from start to finish.</p>
+    <div class="timeline">
+      <div class="t-step">
+        <div class="t-dot mono">01</div>
+        <div class="t-body">
+          <h3>Make it yours</h3>
+          <p>Choose your shape, fabric, and size. You'll see the full price before you order.</p>
         </div>
       </div>
-      <div class="life-card">
-        <div class="img" style="background-image:url('../images/lovesac-life-moving.jpg'); background-position:center;"></div>
-        <div class="body">
-          <span class="stage mono">Stage 02</span>
-          <h3>Moving in together</h3>
-          <p>Add two sides, flip the chaise. Same pieces, new shape.</p>
+      <div class="t-step">
+        <div class="t-dot mono">02</div>
+        <div class="t-body">
+          <h3>Stay in the loop</h3>
+          <p>Your order comes with a delivery window, and we'll keep you updated along the way.</p>
         </div>
       </div>
-      <div class="life-card">
-        <div class="img" style="background-image:url('../images/lovesac-life-kids.jpg'); background-position:center;"></div>
-        <div class="body">
-          <span class="stage mono">Stage 03</span>
-          <h3>Kids, dogs, chaos</h3>
-          <p>Washable covers. Reinforced seams. Built for everyday life.</p>
+      <div class="t-step">
+        <div class="t-dot mono">03</div>
+        <div class="t-body">
+          <h3>Labor of love</h3>
+          <p>Each piece takes about 15 minutes to assemble. Times will vary based on the configuration.</p>
         </div>
       </div>
-      <div class="life-card">
-        <div class="img" style="background-image:url('../images/lovesac-life-house.jpg'); background-position:center 25%;"></div>
-        <div class="body">
-          <span class="stage mono">Stage 04</span>
-          <h3>The house you'll stay in</h3>
-          <p>Split it into two rooms or build out your dream sactional.</p>
+      <div class="t-step">
+        <div class="t-dot mono">04</div>
+        <div class="t-body">
+          <h3>60-day trial</h3>
+          <p>Live with it, see how it feels, and decide if it's right for you.</p>
+        </div>
+      </div>
+      <div class="t-step">
+        <div class="t-dot mono">05</div>
+        <div class="t-body">
+          <h3>We're here to help</h3>
+          <p>Questions, problems, second thoughts — we're here. You'll always speak with a real person.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="reviews">
+<section class="calc" id="calculator">
   <div class="wrap">
-    <div class="reviews-eyebrow mono">What people are saying</div>
-    <h2>Loved in real homes.</h2>
-    <div class="reviews-rating">
-      <span class="stars" aria-hidden="true">★★★★☆</span>
-      <span>4.3 (8,509 Reviews)</span>
-    </div>
-    <div class="review-grid">
-      <div class="review-card">
-        <span class="stars" aria-hidden="true">★★★★★</span>
-        <blockquote>"Couch is fantastic. Every option and every part of it. Insanely comfortable."</blockquote>
-        <div class="reviewer">
-          <div class="review-avatar">P</div>
-          <div>
-            <div class="reviewer-name">Patty F.
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-            </div>
-            <div class="reviewer-meta">Verified Buyer</div>
+    <div class="section-label"><span class="tag mono">Assembly time</span><div class="rule"></div></div>
+    <h2>How long will it take to build?</h2>
+    <p class="calc-intro">Every Sactionals piece ships individually wrapped and snaps together by hand — no tools required. Pick a setup size and how many people are helping to see an estimate, based on times shared by people who've built one.</p>
+    <div class="calc-panel">
+      <div>
+        <div class="calc-field">
+          <div class="calc-field-label">Setup size</div>
+          <div class="calc-size-row">
+            <button type="button" class="calc-size-btn" data-hours="8">Small<small>Loveseat, compact</small></button>
+            <button type="button" class="calc-size-btn active" data-hours="16">Medium<small>Sectional, L-shape</small></button>
+            <button type="button" class="calc-size-btn" data-hours="28">Large<small>U-shape, wraparound</small></button>
+          </div>
+        </div>
+        <div class="calc-field">
+          <div class="calc-field-label">People helping</div>
+          <div class="calc-people-row">
+            <button type="button" class="calc-stepper-btn" id="calcPeopleMinus" aria-label="Fewer people">−</button>
+            <div class="calc-people-count" id="calcPeopleCount">2<span>people</span></div>
+            <button type="button" class="calc-stepper-btn" id="calcPeoplePlus" aria-label="More people">+</button>
           </div>
         </div>
       </div>
-      <div class="review-card">
-        <span class="stars" aria-hidden="true">★★★★★</span>
-        <blockquote>"I live in a very small condo, and hidden storage is a must. These storage seats are a total game changer."</blockquote>
-        <div class="reviewer">
-          <div class="review-avatar">L</div>
-          <div>
-            <div class="reviewer-name">Lauren
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-            </div>
-            <div class="reviewer-meta">Verified Buyer</div>
-          </div>
-        </div>
-      </div>
-      <div class="review-card">
-        <span class="stars" aria-hidden="true">★★★★★</span>
-        <blockquote>"Lovesac was the perfect choice. The look, comfort, flexibility, and price were all better than imagined."</blockquote>
-        <div class="reviewer">
-          <div class="review-avatar">L</div>
-          <div>
-            <div class="reviewer-name">Libby
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-            </div>
-            <div class="reviewer-meta">Verified Buyer</div>
-          </div>
-        </div>
+      <div class="calc-result">
+        <div class="calc-result-label mono">Estimated build time</div>
+        <div class="calc-result-value" id="calcResultValue">8 hrs</div>
+        <p class="calc-result-note">This is a rough estimate for a prototype — real build times vary by configuration and experience.</p>
       </div>
     </div>
-  </div>
-</section>
-
-<section class="cta-band">
-  <div class="wrap">
-    <h2>Stop buying furniture <em>for the life you have right now.</em></h2>
-    <a href="lovesac-sactionals.html" class="btn-primary">Shop now</a>
   </div>
 </section>
 
@@ -1189,7 +1162,7 @@
   <div class="wrap footer-bottom">
     Concept redesign — using Lovesac's existing brand identity and photography; not an official Lovesac property.
   </div>
-  <a href="/" class="back-link">← Back to Portfolio</a>
+  <a href="/" class="back-link show">← Back to Portfolio</a>
 </footer>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -1772,6 +1745,48 @@
     }
   }
   window.addEventListener('scroll', onScroll, {passive:true});
+  update();
+})();
+</script>
+<script>
+(function(){
+  var sizeBtns = document.querySelectorAll('.calc-size-btn');
+  var minusBtn = document.getElementById('calcPeopleMinus');
+  var plusBtn = document.getElementById('calcPeoplePlus');
+  var countEl = document.getElementById('calcPeopleCount');
+  var resultEl = document.getElementById('calcResultValue');
+  if(!sizeBtns.length || !minusBtn || !plusBtn || !countEl || !resultEl) return;
+
+  var people = 2;
+  var MIN_PEOPLE = 1, MAX_PEOPLE = 6;
+
+  function activeHours(){
+    var active = document.querySelector('.calc-size-btn.active');
+    return active ? parseFloat(active.dataset.hours) : 16;
+  }
+
+  function update(){
+    countEl.firstChild.textContent = people;
+    minusBtn.disabled = people <= MIN_PEOPLE;
+    plusBtn.disabled = people >= MAX_PEOPLE;
+    var hours = Math.round((activeHours() / people) * 2) / 2;
+    resultEl.textContent = (hours === 1 ? '1 hr' : hours + ' hrs');
+  }
+
+  sizeBtns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      sizeBtns.forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      update();
+    });
+  });
+  minusBtn.addEventListener('click', function(){
+    if(people > MIN_PEOPLE){ people--; update(); }
+  });
+  plusBtn.addEventListener('click', function(){
+    if(people < MAX_PEOPLE){ people++; update(); }
+  });
+
   update();
 })();
 </script>
