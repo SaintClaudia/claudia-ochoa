@@ -645,9 +645,16 @@
     font-size:clamp(2rem, 3.4vw, 2.8rem);
   }
   .gift-band-p{font-size:1.05rem; color:var(--ink-soft); margin-bottom:32px; max-width:400px;}
+  .gift-band-visual{position:relative;}
+  .gift-band-visual::before{
+    content:'';
+    position:absolute; inset:0;
+    border-radius:6.7%/11%;
+    box-shadow:0 24px 34px rgba(31,36,33,0.32);
+  }
   .gift-band-visual img{
+    position:relative;
     aspect-ratio:1000/610;
-    filter:drop-shadow(0 24px 34px rgba(31,36,33,0.32));
   }
   @media (max-width:860px){
     .gift-band-inner{grid-template-columns:1fr; gap:36px;}
