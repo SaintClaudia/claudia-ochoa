@@ -85,7 +85,9 @@
     background:var(--espresso);
     color:var(--cream);
     font-size:13px;
+    transition:transform .3s ease;
   }
+  .topbar.topbar-hidden{transform:translateY(-100%);}
   .topbar .wrap{
     display:flex; align-items:center; justify-content:space-between;
     padding:14px 32px;
@@ -640,6 +642,33 @@
   document.addEventListener('keydown', function(e){
     if(e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
   });
+})();
+</script>
+<script>
+(function(){
+  var topbar = document.querySelector('.topbar');
+  if(!topbar || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var mq = window.matchMedia('(max-width:820px)');
+  var lastY = window.scrollY;
+  var ticking = false;
+  function update(){
+    var y = Math.max(window.scrollY, 0);
+    if(mq.matches && y > topbar.offsetHeight){
+      if(y > lastY + 4){
+        topbar.classList.add('topbar-hidden');
+      } else if(y < lastY - 4){
+        topbar.classList.remove('topbar-hidden');
+      }
+    } else {
+      topbar.classList.remove('topbar-hidden');
+    }
+    lastY = y;
+    ticking = false;
+  }
+  function onScroll(){
+    if(!ticking){ requestAnimationFrame(update); ticking = true; }
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
 })();
 </script>
 
