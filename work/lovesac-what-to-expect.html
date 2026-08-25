@@ -643,8 +643,9 @@
   @media(max-width:860px){
     .calc-panel{grid-template-columns:minmax(0,1fr); padding:32px 24px;}
     .calc-result{padding-left:0; border-left:none; border-top:1px solid var(--line); padding-top:32px; margin-top:8px;}
-    .calc-size-row{gap:6px;}
-    .calc-size-btn{padding:13px 6px;}
+    .calc-size-row{flex-direction:column; gap:8px;}
+    .calc-size-btn{display:flex; align-items:center; justify-content:space-between; gap:12px; text-align:left; padding:14px 16px;}
+    .calc-size-btn small{margin-top:0; text-align:right;}
   }
 
   /* ---------- REVIEWS ---------- */
