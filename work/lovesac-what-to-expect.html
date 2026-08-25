@@ -1191,7 +1191,7 @@
   <div class="wrap footer-bottom">
     Concept redesign — using Lovesac's existing brand identity and photography; not an official Lovesac property.
   </div>
-  <a href="/" class="back-link show">← Back to Portfolio</a>
+  <a href="/" class="back-link">← Back to Portfolio</a>
 </footer>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -1702,7 +1702,7 @@
 <script>
 (function(){
   var link = document.querySelector('.back-link');
-  var ctaBand = document.querySelector('.cta-band');
+  var ctaBand = document.querySelector('.cta-band') || document.querySelector('footer');
   if(!link || !ctaBand) return;
   function onScroll(){
     var threshold = ctaBand.offsetTop;
