@@ -1410,7 +1410,7 @@
     if(window.__closeAccountDrop) window.__closeAccountDrop();
     if(window.__closeCartDrop) window.__closeCartDrop();
     if(!isOpen){
-      var navBottom = document.querySelector('nav').getBoundingClientRect().bottom;
+      var navBottom = window.matchMedia('(max-width:860px)').matches ? 0 : document.querySelector('nav').getBoundingClientRect().bottom;
       drop.style.top = navBottom + 'px';
       backdrop.style.top = navBottom + 'px';
       drop.classList.add('open');
@@ -1475,7 +1475,7 @@
     if(window.__closeStoreDrop) window.__closeStoreDrop();
     if(window.__closeCartDrop) window.__closeCartDrop();
     if(!isOpen){
-      var navBottom = document.querySelector('nav').getBoundingClientRect().bottom;
+      var navBottom = window.matchMedia('(max-width:860px)').matches ? 0 : document.querySelector('nav').getBoundingClientRect().bottom;
       drop.style.top = navBottom + 'px';
       backdrop.style.top = navBottom + 'px';
       drop.classList.add('open');
@@ -1535,7 +1535,7 @@
     if(window.__closeStoreDrop) window.__closeStoreDrop();
     if(window.__closeAccountDrop) window.__closeAccountDrop();
     if(!isOpen){
-      var navBottom = document.querySelector('nav').getBoundingClientRect().bottom;
+      var navBottom = window.matchMedia('(max-width:860px)').matches ? 0 : document.querySelector('nav').getBoundingClientRect().bottom;
       drop.style.top = navBottom + 'px';
       backdrop.style.top = navBottom + 'px';
       drop.classList.add('open');
@@ -1741,7 +1741,7 @@
     var openDrop = document.querySelector('.store-drop.open, .account-drop.open, .cart-drop.open');
     var openBackdrop = document.querySelector('.store-backdrop.open, .account-backdrop.open, .cart-backdrop.open');
     if(openDrop || openBackdrop){
-      var navBottom = nav.getBoundingClientRect().bottom + 'px';
+      var navBottom = window.matchMedia('(max-width:860px)').matches ? '0px' : (nav.getBoundingClientRect().bottom + 'px');
       if(openDrop) openDrop.style.top = navBottom;
       if(openBackdrop) openBackdrop.style.top = navBottom;
     }
