@@ -1758,6 +1758,7 @@
 (function(){
   var bg = document.querySelector('.hero-bg');
   if(!bg || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if(window.matchMedia('(max-width:860px)').matches) return;
   var hero = bg.parentElement;
   var ticking = false;
   function update(){
