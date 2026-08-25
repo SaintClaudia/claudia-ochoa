@@ -93,8 +93,16 @@
     display:flex; align-items:center; justify-content:center; text-align:center;
     padding:24px; color:var(--ink-soft); font-size:13.5px; line-height:1.6;
   }
-  .detail-frame{border:1px solid var(--line); border-radius:16px; overflow:hidden; background:var(--paper);}
-  .detail-frame img{width:100%; height:auto; display:block;}
+  .phone-frame-wide{
+    box-sizing:content-box;
+    border:10px solid var(--espresso);
+    border-radius:32px;
+    overflow:hidden;
+    background:var(--paper);
+    max-width:300px;
+    margin:0 auto;
+  }
+  .phone-frame-wide img{width:100%; height:auto; display:block;}
   .nav-note{margin-top:32px; font-size:15px; line-height:1.7; color:var(--ink-soft); max-width:70ch;}
 
   /* Room fit */
@@ -342,11 +350,11 @@
     <div class="nav-compare">
       <div class="nav-col before">
         <div class="nav-label"><span class="sw"></span>Lovesac.com — Sactionals PDP</div>
-        <div class="detail-frame"><img src="/images/lovesac-trust-band-before.jpg" alt="Lovesac.com Sactionals product page showing a founder-story photo followed by four collapsed accordion rows: Guaranteed For Life, 60-Day Home Trial, Free Shipping and Returns, and Room of Choice Delivery, each hidden behind a plus icon."></div>
+        <div class="phone-frame-wide"><img src="/images/lovesac-trust-band-before.jpg" alt="Lovesac.com Sactionals product page showing a founder-story photo followed by four collapsed accordion rows: Guaranteed For Life, 60-Day Home Trial, Free Shipping and Returns, and Room of Choice Delivery, each hidden behind a plus icon."></div>
       </div>
       <div class="nav-col after">
         <div class="nav-label"><span class="sw"></span>Redesign — homepage</div>
-        <div class="detail-frame"><img src="/images/lovesac-trust-band-after.jpg" alt="Redesigned homepage trust band with four always-visible rows, each pairing an icon with a bolded claim and its specific terms: 60-Day Trial, Machine Washable, Forever Warranty, and Recycled Fill."></div>
+        <div class="phone-frame-wide"><img src="/images/lovesac-trust-band-after.jpg" alt="Redesigned homepage trust band with four always-visible rows, each pairing an icon with a bolded claim and its specific terms: 60-Day Trial, Machine Washable, Forever Warranty, and Recycled Fill."></div>
       </div>
     </div>
     <p class="nav-note">Reaching this section already takes knowing to scroll past a founder-story photo on a specific product page — a shopper browsing the homepage never sees it. And even there, nothing is actually answered until it's tapped: "Guaranteed For Life," "60-Day Home Trial," "Free Shipping and Returns," and "Room of Choice Delivery" are collapsed by default, hiding behind a plus icon instead of stating the terms.</p>
