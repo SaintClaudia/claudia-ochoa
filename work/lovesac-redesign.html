@@ -629,6 +629,33 @@
   }
   .cta-band h2 em{font-style:normal; color:var(--clay);}
 
+  .gift-band{
+    background:var(--canvas-2);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    text-align:left;
+  }
+  .gift-band-inner{
+    display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:72px;
+  }
+  .gift-band-copy{max-width:440px;}
+  .gift-band-eyebrow{color:var(--clay); display:block; margin-bottom:18px;}
+  .gift-band h2{
+    margin:0 0 20px; max-width:440px;
+    font-size:clamp(2rem, 3.4vw, 2.8rem);
+  }
+  .gift-band-p{font-size:1.05rem; color:var(--ink-soft); margin-bottom:32px; max-width:400px;}
+  .gift-band-visual img{
+    border-radius:20px;
+    aspect-ratio:1000/610;
+    box-shadow:0 30px 60px -20px rgba(31,36,33,0.32);
+  }
+  @media (max-width:860px){
+    .gift-band-inner{grid-template-columns:1fr; gap:36px;}
+    .gift-band-visual{order:-1;}
+    .gift-band-copy, .gift-band h2, .gift-band-p{max-width:none;}
+  }
+
   /* ---------- FOOTER ---------- */
   footer{
     background:var(--canvas-2);
@@ -1137,10 +1164,17 @@
   </div>
 </section>
 
-<section class="cta-band">
-  <div class="wrap">
-    <h2>Stop buying furniture <em>for the life you have right now.</em></h2>
-    <a href="lovesac-sactionals.html" class="btn-primary">Shop now</a>
+<section class="cta-band gift-band">
+  <div class="wrap gift-band-inner">
+    <div class="gift-band-copy">
+      <span class="mono gift-band-eyebrow">Gift cards</span>
+      <h2>Give the couch <em>that grows with them.</em></h2>
+      <p class="gift-band-p">Redeemable toward any Sactional, Sac, or accessory — online or in store, no expiration date.</p>
+      <a href="#" class="btn-primary nav-mock">Buy a gift card</a>
+    </div>
+    <div class="gift-band-visual">
+      <img src="../images/lovesac-gift-card.png" alt="Lovesac gift card with a teal and coral floral design">
+    </div>
   </div>
 </section>
 
