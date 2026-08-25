@@ -78,22 +78,16 @@
   .nav-col.before .nav-label{color:var(--ink-soft);}
   .nav-col.after .nav-label{color:var(--clay-deep);}
   .phone-slot{
-    border:1px dashed var(--line);
+    border:1px solid var(--line);
     border-radius:22px;
     background:var(--paper);
     aspect-ratio:9/17.5;
     max-width:320px;
     margin:0 auto;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:24px;
-    color:var(--ink-soft);
-    font-size:13.5px;
-    line-height:1.6;
+    overflow:hidden;
+    box-shadow:0 18px 40px -20px rgba(36,28,22,0.35);
   }
-  .phone-slot img{border-radius:20px; width:100%; height:100%; object-fit:cover;}
+  .phone-slot img{border-radius:0; width:100%; height:100%; object-fit:cover; object-position:top;}
   .nav-note{margin-top:32px; font-size:15px; line-height:1.7; color:var(--ink-soft); max-width:70ch;}
 
   /* Room fit */
@@ -198,14 +192,14 @@
     <div class="nav-compare">
       <div class="nav-col before">
         <div class="nav-label"><span class="sw"></span>Lovesac.com — mobile</div>
-        <div class="phone-slot">Original mobile nav screenshot<br>(pending)</div>
+        <div class="phone-slot"><img src="/images/lovesac-mobile-nav-before.jpg" alt="Original Lovesac mobile menu: a flat list of product categories, each with a description and chevron, and a floating chat tab overlapping the content."></div>
       </div>
       <div class="nav-col after">
         <div class="nav-label"><span class="sw"></span>Redesign — mobile</div>
-        <div class="phone-slot">Redesign mobile nav screenshot<br>(pending)</div>
+        <div class="phone-slot"><img src="/images/lovesac-mobile-nav-after.jpg" alt="Redesigned Lovesac mobile menu: two top-level categories, Furniture and Accessories, plus direct links to What to expect, store locator, customer support, and sign in."></div>
       </div>
     </div>
-    <p class="nav-note">Placeholder frames above — swap in the cleaned screenshots and this section is done. Keeping the same before/after pattern from the homepage comparison so the two case study pages read as one continuous piece.</p>
+    <p class="nav-note">The original menu lists every product category flat, one after another, each with its own description and chevron — eight-plus rows before you even reach account actions, with a floating chat tab overlapping the content the whole way down. The redesign collapses that into two categories, Furniture and Accessories, plus direct links to what customers actually need next: delivery expectations, a nearby store, support, and their account.</p>
   </div>
 </section>
 
