@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3G6X2P2669"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3G6X2P2669');
+</script>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research: Customer Sentiment &amp; Competitive Landscape — CLAUDIA OCHOA</title>
+<meta name="description" content="The secondary research behind the Lovesac redesign: customer sentiment from reviews and forums, competitive positioning against DTC and traditional retailers, and where StealthTech creates real usability friction.">
+<meta property="og:title" content="Research: Customer Sentiment & Competitive Landscape | Claudia Ochoa">
+<meta property="og:description" content="The secondary research behind the Lovesac redesign: customer sentiment from reviews and forums, competitive positioning against DTC and traditional retailers, and where StealthTech creates real usability friction.">
+<meta property="og:url" content="https://claudiaochoa.co/work/lovesac-case-study-3.html">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://claudiaochoa.co/images/lovesac-redesign-thumb.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Research: Customer Sentiment & Competitive Landscape | Claudia Ochoa">
+<meta name="twitter:description" content="The secondary research behind the Lovesac redesign: customer sentiment from reviews and forums, competitive positioning against DTC and traditional retailers, and where StealthTech creates real usability friction.">
+<meta name="twitter:image" content="https://claudiaochoa.co/images/lovesac-redesign-thumb.jpg">
+<link rel="canonical" href="https://claudiaochoa.co/work/lovesac-case-study-3.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F1E8D9;
+    --sand:#E6D5B8;
+    --espresso:#241C16;
+    --ink:#3A2F26;
+    --ink-soft:#5C5044;
+    --clay:#BE5B39;
+    --clay-deep:#9C4227;
+    --sage:#6E7350;
+    --line:rgba(36,28,22,0.14);
+    --paper:#FBF6EC;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; background:var(--cream); color:var(--ink); font-family:'Inter',sans-serif; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3,.display{font-family:'Fraunces',serif; color:var(--espresso); margin:0; letter-spacing:-0.01em;}
+  a{color:inherit;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1100px; margin:0 auto; padding:0 32px;}
+
+  .topbar{position:sticky; top:0; z-index:20; background:var(--espresso); color:var(--cream); font-size:13px; transition:transform .3s ease;}
+  .topbar.topbar-hidden{transform:translateY(-100%);}
+  .topbar .wrap{display:flex; align-items:center; justify-content:space-between; padding:14px 32px;}
+  .topbar a.back{text-decoration:none; color:var(--cream); opacity:0.85; display:flex; align-items:center; gap:6px;}
+  .topbar a.back:hover{opacity:1;}
+  .topbar .tag{letter-spacing:0.08em; text-transform:uppercase; font-size:11px; opacity:0.7;}
+
+  .hero{padding:80px 0 56px; border-bottom:1px solid var(--line);}
+  .eyebrow{font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--clay-deep); font-weight:600; margin-bottom:18px;}
+  .hero h1{font-size:clamp(34px,4.8vw,54px); font-weight:600; line-height:1.06; max-width:18ch;}
+  .hero .sub{margin-top:20px; font-size:18px; line-height:1.55; color:var(--ink-soft); max-width:56ch;}
+
+  section{padding:72px 0;}
+  section.divider{border-top:1px solid var(--line);}
+  .section-head{display:grid; grid-template-columns:1fr 2.2fr; gap:48px; margin-bottom:40px;}
+  .section-head h2{font-size:clamp(26px,3.4vw,36px); line-height:1.14;}
+  .section-head .lede{font-size:16.5px; line-height:1.6; color:var(--ink-soft); padding-top:6px;}
+  .num{font-family:'Fraunces',serif; font-weight:500; font-size:15px; color:var(--clay-deep);}
+
+  /* Mobile nav compare */
+  .nav-compare{display:grid; grid-template-columns:1fr 1fr; gap:28px;}
+  .nav-col{display:flex; flex-direction:column; gap:14px;}
+  .nav-label{display:flex; align-items:center; gap:10px; font-size:13px; letter-spacing:0.06em; text-transform:uppercase; font-weight:700;}
+  .nav-label .sw{width:10px; height:10px; border-radius:3px;}
+  .nav-col.before .sw{background:#B9AB94;}
+  .nav-col.after .sw{background:var(--clay);}
+  .nav-col.before .nav-label{color:var(--ink-soft);}
+  .nav-col.after .nav-label{color:var(--clay-deep);}
+  .phone-slot{
+    box-sizing:content-box;
+    border:10px solid var(--espresso);
+    border-radius:32px;
+    background:var(--paper);
+    aspect-ratio:9/17.5;
+    max-width:300px;
+    margin:0 auto;
+    overflow:hidden;
+  }
+  .phone-slot img{border-radius:0; width:100%; height:100%; object-fit:cover; object-position:top;}
+  .phone-slot-empty{
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    padding:24px; color:var(--ink-soft); font-size:13.5px; line-height:1.6;
+  }
+  .phone-frame-wide{
+    box-sizing:content-box;
+    border:10px solid var(--espresso);
+    border-radius:32px;
+    overflow:hidden;
+    background:var(--paper);
+    max-width:300px;
+    margin:0 auto;
+  }
+  .phone-frame-wide img{width:100%; height:auto; display:block;}
+  .nav-note{margin-top:32px; font-size:15px; line-height:1.7; color:var(--ink-soft); max-width:70ch;}
+
+  /* Room fit */
+  .roomfit-layout{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start;}
+  .roomfit-shots{display:flex; gap:24px; justify-content:center;}
+  .phone-frame{
+    box-sizing:content-box;
+    border:10px solid var(--espresso);
+    border-radius:32px;
+    overflow:hidden;
+    background:var(--paper);
+    width:210px;
+  }
+  .phone-frame img{width:100%; display:block;}
+  .frame-cap{
+    text-align:center; font-size:12px; color:var(--ink-soft);
+    margin-top:12px; letter-spacing:0.03em;
+  }
+  .roomfit-copy h3{font-size:24px; margin-bottom:16px; line-height:1.2;}
+  .roomfit-copy p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin:0 0 20px;}
+  .why-list{list-style:none; margin:24px 0 0; padding:0; display:flex; flex-direction:column; gap:16px;}
+  .why-list li{
+    display:flex; gap:14px; align-items:flex-start;
+    font-size:14.5px; line-height:1.6; color:var(--ink-soft);
+  }
+  .why-list .mark{
+    flex:0 0 auto; width:22px; height:22px; border-radius:50%;
+    background:rgba(190,91,57,0.12); color:var(--clay-deep);
+    display:flex; align-items:center; justify-content:center;
+    font-size:12px; font-weight:700; margin-top:2px;
+  }
+  .why-list strong{color:var(--espresso);}
+
+  .context-strip{
+    margin-top:56px;
+    background:var(--espresso);
+    color:var(--paper);
+    border-radius:16px;
+    padding:32px 36px;
+    font-size:14.5px; line-height:1.7;
+  }
+  .context-strip strong{color:var(--paper);}
+  .context-strip .tag{
+    display:inline-block; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700;
+    color:#D9CBB8; margin-bottom:10px;
+  }
+
+  /* Sentiment cards */
+  .sentiment-grid{display:grid; grid-template-columns:1fr 1fr; gap:28px;}
+  .sentiment-card{background:var(--paper); border:1px solid var(--line); border-radius:16px; padding:30px 28px;}
+  .sentiment-card h3{
+    display:flex; align-items:center; gap:10px;
+    font-size:17px; margin-bottom:20px;
+  }
+  .sentiment-card h3 .dot{width:11px; height:11px; border-radius:50%; flex-shrink:0;}
+  .sentiment-card.positive h3 .dot{background:var(--sage);}
+  .sentiment-card.negative h3 .dot{background:var(--clay-deep);}
+  .sentiment-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:16px;}
+  .sentiment-list li{font-size:14.5px; line-height:1.65; color:var(--ink-soft);}
+  .sentiment-list strong{color:var(--espresso);}
+
+  /* Comparison tables */
+  .table-scroll{overflow-x:auto; margin-top:8px; -webkit-overflow-scrolling:touch;}
+  .data-table{width:100%; border-collapse:collapse; min-width:560px; font-size:14px;}
+  .data-table th, .data-table td{
+    text-align:left; padding:14px 18px; border-bottom:1px solid var(--line);
+    vertical-align:top; line-height:1.5;
+  }
+  .data-table thead th{
+    font-family:'Fraunces',serif; font-weight:600; font-size:13px;
+    color:var(--espresso); border-bottom:2px solid var(--espresso);
+  }
+  .data-table tbody th{
+    font-weight:700; color:var(--espresso); white-space:nowrap;
+  }
+  .data-table td{color:var(--ink-soft);}
+  .data-table td strong{color:var(--espresso);}
+
+  .cta{text-align:center; padding:80px 0 96px;}
+  .cta h2{font-size:clamp(28px,3.6vw,40px); max-width:22ch; margin:0 auto 16px;}
+  .cta p{font-size:16px; color:var(--ink-soft); max-width:48ch; margin:0 auto 30px; line-height:1.6;}
+  .btn-row{display:flex; gap:14px; justify-content:center; flex-wrap:wrap;}
+  .btn{display:inline-flex; align-items:center; gap:8px; padding:14px 26px; border-radius:999px; text-decoration:none; font-size:14.5px; font-weight:600;}
+  .btn.primary{background:var(--clay-deep); color:var(--paper);}
+  .btn.primary:hover{background:var(--espresso);}
+  .btn.ghost{border:1px solid var(--line); color:var(--espresso);}
+  .btn.ghost:hover{border-color:var(--ink-soft);}
+
+  footer{border-top:1px solid var(--line); padding:36px 0; font-size:13px; color:var(--ink-soft); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;}
+
+  @media (max-width:820px){
+    .wrap{padding:0 20px;}
+    .topbar .wrap{
+      flex-wrap:wrap; align-items:flex-start; row-gap:8px;
+      padding:22px 20px 18px;
+    }
+    .section-head{grid-template-columns:1fr; gap:14px;}
+    .nav-compare, .roomfit-layout{grid-template-columns:1fr;}
+    .roomfit-shots{gap:16px; flex-wrap:wrap;}
+    .phone-frame{width:160px;}
+    .sentiment-grid{grid-template-columns:1fr;}
+  }
+  .skip-link{
+    position:absolute; top:-100%; left:24px; z-index:9999;
+    padding:12px 20px; background:var(--espresso); color:var(--paper);
+    font-family:'Inter',sans-serif; font-size:0.85rem; font-weight:600;
+    text-decoration:none; border-radius:0 0 6px 6px;
+    transition:top .2s;
+  }
+  .skip-link:focus{top:0; outline:2px solid var(--paper); outline-offset:-4px;}
+  :focus-visible{outline:2px solid var(--clay); outline-offset:3px;}
+  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto;}}
+</style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<div class="topbar">
+  <div class="wrap">
+    <a class="back" href="lovesac-case-study-2.html">&larr; Back to deep dive</a>
+    <span class="tag">Case Study · Research</span>
+  </div>
+</div>
+
+<main id="main-content">
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Case Study — 03 · Research</div>
+    <h1>What the research actually says.</h1>
+    <p class="sub">Before proposing fixes, a look at what customers actually say — in reviews, in Reddit threads, in BBB complaints — about owning a Sactional, plus where Lovesac sits against the DTC and traditional retailers it's increasingly competing with.</p>
+  </div>
+</header>
+
+<section class="divider">
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="num">01 · Customer Sentiment</span></div>
+      <div>
+        <h2>The reviews are consistent — and split down a clear line.</h2>
+        <p class="lede">Across Reddit threads, BBB complaints, and product reviews, the same handful of themes repeat. Customers love what a Sactional can do; they're far less patient with what it takes to own one.</p>
+      </div>
+    </div>
+
+    <div class="sentiment-grid">
+      <div class="sentiment-card positive">
+        <h3><span class="dot"></span>What customers love</h3>
+        <ul class="sentiment-list">
+          <li><strong>Infinite modularity.</strong> The number one reason people buy in the first place — a setup that rearranges, expands, or scales down as a floor plan changes, especially when moving.</li>
+          <li><strong>Machine washability.</strong> Parents, pet owners, and renters consistently point to the removable, washable covers as what actually extends the furniture's life.</li>
+          <li><strong>Showroom experience.</strong> In-person visits get described as stellar, helpful, and transparent — a sharp contrast to how people describe the online experience.</li>
+          <li><strong>Premium comfort.</strong> The "sink-in" feel of the premium fill options comes up again and again as the reason people stay loyal after the first purchase.</li>
+        </ul>
+      </div>
+      <div class="sentiment-card negative">
+        <h3><span class="dot"></span>What customers dislike</h3>
+        <ul class="sentiment-list">
+          <li><strong>The assembly workout.</strong> Described as an exhausting, hours-long task — compressing tightly fitted velcro covers over dense cushions takes real physical strength and leaves people with sore fingers.</li>
+          <li><strong>Customer support breakdown.</strong> Once an order is placed, support gets reported as slow to respond, slow to refund, and unhelpful with shipping errors.</li>
+          <li><strong>Warranty loopholes.</strong> The "Lifetime Guarantee" only covers the hard wooden frame — the soft cushions people actually sit on carry just a 3-year warranty, and buyers say they find this out the hard way.</li>
+          <li><strong>Diminishing longevity.</strong> Some long-time owners report that cushions from more recent manufacturing batches pill and flatten faster than pieces bought years earlier.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="context-strip">
+      <span class="tag">Sources</span>
+      Pulled from Reddit owner threads, Better Business Bureau complaints, and third-party review sites — not Lovesac's own marketing or on-site reviews.
+    </div>
+  </div>
+</section>
+
+<section class="divider">
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="num">02 · Competitive Landscape</span></div>
+      <div>
+        <h2>Premium pricing, DIY delivery — a combination competitors don't share.</h2>
+        <p class="lede">As Lovesac pushes into higher price tiers, it's increasingly compared against both direct-to-consumer modular competitors and traditional retailers — and it's the only one of the three asking customers to assemble a premium-priced product themselves.</p>
+      </div>
+    </div>
+
+    <div class="table-scroll">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Aspect</th>
+            <th>Lovesac</th>
+            <th>DTC competitors<br>(7th Avenue, Albany Park, Mirowood)</th>
+            <th>Traditional retail<br>(e.g. Pottery Barn)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Price point</th>
+            <td>Premium to very high ($3k&ndash;$8k+)</td>
+            <td>Moderate to high ($1.5k&ndash;$4k)</td>
+            <td>Premium ($2.5k&ndash;$6k)</td>
+          </tr>
+          <tr>
+            <th scope="row">Delivery fee</th>
+            <td>Free shipping</td>
+            <td>Often free or low flat-rate</td>
+            <td>Heavy freight charges</td>
+          </tr>
+          <tr>
+            <th scope="row">Setup</th>
+            <td>100% DIY assembly</td>
+            <td>Partial DIY assembly</td>
+            <td>White-glove in-home delivery</td>
+          </tr>
+          <tr>
+            <th scope="row">Aesthetic</th>
+            <td>Modern, boxy, utilitarian</td>
+            <td>Cloud-style or minimalist</td>
+            <td>Classic, tailored, traditional</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="nav-note">Lovesac charges retail-level prices but delivers DTC-level service — free shipping, no white-glove option, full self-assembly. That combination isn't shared by either group it's compared against, and it's a trade-off the site doesn't currently set expectations for before checkout.</p>
+  </div>
+</section>
+
+<section class="divider">
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="num">03 · StealthTech</span></div>
+      <div>
+        <h2>Solving an aesthetic problem, creating a usability one.</h2>
+        <p class="lede">Lovesac partnered with Harman Kardon to build premium audio directly into the couch frame, keeping the speakers completely invisible. It's a genuine design achievement — and it introduces friction that shows up consistently in TikTok and Reddit reviews.</p>
+      </div>
+    </div>
+
+    <ul class="why-list">
+      <li><span class="mark">1</span><span><strong>The fabric muffling glitch.</strong> The companion app asks owners to select their exact cover material so the audio can be tuned to it — adding a throw pillow, blanket, or extra cushion over the armrest is enough to muffle and unbalance the sound.</span></li>
+      <li><span class="mark">2</span><span><strong>Extreme hard-wiring complexity.</strong> Because the system has to stay hidden, wiring runs through the undercarriage of the frame. Reconfiguring the couch means dismantling that wiring first — owners describe this as making the couch "incredibly difficult to move."</span></li>
+      <li><span class="mark">3</span><span><strong>System freezes.</strong> The soundbar and arm-rest speakers reportedly lose sync with each other. The fix owners describe: physically tilting the couch frame to reach and power-cycle a buried subwoofer.</span></li>
+      <li><span class="mark">4</span><span><strong>Underpowered value.</strong> For the roughly $3,000 StealthTech adds to the price, several reviewers point out that a standalone system offers stronger sound with a much simpler setup.</span></li>
+    </ul>
+
+    <p class="nav-note" style="margin-top:40px;">Framed as a portfolio comparison, the gap is between two very different kinds of complexity — one hardware-driven and largely unavoidable given the goal, the other purely digital and self-inflicted.</p>
+
+    <div class="table-scroll" style="margin-top:24px;">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Interaction metric</th>
+            <th>Lovesac Sactional + StealthTech</th>
+            <th>Lightweight modular alternative</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Cognitive load (setup)</th>
+            <td><strong>Extremely high</strong> — calibrating software, mapping audio wiring, heavy physical clamping.</td>
+            <td><strong>Low</strong> — drop-in brackets, standard screw-on legs.</td>
+          </tr>
+          <tr>
+            <th scope="row">Physical effort</th>
+            <td><strong>High</strong> — tight velcro stretching, heavy lifting, wrestling dense cushions.</td>
+            <td><strong>Moderate</strong> — several boxes to unbox, simple configuration.</td>
+          </tr>
+          <tr>
+            <th scope="row">System flexibility</th>
+            <td><strong>High</strong> for the hardware, <strong>low</strong> for the tech — audio wiring limits fast layout changes.</td>
+            <td><strong>High</strong> — lightweight frames are easy to push and reshape.</td>
+          </tr>
+          <tr>
+            <th scope="row">App dependency</th>
+            <td><strong>Complex</strong> — a mandatory app for fabric-tuned EQ adjustments.</td>
+            <td><strong>None</strong> — relies on physical comfort alone.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="context-strip">
+      <span class="tag">Worth noting</span>
+      StealthTech is the one finding here where the friction isn't cosmetic or informational — it's the hardware and software working against the same modularity Sactionals is known for. A real fix would have to touch the product itself, not just the site around it.
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2>Solutions, next.</h2>
+    <p>This page is research only &mdash; no fixes proposed yet. The next step is translating these findings, alongside the teardown and the deep dive, into concrete product and experience decisions.</p>
+    <div class="btn-row">
+      <a class="btn primary" href="https://claudiaochoa.co/work/lovesac-redesign.html">View the live redesign</a>
+      <a class="btn ghost" href="lovesac-case-study-2.html">&larr; Back to deep dive</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap" style="text-align:center; width:100%;">
+    <p class="footer-copy">© 2026 Claudia Ochoa</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var topbar = document.querySelector('.topbar');
+  if(!topbar || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var mq = window.matchMedia('(max-width:820px)');
+  var lastY = window.scrollY;
+  var ticking = false;
+  function update(){
+    var y = Math.max(window.scrollY, 0);
+    if(mq.matches && y > topbar.offsetHeight){
+      if(y > lastY + 4){
+        topbar.classList.add('topbar-hidden');
+      } else if(y < lastY - 4){
+        topbar.classList.remove('topbar-hidden');
+      }
+    } else {
+      topbar.classList.remove('topbar-hidden');
+    }
+    lastY = y;
+    ticking = false;
+  }
+  function onScroll(){
+    if(!ticking){ requestAnimationFrame(update); ticking = true; }
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+})();
+</script>
+
+</body>
+</html>
