@@ -634,7 +634,8 @@
     border-top:1px solid var(--line);
     border-bottom:1px solid var(--line);
     text-align:left;
-    padding:28px 0;
+    padding-top:28px;
+    padding-bottom:110px;
   }
   .gift-band-inner{
     display:flex; align-items:center; gap:36px;
@@ -661,6 +662,7 @@
     transform:translate(-50%, -50%) rotate(-7.19deg);
   }
   @media (max-width:700px){
+    .gift-band{padding-bottom:56px;}
     .gift-band-inner{flex-direction:column; align-items:flex-start; gap:24px;}
     .gift-band-visual{align-self:center;}
     .gift-band-copy{margin-left:0;}
