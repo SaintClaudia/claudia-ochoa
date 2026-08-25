@@ -253,7 +253,7 @@
     transition:opacity .22s ease, visibility .22s;
   }
   .lightbox.open{opacity:1; visibility:visible; pointer-events:auto;}
-  .lightbox-backdrop{position:absolute; inset:0; background:rgba(24,18,14,0.72);}
+  .lightbox-backdrop{position:absolute; inset:0; background:rgba(15,11,8,0.94);}
   .lightbox-panel{
     position:relative;
     background:var(--paper);
@@ -577,7 +577,7 @@
   <div class="lightbox-panel">
     <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
     <div class="lightbox-caption" id="lightboxCaption"></div>
-    <div class="lightbox-scroll">
+    <div class="lightbox-scroll" id="lightboxScroll">
       <img id="lightboxImg" src="" alt="">
     </div>
   </div>
@@ -590,12 +590,14 @@
   var closeBtn = document.getElementById('lightboxClose');
   var imgEl = document.getElementById('lightboxImg');
   var captionEl = document.getElementById('lightboxCaption');
+  var scrollEl = document.getElementById('lightboxScroll');
   if(!lightbox) return;
 
   function openLightbox(src, caption, alt){
     imgEl.src = src;
     imgEl.alt = alt || '';
     captionEl.textContent = caption || '';
+    scrollEl.scrollTop = 0;
     lightbox.classList.add('open');
     lightbox.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
