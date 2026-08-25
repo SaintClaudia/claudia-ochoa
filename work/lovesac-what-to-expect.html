@@ -108,13 +108,13 @@
   .intro-video:hover::after{background:rgba(31,26,20,0.42);}
   .intro-play{
     position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
-    width:72px; height:72px; border-radius:50%;
-    background:var(--canvas); color:var(--ink);
+    width:68px; height:68px; border-radius:50%;
+    background:var(--clay); color:var(--canvas);
     display:flex; align-items:center; justify-content:center;
-    transition:transform .2s ease;
+    transition:background .2s ease, transform .2s ease;
   }
-  .intro-video:hover .intro-play{transform:translate(-50%,-50%) scale(1.06);}
-  .intro-play svg{width:24px; height:24px; margin-left:3px;}
+  .intro-video:hover .intro-play{background:var(--clay-dark); transform:translate(-50%,-50%) scale(1.06);}
+  .intro-play svg{width:22px; height:22px; margin-left:3px;}
   @media(max-width:860px){
     .intro-row{grid-template-columns:1fr; gap:28px;}
   }
@@ -1061,7 +1061,7 @@
     <p>From the moment you order to the day it's built and settled into your living room.</p>
   </div>
   <a href="#" class="intro-video nav-mock" aria-label="Watch how Sactionals comes together">
-    <img src="../images/lovesac-hero.jpg" alt="">
+    <img src="../images/lovesac-what-to-expect-video.webp" alt="">
     <span class="intro-play" aria-hidden="true">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
     </span>
