@@ -634,6 +634,7 @@
     border-top:1px solid var(--line);
     border-bottom:1px solid var(--line);
     text-align:left;
+    padding:64px 0;
   }
   .gift-band-inner{
     display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:72px;
@@ -648,6 +649,8 @@
   .gift-band-p.gift-band-fine{font-size:0.85rem; line-height:1.55;}
   .gift-band-terms{color:var(--clay); text-decoration:underline; text-underline-offset:3px;}
   .gift-band-visual img{
+    max-width:340px;
+    margin:0 auto;
     aspect-ratio:1000/602;
     transform:rotate(-7.19deg);
   }
@@ -703,7 +706,8 @@
 
   @media (max-width:860px){
     .hero{min-height:520px; padding-bottom:48px;}
-    .lives, .expect, .reviews, .cta-band{padding:56px 0;}
+    .lives, .expect, .reviews{padding:56px 0;}
+    .gift-band{padding:40px 0;}
     .life-track{grid-template-columns:1fr;}
     .review-grid{grid-template-columns:1fr;}
     .trust-band .wrap{flex-direction:column; align-items:flex-start; gap:20px;}
