@@ -158,8 +158,8 @@
     font-size:17px; margin-bottom:20px;
   }
   .sentiment-card h3 .dot{width:11px; height:11px; border-radius:50%; flex-shrink:0;}
-  .sentiment-card.positive h3 .dot{background:var(--sage);}
-  .sentiment-card.negative h3 .dot{background:var(--clay-deep);}
+  .sentiment-card.positive h3 .dot{background:var(--clay-deep);}
+  .sentiment-card.negative h3 .dot{background:#9C9488;}
   .sentiment-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:16px;}
   .sentiment-list li{font-size:14.5px; line-height:1.65; color:var(--ink-soft);}
   .sentiment-list strong{color:var(--espresso);}
@@ -248,15 +248,6 @@
     </div>
 
     <div class="sentiment-grid">
-      <div class="sentiment-card positive">
-        <h3><span class="dot"></span>What customers love</h3>
-        <ul class="sentiment-list">
-          <li><strong>Infinite modularity.</strong> The number one reason people buy in the first place — a setup that rearranges, expands, or scales down as a floor plan changes, especially when moving.</li>
-          <li><strong>Machine washability.</strong> Parents, pet owners, and renters consistently point to the removable, washable covers as what actually extends the furniture's life.</li>
-          <li><strong>Showroom experience.</strong> In-person visits get described as stellar, helpful, and transparent — a sharp contrast to how people describe the online experience.</li>
-          <li><strong>Premium comfort.</strong> The "sink-in" feel of the premium fill options comes up again and again as the reason people stay loyal after the first purchase.</li>
-        </ul>
-      </div>
       <div class="sentiment-card negative">
         <h3><span class="dot"></span>What customers dislike</h3>
         <ul class="sentiment-list">
@@ -264,6 +255,15 @@
           <li><strong>Customer support breakdown.</strong> Once an order is placed, support gets reported as slow to respond, slow to refund, and unhelpful with shipping errors.</li>
           <li><strong>Warranty loopholes.</strong> The "Lifetime Guarantee" only covers the hard wooden frame — the soft cushions people actually sit on carry just a 3-year warranty, and buyers say they find this out the hard way.</li>
           <li><strong>Diminishing longevity.</strong> Some long-time owners report that cushions from more recent manufacturing batches pill and flatten faster than pieces bought years earlier.</li>
+        </ul>
+      </div>
+      <div class="sentiment-card positive">
+        <h3><span class="dot"></span>What customers love</h3>
+        <ul class="sentiment-list">
+          <li><strong>Infinite modularity.</strong> The number one reason people buy in the first place — a setup that rearranges, expands, or scales down as a floor plan changes, especially when moving.</li>
+          <li><strong>Machine washability.</strong> Parents, pet owners, and renters consistently point to the removable, washable covers as what actually extends the furniture's life.</li>
+          <li><strong>Showroom experience.</strong> In-person visits get described as stellar, helpful, and transparent — a sharp contrast to how people describe the online experience.</li>
+          <li><strong>Premium comfort.</strong> The "sink-in" feel of the premium fill options comes up again and again as the reason people stay loyal after the first purchase.</li>
         </ul>
       </div>
     </div>
@@ -387,10 +387,41 @@
   </div>
 </section>
 
+<section class="divider">
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="num">04 · Conceptual Solutions</span></div>
+      <div>
+        <h2>Where the research points next.</h2>
+        <p class="lede">A caveat before any of this: everything below is directional, not decided. There's no internal analytics, no usability testing, and no access to Lovesac's actual return or support data behind these proposals — just patterns from public reviews and forums. Treat them as hypotheses worth testing, not a finished roadmap.</p>
+      </div>
+    </div>
+
+    <div class="context-strip">
+      <span class="tag">Already responding to this research</span>
+      Some of this was already addressed before this research was formalized — worth naming honestly, not claiming as new:
+    </div>
+
+    <ul class="why-list" style="margin-top:28px;">
+      <li><span class="mark">1</span><span><strong>Assembly effort.</strong> The "What to expect" page sets a delivery-to-build-day timeline and an assembly-time estimate by crew size, so the physical effort research shows people are unprepared for isn't a surprise mid-build.</span></li>
+      <li><span class="mark">2</span><span><strong>Customer support breakdown.</strong> A dedicated Customer Support page is now one tap from any screen, with real contact channels instead of a buried help link.</span></li>
+      <li><span class="mark">3</span><span><strong>Warranty ambiguity.</strong> The redesigned trust band already scopes the claim precisely — "Forever Warranty, your frame covered for life" — instead of a blanket "Guaranteed For Life" line, narrowing (though not fully closing) the gap research shows people find out the hard way.</span></li>
+    </ul>
+
+    <p class="nav-note" style="margin-top:48px;">The rest is genuinely new — proposals, not decisions.</p>
+
+    <ul class="why-list" style="margin-top:20px;">
+      <li><span class="mark">1</span><span><strong>StealthTech: set expectations before the sale, not after.</strong> Disclose in plain language, on the product page, what StealthTech setup actually involves — app pairing, fabric calibration, wiring — the same "what to expect" pattern already used for assembly, extended to the one feature research shows creates the most friction post-purchase.</span></li>
+      <li><span class="mark">2</span><span><strong>Warranty: show the split, not just the headline.</strong> Break the trust-band claim into two explicit lines — frame (lifetime) and cushions (3 years) — instead of one line that scopes correctly but still reads as a single blanket guarantee at a glance.</span></li>
+      <li><span class="mark">3</span><span><strong>Make the DIY trade-off part of the pitch, not a surprise.</strong> Lovesac is the only option in its competitive set asking customers to self-assemble at these prices. Name that trade-off directly against the free shipping and lower cost it buys, instead of leaving customers to find it out compared against white-glove competitors after ordering.</span></li>
+    </ul>
+  </div>
+</section>
+
 <section class="cta">
   <div class="wrap">
-    <h2>Solutions, next.</h2>
-    <p>This page is research only &mdash; no fixes proposed yet. The next step is translating these findings, alongside the teardown and the deep dive, into concrete product and experience decisions.</p>
+    <h2>Where this goes from here.</h2>
+    <p>These are proposals, not decisions &mdash; the next step is validating them against real usage data, which this research doesn't have access to.</p>
     <div class="btn-row">
       <a class="btn primary" href="https://claudiaochoa.co/work/lovesac-redesign.html">View the live redesign</a>
       <a class="btn ghost" href="lovesac-case-study-2.html">&larr; Back to deep dive</a>
