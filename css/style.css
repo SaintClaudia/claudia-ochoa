@@ -266,21 +266,41 @@ body > nav {
 .work-card.featured .card-image { aspect-ratio: 2/1; }
 .card-links-extra {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 6px 16px;
-  padding: 16px 32px 0;
-  font-size: 0.8rem;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px 32px 32px;
+  padding: 24px 0 0;
+  border-top: 1px solid var(--border);
 }
-.card-links-extra span { color: var(--mid); }
+.card-links-extra .links-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 2px;
+}
 .card-links-extra a {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
   color: var(--black);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  opacity: 0.75;
+  text-decoration: none;
+  font-size: 0.9rem;
+  opacity: 0.8;
   transition: opacity var(--transition);
 }
-.card-links-extra a:hover { opacity: 1; }
+.card-links-extra a::before {
+  content: '→';
+  flex: 0 0 auto;
+  font-size: 0.85em;
+  opacity: 0.6;
+}
+.card-links-extra a:hover {
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 @media (max-width: 720px) {
   .work-card.featured .card-image { aspect-ratio: auto; height: calc((100vw - 48px) / 2 + 50px); }
 }
