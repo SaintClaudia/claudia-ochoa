@@ -758,7 +758,11 @@
   .footer-social svg{width:19px; height:19px;}
   .footer-social svg.icon-lg{width:24px; height:24px;}
   .footer-social svg.icon-md{width:21px; height:21px;}
+  .footer-legal{flex:0 0 auto; opacity:0.78;}
+  .footer-legal a{opacity:0.85; transition:opacity .2s;}
+  .footer-legal a:hover{opacity:1;}
   .footer-bottom{
+    display:flex; flex-wrap:wrap; justify-content:space-between; gap:8px 24px;
     margin-top:48px; padding-top:24px; border-top:1px solid var(--line);
     font-size:0.8rem; opacity:0.78;
   }
@@ -1258,7 +1262,8 @@
     </div>
   </div>
   <div class="wrap footer-bottom">
-    Concept redesign — using Lovesac's existing brand identity and photography; not an official Lovesac property.
+    <span>Concept redesign — using Lovesac's existing brand identity and photography; not an official Lovesac property.</span>
+    <div class="footer-legal"><a href="#" class="nav-mock">Privacy Policy</a> · <a href="#" class="nav-mock">Terms</a> · <a href="#" class="nav-mock">Trademarks</a></div>
   </div>
   <a href="/" class="back-link">← Back to Portfolio</a>
 </footer>
