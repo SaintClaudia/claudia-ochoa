@@ -89,6 +89,10 @@
     overflow:hidden;
   }
   .phone-slot img{border-radius:0; width:100%; height:100%; object-fit:cover; object-position:top;}
+  .phone-slot-empty{
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    padding:24px; color:var(--ink-soft); font-size:13.5px; line-height:1.6;
+  }
   .nav-note{margin-top:32px; font-size:15px; line-height:1.7; color:var(--ink-soft); max-width:70ch;}
 
   /* Room fit */
@@ -266,6 +270,30 @@
       <span class="tag">Worth noting</span>
       Lovesac already has a room-visualization tool &mdash; it just lives in a separate downloadable app rather than on the site itself. Room Fit isn't inventing the idea; it's asking why that answer requires leaving the page you're already shopping on.
     </div>
+  </div>
+</section>
+
+<section class="divider">
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="num">03 · Accessibility</span></div>
+      <div>
+        <h2>Accessibility isn't a toggle. It's the experience.</h2>
+        <p class="lede">This is a live capture from the mobile site, not a mockup. Turning on "Accessibility Mode" overlays a second, misaligned promo banner on top of the first and leaves an autoplaying, sound-adjacent video sitting directly beneath it.</p>
+      </div>
+    </div>
+
+    <div class="nav-compare">
+      <div class="nav-col before">
+        <div class="nav-label"><span class="sw"></span>Accessibility Mode: Off</div>
+        <div class="phone-slot phone-slot-empty">Screenshot pending</div>
+      </div>
+      <div class="nav-col after">
+        <div class="nav-label"><span class="sw"></span>Accessibility Mode: On</div>
+        <div class="phone-slot phone-slot-empty">Screenshot pending</div>
+      </div>
+    </div>
+    <p class="nav-note">Two problems stacked on top of each other: first, accessibility is treated as an optional mode a visitor has to find and enable, rather than the default experience. Second, enabling it doesn't actually deliver a cleaner page — it duplicates the promo banner text and leaves a video autoplaying with motion and sound controls still active. An overlay that's supposed to reduce cognitive load ends up adding a second, misaligned layer to parse. The redesign's approach was to skip the toggle entirely: sufficient contrast, no autoplaying media, and one banner state, on by default, for every visitor.</p>
   </div>
 </section>
 
