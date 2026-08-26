@@ -1,0 +1,7 @@
+name = "portfolio-poll"
+main = "src/index.js"
+compatibility_date = "2025-01-01"
+
+[[kv_namespaces]]
+binding = "POLL_KV"
+id = "2ceb282b237c4b9cb75c37fb7b32082d"

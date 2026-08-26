@@ -364,6 +364,63 @@
   }
   .compare-note strong{color:var(--espresso);}
 
+  /* Poll */
+  .poll-block{
+    margin-top:36px;
+    padding:26px 28px;
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:14px;
+  }
+  .poll-question{
+    font-family:'Fraunces',serif;
+    font-size:18px;
+    font-weight:600;
+    color:var(--espresso);
+    margin:0 0 18px;
+  }
+  .poll-options{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  .poll-btn{
+    display:block;
+    width:100%;
+    text-align:left;
+    background:var(--cream);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:14px 16px;
+    cursor:pointer;
+    font-family:inherit;
+    transition:border-color .2s ease, background .2s ease;
+  }
+  .poll-btn:hover{border-color:var(--ink-soft);}
+  .poll-btn:disabled{cursor:default;}
+  .poll-btn-top{
+    display:flex; align-items:center; justify-content:space-between;
+    margin-bottom:10px;
+  }
+  .poll-btn-label{
+    display:flex; align-items:center; gap:8px;
+    font-size:14px; font-weight:600; color:var(--espresso);
+  }
+  .poll-btn-label .sw{width:10px; height:10px; border-radius:3px; background:#B9AB94;}
+  .poll-btn[data-choice="after"] .poll-btn-label .sw{background:var(--clay);}
+  .poll-btn-pct{font-size:13px; font-weight:700; color:var(--ink-soft); font-variant-numeric:tabular-nums;}
+  .poll-btn-bar{
+    display:block; height:6px; border-radius:999px;
+    background:var(--line); overflow:hidden;
+  }
+  .poll-btn-fill{
+    display:block; height:100%; width:0%;
+    background:#B9AB94;
+    transition:width .4s ease;
+  }
+  .poll-btn[data-choice="after"] .poll-btn-fill{background:var(--clay);}
+  .poll-btn.selected{border-color:var(--clay-deep); background:var(--paper);}
+  .poll-meta{margin:16px 0 0; font-size:13px; color:var(--ink-soft);}
+  @media (max-width:600px){
+    .poll-options{grid-template-columns:1fr;}
+  }
+
   /* Three pillars */
   .pillars{
     display:grid;
@@ -580,6 +637,27 @@
     <p class="compare-note">
       The redesign replaces the abstract hero pattern with a single lifestyle photograph and a plain-language headline — <strong>"One couch. Built for life."</strong> — then immediately introduces four scannable reasons to believe: 60-day trial, machine washable, forever warranty, and recycled fill. Rather than asking visitors to piece together the product's value across the site, the redesign brings those differentiators into the first impression. The sale is still there; it simply no longer leads the experience.
     </p>
+
+    <div class="poll-block" id="redesignPoll" data-poll-id="lovesac-redesign">
+      <p class="poll-question">Which one would you rather shop on?</p>
+      <div class="poll-options">
+        <button type="button" class="poll-btn" data-choice="before">
+          <span class="poll-btn-top">
+            <span class="poll-btn-label"><span class="sw"></span>Original</span>
+            <span class="poll-btn-pct">&mdash;</span>
+          </span>
+          <span class="poll-btn-bar"><span class="poll-btn-fill"></span></span>
+        </button>
+        <button type="button" class="poll-btn" data-choice="after">
+          <span class="poll-btn-top">
+            <span class="poll-btn-label"><span class="sw"></span>Redesign</span>
+            <span class="poll-btn-pct">&mdash;</span>
+          </span>
+          <span class="poll-btn-bar"><span class="poll-btn-fill"></span></span>
+        </button>
+      </div>
+      <p class="poll-meta"><span id="pollCount">0</span> votes so far &middot; <span id="pollStatus">pick one</span></p>
+    </div>
   </div>
 </section>
 
@@ -854,6 +932,75 @@
     if(!ticking){ requestAnimationFrame(update); ticking = true; }
   }
   window.addEventListener('scroll', onScroll, {passive:true});
+})();
+</script>
+<script>
+(function(){
+  var POLL_WORKER_URL = 'https://portfolio-poll.claudiajochoa.workers.dev';
+  var block = document.getElementById('redesignPoll');
+  if(!block) return;
+
+  var pollId = block.getAttribute('data-poll-id');
+  var buttons = Array.prototype.slice.call(block.querySelectorAll('.poll-btn'));
+  var countEl = document.getElementById('pollCount');
+  var statusEl = document.getElementById('pollStatus');
+  var storageKey = 'poll_vote_' + pollId;
+  var voted = false;
+
+  function render(tally){
+    var total = 0;
+    buttons.forEach(function(btn){
+      total += tally[btn.getAttribute('data-choice')] || 0;
+    });
+    buttons.forEach(function(btn){
+      var choice = btn.getAttribute('data-choice');
+      var count = tally[choice] || 0;
+      var pct = total > 0 ? Math.round((count / total) * 100) : 0;
+      btn.querySelector('.poll-btn-pct').textContent = total > 0 ? pct + '%' : '—';
+      btn.querySelector('.poll-btn-fill').style.width = pct + '%';
+    });
+    countEl.textContent = total;
+  }
+
+  function lockButtons(selectedChoice){
+    voted = true;
+    buttons.forEach(function(btn){
+      btn.disabled = true;
+      btn.classList.toggle('selected', btn.getAttribute('data-choice') === selectedChoice);
+    });
+    statusEl.textContent = 'thanks for voting';
+  }
+
+  function fetchTally(){
+    fetch(POLL_WORKER_URL + '/poll/' + encodeURIComponent(pollId))
+      .then(function(res){ return res.json(); })
+      .then(function(tally){ render(tally || {}); })
+      .catch(function(){});
+  }
+
+  buttons.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      if(voted) return;
+      var choice = btn.getAttribute('data-choice');
+      lockButtons(choice);
+      try{ localStorage.setItem(storageKey, choice); }catch(e){}
+      fetch(POLL_WORKER_URL + '/poll/' + encodeURIComponent(pollId), {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({choice: choice})
+      })
+        .then(function(res){ return res.json(); })
+        .then(function(tally){ render(tally || {}); })
+        .catch(function(){});
+    });
+  });
+
+  var previousVote = null;
+  try{ previousVote = localStorage.getItem(storageKey); }catch(e){}
+  if(previousVote){
+    lockButtons(previousVote);
+  }
+  fetchTally();
 })();
 </script>
 
