@@ -26,7 +26,6 @@
 <meta name="twitter:description" content="A UX case study reimagining Lovesac's e-commerce site with real lifestyle photography, transparent trust signals, and a clear order-to-delivery experience.">
 <meta name="twitter:image" content="https://claudiaochoa.co/images/lovesac-redesign-thumb.jpg">
 <link rel="canonical" href="https://claudiaochoa.co/work/lovesac-redesign.html">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -459,7 +458,7 @@
   }
   .hero-bg{
     position:absolute; left:0; right:0; top:-20px; bottom:-260px;
-    background-image:url('../images/lovesac-hero.jpg');
+    background-image:url('../images/lovesac-hero.webp');
     background-size:cover;
     background-position:center 42%;
     will-change:transform;
@@ -778,7 +777,7 @@
       <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
     </button>
-    <a href="lovesac-redesign.html" class="logo" aria-label="Lovesac home"><img src="../images/lovesac-wordmark.png" alt="Lovesac"></a>
+    <a href="lovesac-redesign.html" class="logo" aria-label="Lovesac home"><img src="../images/lovesac-wordmark.webp" alt="Lovesac" width="266" height="48"></a>
     <div class="nav-links">
       <div class="nav-item">
         <button type="button" class="nav-trigger" aria-haspopup="true" aria-expanded="false">
@@ -1110,7 +1109,7 @@
     <h2>When life changes shape, or you simply want a new look.</h2>
     <div class="life-track">
       <div class="life-card">
-        <div class="img" style="background-image:url('../images/lovesac-life-apartment.jpg'); background-position:center;"></div>
+        <div class="img" style="background-image:url('../images/lovesac-life-apartment.webp'); background-position:center;"></div>
         <div class="body">
           <span class="stage mono">Stage 01</span>
           <h3>First apartment</h3>
@@ -1118,7 +1117,7 @@
         </div>
       </div>
       <div class="life-card">
-        <div class="img" style="background-image:url('../images/lovesac-life-moving.jpg'); background-position:center;"></div>
+        <div class="img" style="background-image:url('../images/lovesac-life-moving.webp'); background-position:center;"></div>
         <div class="body">
           <span class="stage mono">Stage 02</span>
           <h3>Moving in together</h3>
@@ -1126,7 +1125,7 @@
         </div>
       </div>
       <div class="life-card">
-        <div class="img" style="background-image:url('../images/lovesac-life-kids.jpg'); background-position:center;"></div>
+        <div class="img" style="background-image:url('../images/lovesac-life-kids.webp'); background-position:center;"></div>
         <div class="body">
           <span class="stage mono">Stage 03</span>
           <h3>Kids, dogs, chaos</h3>
@@ -1134,7 +1133,7 @@
         </div>
       </div>
       <div class="life-card">
-        <div class="img" style="background-image:url('../images/lovesac-life-house.jpg'); background-position:center 25%;"></div>
+        <div class="img" style="background-image:url('../images/lovesac-life-house.webp'); background-position:center 25%;"></div>
         <div class="body">
           <span class="stage mono">Stage 04</span>
           <h3>The house you'll stay in</h3>
@@ -1200,7 +1199,7 @@
 <section class="cta-band gift-band">
   <div class="wrap gift-band-inner">
     <div class="gift-band-visual">
-      <img src="../images/lovesac-credit-card.png" alt="Lovesac credit card with a teal and coral floral design and chip">
+      <img src="../images/lovesac-credit-card.webp" alt="Lovesac credit card with a teal and coral floral design and chip">
     </div>
     <div class="gift-band-copy">
       <span class="mono gift-band-eyebrow">Lovesac Credit Card</span>
@@ -1216,7 +1215,7 @@
 <footer>
   <div class="wrap">
     <div class="footer-brand">
-      <div class="logo"><img src="../images/lovesac-wordmark.png" alt="Lovesac"></div>
+      <div class="logo"><img src="../images/lovesac-wordmark.webp" alt="Lovesac" width="266" height="48"></div>
       <div class="footer-social">
         <a href="https://www.instagram.com/lovesac/" target="_blank" rel="noopener noreferrer" aria-label="Lovesac on Instagram">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="0.6" fill="currentColor" stroke="none"/></svg>
@@ -1338,7 +1337,6 @@
   </div>
 </div>
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script>
 (function(){
   document.querySelectorAll('.store-drop, .account-drop, .cart-drop').forEach(function(el){
@@ -1429,8 +1427,28 @@
   var backdrop = document.getElementById('storeBackdrop');
   var closeBtn = document.getElementById('storeDropClose');
   var form = document.getElementById('storeModalForm');
-  if(!toggle || !drop || !backdrop || typeof L === 'undefined') return;
+  if(!toggle || !drop || !backdrop) return;
   var map;
+  var leafletPromise;
+
+  function loadLeaflet(){
+    if(leafletPromise) return leafletPromise;
+    var css = document.createElement('link');
+    css.rel = 'stylesheet';
+    css.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+    css.integrity = 'sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=';
+    css.crossOrigin = '';
+    document.head.appendChild(css);
+    leafletPromise = new Promise(function(resolve){
+      var script = document.createElement('script');
+      script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+      script.integrity = 'sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=';
+      script.crossOrigin = '';
+      script.onload = resolve;
+      document.body.appendChild(script);
+    });
+    return leafletPromise;
+  }
 
   function initMap(){
     if(map) return;
@@ -1483,8 +1501,10 @@
       backdrop.classList.add('open');
       toggle.setAttribute('aria-expanded', 'true');
       document.querySelector('nav').classList.add('dropdown-open');
-      initMap();
-      setTimeout(function(){ if(map) map.invalidateSize(); }, 220);
+      loadLeaflet().then(function(){
+        initMap();
+        setTimeout(function(){ if(map) map.invalidateSize(); }, 220);
+      });
     } else {
       toggle.setAttribute('aria-expanded', 'false');
     }
