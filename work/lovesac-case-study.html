@@ -311,11 +311,12 @@
     -webkit-mask-image:-webkit-radial-gradient(white, black);
     mask-image:radial-gradient(white, black);
   }
-  .video-lightbox-panel iframe{width:100%; height:100%; border:0; display:block; border-radius:16px;}
+  .video-lightbox-panel iframe,
+  .video-lightbox-panel video{width:100%; height:100%; border:0; display:block; border-radius:16px; object-fit:contain; background:#000;}
 
   /* ---------- SHARED LIGHTBOX CLOSE + ARROWS ---------- */
   .lightbox-close{
-    position:absolute; top:-14px; right:-14px; z-index:2;
+    position:absolute; top:20px; right:20px; z-index:3;
     width:34px; height:34px; border-radius:50%;
     background:rgba(251,246,236,0.12);
     border:1px solid rgba(251,246,236,0.35);
@@ -512,7 +513,7 @@
       <div class="chip-row">
         <a class="chip" href="https://www.tiktok.com/@boldfam/video/7675106751867276557" target="_blank" rel="noopener noreferrer" style="text-decoration:none; color:inherit;"><span class="dot"></span>Built on the Derick Cahill / Lovesac moment</a>
         <a class="chip" href="https://www.tiktok.com/@alison..wonderland/video/7677317490292116749" target="_blank" rel="noopener noreferrer" style="text-decoration:none; color:inherit;"><span class="dot"></span>Lovesac's deleted response</a>
-        <a class="chip" href="https://www.tiktok.com/@claudiacreates1/video/7677433099709418766" target="_blank" rel="noopener noreferrer" style="text-decoration:none; color:inherit;"><span class="dot"></span>My response</a>
+        <a class="chip" href="/videos/lovesac-my-response.mp4" data-local-video style="text-decoration:none; color:inherit;"><span class="dot"></span>My removed response</a>
         <a class="chip" href="https://claudiaochoa.co/work/lovesac-redesign.html" style="text-decoration:none; color:inherit;"><span class="dot"></span>Live homepage teardown, not a mockup</a>
       </div>
     </div>
@@ -679,9 +680,9 @@
         <img id="lightboxImg" src="" alt="">
       </div>
     </div>
-    <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
   </div>
   <button type="button" class="lightbox-arrow" id="lightboxNext" aria-label="Next screenshot">&#8250;</button>
+  <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
 </div>
 
 <div class="video-lightbox" id="videoLightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Video preview">
@@ -690,10 +691,11 @@
   <div class="video-lightbox-panel">
     <div class="video-lightbox-frame-wrap">
       <iframe id="videoLightboxFrame" src="" allow="encrypted-media;" allowfullscreen title="TikTok video"></iframe>
+      <video id="videoLightboxVideo" controls playsinline style="display:none;"></video>
     </div>
-    <button type="button" class="lightbox-close" id="videoLightboxClose" aria-label="Close">&times;</button>
   </div>
   <button type="button" class="lightbox-arrow" id="videoLightboxNext" aria-label="Next video">&#8250;</button>
+  <button type="button" class="lightbox-close" id="videoLightboxClose" aria-label="Close">&times;</button>
 </div>
 
 <script>
@@ -773,16 +775,23 @@
   var prevBtn = document.getElementById('videoLightboxPrev');
   var nextBtn = document.getElementById('videoLightboxNext');
   var frame = document.getElementById('videoLightboxFrame');
+  var video = document.getElementById('videoLightboxVideo');
   if(!modal) return;
 
-  var videoIds = [];
+  var items = [];
   var currentIndex = -1;
 
-  document.querySelectorAll('a[href*="tiktok.com/"]').forEach(function(link){
-    var match = link.getAttribute('href').match(/video\/(\d+)/);
-    if(!match) return;
-    var index = videoIds.length;
-    videoIds.push(match[1]);
+  document.querySelectorAll('a[href*="tiktok.com/"], a[data-local-video]').forEach(function(link){
+    var item;
+    if(link.hasAttribute('data-local-video')){
+      item = {type:'local', src:link.getAttribute('href')};
+    } else {
+      var match = link.getAttribute('href').match(/video\/(\d+)/);
+      if(!match) return;
+      item = {type:'tiktok', id:match[1]};
+    }
+    var index = items.length;
+    items.push(item);
     link.addEventListener('click', function(e){
       e.preventDefault();
       openModal(index);
@@ -791,11 +800,28 @@
 
   function updateNav(){
     prevBtn.disabled = currentIndex <= 0;
-    nextBtn.disabled = currentIndex >= videoIds.length - 1;
+    nextBtn.disabled = currentIndex >= items.length - 1;
+  }
+  function renderCurrent(){
+    var item = items[currentIndex];
+    if(item.type === 'local'){
+      frame.src = '';
+      frame.style.display = 'none';
+      video.style.display = 'block';
+      video.src = item.src;
+      video.play();
+    } else {
+      video.pause();
+      video.removeAttribute('src');
+      video.load();
+      video.style.display = 'none';
+      frame.style.display = 'block';
+      frame.src = 'https://www.tiktok.com/embed/v2/' + item.id;
+    }
   }
   function openModal(index){
     currentIndex = index;
-    frame.src = 'https://www.tiktok.com/embed/v2/' + videoIds[currentIndex];
+    renderCurrent();
     modal.classList.add('open');
     modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
@@ -803,9 +829,9 @@
     closeBtn.focus();
   }
   function showVideo(index){
-    if(index < 0 || index >= videoIds.length) return;
+    if(index < 0 || index >= items.length) return;
     currentIndex = index;
-    frame.src = 'https://www.tiktok.com/embed/v2/' + videoIds[currentIndex];
+    renderCurrent();
     updateNav();
   }
   function closeModal(){
@@ -813,6 +839,9 @@
     modal.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
     frame.src = '';
+    video.pause();
+    video.removeAttribute('src');
+    video.load();
     currentIndex = -1;
   }
   prevBtn.addEventListener('click', function(){ showVideo(currentIndex - 1); });
