@@ -94,6 +94,15 @@
     display:flex; align-items:center; justify-content:center; text-align:center;
     padding:24px; color:var(--ink-soft); font-size:13.5px; line-height:1.6;
   }
+  .nav-compare.stacked{grid-template-columns:1fr; gap:32px;}
+  .browser-frame{
+    border:1px solid var(--line);
+    border-radius:14px;
+    overflow:hidden;
+    background:var(--paper);
+    box-shadow:0 1px 2px rgba(36,28,22,0.06);
+  }
+  .browser-frame img{width:100%; height:auto; display:block;}
   .phone-frame-wide{
     box-sizing:content-box;
     border:10px solid var(--espresso);
@@ -318,7 +327,43 @@
 <section class="divider">
   <div class="wrap">
     <div class="section-head">
-      <div><span class="num">02 · New Feature</span></div>
+      <div><span class="num">02 · Desktop Nav</span></div>
+      <div>
+        <h2>The same principle, scaled up to the mega-menu.</h2>
+        <p class="lede">On desktop, the flat-text pattern shows up again as multi-column dropdown menus — long lists of links with no visual cue for what's actually being sold. The redesign carries the same photo-first approach from mobile up to the full-width nav.</p>
+      </div>
+    </div>
+
+    <div class="nav-compare stacked">
+      <div class="nav-col before">
+        <div class="nav-label"><span class="sw"></span>Lovesac.com — Sectionals menu</div>
+        <div class="browser-frame"><img src="/images/lovesac-nav-furniture-before.webp" alt="Original Lovesac desktop mega-menu for Sectionals: three columns of plain text links — Shop Sectionals, Upgrade &amp; Replace, Learn — plus a single unrelated promotional photo."></div>
+      </div>
+      <div class="nav-col after">
+        <div class="nav-label"><span class="sw"></span>Redesign — Furniture menu</div>
+        <div class="browser-frame"><img src="/images/lovesac-nav-furniture-after.webp" alt="Redesigned Lovesac desktop mega-menu for Furniture: a photo grid of eight product tiles — Sactionals, Snugg sofas, Sacs, and more — plus a Get Inspired panel."></div>
+      </div>
+    </div>
+    <p class="nav-note">The original Sectionals menu spreads products across three columns of plain text links, with a single lifestyle photo off to the side captioned "Order Free Swatches" — though the photo itself shows a family on a couch, not a single swatch. Everything else stays unillustrated, so a shopper has to read every row. The redesign replaces the list with a photo grid: each product is its own recognizable tile, turning browsing into visual scanning instead of reading.</p>
+
+    <div class="nav-compare stacked" style="margin-top:56px;">
+      <div class="nav-col before">
+        <div class="nav-label"><span class="sw"></span>Lovesac.com — Accessories menu</div>
+        <div class="browser-frame"><img src="/images/lovesac-nav-accessories-before.webp" alt="Original Lovesac desktop mega-menu for Accessories: four columns of plain text links grouped by product type, with no imagery."></div>
+      </div>
+      <div class="nav-col after">
+        <div class="nav-label"><span class="sw"></span>Redesign — Accessories menu</div>
+        <div class="browser-frame"><img src="/images/lovesac-nav-accessories-after.webp" alt="Redesigned Lovesac desktop mega-menu for Accessories: a photo grid of eight accessory tiles — AnyTables, Squattomans, throw pillows, and more — plus a Finish the Look panel."></div>
+      </div>
+    </div>
+    <p class="nav-note">Same problem, same fix, one level over: the Accessories menu goes from four columns of unillustrated text to a photo grid a shopper can scan in seconds. Applied consistently across every top-level category, the mega-menu stops being a list to read and becomes a shelf to browse.</p>
+  </div>
+</section>
+
+<section class="divider">
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="num">03 · New Feature</span></div>
       <div>
         <h2>Room Fit: answering the one question every furniture shopper actually has.</h2>
         <p class="lede">Before someone commits to a Sactional configuration, they want to know one thing: will it fit? This feature answers that inline, without leaving the page.</p>
@@ -360,7 +405,7 @@
 <section class="divider">
   <div class="wrap">
     <div class="section-head">
-      <div><span class="num">03 · Accessibility</span></div>
+      <div><span class="num">04 · Accessibility</span></div>
       <div>
         <h2>Accessibility isn't a toggle. It's the experience.</h2>
         <p class="lede">This is a live capture from the mobile site, not a mockup. Turning on "Accessibility Mode" overlays a second, misaligned promo banner on top of the first and leaves an autoplaying, sound-adjacent video sitting directly beneath it.</p>
@@ -390,7 +435,7 @@
 <section class="divider">
   <div class="wrap">
     <div class="section-head">
-      <div><span class="num">04 · SEO</span></div>
+      <div><span class="num">05 · SEO</span></div>
       <div>
         <h2>The footer is doing SEO the way it was done in 2008.</h2>
         <p class="lede">Scroll to the very bottom of the mobile site and the footer ends in an unbroken wall of trademarked product names — not a sitemap, not links, just plain visible text stacking every brand term the company owns.</p>
@@ -415,7 +460,7 @@
 <section class="divider">
   <div class="wrap">
     <div class="section-head">
-      <div><span class="num">05 · Trust Signals</span></div>
+      <div><span class="num">06 · Trust Signals</span></div>
       <div>
         <h2>Confidence signals shouldn't be a scavenger hunt.</h2>
         <p class="lede">The real site's trust content — warranty, trial period, shipping, delivery — doesn't live on the homepage at all. It's on the Sactionals product page, collapsed behind four separate accordions a visitor has to find and tap open one at a time.</p>
@@ -440,7 +485,7 @@
 <section class="divider">
   <div class="wrap">
     <div class="section-head">
-      <div><span class="num">06 · Financing</span></div>
+      <div><span class="num">07 · Financing</span></div>
       <div>
         <h2>A 24-month financing offer with the visual weight of a footnote.</h2>
         <p class="lede">On the homepage, the financing offer appears as a simple text link between the "Shop by Product" section and an image carousel. There's little visual distinction to signal that it's a meaningful purchase consideration&mdash;especially for a high-ticket product.</p>
