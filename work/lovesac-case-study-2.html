@@ -767,12 +767,11 @@
 (function(){
   var topbar = document.querySelector('.topbar');
   if(!topbar || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var mq = window.matchMedia('(max-width:820px)');
   var lastY = window.scrollY;
   var ticking = false;
   function update(){
     var y = Math.max(window.scrollY, 0);
-    if(mq.matches && y > topbar.offsetHeight){
+    if(y > topbar.offsetHeight){
       if(y > lastY + 4){
         topbar.classList.add('topbar-hidden');
       } else if(y < lastY - 4){
