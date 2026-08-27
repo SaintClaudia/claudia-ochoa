@@ -656,7 +656,7 @@
           <span class="poll-btn-bar"><span class="poll-btn-fill"></span></span>
         </button>
       </div>
-      <p class="poll-meta"><span id="pollCount">0</span> votes so far &middot; <span id="pollStatus">pick one</span></p>
+      <p class="poll-meta"><span id="pollCount">0 votes so far</span> &middot; <span id="pollStatus">pick one</span></p>
     </div>
   </div>
 </section>
@@ -959,7 +959,7 @@
       btn.querySelector('.poll-btn-pct').textContent = total > 0 ? pct + '%' : '—';
       btn.querySelector('.poll-btn-fill').style.width = pct + '%';
     });
-    countEl.textContent = total;
+    countEl.textContent = total + (total === 1 ? ' vote so far' : ' votes so far');
   }
 
   function lockButtons(selectedChoice){
