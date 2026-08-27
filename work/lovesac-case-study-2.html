@@ -482,15 +482,15 @@
     <p class="apa-label"><span class="apa-num">Figure 1</span><span class="apa-title">The Numbers Cahill Didn't Have Going In</span></p>
     <div class="expect-stats">
       <div class="expect-stat">
-        <div class="big">24</div>
+        <div class="big" data-count-to="24">24</div>
         <div class="label">boxes to unbox</div>
       </div>
       <div class="expect-stat">
-        <div class="big">~5 hours</div>
+        <div class="big" data-count-to="5" data-prefix="~" data-suffix=" hours">~5 hours</div>
         <div class="label">to assemble</div>
       </div>
       <div class="expect-stat">
-        <div class="big">60 days</div>
+        <div class="big" data-count-to="60" data-suffix=" days">60 days</div>
         <div class="label">to decide if it's right for you</div>
       </div>
     </div>
@@ -867,6 +867,54 @@
     window.addEventListener('resize', update);
     update();
   });
+})();
+</script>
+<script>
+(function(){
+  var counters = document.querySelectorAll('[data-count-to]');
+  if(!counters.length) return;
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function setText(el, value){
+    var prefix = el.getAttribute('data-prefix') || '';
+    var suffix = el.getAttribute('data-suffix') || '';
+    el.textContent = prefix + value + suffix;
+  }
+
+  counters.forEach(function(el){
+    var target = parseFloat(el.getAttribute('data-count-to'));
+    if(reduceMotion){ setText(el, target); return; }
+    setText(el, 0);
+  });
+
+  if(reduceMotion || !('IntersectionObserver' in window)) return;
+
+  function animate(el){
+    var target = parseFloat(el.getAttribute('data-count-to'));
+    var duration = 1000;
+    var start = null;
+    function ease(t){ return 1 - Math.pow(1 - t, 3); }
+    function step(ts){
+      if(start === null) start = ts;
+      var progress = Math.min((ts - start) / duration, 1);
+      var value = Math.round(target * ease(progress));
+      setText(el, value);
+      if(progress < 1){ requestAnimationFrame(step); }
+    }
+    requestAnimationFrame(step);
+  }
+
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        animate(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.5});
+
+  counters.forEach(function(el){ observer.observe(el); });
 })();
 </script>
 
