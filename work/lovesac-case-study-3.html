@@ -166,7 +166,13 @@
   .sentiment-list strong{color:var(--espresso);}
 
   /* Comparison tables */
-  .table-scroll{overflow-x:auto; margin-top:8px; -webkit-overflow-scrolling:touch;}
+  .table-scroll{position:relative; overflow-x:auto; margin-top:8px; -webkit-overflow-scrolling:touch;}
+  .table-scroll::after{
+    content:''; position:absolute; top:0; right:0; bottom:0; width:36px;
+    background:linear-gradient(to right, transparent, var(--cream));
+    opacity:1; transition:opacity .2s ease; pointer-events:none;
+  }
+  .table-scroll.at-end::after{opacity:0;}
   .data-table{width:100%; border-collapse:collapse; min-width:560px; font-size:14px;}
   .data-table th, .data-table td{
     text-align:left; padding:14px 18px; border-bottom:1px solid var(--line);
@@ -181,6 +187,12 @@
   }
   .data-table td{color:var(--ink-soft);}
   .data-table td strong{color:var(--espresso);}
+
+  .reference-entry{
+    font-size:15px; line-height:1.7; color:var(--ink-soft);
+    padding-left:2em; text-indent:-2em; max-width:70ch;
+  }
+  .reference-entry a{color:var(--clay-deep); text-decoration:underline;}
 
   .cta{text-align:center; padding:80px 0 96px;}
   .cta h2{font-size:clamp(28px,3.6vw,40px); max-width:22ch; margin:0 auto 16px;}
@@ -243,7 +255,7 @@
     <div class="section-head">
       <div><span class="num">01 · Customer Sentiment</span></div>
       <div>
-        <h2>The reviews are consistent — and split down a clear line.</h2>
+        <h2>What the reviews actually say.</h2>
         <p class="lede">Across Reddit threads, BBB complaints, and product reviews, the same handful of themes repeat. Customers love what a Sactional can do; they're far less patient with what it takes to own one.</p>
       </div>
     </div>
@@ -433,6 +445,15 @@
     </div>
   </div>
 </section>
+
+<section class="divider">
+  <div class="wrap">
+    <h2 style="font-size:22px; margin-bottom:20px;">References</h2>
+    <p class="reference-entry">Better Business Bureau. (n.d.). <em>Lovesac | BBB customer reviews</em>. Retrieved August 26, 2026, from <a href="https://www.bbb.org/us/ct/stamford/profile/furniture-stores/lovesac-0111-87015365/customer-reviews?page=1">https://www.bbb.org/us/ct/stamford/profile/furniture-stores/lovesac-0111-87015365/customer-reviews?page=1</a></p>
+    <p class="reference-entry" style="margin-top:16px;">CusterFluck99. (2023). <em>Any Sactional regrets?</em> [Online forum post]. Reddit. <a href="https://www.reddit.com/r/Lovesac/comments/17a3laf/any_sactional_regrets/">https://www.reddit.com/r/Lovesac/comments/17a3laf/any_sactional_regrets/</a></p>
+    <p class="reference-entry" style="margin-top:16px;">t-g-l-h-. (2025). <em>PSA: Lovesac couches are not buy it for life at [that] price</em> [Online forum post]. Reddit. <a href="https://www.reddit.com/r/BuyItForLife/comments/1o0ordq/psa_lovesac_couches_are_not_buy_it_for_life_at/">https://www.reddit.com/r/BuyItForLife/comments/1o0ordq/psa_lovesac_couches_are_not_buy_it_for_life_at/</a></p>
+  </div>
+</section>
 </main>
 
 <footer>
@@ -466,6 +487,19 @@
     if(!ticking){ requestAnimationFrame(update); ticking = true; }
   }
   window.addEventListener('scroll', onScroll, {passive:true});
+})();
+</script>
+<script>
+(function(){
+  document.querySelectorAll('.table-scroll').forEach(function(el){
+    function update(){
+      var atEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - 2;
+      el.classList.toggle('at-end', atEnd);
+    }
+    el.addEventListener('scroll', update, {passive:true});
+    window.addEventListener('resize', update);
+    update();
+  });
 })();
 </script>
 

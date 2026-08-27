@@ -220,7 +220,13 @@
   .why-list strong{color:var(--espresso);}
 
   /* Comparison table */
-  .table-scroll{overflow-x:auto; margin-top:24px; -webkit-overflow-scrolling:touch;}
+  .table-scroll{position:relative; overflow-x:auto; margin-top:24px; -webkit-overflow-scrolling:touch;}
+  .table-scroll::after{
+    content:''; position:absolute; top:0; right:0; bottom:0; width:36px;
+    background:linear-gradient(to right, transparent, var(--cream));
+    opacity:1; transition:opacity .2s ease; pointer-events:none;
+  }
+  .table-scroll.at-end::after{opacity:0;}
   .data-table{width:100%; border-collapse:collapse; min-width:560px; font-size:14px;}
   .data-table th, .data-table td{
     text-align:left; padding:14px 18px; border-bottom:1px solid var(--line);
@@ -847,6 +853,19 @@
       lockButtons(previousVote);
     }
     fetchTally();
+  });
+})();
+</script>
+<script>
+(function(){
+  document.querySelectorAll('.table-scroll').forEach(function(el){
+    function update(){
+      var atEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - 2;
+      el.classList.toggle('at-end', atEnd);
+    }
+    el.addEventListener('scroll', update, {passive:true});
+    window.addEventListener('resize', update);
+    update();
   });
 })();
 </script>
