@@ -17,8 +17,9 @@ import os, glob
 BASE = os.path.dirname(os.path.abspath(__file__))
 
 partials = [
-    ('_nav.html',    '<!-- NAV:START -->',    '<!-- NAV:END -->'),
-    ('_footer.html', '<!-- FOOTER:START -->', '<!-- FOOTER:END -->'),
+    ('_nav.html',         '<!-- NAV:START -->',         '<!-- NAV:END -->'),
+    ('_footer.html',      '<!-- FOOTER:START -->',      '<!-- FOOTER:END -->'),
+    ('_lovesac-nav.html', '<!-- LOVESAC-NAV:START -->', '<!-- LOVESAC-NAV:END -->'),
 ]
 
 files = (

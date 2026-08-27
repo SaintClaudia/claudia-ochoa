@@ -144,8 +144,7 @@
   .footer{position:fixed;bottom:0;left:0;right:0;background:var(--surface);border-top:1px solid var(--line);padding:16px 40px;display:flex;justify-content:flex-end;gap:12px;z-index:5;}
   .footer-inner{max-width:1200px;margin:0 auto;width:100%;display:flex;justify-content:flex-end;align-items:center;gap:16px;}
   .btn{padding:13px 26px;border-radius:10px;font-family:inherit;font-weight:600;font-size:14px;cursor:pointer;border:none;}
-  .btn-primary{background:var(--teal);color:#fff;}
-  .btn-primary:hover{background:var(--teal-deep);}
+  .btn.btn-primary{padding:13px 26px;border-radius:10px;font-size:14px;}
   .btn-ghost{background:none;color:var(--muted);border:1.5px solid var(--line);}
   .footer-price{font-family:'Bricolage Grotesque';font-weight:700;font-size:18px;margin-right:auto;}
   .footer-price small{display:block;font-family:'Work Sans';font-weight:400;font-size:11px;color:var(--muted);}
@@ -498,12 +497,6 @@
   .account-drop-close svg{width:20px; height:20px;}
   .account-drop-actions{display:flex; gap:12px; padding:22px 26px 24px; border-bottom:1px solid var(--ls-line);}
   .account-drop-actions a{flex:1; display:flex; align-items:center; justify-content:center; text-align:center; padding:13px 16px; font-size:0.88rem;}
-  .btn-outline{
-    background:none; color:var(--ls-clay); border:1.5px solid var(--ls-clay);
-    border-radius:6px; font-weight:600; display:inline-block;
-    transition:background .2s, color .2s;
-  }
-  .btn-outline:hover{background:var(--ls-clay); color:var(--ls-canvas);}
   .account-drop-list{display:flex; flex-direction:column; padding:6px 26px 20px;}
   .account-drop-list a{
     padding:15px 0; font-size:0.95rem; color:var(--ls-ink);
@@ -670,7 +663,7 @@
   .mobile-nav-row svg{width:16px; height:16px; color:var(--ls-ink-soft); flex-shrink:0;}
   .mobile-account-actions{display:flex; gap:10px; padding:16px 32px; border-bottom:1px solid var(--ls-line);}
   .mobile-menu .mobile-account-actions a{flex:1; display:flex; align-items:center; justify-content:center; text-align:center; padding:12px 14px; font-size:0.88rem; border-bottom:none;}
-  .mobile-menu .mobile-account-actions .ls-btn-outline{border-bottom:1.5px solid var(--ls-clay);}
+  .mobile-menu .mobile-account-actions .btn-outline{border-bottom:1.5px solid var(--ls-clay);}
   .mobile-tier-2{
     position:absolute; top:0; left:0; right:0;
     background:var(--ls-canvas);
@@ -744,18 +737,18 @@
   }
   .toast.show{opacity:1; transform:translate(-50%, 0);}
 
-  .ls-btn-primary{
+  .btn-primary{
     background:var(--ls-clay); color:var(--ls-canvas); border:none;
     padding:15px 28px; border-radius:6px; font-family:inherit; font-weight:600; font-size:0.95rem;
     display:inline-block; cursor:pointer; transition:background .2s, transform .2s;
   }
-  .ls-btn-primary:hover{background:var(--ls-clay-dark); transform:translateY(-1px);}
-  .ls-btn-outline{
+  .btn-primary:hover{background:var(--ls-clay-dark); transform:translateY(-1px);}
+  .btn-outline{
     background:none; color:var(--ls-clay); border:1.5px solid var(--ls-clay);
     border-radius:6px; font-weight:600; display:inline-block;
     transition:background .2s, color .2s;
   }
-  .ls-btn-outline:hover{background:var(--ls-clay); color:var(--ls-canvas);}
+  .btn-outline:hover{background:var(--ls-clay); color:var(--ls-canvas);}
 
   /* mobile nav breakpoint switch (pulled from a bundled media query in lovesac-redesign.html — only the nav-relevant rules) */
   @media (max-width:860px){
@@ -815,6 +808,7 @@
 <div class="promo-bar">Labor Day Sale — up to <strong>40% off</strong>*</div>
 </header>
 
+<!-- LOVESAC-NAV:START -->
 <nav>
   <div class="nav-bar">
   <div class="wrap">
@@ -822,7 +816,7 @@
       <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
     </button>
-    <a href="lovesac-redesign.html" class="logo" aria-label="Lovesac home"><img src="../images/lovesac-wordmark.webp" alt="Lovesac"></a>
+    <a href="lovesac-redesign.html" class="logo" aria-label="Lovesac home"><img src="../images/lovesac-wordmark.webp" alt="Lovesac" width="266" height="48"></a>
     <div class="nav-links">
       <div class="nav-item">
         <button type="button" class="nav-trigger" aria-haspopup="true" aria-expanded="false">
@@ -1002,8 +996,8 @@
         <a href="#" id="mobileStoreLink">Find a store near you</a>
         <a href="lovesac-support.html">Customer support</a>
         <div class="mobile-account-actions">
-          <a href="#" id="mobileSignInLink" class="ls-btn-primary">Sign in</a>
-          <a href="#" id="mobileCreateAccountLink" class="ls-btn-outline">Create an Account</a>
+          <a href="#" id="mobileSignInLink" class="btn-primary">Sign in</a>
+          <a href="#" id="mobileCreateAccountLink" class="btn-outline">Create an Account</a>
         </div>
       </div>
 
@@ -1093,6 +1087,7 @@
     </div>
   </div>
 </nav>
+<!-- LOVESAC-NAV:END -->
 
 <main id="main-content">
 <!-- ================= BROWSE / LANDING VIEW ================= -->
@@ -1423,8 +1418,8 @@
     </button>
   </div>
   <div class="account-drop-actions">
-    <a href="#" class="ls-btn-primary nav-mock">Sign in</a>
-    <a href="#" class="ls-btn-outline nav-mock">Create an Account</a>
+    <a href="#" class="btn-primary nav-mock">Sign in</a>
+    <a href="#" class="btn-outline nav-mock">Create an Account</a>
   </div>
   <div class="account-drop-list">
     <a href="#" class="nav-mock">Order Status</a>
@@ -1447,7 +1442,7 @@
     </span>
     <h4>Your cart is empty</h4>
     <p>Looks like you haven't added anything yet. Start building your perfect setup.</p>
-    <a href="lovesac-sactionals.html" class="ls-btn-primary">Continue Shopping</a>
+    <a href="lovesac-sactionals.html" class="btn-primary">Continue Shopping</a>
   </div>
 </div>
 
@@ -1477,7 +1472,7 @@
         Add furniture
       </button>
     </div>
-    <button type="button" class="ls-btn-primary space-check-btn" id="spaceCheckBtn">Check Fit</button>
+    <button type="button" class="btn-primary space-check-btn" id="spaceCheckBtn">Check Fit</button>
     <div class="space-error" id="spaceError" style="display:none;"></div>
     <div class="space-results" id="spaceResults" style="display:none;"></div>
   </div>
