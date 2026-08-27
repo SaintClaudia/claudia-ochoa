@@ -219,6 +219,48 @@
   }
   .why-list strong{color:var(--espresso);}
 
+  /* Comparison table */
+  .table-scroll{overflow-x:auto; margin-top:24px; -webkit-overflow-scrolling:touch;}
+  .data-table{width:100%; border-collapse:collapse; min-width:560px; font-size:14px;}
+  .data-table th, .data-table td{
+    text-align:left; padding:14px 18px; border-bottom:1px solid var(--line);
+    vertical-align:top; line-height:1.5;
+  }
+  .data-table thead th{
+    font-family:'Fraunces',serif; font-weight:600; font-size:13px;
+    color:var(--espresso); border-bottom:2px solid var(--espresso);
+  }
+  .data-table tbody th{
+    font-weight:700; color:var(--espresso); white-space:nowrap;
+  }
+  .data-table td{color:var(--ink-soft);}
+  .data-table td strong{color:var(--espresso);}
+
+  /* APA-style table/figure labels */
+  .apa-label{margin-top:32px; font-size:14px; line-height:1.5; color:var(--espresso);}
+  .apa-label .apa-num{display:block; font-weight:700;}
+  .apa-label .apa-title{display:block; font-style:italic; margin-top:2px;}
+  .apa-note{margin-top:10px; font-size:12.5px; line-height:1.5; color:var(--ink-soft);}
+  .apa-note em{font-style:italic;}
+  .reference-entry{
+    font-size:15px; line-height:1.7; color:var(--ink-soft);
+    padding-left:2em; text-indent:-2em; max-width:70ch;
+  }
+  .reference-entry a{color:var(--clay-deep); text-decoration:underline;}
+
+  /* What to Expect stats */
+  .expect-stats{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    background:var(--line); border:1px solid var(--line); border-radius:14px;
+    overflow:hidden; margin-top:28px;
+  }
+  .expect-stat{background:var(--paper); padding:26px 20px; text-align:center;}
+  .expect-stat .big{font-family:'Fraunces',serif; font-size:28px; font-weight:600; color:var(--clay-deep);}
+  .expect-stat .label{font-size:13px; color:var(--ink-soft); margin-top:6px; line-height:1.4;}
+  @media (max-width:600px){
+    .expect-stats{grid-template-columns:1fr;}
+  }
+
   .context-strip{
     margin-top:56px;
     background:var(--espresso);
@@ -361,12 +403,96 @@
     <p class="nav-note" style="margin-top:48px;">The mega-menu redesign isn't just visual &mdash; it reflects a different underlying structure.</p>
 
     <ul class="why-list" style="margin-top:28px;">
-      <li><span class="mark">1</span><span><strong>Two kinds of links, treated as one.</strong> The eight items in the original nav aren't actually different categories. Sectionals, Couches, Chairs, Sacs, StealthTech, and Accessories are content navigation &mdash; they answer "what can I browse?" Store Locator, Quote Lookup, Account, Cart, and Search are utility navigation &mdash; they answer "what can I do, regardless of what I'm browsing?" The original doesn't just flatten eight links together; it scatters the utility group across two different bars with two different treatments &mdash; Store Locator and Quote Lookup as text in the gray strip above, Account/Cart/Search as icons in the white row below. Same function, two systems. This is a standard IA convention &mdash; separating primary (content) navigation from utility (task) navigation. It's the reasoning behind both changes: Store Locator moves down into the icon row because it was never a browsing category to begin with, and Quote Lookup moves inside Account &mdash; a saved quote is account-specific, tied to a customer's profile, not a standalone site-wide function that needs its own top-level slot. Two utility links: one merges into the icon row, the other nests inside the icon it already logically belongs to.</span></li>
-      <li><span class="mark">2</span><span><strong>Six product lines, one product type.</strong> Sectionals, Couches, Chairs, Sacs, and StealthTech aren't six different shopping intents &mdash; they're six pieces of seating furniture, split apart because that's how the company's product line evolved internally, not because a shopper thinks in those divisions. That's the difference between organizing by internal taxonomy (how the business categorizes its own catalog) and organizing by user mental model (how a customer actually thinks about what they're buying): furniture, or the stuff around it. Collapsing five categories into Furniture and one into Accessories reduces the decision from "which of six menus has what I want" to "am I buying a seat or a thing that goes with a seat" &mdash; a distinction almost anyone can answer instantly, which is what a first-level nav category is supposed to do.</span></li>
+      <li><span class="mark">1</span><span><strong>Two kinds of links, treated as one.</strong> The eight items in the original nav aren't actually the same category of thing &mdash; some are content navigation ("what can I browse?"), some are utility navigation ("what can I do, regardless of what I'm browsing?"). The original doesn't just flatten them together; it scatters the utility group across two different bars with two different treatments &mdash; Store Locator and Quote Lookup as text in the gray strip above, Account/Cart/Search as icons in the white row below. Same function, two systems.</span></li>
     </ul>
 
-    <p class="nav-note" style="margin-top:40px;"><strong>"What to Expect" isn't generic &mdash; it's a direct response.</strong> Cahill's complaint wasn't really about the couch; it was about not knowing what he was signing up for. Twenty-four boxes, hours of assembly, gloves recommended by other customers before he'd even opened the first box &mdash; none of that was set as an expectation anywhere before purchase. The backlash that followed showed this wasn't just his experience; commenters flooded in with their own versions of the same surprise.</p>
-    <p class="nav-note">The original site has no equivalent category. Assembly, delivery, and trial details exist, but scattered &mdash; a "60-Day Home Trial" mention in the utility bar, warranty info buried in the footer, nothing that tells a first-time buyer what unboxing a Sactional actually involves. "What to Expect" as a dedicated third nav category is a direct structural answer to that gap: not a policy page, a pre-purchase category &mdash; the thing a shopper checks before the box shows up, not after they're upset about it.</p>
+    <p class="apa-label"><span class="apa-num">Table 1</span><span class="apa-title">Utility Links Scattered Across Two Systems in the Original Navigation</span></p>
+    <div class="table-scroll">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Link</th>
+            <th>Type</th>
+            <th>Before</th>
+            <th>After</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Store Locator</th>
+            <td>Utility</td>
+            <td>Text link,<br>gray strip</td>
+            <td>Icon, utility row (with Account, Cart, Search)</td>
+          </tr>
+          <tr>
+            <th scope="row">Quote Lookup</th>
+            <td>Utility</td>
+            <td>Text link,<br>gray strip</td>
+            <td>Nested inside Account</td>
+          </tr>
+          <tr>
+            <th scope="row">Account, Cart, Search</th>
+            <td>Utility</td>
+            <td>Icon,<br>white row</td>
+            <td>Icon, utility row (with Store Locator)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="nav-note">This is a standard IA convention: separate primary (content) navigation from utility (task) navigation, and keep utility in one consistent system. Store Locator moves down into the icon row because it was never a browsing category to begin with; Quote Lookup moves inside Account because a saved quote is account-specific, not a standalone site-wide function.</p>
+
+    <ul class="why-list" style="margin-top:40px;">
+      <li><span class="mark">2</span><span><strong>Six product lines, one product type.</strong> Sectionals, Couches, Chairs, Sacs, StealthTech, and Accessories collapsing into a single Furniture menu isn't just fewer clicks &mdash; it reduces cognitive load on two fronts. Fewer top-level choices means faster decisions, since decision time increases with the number of options presented (Hick's Law); and grouping related items into fewer categories makes the structure easier to process and remember (Miller's Law) (Yablonski, 2018).</span></li>
+    </ul>
+
+    <p class="apa-label"><span class="apa-num">Table 2</span><span class="apa-title">Content Links Collapsing into Fewer Top-Level Categories</span></p>
+    <div class="table-scroll">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Link</th>
+            <th>Type</th>
+            <th>Before</th>
+            <th>After</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Sectionals, Couches, Chairs, Sacs, StealthTech</th>
+            <td>Content</td>
+            <td>5 top-level menus</td>
+            <td>1 category (Furniture)</td>
+          </tr>
+          <tr>
+            <th scope="row">Accessories</th>
+            <td>Content</td>
+            <td>1 top-level menu</td>
+            <td>1 category (Accessories)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <ul class="why-list" style="margin-top:40px;">
+      <li><span class="mark">3</span><span><strong>"What to Expect" isn't generic &mdash; it's a direct response.</strong> Cahill's complaint wasn't really about the couch; it was about not knowing what he was signing up for. Twenty-four boxes, hours of assembly, gloves recommended by other customers before he'd even opened the first box &mdash; none of that was set as an expectation anywhere before purchase. The backlash that followed showed this wasn't just his experience; commenters flooded in with their own versions of the same surprise.<br><br>The original site has no equivalent category. Assembly, delivery, and trial details exist, but scattered &mdash; a "60-Day Home Trial" mention in the utility bar, warranty info buried in the footer, nothing that tells a first-time buyer what unboxing a Sactional actually involves. "What to Expect" as a dedicated third nav category is a direct structural answer to that gap: not a policy page, a pre-purchase category &mdash; the thing a shopper checks before the box shows up, not after they're upset about it.</span></li>
+    </ul>
+
+    <p class="apa-label"><span class="apa-num">Figure 1</span><span class="apa-title">The Numbers Cahill Didn't Have Going In</span></p>
+    <div class="expect-stats">
+      <div class="expect-stat">
+        <div class="big">24</div>
+        <div class="label">boxes to unbox</div>
+      </div>
+      <div class="expect-stat">
+        <div class="big">~5 hours</div>
+        <div class="label">to assemble (Cahill's reported time)</div>
+      </div>
+      <div class="expect-stat">
+        <div class="big">60 days</div>
+        <div class="label">to decide if it's right for you</div>
+      </div>
+    </div>
+    <p class="nav-note">Both the box count and the five-hour build time come from Cahill's own account of the delivery (Salves, 2026). None of these numbers lived anywhere on the original site before checkout &mdash; not the box count, not a realistic assembly-time expectation, not even a clear mention of the trial window at the point it would matter most. The redesign's "What to Expect" page puts the real numbers in front of a shopper before they buy, not after hours into a build wondering what they signed up for.</p>
 
     <div class="poll-block" data-poll-id="lovesac-desktop-nav">
       <p class="poll-question">Which nav menu would you rather shop with?</p>
@@ -614,6 +740,14 @@
       <a class="btn primary" href="https://claudiaochoa.co/work/lovesac-redesign.html">View the live redesign</a>
       <a class="btn ghost" href="lovesac-case-study-3.html">See the research &rarr;</a>
     </div>
+  </div>
+</section>
+
+<section class="divider">
+  <div class="wrap">
+    <h2 style="font-size:22px; margin-bottom:20px;">References</h2>
+    <p class="reference-entry">Salves, V. (2026, August 26). <em>A comedian's viral joke about Lovesac's 24-box couch assembly wasn't the problem. The company's response was.</em> Inc. <a href="https://www.inc.com/victoria-salves/comedian-viral-joke-lovesac-24-box-couch-assembly-was-not-problem-company-response-was/91395357">https://www.inc.com/victoria-salves/comedian-viral-joke-lovesac-24-box-couch-assembly-was-not-problem-company-response-was/91395357</a></p>
+    <p class="reference-entry" style="margin-top:16px;">Yablonski, J. (2018, October 5). <em>The psychology of design</em>. Laws of UX. <a href="https://lawsofux.com/articles/2018/the-psychology-of-design/">https://lawsofux.com/articles/2018/the-psychology-of-design/</a></p>
   </div>
 </section>
 </main>
