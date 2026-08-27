@@ -668,6 +668,9 @@
     background:none; font-family:inherit; color:inherit; text-align:left; cursor:pointer;
   }
   .mobile-nav-row svg{width:16px; height:16px; color:var(--ls-ink-soft); flex-shrink:0;}
+  .mobile-account-actions{display:flex; gap:10px; padding:16px 32px; border-bottom:1px solid var(--ls-line);}
+  .mobile-menu .mobile-account-actions a{flex:1; display:flex; align-items:center; justify-content:center; text-align:center; padding:12px 14px; font-size:0.88rem; border-bottom:none;}
+  .mobile-menu .mobile-account-actions .ls-btn-outline{border-bottom:1.5px solid var(--ls-clay);}
   .mobile-tier-2{
     position:absolute; top:0; left:0; right:0;
     background:var(--ls-canvas);
@@ -998,7 +1001,10 @@
         <a href="lovesac-what-to-expect.html">What to expect</a>
         <a href="#" id="mobileStoreLink">Find a store near you</a>
         <a href="lovesac-support.html">Customer support</a>
-        <a href="#" id="mobileSignInLink">Sign in</a>
+        <div class="mobile-account-actions">
+          <a href="#" id="mobileSignInLink" class="ls-btn-primary">Sign in</a>
+          <a href="#" id="mobileCreateAccountLink" class="ls-btn-outline">Create an Account</a>
+        </div>
       </div>
 
       <div class="mobile-tier-2" id="mobileTierFurniture">
@@ -1979,15 +1985,15 @@
       if(storeToggle) setTimeout(function(){ storeToggle.click(); }, 260);
     });
   }
-  var mobileSignInLink = document.getElementById('mobileSignInLink');
-  if(mobileSignInLink){
-    mobileSignInLink.addEventListener('click', function(e){
+  [document.getElementById('mobileSignInLink'), document.getElementById('mobileCreateAccountLink')].forEach(function(link){
+    if(!link) return;
+    link.addEventListener('click', function(e){
       e.preventDefault();
       closeMenu();
       var accountToggle = document.getElementById('accountToggle');
       if(accountToggle) setTimeout(function(){ accountToggle.click(); }, 260);
     });
-  }
+  });
 })();
 </script>
 <script>
