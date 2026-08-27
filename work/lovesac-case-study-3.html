@@ -193,6 +193,33 @@
   .apa-label .apa-title{display:block; font-style:italic; margin-top:2px;}
   .apa-note{margin-top:10px; font-size:12.5px; line-height:1.5; color:var(--ink-soft);}
   .apa-note em{font-style:italic;}
+
+  /* Bar chart */
+  .bar-chart{display:flex; flex-direction:column; gap:14px; margin-top:24px;}
+  .bar-row{display:grid; grid-template-columns:120px 1fr 56px; align-items:center; gap:14px;}
+  .bar-label{font-size:13.5px; font-weight:600; color:var(--espresso); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .bar-track{background:var(--line); border-radius:999px; height:14px; overflow:hidden;}
+  .bar-fill{display:block; height:100%; width:0; background:#B9AB94; border-radius:999px; transition:width 1s cubic-bezier(.16,1,.3,1);}
+  .bar-fill.highlight{background:var(--clay-deep);}
+  .bar-value{font-size:13.5px; font-weight:700; color:var(--ink-soft); text-align:right; font-variant-numeric:tabular-nums;}
+  @media (max-width:520px){
+    .bar-row{grid-template-columns:84px 1fr 48px; gap:10px;}
+    .bar-label{font-size:12.5px;}
+  }
+
+  /* Split bar (device share) */
+  .split-bar{margin-top:24px;}
+  .split-bar-track{display:flex; width:100%; height:22px; border-radius:999px; overflow:hidden; background:var(--line);}
+  .split-segment{display:block; height:100%; width:0; transition:width 1s cubic-bezier(.16,1,.3,1);}
+  .split-segment.mobile{background:var(--clay-deep);}
+  .split-segment.desktop{background:#B9AB94;}
+  @media (prefers-reduced-motion: reduce){
+    .bar-fill, .split-segment{transition:none;}
+  }
+  .split-bar-legend{display:flex; gap:24px; margin-top:12px; font-size:13.5px; font-weight:600; color:var(--espresso);}
+  .split-bar-legend .dot{display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:7px; vertical-align:middle;}
+  .split-bar-legend .dot.mobile{background:var(--clay-deep);}
+  .split-bar-legend .dot.desktop{background:#B9AB94;}
   .reference-entry{
     font-size:15px; line-height:1.7; color:var(--ink-soft);
     padding-left:2em; text-indent:-2em; max-width:70ch;
@@ -352,7 +379,167 @@
 <section class="divider">
   <div class="wrap">
     <div class="section-head">
-      <div><span class="num">03 · StealthTech</span></div>
+      <div><span class="num">03 · Site Analytics</span></div>
+      <div>
+        <h2>The traffic data backs it up.</h2>
+        <p class="lede">Lovesac has the highest bounce rate and lowest pages-per-visit of every comparable premium retailer &mdash; including Pottery Barn, which sits at a similar price point but offers white-glove delivery. This isn't "furniture bounces high industry-wide"; it's Lovesac specifically underperforming its closest price-tier peers on engagement.</p>
+      </div>
+    </div>
+
+    <p class="apa-label"><span class="apa-num">Table 2</span><span class="apa-title">Site Analytics &mdash; Lovesac vs. Premium Retail Competitors</span></p>
+    <div class="table-scroll">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Site</th>
+            <th>Monthly visits</th>
+            <th>Bounce rate</th>
+            <th>Pages/visit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Lovesac</th>
+            <td><strong>1.49M</strong></td>
+            <td><strong>55.7%</strong></td>
+            <td><strong>2.94</strong></td>
+          </tr>
+          <tr>
+            <th scope="row">Pottery Barn</th>
+            <td>8.94M</td>
+            <td>49.97%</td>
+            <td>4.25</td>
+          </tr>
+          <tr>
+            <th scope="row">West Elm</th>
+            <td>10.81M</td>
+            <td>49.15%</td>
+            <td>&mdash;</td>
+          </tr>
+          <tr>
+            <th scope="row">Williams-Sonoma</th>
+            <td>7.76M</td>
+            <td>53.37%</td>
+            <td>&mdash;</td>
+          </tr>
+          <tr>
+            <th scope="row">CB2</th>
+            <td>5M</td>
+            <td>42.44%</td>
+            <td>&mdash;</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="apa-note"><em>Note.</em> Data retrieved August 26, 2026 (Semrush); traffic and engagement estimates change over time.</p>
+
+    <p class="apa-label"><span class="apa-num">Figure 2</span><span class="apa-title">Bounce Rate by Site</span></p>
+    <div class="bar-chart" role="img" aria-label="Bar chart of bounce rate by site: Lovesac 55.7 percent, Williams-Sonoma 53.37 percent, Pottery Barn 49.97 percent, West Elm 49.15 percent, CB2 42.44 percent">
+      <div class="bar-row">
+        <span class="bar-label">Lovesac</span>
+        <span class="bar-track"><span class="bar-fill highlight" data-width="100%"></span></span>
+        <span class="bar-value">55.7%</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Williams-Sonoma</span>
+        <span class="bar-track"><span class="bar-fill" data-width="95.8%"></span></span>
+        <span class="bar-value">53.37%</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Pottery Barn</span>
+        <span class="bar-track"><span class="bar-fill" data-width="89.7%"></span></span>
+        <span class="bar-value">49.97%</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">West Elm</span>
+        <span class="bar-track"><span class="bar-fill" data-width="88.2%"></span></span>
+        <span class="bar-value">49.15%</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">CB2</span>
+        <span class="bar-track"><span class="bar-fill" data-width="76.2%"></span></span>
+        <span class="bar-value">42.44%</span>
+      </div>
+    </div>
+
+    <p class="nav-note" style="margin-top:32px;">Pair this with the DIY-assembly finding from Table 1: a visitor comparing Lovesac to Pottery Barn is weighing similar prices against very different service models, and the site doesn't explain that trade-off anywhere before checkout. Higher bounce and fewer pages per visit is consistent with visitors leaving before they understand what they're actually getting for the price.</p>
+
+    <p class="apa-label" style="margin-top:40px;"><span class="apa-num">Figure 3</span><span class="apa-title">Traffic Share by Device</span></p>
+    <div class="split-bar" role="img" aria-label="Traffic share by device: 83.62 percent mobile, 16.38 percent desktop">
+      <div class="split-bar-track">
+        <span class="split-segment mobile" data-width="83.62%"></span>
+        <span class="split-segment desktop" data-width="16.38%"></span>
+      </div>
+      <div class="split-bar-legend">
+        <span><span class="dot mobile"></span>Mobile &mdash; 83.62%</span>
+        <span><span class="dot desktop"></span>Desktop &mdash; 16.38%</span>
+      </div>
+    </div>
+    <p class="nav-note">With 83.62% of visits coming from mobile, the bounce-rate and pages-per-visit gap above is overwhelmingly a mobile-experience problem &mdash; which is exactly where the flat, chevron-heavy navigation redesign (see <a href="lovesac-case-study-2.html">the Deep Dive</a>) does the most work.</p>
+
+    <p class="apa-label" style="margin-top:40px;"><span class="apa-num">Table 3</span><span class="apa-title">lovesac.com PageSpeed Insights Scores, Desktop vs. Mobile</span></p>
+    <div class="table-scroll">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Desktop</th>
+            <th>Mobile</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Performance</th>
+            <td>100</td>
+            <td>78</td>
+          </tr>
+          <tr>
+            <th scope="row">Accessibility</th>
+            <td><strong>89</strong></td>
+            <td><strong>83</strong></td>
+          </tr>
+          <tr>
+            <th scope="row">Best Practices</th>
+            <td>100</td>
+            <td>96</td>
+          </tr>
+          <tr>
+            <th scope="row">SEO</th>
+            <td>100</td>
+            <td>92</td>
+          </tr>
+          <tr>
+            <th scope="row">Largest Contentful Paint</th>
+            <td>0.7s</td>
+            <td>0.8s</td>
+          </tr>
+          <tr>
+            <th scope="row">Interaction to Next Paint</th>
+            <td>102ms</td>
+            <td>146ms</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="apa-note"><em>Note.</em> Scores retrieved August 26, 2026; PageSpeed Insights scores reflect a rolling 28-day window and change over time.</p>
+
+    <ul class="why-list" style="margin-top:28px;">
+      <li><span class="mark">1</span><span><strong>Images without alt attributes.</strong> Screen readers have nothing to announce in their place &mdash; the image is effectively invisible to anyone not looking at the screen.</span></li>
+      <li><span class="mark">2</span><span><strong>Links without a discernible name.</strong> A screen reader announces "link" with no indication of where it goes or what it does.</span></li>
+      <li><span class="mark">3</span><span><strong>Insufficient color contrast (desktop).</strong> Background and foreground colors fall short of the ratio needed for legible text.</span></li>
+      <li><span class="mark">4</span><span><strong>Touch targets too small or too close together (mobile).</strong> Buttons and links sit below the spacing needed to tap accurately &mdash; on the breakpoint carrying 83.62% of traffic.</span></li>
+      <li><span class="mark">5</span><span><strong>Headings out of sequential order.</strong> Heading levels skip or repeat instead of descending in order, breaking the outline screen-reader users rely on to navigate the page.</span></li>
+      <li><span class="mark">6</span><span><strong>Dialog elements without accessible names.</strong> Elements using <code>role="dialog"</code> or <code>role="alertdialog"</code> aren't announced with a name, so assistive technology can't identify what modal just opened.</span></li>
+    </ul>
+
+    <p class="nav-note" style="margin-top:32px;">The original site isn't technically broken &mdash; Performance, Best Practices, and SEO all score highly on both breakpoints. Accessibility is the one category that lags on both, and drops further on mobile (83) than desktop (89): the exact breakpoint where 83.62% of traffic actually lands.</p>
+  </div>
+</section>
+
+<section class="divider">
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="num">04 · StealthTech</span></div>
       <div>
         <h2>Solving an aesthetic problem, creating a usability one.</h2>
         <p class="lede">Lovesac partnered with Harman Kardon to build premium audio directly into the couch frame, keeping the speakers completely invisible. It's a genuine design achievement — and it introduces friction that shows up consistently in TikTok and Reddit reviews.</p>
@@ -368,7 +555,7 @@
 
     <p class="nav-note" style="margin-top:40px;">Framed as a portfolio comparison, the gap is between two very different kinds of complexity — one hardware-driven and largely unavoidable given the goal, the other purely digital and self-inflicted.</p>
 
-    <p class="apa-label" style="margin-top:40px;"><span class="apa-num">Table 2</span><span class="apa-title">StealthTech vs. a Lightweight Modular Alternative</span></p>
+    <p class="apa-label" style="margin-top:40px;"><span class="apa-num">Table 4</span><span class="apa-title">StealthTech vs. a Lightweight Modular Alternative</span></p>
     <div class="table-scroll">
       <table class="data-table">
         <thead>
@@ -413,7 +600,7 @@
 <section class="divider">
   <div class="wrap">
     <div class="section-head">
-      <div><span class="num">04 · Conceptual Solutions</span></div>
+      <div><span class="num">05 · Conceptual Solutions</span></div>
       <div>
         <h2>Where the research points next.</h2>
         <p class="lede">Public reviews and social conversations surfaced recurring friction around assembly, support, warranty clarity, StealthTech, and configuration. Some of those issues are already addressed in the redesign; others point to opportunities worth exploring beyond the digital experience.</p>
@@ -460,7 +647,10 @@
     <h2 style="font-size:22px; margin-bottom:20px;">References</h2>
     <p class="reference-entry">Better Business Bureau. (n.d.). <em>Lovesac | BBB customer reviews</em>. Retrieved August 26, 2026, from <a href="https://www.bbb.org/us/ct/stamford/profile/furniture-stores/lovesac-0111-87015365/customer-reviews?page=1">https://www.bbb.org/us/ct/stamford/profile/furniture-stores/lovesac-0111-87015365/customer-reviews?page=1</a></p>
     <p class="reference-entry" style="margin-top:16px;">CusterFluck99. (2023). <em>Any Sactional regrets?</em> [Online forum post]. Reddit. <a href="https://www.reddit.com/r/Lovesac/comments/17a3laf/any_sactional_regrets/">https://www.reddit.com/r/Lovesac/comments/17a3laf/any_sactional_regrets/</a></p>
+    <p class="reference-entry" style="margin-top:16px;">Google. (n.d.). <em>PageSpeed Insights: lovesac.com performance report</em>. Retrieved August 26, 2026, from <a href="https://pagespeed.web.dev/">https://pagespeed.web.dev/</a></p>
+    <p class="reference-entry" style="margin-top:16px;">Semrush. (n.d.). <em>lovesac.com: Traffic and visitor engagement</em>. Retrieved August 26, 2026, from <a href="https://www.semrush.com/website/lovesac.com/overview/">https://www.semrush.com/website/lovesac.com/overview/</a></p>
     <p class="reference-entry" style="margin-top:16px;">t-g-l-h-. (2025). <em>PSA: Lovesac couches are not buy it for life at [that] price</em> [Online forum post]. Reddit. <a href="https://www.reddit.com/r/BuyItForLife/comments/1o0ordq/psa_lovesac_couches_are_not_buy_it_for_life_at/">https://www.reddit.com/r/BuyItForLife/comments/1o0ordq/psa_lovesac_couches_are_not_buy_it_for_life_at/</a></p>
+    <p class="reference-entry" style="margin-top:16px;">Valencia Theater Seating. (2026). <em>D-BOX haptic+ motion experience for home theater seating</em>. <a href="https://us.valenciatheaterseating.com/pages/d_box">https://us.valenciatheaterseating.com/pages/d_box</a></p>
   </div>
 </section>
 </main>
@@ -509,6 +699,28 @@
     window.addEventListener('resize', update);
     update();
   });
+})();
+</script>
+<script>
+(function(){
+  var bars = document.querySelectorAll('.bar-fill[data-width], .split-segment[data-width]');
+  if(!bars.length) return;
+
+  if(!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    bars.forEach(function(bar){ bar.style.width = bar.getAttribute('data-width'); });
+    return;
+  }
+
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.style.width = entry.target.getAttribute('data-width');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.4});
+
+  bars.forEach(function(bar){ observer.observe(bar); });
 })();
 </script>
 
