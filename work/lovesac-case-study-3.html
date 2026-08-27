@@ -167,13 +167,14 @@
   .sentiment-list strong{color:var(--espresso);}
 
   /* Comparison tables */
-  .table-scroll{position:relative; overflow-x:auto; margin-top:8px; -webkit-overflow-scrolling:touch;}
-  .table-scroll::after{
+  .table-scroll-wrap{position:relative;}
+  .table-scroll{overflow-x:auto; margin-top:8px; -webkit-overflow-scrolling:touch;}
+  .table-scroll-wrap::after{
     content:''; position:absolute; top:0; right:0; bottom:0; width:36px;
     background:linear-gradient(to right, transparent, var(--cream));
     opacity:1; transition:opacity .2s ease; pointer-events:none;
   }
-  .table-scroll.at-end::after{opacity:0;}
+  .table-scroll-wrap:has(.table-scroll.at-end)::after{opacity:0;}
   .data-table{width:100%; border-collapse:collapse; min-width:560px; font-size:14px;}
   .data-table th, .data-table td{
     text-align:left; padding:14px 18px; border-bottom:1px solid var(--line);
@@ -346,7 +347,8 @@
     </div>
 
     <p class="apa-label"><span class="apa-num">Table 1</span><span class="apa-title">Lovesac vs. DTC and Traditional Retail Competitors</span></p>
-    <div class="table-scroll">
+    <div class="table-scroll-wrap">
+      <div class="table-scroll">
       <table class="data-table">
         <thead>
           <tr>
@@ -383,6 +385,7 @@
           </tr>
         </tbody>
       </table>
+      </div>
     </div>
     <p class="nav-note">Lovesac charges retail-level prices but delivers DTC-level service — free shipping, no white-glove option, full self-assembly. That combination isn't shared by either group it's compared against, and it's a trade-off the site doesn't currently set expectations for before checkout.</p>
   </div>
@@ -399,7 +402,8 @@
     </div>
 
     <p class="apa-label"><span class="apa-num">Table 2</span><span class="apa-title">Site Analytics &mdash; Lovesac vs. Premium Retail Competitors</span></p>
-    <div class="table-scroll">
+    <div class="table-scroll-wrap">
+      <div class="table-scroll">
       <table class="data-table">
         <thead>
           <tr>
@@ -442,6 +446,7 @@
           </tr>
         </tbody>
       </table>
+      </div>
     </div>
     <p class="apa-note"><em>Note.</em> Data retrieved August 26, 2026 (Semrush); traffic and engagement estimates change over time.</p>
 
@@ -490,7 +495,8 @@
     <p class="nav-note">With 83.62% of visits coming from mobile, the bounce-rate and pages-per-visit gap above is overwhelmingly a mobile-experience problem &mdash; which is exactly where the flat, chevron-heavy navigation redesign (see <a href="lovesac-case-study-2.html">the Deep Dive</a>) does the most work.</p>
 
     <p class="apa-label" style="margin-top:40px;"><span class="apa-num">Table 3</span><span class="apa-title">lovesac.com PageSpeed Insights Scores, Desktop vs. Mobile</span></p>
-    <div class="table-scroll">
+    <div class="table-scroll-wrap">
+      <div class="table-scroll">
       <table class="data-table">
         <thead>
           <tr>
@@ -522,6 +528,7 @@
           </tr>
         </tbody>
       </table>
+      </div>
     </div>
     <p class="apa-note"><em>Note.</em> Scores retrieved August 26, 2026; PageSpeed Insights scores reflect a rolling 28-day window and change over time.</p>
 
@@ -609,7 +616,8 @@
     <p class="nav-note" style="margin-top:40px;">Framed as a portfolio comparison, the gap is between two very different kinds of complexity — one hardware-driven and largely unavoidable given the goal, the other purely digital and self-inflicted.</p>
 
     <p class="apa-label" style="margin-top:40px;"><span class="apa-num">Table 4</span><span class="apa-title">StealthTech vs. a Lightweight Modular Alternative</span></p>
-    <div class="table-scroll">
+    <div class="table-scroll-wrap">
+      <div class="table-scroll">
       <table class="data-table">
         <thead>
           <tr>
@@ -641,6 +649,7 @@
           </tr>
         </tbody>
       </table>
+      </div>
     </div>
 
     <div class="context-strip">
