@@ -1,9 +1,15 @@
 # portfolio-poll
 
 Cloudflare Worker + KV backing the "before/after" polls on claudiaochoa.co case
-studies. One `poll_id` per poll — the Lovesac case study uses `lovesac-redesign`
-with choices `before` / `after`. Reuse the same worker for future case study
-polls by giving each a new `poll_id`.
+studies. One `poll_id` per poll, each with choices `before` / `after`. Currently
+live:
+
+- `lovesac-redesign` — on `work/lovesac-case-study.html`
+- `lovesac-desktop-nav`, `lovesac-accessibility-audio`, `lovesac-credit-card` —
+  on `work/lovesac-case-study-2.html`
+
+Reuse the same worker for future case study polls by giving each a new
+`poll_id`.
 
 ## One-time setup
 
