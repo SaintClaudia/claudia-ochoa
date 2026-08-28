@@ -135,6 +135,12 @@
     width:32px; height:32px; font-size:12px; cursor:pointer; color:var(--ink-soft); padding:0;
   }
   .a11y-status{margin-top:9px; font-size:12px; color:var(--ink-soft);}
+  .a11y-scorecard{display:grid; grid-template-columns:1fr 1fr; gap:20px; max-width:420px; margin-top:28px;}
+  .a11y-scorecard .expect-stat .big{color:#B9AB94;}
+  .a11y-scorecard .expect-stat.after .big{color:var(--clay-deep);}
+  @media (max-width:600px){
+    .a11y-scorecard{grid-template-columns:1fr; max-width:none;}
+  }
 
   /* Hear-it mini player — follows the scroll while something is playing */
   .a11y-mini{
@@ -664,9 +670,21 @@
     <p class="nav-note">Two problems are stacked together: first, accessibility is treated as an optional mode a visitor has to find and enable, rather than the default experience. Second, enabling it doesn't produce a cleaner page — it duplicates the promo banner text and leaves the video in place, requiring the visitor to decide whether to play it. An overlay intended to reduce cognitive load instead adds another visual layer to parse.</p>
     <p class="nav-note">The redesign takes a different approach: accessibility is built into the default experience. Sufficient contrast, no autoplaying media, and one banner state create a simpler, more consistent experience for every visitor.</p>
 
+    <div class="a11y-scorecard">
+      <div class="expect-stat">
+        <div class="big" data-count-to="81" data-suffix="/100">0/100</div>
+        <div class="label">Lovesac.com<br>Lighthouse accessibility score</div>
+      </div>
+      <div class="expect-stat after">
+        <div class="big" data-count-to="100" data-suffix="/100">0/100</div>
+        <div class="label">My Redesign<br>Lighthouse accessibility score</div>
+      </div>
+    </div>
+    <p class="nav-note">Measured with Google Lighthouse's accessibility audit (Aug 2026). Lovesac.com fails 6 checks — including missing image alt text, an unlabeled link, and a heading order skip. The redesign passes all of them.</p>
+
     <div class="context-strip">
       <span class="tag">Result</span>
-      The redesign has been audited against WCAG 2.1 AA — color contrast, keyboard focus visibility, skip navigation, and heading structure all pass. Accessibility isn't a mode you opt into here; it's just how the site is built.
+      The redesign scores 100/100 on Lighthouse accessibility and has been audited against WCAG 2.1 AA — color contrast, keyboard focus visibility, skip navigation, and heading structure all pass. Accessibility isn't a mode you opt into here; it's just how the site is built.
     </div>
 
     <div class="poll-block" data-poll-id="lovesac-accessibility-audio">
