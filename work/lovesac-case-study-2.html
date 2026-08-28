@@ -116,6 +116,26 @@
   .phone-frame-wide img{border-radius:22px; width:100%; height:auto; display:block;}
   .nav-note{margin-top:32px; font-size:16px; line-height:1.7; color:var(--ink-soft); max-width:70ch;}
 
+  /* Accessibility: hear-it audio compare */
+  .a11y-player{margin-top:2px; border:1px solid var(--line); border-radius:14px; background:var(--paper); padding:16px 18px;}
+  .a11y-player-row{display:flex; align-items:center; gap:12px;}
+  .a11y-play{
+    flex:0 0 auto; width:40px; height:40px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    border:1px solid var(--line); background:var(--cream); color:var(--ink);
+    cursor:pointer; font-size:13px; padding:0; line-height:1;
+  }
+  .nav-col.after .a11y-play{background:var(--espresso); color:var(--cream); border-color:var(--espresso);}
+  .a11y-player-main{flex:1 1 auto; min-width:0;}
+  .a11y-player-label{font-size:12.5px; font-weight:700; letter-spacing:0.02em; margin-bottom:7px; color:var(--ink);}
+  .a11y-scrub{width:100%; accent-color:var(--ink-soft); display:block;}
+  .nav-col.after .a11y-scrub{accent-color:var(--clay);}
+  .a11y-stop{
+    flex:0 0 auto; border:1px solid var(--line); background:var(--cream); border-radius:8px;
+    width:32px; height:32px; font-size:12px; cursor:pointer; color:var(--ink-soft); padding:0;
+  }
+  .a11y-status{margin-top:9px; font-size:12px; color:var(--ink-soft);}
+
   /* Card comparison */
   .card-compare{display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-top:28px;}
   .card-compare-col{display:flex; flex-direction:column; gap:14px; min-width:0;}
@@ -578,12 +598,35 @@
       <div class="nav-col before">
         <div class="nav-label"><span class="sw"></span>Lovesac.com — Accessibility Mode: On</div>
         <div class="phone-slot"><img src="/images/lovesac-accessibility-before.webp" width="760" height="1346" loading="lazy" decoding="async" alt="Lovesac.com mobile site with Accessibility Mode on, showing a duplicated, misaligned promo banner overlaid on an autoplaying video with sound and playback controls exposed."></div>
+        <div class="a11y-player">
+          <div class="a11y-player-row">
+            <button type="button" class="a11y-play" id="btn-original" aria-label="Play screen reader preview of Lovesac.com">▶</button>
+            <div class="a11y-player-main">
+              <div class="a11y-player-label">Hear it: Lovesac.com</div>
+              <input type="range" class="a11y-scrub" id="scrub-original" min="0" max="100" value="0" step="0.1" aria-label="Seek Lovesac.com screen reader preview">
+            </div>
+            <button type="button" class="a11y-stop" id="stop-original" aria-label="Stop and reset to beginning">■</button>
+          </div>
+          <div class="a11y-status" id="status-original">Stopped · 0%</div>
+        </div>
       </div>
       <div class="nav-col after">
         <div class="nav-label"><span class="sw"></span>Redesign — accessible by default</div>
         <div class="phone-slot"><img src="/images/lovesac-accessibility-after.webp" width="760" height="1358" loading="lazy" decoding="async" alt="Redesigned Lovesac mobile hero reading 'One couch. Built for life.' — a single clean banner state with no toggle and no autoplaying media."></div>
+        <div class="a11y-player">
+          <div class="a11y-player-row">
+            <button type="button" class="a11y-play" id="btn-redesign" aria-label="Play screen reader preview of the redesign">▶</button>
+            <div class="a11y-player-main">
+              <div class="a11y-player-label">Hear it: My Redesign</div>
+              <input type="range" class="a11y-scrub" id="scrub-redesign" min="0" max="100" value="0" step="0.1" aria-label="Seek redesign screen reader preview">
+            </div>
+            <button type="button" class="a11y-stop" id="stop-redesign" aria-label="Stop and reset to beginning">■</button>
+          </div>
+          <div class="a11y-status" id="status-redesign">Stopped · 0%</div>
+        </div>
       </div>
     </div>
+    <p class="nav-note">Press play on either card above to hear the actual announcement order a screen reader gives each version — synthesized live in your browser from each page's real markup, not a recording, so you can pause and compare line by line.</p>
     <p class="nav-note">Two problems are stacked together: first, accessibility is treated as an optional mode a visitor has to find and enable, rather than the default experience. Second, enabling it doesn't produce a cleaner page — it duplicates the promo banner text and leaves the video in place, requiring the visitor to decide whether to play it. An overlay intended to reduce cognitive load instead adds another visual layer to parse.</p>
     <p class="nav-note">The redesign takes a different approach: accessibility is built into the default experience. Sufficient contrast, no autoplaying media, and one banner state create a simpler, more consistent experience for every visitor.</p>
 
@@ -917,6 +960,228 @@
   }, {threshold:0.5});
 
   counters.forEach(function(el){ observer.observe(el); });
+})();
+</script>
+<script>
+/*
+  Hear-it audio compare — uses the browser's built-in speech synthesis
+  (Web Speech API) to speak the announcement order a screen reader gives
+  each page, in place. No audio files to host.
+
+  Known quirk: Chrome can silently stop speech after ~15s on some
+  versions if the tab loses focus or the utterance is long. Safari and
+  Firefox don't have this issue.
+*/
+(function(){
+  var synth = window.speechSynthesis;
+  if(!synth) return;
+  var voices = [];
+  function loadVoices(){ voices = synth.getVoices(); }
+  loadVoices();
+  if(synth.onvoiceschanged !== undefined) synth.onvoiceschanged = loadVoices;
+
+  function findVoice(nameFragments, excludeDefault){
+    for(var i = 0; i < nameFragments.length; i++){
+      var frag = nameFragments[i].toLowerCase();
+      for(var j = 0; j < voices.length; j++){
+        if(excludeDefault && voices[j].default) continue;
+        if(voices[j].name.toLowerCase().indexOf(frag) !== -1) return voices[j];
+      }
+    }
+    return null;
+  }
+
+  // Built from Lovesac's real mobile-site markup (pulled live, Aug 2026).
+  var originalText = [
+    "Cookie policy. This website uses cookies to ensure you get the best experience. Essential Only. Allow Cookies. Cookie Preferences.",
+    "Link: Enable Accessibility.",
+    "Link: Free Shipping. Link: 60-Day Home Trial. Link: Free Swatches.",
+    "Image link: Quote Lookup.",
+    "Link: Quote Lookup.",
+    "Image: Showroom Locator.",
+    "Link: Store Locator.",
+    "Image link: LoveSac.",
+    "Image link: Lovesac.",
+    "Button: menu.",
+    "Link: Sectionals. Customizable Sectional Couches. Link: Shop Sectionals.",
+    "List item link: Sactionals. List item link: Sactionals with StealthTech Sound plus Charge.",
+    "List item link: Inserts and Covers. List item link: StealthTech Sound plus Charge Systems. List item link: AnyTables. List item link: Insert Protectors.",
+    "Region: Shop by Product carousel.",
+    "Button: Show Slide 1 of 11. Button: Show Slide 2 of 11. Button: Show Slide 3 of 11. Button: Show Slide 4 of 11. Button: Show Slide 5 of 11. Button: Show Slide 6 of 11. Button: Show Slide 7 of 11. Button: Show Slide 8 of 11. Button: Show Slide 9 of 11. Button: Show Slide 10 of 11. Button: Show Slide 11 of 11.",
+    "Image link: Sactionals. Best Sellers Designed to Evolve with You. Shown in Vintage Blue Rained Chenille. Starting at $2,999.",
+    "Image link: Sacs. The World's Most Comfortable Seat. Shown in Thyme Sherpa. 35% Off.",
+    "Heading: FAQs.",
+    "Heading: What color palettes work well when combining different Lovesac fabrics.",
+    "Heading: Our Company. List item link: Find a Store. List item link: Careers. List item link: About Us. List item link: Loved by Lovesac. List item link: Investor Relations. List item link: Media Inquiries. List item link: To the Trade. List item link: Lovesac Gives Back. List item link: Accessibility Statement.",
+    "Link: Call Us. Link: (888) 636-1223.",
+    "Link: Sign In. Link: Order Status. Link: Quote Lookup. Link: Create an Account. Link: Store Locator.",
+    "Link: My Account. Link: Order Status. Link: Quote Lookup. Link: My Wish List. Link: Sign Out. Link: Store Locator.",
+    "Image link, no label."
+  ].join(" ");
+
+  // Built from the live redesign case study (claudiaochoa.co/work/lovesac-redesign.html, pulled Aug 2026).
+  var redesignText = [
+    "Link: Skip to main content.",
+    "Labor Day Sale, up to 40% off.",
+    "Image link: Lovesac, home.",
+    "Navigation landmark. Link: Furniture. Shop Furniture. Link: Shop all.",
+    "List: Sactionals. Sactionals with StealthTech. Snugg sofas. Snugg loveseats. Snugg chairs. PillowSac chairs. Sacs. Sac bundles.",
+    "Link: Clearance.",
+    "Link: Accessories. Shop Accessories.",
+    "Link: What to expect. Link: Find a store near you. Link: Customer support.",
+    "Link: Sign in. Link: Create an Account.",
+    "Main landmark begins. Heading level 1: One couch. Built for life.",
+    "Rearrange, re-cover, and grow, from a studio apartment to a family room, without having to buy another couch again.",
+    "Link: Shop now.",
+    "60-Day Trial, try it at home then decide. Machine Washable, easy to remove, easy to wash. Forever Warranty, your frame covered for life. Recycled Fill, made from reclaimed plastic bottles.",
+    "Heading level 2: When life changes shape, or you simply want a new look.",
+    "Stage 1. Heading: First apartment. A loveseat and an ottoman. Small spaces, not a problem.",
+    "Stage 2. Heading: Moving in together. Add two sides, flip the chaise. Same pieces, new shape.",
+    "Stage 3. Heading: Kids, dogs, chaos. Washable covers. Reinforced seams. Built for everyday life.",
+    "Stage 4. Heading: The house you'll stay in. Split it into two rooms or build out your dream sactional.",
+    "What people are saying. Heading level 2: Loved in real homes. Rating: 4.3 out of 5 stars, 8,509 reviews.",
+    "5 stars. Quote: Couch is fantastic. Every option and every part of it. Insanely comfortable. Patty F., Verified Buyer.",
+    "5 stars. Quote: I live in a very small condo, and hidden storage is a must. Lauren, Verified Buyer.",
+    "Image: Lovesac credit card with a teal and coral floral design and chip.",
+    "Heading level 2: Make yourself comfortable. No interest for 24 months, subject to credit approval. Link: See terms. Link: Apply now.",
+    "Content info landmark. Image link: Lovesac, home. Links: Instagram, TikTok, X, Facebook.",
+    "Heading: Shop. Links: Sactionals, Sacs, StealthTech.",
+    "Heading: Company. Links: Our philosophy, Sustainability, Careers.",
+    "Heading: Support. Links: What to expect, Warranty, Contact us.",
+    "Concept redesign, using Lovesac's existing brand identity and photography, not an official Lovesac property.",
+    "Link: Privacy Policy. Link: Terms. Link: Trademarks."
+  ].join(" ");
+
+  var players = {
+    original: {
+      text: originalText,
+      voiceCandidates: null, // default voice, on purpose — that's the real experience most screen-reader users get
+      pitch: 1.0, rate: 1.0,
+      baseOffset: 0, state: "stopped",
+      btn: document.getElementById("btn-original"),
+      scrub: document.getElementById("scrub-original"),
+      status: document.getElementById("status-original"),
+      dragging: false
+    },
+    redesign: {
+      text: redesignText,
+      voiceCandidates: [
+        "Microsoft Aria Online (Natural)", "Microsoft Jenny Online (Natural)",
+        "Google UK English Female", "Ava (Premium)", "Ava (Enhanced)", "Ava",
+        "Samantha (Enhanced)", "Samantha", "Nicky (Premium)", "Zoe (Premium)",
+        "Microsoft Aria", "Microsoft Jenny", "Google US English", "Female"
+      ],
+      pitch: 1.0, rate: 0.95,
+      baseOffset: 0, state: "stopped",
+      btn: document.getElementById("btn-redesign"),
+      scrub: document.getElementById("scrub-redesign"),
+      status: document.getElementById("status-redesign"),
+      dragging: false
+    }
+  };
+  if(!players.original.btn || !players.redesign.btn) return;
+
+  var activeKey = null;
+
+  function pct(key){
+    var p = players[key];
+    return Math.min(100, (p.baseOffset / p.text.length) * 100);
+  }
+
+  function render(key){
+    var p = players[key];
+    if(!p.dragging) p.scrub.value = pct(key).toFixed(1);
+    p.btn.textContent = p.state === "playing" ? "❚❚" : "▶";
+    var label = p.state === "playing" ? "Playing" : p.state === "paused" ? "Paused" : "Stopped";
+    p.status.textContent = label + " · " + Math.round(pct(key)) + "%";
+  }
+
+  function stopAllExcept(key){
+    Object.keys(players).forEach(function(k){
+      if(k !== key && players[k].state !== "stopped"){
+        players[k].state = "stopped";
+        players[k].baseOffset = 0;
+        render(k);
+      }
+    });
+  }
+
+  function startFrom(key, charIndex){
+    stopAllExcept(key);
+    synth.cancel();
+    var p = players[key];
+    p.baseOffset = charIndex;
+    var remaining = p.text.substring(charIndex);
+    if(remaining.length === 0){ p.state = "stopped"; p.baseOffset = 0; render(key); return; }
+    var utter = new SpeechSynthesisUtterance(remaining);
+    utter.rate = p.rate;
+    utter.pitch = p.pitch;
+    if(p.voiceCandidates){
+      var v = findVoice(p.voiceCandidates, key !== "original");
+      if(v) utter.voice = v;
+    }
+    utter.onstart = function(){ p.state = "playing"; activeKey = key; render(key); };
+    utter.onboundary = function(e){
+      if(typeof e.charIndex === "number"){
+        p.baseOffset = charIndex + e.charIndex;
+        render(key);
+      }
+    };
+    utter.onend = function(){
+      if(p.state !== "paused"){ p.state = "stopped"; p.baseOffset = 0; }
+      if(activeKey === key) activeKey = null;
+      render(key);
+    };
+    p._utter = utter;
+    synth.speak(utter);
+  }
+
+  function togglePlayPause(key){
+    var p = players[key];
+    if(p.state === "playing"){
+      synth.pause();
+      p.state = "paused";
+      render(key);
+    } else if(p.state === "paused" && activeKey === key){
+      synth.resume();
+      p.state = "playing";
+      render(key);
+    } else {
+      startFrom(key, p.baseOffset || 0);
+    }
+  }
+
+  function stop(key){
+    if(activeKey === key) synth.cancel();
+    var p = players[key];
+    p.state = "stopped";
+    p.baseOffset = 0;
+    if(activeKey === key) activeKey = null;
+    render(key);
+  }
+
+  Object.keys(players).forEach(function(key){
+    var p = players[key];
+    p.btn.addEventListener("click", function(){ togglePlayPause(key); });
+    document.getElementById("stop-" + key).addEventListener("click", function(){ stop(key); });
+
+    p.scrub.addEventListener("input", function(){
+      p.dragging = true;
+      p.status.textContent = (p.state === "playing" ? "Playing" : p.state === "paused" ? "Paused" : "Stopped") + " · " + Math.round(Number(p.scrub.value)) + "%";
+    });
+    p.scrub.addEventListener("change", function(){
+      p.dragging = false;
+      var idx = Math.round((Number(p.scrub.value) / 100) * p.text.length);
+      if(p.state === "stopped"){
+        p.baseOffset = idx;
+        render(key);
+      } else {
+        startFrom(key, idx);
+      }
+    });
+
+    render(key);
+  });
 })();
 </script>
 
