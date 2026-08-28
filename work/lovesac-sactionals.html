@@ -1503,6 +1503,13 @@
     e.preventDefault();
     showToast("Non-functional prototype — for demonstration purposes only");
   });
+  document.addEventListener('keydown', function(e){
+    if(e.key !== 'Enter' && e.key !== ' ') return;
+    var card = e.target.closest('.product-card');
+    if(!card) return;
+    e.preventDefault();
+    card.click();
+  });
   var mobileSearch = document.querySelector('.mobile-search');
   if(mobileSearch){
     mobileSearch.addEventListener('submit', function(e){
@@ -2294,18 +2301,28 @@ function sizeOf(p){
   return p.w <= 90 ? 'small' : (p.w <= 130 ? 'medium' : 'large');
 }
 
+var COLOR_NAMES = {
+  '#C9B79A':'Sand', '#4A4C4A':'Charcoal', '#3F6E77':'Lagoon', '#B26A4A':'Terracotta',
+  '#1F2A44':'Midnight', '#DCD3C4':'Oatmeal', '#A9A9A2':'Stone', '#2F4A3B':'Forest',
+  '#3B2A22':'Espresso', '#B7AE9C':'Fog'
+};
+
 function renderProductGrid(){
-  document.getElementById('productGrid').innerHTML = products.map((p,i)=>`
-    <div class="product-card nav-mock" data-idx="${i}">
+  document.getElementById('productGrid').innerHTML = products.map((p,i)=>{
+    var colorNames = p.hex.map(h=>COLOR_NAMES[h]||'color');
+    var cardLabel = `${p.name}, ${p.meta}. Available in ${colorNames.join(', ')}. $${p.price.toLocaleString()}.00`;
+    return `
+    <div class="product-card nav-mock" data-idx="${i}" role="button" tabindex="0" aria-label="${cardLabel}">
       <div class="product-thumb${p.img ? ' has-photo' : ''}">
         ${p.img ? `<img src="${p.img}" alt="${p.name}">` : `<svg viewBox="0 0 130 60"><path d="M0,20 h90 v20 h30 v40 h-120 Z" fill="${p.hex[0]}"/></svg>`}
       </div>
       ${p.badge?`<div class="product-badge">${p.badge}</div>`:''}
       <div class="product-name">${p.name}</div>
       <div class="product-meta">${p.meta}</div>
-      <div class="product-swatches">${p.hex.map(h=>`<div class="pswatch" style="background:${h}"></div>`).join('')}</div>
+      <div class="product-swatches">${p.hex.map(h=>`<div class="pswatch" style="background:${h}" aria-hidden="true"></div>`).join('')}</div>
       <div class="product-price">$${p.price.toLocaleString()}.00</div>
-    </div>`).join('');
+    </div>`;
+  }).join('');
   applySizeFilter(currentSizeFilter);
 }
 
