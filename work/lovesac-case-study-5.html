@@ -133,6 +133,28 @@
   .compare-card .compare-val{font-family:'Fraunces',serif; font-size:18px; color:var(--espresso);}
   .compare-card .compare-sub{font-size:13.5px; color:var(--ink-soft); margin-top:6px; line-height:1.5;}
 
+  /* Hero comparison */
+  .nav-compare{display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-top:24px;}
+  .nav-col{display:flex; flex-direction:column; gap:14px;}
+  .nav-label{display:flex; align-items:center; gap:10px; font-size:13px; letter-spacing:0.06em; text-transform:uppercase; font-weight:700;}
+  .nav-label .sw{width:10px; height:10px; border-radius:3px;}
+  .nav-col.before .sw{background:#B9AB94;}
+  .nav-col.after .sw{background:var(--clay);}
+  .nav-col.before .nav-label{color:var(--ink-soft);}
+  .nav-col.after .nav-label{color:var(--clay-deep);}
+  .phone-slot{
+    box-sizing:content-box;
+    border:10px solid var(--espresso);
+    border-radius:32px;
+    background:var(--paper);
+    aspect-ratio:9/17.5;
+    max-width:300px;
+    margin:0 auto;
+    overflow:hidden;
+  }
+  .phone-slot img{border-radius:22px; width:100%; height:100%; object-fit:cover; object-position:top;}
+  .nav-note{margin-top:24px; font-size:16px; line-height:1.75; color:var(--ink-soft); max-width:72ch;}
+
   .callout{
     background:var(--paper); border:1px solid var(--line); border-radius:14px;
     padding:24px 28px; margin-top:24px; max-width:72ch;
@@ -195,6 +217,7 @@
     }
     .section-head{grid-template-columns:1fr; gap:14px;}
     .compare-grid{grid-template-columns:1fr;}
+    .nav-compare{grid-template-columns:1fr;}
     .journey-step{grid-template-columns:1fr; gap:6px;}
     .spark{padding:32px 24px;}
   }
@@ -249,49 +272,26 @@
     <div class="section-head">
       <div><span class="num">01 · Emotional Intelligence</span></div>
       <div>
-        <h2>Know the moment.</h2>
-        <p class="lede">A customer browsing the homepage is in a different state of mind than someone looking for assembly instructions. One is still building confidence. The other just wants an answer.</p>
+        <h2>First impressions.</h2>
+        <p class="lede">The first encounter has a job to do: make the brand clear, give the customer a reason to stay, and make the next step obvious.</p>
       </div>
     </div>
-    <p class="body-copy"><strong>Content moments</strong> are where a customer is still forming a feeling about the brand — the homepage, support pages, anywhere trust and reassurance actually move behavior. This is where voice should show up in full: warm, specific, human.</p>
-    <p class="body-copy"><strong>Utility moments</strong> are where the customer has already decided and just needs the interface to get out of the way — filters, calculators, room-fit tools, cart. Here, voice is a liability. Someone measuring their living room doesn't want a clever turn of phrase between them and the number they came for.</p>
-    <p class="body-copy">Most redesigns fail this test in one of two directions: they either flood the entire site with personality until it slows people down, or they stay so utilitarian everywhere that the brand never gets to say anything at all. The goal here was to apply voice <em>only</em> where it earns its keep, and stay out of the way everywhere else.</p>
 
-    <div class="table-scroll-wrap">
-      <div class="table-scroll">
-        <table class="data-table">
-          <thead>
-            <tr>
-              <th></th>
-              <th>Content moments</th>
-              <th>Utility moments</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Customer's mindset</th>
-              <td>Still deciding, forming trust</td>
-              <td>Already decided, wants speed</td>
-            </tr>
-            <tr>
-              <th scope="row">Where it shows up</th>
-              <td>Homepage, support, reassurance pages</td>
-              <td>Room-fit tool, assembly calculator, filters</td>
-            </tr>
-            <tr>
-              <th scope="row">Voice</th>
-              <td>Full brand personality</td>
-              <td>Plain, direct, fast</td>
-            </tr>
-            <tr>
-              <th scope="row">Redesign examples</th>
-              <td>"One couch. Built for life." &middot; "Labor of love"</td>
-              <td>"Will it fit your room?" &middot; setup-time calculator</td>
-            </tr>
-          </tbody>
-        </table>
+    <div class="nav-compare">
+      <div class="nav-col before">
+        <div class="nav-label"><span class="sw"></span>Lovesac.com — original hero</div>
+        <div class="phone-slot"><img src="/images/lovesac-hero-original.webp" width="782" height="1686" loading="lazy" decoding="async" alt="Original Lovesac mobile hero: an all-caps headline, 'THE ONLY COUCH THAT CAN BE ANY COUCH,' over an animated banner of scenario labels layered on generic sofa renders, with no visible call to action."></div>
+      </div>
+      <div class="nav-col after">
+        <div class="nav-label"><span class="sw"></span>Redesign — new hero</div>
+        <div class="phone-slot"><img src="/images/lovesac-hero-redesign.webp" width="778" height="1688" loading="lazy" decoding="async" alt="Redesigned mobile hero reading 'One couch. Built for life.,' followed by a supporting line and a clear Shop now button."></div>
       </div>
     </div>
+
+    <p class="nav-note">The original design is visually busy — the over-the-top animation adds to the sensory overload. On top of that, it leads with "THE ONLY COUCH THAT CAN BE ANY COUCH," set entirely in caps.</p>
+    <p class="nav-note">That headline assumes the customer already knows the brand. It gives no regard to entry point — someone landing there for the first time, whether from a Google search or a showroom visit, likely doesn't have the "any couch" concept down yet. So the headline lands as a slogan instead of a message.</p>
+    <p class="nav-note">It also gives no call to action. The hero is clickable, but nothing tells you where it goes. Given the promo banner above it, the natural assumption is that clicking leads to the sale. Instead, it takes you to the Sactionals product page.</p>
+    <p class="nav-note">The redesign's "One couch. Built for life." doesn't require prior brand knowledge — and it doesn't leave the claim to hang there by itself. It's immediately followed by "Rearrange, re-cover, and grow — from a studio apartment to a family room, without having to buy another couch again." That line gives the headline context, followed by a clear call to action: "Shop now." No guessing where the click leads — the voice says what it means and tells you what happens next.</p>
   </div>
 </section>
 
