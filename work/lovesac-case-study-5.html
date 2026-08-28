@@ -165,18 +165,15 @@
     text-transform:uppercase; color:var(--sage); margin-bottom:10px;
   }
 
-  /* Mock original-nav list */
-  .mock-nav{
-    background:var(--paper); border:1px solid var(--line); border-radius:14px;
-    padding:24px 28px; margin:20px 0; max-width:420px;
+  .browser-frame{
+    border:1px solid var(--line);
+    border-radius:14px;
+    overflow:hidden;
+    background:var(--paper);
+    box-shadow:0 1px 2px rgba(36,28,22,0.06);
+    margin:20px 0;
   }
-  .mock-nav-label{
-    display:block; font-weight:700; font-size:12px; letter-spacing:0.1em;
-    text-transform:uppercase; color:var(--espresso); margin-bottom:14px;
-  }
-  .mock-nav ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;}
-  .mock-nav li{font-size:15px; color:var(--ink-soft); border-top:1px solid var(--line); padding-top:10px;}
-  .mock-nav li:first-child{border-top:none; padding-top:0;}
+  .browser-frame img{width:100%; height:auto; display:block;}
 
   /* Stage cards */
   .stage-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin:24px 0;}
@@ -353,15 +350,7 @@
 
     <p class="body-copy">The original experience immediately asks the customer to shop by the company's product taxonomy:</p>
 
-    <div class="mock-nav">
-      <span class="mock-nav-label">Shop by Product</span>
-      <ul>
-        <li>Our Recommended Picks</li>
-        <li>20% Off Select Sactionals</li>
-        <li>40% Off StealthTech Systems</li>
-        <li>40% Off Snugg</li>
-      </ul>
-    </div>
+    <div class="browser-frame"><img src="/images/lovesac-shop-by-product-original.webp" width="3420" height="961" loading="lazy" decoding="async" alt="Lovesac.com 'Shop by Product' carousel: a Labor Day Deals promo tile followed by product cards labeled Our Recommended Picks, 20% Off Select Sactionals, 40% Off StealthTech Systems, and 40% Off Snugg."></div>
 
     <p class="body-copy">On its own, there's nothing wrong with organizing a site around products. The problem is what that asks the customer to do before they've had a reason to care. They have to understand the product categories first, then figure out which one fits their life.</p>
     <p class="body-copy">The language also keeps the customer at a distance. Sactionals, StealthTech, Snugg are names that make sense once you know the Lovesac ecosystem. For someone encountering the brand for the first time, they're product names — not reasons to connect.</p>
