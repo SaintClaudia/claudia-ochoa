@@ -199,7 +199,7 @@
   /* Hear-it mini player — follows the scroll while something is playing */
   .a11y-mini{
     position:fixed; left:50%; bottom:10px; z-index:80;
-    display:flex; align-items:center; gap:12px;
+    display:flex; align-items:center; gap:14px;
     background:var(--espresso); color:var(--paper);
     border-radius:999px; padding:7px 14px 7px 7px;
     box-shadow:0 14px 34px rgba(36,28,22,0.3);
@@ -209,18 +209,18 @@
   }
   .a11y-mini.show{transform:translate(-50%, 0); opacity:1; pointer-events:auto;}
   .a11y-mini-play{
-    flex:0 0 auto; width:34px; height:34px; border-radius:50%; border:none;
+    flex:0 0 auto; width:40px; height:40px; border-radius:50%; border:none;
     background:var(--cream); color:var(--espresso);
     display:flex; align-items:center; justify-content:center;
-    font-size:12px; cursor:pointer; padding:0; line-height:1;
+    font-size:13px; cursor:pointer; padding:0; line-height:1;
   }
-  .a11y-mini-info{min-width:0;}
+  .a11y-mini-info{min-width:0; cursor:pointer; padding:4px 2px;}
   .a11y-mini-label{font-size:12px; font-weight:700; letter-spacing:0.02em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:34vw;}
   .a11y-mini-status{font-size:11px; color:rgba(251,246,236,0.7); margin-top:1px;}
   .a11y-mini-stop{
-    flex:0 0 auto; width:28px; height:28px; border-radius:50%;
+    flex:0 0 auto; width:32px; height:32px; border-radius:50%;
     border:1px solid rgba(251,246,236,0.3); background:transparent; color:var(--paper);
-    font-size:10px; cursor:pointer; padding:0;
+    font-size:11px; cursor:pointer; padding:0;
   }
   @media (max-width:640px){
     .a11y-mini{bottom:8px; padding:6px 12px 6px 6px; gap:9px;}
@@ -811,7 +811,7 @@
     <div class="nav-compare">
       <div class="nav-col before">
         <div class="nav-label"><span class="sw"></span>Lovesac.com — Sactionals PDP</div>
-        <div class="phone-frame-wide"><img src="/images/lovesac-trust-band-before.webp" width="760" height="1072" loading="lazy" decoding="async" alt="Lovesac.com Sactionals product page showing a founder-story photo followed by four collapsed accordion rows: Guaranteed For Life, 60-Day Home Trial, Free Shipping and Returns, and Room of Choice Delivery, each hidden behind a plus icon."></div>
+        <div class="phone-frame-wide"><img src="/images/lovesac-trust-band-before.webp" width="760" height="569" loading="lazy" decoding="async" alt="Lovesac.com Sactionals product page showing four collapsed accordion rows: Guaranteed For Life, 60-Day Home Trial, Free Shipping and Returns, and Room of Choice Delivery, each hidden behind a plus icon."></div>
       </div>
       <div class="nav-col after">
         <div class="nav-label"><span class="sw"></span>Redesign — homepage</div>
@@ -1328,7 +1328,7 @@
   document.body.insertAdjacentHTML('beforeend',
     '<div class="a11y-mini" id="a11yMini">' +
       '<button type="button" class="a11y-mini-play" id="a11yMiniPlay" aria-label="Play or pause">▶</button>' +
-      '<div class="a11y-mini-info">' +
+      '<div class="a11y-mini-info" id="a11yMiniInfo" role="button" tabindex="0">' +
         '<div class="a11y-mini-label" id="a11yMiniLabel"></div>' +
         '<div class="a11y-mini-status" id="a11yMiniStatus"></div>' +
       '</div>' +
@@ -1340,6 +1340,7 @@
   var miniLabel = document.getElementById('a11yMiniLabel');
   var miniStatus = document.getElementById('a11yMiniStatus');
   var miniStop = document.getElementById('a11yMiniStop');
+  var miniInfo = document.getElementById('a11yMiniInfo');
   var miniKey = null;
   var miniNames = { original: 'Lovesac.com', redesign: 'My Redesign' };
 
@@ -1380,6 +1381,7 @@
     miniPlay.textContent = p.state === 'playing' ? '❚❚' : '▶';
     miniPlay.setAttribute('aria-label', (p.state === 'playing' ? 'Pause' : 'Play') + ' ' + miniNames[next] + ' screen reader preview');
     miniStatus.textContent = (p.state === 'playing' ? 'Playing' : 'Paused') + ' · ' + Math.round(pct(next)) + '%';
+    miniInfo.setAttribute('aria-label', (p.state === 'playing' ? 'Pause' : 'Play') + ' ' + miniNames[next] + ' screen reader preview');
     mini.classList.add('show');
   }
 
@@ -1390,6 +1392,14 @@
   };
 
   miniPlay.addEventListener('click', function(){
+    if(miniKey) togglePlayPause(miniKey);
+  });
+  miniInfo.addEventListener('click', function(){
+    if(miniKey) togglePlayPause(miniKey);
+  });
+  miniInfo.addEventListener('keydown', function(e){
+    if(e.key !== 'Enter' && e.key !== ' ') return;
+    e.preventDefault();
     if(miniKey) togglePlayPause(miniKey);
   });
   miniStop.addEventListener('click', function(){
