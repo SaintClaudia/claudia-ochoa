@@ -929,7 +929,7 @@
     </div>
   </div>
   </div>
-  <div class="desktop-search" id="desktopSearch">
+  <div class="desktop-search" id="desktopSearch" inert>
     <div class="wrap">
       <form class="desktop-search-inner" role="search" action="#">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.2" y2="16.2"/></svg>
@@ -964,7 +964,7 @@
         </div>
       </div>
 
-      <div class="mobile-tier-2" id="mobileTierFurniture">
+      <div class="mobile-tier-2" id="mobileTierFurniture" inert>
         <button type="button" class="mobile-tier-back">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
           <span>Furniture</span>
@@ -1006,7 +1006,7 @@
         <a href="#" class="mobile-clearance-row nav-mock">Clearance</a>
       </div>
 
-      <div class="mobile-tier-2" id="mobileTierAccessories">
+      <div class="mobile-tier-2" id="mobileTierAccessories" inert>
         <button type="button" class="mobile-tier-back">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
           <span>Accessories</span>
@@ -1163,7 +1163,7 @@
           <div class="review-avatar">P</div>
           <div>
             <div class="reviewer-name">Patty F.
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
             </div>
             <div class="reviewer-meta">Verified Buyer</div>
           </div>
@@ -1176,7 +1176,7 @@
           <div class="review-avatar">L</div>
           <div>
             <div class="reviewer-name">Lauren
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
             </div>
             <div class="reviewer-meta">Verified Buyer</div>
           </div>
@@ -1189,7 +1189,7 @@
           <div class="review-avatar">L</div>
           <div>
             <div class="reviewer-name">Libby
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
             </div>
             <div class="reviewer-meta">Verified Buyer</div>
           </div>
@@ -1265,7 +1265,7 @@
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <div class="store-backdrop" id="storeBackdrop"></div>
-<div class="store-drop" id="storeDropdown">
+<div class="store-drop" id="storeDropdown" inert>
   <div class="store-drop-header">
     <h3>Find a store near you</h3>
     <button type="button" class="store-drop-close" id="storeDropClose" aria-label="Close">
@@ -1304,7 +1304,7 @@
 </div>
 
 <div class="account-backdrop" id="accountBackdrop"></div>
-<div class="account-drop" id="accountDropdown">
+<div class="account-drop" id="accountDropdown" inert>
   <div class="account-drop-header">
     <h3>Sign In or Create an Account</h3>
     <button type="button" class="account-drop-close" id="accountDropClose" aria-label="Close">
@@ -1323,7 +1323,7 @@
 </div>
 
 <div class="cart-backdrop" id="cartBackdrop"></div>
-<div class="cart-drop" id="cartDropdown">
+<div class="cart-drop" id="cartDropdown" inert>
   <div class="cart-drop-header">
     <h3>Your Cart</h3>
     <button type="button" class="cart-drop-close" id="cartDropClose" aria-label="Close">
@@ -1394,6 +1394,7 @@
   function closeAllBars(){
     bars.forEach(function(b){
       b.panel.classList.remove('open');
+      b.panel.inert = true;
       b.toggle.setAttribute('aria-expanded', 'false');
       b.input.value = '';
     });
@@ -1409,6 +1410,7 @@
     if(window.__closeAccountDrop) window.__closeAccountDrop();
     if(window.__closeCartDrop) window.__closeCartDrop();
     b.panel.classList.add('open');
+    b.panel.inert = false;
     b.toggle.setAttribute('aria-expanded', 'true');
     setTimeout(function(){ b.input.focus(); }, 200);
   }
@@ -1474,6 +1476,7 @@
 
   function closeStoreDrop(){
     drop.classList.remove('open');
+    drop.inert = true;
     backdrop.classList.remove('open');
     toggle.setAttribute('aria-expanded', 'false');
     document.querySelector('nav').classList.remove('dropdown-open');
@@ -1501,6 +1504,7 @@
       drop.style.top = navBottom + 'px';
       backdrop.style.top = navBottom + 'px';
       drop.classList.add('open');
+      drop.inert = false;
       backdrop.classList.add('open');
       toggle.setAttribute('aria-expanded', 'true');
       document.querySelector('nav').classList.add('dropdown-open');
@@ -1541,6 +1545,7 @@
 
   function closeAccountDrop(){
     drop.classList.remove('open');
+    drop.inert = true;
     backdrop.classList.remove('open');
     toggle.setAttribute('aria-expanded', 'false');
     document.querySelector('nav').classList.remove('dropdown-open');
@@ -1568,6 +1573,7 @@
       drop.style.top = navBottom + 'px';
       backdrop.style.top = navBottom + 'px';
       drop.classList.add('open');
+      drop.inert = false;
       backdrop.classList.add('open');
       toggle.setAttribute('aria-expanded', 'true');
       document.querySelector('nav').classList.add('dropdown-open');
@@ -1601,6 +1607,7 @@
 
   function closeCartDrop(){
     drop.classList.remove('open');
+    drop.inert = true;
     backdrop.classList.remove('open');
     toggle.setAttribute('aria-expanded', 'false');
     document.querySelector('nav').classList.remove('dropdown-open');
@@ -1628,6 +1635,7 @@
       drop.style.top = navBottom + 'px';
       backdrop.style.top = navBottom + 'px';
       drop.classList.add('open');
+      drop.inert = false;
       backdrop.classList.add('open');
       toggle.setAttribute('aria-expanded', 'true');
       document.querySelector('nav').classList.add('dropdown-open');
@@ -1657,7 +1665,7 @@
     tiers.style.height = el.scrollHeight + 'px';
   }
   function resetTiers(){
-    menu.querySelectorAll('.mobile-tier-2.active').forEach(function(t){ t.classList.remove('active'); });
+    menu.querySelectorAll('.mobile-tier-2.active').forEach(function(t){ t.classList.remove('active'); t.inert = true; });
     syncHeight(tier1);
   }
   function closeMenu(){
@@ -1693,13 +1701,16 @@
       var target = document.getElementById(row.dataset.tier);
       if(target){
         target.classList.add('active');
+        target.inert = false;
         syncHeight(target);
       }
     });
   });
   menu.querySelectorAll('.mobile-tier-back').forEach(function(backBtn){
     backBtn.addEventListener('click', function(){
-      backBtn.closest('.mobile-tier-2').classList.remove('active');
+      var t2 = backBtn.closest('.mobile-tier-2');
+      t2.classList.remove('active');
+      t2.inert = true;
       syncHeight(tier1);
     });
   });
