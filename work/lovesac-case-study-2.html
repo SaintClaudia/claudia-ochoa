@@ -136,6 +136,40 @@
   }
   .a11y-status{margin-top:9px; font-size:12px; color:var(--ink-soft);}
 
+  /* Hear-it mini player — follows the scroll while something is playing */
+  .a11y-mini{
+    position:fixed; left:50%; bottom:22px; z-index:80;
+    display:flex; align-items:center; gap:12px;
+    background:var(--espresso); color:var(--paper);
+    border-radius:999px; padding:7px 14px 7px 7px;
+    box-shadow:0 14px 34px rgba(36,28,22,0.3);
+    max-width:calc(100vw - 32px);
+    transform:translate(-50%, 140%); opacity:0; pointer-events:none;
+    transition:transform .28s cubic-bezier(.2,.9,.3,1), opacity .28s ease;
+  }
+  .a11y-mini.show{transform:translate(-50%, 0); opacity:1; pointer-events:auto;}
+  .a11y-mini-play{
+    flex:0 0 auto; width:34px; height:34px; border-radius:50%; border:none;
+    background:var(--cream); color:var(--espresso);
+    display:flex; align-items:center; justify-content:center;
+    font-size:12px; cursor:pointer; padding:0; line-height:1;
+  }
+  .a11y-mini-info{min-width:0;}
+  .a11y-mini-label{font-size:12px; font-weight:700; letter-spacing:0.02em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:34vw;}
+  .a11y-mini-status{font-size:11px; color:rgba(251,246,236,0.7); margin-top:1px;}
+  .a11y-mini-stop{
+    flex:0 0 auto; width:28px; height:28px; border-radius:50%;
+    border:1px solid rgba(251,246,236,0.3); background:transparent; color:var(--paper);
+    font-size:10px; cursor:pointer; padding:0;
+  }
+  @media (max-width:640px){
+    .a11y-mini{bottom:16px; padding:6px 12px 6px 6px; gap:9px;}
+    .a11y-mini-label{max-width:44vw;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .a11y-mini{transition:opacity .15s ease;}
+  }
+
   /* Card comparison */
   .card-compare{display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-top:28px;}
   .card-compare-col{display:flex; flex-direction:column; gap:14px; min-width:0;}
@@ -1206,6 +1240,55 @@
     });
 
     render(key);
+  });
+
+  document.body.insertAdjacentHTML('beforeend',
+    '<div class="a11y-mini" id="a11yMini">' +
+      '<button type="button" class="a11y-mini-play" id="a11yMiniPlay" aria-label="Play or pause">▶</button>' +
+      '<div class="a11y-mini-info">' +
+        '<div class="a11y-mini-label" id="a11yMiniLabel"></div>' +
+        '<div class="a11y-mini-status" id="a11yMiniStatus"></div>' +
+      '</div>' +
+      '<button type="button" class="a11y-mini-stop" id="a11yMiniStop" aria-label="Stop and reset to beginning">■</button>' +
+    '</div>'
+  );
+  var mini = document.getElementById('a11yMini');
+  var miniPlay = document.getElementById('a11yMiniPlay');
+  var miniLabel = document.getElementById('a11yMiniLabel');
+  var miniStatus = document.getElementById('a11yMiniStatus');
+  var miniStop = document.getElementById('a11yMiniStop');
+  var miniKey = null;
+  var miniNames = { original: 'Lovesac.com', redesign: 'My Redesign' };
+
+  function updateMini(){
+    var next = null;
+    Object.keys(players).forEach(function(k){
+      if(players[k].state !== 'stopped') next = k;
+    });
+    miniKey = next;
+    if(!next){
+      mini.classList.remove('show');
+      return;
+    }
+    var p = players[next];
+    miniLabel.textContent = miniNames[next];
+    miniPlay.textContent = p.state === 'playing' ? '❚❚' : '▶';
+    miniPlay.setAttribute('aria-label', (p.state === 'playing' ? 'Pause' : 'Play') + ' ' + miniNames[next] + ' screen reader preview');
+    miniStatus.textContent = (p.state === 'playing' ? 'Playing' : 'Paused') + ' · ' + Math.round(pct(next)) + '%';
+    mini.classList.add('show');
+  }
+
+  var baseRender = render;
+  render = function(key){
+    baseRender(key);
+    updateMini();
+  };
+
+  miniPlay.addEventListener('click', function(){
+    if(miniKey) togglePlayPause(miniKey);
+  });
+  miniStop.addEventListener('click', function(){
+    if(miniKey) stop(miniKey);
   });
 })();
 </script>
