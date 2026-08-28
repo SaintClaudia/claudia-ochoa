@@ -1236,9 +1236,11 @@
 
   function stopAllExcept(key){
     Object.keys(players).forEach(function(k){
-      if(k !== key && players[k].state !== "stopped"){
-        players[k].state = "stopped";
-        players[k].baseOffset = 0;
+      if(k !== key && players[k].state === "playing"){
+        // Interrupting the other player pauses it in place — it keeps its
+        // remembered position, same as pressing its own pause button,
+        // instead of being force-reset to the beginning.
+        players[k].state = "paused";
         render(k);
       }
     });
@@ -1356,10 +1358,18 @@
   }
 
   function updateMini(){
+    // Prefer whichever is actively playing; fall back to a paused one.
+    // Both can be non-stopped at once now that interrupting a player
+    // pauses rather than resets it.
     var next = null;
     Object.keys(players).forEach(function(k){
-      if(players[k].state !== 'stopped') next = k;
+      if(players[k].state === 'playing') next = k;
     });
+    if(!next){
+      Object.keys(players).forEach(function(k){
+        if(players[k].state === 'paused') next = k;
+      });
+    }
     miniKey = next;
     if(!next || cardsInView){
       mini.classList.remove('show');
