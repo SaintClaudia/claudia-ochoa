@@ -634,6 +634,27 @@
       <span class="tag">Result</span>
       The redesign has been audited against WCAG 2.1 AA — color contrast, keyboard focus visibility, skip navigation, and heading structure all pass. Accessibility isn't a mode you opt into here; it's just how the site is built.
     </div>
+
+    <div class="poll-block" data-poll-id="lovesac-accessibility-audio">
+      <p class="poll-question">Which was easier to follow with your eyes closed?</p>
+      <div class="poll-options">
+        <button type="button" class="poll-btn" data-choice="before">
+          <span class="poll-btn-top">
+            <span class="poll-btn-label"><span class="sw"></span>Lovesac.com</span>
+            <span class="poll-btn-pct">&mdash;</span>
+          </span>
+          <span class="poll-btn-bar"><span class="poll-btn-fill"></span></span>
+        </button>
+        <button type="button" class="poll-btn" data-choice="after">
+          <span class="poll-btn-top">
+            <span class="poll-btn-label"><span class="sw"></span>My Redesign</span>
+            <span class="poll-btn-pct">&mdash;</span>
+          </span>
+          <span class="poll-btn-bar"><span class="poll-btn-fill"></span></span>
+        </button>
+      </div>
+      <p class="poll-meta"><span class="poll-count">0 votes so far</span> &middot; <span class="poll-status">pick one</span></p>
+    </div>
   </div>
 </section>
 
@@ -1139,12 +1160,14 @@
   function togglePlayPause(key){
     var p = players[key];
     if(p.state === "playing"){
-      synth.pause();
+      // Native speechSynthesis pause()/resume() restarts the utterance
+      // from the beginning in Safari instead of actually resuming, so
+      // "pause" cancels here and remembers the last spoken position —
+      // pressing play again re-speaks starting from that word instead
+      // of the beginning.
+      synth.cancel();
       p.state = "paused";
-      render(key);
-    } else if(p.state === "paused" && activeKey === key){
-      synth.resume();
-      p.state = "playing";
+      if(activeKey === key) activeKey = null;
       render(key);
     } else {
       startFrom(key, p.baseOffset || 0);
