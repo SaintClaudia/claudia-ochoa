@@ -138,7 +138,7 @@
 
   /* Hear-it mini player — follows the scroll while something is playing */
   .a11y-mini{
-    position:fixed; left:50%; bottom:22px; z-index:80;
+    position:fixed; left:50%; bottom:10px; z-index:80;
     display:flex; align-items:center; gap:12px;
     background:var(--espresso); color:var(--paper);
     border-radius:999px; padding:7px 14px 7px 7px;
@@ -163,7 +163,7 @@
     font-size:10px; cursor:pointer; padding:0;
   }
   @media (max-width:640px){
-    .a11y-mini{bottom:16px; padding:6px 12px 6px 6px; gap:9px;}
+    .a11y-mini{bottom:8px; padding:6px 12px 6px 6px; gap:9px;}
     .a11y-mini-label{max-width:44vw;}
   }
   @media (prefers-reduced-motion: reduce){
@@ -1260,13 +1260,27 @@
   var miniKey = null;
   var miniNames = { original: 'Lovesac.com', redesign: 'My Redesign' };
 
+  // Only surface the mini player once the real player cards have scrolled
+  // out of view — showing it while the cards are still on screen would
+  // just be a redundant second set of controls.
+  var cardsInView = true;
+  var compareBlock = players.original.btn.closest('.nav-compare');
+  if(compareBlock && 'IntersectionObserver' in window){
+    new IntersectionObserver(function(entries){
+      cardsInView = entries[0].isIntersecting;
+      updateMini();
+    }, { threshold: 0 }).observe(compareBlock);
+  } else {
+    cardsInView = false;
+  }
+
   function updateMini(){
     var next = null;
     Object.keys(players).forEach(function(k){
       if(players[k].state !== 'stopped') next = k;
     });
     miniKey = next;
-    if(!next){
+    if(!next || cardsInView){
       mini.classList.remove('show');
       return;
     }
