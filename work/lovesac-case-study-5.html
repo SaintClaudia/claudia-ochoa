@@ -165,6 +165,30 @@
     text-transform:uppercase; color:var(--sage); margin-bottom:10px;
   }
 
+  /* Mock original-nav list */
+  .mock-nav{
+    background:var(--paper); border:1px solid var(--line); border-radius:14px;
+    padding:24px 28px; margin:20px 0; max-width:420px;
+  }
+  .mock-nav-label{
+    display:block; font-weight:700; font-size:12px; letter-spacing:0.1em;
+    text-transform:uppercase; color:var(--espresso); margin-bottom:14px;
+  }
+  .mock-nav ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;}
+  .mock-nav li{font-size:15px; color:var(--ink-soft); border-top:1px solid var(--line); padding-top:10px;}
+  .mock-nav li:first-child{border-top:none; padding-top:0;}
+
+  /* Stage cards */
+  .stage-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin:24px 0;}
+  .stage-card{border-radius:14px; overflow:hidden; background:var(--paper); border:1px solid var(--line);}
+  .stage-card .img{aspect-ratio:4/5; background-size:cover; background-position:center;}
+  .stage-card .body{padding:16px;}
+  .stage-card .stage-num{
+    display:block; font-family:'Fraunces',serif; font-size:12.5px;
+    color:var(--clay-deep); margin-bottom:6px;
+  }
+  .stage-card h4{font-size:15.5px; font-weight:600; color:var(--espresso); margin:0;}
+
   blockquote{
     margin:32px 0; padding:2px 0 2px 24px; border-left:3px solid var(--clay);
     max-width:60ch;
@@ -218,6 +242,7 @@
     .section-head{grid-template-columns:1fr; gap:14px;}
     .compare-grid{grid-template-columns:1fr;}
     .nav-compare{grid-template-columns:1fr;}
+    .stage-grid{grid-template-columns:repeat(2,1fr);}
     .journey-step{grid-template-columns:1fr; gap:6px;}
     .spark{padding:32px 24px;}
   }
@@ -319,81 +344,51 @@
 <section class="divider">
   <div class="wrap">
     <div class="section-head">
-      <div><span class="num">The Customer Journey</span></div>
+      <div><span class="num">03 · Product Storytelling</span></div>
       <div>
-        <h2>Where the register shifts, and why.</h2>
-        <p class="lede">Laid end to end, the content-vs-utility split isn't just a rule applied screen by screen — it maps onto the actual path a customer walks, from first landing on the site to living with the couch. Each stage has a different emotional job, and the copy register shifts with it.</p>
+        <h2>Make it easier to imagine.</h2>
+        <p class="lede">Instead of simply saying "the only couch that can be any couch," the redesign shows what that looks like across the different chapters of a customer's life.</p>
       </div>
     </div>
 
-    <div class="journey">
-      <div class="journey-step">
-        <div class="num">01</div>
-        <div>
-          <p class="journey-title">Arrive<span class="journey-register">Content</span></p>
-          <p class="journey-mind">Curious, not yet committed</p>
-          <p class="journey-example">Homepage hero — <em>"One couch. Built for life."</em></p>
-        </div>
+    <p class="body-copy">The original experience immediately asks the customer to shop by the company's product taxonomy:</p>
+
+    <div class="mock-nav">
+      <span class="mock-nav-label">Shop by Product</span>
+      <ul>
+        <li>Our Recommended Picks</li>
+        <li>20% Off Select Sactionals</li>
+        <li>40% Off StealthTech Systems</li>
+        <li>40% Off Snugg</li>
+      </ul>
+    </div>
+
+    <p class="body-copy">On its own, there's nothing wrong with organizing a site around products. The problem is what that asks the customer to do before they've had a reason to care. They have to understand the product categories first, then figure out which one fits their life.</p>
+    <p class="body-copy">The language also keeps the customer at a distance. Sactionals, StealthTech, Snugg are names that make sense once you know the Lovesac ecosystem. For someone encountering the brand for the first time, they're product names — not reasons to connect.</p>
+    <p class="body-copy">The redesign starts from the other direction.</p>
+
+    <div class="stage-grid">
+      <div class="stage-card">
+        <div class="img" style="background-image:url('/images/lovesac-life-apartment.webp');"></div>
+        <div class="body"><span class="stage-num">Stage 01</span><h4>First apartment.</h4></div>
       </div>
-      <div class="journey-step">
-        <div class="num">02</div>
-        <div>
-          <p class="journey-title">Recognize<span class="journey-register">Content</span></p>
-          <p class="journey-mind">"Is this for someone like me?"</p>
-          <p class="journey-example">Stage-based storytelling — <em>First apartment &rarr; The house you'll stay in</em></p>
-        </div>
+      <div class="stage-card">
+        <div class="img" style="background-image:url('/images/lovesac-life-moving.webp');"></div>
+        <div class="body"><span class="stage-num">Stage 02</span><h4>Moving in together.</h4></div>
       </div>
-      <div class="journey-step">
-        <div class="num">03</div>
-        <div>
-          <p class="journey-title">Decide<span class="journey-register">Content</span></p>
-          <p class="journey-mind">Comparing options, needs to picture it</p>
-          <p class="journey-example">Sectional naming &amp; grid — <em>"The Weekend Lounger — Fits 4 &middot; Great for small living rooms"</em></p>
-        </div>
+      <div class="stage-card">
+        <div class="img" style="background-image:url('/images/lovesac-life-kids.webp');"></div>
+        <div class="body"><span class="stage-num">Stage 03</span><h4>Kids, dogs, chaos.</h4></div>
       </div>
-      <div class="journey-step">
-        <div class="num">04</div>
-        <div>
-          <p class="journey-title">Confirm fit<span class="journey-register">Utility</span></p>
-          <p class="journey-mind">Practical, wants a fast answer</p>
-          <p class="journey-example">Room-fit tool — <em>"Will it fit your room?"</em></p>
-        </div>
-      </div>
-      <div class="journey-step">
-        <div class="num">05</div>
-        <div>
-          <p class="journey-title">Plan<span class="journey-register">Utility</span></p>
-          <p class="journey-mind">Anticipating effort, wants no surprises</p>
-          <p class="journey-example">Assembly-time estimator — <em>setup size + people helping &rarr; estimated hours</em></p>
-        </div>
-      </div>
-      <div class="journey-step">
-        <div class="num">06</div>
-        <div>
-          <p class="journey-title">Reassure<span class="journey-register">Content</span></p>
-          <p class="journey-mind">Slight pre-purchase anxiety</p>
-          <p class="journey-example">Support / "What to expect" — <em>"Here's what happens." &middot; "Talk to a real person."</em></p>
-        </div>
-      </div>
-      <div class="journey-step">
-        <div class="num">07</div>
-        <div>
-          <p class="journey-title">Own it<span class="journey-register">Content, utility underneath</span></p>
-          <p class="journey-mind">Needs help, doesn't want friction</p>
-          <p class="journey-example">Post-purchase support — warm framing, but FAQs and contact info stay direct</p>
-        </div>
+      <div class="stage-card">
+        <div class="img" style="background-image:url('/images/lovesac-life-house.webp'); background-position:center 25%;"></div>
+        <div class="body"><span class="stage-num">Stage 04</span><h4>The house you'll stay in.</h4></div>
       </div>
     </div>
 
-    <p class="body-copy" style="margin-top:36px;">Two things stand out when the journey is mapped this way rather than page by page.</p>
-    <p class="body-copy"><strong>The register alternates, and that's intentional.</strong> A customer moves from Content (arrive, recognize, decide) to Utility (confirm fit, plan) and back to Content (reassure, own it). That's not inconsistency — it's the copy tracking the customer's actual state of mind. They're open to brand voice when they're still forming a feeling about the product, and they want it out of the way the moment they're heads-down on a practical task, then they're open to it again once the task is done and reassurance is what's needed.</p>
-
-    <blockquote>
-      <p>The moment of highest stakes — picking a specific sectional — is exactly where Lovesac's copy goes silent.</p>
-      <span class="attribution">The weak point in the real journey, stages 2 &rarr; 3</span>
-    </blockquote>
-
-    <p class="body-copy">Their homepage does "Recognize" reasonably well with the animated scenario banner — but the names there don't survive into "Decide," where the customer actually needs them most. The redesign's naming work exists specifically to close that gap — carrying the same "is this for someone like me" feeling from the hero all the way into the product grid, instead of letting it evaporate right before the decision gets made.</p>
+    <p class="body-copy">These are situations people already understand. They don't need an explanation, and they don't require prior knowledge of the product line.</p>
+    <p class="body-copy">The product becomes easier to understand because the customer can see where they fit into the story. A loveseat and ottoman make sense in a first apartment. Washable covers make sense when there are kids and dogs. A sectional that can split into two rooms makes sense when a home — and life — gets bigger.</p>
+    <p class="body-copy">The content isn't just describing what the product can do. It's giving the customer a reason to imagine what it could do for them.</p>
   </div>
 </section>
 
