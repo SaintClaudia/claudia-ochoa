@@ -1823,6 +1823,17 @@
   addBtn.addEventListener('click', addFurnitureRow);
   addFurnitureRow();
 
+  function resetRoomFitForm(){
+    roomWidthEl.value = '';
+    roomLengthEl.value = '';
+    list.innerHTML = '';
+    addFurnitureRow();
+    errorEl.style.display = 'none';
+    resultsEl.style.display = 'none';
+    resultsEl.innerHTML = '';
+  }
+  window.resetRoomFitForm = resetRoomFitForm;
+
   function clearGridHighlight(){
     document.querySelectorAll('.product-card').forEach(function(card){
       card.classList.remove('grid-nofit');
@@ -1959,7 +1970,7 @@
     });
   }
 
-  checkBtn.addEventListener('click', function(){
+  function runCheckFit(autoClose){
     var roomW = parseFloat(roomWidthEl.value);
     var roomL = parseFloat(roomLengthEl.value);
     errorEl.style.display = 'none';
@@ -1997,6 +2008,17 @@
     saveRoomFit(room);
     if(window.updateRoomFitUI) window.updateRoomFitUI();
     else applyRoomFitBadges(room);
+
+    if(autoClose) closeSpaceDrop();
+  }
+  checkBtn.addEventListener('click', function(){ runCheckFit(true); });
+  window.__runCheckFit = function(){ runCheckFit(false); };
+
+  drop.addEventListener('keydown', function(e){
+    if(e.key !== 'Enter') return;
+    if(!e.target.matches('input')) return;
+    e.preventDefault();
+    checkBtn.click();
   });
 })();
 </script>
@@ -2361,8 +2383,7 @@ window.updateRoomFitUI = updateRoomFitUI;
       if(room && wEl && lEl){
         wEl.value = room.width;
         lEl.value = room.length;
-        var checkBtn = document.getElementById('spaceCheckBtn');
-        if(checkBtn) checkBtn.click();
+        if(window.__runCheckFit) window.__runCheckFit();
       }
     });
   }
@@ -2371,6 +2392,7 @@ window.updateRoomFitUI = updateRoomFitUI;
       e.stopPropagation();
       clearRoomFit();
       updateRoomFitUI();
+      if(window.resetRoomFitForm) window.resetRoomFitForm();
     });
     clearBtn.addEventListener('keydown', function(e){
       if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); clearBtn.click(); }
