@@ -545,6 +545,8 @@
   .space-clear-btn:hover{color:var(--ls-ink);}
   .space-error{font-size:0.78rem; color:#b3402f; margin-top:8px;}
   .space-results{margin-top:24px; padding-top:20px; border-top:1px solid var(--ls-line);}
+  .space-results-header{display:flex; align-items:center; justify-content:space-between; gap:14px; margin-bottom:4px;}
+  .space-results-header .space-results-summary{margin-bottom:0;}
   .space-results-summary{font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:0.98rem; margin-bottom:4px;}
   .space-results-sub{font-size:0.8rem; color:var(--ls-ink-soft); margin-bottom:16px;}
   .space-result-row{
@@ -1495,7 +1497,6 @@
     </div>
     <div class="space-check-row">
       <button type="button" class="btn-primary space-check-btn" id="spaceCheckBtn">Check Fit</button>
-      <button type="button" class="space-clear-btn" id="spaceClearBtn" hidden>Clear</button>
     </div>
     <div class="space-error" id="spaceError" style="display:none;"></div>
     <div class="space-results" id="spaceResults" style="display:none;"></div>
@@ -1804,7 +1805,6 @@
   var list = document.getElementById('spaceFurnitureList');
   var addBtn = document.getElementById('spaceAddFurniture');
   var checkBtn = document.getElementById('spaceCheckBtn');
-  var drawerClearBtn = document.getElementById('spaceClearBtn');
   var errorEl = document.getElementById('spaceError');
   var resultsEl = document.getElementById('spaceResults');
   var roomWidthEl = document.getElementById('roomWidth');
@@ -1883,13 +1883,12 @@
   }
   window.resetRoomFitForm = resetRoomFitForm;
 
-  if(drawerClearBtn){
-    drawerClearBtn.addEventListener('click', function(){
-      if(window.clearRoomFit) window.clearRoomFit();
-      resetRoomFitForm();
-      if(window.updateRoomFitUI) window.updateRoomFitUI();
-    });
-  }
+  resultsEl.addEventListener('click', function(e){
+    if(!e.target.closest('#spaceClearBtn')) return;
+    if(window.clearRoomFit) window.clearRoomFit();
+    resetRoomFitForm();
+    if(window.updateRoomFitUI) window.updateRoomFitUI();
+  });
 
   function clearGridHighlight(){
     document.querySelectorAll('.product-card').forEach(function(card){
@@ -1911,7 +1910,7 @@
 
   function renderFitList(results, roomW, roomL, fitCount){
     resultsEl.innerHTML =
-      '<div class="space-results-summary">' + fitCount + ' of ' + products.length + ' setups will fit</div>' +
+      '<div class="space-results-header"><div class="space-results-summary">' + fitCount + ' of ' + products.length + ' setups will fit</div><button type="button" class="space-clear-btn" id="spaceClearBtn">Clear</button></div>' +
       '<div class="space-results-sub">Based on ' + roomW + '"×' + roomL + '" of floor space, minus what’s already in the room.</div>' +
       results.map(function(r){
         return '<div class="space-result-row ' + (r.fits ? 'fit' : 'nofit') + '">' +
@@ -2008,7 +2007,7 @@
     }
 
     resultsEl.innerHTML =
-      '<div class="space-results-summary">' + fitCount + ' configuration' + (fitCount === 1 ? '' : 's') + ' fit your room</div>' +
+      '<div class="space-results-header"><div class="space-results-summary">' + fitCount + ' configuration' + (fitCount === 1 ? '' : 's') + ' fit your room</div><button type="button" class="space-clear-btn" id="spaceClearBtn">Clear</button></div>' +
       '<div class="space-results-sub">Based on ' + roomW + '"×' + roomL + '" of floor space.</div>' +
       (fitCount ? groupHtml : fallbackHtml);
 
@@ -2406,15 +2405,12 @@ function updateRoomFitUI(){
   var room = loadRoomFit();
   var chip = document.getElementById('roomFitChip');
   var label = document.getElementById('roomFitChipLabel');
-  var drawerClearBtn = document.getElementById('spaceClearBtn');
   if(!chip) return;
   if(room && room.width && room.length){
     chip.hidden = false;
     label.textContent = 'Your Room: ' + room.width + '"×' + room.length + '"';
-    if(drawerClearBtn) drawerClearBtn.hidden = false;
   } else {
     chip.hidden = true;
-    if(drawerClearBtn) drawerClearBtn.hidden = true;
   }
   if(window.applyRoomFitBadges) window.applyRoomFitBadges(room);
   applyFilters();
