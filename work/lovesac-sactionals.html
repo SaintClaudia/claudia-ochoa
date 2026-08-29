@@ -463,6 +463,7 @@
     transition:opacity .25s ease, visibility .25s;
   }
   .space-backdrop.open{opacity:1; visibility:visible; pointer-events:auto;}
+  html.space-drop-lock{overflow:hidden;}
   .space-drop{
     position:fixed; top:0; right:0; left:auto; bottom:0;
     width:420px; max-width:90vw;
@@ -1600,6 +1601,7 @@
     backdrop.classList.remove('open');
     toggle.setAttribute('aria-expanded', 'false');
     document.querySelector('nav').classList.remove('dropdown-open');
+    document.documentElement.classList.remove('space-drop-lock');
   }
   window.__closeSpaceDrop = closeSpaceDrop;
 
@@ -1629,6 +1631,7 @@
       backdrop.classList.add('open');
       toggle.setAttribute('aria-expanded', 'true');
       document.querySelector('nav').classList.add('dropdown-open');
+      document.documentElement.classList.add('space-drop-lock');
     } else {
       closeSpaceDrop();
     }
