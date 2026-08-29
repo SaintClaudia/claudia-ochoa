@@ -317,7 +317,91 @@
     .roomfit-shots{gap:16px; flex-wrap:wrap;}
     .phone-frame{width:160px;}
     .sentiment-grid{grid-template-columns:1fr;}
+    .stx-stack{justify-content:center;}
   }
+
+  /* StealthTech app walkthrough — proposed-fix mockups */
+  .stx-vars{
+    --stx-dark:#1E1E1E;
+    --stx-surface:#282828;
+    --stx-surface-2:#333333;
+    --stx-teal:#10C4D4;
+    --stx-teal-wash:rgba(16,196,212,0.16);
+    --stx-text:#F3F3F1;
+    --stx-text-soft:#A6A6A3;
+    --stx-line:rgba(255,255,255,0.09);
+  }
+  .stx-badge{
+    display:inline-block; margin-left:8px; padding:3px 9px; border-radius:999px;
+    background:rgba(16,196,212,0.16); color:#08606A; font-size:10px; font-weight:800;
+    letter-spacing:0.07em; text-transform:uppercase; vertical-align:1px;
+  }
+  .phone-slot .stx-mock{
+    width:100%; height:100%; display:flex; flex-direction:column;
+    background:var(--stx-dark); color:var(--stx-text);
+    font-family:'Inter',sans-serif; overflow:hidden; position:relative;
+  }
+  .stx-mock .stx-back{padding:12px 14px 0; font-size:11px; letter-spacing:0.05em; color:var(--stx-text-soft); font-weight:700;}
+  .stx-mock .stx-word{text-align:center; padding:8px 10px 0;}
+  .stx-mock .stx-word b{display:block; font-size:19px; font-weight:800; letter-spacing:0.01em; color:#C9C7BF;}
+  .stx-mock .stx-word span{display:block; font-size:9px; letter-spacing:0.14em; color:#9C9A93; margin-top:1px;}
+  .stx-mock .stx-body{flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:14px 16px; gap:10px;}
+  .stx-mock h4{margin:0; font-family:'Inter',sans-serif; font-size:15px; font-weight:800; color:var(--stx-text); line-height:1.35;}
+  .stx-mock p{margin:0; font-size:10.5px; line-height:1.55; color:var(--stx-text-soft);}
+
+  /* Finding 1 — QR confirm */
+  .stx-scanbadge{width:38px; height:38px; border-radius:10px; background:var(--stx-teal-wash); display:flex; align-items:center; justify-content:center; margin:0 auto;}
+  .stx-checklist{list-style:none; margin:6px 0 0; padding:0; width:100%; display:flex; flex-direction:column; gap:6px; text-align:left;}
+  .stx-checklist li{display:flex; align-items:center; gap:8px; background:var(--stx-surface); border-radius:8px; padding:7px 10px; font-size:10.5px; color:var(--stx-text);}
+  .stx-checklist svg{flex:0 0 auto; width:13px; height:13px; stroke:var(--stx-teal);}
+  .stx-btn-teal{margin-top:4px; width:100%; padding:9px; border-radius:8px; background:var(--stx-teal); color:#0A2226; font-size:11px; font-weight:800; letter-spacing:0.02em;}
+  .stx-link-ghost{font-size:10px; color:var(--stx-text-soft); text-decoration:underline;}
+
+  /* Finding 2 — animated intro */
+  .stx-waveform{display:flex; align-items:flex-end; justify-content:center; gap:5px; height:46px; margin:6px auto 0;}
+  .stx-waveform span{display:block; width:6px; border-radius:3px; background:var(--stx-teal); animation:stxWave 1.1s ease-in-out infinite;}
+  .stx-waveform span:nth-child(1){height:16px; animation-delay:-0.9s;}
+  .stx-waveform span:nth-child(2){height:30px; animation-delay:-0.6s;}
+  .stx-waveform span:nth-child(3){height:44px; animation-delay:-0.3s;}
+  .stx-waveform span:nth-child(4){height:26px; animation-delay:-0.15s;}
+  .stx-waveform span:nth-child(5){height:18px; animation-delay:0s;}
+  @keyframes stxWave{0%,100%{transform:scaleY(0.45);} 50%{transform:scaleY(1);}}
+  .stx-glow{position:absolute; top:38%; left:50%; width:120px; height:120px; margin:-60px 0 0 -60px; border-radius:50%; background:radial-gradient(circle, rgba(16,196,212,0.35), transparent 70%); animation:stxPulse 2.2s ease-in-out infinite;}
+  @keyframes stxPulse{0%,100%{opacity:0.5; transform:scale(0.85);} 50%{opacity:1; transform:scale(1.1);}}
+
+  /* Finding 3 — searching state */
+  .stx-radar{position:relative; width:64px; height:64px; margin:4px auto 0; display:flex; align-items:center; justify-content:center;}
+  .stx-radar .stx-ring{position:absolute; inset:0; border:1.5px solid var(--stx-teal); border-radius:50%; opacity:0; animation:stxRing 1.8s ease-out infinite;}
+  .stx-radar .stx-ring:nth-child(2){animation-delay:0.6s;}
+  .stx-radar .stx-ring:nth-child(3){animation-delay:1.2s;}
+  @keyframes stxRing{0%{transform:scale(0.3); opacity:0.9;} 100%{transform:scale(1.6); opacity:0;}}
+  .stx-radar .stx-dot{width:16px; height:16px; border-radius:50%; background:var(--stx-teal);}
+  .stx-dots span{display:inline-block; width:4px; height:4px; margin:0 2px; border-radius:50%; background:var(--stx-text-soft); animation:stxDots 1.3s ease-in-out infinite;}
+  .stx-dots span:nth-child(2){animation-delay:0.15s;}
+  .stx-dots span:nth-child(3){animation-delay:0.3s;}
+  @keyframes stxDots{0%,80%,100%{opacity:0.25;} 40%{opacity:1;}}
+
+  /* Finding 4 — in-app instructions */
+  .stx-videocard{width:100%; border-radius:10px; background:var(--stx-surface); border:1px solid var(--stx-line); overflow:hidden; text-align:left;}
+  .stx-videocard .stx-thumb{position:relative; height:88px; background:linear-gradient(135deg,#242424,#141414); display:flex; align-items:center; justify-content:center;}
+  .stx-playbtn{width:34px; height:34px; border-radius:50%; background:var(--stx-teal); display:flex; align-items:center; justify-content:center;}
+  .stx-playbtn svg{width:12px; height:12px; fill:#0A2226;}
+  .stx-videocard .stx-caption{padding:8px 10px; font-size:10px; color:var(--stx-text-soft); line-height:1.4;}
+  .stx-pdf-link{display:flex; align-items:center; gap:6px; font-size:10.5px; color:var(--stx-teal); font-weight:700; margin-top:2px;}
+
+  /* Stacked "before" filmstrip */
+  .stx-stack{display:flex; align-items:center; justify-content:center; gap:8px; flex-wrap:wrap;}
+  .stx-stack .phone-slot{max-width:82px; margin:0;}
+  .stx-stack .stx-arrow{color:var(--ink-soft); font-size:13px; flex:0 0 auto;}
+  .stx-stack .stx-more{
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    width:82px; aspect-ratio:9/17.5; border:10px solid var(--espresso); border-radius:32px;
+    box-sizing:content-box; background:var(--paper); font-size:10px; font-weight:700; color:var(--ink-soft); padding:6px;
+  }
+  .stx-finding-label{margin-top:48px;}
+  .stx-finding-label .apa-num{color:var(--clay-deep); font-weight:800; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; display:block;}
+  .stx-finding-label .apa-title{display:block; font-family:'Fraunces',serif; font-style:normal; font-weight:600; font-size:19px; color:var(--espresso); margin-top:4px;}
+
   .skip-link{
     position:absolute; top:-100%; left:24px; z-index:9999;
     padding:12px 20px; background:var(--espresso); color:var(--paper);
@@ -327,7 +411,13 @@
   }
   .skip-link:focus{top:0; outline:2px solid var(--paper); outline-offset:-4px;}
   :focus-visible{outline:2px solid var(--clay); outline-offset:3px;}
-  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto;}}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .stx-waveform span, .stx-glow, .stx-radar .stx-ring, .stx-dots span{animation:none;}
+    .stx-waveform span{transform:scaleY(0.8);}
+    .stx-radar .stx-ring{opacity:0.4; transform:scale(1);}
+    .stx-dots span{opacity:1;}
+  }
 </style>
 </head>
 <body>
@@ -718,6 +808,141 @@
     <div class="context-strip">
       <span class="tag">Worth noting</span>
       StealthTech is the one finding here where the friction isn't cosmetic or informational — it's the hardware and software working against the same modularity Sactionals is known for. A real fix would have to touch the product itself, not just the site around it.
+    </div>
+
+    <h3 style="margin-top:56px;">The app promises &ldquo;immersive.&rdquo; The onboarding undercuts it.</h3>
+    <p class="lede" style="margin-top:0;">Everything above comes from what other owners reported after the fact. Setting up the StealthTech companion app firsthand — the six-step wizard the app itself promises, pairing the system to a Sactional's layout, fabric, and arm style — surfaces a second, earlier layer of friction: smaller than a buried subwoofer, but no less avoidable. Four moments stood out enough to walk through screen by screen, each paired with a lighter-weight fix.</p>
+
+    <div class="context-strip">
+      <span class="tag">A different kind of evidence</span>
+      Everything else in this section is secondary research — what other owners said after the fact. What follows is a firsthand walkthrough of the app itself, screen by screen.
+    </div>
+
+    <div class="stx-vars">
+
+    <p class="apa-label stx-finding-label"><span class="apa-num">Finding 1</span><span class="apa-title">Analog setup in a Bluetooth app</span></p>
+    <p class="nav-note" style="margin-top:8px;">Confirming the hardware is set up correctly means re-entering, by hand, what's already sitting in the room: layout, arm style, fabric category, fabric type, fabric color, and center-channel mounting — six decisions spread across four screens. All six answers are already printed on the frame's own fabric tag.</p>
+    <div class="nav-compare" style="margin-top:24px;">
+      <div class="nav-col before">
+        <div class="nav-label"><span class="sw"></span>StealthTech App &mdash; 4 screens, 6 decisions</div>
+        <div class="stx-stack">
+          <div class="phone-slot"><img src="/images/lovesac-stealthtech-armstyle-before.webp" width="760" height="1547" loading="lazy" decoding="async" alt="StealthTech app Select Arm Style screen, showing Standard, Swept, and Angled arm diagrams with and without an acoustic pillow."></div>
+          <span class="stx-arrow" aria-hidden="true">&rarr;</span>
+          <div class="phone-slot"><img src="/images/lovesac-stealthtech-fabric-before.webp" width="760" height="1551" loading="lazy" decoding="async" alt="StealthTech app Fabric Selection screen with a Fabric Category accordion listing Bouclé, Canvas, Chenille, and Denim."></div>
+          <span class="stx-arrow" aria-hidden="true">&rarr;</span>
+          <div class="stx-more">+2 more<br>screens</div>
+        </div>
+      </div>
+      <div class="nav-col after">
+        <div class="nav-label"><span class="sw"></span>Proposed &mdash; one scan</div>
+        <div class="phone-slot">
+          <div class="stx-mock">
+            <div class="stx-back">&larr; BACK</div>
+            <div class="stx-word"><b>LOVESAC</b><span>STEALTHTECH</span></div>
+            <div class="stx-body">
+              <div class="stx-scanbadge" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--stx-teal)" stroke-width="1.8"><rect x="3" y="3" width="6" height="6" rx="1"/><rect x="15" y="3" width="6" height="6" rx="1"/><rect x="3" y="15" width="6" height="6" rx="1"/><rect x="15" y="15" width="2" height="2" fill="var(--stx-teal)" stroke="none"/><rect x="19" y="15" width="2" height="2" fill="var(--stx-teal)" stroke="none"/><rect x="15" y="19" width="2" height="2" fill="var(--stx-teal)" stroke="none"/><rect x="19" y="19" width="2" height="2" fill="var(--stx-teal)" stroke="none"/></svg>
+              </div>
+              <h4>Configuration Detected</h4>
+              <p>Scanned from the QR tag on your frame.</p>
+              <ul class="stx-checklist">
+                <li><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Layout &mdash; Left L</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Arm Style &mdash; Standard</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Fabric &mdash; Micro Bouclé, Terracotta</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Center Channel &mdash; Wall Mount</li>
+              </ul>
+              <div class="stx-btn-teal">LOOKS RIGHT? CONTINUE</div>
+              <span class="stx-link-ghost">Edit manually instead</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="nav-note">One scan carries everything the four-screen interview is trying to establish. The manual flow doesn't disappear — it becomes the fallback for the one owner without a working camera, not the default path for everyone else.</p>
+
+    <p class="apa-label stx-finding-label"><span class="apa-num">Finding 2</span><span class="apa-title">A static welcome screen for an &ldquo;immersive&rdquo; product</span></p>
+    <p class="nav-note" style="margin-top:8px;">Onboarding opens on the line &ldquo;Get Ready for a Fully Immersive Audio Experience&rdquo; over a still waveform icon. It's the one screen in the entire flow where motion would cost nothing and actually earn the claim.</p>
+    <div class="nav-compare" style="margin-top:24px;">
+      <div class="nav-col before">
+        <div class="nav-label"><span class="sw"></span>StealthTech App &mdash; static</div>
+        <div class="phone-slot"><img src="/images/lovesac-stealthtech-intro-before.webp" width="760" height="1534" loading="lazy" decoding="async" alt="StealthTech app welcome screen reading 'Get Ready for a Fully Immersive Audio Experience' over a still teal waveform icon."></div>
+      </div>
+      <div class="nav-col after">
+        <div class="nav-label"><span class="sw"></span>Proposed &mdash; in motion<span class="stx-badge">Animated</span></div>
+        <div class="phone-slot">
+          <div class="stx-mock">
+            <div class="stx-word" style="padding-top:22px;"><b>LOVESAC</b><span>STEALTHTECH</span></div>
+            <div class="stx-body">
+              <div class="stx-glow" aria-hidden="true"></div>
+              <div class="stx-waveform" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+              <h4>Get Ready for a Fully<br>Immersive Audio Experience</h4>
+              <p>Welcome to the StealthTech App</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="nav-note">This is the live page, not a rendering — the bars and glow above are moving right now (unless your system has reduced motion turned on). Same waveform mark the app already uses; it just isn't frozen.</p>
+
+    <p class="apa-label stx-finding-label"><span class="apa-num">Finding 3</span><span class="apa-title">A Bluetooth search with no zero state</span></p>
+    <p class="nav-note" style="margin-top:8px;">When the app can't find the system, &ldquo;Select your StealthTech System&rdquo; just sits empty under &ldquo;Nearby Systems&rdquo; — no spinner, no &ldquo;searching,&rdquo; nothing to tell you whether it's still looking or has already given up.</p>
+    <div class="nav-compare" style="margin-top:24px;">
+      <div class="nav-col before">
+        <div class="nav-label"><span class="sw"></span>StealthTech App &mdash; no feedback</div>
+        <div class="phone-slot"><img src="/images/lovesac-stealthtech-signal-before.webp" width="760" height="1552" loading="lazy" decoding="async" alt="StealthTech app Select your StealthTech System screen with an empty Nearby Systems list and no loading or empty-state indicator."></div>
+      </div>
+      <div class="nav-col after">
+        <div class="nav-label"><span class="sw"></span>Proposed &mdash; active state<span class="stx-badge">Animated</span></div>
+        <div class="phone-slot">
+          <div class="stx-mock">
+            <div class="stx-back">&larr; BACK</div>
+            <div class="stx-word"><b>LOVESAC</b><span>STEALTHTECH</span></div>
+            <div class="stx-body">
+              <div class="stx-radar" aria-hidden="true">
+                <span class="stx-ring"></span><span class="stx-ring"></span><span class="stx-ring"></span>
+                <span class="stx-dot"></span>
+              </div>
+              <h4>Searching for nearby systems<span class="stx-dots" aria-hidden="true"><span></span><span></span><span></span></span></h4>
+              <p>Keep your Sound + Charge System powered on and within range.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="nav-note">Either fix works on its own: a searching state so the wait reads as progress, or — if nothing turns up — an actual empty state with a reason and a retry. What's on the app today is neither.</p>
+
+    <p class="apa-label stx-finding-label"><span class="apa-num">Finding 4</span><span class="apa-title">&ldquo;View Instructions&rdquo; leaves the app to make you work for a video</span></p>
+    <p class="nav-note" style="margin-top:8px;">The link exits the app for lovesac.com, where an email-capture overlay and a cookie banner sit between you and the actual setup video &mdash; buried at the bottom of the page, next to a separate &ldquo;View Full PDF&rdquo; link doing the same job a different way.</p>
+    <div class="nav-compare" style="margin-top:24px;">
+      <div class="nav-col before">
+        <div class="nav-label"><span class="sw"></span>lovesac.com &mdash; 3 steps before the video</div>
+        <div class="stx-stack">
+          <div class="phone-slot"><img src="/images/lovesac-stealthtech-instructions-popup-before.webp" width="760" height="1551" loading="lazy" decoding="async" alt="lovesac.com opening on a 'Join our list to get up to 40% off' email capture overlay instead of the setup instructions."></div>
+          <span class="stx-arrow" aria-hidden="true">&rarr;</span>
+          <div class="phone-slot"><img src="/images/lovesac-stealthtech-instructions-cookies-before.webp" width="760" height="1550" loading="lazy" decoding="async" alt="lovesac.com cookie consent banner covering the page with Essential Only and Allow Cookies buttons."></div>
+          <span class="stx-arrow" aria-hidden="true">&rarr;</span>
+          <div class="phone-slot"><img src="/images/lovesac-stealthtech-instructions-video-before.webp" width="760" height="1548" loading="lazy" decoding="async" alt="The StealthTech setup video finally visible, embedded at the bottom of the lovesac.com support page."></div>
+        </div>
+      </div>
+      <div class="nav-col after">
+        <div class="nav-label"><span class="sw"></span>Proposed &mdash; stays in the app</div>
+        <div class="phone-slot">
+          <div class="stx-mock">
+            <div class="stx-back">&times; CLOSE</div>
+            <div class="stx-body" style="justify-content:flex-start; padding-top:22px;">
+              <h4 style="align-self:flex-start;">Setup Instructions</h4>
+              <div class="stx-videocard">
+                <div class="stx-thumb" aria-hidden="true"><div class="stx-playbtn"><svg viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20"/></svg></div></div>
+                <div class="stx-caption">How to Set Up Sactionals StealthTech Sound + Charge &middot; 2:14</div>
+              </div>
+              <span class="stx-pdf-link">&darr; Download the full PDF guide</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="nav-note">One tap, one screen, no browser tab: the video plays and the PDF sits right below it &mdash; instead of a link that trades the app's own onboarding for a marketing pop-up first.</p>
+
     </div>
   </div>
 </section>
