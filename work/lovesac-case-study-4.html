@@ -197,6 +197,12 @@
   .impact-stat .big{font-family:'Fraunces',serif; font-size:26px; color:var(--clay-deep); font-weight:600; line-height:1.15;}
   .impact-stat .label{font-size:12.5px; color:var(--ink-soft); margin-top:8px; line-height:1.45;}
 
+  .kpi-list{display:flex; flex-direction:column; gap:20px; margin-top:20px;}
+  .kpi-item{padding-top:20px; border-top:1px solid var(--line);}
+  .kpi-item:first-child{padding-top:0; border-top:none;}
+  .kpi-num{font-family:'Fraunces',serif; font-weight:600; font-size:15px; color:var(--clay-deep); margin-bottom:6px;}
+  .kpi-item p{font-size:15.5px; line-height:1.6; color:var(--ink-soft); margin:0;}
+
   .context-strip{
     margin-top:56px;
     background:var(--espresso);
@@ -415,12 +421,24 @@
     <p class="nav-note">*The estimated reduction is based on the number of steps removed from the current purchase path, including collapsed trust-signal accordions and bringing the room-visualization experience into the product page. It is a directional projection, not a measured result from live traffic.</p>
 
     <p class="nav-note" style="margin-top:32px;">If this shipped, here's what I'd track to know whether it actually worked:</p>
-    <ul class="why-list">
-      <li><span class="mark">1</span><span><strong>Conversion rate, PDP &rarr; cart.</strong> The redesign's core bet is fewer decision-points before commitment.</span></li>
-      <li><span class="mark">2</span><span><strong>Room Fit engagement rate.</strong> The percentage of PDP visitors who use the tool before adding to cart.</span></li>
-      <li><span class="mark">3</span><span><strong>Return rate, Room Fit users vs. non-users.</strong> The tool's real test is whether spatial confidence reduces returns.</span></li>
-      <li><span class="mark">4</span><span><strong>Time-to-purchase.</strong> From landing to checkout, benchmarked against the current site average.</span></li>
-    </ul>
+    <div class="kpi-list">
+      <div class="kpi-item">
+        <div class="kpi-num">01 &middot; Conversion rate &mdash; PDP &rarr; cart</div>
+        <p>The primary measure of the redesign's purchase-path changes: are fewer decision points helping more customers move forward?</p>
+      </div>
+      <div class="kpi-item">
+        <div class="kpi-num">02 &middot; Room Fit engagement</div>
+        <p>The percentage of product-page visitors who use Room Fit before adding to cart, showing whether customers find the tool useful at the point of decision.</p>
+      </div>
+      <div class="kpi-item">
+        <div class="kpi-num">03 &middot; Return rate &mdash; Room Fit users vs. non-users</div>
+        <p>The stronger test of the tool's value: whether greater confidence in how a Sactional will fit translates into fewer returns.</p>
+      </div>
+      <div class="kpi-item">
+        <div class="kpi-num">04 &middot; Time to purchase</div>
+        <p>Time from landing to checkout, compared with the current site benchmark, to see whether a clearer path reduces friction without rushing the customer through decisions.</p>
+      </div>
+    </div>
   </div>
 </section>
 
