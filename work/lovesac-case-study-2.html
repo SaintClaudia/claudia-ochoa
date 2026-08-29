@@ -158,6 +158,22 @@
     box-shadow:0 1px 2px rgba(36,28,22,0.06);
   }
   .browser-frame img{width:100%; height:auto; display:block;}
+  .reviews-demo{background:var(--cream); padding:48px 32px;}
+  .reviews-demo-header{text-align:center; margin-bottom:32px;}
+  .reviews-demo-eyebrow{display:block; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:10px;}
+  .reviews-demo-header h4{font-size:28px; margin:0 0 14px; color:var(--espresso); font-family:'Fraunces',serif; font-weight:600;}
+  .reviews-demo-stars{display:flex; align-items:center; justify-content:center; gap:8px; font-size:13px; color:var(--ink-soft);}
+  .reviews-demo-star-row{color:var(--clay-deep); font-size:16px; letter-spacing:2px;}
+  .reviews-demo-star-row .dim{color:var(--line);}
+  .reviews-demo-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  .reviews-demo-card{background:var(--paper); border-radius:12px; padding:24px;}
+  .reviews-demo-rating{color:var(--clay-deep); font-size:14px; letter-spacing:2px; margin-bottom:14px;}
+  .reviews-demo-card blockquote{margin:0 0 20px; padding-left:14px; border-left:2px solid var(--line); font-size:14.5px; font-style:italic; line-height:1.5; color:var(--ink);}
+  .reviews-demo-person{display:flex; align-items:center; gap:10px;}
+  .reviews-demo-avatar{width:34px; height:34px; border-radius:50%; background:var(--clay-deep); color:var(--paper); display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; flex-shrink:0;}
+  .reviews-demo-name{font-size:13.5px; font-weight:700; color:var(--espresso); display:flex; align-items:center; gap:4px;}
+  .reviews-demo-name svg{width:12px; height:12px; color:var(--ink-soft);}
+  .reviews-demo-verified{font-size:11.5px; color:var(--ink-soft); margin-top:1px;}
   .phone-frame-wide{
     box-sizing:content-box;
     border:10px solid var(--espresso);
@@ -476,6 +492,8 @@
     .tip-card{display:none;}
     .section-head{grid-template-columns:1fr; gap:14px;}
     .nav-compare, .roomfit-layout{grid-template-columns:1fr;}
+    .reviews-demo{padding:32px 20px;}
+    .reviews-demo-grid{grid-template-columns:1fr;}
     .roomfit-shots{gap:16px; flex-wrap:wrap;}
     .phone-frame{width:160px;}
     .phone-frame.rf-frame{width:240px;}
@@ -956,7 +974,53 @@
       </div>
       <div class="nav-col after">
         <div class="nav-label"><span class="sw"></span>Redesign — reviews section</div>
-        <div class="browser-frame"><img src="/images/lovesac-ratings-after.webp" srcset="/images/lovesac-ratings-after-640.webp 640w, /images/lovesac-ratings-after.webp 1600w" sizes="(max-width: 820px) 100vw, 1000px" width="1600" height="640" loading="lazy" decoding="async" alt="Redesigned reviews section titled 'Loved in real homes,' showing all three testimonial cards at once, each with its own 5-star rating and a Verified Buyer checkmark in place of a customer photo."></div>
+        <div class="browser-frame">
+          <div class="reviews-demo">
+            <div class="reviews-demo-header">
+              <span class="reviews-demo-eyebrow">What People Are Saying</span>
+              <h4>Loved in real homes.</h4>
+              <div class="reviews-demo-stars">
+                <span class="reviews-demo-star-row" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;<span class="dim">&#9733;</span></span>
+                <span>4.3 (8,509 Reviews)</span>
+              </div>
+            </div>
+            <div class="reviews-demo-grid">
+              <div class="reviews-demo-card">
+                <div class="reviews-demo-rating" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <blockquote>&ldquo;Couch is fantastic. Every option and every part of it. Insanely comfortable.&rdquo;</blockquote>
+                <div class="reviews-demo-person">
+                  <span class="reviews-demo-avatar" aria-hidden="true">P</span>
+                  <div>
+                    <div class="reviews-demo-name">Patty F. <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div class="reviews-demo-verified">Verified Buyer</div>
+                  </div>
+                </div>
+              </div>
+              <div class="reviews-demo-card">
+                <div class="reviews-demo-rating" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <blockquote>&ldquo;I live in a very small condo, and hidden storage is a must. These storage seats are a total game changer.&rdquo;</blockquote>
+                <div class="reviews-demo-person">
+                  <span class="reviews-demo-avatar" aria-hidden="true">L</span>
+                  <div>
+                    <div class="reviews-demo-name">Lauren <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div class="reviews-demo-verified">Verified Buyer</div>
+                  </div>
+                </div>
+              </div>
+              <div class="reviews-demo-card">
+                <div class="reviews-demo-rating" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <blockquote>&ldquo;Lovesac was the perfect choice. The look, comfort, flexibility, and price were all better than imagined.&rdquo;</blockquote>
+                <div class="reviews-demo-person">
+                  <span class="reviews-demo-avatar" aria-hidden="true">L</span>
+                  <div>
+                    <div class="reviews-demo-name">Libby <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div class="reviews-demo-verified">Verified Buyer</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
