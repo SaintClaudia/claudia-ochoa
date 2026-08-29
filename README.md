@@ -19,6 +19,7 @@ Plain HTML, CSS, and vanilla JS. No frameworks, no build step, no dependencies. 
 ├── 404.html                          # Custom error page
 ├── _nav.html                         # Shared nav partial (single source of truth)
 ├── _footer.html                      # Shared footer partial (single source of truth)
+├── _hidden-work-cards.html           # Archived work-grid cards (Personal, bible-study, Walmart, Home Depot) — not a live page, not included anywhere
 ├── build.py                          # Stamps _nav.html and _footer.html into all pages
 ├── favicon.svg                       # Heart favicon (SVG)
 ├── favicon-192.png                   # Heart favicon (PNG, for Google Search)
