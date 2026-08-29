@@ -40,116 +40,11 @@
   .wrap{max-width:1240px; margin:0 auto; padding:0 32px;}
   h1,h2,h3,.display{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;letter-spacing:-0.02em;line-height:1.02;}
 
-  /* ---------- decision rail (signature element) ---------- */
-  .rail-wrap{background:var(--surface);border-bottom:1px solid var(--line);padding:18px 32px 0;}
-  .rail{display:flex;max-width:1200px;margin:0 auto;position:relative;}
-  .rail::before{content:'';position:absolute;top:15px;left:32px;right:32px;height:2px;background:var(--line);z-index:0;}
-  .rail-step{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;position:relative;z-index:1;padding-bottom:16px;}
-  .rail-dot{width:32px;height:32px;border-radius:50%;background:var(--surface);border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:600;font-size:13px;color:var(--muted);transition:.2s;}
-  .rail-label{font-size:12px;font-weight:600;color:var(--muted);text-align:center;}
-  .rail-sub{font-size:10.5px;color:var(--muted);opacity:.75;}
-  .rail-step.active .rail-dot{background:var(--teal);border-color:var(--teal);color:#fff;}
-  .rail-step.active .rail-label{color:var(--ink);}
-  .rail-step.done .rail-dot{background:var(--teal-tint);border-color:var(--teal);color:var(--teal);}
-  .rail-step.done .rail-dot::after{content:'✓';}
-  .rail-step.done .rail-dot span{display:none;}
-
-  /* ---------- layout ---------- */
-  .stage{display:grid;grid-template-columns:1.15fr 0.85fr;gap:0;max-width:1200px;margin:0 auto;min-height:640px;}
-  .visual{background:linear-gradient(180deg,#F4F1EA,#E8E3D8);display:flex;align-items:center;justify-content:center;padding:40px;position:sticky;top:0;align-self:flex-start;height:640px;}
-  .sofa-card{background:var(--surface);border-radius:18px;padding:36px;box-shadow:0 20px 50px -20px rgba(30,40,38,.25);width:100%;max-width:440px;text-align:center;}
-  .sofa-svg{width:100%;height:auto;}
-  .price-tag{margin-top:22px;}
-  .price-was{color:var(--muted);text-decoration:line-through;font-size:14px;margin-right:8px;}
-  .price-now{font-family:'Bricolage Grotesque';font-weight:700;font-size:30px;}
-  .price-diff{display:inline-block;margin-left:10px;font-size:12.5px;font-weight:600;padding:3px 9px;border-radius:20px;background:var(--teal-tint);color:var(--teal-deep);opacity:0;transition:opacity .25s;}
-  .price-diff.show{opacity:1;}
-  .config-chips{margin-top:16px;display:flex;flex-wrap:wrap;gap:6px;justify-content:center;}
-  .chip{font-size:11px;background:var(--bg);border:1px solid var(--line);padding:4px 10px;border-radius:20px;color:var(--muted);}
-
-  .panel{background:var(--surface);padding:36px 40px 120px;}
-  .panel-head{margin-bottom:6px;font-size:24px;}
-  .panel-desc{color:var(--muted);font-size:14px;margin-bottom:28px;}
-
-  /* ---------- generic step visibility ---------- */
-  .step{display:none;}
-  .step.active{display:block;animation:fade .25s ease;}
-  @keyframes fade{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:translateY(0);}}
-
-  /* ---------- tabs ---------- */
-  .tabs{display:flex;gap:4px;background:var(--bg);padding:4px;border-radius:10px;margin-bottom:24px;width:fit-content;}
-  .tab{padding:9px 18px;border-radius:8px;font-family:inherit;font-size:13px;font-weight:600;color:var(--muted);cursor:pointer;border:none;background:none;}
-  .tab.active{background:var(--surface);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.08);}
-
-  /* ---------- popular setups grid ---------- */
-  .setup-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-  .setup-card{border:1.5px solid var(--line);border-radius:12px;padding:14px;cursor:pointer;transition:.15s;}
-  .setup-card:hover{border-color:var(--teal);}
-  .setup-card.selected{border-color:var(--teal);background:var(--teal-tint);}
-  .setup-shape{width:100%;height:52px;margin-bottom:10px;}
-  .setup-name{font-weight:600;font-size:13.5px;}
-  .setup-meta{font-size:12px;color:var(--muted);margin-top:2px;}
-  .setup-price{font-size:13px;font-weight:600;margin-top:8px;}
-
-  /* ---------- customize sub-controls ---------- */
-  .field-group{margin-bottom:26px;}
-  .field-label{font-weight:600;font-size:13.5px;margin-bottom:4px;}
-  .field-help{font-size:12px;color:var(--muted);margin-bottom:12px;}
-  .option-row{display:flex;gap:10px;}
-  .option-btn{flex:1;min-width:0;border:1.5px solid var(--line);border-radius:10px;padding:12px 10px;text-align:center;cursor:pointer;font-size:13px;font-weight:600;}
-  .option-btn.selected{border-color:var(--teal);background:var(--teal-tint);color:var(--teal-deep);}
-  .stepper-row{display:flex;align-items:center;justify-content:space-between;border:1px solid var(--line);border-radius:10px;padding:12px 16px;}
-  .stepper-ctrl{display:flex;align-items:center;gap:14px;}
-  .stepper-btn{width:26px;height:26px;border-radius:50%;border:1px solid var(--line);background:var(--surface);cursor:pointer;font-family:inherit;font-size:15px;line-height:1;}
-
-  /* ---------- style step: filters + swatches ---------- */
-  .filter-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;}
-  .filter-chip{border:1px solid var(--line);background:var(--surface);padding:7px 14px;border-radius:20px;font-family:inherit;font-size:12.5px;font-weight:500;cursor:pointer;color:var(--ink);}
-  .filter-chip.active{background:var(--ink);color:#fff;border-color:var(--ink);}
-  .swatch-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:28px;}
-  .swatch{cursor:pointer;text-align:center;}
-  .swatch-sw{width:100%;aspect-ratio:1;border-radius:8px;border:2px solid transparent;margin-bottom:6px;}
-  .swatch.selected .swatch-sw{border-color:var(--teal);box-shadow:0 0 0 2px var(--teal-tint);}
-  .swatch-name{font-size:10.5px;color:var(--muted);line-height:1.2;}
-  .fill-cards{display:flex;gap:12px;}
-  .fill-card{flex:1;border:1.5px solid var(--line);border-radius:12px;padding:16px;cursor:pointer;}
-  .fill-card.selected{border-color:var(--teal);background:var(--teal-tint);}
-  .fill-title{font-weight:600;font-size:13.5px;}
-  .fill-price{font-size:12px;color:var(--muted);margin-top:2px;}
-  .fill-desc{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.4;}
-
-  /* ---------- enhance step ---------- */
-  .enhance-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-  .enhance-card{border:1.5px solid var(--line);border-radius:12px;padding:16px;}
-  .enhance-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;}
-  .enhance-name{font-weight:600;font-size:13.5px;}
-  .enhance-price{font-size:12px;color:var(--brass);font-weight:600;margin-top:2px;}
-  .toggle{width:38px;height:22px;border-radius:20px;background:var(--line);position:relative;cursor:pointer;flex-shrink:0;}
-  .toggle.on{background:var(--teal);}
-  .toggle::after{content:'';position:absolute;width:18px;height:18px;background:#fff;border-radius:50%;top:2px;left:2px;transition:.15s;}
-  .toggle.on::after{left:18px;}
-  .enhance-desc{font-size:12px;color:var(--muted);line-height:1.4;}
-
-  /* ---------- review step ---------- */
-  .review-row{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--line);}
-  .review-label{font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);font-weight:600;}
-  .review-value{font-size:13.5px;margin-top:3px;font-weight:500;}
-  .review-price{font-size:13.5px;font-weight:600;}
-  .review-edit{font-size:12px;color:var(--teal);font-weight:600;cursor:pointer;}
-  .total-row{display:flex;justify-content:space-between;align-items:center;padding-top:20px;margin-top:6px;}
-  .total-label{font-family:'Bricolage Grotesque';font-weight:700;font-size:16px;}
-  .total-value{font-family:'Bricolage Grotesque';font-weight:700;font-size:26px;}
-
-  /* ---------- sticky footer ---------- */
-  .footer{position:fixed;bottom:0;left:0;right:0;background:var(--surface);border-top:1px solid var(--line);padding:16px 40px;display:flex;justify-content:flex-end;gap:12px;z-index:5;}
-  .footer-inner{max-width:1200px;margin:0 auto;width:100%;display:flex;justify-content:flex-end;align-items:center;gap:16px;}
   .btn{padding:13px 26px;border-radius:10px;font-family:inherit;font-weight:600;font-size:14px;cursor:pointer;border:none;}
   .btn.btn-primary{padding:13px 26px;border-radius:10px;font-size:14px;}
   .btn-ghost{background:none;color:var(--muted);border:1.5px solid var(--line);}
-  .footer-price{font-family:'Bricolage Grotesque';font-weight:700;font-size:18px;margin-right:auto;}
-  .footer-price small{display:block;font-family:'Work Sans';font-weight:400;font-size:11px;color:var(--muted);}
-
-  .annotation{background:#FFF7E8;border:1px dashed var(--brass);border-radius:10px;padding:10px 14px;font-size:11.5px;color:#7A5F2C;margin-bottom:20px;}
+  .filter-chip{border:1px solid var(--line);background:var(--surface);padding:7px 14px;border-radius:20px;font-family:inherit;font-size:12.5px;font-weight:500;cursor:pointer;color:var(--ink);}
+  .filter-chip.active{background:var(--ink);color:#fff;border-color:var(--ink);}
 
   /* ---------- browse / PLP view ---------- */
   .browse-wrap{max-width:1240px;margin:0 auto;padding:0 32px 100px;}
@@ -206,7 +101,6 @@
   .filter-price-option.selected{background:var(--ls-ink); color:#fff;}
 
   .product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-  .product-card{cursor:pointer;}
   .product-thumb{background:linear-gradient(180deg,#F4F1EA,#E6E1D3);border-radius:12px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;margin-bottom:12px;overflow:hidden;}
   .product-thumb svg{width:78%;}
   .product-thumb.has-photo{background:#FDFCFA;}
@@ -216,14 +110,13 @@
   .product-swatches{display:flex;gap:5px;margin-bottom:8px;}
   .pswatch{width:15px;height:15px;border-radius:50%;border:1px solid rgba(0,0,0,.08);}
   .product-price{font-size:14px;font-weight:700;}
+  .product-thumb.nav-mock, .product-name.nav-mock, .product-swatches.nav-mock, .product-price.nav-mock{cursor:pointer; border-radius:6px; transition:opacity .15s ease;}
+  .product-thumb.nav-mock:hover, .product-name.nav-mock:hover, .product-swatches.nav-mock:hover, .product-price.nav-mock:hover{opacity:.7;}
   .product-badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:var(--teal-deep);background:var(--teal-tint);padding:3px 8px;border-radius:5px;margin-bottom:8px;}
   .product-card{transition:opacity .25s ease;}
   .product-card.grid-nofit{opacity:0.35;}
   .fit-badge{display:flex;align-items:center;gap:4px;font-size:10px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:var(--ls-canvas);background:var(--ls-clay);padding:3px 8px;border-radius:5px;margin-bottom:8px;}
   .fit-badge svg{width:10px;height:10px;}
-
-  #view-configurator{display:none;}
-  .back-to-setups-link{font-size:13px;color:var(--muted);cursor:pointer;display:flex;align-items:center;gap:4px;margin-bottom:2px;}
 
   .back-link{
     position:fixed; bottom:20px; left:20px; z-index:100;
@@ -290,13 +183,6 @@
     .filter-price-list{min-width:0;}
     .filter-price-option{padding:15px 12px; font-size:14.5px;}
   }
-  @media(max-width:880px){
-    .stage{grid-template-columns:1fr;}
-    .visual{position:relative;height:auto;padding:24px;}
-    .setup-grid,.enhance-grid{grid-template-columns:1fr;}
-    .swatch-grid{grid-template-columns:repeat(3,1fr);}
-  }
-
   /* ============ PORTED FROM lovesac-redesign.html (real Lovesac header/nav/drawers) ============ */
   /* ---------- LOVESAC BRAND SCOPE (nav + drawers) ---------- */
   nav, .promo-bar, #toast, .store-backdrop, .store-drop, .account-backdrop, .account-drop, .cart-backdrop, .cart-drop, .space-backdrop, .space-drop{
@@ -1248,137 +1134,6 @@
 
 </div>
 
-<!-- ================= CONFIGURATOR VIEW ================= -->
-<div id="view-configurator">
-
-<div class="rail-wrap">
-  <div class="back-to-setups-link" style="padding:0 32px;margin-top:2px;" onclick="showBrowse()">← Back to all setups</div>
-  <div class="rail" id="rail"></div>
-</div>
-
-<div class="stage">
-  <!-- VISUAL / PERSISTENT PRICE LEDGER -->
-  <div class="visual">
-    <div class="sofa-card">
-      <svg class="sofa-svg" viewBox="0 0 300 140" fill="none">
-        <rect x="10" y="60" width="200" height="60" rx="10" fill="#D8CFC0" id="sofaBody"/>
-        <rect x="10" y="30" width="200" height="40" rx="10" fill="#E4DCCE" id="sofaBack"/>
-        <rect x="200" y="30" width="90" height="90" rx="10" fill="#D8CFC0" id="sofaChaise"/>
-        <rect x="10" y="105" width="200" height="14" rx="4" fill="#8B7E68"/>
-        <rect x="200" y="105" width="90" height="14" rx="4" fill="#8B7E68"/>
-      </svg>
-      <div class="price-tag">
-        <span class="price-was" id="priceWas">$5,850.00</span>
-        <span class="price-now" id="priceNow">$4,680.00</span>
-        <span class="price-diff" id="priceDiff">+$0</span>
-      </div>
-      <div class="config-chips" id="configChips"></div>
-    </div>
-  </div>
-
-  <!-- DECISION PANEL -->
-  <div class="panel">
-
-    <!-- STEP 1: BUILD -->
-    <div class="step active" id="step-build">
-      <div class="panel-head">Build your sectional</div>
-      <div class="panel-desc">Pick a popular setup, or customize the shape yourself. One decision covers seats, sides, and arm style together.</div>
-
-      <div class="tabs">
-        <button class="tab active" data-tab="custom" onclick="switchTab('custom')">Customize</button>
-        <button class="tab" data-tab="popular" onclick="switchTab('popular')">Popular Setups</button>
-      </div>
-
-      <div id="tab-popular" style="display:none;">
-        <div class="setup-grid" id="setupGrid"></div>
-      </div>
-
-      <div id="tab-custom">
-        <div class="field-group">
-          <div class="field-label">Size</div>
-          <div class="field-help">Total seat count across your sectional.</div>
-          <div class="stepper-row">
-            <span>Seats</span>
-            <div class="stepper-ctrl">
-              <button class="stepper-btn" onclick="adjustSeats(-1)">–</button>
-              <span id="seatCount" style="font-weight:600;">4</span>
-              <button class="stepper-btn" onclick="adjustSeats(1)">+</button>
-            </div>
-          </div>
-        </div>
-        <div class="field-group">
-          <div class="field-label">Side style</div>
-          <div class="field-help">Applies to your whole sectional — override individual sides below if you want a mix.</div>
-          <div class="option-row" id="sideStyleRow"></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- STEP 2: STYLE -->
-    <div class="step" id="step-style">
-      <div class="panel-head">Choose your style</div>
-      <div class="panel-desc">Fabric and comfort in one place — filter to narrow down 190 options fast.</div>
-
-      <div class="filter-row">
-        <button class="filter-chip active" onclick="toggleFilter(this)">All</button>
-        <button class="filter-chip" onclick="toggleFilter(this)">Neutrals</button>
-        <button class="filter-chip" onclick="toggleFilter(this)">Blues &amp; Greens</button>
-        <button class="filter-chip" onclick="toggleFilter(this)">Quick Ship</button>
-        <button class="filter-chip" onclick="toggleFilter(this)">Under $3,500</button>
-      </div>
-
-      <div class="swatch-grid" id="swatchGrid"></div>
-
-      <div class="field-group">
-        <div class="field-label">Comfort level</div>
-        <div class="fill-cards">
-          <div class="fill-card selected" data-fill="0" onclick="selectFill(this,0)">
-            <div class="fill-title">Standard Foam</div>
-            <div class="fill-price">Included</div>
-            <div class="fill-desc">High-density, supportive. 3-year warranty.</div>
-          </div>
-          <div class="fill-card" data-fill="640" onclick="selectFill(this,640)">
-            <div class="fill-title">Lovesoft</div>
-            <div class="fill-price">+$640.00</div>
-            <div class="fill-desc">Lofty, cloud-like feel that holds its shape.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- STEP 3: ENHANCE -->
-    <div class="step" id="step-enhance">
-      <div class="panel-head">Enhance your setup</div>
-      <div class="panel-desc">Everything optional lives here — comfort upgrades, tech, and accessories together.</div>
-      <div class="enhance-grid" id="enhanceGrid"></div>
-    </div>
-
-    <!-- STEP 4: REVIEW -->
-    <div class="step" id="step-review">
-      <div class="panel-head">Review your order</div>
-      <div class="panel-desc">Everything in one place — jump back to any step to change it.</div>
-      <div id="reviewList"></div>
-      <div class="total-row">
-        <div class="total-label">Total</div>
-        <div class="total-value" id="reviewTotal">$4,680.00</div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<div class="footer">
-  <div class="footer-inner">
-    <div class="footer-price">
-      <span id="footerPrice">$4,680.00</span>
-      <small>Free shipping · 60-day home trial</small>
-    </div>
-    <button class="btn btn-ghost" id="backBtn" onclick="goStep(currentStep-1)">Back</button>
-    <button class="btn btn-primary" id="nextBtn" onclick="goStep(currentStep+1)">Continue</button>
-  </div>
-</div>
-
-</div><!-- /view-configurator -->
 </main>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -1518,10 +1273,10 @@
   });
   document.addEventListener('keydown', function(e){
     if(e.key !== 'Enter' && e.key !== ' ') return;
-    var card = e.target.closest('.product-card');
-    if(!card) return;
+    var target = e.target.closest('.nav-mock[role="button"]');
+    if(!target) return;
     e.preventDefault();
-    card.click();
+    target.click();
   });
   var mobileSearch = document.querySelector('.mobile-search');
   if(mobileSearch){
@@ -2122,181 +1877,6 @@
 </script>
 
 <script>
-const STEPS = [
-  {id:'build', label:'Build', sub:'Shape & size'},
-  {id:'style', label:'Style', sub:'Fabric & fill'},
-  {id:'enhance', label:'Enhance', sub:'Upgrades'},
-  {id:'review', label:'Review', sub:'Add to cart'}
-];
-let currentStep = 0;
-let basePrice = 4680;
-let fillPrice = 0;
-let enhancePrice = 0;
-let selectedSetup = 1;
-let selectedFillName = 'Standard Foam';
-let selectedSwatch = 'Tan Combed Chenille';
-
-const setups = [
-  {name:'4 Seats + 5 Sides', meta:'Compact L', price:3056, shape:'M0,30 h60 v20 h30 v-20 h30 v40 h-120 Z'},
-  {name:'6 Seats + 5 Sides', meta:'Most Popular', price:4680, shape:'M0,20 h90 v20 h30 v40 h-120 Z', selected:true},
-  {name:'8 Seats + 9 Sides', meta:'Deep, roomy', price:5920, shape:'M0,10 h90 v20 h30 v50 h-120 Z'},
-  {name:'10 Seats + 12 Sides', meta:'X-Large U', price:7676, shape:'M0,10 h100 v20 h30 v50 h-130 Z'}
-];
-
-const swatches = [
-  {name:'Tan Combed Chenille', hex:'#C9B79A'},
-  {name:'Charcoal Basket Weave', hex:'#4A4C4A'},
-  {name:'Grey Recycled Micro', hex:'#A9A9A2'},
-  {name:'Peacock Corded Velvet', hex:'#3F6E77'},
-  {name:'Terracotta Micro Bouclé', hex:'#B26A4A'},
-  {name:'Oyster Etched Chenille', hex:'#DCD3C4'},
-  {name:'Midnight Navy Velvet', hex:'#1F2A44'},
-  {name:'Evergreen Ultra Velvet', hex:'#2F4A3B'},
-  {name:'Stone Solid Polylinen', hex:'#B7AE9C'},
-  {name:'Espresso Top Grain', hex:'#3B2A22'}
-];
-
-const enhancements = [
-  {name:'Reclining Seat', price:'+$900.00 / each', desc:'Add powered recline to any seat.'},
-  {name:'Storage Seat', price:'+$140.00 / each', desc:'Hidden storage under the cushion.'},
-  {name:'StealthTech Sound', price:'+$1,870.00', desc:'6-speaker Harman Kardon® surround, built in.'},
-  {name:'Wireless Charging', price:'+$220.00', desc:'Add charging to your side tables.'},
-  {name:'AnyTable', price:'+$597.00', desc:'Built-in side table, 3 finishes.'},
-  {name:'Protector Bundle', price:'+$108.00', desc:'Seat cushion + pillow protectors.'}
-];
-let enhanceOn = enhancements.map(()=>false);
-
-function renderRail(){
-  const rail = document.getElementById('rail');
-  rail.innerHTML = STEPS.map((s,i)=>`
-    <div class="rail-step ${i===currentStep?'active':''} ${i<currentStep?'done':''}" onclick="goStep(${i})">
-      <div class="rail-dot"><span>${i+1}</span></div>
-      <div class="rail-label">${s.label}</div>
-      <div class="rail-sub">${s.sub}</div>
-    </div>`).join('');
-}
-
-function renderSetups(){
-  document.getElementById('setupGrid').innerHTML = setups.map((s,i)=>`
-    <div class="setup-card ${i===selectedSetup?'selected':''}" onclick="pickSetup(${i})">
-      <svg class="setup-shape" viewBox="0 0 130 60"><path d="${s.shape}" fill="${i===selectedSetup?'#2B5959':'#C9C2B4'}"/></svg>
-      <div class="setup-name">${s.name}</div>
-      <div class="setup-meta">${s.meta}</div>
-      <div class="setup-price">$${s.price.toLocaleString()}</div>
-    </div>`).join('');
-}
-function pickSetup(i){ selectedSetup=i; basePrice=setups[i].price; renderSetups(); updatePrice(); }
-
-function renderSwatches(){
-  document.getElementById('swatchGrid').innerHTML = swatches.map(sw=>`
-    <div class="swatch ${sw.name===selectedSwatch?'selected':''}" onclick="pickSwatch('${sw.name}')">
-      <div class="swatch-sw" style="background:${sw.hex}"></div>
-      <div class="swatch-name">${sw.name}</div>
-    </div>`).join('');
-}
-function pickSwatch(name){ selectedSwatch=name; renderSwatches(); updatePrice(); }
-
-function renderEnhance(){
-  document.getElementById('enhanceGrid').innerHTML = enhancements.map((e,i)=>`
-    <div class="enhance-card">
-      <div class="enhance-top">
-        <div>
-          <div class="enhance-name">${e.name}</div>
-          <div class="enhance-price">${e.price}</div>
-        </div>
-        <div class="toggle ${enhanceOn[i]?'on':''}" onclick="toggleEnhance(${i})"></div>
-      </div>
-      <div class="enhance-desc">${e.desc}</div>
-    </div>`).join('');
-}
-function toggleEnhance(i){ enhanceOn[i]=!enhanceOn[i]; renderEnhance(); updatePrice(); }
-
-function selectFill(el,price){
-  document.querySelectorAll('.fill-card').forEach(c=>c.classList.remove('selected'));
-  el.classList.add('selected');
-  fillPrice = price;
-  selectedFillName = price===0?'Standard Foam':'Lovesoft';
-  updatePrice();
-}
-
-function switchTab(tab){
-  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active', t.dataset.tab===tab));
-  document.getElementById('tab-popular').style.display = tab==='popular'?'block':'none';
-  document.getElementById('tab-custom').style.display = tab==='custom'?'block':'none';
-}
-function toggleFilter(el){ document.querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('active')); el.classList.add('active'); }
-
-let seats = 6;
-function adjustSeats(d){ seats = Math.max(3, Math.min(12, seats+d)); document.getElementById('seatCount').textContent = seats; }
-
-let sideStyleSel = 0;
-function renderSideStyles(){
-  const opts = ['Standard','Angled','Deep Angled'];
-  document.getElementById('sideStyleRow').innerHTML = opts.map((o,i)=>`
-    <div class="option-btn ${i===sideStyleSel?'selected':''}" onclick="pickSideStyle(${i})">${o}</div>`).join('');
-}
-function pickSideStyle(i){ sideStyleSel=i; renderSideStyles(); }
-
-function parsePrice(str){
-  const match = str.match(/\$([\d,]+)/);
-  return match ? parseInt(match[1].replace(/,/g,'')) : 0;
-}
-
-let lastTotal = basePrice;
-function updatePrice(){
-  enhancePrice = enhancements.reduce((sum,e,i)=> sum + (enhanceOn[i]? parsePrice(e.price) : 0), 0);
-  const total = basePrice + fillPrice + enhancePrice;
-  const diff = total - lastTotal;
-  document.getElementById('priceNow').textContent = '$'+total.toLocaleString()+'.00';
-  document.getElementById('footerPrice').textContent = '$'+total.toLocaleString()+'.00';
-  const diffEl = document.getElementById('priceDiff');
-  if(diff!==0){
-    diffEl.textContent = (diff>0?'+':'')+'$'+diff.toLocaleString();
-    diffEl.classList.add('show');
-    setTimeout(()=>diffEl.classList.remove('show'), 1400);
-  }
-  lastTotal = total;
-
-  document.getElementById('configChips').innerHTML = `
-    <span class="chip">${setups[selectedSetup].name}</span>
-    <span class="chip">${selectedSwatch}</span>
-    <span class="chip">${selectedFillName}</span>`;
-
-  renderReview(total);
-}
-
-function renderReview(total){
-  const activeEnhance = enhancements.filter((e,i)=>enhanceOn[i]);
-  document.getElementById('reviewList').innerHTML = `
-    <div class="review-row">
-      <div><div class="review-label">Build</div><div class="review-value">${setups[selectedSetup].name}</div></div>
-      <div><span class="review-price">$${setups[selectedSetup].price.toLocaleString()}.00</span> <span class="review-edit" onclick="goStep(0)">Edit</span></div>
-    </div>
-    <div class="review-row">
-      <div><div class="review-label">Style</div><div class="review-value">${selectedSwatch} · ${selectedFillName}</div></div>
-      <div><span class="review-price">${fillPrice? '+$'+fillPrice+'.00':'Included'}</span> <span class="review-edit" onclick="goStep(1)">Edit</span></div>
-    </div>
-    <div class="review-row">
-      <div><div class="review-label">Enhancements</div><div class="review-value">${activeEnhance.length? activeEnhance.map(e=>e.name).join(', ') : 'None selected'}</div></div>
-      <div><span class="review-price">${enhancePrice? '+$'+enhancePrice.toLocaleString()+'.00':'$0.00'}</span> <span class="review-edit" onclick="goStep(2)">Edit</span></div>
-    </div>`;
-  document.getElementById('reviewTotal').textContent = '$'+total.toLocaleString()+'.00';
-}
-
-function goStep(i){
-  if(i<0||i>=STEPS.length) return;
-  currentStep = i;
-  document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
-  document.getElementById('step-'+STEPS[i].id).classList.add('active');
-  renderRail();
-  document.getElementById('backBtn').style.visibility = i===0?'hidden':'visible';
-  document.getElementById('nextBtn').textContent = i===STEPS.length-1?'Add to Cart':'Continue';
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-
-renderRail(); renderSetups(); renderSwatches(); renderEnhance(); renderSideStyles(); updatePrice();
-document.getElementById('backBtn').style.visibility='hidden';
-
 // ---------- BROWSE VIEW ----------
 const products = [
   {name:'The Weekend Lounger', meta:'Fits 4 · Great for small living rooms', price:2999, hex:['#B26A4A','#4A4C4A','#3F6E77'], badge:'Best Seller', w:100, d:66, img:'../images/sactionals-weekend-lounger.webp'},
@@ -2323,17 +1903,16 @@ var COLOR_NAMES = {
 function renderProductGrid(){
   document.getElementById('productGrid').innerHTML = products.map((p,i)=>{
     var colorNames = p.hex.map(h=>COLOR_NAMES[h]||'color');
-    var cardLabel = `${p.name}, ${p.meta}. Available in ${colorNames.join(', ')}. $${p.price.toLocaleString()}.00`;
     return `
-    <div class="product-card nav-mock" data-idx="${i}" role="button" tabindex="0" aria-label="${cardLabel}">
-      <div class="product-thumb${p.img ? ' has-photo' : ''}">
+    <div class="product-card" data-idx="${i}">
+      <div class="product-thumb${p.img ? ' has-photo' : ''} nav-mock" role="button" tabindex="0" aria-label="${p.name} photo">
         ${p.img ? `<img src="${p.img}" alt="${p.name}">` : `<svg viewBox="0 0 130 60"><path d="M0,20 h90 v20 h30 v40 h-120 Z" fill="${p.hex[0]}"/></svg>`}
       </div>
       ${p.badge?`<div class="product-badge">${p.badge}</div>`:''}
-      <div class="product-name">${p.name}</div>
+      <div class="product-name nav-mock" role="button" tabindex="0" aria-label="${p.name}">${p.name}</div>
       <div class="product-meta">${p.meta}</div>
-      <div class="product-swatches">${p.hex.map(h=>`<div class="pswatch" style="background:${h}" aria-hidden="true"></div>`).join('')}</div>
-      <div class="product-price">$${p.price.toLocaleString()}.00</div>
+      <div class="product-swatches nav-mock" role="button" tabindex="0" aria-label="Colors: ${colorNames.join(', ')}">${p.hex.map(h=>`<div class="pswatch" style="background:${h}" aria-hidden="true"></div>`).join('')}</div>
+      <div class="product-price nav-mock" role="button" tabindex="0" aria-label="$${p.price.toLocaleString()}.00">$${p.price.toLocaleString()}.00</div>
     </div>`;
   }).join('');
   applySizeFilter(currentSizeFilter);
@@ -2414,19 +1993,6 @@ renderProductGrid();
   });
 })();
 
-function showConfigurator(){
-  document.getElementById('view-browse').style.display='none';
-  document.getElementById('view-configurator').style.display='block';
-  document.querySelector('.footer').style.display='flex';
-  window.scrollTo({top:0});
-}
-function showBrowse(){
-  document.getElementById('view-configurator').style.display='none';
-  document.getElementById('view-browse').style.display='block';
-  document.querySelector('.footer').style.display='none';
-  window.scrollTo({top:0});
-}
-document.querySelector('.footer').style.display='none';
 </script>
 <script>
 (function(){
