@@ -83,6 +83,8 @@
   .browse-filters{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:24px;scroll-margin-top:76px;}
   .browse-filters .filter-chip{border-radius:8px;}
   .filter-count{font-size:12.5px;color:var(--muted);margin-left:auto;}
+  .room-fit-note{background:var(--teal-tint);border:1px solid var(--teal);border-radius:10px;padding:14px 18px;margin-bottom:20px;font-size:13.5px;color:var(--teal-deep);line-height:1.5;}
+  .room-fit-note a{text-decoration:underline;cursor:pointer;font-weight:600;}
 
   .filter-dropdown-wrap{position:relative; display:inline-flex;}
   .filter-dropdown{
@@ -1125,6 +1127,7 @@
     </div>
     <div class="filter-sheet-backdrop" id="filterSheetBackdrop"></div>
 
+    <div class="room-fit-note" id="roomFitNote" hidden></div>
     <div class="product-grid" id="productGrid"></div>
   </div>
 <footer>
@@ -2113,16 +2116,43 @@ var fitsRoomActive = false;
 function applyFilters(){
   var room = loadRoomFit();
   var visible = 0;
+  var roomProductFitCount = 0;
   document.querySelectorAll('#productGrid .product-card').forEach(function(card){
     var p = products[parseInt(card.dataset.idx, 10)];
+    var fitsRoomProduct = room ? productFitsRoom(p, room) : false;
+    if(fitsRoomProduct) roomProductFitCount++;
     var sizeOk = currentSizeFilter === 'all' || sizeOf(p) === currentSizeFilter;
-    var fitOk = !fitsRoomActive || !room || productFitsRoom(p, room);
+    var fitOk = !fitsRoomActive || !room || fitsRoomProduct;
     var show = sizeOk && fitOk;
     card.style.display = show ? '' : 'none';
     if(show) visible++;
   });
   var countEl = document.getElementById('filterCount');
   if(countEl) countEl.textContent = visible + (visible === 1 ? ' setup' : ' setups');
+
+  var noteEl = document.getElementById('roomFitNote');
+  if(noteEl){
+    if(room && roomProductFitCount === 0){
+      var fittingCompact = compactPieces.filter(function(p){ return fitsBounds(p, room.width, room.length); });
+      if(fittingCompact.length){
+        var names = fittingCompact.map(function(p){ return p.name; }).join(', ');
+        noteEl.innerHTML = 'None of our Sactionals setups fit a ' + room.width + '"×' + room.length + '" room, but ' + names + ' would — <a id="roomFitNoteOpen">open Check Your Space</a> to see it.';
+        var openLink = document.getElementById('roomFitNoteOpen');
+        if(openLink){
+          openLink.addEventListener('click', function(e){
+            e.stopPropagation();
+            var chip = document.getElementById('roomFitChip');
+            if(chip) chip.click();
+          });
+        }
+      } else {
+        noteEl.textContent = 'Nothing in our current lineup fits a ' + room.width + '"×' + room.length + '" room — try a larger space.';
+      }
+      noteEl.hidden = false;
+    } else {
+      noteEl.hidden = true;
+    }
+  }
 }
 
 function updateRoomFitUI(){
