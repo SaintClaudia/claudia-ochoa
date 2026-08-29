@@ -126,7 +126,7 @@
   .num{font-family:'Fraunces',serif; font-weight:500; font-size:15px; color:var(--clay-deep);}
 
   /* Mobile nav compare */
-  .nav-compare{display:grid; grid-template-columns:1fr 1fr; gap:28px;}
+  .nav-compare{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:28px;}
   .nav-col{display:flex; flex-direction:column; gap:14px;}
   .nav-label{display:flex; align-items:center; gap:10px; font-size:13px; letter-spacing:0.06em; text-transform:uppercase; font-weight:700;}
   .nav-label .sw{width:10px; height:10px; border-radius:3px;}
@@ -140,8 +140,9 @@
     border-radius:32px;
     background:var(--paper);
     aspect-ratio:9/17.5;
+    width:100%;
     max-width:300px;
-    margin:0 auto;
+    margin:0;
     overflow:hidden;
   }
   .phone-slot img{border-radius:22px; width:100%; height:100%; object-fit:cover; object-position:top;}
@@ -317,7 +318,6 @@
     .roomfit-shots{gap:16px; flex-wrap:wrap;}
     .phone-frame{width:160px;}
     .sentiment-grid{grid-template-columns:1fr;}
-    .stx-stack{justify-content:center;}
   }
 
   /* StealthTech app walkthrough — proposed-fix mockups */
@@ -394,7 +394,7 @@
 
   /* Full-size "before" carousel (Finding 1) */
   .stx-carousel{display:flex; align-items:center; justify-content:center; gap:8px;}
-  .stx-carousel .stx-car-viewport{overflow:hidden; margin:0; width:100%; max-width:280px; flex:0 1 280px;}
+  .stx-carousel .stx-car-viewport{overflow:hidden; margin:0; width:100%; max-width:300px; flex:0 1 300px;}
   .stx-car-track{display:flex; height:100%; transition:transform .35s cubic-bezier(.16,1,.3,1);}
   .stx-car-slide{flex:0 0 100%; width:100%; height:100%;}
   .stx-car-slide img{width:100%; height:100%; object-fit:cover; object-position:top; border-radius:22px; display:block;}
@@ -416,15 +416,6 @@
   }
   .stx-reduce svg{width:16px; height:16px; flex:0 0 auto;}
 
-  /* Stacked "before" filmstrip */
-  .stx-stack{display:flex; align-items:center; justify-content:center; gap:8px; flex-wrap:wrap;}
-  .stx-stack .phone-slot{max-width:82px; margin:0;}
-  .stx-stack .stx-arrow{color:var(--ink-soft); font-size:13px; flex:0 0 auto;}
-  .stx-stack .stx-more{
-    display:flex; align-items:center; justify-content:center; text-align:center;
-    width:82px; aspect-ratio:9/17.5; border:10px solid var(--espresso); border-radius:32px;
-    box-sizing:content-box; background:var(--paper); font-size:10px; font-weight:700; color:var(--ink-soft); padding:6px;
-  }
   .stx-finding-label{margin-top:48px;}
   .stx-finding-label .apa-num{color:var(--clay-deep); font-weight:800; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; display:block;}
   .stx-finding-label .apa-title{display:block; font-family:'Fraunces',serif; font-style:normal; font-weight:600; font-size:19px; color:var(--espresso); margin-top:4px;}
@@ -874,7 +865,7 @@
       </div>
       <div class="nav-col after">
         <div class="nav-label"><span class="sw"></span>Proposed &mdash; one scan</div>
-        <div class="phone-slot" style="max-width:280px;">
+        <div class="phone-slot">
           <div class="stx-mock">
             <div class="stx-back">&larr; BACK</div>
             <div class="stx-word"><b>LOVESAC</b><span>STEALTHTECH</span></div>
@@ -956,12 +947,24 @@
     <div class="nav-compare" style="margin-top:24px;">
       <div class="nav-col before">
         <div class="nav-label"><span class="sw"></span>lovesac.com &mdash; 3 steps before the video</div>
-        <div class="stx-stack">
-          <div class="phone-slot"><img src="/images/lovesac-stealthtech-instructions-popup-before.webp" width="760" height="1551" loading="lazy" decoding="async" alt="lovesac.com opening on a 'Join our list to get up to 40% off' email capture overlay instead of the setup instructions."></div>
-          <span class="stx-arrow" aria-hidden="true">&rarr;</span>
-          <div class="phone-slot"><img src="/images/lovesac-stealthtech-instructions-cookies-before.webp" width="760" height="1550" loading="lazy" decoding="async" alt="lovesac.com cookie consent banner covering the page with Essential Only and Allow Cookies buttons."></div>
-          <span class="stx-arrow" aria-hidden="true">&rarr;</span>
-          <div class="phone-slot"><img src="/images/lovesac-stealthtech-instructions-video-before.webp" width="760" height="1548" loading="lazy" decoding="async" alt="The StealthTech setup video finally visible, embedded at the bottom of the lovesac.com support page."></div>
+        <div class="stx-carousel" data-stx-carousel>
+          <button class="stx-car-btn prev" type="button" aria-label="Previous screen">&lsaquo;</button>
+          <div class="phone-slot stx-car-viewport">
+            <div class="stx-car-track">
+              <div class="stx-car-slide"><img src="/images/lovesac-stealthtech-instructions-popup-before.webp" width="760" height="1551" loading="lazy" decoding="async" alt="lovesac.com opening on a 'Join our list to get up to 40% off' email capture overlay instead of the setup instructions."></div>
+              <div class="stx-car-slide"><img src="/images/lovesac-stealthtech-instructions-cookies-before.webp" width="760" height="1550" loading="lazy" decoding="async" alt="lovesac.com cookie consent banner covering the page with Essential Only and Allow Cookies buttons."></div>
+              <div class="stx-car-slide"><img src="/images/lovesac-stealthtech-instructions-video-before.webp" width="760" height="1548" loading="lazy" decoding="async" alt="The StealthTech setup video finally visible, embedded at the bottom of the lovesac.com support page."></div>
+            </div>
+          </div>
+          <button class="stx-car-btn next" type="button" aria-label="Next screen">&rsaquo;</button>
+        </div>
+        <div class="stx-car-meta">
+          <div class="stx-car-dots">
+            <button class="stx-car-dot" type="button" aria-label="Screen 1: email capture overlay"></button>
+            <button class="stx-car-dot" type="button" aria-label="Screen 2: cookie banner"></button>
+            <button class="stx-car-dot" type="button" aria-label="Screen 3: setup video"></button>
+          </div>
+          <span class="stx-car-count"><span class="stx-car-index">1</span> / 3</span>
         </div>
       </div>
       <div class="nav-col after">
