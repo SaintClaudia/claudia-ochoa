@@ -1225,9 +1225,6 @@
 
     <div class="browse-filters" id="filtersAnchor">
       <button class="filter-chip size-chip active" onclick="applySizeFilter('all', this)">All Sizes</button>
-      <button class="filter-chip size-chip" onclick="applySizeFilter('small', this)">Loveseat – Small</button>
-      <button class="filter-chip size-chip" onclick="applySizeFilter('medium', this)">Medium</button>
-      <button class="filter-chip size-chip" onclick="applySizeFilter('large', this)">Large</button>
 
       <button type="button" class="filter-chip room-fit-chip" id="roomFitChip" hidden>
         <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
@@ -1236,7 +1233,10 @@
           <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
         </span>
       </button>
-      <button type="button" class="filter-chip" id="fitsRoomToggle" hidden>Fits your room</button>
+
+      <button class="filter-chip size-chip" onclick="applySizeFilter('small', this)">Loveseat – Small</button>
+      <button class="filter-chip size-chip" onclick="applySizeFilter('medium', this)">Medium</button>
+      <button class="filter-chip size-chip" onclick="applySizeFilter('large', this)">Large</button>
 
       <div class="filter-dropdown-wrap">
         <button type="button" class="filter-chip" id="colorFilterToggle" aria-expanded="false" aria-controls="colorFilterDrop">Color</button>
@@ -2303,7 +2303,6 @@ function applySizeFilter(key, btn){
   applyFilters();
 }
 
-var fitsRoomActive = false;
 function applyFilters(){
   var room = loadRoomFit();
   var visible = 0;
@@ -2313,7 +2312,7 @@ function applyFilters(){
     var fitsRoomProduct = room ? productFitsRoom(p, room) : false;
     if(fitsRoomProduct) roomProductFitCount++;
     var sizeOk = currentSizeFilter === 'all' || sizeOf(p) === currentSizeFilter;
-    var fitOk = !fitsRoomActive || !room || fitsRoomProduct;
+    var fitOk = !room || fitsRoomProduct;
     var show = sizeOk && fitOk;
     card.style.display = show ? '' : 'none';
     if(show) visible++;
@@ -2350,17 +2349,12 @@ function updateRoomFitUI(){
   var room = loadRoomFit();
   var chip = document.getElementById('roomFitChip');
   var label = document.getElementById('roomFitChipLabel');
-  var toggle = document.getElementById('fitsRoomToggle');
-  if(!chip || !toggle) return;
+  if(!chip) return;
   if(room && room.width && room.length){
     chip.hidden = false;
-    toggle.hidden = false;
     label.textContent = 'Your Room: ' + room.width + '"×' + room.length + '"';
   } else {
     chip.hidden = true;
-    toggle.hidden = true;
-    fitsRoomActive = false;
-    toggle.classList.remove('active');
   }
   if(window.applyRoomFitBadges) window.applyRoomFitBadges(room);
   applyFilters();
@@ -2370,7 +2364,6 @@ window.updateRoomFitUI = updateRoomFitUI;
 (function(){
   var chip = document.getElementById('roomFitChip');
   var clearBtn = document.getElementById('roomFitClear');
-  var toggle = document.getElementById('fitsRoomToggle');
   if(chip){
     chip.addEventListener('click', function(e){
       if(e.target.closest('#roomFitClear')) return;
@@ -2396,13 +2389,6 @@ window.updateRoomFitUI = updateRoomFitUI;
     });
     clearBtn.addEventListener('keydown', function(e){
       if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); clearBtn.click(); }
-    });
-  }
-  if(toggle){
-    toggle.addEventListener('click', function(){
-      fitsRoomActive = !fitsRoomActive;
-      toggle.classList.toggle('active', fitsRoomActive);
-      applyFilters();
     });
   }
 })();
