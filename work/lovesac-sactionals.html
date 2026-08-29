@@ -223,7 +223,18 @@
   .fit-badge svg{width:10px;height:10px;}
 
   #view-configurator{display:none;}
-  .back-link{font-size:13px;color:var(--muted);cursor:pointer;display:flex;align-items:center;gap:4px;margin-bottom:2px;}
+  .back-to-setups-link{font-size:13px;color:var(--muted);cursor:pointer;display:flex;align-items:center;gap:4px;margin-bottom:2px;}
+
+  .back-link{
+    position:fixed; bottom:20px; left:20px; z-index:100;
+    background:var(--ls-canvas); color:var(--ls-ink);
+    padding:10px 16px; border-radius:8px; border:1px solid var(--ls-line);
+    font-size:0.82rem; font-weight:600; box-shadow:0 6px 20px rgba(31,36,33,0.12);
+    transition:opacity .25s ease, transform .25s ease;
+    opacity:0; transform:translateY(12px); pointer-events:none;
+    text-decoration:none;
+  }
+  .back-link.show{opacity:1; transform:translateY(0); pointer-events:auto;}
 
   .breadcrumbs{display:flex; flex-wrap:wrap; align-items:center; gap:6px; font-size:13px; color:var(--muted); margin:20px 0 4px;}
   .breadcrumbs a{color:var(--muted); text-decoration:none;}
@@ -1232,6 +1243,7 @@
     <span>Concept redesign — using Lovesac's existing brand identity and photography; not an official Lovesac property.</span>
     <div class="footer-legal"><a href="#" class="nav-mock">Privacy Policy</a> · <a href="#" class="nav-mock">Terms</a> · <a href="#" class="nav-mock">Trademarks</a></div>
   </div>
+  <a href="/" class="back-link">← Back to portfolio</a>
 </footer>
 
 </div>
@@ -1240,7 +1252,7 @@
 <div id="view-configurator">
 
 <div class="rail-wrap">
-  <div class="back-link" style="padding:0 32px;margin-top:2px;" onclick="showBrowse()">← Back to all setups</div>
+  <div class="back-to-setups-link" style="padding:0 32px;margin-top:2px;" onclick="showBrowse()">← Back to all setups</div>
   <div class="rail" id="rail"></div>
 </div>
 
@@ -2311,7 +2323,7 @@ var COLOR_NAMES = {
 function renderProductGrid(){
   document.getElementById('productGrid').innerHTML = products.map((p,i)=>{
     var colorNames = p.hex.map(h=>COLOR_NAMES[h]||'color');
-    var cardLabel = `${p.name}, ${p.meta}. Available in ${colorNames.join(', ')}. $${p.price.toLocaleString()}.00`;
+    var cardLabel = `Lovesac ${p.name}, ${p.meta}. Available in ${colorNames.join(', ')}. $${p.price.toLocaleString()}.00`;
     return `
     <div class="product-card nav-mock" data-idx="${i}" role="button" tabindex="0" aria-label="${cardLabel}">
       <div class="product-thumb${p.img ? ' has-photo' : ''}">
@@ -2415,6 +2427,24 @@ function showBrowse(){
   window.scrollTo({top:0});
 }
 document.querySelector('.footer').style.display='none';
+</script>
+<script>
+(function(){
+  var link = document.querySelector('.back-link');
+  var ctaBand = document.querySelector('.cta-band') || document.querySelector('footer');
+  if(!link || !ctaBand) return;
+  function onScroll(){
+    var threshold = ctaBand.offsetTop;
+    if(window.scrollY + window.innerHeight > threshold){
+      link.classList.add('show');
+    } else {
+      link.classList.remove('show');
+    }
+  }
+  link.addEventListener('focus', function(){ link.classList.add('show'); });
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
 </script>
 </body>
 </html>
