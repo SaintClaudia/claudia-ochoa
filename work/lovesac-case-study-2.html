@@ -158,22 +158,25 @@
     box-shadow:0 1px 2px rgba(36,28,22,0.06);
   }
   .browser-frame img{width:100%; height:auto; display:block;}
-  .reviews-demo{background:var(--cream); padding:48px 32px;}
+  /* Colors below are hardcoded to match lovesac-redesign.html's actual palette
+     (--canvas, --canvas-2, --clay, --brass, --moss, --ink, --ink-soft) exactly -
+     intentionally not this page's own --cream/--espresso/--clay-deep tokens,
+     since this demo needs to represent the real redesign, not the case study. */
+  .reviews-demo{background:#EDE7DA; padding:48px 32px;}
   .reviews-demo-header{text-align:center; margin-bottom:32px;}
-  .reviews-demo-eyebrow{display:block; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:10px;}
-  .reviews-demo-header h4{font-size:28px; margin:0 0 14px; color:var(--espresso); font-family:'Fraunces',serif; font-weight:600;}
-  .reviews-demo-stars{display:flex; align-items:center; justify-content:center; gap:8px; font-size:13px; color:var(--ink-soft);}
-  .reviews-demo-star-row{color:var(--clay-deep); font-size:16px; letter-spacing:2px;}
-  .reviews-demo-star-row .dim{color:var(--line);}
+  .reviews-demo-eyebrow{display:block; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#835844; margin-bottom:10px;}
+  .reviews-demo-header h4{font-size:28px; margin:0 0 14px; color:#3D3128; font-family:'Fraunces',serif; font-weight:600;}
+  .reviews-demo-stars{display:flex; align-items:center; justify-content:center; gap:8px; font-size:13px; color:#5C4F42;}
+  .reviews-demo-star-row{color:#8A6538; font-size:16px; letter-spacing:2px;}
   .reviews-demo-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
-  .reviews-demo-card{background:var(--paper); border-radius:12px; padding:24px;}
-  .reviews-demo-rating{color:var(--clay-deep); font-size:14px; letter-spacing:2px; margin-bottom:14px;}
-  .reviews-demo-card blockquote{margin:0 0 20px; padding-left:14px; border-left:2px solid var(--line); font-size:14.5px; font-style:italic; line-height:1.5; color:var(--ink);}
+  .reviews-demo-card{background:#E1D6C4; border:1px solid rgba(61,49,40,0.14); border-radius:16px; padding:32px 28px;}
+  .reviews-demo-rating{color:#8A6538; font-size:14px; letter-spacing:3px; margin-bottom:20px;}
+  .reviews-demo-card blockquote{margin:0 0 20px; padding-left:16px; border-left:2px solid #835844; font-size:14.5px; font-style:italic; line-height:1.5; color:#3D3128;}
   .reviews-demo-person{display:flex; align-items:center; gap:10px;}
-  .reviews-demo-avatar{width:34px; height:34px; border-radius:50%; background:var(--clay-deep); color:var(--paper); display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; flex-shrink:0;}
-  .reviews-demo-name{font-size:13.5px; font-weight:700; color:var(--espresso); display:flex; align-items:center; gap:4px;}
-  .reviews-demo-name svg{width:12px; height:12px; color:var(--ink-soft);}
-  .reviews-demo-verified{font-size:11.5px; color:var(--ink-soft); margin-top:1px;}
+  .reviews-demo-avatar{width:34px; height:34px; border-radius:50%; background:#835844; color:#EDE7DA; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; flex-shrink:0;}
+  .reviews-demo-name{font-size:13.5px; font-weight:700; color:#3D3128; display:flex; align-items:center; gap:4px;}
+  .reviews-demo-name svg{width:12px; height:12px; color:#8E8D7E;}
+  .reviews-demo-verified{font-size:11.5px; color:#5C4F42; margin-top:1px;}
   .phone-frame-wide{
     box-sizing:content-box;
     border:10px solid var(--espresso);
@@ -980,40 +983,40 @@
               <span class="reviews-demo-eyebrow">What People Are Saying</span>
               <h4>Loved in real homes.</h4>
               <div class="reviews-demo-stars">
-                <span class="reviews-demo-star-row" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;<span class="dim">&#9733;</span></span>
+                <span class="reviews-demo-star-row" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
                 <span>4.3 (8,509 Reviews)</span>
               </div>
             </div>
             <div class="reviews-demo-grid">
               <div class="reviews-demo-card">
                 <div class="reviews-demo-rating" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                <blockquote>&ldquo;Couch is fantastic. Every option and every part of it. Insanely comfortable.&rdquo;</blockquote>
+                <blockquote>"Couch is fantastic. Every option and every part of it. Insanely comfortable."</blockquote>
                 <div class="reviews-demo-person">
                   <span class="reviews-demo-avatar" aria-hidden="true">P</span>
                   <div>
-                    <div class="reviews-demo-name">Patty F. <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div class="reviews-demo-name">Patty F. <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></div>
                     <div class="reviews-demo-verified">Verified Buyer</div>
                   </div>
                 </div>
               </div>
               <div class="reviews-demo-card">
                 <div class="reviews-demo-rating" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                <blockquote>&ldquo;I live in a very small condo, and hidden storage is a must. These storage seats are a total game changer.&rdquo;</blockquote>
+                <blockquote>"I live in a very small condo, and hidden storage is a must. These storage seats are a total game changer."</blockquote>
                 <div class="reviews-demo-person">
                   <span class="reviews-demo-avatar" aria-hidden="true">L</span>
                   <div>
-                    <div class="reviews-demo-name">Lauren <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div class="reviews-demo-name">Lauren <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></div>
                     <div class="reviews-demo-verified">Verified Buyer</div>
                   </div>
                 </div>
               </div>
               <div class="reviews-demo-card">
                 <div class="reviews-demo-rating" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                <blockquote>&ldquo;Lovesac was the perfect choice. The look, comfort, flexibility, and price were all better than imagined.&rdquo;</blockquote>
+                <blockquote>"Lovesac was the perfect choice. The look, comfort, flexibility, and price were all better than imagined."</blockquote>
                 <div class="reviews-demo-person">
                   <span class="reviews-demo-avatar" aria-hidden="true">L</span>
                   <div>
-                    <div class="reviews-demo-name">Libby <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div class="reviews-demo-name">Libby <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></div>
                     <div class="reviews-demo-verified">Verified Buyer</div>
                   </div>
                 </div>
