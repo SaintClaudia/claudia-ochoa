@@ -1787,9 +1787,6 @@
     if(window.__closeAccountDrop) window.__closeAccountDrop();
     if(window.__closeCartDrop) window.__closeCartDrop();
     if(!isOpen){
-      var navBottom = window.matchMedia('(max-width:860px)').matches ? 0 : document.querySelector('nav').getBoundingClientRect().bottom;
-      drop.style.top = navBottom + 'px';
-      backdrop.style.top = navBottom + 'px';
       drop.classList.add('open');
       backdrop.classList.add('open');
       toggle.setAttribute('aria-expanded', 'true');
@@ -2197,8 +2194,8 @@
       nav.classList.remove('nav-hidden');
     }
     lastY = y;
-    var openDrop = document.querySelector('.store-drop.open, .account-drop.open, .cart-drop.open, .space-drop.open');
-    var openBackdrop = document.querySelector('.store-backdrop.open, .account-backdrop.open, .cart-backdrop.open, .space-backdrop.open');
+    var openDrop = document.querySelector('.store-drop.open, .account-drop.open, .cart-drop.open');
+    var openBackdrop = document.querySelector('.store-backdrop.open, .account-backdrop.open, .cart-backdrop.open');
     if(openDrop || openBackdrop){
       var navBottom = window.matchMedia('(max-width:860px)').matches ? '0px' : (nav.getBoundingClientRect().bottom + 'px');
       if(openDrop) openDrop.style.top = navBottom;
@@ -2368,8 +2365,6 @@ window.updateRoomFitUI = updateRoomFitUI;
     chip.addEventListener('click', function(e){
       if(e.target.closest('#roomFitClear')) return;
       e.stopPropagation();
-      if(window.holdNavVisible) window.holdNavVisible(900);
-      window.scrollTo({top:0, behavior:'smooth'});
       var spaceToggle = document.getElementById('spaceToggle');
       if(spaceToggle) spaceToggle.click();
       var room = loadRoomFit();
