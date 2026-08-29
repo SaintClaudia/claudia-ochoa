@@ -84,7 +84,6 @@
   .browse-filters .filter-chip{border-radius:8px;}
   .filter-count{font-size:12.5px;color:var(--muted);margin-left:auto;}
   .room-fit-note{background:var(--teal-tint);border:1px solid var(--teal);border-radius:10px;padding:14px 18px;margin-bottom:20px;font-size:13.5px;color:var(--teal-deep);line-height:1.5;}
-  .room-fit-note a{text-decoration:underline;cursor:pointer;font-weight:600;}
 
   .filter-dropdown-wrap{position:relative; display:inline-flex;}
   .filter-dropdown{
@@ -1727,32 +1726,8 @@
       if(!r.fits) return;
       groups[sizeOf(products[r.idx])].push(r);
     });
-    var fittingCompact = compactPieces.filter(function(p){ return fitsBounds(p, roomW, roomL); });
-    var totalFit = fitCount + fittingCompact.length;
 
-    var compactGroups = [];
-    fittingCompact.forEach(function(p){
-      var g = compactGroups.find(function(g){ return g.name === p.group; });
-      if(!g){ g = { name: p.group, items: [] }; compactGroups.push(g); }
-      g.items.push(p);
-    });
-    var compactHtml = compactGroups.map(function(g){
-      return '<div class="space-config-group">' +
-        '<div class="space-config-group-title">' + g.name + ' · ' + g.items.length + (g.items.length === 1 ? ' option' : ' options') + '</div>' +
-        g.items.map(function(p){
-          return '<button type="button" class="space-config-card space-config-chair">' +
-            '<div class="space-config-thumb">' + (p.img ? '<img src="' + p.img + '" alt="' + p.name + '">' : '') + '</div>' +
-            '<div class="space-config-info">' +
-              '<div class="space-config-name">' + p.name + '</div>' +
-              '<div class="space-config-meta">' + p.meta + ' · ' + p.w + '"×' + p.d + '"</div>' +
-            '</div>' +
-            '<div class="space-config-price">$' + p.price.toLocaleString() + '</div>' +
-          '</button>';
-        }).join('') +
-      '</div>';
-    }).join('');
-
-    var groupHtml = compactHtml + ['small', 'medium', 'large'].map(function(key){
+    var groupHtml = ['small', 'medium', 'large'].map(function(key){
       var items = groups[key];
       if(!items.length) return '';
       return '<div class="space-config-group">' +
@@ -1771,22 +1746,12 @@
     }).join('');
 
     resultsEl.innerHTML =
-      '<div class="space-results-summary">' + totalFit + ' configuration' + (totalFit === 1 ? '' : 's') + ' fit your room</div>' +
+      '<div class="space-results-summary">' + fitCount + ' configuration' + (fitCount === 1 ? '' : 's') + ' fit your room</div>' +
       '<div class="space-results-sub">Based on ' + roomW + '"×' + roomL + '" of floor space.</div>' +
-      (totalFit ? groupHtml : '<div class="space-config-empty">Nothing in our current lineup fits that space — try a larger room.</div>');
+      (fitCount ? groupHtml : '<div class="space-config-empty">Nothing in our Sactionals lineup fits that space — try a larger room.</div>');
 
     resultsEl.querySelectorAll('.space-config-card[data-idx]').forEach(function(card){
       card.addEventListener('click', function(){ focusGridCard(card.dataset.idx); });
-    });
-    resultsEl.querySelectorAll('.space-config-chair').forEach(function(card){
-      card.addEventListener('click', function(){
-        var toast = document.getElementById('toast');
-        if(!toast) return;
-        toast.textContent = "Non-functional prototype — for demonstration purposes only";
-        toast.classList.add('show');
-        clearTimeout(window.__spaceToastTimer);
-        window.__spaceToastTimer = setTimeout(function(){ toast.classList.remove('show'); }, 2600);
-      });
     });
   }
 
@@ -2039,16 +2004,6 @@ const products = [
   {name:'The Media Room Wrap', meta:'Fits 7 · 4-deep, built for binge nights', price:7440, hex:['#C9B79A','#3B2A22'], w:140, d:100, img:'../images/sactionals-media-room-wrap.webp'},
 ];
 
-// Pieces outside the Sactionals lineup — shown only as room-fit suggestions
-// (grouped by `group`) for rooms too small for any Sactionals setup; not part of the browse grid.
-// Dimensions/prices marked (est.) are placeholders pending real specs — swap in real values when available.
-const compactPieces = [
-  {name:'Snugg Chair', group:'Chair', meta:'Fits 1 · Compact accent seating', price:1499, img:'../images/nav-snugg-chair.webp', w:34, d:34},
-  {name:'Squattoman', group:'Ottoman', meta:'Extra seat or footrest (est.)', price:399, img:'../images/nav-squattomans.webp', w:24, d:24},
-  {name:'The Sac', group:'Sac', meta:'Fits 1 · Iconic bean bag (est.)', price:1199, img:'../images/nav-sac.webp', w:40, d:40},
-  {name:'Sac Bundle', group:'Sac Bundle', meta:'Sac + Squattoman (est.)', price:1599, img:'../images/nav-sac-bundle.webp', w:64, d:40},
-];
-
 // ---------- persisted room fit (like Amazon's "Your Garage" for parts) ----------
 var ROOM_FIT_KEY = 'lovesac-room-fit';
 function loadRoomFit(){
@@ -2133,21 +2088,7 @@ function applyFilters(){
   var noteEl = document.getElementById('roomFitNote');
   if(noteEl){
     if(room && roomProductFitCount === 0){
-      var fittingCompact = compactPieces.filter(function(p){ return fitsBounds(p, room.width, room.length); });
-      if(fittingCompact.length){
-        var names = fittingCompact.map(function(p){ return p.name; }).join(', ');
-        noteEl.innerHTML = 'None of our Sactionals setups fit a ' + room.width + '"×' + room.length + '" room, but ' + names + ' would — <a id="roomFitNoteOpen">open Check Your Space</a> to see it.';
-        var openLink = document.getElementById('roomFitNoteOpen');
-        if(openLink){
-          openLink.addEventListener('click', function(e){
-            e.stopPropagation();
-            var chip = document.getElementById('roomFitChip');
-            if(chip) chip.click();
-          });
-        }
-      } else {
-        noteEl.textContent = 'Nothing in our current lineup fits a ' + room.width + '"×' + room.length + '" room — try a larger space.';
-      }
+      noteEl.textContent = 'Nothing in our Sactionals lineup fits a ' + room.width + '"×' + room.length + '" room — try a larger space.';
       noteEl.hidden = false;
     } else {
       noteEl.hidden = true;
