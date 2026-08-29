@@ -2323,7 +2323,7 @@ var COLOR_NAMES = {
 function renderProductGrid(){
   document.getElementById('productGrid').innerHTML = products.map((p,i)=>{
     var colorNames = p.hex.map(h=>COLOR_NAMES[h]||'color');
-    var cardLabel = `Lovesac ${p.name}, ${p.meta}. Available in ${colorNames.join(', ')}. $${p.price.toLocaleString()}.00`;
+    var cardLabel = `${p.name}, ${p.meta}. Available in ${colorNames.join(', ')}. $${p.price.toLocaleString()}.00`;
     return `
     <div class="product-card nav-mock" data-idx="${i}" role="button" tabindex="0" aria-label="${cardLabel}">
       <div class="product-thumb${p.img ? ' has-photo' : ''}">
