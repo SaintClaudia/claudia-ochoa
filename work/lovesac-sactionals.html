@@ -1158,6 +1158,7 @@
             <button type="button" class="filter-swatch" data-name="Forest"><span class="filter-swatch-color" style="background:#2F4A3B"></span>Forest</button>
             <button type="button" class="filter-swatch" data-name="Espresso"><span class="filter-swatch-color" style="background:#3B2A22"></span>Espresso</button>
             <button type="button" class="filter-swatch" data-name="Fog"><span class="filter-swatch-color" style="background:#B7AE9C"></span>Fog</button>
+            <button type="button" class="filter-swatch" data-name="Cloud"><span class="filter-swatch-color" style="background:#C9C1BE"></span>Cloud</button>
           </div>
         </div>
       </div>
@@ -2286,15 +2287,15 @@ document.getElementById('backBtn').style.visibility='hidden';
 
 // ---------- BROWSE VIEW ----------
 const products = [
-  {name:'The Weekend Lounger', meta:'Fits 4 · Great for small living rooms', price:2999, hex:['#C9B79A','#4A4C4A','#3F6E77'], badge:'Best Seller', w:100, d:66, img:'../images/sactionals-weekend-lounger.webp'},
-  {name:'The Movie Night Sectional', meta:'Fits 6 · Reclining seats included', price:4499, hex:['#B26A4A','#1F2A44','#DCD3C4'], w:130, d:84, img:'../images/sactionals-movie-night-sectional.webp'},
-  {name:'The Everyday L-Shape', meta:'Fits 4 · Deep seats for lounging', price:3250, hex:['#A9A9A2','#2F4A3B'], w:112, d:88, img:'../images/sactionals-everyday-l-shape.webp'},
-  {name:'The Family Room Corner', meta:'Fits 6 · 1-deep chaise', price:5024, hex:['#C9B79A','#3B2A22','#B7AE9C'], badge:'Customer Favorite', w:128, d:66, img:'../images/sactionals-family-room-corner.jpeg'},
-  {name:'The Game Day U-Shape', meta:'Fits 8 · Room for the whole crew', price:6112, hex:['#4A4C4A','#1F2A44'], w:156, d:96, img:'../images/sactionals-game-day-u-shape.webp'},
+  {name:'The Weekend Lounger', meta:'Fits 4 · Great for small living rooms', price:2999, hex:['#B26A4A','#4A4C4A','#3F6E77'], badge:'Best Seller', w:100, d:66, img:'../images/sactionals-weekend-lounger.webp'},
+  {name:'The Movie Night Sectional', meta:'Fits 6 · Reclining seats included', price:4499, hex:['#2F4A3B','#1F2A44','#DCD3C4'], w:130, d:84, img:'../images/sactionals-movie-night-sectional.webp'},
+  {name:'The Everyday L-Shape', meta:'Fits 4 · Deep seats for lounging', price:3250, hex:['#C9B79A','#2F4A3B'], w:112, d:88, img:'../images/sactionals-everyday-l-shape.webp'},
+  {name:'The Family Room Corner', meta:'Fits 6 · 1-deep chaise', price:5024, hex:['#1F2A44','#3B2A22','#B7AE9C'], badge:'Customer Favorite', w:128, d:66, img:'../images/sactionals-family-room-corner.jpeg'},
+  {name:'The Game Day U-Shape', meta:'Fits 8 · Room for the whole crew', price:6112, hex:['#C9B79A','#1F2A44'], w:156, d:96, img:'../images/sactionals-game-day-u-shape.webp'},
   {name:'The Compact Loveseat', meta:'Fits 2 · Small-space friendly', price:1816, hex:['#DCD3C4','#C9B79A'], w:64, d:38, img:'../images/sactionals-compact-loveseat.webp'},
-  {name:'The Reading Nook', meta:'Fits 3 · 1-deep, cozy footprint', price:2532, hex:['#B7AE9C','#3F6E77'], w:84, d:38, img:'../images/sactionals-reading-nook.webp'},
-  {name:'The Grand Sectional', meta:'Fits 10 · Statement piece for open floor plans', price:7676, hex:['#1F2A44','#4A4C4A','#B26A4A'], w:180, d:100, img:'../images/sactionals-grand-sectional.webp'},
-  {name:'The Media Room Wrap', meta:'Fits 7 · 4-deep, built for binge nights', price:7440, hex:['#B7AE9C','#3B2A22'], w:140, d:100, img:'../images/sactionals-media-room-wrap.webp'},
+  {name:'The Reading Nook', meta:'Fits 3 · 1-deep, cozy footprint', price:2532, hex:['#C9C1BE','#3F6E77'], w:84, d:38, img:'../images/sactionals-reading-nook.webp'},
+  {name:'The Grand Sectional', meta:'Fits 10 · Statement piece for open floor plans', price:7676, hex:['#C9C1BE','#4A4C4A','#B26A4A'], w:180, d:100, img:'../images/sactionals-grand-sectional.webp'},
+  {name:'The Media Room Wrap', meta:'Fits 7 · 4-deep, built for binge nights', price:7440, hex:['#C9B79A','#3B2A22'], w:140, d:100, img:'../images/sactionals-media-room-wrap.webp'},
 ];
 
 function sizeOf(p){
@@ -2304,7 +2305,7 @@ function sizeOf(p){
 var COLOR_NAMES = {
   '#C9B79A':'Sand', '#4A4C4A':'Charcoal', '#3F6E77':'Lagoon', '#B26A4A':'Terracotta',
   '#1F2A44':'Midnight', '#DCD3C4':'Oatmeal', '#A9A9A2':'Stone', '#2F4A3B':'Forest',
-  '#3B2A22':'Espresso', '#B7AE9C':'Fog'
+  '#3B2A22':'Espresso', '#B7AE9C':'Fog', '#C9C1BE':'Cloud'
 };
 
 function renderProductGrid(){
