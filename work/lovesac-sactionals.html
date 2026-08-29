@@ -98,6 +98,12 @@
   .fallback-card-price{font-size:14px;font-weight:700;color:var(--ink);}
   .fallback-card:hover .fallback-card-thumb, .fallback-card:focus-visible .fallback-card-thumb{opacity:.85;}
 
+  .cross-sell{border-top:1px solid var(--line);padding-top:44px;margin-top:56px;}
+  .cross-sell-title{font-size:26px;margin:0 0 6px;}
+  .cross-sell-sub{color:var(--muted);font-size:14px;margin:0 0 24px;}
+  .cross-sell-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .cross-sell-grid .fallback-card{max-width:none;}
+
   .filter-dropdown-wrap{position:relative; display:inline-flex;}
   .filter-dropdown{
     position:absolute; top:calc(100% + 8px); left:0;
@@ -156,6 +162,7 @@
 
   @media(max-width:880px){
     .product-grid{grid-template-columns:1fr 1fr;}
+    .cross-sell-grid{grid-template-columns:1fr 1fr;}
     .browse-hero{grid-template-columns:1fr;}
     .space-check{flex-direction:column; text-align:center; align-items:center;}
     .space-check-text p{max-width:none;}
@@ -340,6 +347,7 @@
   }
   .desktop-search-inner input::placeholder{color:var(--ls-ink-soft); opacity:0.65;}
   .desktop-search-inner input:focus{border-bottom-color:var(--ls-clay);}
+  .desktop-search-inner input:focus-visible{outline:none;}
   .desktop-search-close{display:flex; background:none; border:none; padding:0; margin:0; cursor:pointer; color:inherit; opacity:0.65; flex-shrink:0; transition:opacity .2s;}
   .desktop-search-close:hover{opacity:1;}
   .desktop-search-close svg{width:18px; height:18px;}
@@ -655,6 +663,7 @@
   }
   .mobile-search input::placeholder{color:var(--ls-ink-soft); opacity:0.65;}
   .mobile-search input:focus{border-bottom-color:var(--ls-clay);}
+  .mobile-search input:focus-visible{outline:none;}
   @media (min-width:861px){
     .mobile-menu{display:none !important;}
   }
@@ -1289,6 +1298,37 @@
 
     <div class="room-fit-note" id="roomFitNote" hidden></div>
     <div class="product-grid" id="productGrid"></div>
+
+    <div class="cross-sell">
+      <h2 class="cross-sell-title">Finish the look</h2>
+      <p class="cross-sell-sub">Accessories that pair with any Sactionals setup.</p>
+      <div class="cross-sell-grid">
+        <button type="button" class="fallback-card nav-mock" aria-label="Sactionals with StealthTech, from $1,870.00">
+          <div class="fallback-card-thumb"><img src="../images/nav-stealthtech.webp" alt="Sactionals with StealthTech"></div>
+          <div class="fallback-card-name">Sactionals with StealthTech</div>
+          <div class="fallback-card-meta">In-couch surround sound</div>
+          <div class="fallback-card-price">From $1,870.00</div>
+        </button>
+        <button type="button" class="fallback-card nav-mock" aria-label="AnyTables, from $597.00">
+          <div class="fallback-card-thumb"><img src="../images/nav-anytables.webp" alt="AnyTables"></div>
+          <div class="fallback-card-name">AnyTables</div>
+          <div class="fallback-card-meta">Built-in side table, 3 finishes</div>
+          <div class="fallback-card-price">From $597.00</div>
+        </button>
+        <button type="button" class="fallback-card nav-mock" aria-label="Throw pillows, from $89.00">
+          <div class="fallback-card-thumb"><img src="../images/nav-throw-pillows.webp" alt="Throw pillows"></div>
+          <div class="fallback-card-name">Throw Pillows</div>
+          <div class="fallback-card-meta">Mix-and-match fabrics</div>
+          <div class="fallback-card-price">From $89.00</div>
+        </button>
+        <button type="button" class="fallback-card nav-mock" aria-label="Covers and inserts, from $299.00">
+          <div class="fallback-card-thumb"><img src="../images/nav-covers-and-inserts.webp" alt="Covers and inserts"></div>
+          <div class="fallback-card-name">Covers &amp; Inserts</div>
+          <div class="fallback-card-meta">Refresh a seat without replacing it</div>
+          <div class="fallback-card-price">From $299.00</div>
+        </button>
+      </div>
+    </div>
   </div>
 <footer>
   <div class="wrap">
