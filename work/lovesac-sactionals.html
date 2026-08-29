@@ -2368,6 +2368,8 @@ window.updateRoomFitUI = updateRoomFitUI;
     chip.addEventListener('click', function(e){
       if(e.target.closest('#roomFitClear')) return;
       e.stopPropagation();
+      if(window.holdNavVisible) window.holdNavVisible(900);
+      window.scrollTo({top:0, behavior:'smooth'});
       var spaceToggle = document.getElementById('spaceToggle');
       if(spaceToggle) spaceToggle.click();
       var room = loadRoomFit();
