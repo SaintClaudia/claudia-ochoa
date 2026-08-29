@@ -168,6 +168,12 @@
     margin:0 auto;
   }
   .phone-frame-wide img{border-radius:22px; width:100%; height:auto; display:block;}
+  .trust-band-demo{background:var(--cream); padding:32px 26px; display:flex; flex-direction:column; gap:28px;}
+  .trust-band-row{display:flex; align-items:flex-start; gap:16px;}
+  .trust-band-icon{width:32px; height:32px; flex-shrink:0; color:var(--espresso);}
+  .trust-band-icon svg{width:100%; height:100%;}
+  .trust-band-text{font-size:14.5px; line-height:1.45; color:var(--ink-soft); padding-top:2px;}
+  .trust-band-text strong{color:var(--espresso); font-weight:700;}
   .nav-note{margin-top:32px; font-size:16px; line-height:1.7; color:var(--ink-soft); max-width:70ch;}
 
   /* Accessibility: hear-it audio compare */
@@ -905,7 +911,26 @@
       </div>
       <div class="nav-col after">
         <div class="nav-label"><span class="sw"></span>Redesign — homepage</div>
-        <div class="phone-frame-wide"><img src="/images/lovesac-trust-band-after.webp" width="760" height="683" loading="lazy" decoding="async" alt="Redesigned homepage trust band with four always-visible rows, each pairing an icon with a bolded claim and its specific terms: 60-Day Trial, Machine Washable, Forever Warranty, and Recycled Fill."></div>
+        <div class="phone-frame-wide">
+          <div class="trust-band-demo">
+            <div class="trust-band-row">
+              <span class="trust-band-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3"/><path d="M3 11h18v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M5 16v2M19 16v2"/></svg></span>
+              <div class="trust-band-text"><strong>60-Day Trial</strong> &mdash; try it at home, then decide</div>
+            </div>
+            <div class="trust-band-row">
+              <span class="trust-band-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="7" cy="6" r="0.6" fill="currentColor" stroke="none"/><circle cx="9.5" cy="6" r="0.6" fill="currentColor" stroke="none"/><circle cx="12" cy="14" r="4.5"/><circle cx="12" cy="14" r="1.8"/></svg></span>
+              <div class="trust-band-text"><strong>Machine Washable</strong> &mdash; easy to remove, easy to wash</div>
+            </div>
+            <div class="trust-band-row">
+              <span class="trust-band-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span>
+              <div class="trust-band-text"><strong>Forever Warranty</strong> &mdash; your frame covered for life</div>
+            </div>
+            <div class="trust-band-row">
+              <span class="trust-band-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3c3 3 3 15 0 18"/></svg></span>
+              <div class="trust-band-text"><strong>Recycled Fill</strong> &mdash; made from reclaimed plastic bottles</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <p class="nav-note">Reaching this information requires navigating to a specific product page and scrolling past a lifestyle image of the founder and his family. A shopper browsing the homepage never encounters it. Even there, the key details remain collapsed behind a plus icon: "Guaranteed For Life," "60-Day Home Trial," "Free Shipping and Returns," and "Room of Choice Delivery."</p>
