@@ -192,6 +192,11 @@
   }
   .why-list strong{color:var(--espresso);}
 
+  .impact-stats{display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:8px;}
+  .impact-stat{background:var(--paper); padding:22px 20px; border:1px solid var(--line); border-radius:14px;}
+  .impact-stat .big{font-family:'Fraunces',serif; font-size:26px; color:var(--clay-deep); font-weight:600; line-height:1.15;}
+  .impact-stat .label{font-size:12.5px; color:var(--ink-soft); margin-top:8px; line-height:1.45;}
+
   .context-strip{
     margin-top:56px;
     background:var(--espresso);
@@ -278,6 +283,7 @@
     .roomfit-shots{gap:16px; flex-wrap:wrap;}
     .phone-frame{width:160px;}
     .sentiment-grid{grid-template-columns:1fr;}
+    .impact-stats{grid-template-columns:repeat(2,1fr);}
   }
   .skip-link{
     position:absolute; top:-100%; left:24px; z-index:9999;
@@ -376,6 +382,45 @@
         <a href="lovesac-case-study-5.html">04 &middot; Voice &amp; content strategy &rarr;</a>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="divider">
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="num">The Impact</span></div>
+      <div>
+        <h2>What this would move.</h2>
+        <p class="lede">This is a concept redesign, not a live deployment &mdash; so these are projections and a measurement plan, not results.</p>
+      </div>
+    </div>
+    <div class="impact-stats">
+      <div class="impact-stat">
+        <div class="big">Concept</div>
+        <div class="label">UX/UI Redesign Concept</div>
+      </div>
+      <div class="impact-stat">
+        <div class="big">0 &rarr; 1</div>
+        <div class="label">Room-Fit Tools Added</div>
+      </div>
+      <div class="impact-stat">
+        <div class="big">~30&ndash;40%*</div>
+        <div class="label">Projected Reduction in Purchase-Path Clicks</div>
+      </div>
+      <div class="impact-stat">
+        <div class="big">1</div>
+        <div class="label">New Feature Category Introduced to Furniture E-Comm</div>
+      </div>
+    </div>
+    <p class="nav-note">*Estimated by counting the steps removed from the current purchase path &mdash; collapsed trust-signal accordions, an off-page room-visualization app &mdash; rather than measured against live traffic, since none exists for a concept redesign.</p>
+
+    <p class="nav-note" style="margin-top:32px;">If this shipped, here's what I'd track to know whether it actually worked:</p>
+    <ul class="why-list">
+      <li><span class="mark">1</span><span><strong>Conversion rate, PDP &rarr; cart.</strong> The redesign's core bet is fewer decision-points before commitment.</span></li>
+      <li><span class="mark">2</span><span><strong>Room Fit engagement rate.</strong> The percentage of PDP visitors who use the tool before adding to cart.</span></li>
+      <li><span class="mark">3</span><span><strong>Return rate, Room Fit users vs. non-users.</strong> The tool's real test is whether spatial confidence reduces returns.</span></li>
+      <li><span class="mark">4</span><span><strong>Time-to-purchase.</strong> From landing to checkout, benchmarked against the current site average.</span></li>
+    </ul>
   </div>
 </section>
 
