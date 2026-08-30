@@ -386,11 +386,26 @@
 
   /* Finding 4 — in-app instructions */
   .stx-videocard{width:100%; border-radius:10px; background:var(--stx-surface); border:1px solid var(--stx-line); overflow:hidden; text-align:left;}
-  .stx-videocard .stx-thumb{position:relative; height:88px; background:linear-gradient(135deg,#242424,#141414); display:flex; align-items:center; justify-content:center;}
+  .stx-videocard .stx-thumb{position:relative; height:120px; overflow:hidden; background:linear-gradient(135deg,#242424,#141414); display:flex; align-items:center; justify-content:center;}
+  .stx-videocard .stx-thumb img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;}
+  .stx-videocard .stx-playbtn{position:relative; z-index:1;}
   .stx-playbtn{width:34px; height:34px; border-radius:50%; background:var(--stx-teal); display:flex; align-items:center; justify-content:center;}
   .stx-playbtn svg{width:12px; height:12px; fill:#0A2226;}
   .stx-videocard .stx-caption{padding:8px 10px; font-size:10px; color:var(--stx-text-soft); line-height:1.4;}
   .stx-pdf-link{display:flex; align-items:center; gap:6px; font-size:10.5px; color:var(--stx-teal); font-weight:700; margin-top:2px;}
+
+  /* Finding 4 — StealthTech Assist agent */
+  .stx-assist-head{display:flex; align-items:center; gap:10px; align-self:flex-start;}
+  .stx-assist-avatar{width:30px; height:30px; border-radius:50%; background:var(--stx-teal-wash); display:flex; align-items:center; justify-content:center; flex:0 0 auto;}
+  .stx-assist-avatar svg{width:15px; height:15px;}
+  .stx-assist-head h4{font-size:14px; line-height:1.2;}
+  .stx-assist-sub{margin:1px 0 0; font-size:9.5px; color:var(--stx-text-soft);}
+  .stx-assist-bubble{
+    align-self:flex-start; text-align:left; background:var(--stx-surface); border:1px solid var(--stx-line);
+    border-radius:4px 14px 14px 14px; padding:10px 12px; font-size:11px; line-height:1.55; color:var(--stx-text);
+  }
+  .stx-chips{display:flex; flex-wrap:wrap; gap:6px; align-self:flex-start;}
+  .stx-chip{border:1px solid var(--stx-teal); color:var(--stx-teal); border-radius:999px; padding:5px 10px; font-size:9.5px; font-weight:700; white-space:nowrap;}
 
   /* Full-size "before" carousel (Finding 1) */
   .stx-carousel{display:flex; align-items:center; justify-content:center; gap:8px;}
@@ -972,10 +987,23 @@
         <div class="phone-slot">
           <div class="stx-mock">
             <div class="stx-back">&times; CLOSE</div>
-            <div class="stx-body" style="justify-content:flex-start; padding-top:22px;">
-              <h4 style="align-self:flex-start;">Setup Instructions</h4>
+            <div class="stx-body" style="justify-content:flex-start; padding-top:18px; gap:12px;">
+              <div class="stx-assist-head">
+                <div class="stx-assist-avatar" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="var(--stx-teal)" stroke-width="1.5" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3z"/></svg>
+                </div>
+                <div>
+                  <h4 style="margin:0;">StealthTech Assist</h4>
+                  <p class="stx-assist-sub">Guided setup, right here</p>
+                </div>
+              </div>
+              <div class="stx-assist-bubble">Hi! I can walk you through pairing, layout, and fabric setup step by step &mdash; or just show you the video. What do you need?</div>
+              <div class="stx-chips">
+                <span class="stx-chip">Show me the video</span>
+                <span class="stx-chip">Walk me through pairing</span>
+              </div>
               <div class="stx-videocard">
-                <div class="stx-thumb" aria-hidden="true"><div class="stx-playbtn"><svg viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20"/></svg></div></div>
+                <div class="stx-thumb" aria-hidden="true"><img src="/images/lovesac-stealthtech-video-thumb.webp" alt="" loading="lazy" decoding="async"><div class="stx-playbtn"><svg viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20"/></svg></div></div>
                 <div class="stx-caption">How to Set Up Sactionals StealthTech Sound + Charge &middot; 2:14</div>
               </div>
               <span class="stx-pdf-link">&darr; Download the full PDF guide</span>
@@ -984,7 +1012,7 @@
         </div>
       </div>
     </div>
-    <p class="nav-note">One tap, one screen, no browser tab: the video plays and the PDF sits right below it &mdash; instead of a link that trades the app's own onboarding for a marketing pop-up first.</p>
+    <p class="nav-note">One tap keeps you in the app: a StealthTech Assist agent offers to walk through pairing, layout, or fabric step by step, with the video and PDF one tap away &mdash; instead of a link that trades the app's own onboarding for a marketing pop-up first.</p>
 
     </div>
   </div>
