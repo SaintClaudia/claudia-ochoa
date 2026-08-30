@@ -14,16 +14,16 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Case Study — 04 · Content Strategy — CLAUDIA OCHOA</title>
-<meta name="description" content="How a content-vs-utility framework shaped every line of copy in the Lovesac redesign — and where Lovesac's own site reveals the same instinct, executed differently.">
-<meta property="og:title" content="Case Study — 04 · Content Strategy — CLAUDIA OCHOA">
-<meta property="og:description" content="How a content-vs-utility framework shaped every line of copy in the Lovesac redesign — and where Lovesac's own site reveals the same instinct, executed differently.">
+<title>Case Study — 05 · Synopsis — CLAUDIA OCHOA</title>
+<meta name="description" content="A short summary of the Lovesac redesign project — the problem, the approach, what the research validated, and what's still just a proposal.">
+<meta property="og:title" content="Case Study — 05 · Synopsis — CLAUDIA OCHOA">
+<meta property="og:description" content="A short summary of the Lovesac redesign project — the problem, the approach, what the research validated, and what's still just a proposal.">
 <meta property="og:url" content="https://claudiaochoa.co/work/lovesac-case-study-5.html">
 <meta property="og:type" content="article">
 <meta property="og:image" content="https://claudiaochoa.co/images/lovesac-redesign-thumb.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Case Study — 04 · Content Strategy — CLAUDIA OCHOA">
-<meta name="twitter:description" content="How a content-vs-utility framework shaped every line of copy in the Lovesac redesign — and where Lovesac's own site reveals the same instinct, executed differently.">
+<meta name="twitter:title" content="Case Study — 05 · Synopsis — CLAUDIA OCHOA">
+<meta name="twitter:description" content="A short summary of the Lovesac redesign project — the problem, the approach, what the research validated, and what's still just a proposal.">
 <meta name="twitter:image" content="https://claudiaochoa.co/images/lovesac-redesign-thumb.jpg">
 <link rel="canonical" href="https://claudiaochoa.co/work/lovesac-case-study-5.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -125,70 +125,8 @@
   .section-head .lede{font-size:16.5px; line-height:1.6; color:var(--ink-soft); padding-top:6px;}
   .num{font-family:'Fraunces',serif; font-weight:500; font-size:15px; color:var(--clay-deep);}
 
-  .body-copy{font-size:16px; line-height:1.75; color:var(--ink-soft); max-width:72ch;}
-  .body-copy + .body-copy{margin-top:20px;}
-  .body-copy strong{color:var(--espresso);}
-  .subhead-block{margin-top:44px;}
-  .subhead-block:first-of-type{margin-top:0;}
-  .subhead-block h3{font-size:22px; margin-bottom:14px; line-height:1.2;}
-
-  /* Opening/closing thesis, styled like the viral-moment pull section elsewhere in the series */
-  .spark{background:var(--espresso); color:var(--paper); border-radius:18px; padding:52px;}
-  .spark .num{color:var(--paper);}
-  .pull{
-    font-family:'Fraunces',serif; font-style:italic;
-    font-size:clamp(22px,2.6vw,30px); line-height:1.42;
-    color:var(--paper); max-width:52ch; margin:8px 0 0;
-  }
-  .pull.on-paper{color:var(--espresso); max-width:56ch;}
-
-  /* Framework / naming tables */
-  .table-scroll-wrap{position:relative;}
-  .table-scroll{overflow-x:auto; margin-top:8px; -webkit-overflow-scrolling:touch;}
-  .table-scroll-wrap::after{
-    content:''; position:absolute; top:0; right:0; bottom:0; width:36px;
-    background:linear-gradient(to right, transparent, var(--cream));
-    opacity:1; transition:opacity .2s ease; pointer-events:none;
-  }
-  .table-scroll-wrap:has(.table-scroll.at-end)::after{opacity:0;}
-  .data-table{width:100%; border-collapse:collapse; min-width:560px; font-size:14px;}
-  .data-table th, .data-table td{
-    text-align:left; padding:14px 18px; border-bottom:1px solid var(--line);
-    vertical-align:top; line-height:1.5;
-  }
-  .data-table thead th{
-    font-family:'Fraunces',serif; font-weight:600; font-size:13px;
-    color:var(--espresso); border-bottom:2px solid var(--espresso);
-  }
-  .data-table tbody th{
-    font-weight:700; color:var(--espresso); white-space:nowrap;
-  }
-  .data-table td{color:var(--ink-soft);}
-  .data-table td strong, .data-table td em{color:var(--espresso); font-style:normal;}
-
-  .why-list{list-style:none; margin:20px 0 0; padding:0; display:flex; flex-direction:column; gap:16px; max-width:72ch;}
-  .why-list li{display:flex; gap:14px; align-items:flex-start; font-size:16px; line-height:1.65; color:var(--ink-soft);}
-  .why-list .mark{
-    flex:0 0 auto; width:22px; height:22px; border-radius:50%;
-    background:rgba(190,91,57,0.12); color:var(--clay-deep);
-    display:flex; align-items:center; justify-content:center;
-    font-size:12px; font-weight:700; margin-top:2px;
-  }
-  .why-list strong{color:var(--espresso);}
-
-  /* Color-naming comparison */
-  .compare-grid{display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:20px; max-width:640px;}
-  .compare-card{background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:22px 24px;}
-  .compare-card.redesign{background:rgba(190,91,57,0.06); border-color:rgba(190,91,57,0.28);}
-  .compare-card .compare-label{
-    display:block; font-size:11px; font-weight:700; letter-spacing:0.08em;
-    text-transform:uppercase; color:var(--ink-soft); margin-bottom:10px;
-  }
-  .compare-card .compare-val{font-family:'Fraunces',serif; font-size:18px; color:var(--espresso);}
-  .compare-card .compare-sub{font-size:13.5px; color:var(--ink-soft); margin-top:6px; line-height:1.5;}
-
-  /* Hero comparison */
-  .nav-compare{display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-top:24px;}
+  /* Mobile nav compare */
+  .nav-compare{display:grid; grid-template-columns:1fr 1fr; gap:28px;}
   .nav-col{display:flex; flex-direction:column; gap:14px;}
   .nav-label{display:flex; align-items:center; gap:10px; font-size:13px; letter-spacing:0.06em; text-transform:uppercase; font-weight:700;}
   .nav-label .sw{width:10px; height:10px; border-radius:3px;}
@@ -207,6 +145,10 @@
     overflow:hidden;
   }
   .phone-slot img{border-radius:22px; width:100%; height:100%; object-fit:cover; object-position:top;}
+  .phone-slot-empty{
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    padding:24px; color:var(--ink-soft); font-size:13.5px; line-height:1.6;
+  }
   .phone-frame-wide{
     box-sizing:content-box;
     border:10px solid var(--espresso);
@@ -217,70 +159,108 @@
     margin:0 auto;
   }
   .phone-frame-wide img{border-radius:22px; width:100%; height:auto; display:block;}
-  .nav-note{margin-top:24px; font-size:16px; line-height:1.75; color:var(--ink-soft); max-width:72ch;}
+  .nav-note{margin-top:32px; font-size:16px; line-height:1.7; color:var(--ink-soft); max-width:70ch;}
 
-  .callout{
-    background:var(--paper); border:1px solid var(--line); border-radius:14px;
-    padding:24px 28px; margin-top:24px; max-width:72ch;
-    font-size:15px; line-height:1.7; color:var(--ink-soft);
-  }
-  .callout-label{
-    display:block; font-weight:700; font-size:11px; letter-spacing:0.08em;
-    text-transform:uppercase; color:var(--sage); margin-bottom:10px;
-  }
-
-  .browser-frame{
-    border:1px solid var(--line);
-    border-radius:14px;
+  /* Room fit */
+  .roomfit-layout{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start;}
+  .roomfit-shots{display:flex; gap:24px; justify-content:center;}
+  .phone-frame{
+    box-sizing:content-box;
+    border:10px solid var(--espresso);
+    border-radius:32px;
     overflow:hidden;
     background:var(--paper);
-    box-shadow:0 1px 2px rgba(36,28,22,0.06);
-    margin:20px 0;
+    width:210px;
   }
-  .browser-frame img{width:100%; height:auto; display:block;}
+  .phone-frame img{border-radius:22px; width:100%; display:block;}
+  .frame-cap{
+    text-align:center; font-size:12px; color:var(--ink-soft);
+    margin-top:12px; letter-spacing:0.03em;
+  }
+  .roomfit-copy h3{font-size:24px; margin-bottom:16px; line-height:1.2;}
+  .roomfit-copy p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin:0 0 20px;}
+  .why-list{list-style:none; margin:24px 0 0; padding:0; display:flex; flex-direction:column; gap:16px;}
+  .why-list li{
+    display:flex; gap:14px; align-items:flex-start;
+    font-size:16px; line-height:1.6; color:var(--ink-soft);
+  }
+  .why-list .mark{
+    flex:0 0 auto; width:22px; height:22px; border-radius:50%;
+    background:rgba(190,91,57,0.12); color:var(--clay-deep);
+    display:flex; align-items:center; justify-content:center;
+    font-size:12px; font-weight:700; margin-top:2px;
+  }
+  .why-list strong{color:var(--espresso);}
 
-  /* Stage cards */
-  .stage-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin:24px 0;}
-  .stage-card{border-radius:14px; overflow:hidden; background:var(--paper); border:1px solid var(--line);}
-  .stage-card .img{aspect-ratio:4/5; background-size:cover; background-position:center;}
-  .stage-card .body{padding:16px;}
-  .stage-card .stage-num{
-    display:block; font-family:'Fraunces',serif; font-size:12.5px;
-    color:var(--clay-deep); margin-bottom:6px;
-  }
-  .stage-card h4{font-size:15.5px; font-weight:600; color:var(--espresso); margin:0;}
+  .impact-stats{display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:8px;}
+  .impact-stat{background:var(--paper); padding:22px 20px; border:1px solid var(--line); border-radius:14px;}
+  .impact-stat .big{font-family:'Fraunces',serif; font-size:26px; color:var(--clay-deep); font-weight:600; line-height:1.15;}
+  .impact-stat .label{font-size:12.5px; color:var(--ink-soft); margin-top:8px; line-height:1.45;}
 
-  blockquote{
-    margin:32px 0; padding:2px 0 2px 24px; border-left:3px solid var(--clay);
-    max-width:60ch;
-  }
-  blockquote p{
-    font-family:'Fraunces',serif; font-style:italic; font-size:21px;
-    line-height:1.45; color:var(--espresso); margin:0;
-  }
-  blockquote .attribution{
-    display:block; margin-top:10px; font-size:13px; color:var(--ink-soft);
-    font-style:normal;
-  }
+  .kpi-list{display:flex; flex-direction:column; gap:20px; margin-top:20px;}
+  .kpi-item{padding-top:20px; border-top:1px solid var(--line);}
+  .kpi-item:first-child{padding-top:0; border-top:none;}
+  .kpi-num{font-family:'Fraunces',serif; font-weight:600; font-size:15px; color:var(--clay-deep); margin-bottom:6px;}
+  .kpi-item p{font-size:15.5px; line-height:1.6; color:var(--ink-soft); margin:0;}
 
-  /* Customer journey timeline */
-  .journey{display:flex; flex-direction:column; margin-top:8px;}
-  .journey-step{
-    display:grid; grid-template-columns:56px 1fr; gap:20px;
-    padding:24px 0; border-top:1px solid var(--line);
+  .context-strip{
+    margin-top:56px;
+    background:var(--espresso);
+    color:var(--paper);
+    border-radius:16px;
+    padding:32px 36px;
+    font-size:14.5px; line-height:1.7;
   }
-  .journey-step:first-child{border-top:none; padding-top:0;}
-  .journey-step .num{padding-top:2px;}
-  .journey-title{font-size:19px; margin-bottom:6px;}
-  .journey-mind{font-size:13.5px; font-style:italic; color:var(--ink-soft); margin:0 0 8px;}
-  .journey-example{font-size:15px; color:var(--ink-soft); margin:0; line-height:1.6;}
-  .journey-example em{color:var(--espresso); font-style:normal; font-weight:600;}
-  .journey-register{
-    display:inline-block; font-size:11px; font-weight:700; letter-spacing:0.06em;
-    text-transform:uppercase; color:var(--ink-soft); margin-left:10px;
+  .context-strip strong{color:var(--paper);}
+  .context-strip .tag{
+    display:inline; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700;
+    color:#D9CBB8; margin-right:8px;
   }
+  .synopsis-links{
+    display:flex; flex-direction:column; gap:10px;
+    margin-top:20px; padding-top:20px; border-top:1px solid rgba(241,232,217,0.16);
+  }
+  .synopsis-links a{
+    color:var(--paper); opacity:0.85; text-decoration:none;
+    font-family:'Fraunces',serif; font-weight:500; font-size:15px;
+    transition:opacity .2s ease;
+  }
+  .synopsis-links a:hover{opacity:1; text-decoration:underline; text-underline-offset:3px;}
+  .outcome-photo{margin-top:40px; max-width:560px;}
+  .outcome-photo img{border-radius:16px; width:100%; height:auto; display:block; border:1px solid var(--line);}
+  .outcome-photo-cap{margin-top:12px; font-size:13px; color:var(--ink-soft); font-style:italic;}
+  .outcome-body{display:grid; grid-template-columns:1fr 2.2fr; gap:48px;}
 
-  .scope-note{font-size:14.5px; line-height:1.7; color:var(--ink-soft); max-width:72ch; font-style:italic;}
+  /* Sentiment cards */
+  .sentiment-grid{display:grid; grid-template-columns:1fr 1fr; gap:28px;}
+  .sentiment-card{background:var(--paper); border:1px solid var(--line); border-radius:16px; padding:30px 28px;}
+  .sentiment-card h3{
+    display:flex; align-items:center; gap:10px;
+    font-size:17px; margin-bottom:20px;
+  }
+  .sentiment-card h3 .dot{width:11px; height:11px; border-radius:50%; flex-shrink:0;}
+  .sentiment-card.positive h3 .dot{background:var(--clay-deep);}
+  .sentiment-card.negative h3 .dot{background:#9C9488;}
+  .sentiment-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:16px;}
+  .sentiment-list li{font-size:14.5px; line-height:1.65; color:var(--ink-soft);}
+  .sentiment-list strong{color:var(--espresso);}
+
+  /* Comparison tables */
+  .table-scroll{overflow-x:auto; margin-top:8px; -webkit-overflow-scrolling:touch;}
+  .data-table{width:100%; border-collapse:collapse; min-width:560px; font-size:14px;}
+  .data-table th, .data-table td{
+    text-align:left; padding:14px 18px; border-bottom:1px solid var(--line);
+    vertical-align:top; line-height:1.5;
+  }
+  .data-table thead th{
+    font-family:'Fraunces',serif; font-weight:600; font-size:13px;
+    color:var(--espresso); border-bottom:2px solid var(--espresso);
+  }
+  .data-table tbody th{
+    font-weight:700; color:var(--espresso); white-space:nowrap;
+  }
+  .data-table td{color:var(--ink-soft);}
+  .data-table td strong{color:var(--espresso);}
 
   .cta{text-align:center; padding:80px 0 96px;}
   .cta h2{font-size:clamp(28px,3.6vw,40px); max-width:22ch; margin:0 auto 16px;}
@@ -303,11 +283,13 @@
     .topbar a.back, .series-nav, .topbar .tag{justify-self:start; text-align:left;}
     .tip-card{display:none;}
     .section-head{grid-template-columns:1fr; gap:14px;}
-    .compare-grid{grid-template-columns:1fr;}
-    .nav-compare{grid-template-columns:1fr;}
-    .stage-grid{grid-template-columns:repeat(2,1fr);}
-    .journey-step{grid-template-columns:1fr; gap:6px;}
-    .spark{padding:32px 24px;}
+    .outcome-body{grid-template-columns:1fr; gap:0;}
+    .outcome-body > div:first-child{display:none;}
+    .nav-compare, .roomfit-layout{grid-template-columns:1fr;}
+    .roomfit-shots{gap:16px; flex-wrap:wrap;}
+    .phone-frame{width:160px;}
+    .sentiment-grid{grid-template-columns:1fr;}
+    .impact-stats{grid-template-columns:repeat(2,1fr);}
   }
   .skip-link{
     position:absolute; top:-100%; left:24px; z-index:9999;
@@ -332,230 +314,78 @@
       <a href="lovesac-case-study.html" aria-label="Part 1 of 5: Teardown &amp; Redesign">01<span class="tip-card" aria-hidden="true"><span class="tip-media"><img class="tip-photo" data-src="/images/lovesac-hero.webp" alt="" decoding="async"><img class="tip-logo" data-src="/images/lovesac-wordmark-cream.png" alt="" decoding="async"></span><span class="tip-body"><span class="tip-kicker">Part 01 &middot; Case Study</span><span class="tip-title">Lovesac: from a viral critique to a full redesign.</span></span></span></a>
       <a href="lovesac-case-study-2.html" aria-label="Part 2 of 5: Deep Dive">02<span class="tip-card" aria-hidden="true"><span class="tip-media"><img class="tip-photo" data-src="/images/lovesac-life-moving.webp" alt="" decoding="async"><img class="tip-logo" data-src="/images/lovesac-wordmark-cream.png" alt="" decoding="async"></span><span class="tip-body"><span class="tip-kicker">Part 02 &middot; Case Study</span><span class="tip-title">A closer look at the moments that matter.</span></span></span></a>
       <a href="lovesac-case-study-3.html" aria-label="Part 3 of 5: Research">03<span class="tip-card" aria-hidden="true"><span class="tip-media"><img class="tip-photo" data-src="/images/lovesac-life-kids.webp" alt="" decoding="async"><img class="tip-logo" data-src="/images/lovesac-wordmark-cream.png" alt="" decoding="async"></span><span class="tip-body"><span class="tip-kicker">Part 03 &middot; Case Study</span><span class="tip-title">What the research actually says.</span></span></span></a>
-      <span class="current" aria-current="page" aria-label="Part 4 of 5: Content Strategy">04<span class="tip-card" aria-hidden="true"><span class="tip-media"><img class="tip-photo" data-src="/images/lovesac-life-apartment.webp" alt="" decoding="async"><img class="tip-logo" data-src="/images/lovesac-wordmark-cream.png" alt="" decoding="async"></span><span class="tip-body"><span class="tip-kicker">Part 04 &middot; Case Study</span><span class="tip-title">Say it like you mean it.</span></span></span></span>
-      <a href="lovesac-case-study-4.html" aria-label="Part 5 of 5: Synopsis">05<span class="tip-card" aria-hidden="true"><span class="tip-media"><img class="tip-photo" data-src="/images/lovesac-life-house.webp" alt="" decoding="async"><img class="tip-logo" data-src="/images/lovesac-wordmark-cream.png" alt="" decoding="async"></span><span class="tip-body"><span class="tip-kicker">Part 05 &middot; Case Study</span><span class="tip-title">The Business Case</span></span></span></a>
+      <a href="lovesac-case-study-4.html" aria-label="Part 4 of 5: Content Strategy">04<span class="tip-card" aria-hidden="true"><span class="tip-media"><img class="tip-photo" data-src="/images/lovesac-life-apartment.webp" alt="" decoding="async"><img class="tip-logo" data-src="/images/lovesac-wordmark-cream.png" alt="" decoding="async"></span><span class="tip-body"><span class="tip-kicker">Part 04 &middot; Case Study</span><span class="tip-title">Say it like you mean it.</span></span></span></a>
+      <span class="current" aria-current="page" aria-label="Part 5 of 5: Synopsis">05<span class="tip-card" aria-hidden="true"><span class="tip-media"><img class="tip-photo" data-src="/images/lovesac-life-house.webp" alt="" decoding="async"><img class="tip-logo" data-src="/images/lovesac-wordmark-cream.png" alt="" decoding="async"></span><span class="tip-body"><span class="tip-kicker">Part 05 &middot; Case Study</span><span class="tip-title">The Business Case</span></span></span></span>
     </nav>
-    <span class="tag">Case Study 04 · Content Strategy</span>
+    <span class="tag">Case Study 05 · Synopsis</span>
   </div>
 </div>
 
 <main id="main-content">
 <header class="hero">
   <div class="wrap">
-    <div class="eyebrow">Case Study — 04 · Content Strategy</div>
-    <h1>Say it like you mean it.</h1>
-    <p class="sub">How emotional intelligence shaped the voice and content across the redesign, from answering practical questions to building a stronger connection with customers.</p>
-    <p class="read-time">August 27, 2026 &middot; 8 min read</p>
+    <div class="eyebrow">Case Study — 05 · Synopsis</div>
+    <h1>The Business Case</h1>
+    <p class="sub">What started with a founder and CEO publicly poking fun at a customer became an opportunity to rethink the experience, the product, and the business around it.</p>
+    <p class="read-time">August 26, 2026 &middot; 3 min read</p>
   </div>
 </header>
 
-<section>
-  <div class="wrap">
-    <div class="spark">
-      <div class="section-head">
-        <div><span class="num">The Thesis</span></div>
-        <div></div>
-      </div>
-      <p class="pull">Shaping brands with emotional intelligence means understanding what a customer needs in a given moment — and designing for it.</p>
-      <p class="body-copy" style="color:#D9CBB8; margin-top:20px; max-width:62ch;">This is where emotional intelligence becomes the design. A brand voice isn't just how it sounds. It's how it makes the customer feel.</p>
-    </div>
-  </div>
-</section>
-
 <section class="divider">
   <div class="wrap">
     <div class="section-head">
-      <div><span class="num">01 · Emotional Intelligence</span></div>
+      <div><span class="num">The Problem</span></div>
       <div>
-        <h2>First impressions.</h2>
-        <p class="lede">The first encounter has a job to do: make the brand clear, give the customer a reason to stay, and make the next step obvious.</p>
+        <h2>The product is flexible. The experience wasn't.</h2>
+        <p class="lede">Lovesac sells a highly configurable product, but its digital experience made that complexity harder to navigate, understand, and act on. The opportunity was to bring the same clarity, flexibility, and confidence to the customer journey.</p>
       </div>
     </div>
-
-    <div class="nav-compare">
-      <div class="nav-col before">
-        <div class="nav-label"><span class="sw"></span>Lovesac.com — original hero</div>
-        <div class="phone-slot"><img src="/images/lovesac-hero-original.webp" width="782" height="1686" loading="lazy" decoding="async" alt="Original Lovesac mobile hero: an all-caps headline, 'THE ONLY COUCH THAT CAN BE ANY COUCH,' over an animated banner of scenario labels layered on generic sofa renders, with no visible call to action."></div>
-      </div>
-      <div class="nav-col after">
-        <div class="nav-label"><span class="sw"></span>Redesign — new hero</div>
-        <div class="phone-slot"><img src="/images/lovesac-hero-redesign.webp" width="778" height="1688" loading="lazy" decoding="async" alt="Redesigned mobile hero reading 'One couch. Built for life.,' followed by a supporting line and a clear Shop now button."></div>
-      </div>
-    </div>
-
-    <p class="nav-note">The original design is visually busy — the over-the-top animation adds to the sensory overload. On top of that, it leads with "THE ONLY COUCH THAT CAN BE ANY COUCH," set entirely in caps.</p>
-    <p class="nav-note" style="font-style:italic; font-size:15px; line-height:1.6; text-align:center;">In UX, all-caps is typically reserved for short, secondary text — eyebrows, tags, labels — not a headline someone needs to read at a glance.</p>
-    <p class="nav-note">That headline assumes the customer already knows the brand. It gives no regard to entry point — someone landing there for the first time, whether from a Google search or a showroom visit, likely doesn't have the "any couch" concept down yet. So the headline lands as a slogan instead of a message.</p>
-    <p class="nav-note">It also gives no call to action. The hero is clickable, but nothing tells you where it goes. Given the promo banners above and below it, the natural assumption is that clicking leads to the sale. Instead, it takes you to the Sactionals product page.</p>
-    <p class="nav-note">The redesign's "One couch. Built for life." doesn't require prior brand knowledge — and it doesn't leave the claim to hang there by itself. It's immediately followed by "Rearrange, re-cover, and grow — from a studio apartment to a family room, without having to buy another couch again." That line gives the headline context, followed by a clear call to action: "Shop now." No guessing where the click leads — the voice says what it means and tells you what happens next.</p>
-  </div>
-</section>
-
-<section class="divider">
-  <div class="wrap">
-    <div class="section-head">
-      <div><span class="num">02 · Brand Voice</span></div>
-      <div>
-        <h2>Words matter.</h2>
-        <p class="lede">The redesign replaces hard-sell claims with familiar phrases that create meaning without having to spell everything out.</p>
-      </div>
-    </div>
-    <p class="body-copy">The original site leans on claims: <em>the only</em>, <em>the world's most</em>, <em>guaranteed for life</em>. With promotional claims doing most of the work, the voice leaves little room for the customer to connect with the brand on a human level. It also creates a credibility risk: the bigger the claim, the more the brand has to prove.</p>
-    <p class="body-copy">The redesign takes a different approach: warm, idiomatic, and slightly wry.</p>
-    <p class="body-copy"><strong>"Loved in real homes."</strong> Rather than simply labeling a section "Reviews," the phrase borrows the language of lived-in spaces and implies authenticity without having to announce it.</p>
-    <p class="body-copy"><strong>"Make yourself comfortable."</strong> A familiar phrase a host might say to a guest also happens to describe exactly what the product promises. As the headline for the financing offer, it turns a transactional message into something warmer and more inviting, while the supporting copy delivers the practical details.</p>
-    <p class="body-copy"><strong>"Labor of love."</strong> Applied to assembly, the phrase transforms what could feel like a chore into something warmer and more human. It acknowledges the work without making the experience feel like an instruction manual.</p>
-    <p class="body-copy">The throughline is found language rather than invented language. The redesign takes phrases people already understand and gives them a new context, allowing the meaning to do some of the persuasive work.</p>
-    <p class="body-copy">That distinction matters. The original voice tells customers what to believe. The redesign gives them something they already recognize — and lets them make the connection themselves.</p>
-    <p class="body-copy">There is also a deliberate connection to the brand itself. Lovesac already has love at the center of its name and mission. The language builds on that existing idea rather than layering a personality onto the brand from the outside.</p>
-  </div>
-</section>
-
-<section class="divider">
-  <div class="wrap">
-    <div class="section-head">
-      <div><span class="num">03 · Product Storytelling</span></div>
-      <div>
-        <h2>Make it easier to imagine.</h2>
-        <p class="lede">Instead of simply saying "the only couch that can be any couch," the redesign shows what that looks like across the different chapters of a customer's life.</p>
-      </div>
-    </div>
-
-    <p class="body-copy">The original experience immediately asks the customer to shop by the company's product taxonomy:</p>
-
-    <div class="browser-frame"><img src="/images/lovesac-shop-by-product-original.webp" width="3420" height="961" loading="lazy" decoding="async" alt="Lovesac.com 'Shop by Product' carousel: a Labor Day Deals promo tile followed by product cards labeled Our Recommended Picks, 20% Off Select Sactionals, 40% Off StealthTech Systems, and 40% Off Snugg."></div>
-
-    <p class="body-copy">On its own, there's nothing wrong with organizing a site around products. The problem is what that asks the customer to do before they've had a reason to care. They have to understand the product categories first, then figure out which one fits their life.</p>
-    <p class="body-copy">The language also keeps the customer at a distance. Sactionals, StealthTech, Snugg are names that make sense once you know the Lovesac ecosystem. For someone encountering the brand for the first time, they're product names — not reasons to connect.</p>
-    <p class="body-copy">The redesign starts from the other direction.</p>
-
-    <div class="stage-grid">
-      <div class="stage-card">
-        <div class="img" style="background-image:url('/images/lovesac-life-apartment.webp');"></div>
-        <div class="body"><span class="stage-num">Stage 01</span><h4>First apartment.</h4></div>
-      </div>
-      <div class="stage-card">
-        <div class="img" style="background-image:url('/images/lovesac-life-moving.webp');"></div>
-        <div class="body"><span class="stage-num">Stage 02</span><h4>Moving in together.</h4></div>
-      </div>
-      <div class="stage-card">
-        <div class="img" style="background-image:url('/images/lovesac-life-kids.webp');"></div>
-        <div class="body"><span class="stage-num">Stage 03</span><h4>Kids, dogs, chaos.</h4></div>
-      </div>
-      <div class="stage-card">
-        <div class="img" style="background-image:url('/images/lovesac-life-house.webp'); background-position:center 25%;"></div>
-        <div class="body"><span class="stage-num">Stage 04</span><h4>The house you'll stay in.</h4></div>
-      </div>
-    </div>
-
-    <p class="body-copy">These are situations people already understand. They don't need an explanation, and they don't require prior knowledge of the product line.</p>
-    <p class="body-copy">The product becomes easier to understand because the customer can see where they fit into the story. A loveseat and ottoman make sense in a first apartment. Washable covers make sense when there are kids and dogs. A sectional that can split into two rooms makes sense when a home — and life — gets bigger.</p>
-    <p class="body-copy">The content isn't just describing what the product can do. It's giving the customer a reason to imagine what it could do for them.</p>
-  </div>
-</section>
-
-<section class="divider">
-  <div class="wrap">
-    <div class="spark">
-      <div class="section-head">
-        <div><span class="num">Why This Is Strategy</span></div>
-        <div></div>
-      </div>
-      <p class="body-copy" style="color:#D9CBB8; max-width:62ch;">Content strategy isn't about giving every page the same personality. It's about understanding what the content needs to do in each moment, then choosing the right language to do it.</p>
-      <p class="pull" style="margin-top:24px;">Some moments need warmth. Some need personality. Some just need a clear answer. The strategy is knowing the difference—and making those choices deliberately.</p>
-    </div>
-  </div>
-</section>
-
-<section class="divider">
-  <div class="wrap">
-    <div class="section-head">
-      <div><span class="num">04 · Product Discovery</span></div>
-      <div>
-        <h2>Give people &mdash; and agents &mdash; something to recognize.</h2>
-        <p class="lede">The product grid is where the customer's interest has to become a decision. This is where naming, context, and useful signals can make the difference between recognizing a product and having to decode one &mdash; and increasingly, that same clear signal is what lets a shopping agent recognize the product too, not just a person.</p>
-      </div>
-    </div>
-
-    <div class="nav-compare">
-      <div class="nav-col before">
-        <div class="nav-label"><span class="sw"></span>Lovesac.com — product grid</div>
-        <div class="phone-frame-wide"><img src="/images/lovesac-product-grid-original.webp" width="782" height="1685" loading="lazy" decoding="async" alt="Original Lovesac product grid: every card badged 'Customer Favorites,' named only by raw configuration strings like '6 Seats (1Deep) + 8 Sides (1Deep)' and '5 Seats + 8 Sides.'"></div>
-      </div>
-      <div class="nav-col after">
-        <div class="nav-label"><span class="sw"></span>Redesign — product grid</div>
-        <div class="phone-frame-wide"><img src="/images/lovesac-product-grid-redesign.webp" width="780" height="1687" loading="lazy" decoding="async" alt="Redesigned product grid: named sectionals — The Weekend Lounger, The Movie Night Sectional, The Everyday L-Shape, The Family Room Corner — each with a fit and use-case detail, and badges (Best Seller, Customer Favorite) used selectively rather than on every card."></div>
-      </div>
-    </div>
-
-    <p class="body-copy" style="margin-top:24px;">The original homepage includes a series of names over the hero imagery: <em>Anytime Conversations, Movie Marathons, Pet-Friendly Relaxing, Power Trios, Cross Talk, Capital L Lounging, Lefty Loungers,</em> and <em>Island Mentality.</em></p>
-    <p class="body-copy">It's worth noting, but the naming stops there.</p>
-    <p class="body-copy">Once the customer moves into the actual shopping experience, those names disappear. The sectional grid and product pages revert to configurations such as <em>4 Seats + 5 Sides</em> or <em>6 Seats (1 Deep) + 8 Sides (1 Deep).</em> The playful language from the homepage doesn't carry into the place where the customer actually has to choose a product.</p>
-    <p class="body-copy">There is also the "Customer Favorites" badge. Nearly every product in the default view carries it. When a signal appears across nearly every product, it stops helping the customer distinguish one product from another. It also loses trust.</p>
-
-    <p class="body-copy">The redesign takes a different approach.</p>
-    <p class="body-copy">Instead of making the customer decode a configuration, each setup is given a name that describes the experience it is designed for:</p>
-
-    <div class="compare-grid" style="max-width:640px;">
-      <div class="compare-card">
-        <div class="compare-val">The Weekend Lounger</div>
-        <div class="compare-sub" style="font-style:italic;">Fits 4 &middot; Great for small living rooms</div>
-      </div>
-      <div class="compare-card">
-        <div class="compare-val">The Movie Night Sectional</div>
-        <div class="compare-sub" style="font-style:italic;">Fits 6 &middot; Reclining seats included</div>
-      </div>
-      <div class="compare-card">
-        <div class="compare-val">The Game Day U-Shape</div>
-        <div class="compare-sub" style="font-style:italic;">Fits 8 &middot; Room for the whole crew</div>
-      </div>
-      <div class="compare-card">
-        <div class="compare-val">The Family Room Corner</div>
-        <div class="compare-sub" style="font-style:italic;">Fits 6 &middot; 1-deep chaise</div>
-      </div>
-    </div>
-
-    <p class="body-copy" style="margin-top:20px;">The name creates recognition. The supporting detail provides the facts.</p>
-    <p class="body-copy">The result is a product grid that gives customers something to understand before asking them to figure out what the numbers mean.</p>
-
-    <p class="body-copy" style="margin-top:20px;">The same principle carries into the smaller details: when information is easier to recognize, it becomes easier to use.</p>
-    <p class="body-copy">Lovesac describes color in the product card: "Buy Now in Charcoal Grey Corded Velvet." The customer has to read the name and translate it into a visual impression. The redesign shows the color instead, using a small swatch beneath each product so recognition happens at a glance rather than through a sentence.</p>
-    <p class="body-copy">Pricing has the same problem, only visually instead of verbally. Every product card carries a struck-through original price and a red sale price. When everything is marked down, the treatment stops functioning as a signal. Red directs attention everywhere, which ultimately means it directs attention nowhere.</p>
-    <p class="body-copy">The redesign keeps pricing in plain type by default. That creates a calmer browsing experience — and preserves emphasis for the moments when something actually needs to stand out.</p>
-  </div>
-</section>
-
-<section class="divider">
-  <div class="wrap">
-    <div class="section-head">
-      <div><span class="num">05 · Support Experience</span></div>
-      <div>
-        <h2>Help first. Ask later.</h2>
-        <p class="lede">When someone arrives looking for support, they're often looking for reassurance before they're ready to fill out a form. The redesign puts that reassurance first — and makes getting to a real person the easiest path.</p>
-      </div>
-    </div>
-
-    <p class="body-copy" style="margin-top:28px;">On mobile, the current Contact Us page opens with "Send Us a Note" and immediately asks for required information: Name, Email, Phone, Order #. Above the form sits a warranty and damages disclaimer.</p>
-    <p class="body-copy">For someone arriving from search, this is likely to be their first interaction with the page. Instead of answering "Can someone help me?" the experience starts by asking the customer to do something.</p>
-
-    <p class="body-copy" style="margin-top:20px;">The redesign changes the sequence:</p>
-
     <ul class="why-list">
-      <li><span class="mark">1</span><span><strong>We're here to help.</strong> A plain-language introduction acknowledges the customer before asking for anything.</span></li>
-      <li><span class="mark">2</span><span><strong>Talk to a real person.</strong> Call — and ideally Chat/Text — are surfaced immediately, without making the customer work through the page to find them.</span></li>
-      <li><span class="mark">3</span><span><strong>One path to help.</strong> Warranty, damage, order questions, and everything else don't need to create separate emotional entry points. The customer needs help; the experience should start there.</span></li>
+      <li><span class="mark">1</span><span><strong>The value proposition isn't clear enough.</strong> Customers encounter promotions and product terminology before they understand what makes Lovesac different or why the product is worth the investment.</span></li>
+      <li><span class="mark">2</span><span><strong>The experience creates unnecessary complexity.</strong> Navigation, product choices, and content make a highly configurable product feel harder to understand rather than easier.</span></li>
+      <li><span class="mark">3</span><span><strong>The experience doesn't build enough purchase confidence.</strong> Important questions — will it fit? How does it work? What happens after I buy? Can I live with it? — aren't answered at the moments customers need them.</span></li>
+      <li><span class="mark">4</span><span><strong>The digital experience isn't delivering on the brand promise.</strong> A company selling flexibility and longevity presents an experience that can feel cluttered, promotional, and reactive rather than considered and premium.</span></li>
     </ul>
+  </div>
+</section>
 
-    <p class="body-copy" style="margin-top:20px;">The result is simple: the customer gets an answer before they're asked to give one.</p>
-
-    <div class="nav-compare">
-      <div class="nav-col before">
-        <div class="nav-label"><span class="sw"></span>Lovesac.com — Contact Us</div>
-        <div class="phone-frame-wide"><img src="/images/lovesac-contact-original.webp" width="782" height="1688" loading="lazy" decoding="async" alt="Original Lovesac Contact Us page: 'Send Us a Note' heading over a required form asking for Name, Email, Phone, and Order #, with a warranty and damages disclaimer above it."></div>
+<section class="divider">
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="num">The Approach</span></div>
+      <div>
+        <h2>Turn complexity into confidence.</h2>
+        <p class="lede">The strategy was simple: remove friction from the customer journey without removing the flexibility that makes the product different. That meant simplifying discovery, bringing critical purchase questions into the experience, and making accessibility part of the foundation rather than an optional layer.</p>
       </div>
-      <div class="nav-col after">
-        <div class="nav-label"><span class="sw"></span>Redesign — Support</div>
-        <div class="phone-frame-wide"><img src="/images/lovesac-contact-redesign.webp" width="780" height="1688" loading="lazy" decoding="async" alt="Redesigned support page: 'We're here to help.' introduction followed immediately by a 'Talk to a real person' section with a visible Call us phone number and hours."></div>
+    </div>
+    <ul class="why-list">
+      <li><span class="mark">1</span><span><strong>Simplify discovery.</strong> Visual navigation, clearer hierarchy, fewer competing paths.</span></li>
+      <li><span class="mark">2</span><span><strong>Make the product easier to understand.</strong> Stronger value communication and more useful product information.</span></li>
+      <li><span class="mark">3</span><span><strong>Build purchase confidence.</strong> Room Fit, clearer expectations, trial and warranty information.</span></li>
+      <li><span class="mark">4</span><span><strong>Make accessibility foundational.</strong> Contrast, focus states, heading structure, skip navigation, no autoplay.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="divider">
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="num">The Research</span></div>
+      <div>
+        <h2>Public reviews back some of it up.</h2>
+        <p class="lede">A pass through Reddit threads, BBB complaints, and review sites — no internal analytics, no usability testing.</p>
+      </div>
+    </div>
+    <p class="nav-note">Assembly difficulty, support access, warranty ambiguity, and StealthTech setup friction are real, recurring complaints — and the redesign was already responding to several of these before this research was formalized. The research reinforced the need to make setup expectations clearer, improve access to support, and clarify the distinction between frame and cushion warranty coverage.</p>
+
+    <div class="context-strip">
+      <span class="tag">Read the full detail</span>
+      This page is the summary. The reasoning, screenshots, and side-by-side comparisons live across the other four:
+      <div class="synopsis-links">
+        <a href="lovesac-case-study.html">01 &middot; The teardown &amp; redesign &rarr;</a>
+        <a href="lovesac-case-study-2.html">02 &middot; The deep dive &rarr;</a>
+        <a href="lovesac-case-study-3.html">03 &middot; The research &rarr;</a>
+        <a href="lovesac-case-study-4.html">04 &middot; Voice &amp; content strategy &rarr;</a>
       </div>
     </div>
   </div>
@@ -564,41 +394,76 @@
 <section class="divider">
   <div class="wrap">
     <div class="section-head">
-      <div><span class="num">06 · Visual Storytelling</span></div>
+      <div><span class="num">The Impact</span></div>
       <div>
-        <h2>Make the product feel at home.</h2>
-        <p class="lede">The existing photography was fixed: clean product cutouts on white. Without a reshoot, the redesign uses the interface itself to create more warmth and context, giving the product a stronger sense of place while working with the photography already available.</p>
+        <h2>What success could look like.</h2>
+        <p class="lede">This is a concept redesign, not a live deployment. The numbers are projections based on the changes proposed, with a measurement plan for validating them in practice.</p>
       </div>
     </div>
-
-    <div class="subhead-block">
-      <h3>The original</h3>
-      <p class="body-copy">The product photography is clean and consistent, but the white background leaves each piece visually isolated. On a product grid, the effect is closer to a catalog: product, price, information, repeat.</p>
-      <p class="body-copy">Lifestyle photography solves this differently. A sofa in an actual room immediately gives the customer context—scale, surroundings, light, texture, and a sense of how the product might feel in their own home.</p>
-      <p class="body-copy">That wasn't a lever available to this redesign.</p>
-    </div>
-
-    <div class="subhead-block">
-      <h3>The redesign</h3>
-      <p class="body-copy">Instead, the page itself becomes part of the visual story. The stark white background shifts to a warm, oatmeal-toned neutral that sits closer to the colors and materials of the products.</p>
-      <p class="body-copy">The change is subtle, but it changes the relationship between the product and the page. The furniture feels more grounded and connected to the environment it's ultimately meant to live in, rather than floating against a blank canvas.</p>
-      <p class="body-copy">There is also a practical benefit to moving away from pure white. On an emissive screen, a large white surface produces more light than a darker or warmer neutral. Reducing that visual intensity makes the page feel less stark, particularly when the interface occupies most of the screen.</p>
-    </div>
-
-    <div class="nav-compare" style="margin-top:28px;">
-      <div class="nav-col before">
-        <div class="nav-label"><span class="sw"></span>Lovesac.com — product grid</div>
-        <div class="phone-frame-wide"><img src="/images/lovesac-product-grid-original.webp" width="782" height="1685" loading="lazy" decoding="async" alt="Original Lovesac product grid on a stark white background, each product isolated like a catalog listing."></div>
+    <div class="impact-stats">
+      <div class="impact-stat">
+        <div class="big">Concept</div>
+        <div class="label">UX/UI Redesign Concept</div>
       </div>
-      <div class="nav-col after">
-        <div class="nav-label"><span class="sw"></span>Redesign — product grid</div>
-        <div class="phone-frame-wide"><img src="/images/lovesac-product-grid-redesign.webp" width="780" height="1687" loading="lazy" decoding="async" alt="Redesigned product grid on a warm, oatmeal-toned neutral background that sits closer to the colors and materials of the products themselves."></div>
+      <div class="impact-stat">
+        <div class="big">0 &rarr; 1</div>
+        <div class="label">Room-Fit Tools Added</div>
+      </div>
+      <div class="impact-stat">
+        <div class="big">~30&ndash;40%*</div>
+        <div class="label">Projected Reduction in Purchase-Path Clicks</div>
+      </div>
+      <div class="impact-stat">
+        <div class="big">81 &rarr; 100</div>
+        <div class="label">Lighthouse Accessibility Score, Lovesac.com vs. Redesign</div>
       </div>
     </div>
+    <p class="nav-note">*The estimated reduction is based on the number of steps removed from the current purchase path, including collapsed trust-signal accordions and bringing the room-visualization experience into the product page. It is a directional projection, not a measured result from live traffic.</p>
 
-    <p class="body-copy" style="margin-top:24px;">This is not an attempt to recreate lifestyle photography with a background color. It can't provide the depth, dimensionality, or emotional pull of a real room.</p>
-    <p class="body-copy">It's a lighter-weight solution to the same underlying problem: how do you make a product feel at home before the customer has brought it home?</p>
-    <p class="body-copy">Here, the answer was to change the environment around the product—not the product photography itself.</p>
+    <p class="nav-note" style="margin-top:32px;">If this shipped, here's what I'd track to know whether it actually worked:</p>
+    <div class="kpi-list">
+      <div class="kpi-item">
+        <div class="kpi-num">01 &middot; Conversion rate &mdash; PDP &rarr; cart</div>
+        <p>The primary measure of the redesign's purchase-path changes: are fewer decision points helping more customers move forward?</p>
+      </div>
+      <div class="kpi-item">
+        <div class="kpi-num">02 &middot; Room Fit engagement</div>
+        <p>The percentage of product-page visitors who use Room Fit before adding to cart, showing whether customers find the tool useful at the point of decision.</p>
+      </div>
+      <div class="kpi-item">
+        <div class="kpi-num">03 &middot; Return rate &mdash; Room Fit users vs. non-users</div>
+        <p>The stronger test of the tool's value: whether greater confidence in how a Sactional will fit translates into fewer returns.</p>
+      </div>
+      <div class="kpi-item">
+        <div class="kpi-num">04 &middot; Time to purchase</div>
+        <p>Time from landing to checkout, compared with the current site benchmark, to see whether a clearer path reduces friction without rushing the customer through decisions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="divider">
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="num">The Outcome</span></div>
+      <div>
+        <h2>What real compensation looks like.</h2>
+        <p class="lede">Derick Cahill was offered a pair of floral gardening gloves, size small. This case study is what happens when you take the actual problem seriously: set better expectations, listen to what customers are actually saying, and run a full heuristic evaluation.</p>
+      </div>
+    </div>
+    <div class="outcome-body">
+      <div></div>
+      <div>
+        <p class="nav-note" style="margin-top:0;">The gloves were a joke. The redesign isn't.</p>
+        <p class="nav-note">Business school teaches you that a mission statement isn't a wall plaque — it's the thing every decision is supposed to answer to. Lovesac's runs on the word "love." The apology that followed the gloves was not an apology. Nor is it one of a true leader.</p>
+        <p class="nav-note">This gap is what the redesign actually answers — unhappy customers, a dated brand, an imperfect product, and a mission statement that never makes it past the investor page. I didn't just point at what's broken. I rebuilt it, the way I'd run it.</p>
+
+        <div class="outcome-photo">
+          <img src="/images/lovesac-compensation-gloves.webp" srcset="/images/lovesac-compensation-gloves-640.webp 640w, /images/lovesac-compensation-gloves.webp 1400w" sizes="(max-width: 560px) 100vw, 560px" width="1400" height="764" loading="lazy" decoding="async" alt="A pair of floral gardening gloves, size small — the actual compensation offered to Derick Cahill.">
+          <p class="outcome-photo-cap">The actual gloves.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -608,7 +473,7 @@
     <p>This started with a customer who didn't feel heard and a brand built around love. This work explores what the experience could become when the customer is #1.</p>
     <div class="btn-row">
       <a class="btn primary" href="https://claudiaochoa.co/work/lovesac-redesign.html" target="_blank" rel="noopener noreferrer">View the live redesign</a>
-      <a class="btn ghost" href="lovesac-case-study-4.html">See the synopsis &rarr;</a>
+      <a class="btn ghost" href="https://claudiaochoa.co/">&larr; Back to portfolio</a>
     </div>
   </div>
 </section>
@@ -644,19 +509,6 @@
     if(!ticking){ requestAnimationFrame(update); ticking = true; }
   }
   window.addEventListener('scroll', onScroll, {passive:true});
-})();
-</script>
-<script>
-(function(){
-  document.querySelectorAll('.table-scroll').forEach(function(el){
-    function update(){
-      var atEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - 2;
-      el.classList.toggle('at-end', atEnd);
-    }
-    el.addEventListener('scroll', update, {passive:true});
-    window.addEventListener('resize', update);
-    update();
-  });
 })();
 </script>
 
