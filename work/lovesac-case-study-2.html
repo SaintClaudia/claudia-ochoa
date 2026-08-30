@@ -131,10 +131,10 @@
   .nav-col{display:flex; flex-direction:column; gap:14px;}
   .nav-label{display:flex; align-items:center; gap:10px; font-size:13px; letter-spacing:0.06em; text-transform:uppercase; font-weight:700;}
   .nav-label .sw{width:10px; height:10px; border-radius:3px;}
-  .nav-col.before .sw{background:#B9AB94;}
-  .nav-col.after .sw{background:var(--clay);}
-  .nav-col.before .nav-label{color:var(--ink-soft);}
-  .nav-col.after .nav-label{color:var(--clay-deep);}
+  .nav-col.before .sw, .nav-label.before .sw{background:#B9AB94;}
+  .nav-col.after .sw, .nav-label.after .sw{background:var(--clay);}
+  .nav-col.before .nav-label, .nav-label.before{color:var(--ink-soft);}
+  .nav-col.after .nav-label, .nav-label.after{color:var(--clay-deep);}
   .phone-slot{
     box-sizing:content-box;
     border:10px solid var(--espresso);
@@ -1164,8 +1164,12 @@
 
     <p class="nav-note" style="margin-top:32px;"><strong>There's a bigger gap here than card design.</strong> Lovesac currently sells eGift cards only &mdash; there's no physical gift card to pick up in store. Over 50% of people still prefer the tangible nature of physical gift cards for personal gifting (Mullen, 2022), so occasion-specific designs would make gift-giving a real in-store product, not just a digital-only afterthought, and give the store associate something to actually hand a customer.</p>
 
-    <div class="nav-label before" style="margin-top:24px;"><span class="sw"></span>Current eGift card</div>
-    <div class="card-frame gift" style="max-width:340px;"><img src="/images/lovesac-egift-card.webp" width="800" height="533" loading="lazy" decoding="async" alt="Lovesac's current eGift card design: a solid teal background with the white Lovesac wordmark and 'Gift Card' text, no occasion-specific options."></div>
+    <div class="card-compare triple" style="margin-top:24px;">
+      <div class="card-compare-col">
+        <div class="nav-label before"><span class="sw"></span>Current eGift card</div>
+        <div class="card-frame gift"><img src="/images/lovesac-egift-card.webp" width="800" height="533" loading="lazy" decoding="async" alt="Lovesac's current eGift card design: a solid teal background with the white Lovesac wordmark and 'Gift Card' text, no occasion-specific options."></div>
+      </div>
+    </div>
 
     <div class="nav-label after" style="margin-top:24px;"><span class="sw"></span>Proposed concepts &mdash; not live on Lovesac.com</div>
     <div class="card-compare triple" style="margin-top:12px;">
