@@ -349,6 +349,9 @@
   .stx-close-btn svg{width:14px; height:14px;}
   .stx-back-icon{align-self:flex-start; margin:12px 0 0 14px; width:22px; height:22px; flex:0 0 auto; display:flex; align-items:center; justify-content:center; color:var(--stx-text-soft);}
   .stx-back-icon svg{width:14px; height:14px;}
+  .stx-header-row{display:grid; grid-template-columns:22px 1fr 22px; align-items:center; padding:12px 14px 0;}
+  .stx-header-row .stx-back-icon{grid-column:1; margin:0; align-self:center;}
+  .stx-header-row .stx-word{grid-column:2; padding:0;}
   .stx-mock .stx-word{text-align:center; padding:8px 10px 0;}
   .stx-mock .stx-word b{display:block; font-size:19px; font-weight:800; letter-spacing:0.01em; color:#C9C7BF;}
   .stx-mock .stx-word span{display:block; font-size:9px; letter-spacing:0.14em; color:#9C9A93; margin-top:1px;}
@@ -906,8 +909,10 @@
         <div class="nav-label"><span class="sw"></span>Proposed &mdash; one scan</div>
         <div class="phone-slot">
           <div class="stx-mock">
-            <div class="stx-back">&larr; BACK</div>
-            <div class="stx-word"><b>LOVESAC</b><span>STEALTHTECH</span></div>
+            <div class="stx-header-row">
+              <div class="stx-back-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 6 9 12 15 18"/></svg></div>
+              <div class="stx-word"><b>LOVESAC</b><span>STEALTHTECH</span></div>
+            </div>
             <div class="stx-body">
               <div class="stx-scanbadge" aria-hidden="true">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--stx-teal)" stroke-width="1.8"><rect x="3" y="3" width="6" height="6" rx="1"/><rect x="15" y="3" width="6" height="6" rx="1"/><rect x="3" y="15" width="6" height="6" rx="1"/><rect x="15" y="15" width="2" height="2" fill="var(--stx-teal)" stroke="none"/><rect x="19" y="15" width="2" height="2" fill="var(--stx-teal)" stroke="none"/><rect x="15" y="19" width="2" height="2" fill="var(--stx-teal)" stroke="none"/><rect x="19" y="19" width="2" height="2" fill="var(--stx-teal)" stroke="none"/></svg>
@@ -947,6 +952,8 @@
               <div class="stx-waveform" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
               <h4>Get Ready for a Fully<br>Immersive Audio Experience</h4>
               <p>Welcome to the StealthTech App</p>
+              <div class="stx-btn-teal" style="margin-top:6px;">CONTINUE</div>
+              <p style="font-size:9px; line-height:1.4;">By clicking continue you agree to the Terms &amp; Policies.</p>
             </div>
           </div>
         </div>
@@ -965,8 +972,10 @@
         <div class="nav-label"><span class="sw"></span>Proposed &mdash; active state<span class="stx-badge">Animated</span></div>
         <div class="phone-slot">
           <div class="stx-mock">
-            <div class="stx-back-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 6 9 12 15 18"/></svg></div>
-            <div class="stx-word"><b>LOVESAC</b><span>STEALTHTECH</span></div>
+            <div class="stx-header-row">
+              <div class="stx-back-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 6 9 12 15 18"/></svg></div>
+              <div class="stx-word"><b>LOVESAC</b><span>STEALTHTECH</span></div>
+            </div>
             <div class="stx-body">
               <div class="stx-radar" aria-hidden="true">
                 <span class="stx-ring"></span><span class="stx-ring"></span><span class="stx-ring"></span>
