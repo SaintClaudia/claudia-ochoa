@@ -207,10 +207,14 @@
     overflow-x:auto;
   }
   .console-label{
-    display:block; font-size:11px; font-weight:700; letter-spacing:0.08em;
+    display:flex; align-items:center; gap:10px; font-size:11px; font-weight:700; letter-spacing:0.08em;
     text-transform:uppercase; color:var(--ink-soft); margin-bottom:12px;
     font-family:'Inter',sans-serif;
   }
+  .console-label .sw{width:10px; height:10px; border-radius:3px; flex:0 0 auto;}
+  .console-label.before .sw{background:#B9AB94;}
+  .console-label.after .sw{background:var(--clay);}
+  .console-label.after{color:var(--clay-deep);}
   .console-block .line{display:block; white-space:pre-wrap; word-break:break-word; color:#D9CBB8;}
   .console-block .line + .line{margin-top:10px;}
   .console-block .lvl{font-weight:700; margin-right:6px;}
@@ -219,6 +223,64 @@
   .console-block .lvl-log{color:#8FA88A;}
   .console-block.clean{display:flex; align-items:center; justify-content:center; min-height:120px;}
   .console-block.clean .line{color:#8FA88A; font-style:italic; font-family:'Inter',sans-serif; font-size:14px;}
+
+  /* Accessibility: hear-it audio compare */
+  .audio-compare{display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:24px;}
+  .a11y-player{margin-top:2px; border:1px solid var(--line); border-radius:14px; background:var(--paper); padding:16px 18px;}
+  .a11y-player-row{display:flex; align-items:center; gap:12px;}
+  .a11y-play{
+    flex:0 0 auto; width:40px; height:40px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    border:1px solid var(--line); background:var(--cream); color:var(--ink);
+    cursor:pointer; font-size:13px; padding:0; line-height:1;
+  }
+  .a11y-player.redesign .a11y-play{background:var(--espresso); color:var(--cream); border-color:var(--espresso);}
+  .a11y-player-main{flex:1 1 auto; min-width:0;}
+  .a11y-player-label{font-size:12.5px; font-weight:700; letter-spacing:0.02em; margin-bottom:7px; color:var(--ink);}
+  .a11y-scrub{width:100%; accent-color:var(--ink-soft); display:block;}
+  .a11y-player.redesign .a11y-scrub{accent-color:var(--clay);}
+  .a11y-stop{
+    flex:0 0 auto; border:1px solid var(--line); background:var(--cream); border-radius:8px;
+    width:32px; height:32px; font-size:12px; cursor:pointer; color:var(--ink-soft); padding:0;
+  }
+  .a11y-status{margin-top:9px; font-size:12px; color:var(--ink-soft);}
+  .a11y-caption{margin-top:10px; font-size:12.5px; line-height:1.5; color:var(--ink-soft);}
+  @media (max-width:820px){
+    .audio-compare{grid-template-columns:1fr;}
+  }
+
+  .a11y-mini{
+    position:fixed; left:50%; bottom:10px; z-index:80;
+    display:flex; align-items:center; gap:14px;
+    background:var(--espresso); color:var(--paper);
+    border-radius:999px; padding:7px 14px 7px 7px;
+    box-shadow:0 14px 34px rgba(36,28,22,0.3);
+    max-width:calc(100vw - 32px);
+    transform:translate(-50%, 140%); opacity:0; pointer-events:none;
+    transition:transform .28s cubic-bezier(.2,.9,.3,1), opacity .28s ease;
+  }
+  .a11y-mini.show{transform:translate(-50%, 0); opacity:1; pointer-events:auto;}
+  .a11y-mini-play{
+    flex:0 0 auto; width:40px; height:40px; border-radius:50%; border:none;
+    background:var(--cream); color:var(--espresso);
+    display:flex; align-items:center; justify-content:center;
+    font-size:13px; cursor:pointer; padding:0; line-height:1;
+  }
+  .a11y-mini-info{min-width:0; cursor:pointer; padding:4px 2px;}
+  .a11y-mini-label{font-size:12px; font-weight:700; letter-spacing:0.02em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:34vw;}
+  .a11y-mini-status{font-size:11px; color:rgba(251,246,236,0.7); margin-top:1px;}
+  .a11y-mini-stop{
+    flex:0 0 auto; width:32px; height:32px; border-radius:50%;
+    border:1px solid rgba(251,246,236,0.3); background:transparent; color:var(--paper);
+    font-size:11px; cursor:pointer; padding:0;
+  }
+  @media (max-width:640px){
+    .a11y-mini{bottom:8px; padding:6px 12px 6px 6px; gap:9px;}
+    .a11y-mini-label{max-width:44vw;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .a11y-mini{transition:opacity .15s ease;}
+  }
 
   .cta{text-align:center; padding:80px 0 96px;}
   .cta h2{font-size:clamp(28px,3.6vw,40px); max-width:26ch; margin:0 auto 16px;}
@@ -271,7 +333,7 @@
       <a href="lovesac-case-study-2.html" aria-label="Part 2 of 6: Deep Dive">02<span class="tip-card" aria-hidden="true"><span class="tip-media"><img class="tip-photo" data-src="/images/lovesac-life-moving.webp" alt="" decoding="async"><img class="tip-logo" data-src="/images/lovesac-wordmark-cream.png" alt="" decoding="async"></span><span class="tip-body"><span class="tip-kicker">Part 02 &middot; Case Study</span><span class="tip-title">A closer look at the moments that matter.</span></span></span></a>
       <a href="lovesac-case-study-3.html" aria-label="Part 3 of 6: Research">03<span class="tip-card" aria-hidden="true"><span class="tip-media"><img class="tip-photo" data-src="/images/lovesac-life-kids.webp" alt="" decoding="async"><img class="tip-logo" data-src="/images/lovesac-wordmark-cream.png" alt="" decoding="async"></span><span class="tip-body"><span class="tip-kicker">Part 03 &middot; Case Study</span><span class="tip-title">What the research actually says.</span></span></span></a>
       <a href="lovesac-case-study-4.html" aria-label="Part 4 of 6: Content Strategy">04<span class="tip-card" aria-hidden="true"><span class="tip-media"><img class="tip-photo" data-src="/images/lovesac-life-apartment.webp" alt="" decoding="async"><img class="tip-logo" data-src="/images/lovesac-wordmark-cream.png" alt="" decoding="async"></span><span class="tip-body"><span class="tip-kicker">Part 04 &middot; Case Study</span><span class="tip-title">Say it like you mean it.</span></span></span></a>
-      <span class="current" aria-current="page" aria-label="Part 5 of 6: Heuristic Evaluation">05<span class="tip-card" aria-hidden="true"><span class="tip-media"><img class="tip-photo" data-src="/images/lovesac-hero.webp" alt="" decoding="async"><img class="tip-logo" data-src="/images/lovesac-wordmark-cream.png" alt="" decoding="async"></span><span class="tip-body"><span class="tip-kicker">Part 05 &middot; Case Study</span><span class="tip-title">Past the score.</span></span></span></span>
+      <span class="current" aria-current="page" aria-label="Part 5 of 6: Heuristic Evaluation">05<span class="tip-card" aria-hidden="true"><span class="tip-media"><img class="tip-photo" data-src="/images/lovesac-life-stealthtech.webp" alt="" decoding="async"><img class="tip-logo" data-src="/images/lovesac-wordmark-cream.png" alt="" decoding="async"></span><span class="tip-body"><span class="tip-kicker">Part 05 &middot; Case Study</span><span class="tip-title">Past the score.</span></span></span></span>
       <a href="lovesac-case-study-6.html" aria-label="Part 6 of 6: Synopsis">06<span class="tip-card" aria-hidden="true"><span class="tip-media"><img class="tip-photo" data-src="/images/lovesac-life-house.webp" alt="" decoding="async"><img class="tip-logo" data-src="/images/lovesac-wordmark-cream.png" alt="" decoding="async"></span><span class="tip-body"><span class="tip-kicker">Part 06 &middot; Case Study</span><span class="tip-title">The Business Case</span></span></span></a>
     </nav>
     <span class="tag">Case Study 05 · Heuristic Evaluation</span>
@@ -380,7 +442,7 @@
 
     <div class="console-compare">
       <div>
-        <span class="console-label">Lovesac.com — live console output</span>
+        <span class="console-label before"><span class="sw"></span>Lovesac.com — live console output</span>
         <div class="console-block">
           <span class="line"><span class="lvl lvl-warning">warn</span>[Meta Pixel] Invalid parameter format for currency.</span>
           <span class="line"><span class="lvl lvl-error">error</span>GCM Configuration: google_consent_defaults script is not loaded.</span>
@@ -390,7 +452,7 @@
         </div>
       </div>
       <div>
-        <span class="console-label">This redesign — live console output</span>
+        <span class="console-label after"><span class="sw"></span>This redesign — live console output</span>
         <div class="console-block clean">
           <span class="line">0 warnings · 0 errors</span>
         </div>
@@ -420,7 +482,41 @@
       <li><span class="mark">3</span><span><strong>An accessible name being present isn't the same as it being clear.</strong> A button can pass the check and still leave a screen reader user guessing at what happens when they activate it.</span></li>
     </ul>
 
-    <p class="body-copy" style="margin-top:24px;">Getting past the score meant using the same screen-reader simulation built into the Deep Dive — the "Hear it" player next to the accessibility comparison — to actually listen to both sites end to end, not just confirm the audit had passed. That's where the redesign's copy earns the score instead of just clearing it: headline, trial terms, and section titles read back close to exactly as written, because they were written to be heard, not only seen.</p>
+    <p class="body-copy" style="margin-top:24px;">Getting past the score meant actually listening to both sites end to end with a screen reader, not just confirming the audit had passed. Press play below to hear the announcement order each one gives — synthesized live in your browser, the same comparison built into the Deep Dive.</p>
+
+    <div class="audio-compare">
+      <div>
+        <span class="console-label before"><span class="sw"></span>Lovesac.com</span>
+        <div class="a11y-player">
+          <div class="a11y-player-row">
+            <button type="button" class="a11y-play" id="btn-original" aria-label="Play screen reader preview of Lovesac.com">&#9654;</button>
+            <div class="a11y-player-main">
+              <div class="a11y-player-label">Hear it: Lovesac.com</div>
+              <input type="range" class="a11y-scrub" id="scrub-original" min="0" max="100" value="0" step="0.1" aria-label="Seek Lovesac.com screen reader preview">
+            </div>
+            <button type="button" class="a11y-stop" id="stop-original" aria-label="Stop and reset to beginning">&#9632;</button>
+          </div>
+          <div class="a11y-status" id="status-original">Stopped &middot; 0%</div>
+          <p class="a11y-caption">Mostly structural noise &mdash; "Image link, no label," a "Shop by Product carousel" region, eleven identical "Show Slide" buttons in a row &mdash; not what the page is actually trying to say.</p>
+        </div>
+      </div>
+      <div>
+        <span class="console-label after"><span class="sw"></span>This redesign</span>
+        <div class="a11y-player redesign">
+          <div class="a11y-player-row">
+            <button type="button" class="a11y-play" id="btn-redesign" aria-label="Play screen reader preview of the redesign">&#9654;</button>
+            <div class="a11y-player-main">
+              <div class="a11y-player-label">Hear it: This redesign</div>
+              <input type="range" class="a11y-scrub" id="scrub-redesign" min="0" max="100" value="0" step="0.1" aria-label="Seek redesign screen reader preview">
+            </div>
+            <button type="button" class="a11y-stop" id="stop-redesign" aria-label="Stop and reset to beginning">&#9632;</button>
+          </div>
+          <div class="a11y-status" id="status-redesign">Stopped &middot; 0%</div>
+          <p class="a11y-caption">The redesign's own copy carries it &mdash; headline, trial terms, section titles read back almost exactly as written, giving the brand an actual voice instead of a list of unlabeled controls.</p>
+        </div>
+      </div>
+    </div>
+    <p class="apa-note">Synthesized live with your browser's built-in speech synthesis (Web Speech API) &mdash; not a recording. The Lovesac.com script is approximated from a markup review of the live site rather than a captured screen-reader session and can drift as the site updates; the redesign script matches its own case study page's current markup.</p>
 
     <div class="context-strip">
       <span class="tag">The score didn't ask this question</span>
@@ -460,9 +556,9 @@
 <section class="divider">
   <div class="wrap">
     <h2 style="font-size:12.5px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:20px;">References</h2>
-    <p class="reference-entry">Nielsen, J. (1994, April 24). <em>10 usability heuristics for user interface design.</em> Nielsen Norman Group. <a href="https://www.nngroup.com/articles/ten-usability-heuristics/" target="_blank" rel="noopener noreferrer">https://www.nngroup.com/articles/ten-usability-heuristics/</a></p>
+    <p class="reference-entry">Google. (n.d.). <em>PageSpeed Insights.</em> Retrieved August 30, 2026, from <a href="https://pagespeed.web.dev/" target="_blank" rel="noopener noreferrer">https://pagespeed.web.dev/</a></p>
     <p class="reference-entry" style="margin-top:16px;">Helme, S. (n.d.). <em>Security Headers.</em> Retrieved August 30, 2026, from <a href="https://securityheaders.com/" target="_blank" rel="noopener noreferrer">https://securityheaders.com/</a></p>
-    <p class="reference-entry" style="margin-top:16px;">Google. (n.d.). <em>PageSpeed Insights.</em> Retrieved August 30, 2026, from <a href="https://pagespeed.web.dev/" target="_blank" rel="noopener noreferrer">https://pagespeed.web.dev/</a></p>
+    <p class="reference-entry" style="margin-top:16px;">Nielsen, J. (1994, April 24). <em>10 usability heuristics for user interface design.</em> Nielsen Norman Group. <a href="https://www.nngroup.com/articles/ten-usability-heuristics/" target="_blank" rel="noopener noreferrer">https://www.nngroup.com/articles/ten-usability-heuristics/</a></p>
     <p class="reference-entry" style="margin-top:16px;">W3C Web Accessibility Initiative. (n.d.). <em>Evaluating web accessibility overlays.</em> Retrieved August 30, 2026, from <a href="https://www.w3.org/WAI/test-evaluate/" target="_blank" rel="noopener noreferrer">https://www.w3.org/WAI/test-evaluate/</a></p>
   </div>
 </section>
@@ -521,6 +617,316 @@
     el.addEventListener('scroll', update, {passive:true});
     window.addEventListener('resize', update);
     update();
+  });
+})();
+</script>
+<script>
+/*
+  Hear-it audio compare — uses the browser's built-in speech synthesis
+  (Web Speech API) to speak the announcement order a screen reader gives
+  each page, in place. No audio files to host. Same comparison as the
+  Deep Dive's accessibility section, without the phone screenshots.
+
+  Known quirk: Chrome can silently stop speech after ~15s on some
+  versions if the tab loses focus or the utterance is long. Safari and
+  Firefox don't have this issue.
+*/
+(function(){
+  var synth = window.speechSynthesis;
+  if(!synth) return;
+  var voices = [];
+  function loadVoices(){ voices = synth.getVoices(); }
+  loadVoices();
+  if(synth.onvoiceschanged !== undefined) synth.onvoiceschanged = loadVoices;
+
+  function findVoice(nameFragments, excludeDefault){
+    for(var i = 0; i < nameFragments.length; i++){
+      var frag = nameFragments[i].toLowerCase();
+      for(var j = 0; j < voices.length; j++){
+        if(excludeDefault && voices[j].default) continue;
+        if(voices[j].name.toLowerCase().indexOf(frag) !== -1) return voices[j];
+      }
+    }
+    return null;
+  }
+
+  // Built from Lovesac's real mobile-site markup (pulled live, Aug 2026).
+  var originalText = [
+    "Cookie policy. This website uses cookies to ensure you get the best experience. Essential Only. Allow Cookies. Cookie Preferences.",
+    "Link: Enable Accessibility.",
+    "Link: Free Shipping. Link: 60-Day Home Trial. Link: Free Swatches.",
+    "Image link: Quote Lookup.",
+    "Link: Quote Lookup.",
+    "Image: Showroom Locator.",
+    "Link: Store Locator.",
+    "Image link, no label.",
+    "Image link, no label.",
+    "Button: menu.",
+    "Link: Sectionals. Customizable Sectional Couches. Link: Shop Sectionals.",
+    "List item link: Sactionals. List item link: Sactionals with StealthTech Sound plus Charge.",
+    "List item link: Inserts and Covers. List item link: StealthTech Sound plus Charge Systems. List item link: AnyTables. List item link: Insert Protectors.",
+    "Region: Shop by Product carousel.",
+    "Button: Show Slide 1 of 11. Button: Show Slide 2 of 11. Button: Show Slide 3 of 11. Button: Show Slide 4 of 11. Button: Show Slide 5 of 11. Button: Show Slide 6 of 11. Button: Show Slide 7 of 11. Button: Show Slide 8 of 11. Button: Show Slide 9 of 11. Button: Show Slide 10 of 11. Button: Show Slide 11 of 11.",
+    "Image link: 20% Off Select Sactionals.",
+    "Image link: 40% Off StealthTech Systems.",
+    "Image link: 40% Off Snugg.",
+    "Image link: 35% Off Sacs.",
+    "Heading: FAQs.",
+    "Heading: What color palettes work well when combining different Lovesac fabrics.",
+    "Heading: Our Company. List item link: Find a Store. List item link: Careers. List item link: About Us. List item link: Loved by Lovesac. List item link: Investor Relations. List item link: Media Inquiries. List item link: To the Trade. List item link: Lovesac Gives Back. List item link: Accessibility Statement.",
+    "Link: Call Us. Link: (888) 636-1223.",
+    "Link: Sign In. Link: Order Status. Link: Quote Lookup. Link: Create an Account. Link: Store Locator.",
+    "Link: My Account. Link: Order Status. Link: Quote Lookup. Link: My Wish List. Link: Sign Out. Link: Store Locator.",
+    "Image link, no label."
+  ].join(" ");
+
+  // Built from the live redesign case study (claudiaochoa.co/work/lovesac-redesign.html, pulled Aug 2026).
+  var redesignText = [
+    "Link: Skip to main content.",
+    "Labor Day Sale, up to 40% off.",
+    "Image link: Lovesac, home.",
+    "Navigation landmark. Link: Furniture. Shop Furniture. Link: Shop all.",
+    "List: Sactionals. Sactionals with StealthTech. Snugg sofas. Snugg loveseats. Snugg chairs. PillowSac chairs. Sacs. Sac bundles.",
+    "Link: Clearance.",
+    "Link: Accessories. Shop Accessories.",
+    "Link: What to expect. Link: Find a store near you. Link: Customer support.",
+    "Link: Sign in. Link: Create an Account.",
+    "Main landmark begins. Heading level 1: One couch. Built for life.",
+    "Rearrange, re-cover, and grow, from a studio apartment to a family room, without having to buy another couch again.",
+    "Link: Shop now.",
+    "60-Day Trial, try it at home then decide. Machine Washable, easy to remove, easy to wash. Forever Warranty, your frame covered for life. Recycled Fill, made from reclaimed plastic bottles.",
+    "Heading level 2: When life changes shape, or you simply want a new look.",
+    "Stage 1. Heading: First apartment. A loveseat and an ottoman. Small spaces, not a problem.",
+    "Stage 2. Heading: Moving in together. Add two sides, flip the chaise. Same pieces, new shape.",
+    "Stage 3. Heading: Kids, dogs, chaos. Washable covers. Reinforced seams. Built for everyday life.",
+    "Stage 4. Heading: The house you'll stay in. Split it into two rooms or build out your dream sactional.",
+    "What people are saying. Heading level 2: Loved in real homes. Rating: 4.3 out of 5 stars, 8,509 reviews.",
+    "5 stars. Quote: Couch is fantastic. Every option and every part of it. Insanely comfortable. Patty F., Verified Buyer.",
+    "5 stars. Quote: I live in a very small condo, and hidden storage is a must. Lauren, Verified Buyer.",
+    "Image: Lovesac credit card with a teal and coral floral design and chip.",
+    "Heading level 2: Make yourself comfortable. No interest for 24 months, subject to credit approval. Link: See terms. Link: Apply now.",
+    "Content info landmark. Image link: Lovesac, home. Links: Instagram, TikTok, X, Facebook.",
+    "Heading: Shop. Links: Sactionals, Sacs, StealthTech.",
+    "Heading: Company. Links: Our philosophy, Sustainability, Careers.",
+    "Heading: Support. Links: What to expect, Warranty, Contact us.",
+    "Concept redesign, using Lovesac's existing brand identity and photography, not an official Lovesac property.",
+    "Link: Privacy Policy. Link: Terms. Link: Trademarks."
+  ].join(" ");
+
+  var players = {
+    original: {
+      text: originalText,
+      voiceCandidates: null, // default voice, on purpose — that's the real experience most screen-reader users get
+      pitch: 1.0, rate: 1.0,
+      baseOffset: 0, state: "stopped",
+      btn: document.getElementById("btn-original"),
+      scrub: document.getElementById("scrub-original"),
+      status: document.getElementById("status-original"),
+      dragging: false
+    },
+    redesign: {
+      text: redesignText,
+      voiceCandidates: [
+        "Microsoft Aria Online (Natural)", "Microsoft Jenny Online (Natural)",
+        "Google UK English Female", "Ava (Premium)", "Ava (Enhanced)", "Ava",
+        "Samantha (Enhanced)", "Samantha", "Nicky (Premium)", "Zoe (Premium)",
+        "Microsoft Aria", "Microsoft Jenny", "Google US English", "Female"
+      ],
+      pitch: 1.0, rate: 0.95,
+      baseOffset: 0, state: "stopped",
+      btn: document.getElementById("btn-redesign"),
+      scrub: document.getElementById("scrub-redesign"),
+      status: document.getElementById("status-redesign"),
+      dragging: false
+    }
+  };
+  if(!players.original.btn || !players.redesign.btn) return;
+
+  var activeKey = null;
+
+  function pct(key){
+    var p = players[key];
+    return Math.min(100, (p.baseOffset / p.text.length) * 100);
+  }
+
+  function render(key){
+    var p = players[key];
+    if(!p.dragging) p.scrub.value = pct(key).toFixed(1);
+    p.btn.textContent = p.state === "playing" ? "❚❚" : "▶";
+    var label = p.state === "playing" ? "Playing" : p.state === "paused" ? "Paused" : "Stopped";
+    p.status.textContent = label + " · " + Math.round(pct(key)) + "%";
+  }
+
+  function stopAllExcept(key){
+    Object.keys(players).forEach(function(k){
+      if(k !== key && players[k].state === "playing"){
+        // Interrupting the other player pauses it in place — it keeps its
+        // remembered position, same as pressing its own pause button,
+        // instead of being force-reset to the beginning.
+        players[k].state = "paused";
+        render(k);
+      }
+    });
+  }
+
+  function startFrom(key, charIndex){
+    stopAllExcept(key);
+    synth.cancel();
+    var p = players[key];
+    p.baseOffset = charIndex;
+    var remaining = p.text.substring(charIndex);
+    if(remaining.length === 0){ p.state = "stopped"; p.baseOffset = 0; render(key); return; }
+    var utter = new SpeechSynthesisUtterance(remaining);
+    utter.rate = p.rate;
+    utter.pitch = p.pitch;
+    if(p.voiceCandidates){
+      var v = findVoice(p.voiceCandidates, key !== "original");
+      if(v) utter.voice = v;
+    }
+    utter.onstart = function(){ p.state = "playing"; activeKey = key; render(key); };
+    utter.onboundary = function(e){
+      if(typeof e.charIndex === "number"){
+        p.baseOffset = charIndex + e.charIndex;
+        render(key);
+      }
+    };
+    utter.onend = function(){
+      if(p.state !== "paused"){ p.state = "stopped"; p.baseOffset = 0; }
+      if(activeKey === key) activeKey = null;
+      render(key);
+    };
+    p._utter = utter;
+    synth.speak(utter);
+  }
+
+  function togglePlayPause(key){
+    var p = players[key];
+    if(p.state === "playing"){
+      // Native speechSynthesis pause()/resume() restarts the utterance
+      // from the beginning in Safari instead of actually resuming, so
+      // "pause" cancels here and remembers the last spoken position —
+      // pressing play again re-speaks starting from that word instead
+      // of the beginning.
+      synth.cancel();
+      p.state = "paused";
+      if(activeKey === key) activeKey = null;
+      render(key);
+    } else {
+      startFrom(key, p.baseOffset || 0);
+    }
+  }
+
+  function stop(key){
+    if(activeKey === key) synth.cancel();
+    var p = players[key];
+    p.state = "stopped";
+    p.baseOffset = 0;
+    if(activeKey === key) activeKey = null;
+    render(key);
+  }
+
+  Object.keys(players).forEach(function(key){
+    var p = players[key];
+    p.btn.addEventListener("click", function(){ togglePlayPause(key); });
+    document.getElementById("stop-" + key).addEventListener("click", function(){ stop(key); });
+
+    p.scrub.addEventListener("input", function(){
+      p.dragging = true;
+      p.status.textContent = (p.state === "playing" ? "Playing" : p.state === "paused" ? "Paused" : "Stopped") + " · " + Math.round(Number(p.scrub.value)) + "%";
+    });
+    p.scrub.addEventListener("change", function(){
+      p.dragging = false;
+      var idx = Math.round((Number(p.scrub.value) / 100) * p.text.length);
+      if(p.state === "stopped"){
+        p.baseOffset = idx;
+        render(key);
+      } else {
+        startFrom(key, idx);
+      }
+    });
+
+    render(key);
+  });
+
+  document.body.insertAdjacentHTML('beforeend',
+    '<div class="a11y-mini" id="a11yMini">' +
+      '<button type="button" class="a11y-mini-play" id="a11yMiniPlay" aria-label="Play or pause">▶</button>' +
+      '<div class="a11y-mini-info" id="a11yMiniInfo" role="button" tabindex="0">' +
+        '<div class="a11y-mini-label" id="a11yMiniLabel"></div>' +
+        '<div class="a11y-mini-status" id="a11yMiniStatus"></div>' +
+      '</div>' +
+      '<button type="button" class="a11y-mini-stop" id="a11yMiniStop" aria-label="Stop and reset to beginning">■</button>' +
+    '</div>'
+  );
+  var mini = document.getElementById('a11yMini');
+  var miniPlay = document.getElementById('a11yMiniPlay');
+  var miniLabel = document.getElementById('a11yMiniLabel');
+  var miniStatus = document.getElementById('a11yMiniStatus');
+  var miniStop = document.getElementById('a11yMiniStop');
+  var miniInfo = document.getElementById('a11yMiniInfo');
+  var miniKey = null;
+  var miniNames = { original: 'Lovesac.com', redesign: 'This redesign' };
+
+  // Only surface the mini player once the real player cards have scrolled
+  // out of view — showing it while the cards are still on screen would
+  // just be a redundant second set of controls.
+  var cardsInView = true;
+  var compareBlock = players.original.btn.closest('.audio-compare');
+  if(compareBlock && 'IntersectionObserver' in window){
+    new IntersectionObserver(function(entries){
+      cardsInView = entries[0].isIntersecting;
+      updateMini();
+    }, { threshold: 0 }).observe(compareBlock);
+  } else {
+    cardsInView = false;
+  }
+
+  function updateMini(){
+    // Prefer whichever is actively playing; fall back to a paused one.
+    // Both can be non-stopped at once now that interrupting a player
+    // pauses rather than resets it.
+    var next = null;
+    Object.keys(players).forEach(function(k){
+      if(players[k].state === 'playing') next = k;
+    });
+    if(!next){
+      Object.keys(players).forEach(function(k){
+        if(players[k].state === 'paused') next = k;
+      });
+    }
+    miniKey = next;
+    if(!next || cardsInView){
+      mini.classList.remove('show');
+      return;
+    }
+    var p = players[next];
+    miniLabel.textContent = miniNames[next];
+    miniPlay.textContent = p.state === 'playing' ? '❚❚' : '▶';
+    miniPlay.setAttribute('aria-label', (p.state === 'playing' ? 'Pause' : 'Play') + ' ' + miniNames[next] + ' screen reader preview');
+    miniStatus.textContent = (p.state === 'playing' ? 'Playing' : 'Paused') + ' · ' + Math.round(pct(next)) + '%';
+    miniInfo.setAttribute('aria-label', (p.state === 'playing' ? 'Pause' : 'Play') + ' ' + miniNames[next] + ' screen reader preview');
+    mini.classList.add('show');
+  }
+
+  var baseRender = render;
+  render = function(key){
+    baseRender(key);
+    updateMini();
+  };
+
+  miniPlay.addEventListener('click', function(){
+    if(miniKey) togglePlayPause(miniKey);
+  });
+  miniInfo.addEventListener('click', function(){
+    if(miniKey) togglePlayPause(miniKey);
+  });
+  miniInfo.addEventListener('keydown', function(e){
+    if(e.key !== 'Enter' && e.key !== ' ') return;
+    e.preventDefault();
+    if(miniKey) togglePlayPause(miniKey);
+  });
+  miniStop.addEventListener('click', function(){
+    if(miniKey) stop(miniKey);
   });
 })();
 </script>
