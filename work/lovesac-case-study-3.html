@@ -347,6 +347,8 @@
   .stx-mock .stx-back{padding:12px 14px 0; font-size:11px; letter-spacing:0.05em; color:var(--stx-text-soft); font-weight:700;}
   .stx-close-btn{align-self:flex-end; margin:12px 14px 0; width:22px; height:22px; flex:0 0 auto; display:flex; align-items:center; justify-content:center; color:var(--stx-text-soft);}
   .stx-close-btn svg{width:14px; height:14px;}
+  .stx-back-icon{align-self:flex-start; margin:12px 0 0 14px; width:22px; height:22px; flex:0 0 auto; display:flex; align-items:center; justify-content:center; color:var(--stx-text-soft);}
+  .stx-back-icon svg{width:14px; height:14px;}
   .stx-mock .stx-word{text-align:center; padding:8px 10px 0;}
   .stx-mock .stx-word b{display:block; font-size:19px; font-weight:800; letter-spacing:0.01em; color:#C9C7BF;}
   .stx-mock .stx-word span{display:block; font-size:9px; letter-spacing:0.14em; color:#9C9A93; margin-top:1px;}
@@ -953,7 +955,8 @@
         <div class="nav-label"><span class="sw"></span>Proposed &mdash; active state<span class="stx-badge">Animated</span></div>
         <div class="phone-slot">
           <div class="stx-mock">
-            <div class="stx-word" style="padding-top:22px;"><b>LOVESAC</b><span>STEALTHTECH</span></div>
+            <div class="stx-back-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 6 9 12 15 18"/></svg></div>
+            <div class="stx-word"><b>LOVESAC</b><span>STEALTHTECH</span></div>
             <div class="stx-body">
               <div class="stx-radar" aria-hidden="true">
                 <span class="stx-ring"></span><span class="stx-ring"></span><span class="stx-ring"></span>
@@ -999,16 +1002,18 @@
         <div class="nav-label"><span class="sw"></span>Proposed &mdash; StealthTech Assist</div>
         <div class="phone-slot">
           <div class="stx-mock">
-            <div class="stx-close-btn" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></div>
             <div class="stx-body" style="justify-content:flex-start; padding-top:18px; gap:12px;">
-              <div class="stx-assist-head">
-                <div class="stx-assist-avatar" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="var(--stx-teal)" stroke-width="1.5" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3z"/></svg>
+              <div class="stx-assist-head" style="width:100%; justify-content:space-between;">
+                <div style="display:flex; align-items:center; gap:10px;">
+                  <div class="stx-assist-avatar" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="var(--stx-teal)" stroke-width="1.5" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3z"/></svg>
+                  </div>
+                  <div>
+                    <h4 style="margin:0;">StealthTech Assist</h4>
+                    <p class="stx-assist-sub">Guided setup, step by step</p>
+                  </div>
                 </div>
-                <div>
-                  <h4 style="margin:0;">StealthTech Assist</h4>
-                  <p class="stx-assist-sub">Guided setup, step by step</p>
-                </div>
+                <div class="stx-close-btn" style="align-self:center; margin:0;" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></div>
               </div>
               <div class="stx-assist-bubble">Hi! I can walk you through pairing, layout, and fabric setup &mdash; or help you find exactly what you need. What can I help with?</div>
               <div class="stx-videocard">
