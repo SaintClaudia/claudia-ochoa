@@ -2,7 +2,4 @@ name = "portfolio-csp"
 main = "src/index.js"
 compatibility_date = "2025-01-01"
 
-# Route intentionally omitted for now — deploy first to the workers.dev
-# subdomain to test against the live site, then add a route here
-# (e.g. `routes = [{ pattern = "claudiaochoa.co/*", zone_name = "claudiaochoa.co" }]`)
-# once verified, since a route change takes effect for all site traffic.
+routes = [{ pattern = "claudiaochoa.co/*", zone_name = "claudiaochoa.co" }]
