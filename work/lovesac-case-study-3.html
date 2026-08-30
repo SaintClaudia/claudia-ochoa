@@ -357,7 +357,8 @@
   .stx-checklist{list-style:none; margin:6px 0 0; padding:0; width:100%; display:flex; flex-direction:column; gap:6px; text-align:left;}
   .stx-checklist li{display:flex; align-items:center; gap:8px; background:var(--stx-surface); border-radius:8px; padding:7px 10px; font-size:10.5px; color:var(--stx-text);}
   .stx-checklist svg{flex:0 0 auto; width:13px; height:13px; stroke:var(--stx-teal);}
-  .stx-btn-teal{margin-top:4px; width:100%; padding:9px; border-radius:8px; background:var(--stx-teal); color:#0A2226; font-size:11px; font-weight:800; letter-spacing:0.02em;}
+  .stx-btn-teal{margin-top:4px; width:100%; padding:9px; border-radius:8px; background:var(--stx-teal); color:#0A2226; font-size:11px; font-weight:800; letter-spacing:0.02em; cursor:pointer; transition:transform .18s ease, box-shadow .18s ease, background-color .18s ease;}
+  .stx-btn-teal:hover{background-color:#3AD6E3; transform:translateY(-1px); box-shadow:0 6px 16px rgba(16,196,212,0.35);}
   .stx-link-ghost{font-size:10px; color:var(--stx-text-soft); text-decoration:underline;}
 
   /* Finding 2 — animated intro */
@@ -457,6 +458,8 @@
     .stx-radar .stx-ring{opacity:0.4; transform:scale(1);}
     .stx-dots span{opacity:1;}
     .stx-car-track{transition:none;}
+    .stx-btn-teal{transition:none;}
+    .stx-btn-teal:hover{transform:none;}
   }
 </style>
 </head>
