@@ -5,10 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sactionals — Simplified Build Flow</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"></noscript>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<script src="/js/font-preload.js"></script>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"></noscript>
+<script src="/js/font-preload.js"></script>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 <style>
   :root{
@@ -1300,7 +1302,7 @@
         <p>Start from a ready-made favorite, or build your own from scratch — either way, you're customizing fabric, comfort, and add-ons before it ships.</p>
         <div class="hero-actions">
           <button class="btn btn-primary nav-mock">Build Your Own</button>
-          <button class="btn btn-ghost" onclick="if(window.holdNavVisible)holdNavVisible(900); document.getElementById('filtersAnchor').scrollIntoView({behavior:'smooth'})">Browse Setups</button>
+          <button class="btn btn-ghost" id="browseSetupsBtn">Browse Setups</button>
         </div>
       </div>
       <div class="hero-img"><img src="../images/sactionals-hero.webp" alt="Sactionals sectional and ottomans in a living room"></div>
@@ -1324,7 +1326,7 @@
     </div>
 
     <div class="browse-filters" id="filtersAnchor">
-      <button class="filter-chip size-chip active" onclick="applySizeFilter('all', this)">All Sizes</button>
+      <button class="filter-chip size-chip active" data-size-filter="all">All Sizes</button>
 
       <button type="button" class="filter-chip room-fit-chip" id="roomFitChip" hidden>
         <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
@@ -1334,9 +1336,9 @@
         </span>
       </button>
 
-      <button class="filter-chip size-chip" onclick="applySizeFilter('small', this)">Loveseat – Small</button>
-      <button class="filter-chip size-chip" onclick="applySizeFilter('medium', this)">Medium</button>
-      <button class="filter-chip size-chip" onclick="applySizeFilter('large', this)">Large</button>
+      <button class="filter-chip size-chip" data-size-filter="small">Loveseat – Small</button>
+      <button class="filter-chip size-chip" data-size-filter="medium">Medium</button>
+      <button class="filter-chip size-chip" data-size-filter="large">Large</button>
 
       <div class="filter-dropdown-wrap">
         <button type="button" class="filter-chip" id="colorFilterToggle" aria-expanded="false" aria-controls="colorFilterDrop">Color</button>
@@ -2612,6 +2614,18 @@ function applySizeFilter(key, btn){
     btn.classList.add('active');
   }
   applyFilters();
+}
+
+document.querySelectorAll('#filtersAnchor .size-chip').forEach(function(btn){
+  btn.addEventListener('click', function(){ applySizeFilter(btn.dataset.sizeFilter, btn); });
+});
+
+var browseSetupsBtn = document.getElementById('browseSetupsBtn');
+if(browseSetupsBtn){
+  browseSetupsBtn.addEventListener('click', function(){
+    if(window.holdNavVisible) holdNavVisible(900);
+    document.getElementById('filtersAnchor').scrollIntoView({behavior:'smooth'});
+  });
 }
 
 function applyFilters(){
