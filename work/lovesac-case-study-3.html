@@ -404,8 +404,14 @@
     align-self:flex-start; text-align:left; background:var(--stx-surface); border:1px solid var(--stx-line);
     border-radius:4px 14px 14px 14px; padding:10px 12px; font-size:11px; line-height:1.55; color:var(--stx-text);
   }
-  .stx-chips{display:flex; flex-wrap:wrap; gap:6px; align-self:flex-start;}
-  .stx-chip{border:1px solid var(--stx-teal); color:var(--stx-teal); border-radius:999px; padding:5px 10px; font-size:9.5px; font-weight:700; white-space:nowrap;}
+  .stx-chat-input{
+    flex:0 0 auto; display:flex; align-items:center; gap:8px;
+    margin:0 14px 14px; padding:9px 8px 9px 14px; border-radius:999px;
+    background:var(--stx-surface); border:1px solid var(--stx-line);
+  }
+  .stx-chat-input span{flex:1; font-size:10.5px; color:var(--stx-text-soft); text-align:left;}
+  .stx-chat-send{width:24px; height:24px; border-radius:50%; background:var(--stx-teal); display:flex; align-items:center; justify-content:center; flex:0 0 auto;}
+  .stx-chat-send svg{width:11px; height:11px; fill:#0A2226;}
 
   /* Full-size "before" carousel (Finding 1) */
   .stx-carousel{display:flex; align-items:center; justify-content:center; gap:8px;}
@@ -998,15 +1004,15 @@
                 </div>
               </div>
               <div class="stx-assist-bubble">Hi! I can walk you through pairing, layout, and fabric setup step by step &mdash; or just show you the video. What do you need?</div>
-              <div class="stx-chips">
-                <span class="stx-chip">Show me the video</span>
-                <span class="stx-chip">Walk me through pairing</span>
-              </div>
               <div class="stx-videocard">
                 <div class="stx-thumb" aria-hidden="true"><img src="/images/lovesac-stealthtech-video-thumb.webp" alt="" loading="lazy" decoding="async"><div class="stx-playbtn"><svg viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20"/></svg></div></div>
                 <div class="stx-caption">How to Set Up Sactionals StealthTech Sound + Charge &middot; 2:14</div>
               </div>
               <span class="stx-pdf-link">&darr; Download the full PDF guide</span>
+            </div>
+            <div class="stx-chat-input">
+              <span>Ask StealthTech Assist&hellip;</span>
+              <div class="stx-chat-send" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20l16-8L4 4v6l10 2-10 2z"/></svg></div>
             </div>
           </div>
         </div>
