@@ -234,6 +234,20 @@
     color:#D9CBB8; margin-bottom:10px;
   }
 
+  .field-note{
+    margin-top:24px;
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:32px 36px;
+  }
+  .field-note-label{
+    display:block; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; font-weight:800;
+    color:var(--clay-deep); margin-bottom:12px;
+  }
+  .field-note p{margin-top:16px; font-size:15px; line-height:1.7; color:var(--ink-soft); max-width:70ch;}
+  .field-note p:first-of-type{margin-top:0;}
+
   /* Sentiment cards */
   .sentiment-grid{display:grid; grid-template-columns:1fr 1fr; gap:28px;}
   .sentiment-card{background:var(--paper); border:1px solid var(--line); border-radius:16px; padding:30px 28px;}
@@ -850,6 +864,14 @@
     <div class="context-strip" style="margin-top:24px;">
       <span class="tag">Why this score matters right now</span>
       Lovesac is already investing in the capability this audit puts to the test. Its Q1 2027 earnings call identifies "agentic commerce" and AI-readable content as strategic priorities for adapting to shifting consumer search behavior on LLMs (Moby Intelligence, 2026). The current site passes 1 of 2 Agentic Browsing checks on both mobile and desktop. The redesign passes 2 of 2 &mdash; demonstrating a more AI-readable foundation for the strategy leadership says is underway.
+    </div>
+
+    <div class="field-note">
+      <span class="field-note-label">A live example</span>
+      <p>Figure 4 measures whether a page can be read by an agent. Here's what it looks like when one succeeds.</p>
+      <p>I was trying to find a bottle opener I used to own &mdash; a specific silhouette, remembered loosely, no product name, no saved link. I sent Claude a reference image with a description of the shape; it searched the web and came back with a set of candidates, including the Geo Brass Bottle Opener from Abroad Modern, a small ethically-sourced home goods retailer. I browsed the results and purchased directly.</p>
+      <p>That's the gap Figure 4 is measuring: not whether a page loads for a person, but whether its product data is legible enough for an agent to find, compare, and hand back a real answer. Abroad Modern's listing had enough of it. That's the difference between "agentic commerce" as a stated priority and as a completed order.</p>
+      <p>Not every purchase looks like this one. A plain search for something ordinary &mdash; body wash, say &mdash; returns a wall of near-identical options built for comparison, not recall. That's a different job for an agent: not finding the one thing I can barely describe, but skipping the search entirely for the thing I already buy every time. "Hey Google, order me a coffee" works because it assumes the usual order and only asks when something's actually changed. Agent-readiness isn't one capability &mdash; it's a page's ability to be found when I'm discovering something new, and a system's ability to get out of the way when I'm not.</p>
     </div>
   </div>
 </section>
