@@ -280,7 +280,13 @@
     padding:10px;
     display:flex; flex-direction:column; gap:8px;
   }
-  .demo-attach{width:52px; height:52px; object-fit:contain; background:#fff; border-radius:8px; border:1px solid var(--line); padding:4px;}
+  .demo-attach{
+    width:52px; height:52px; object-fit:contain; background:#fff; border-radius:8px; border:1px solid var(--line); padding:4px;
+    margin-top:8px;
+    opacity:0; transform:translateY(4px);
+    transition:opacity .35s ease, transform .35s ease;
+  }
+  .demo-attach.show{opacity:1; transform:translateY(0);}
   .demo-typed{font-size:12px; line-height:1.55; color:var(--ink); margin:0;}
   .demo-caret{display:inline-block; width:2px; height:11px; background:var(--ink); margin-left:1px; vertical-align:-2px; animation:demo-blink 1s step-end infinite;}
   .demo-caret.done{display:none;}
@@ -306,6 +312,24 @@
   .demo-result{background:var(--cream); border:1px solid var(--line); border-radius:8px; overflow:hidden;}
   .demo-result img{width:100%; aspect-ratio:1; object-fit:cover; display:block;}
   .demo-result span{display:block; font-size:9px; line-height:1.3; color:var(--ink-soft); padding:5px 6px;}
+  .demo-citations{
+    display:flex; flex-direction:column; gap:8px;
+    margin-top:10px;
+    opacity:0; transform:translateY(6px);
+    transition:opacity .5s ease, transform .5s ease;
+  }
+  .demo-citations.show{opacity:1; transform:translateY(0);}
+  .demo-citation{
+    background:var(--cream);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:10px 12px;
+    display:flex; flex-direction:column; gap:4px;
+  }
+  .demo-citation-title{font-size:11px; font-weight:700; color:var(--espresso);}
+  .demo-citation-desc{font-size:9.5px; line-height:1.4; color:var(--ink-soft);}
+  .demo-citation-source{display:flex; align-items:center; gap:5px; font-size:9px; color:var(--ink-soft); margin-top:2px;}
+  .demo-citation-dot{width:12px; height:12px; border-radius:50%; background:var(--sand); border:1px solid var(--line); flex-shrink:0;}
   @media (prefers-reduced-motion: reduce){
     .demo-caret{animation:none;}
     .demo-dot-pulse{animation:none;}
@@ -951,8 +975,8 @@
           </div>
           <div class="demo-body">
             <div class="demo-msg-user">
-              <img class="demo-attach" src="/images/bottleopener-reference.webp" alt="" loading="lazy" decoding="async">
               <p class="demo-typed"><span id="demoTypedText"></span><span class="demo-caret" id="demoCaret"></span></p>
+              <img class="demo-attach" id="demoAttach" src="/images/bottleopener-reference.webp" alt="" loading="lazy" decoding="async">
             </div>
             <div class="demo-msg-assistant">
               <div class="demo-searching" id="demoSearching">
@@ -963,6 +987,23 @@
                 <div class="demo-result"><img src="/images/bottleopener-result-1.webp" alt="" loading="lazy" decoding="async"><span>Geo Brass Opener</span></div>
                 <div class="demo-result"><img src="/images/bottleopener-result-2.webp" alt="" loading="lazy" decoding="async"><span>In use</span></div>
                 <div class="demo-result"><img src="/images/bottleopener-result-3.webp" alt="" loading="lazy" decoding="async"><span>Similar style</span></div>
+              </div>
+              <div class="demo-citations" id="demoCitations">
+                <div class="demo-citation">
+                  <span class="demo-citation-title">Geo Brass Bottle Opener</span>
+                  <span class="demo-citation-desc">Solid brass opener with a geometric motif, hand-cast in Bali.</span>
+                  <span class="demo-citation-source"><span class="demo-citation-dot"></span>Abroad Modern</span>
+                </div>
+                <div class="demo-citation">
+                  <span class="demo-citation-title">Brass Geo Bottle Opener</span>
+                  <span class="demo-citation-desc">Handcrafted, lost-wax cast brass opener with a geometric design.</span>
+                  <span class="demo-citation-source"><span class="demo-citation-dot"></span>Sarah Cecelia</span>
+                </div>
+                <div class="demo-citation">
+                  <span class="demo-citation-title">Brass Bottle Opener</span>
+                  <span class="demo-citation-desc">Solid brass opener described simply as &ldquo;geometric design.&rdquo;</span>
+                  <span class="demo-citation-source"><span class="demo-citation-dot"></span>ESQUELETO</span>
+                </div>
               </div>
             </div>
           </div>
@@ -1361,8 +1402,10 @@
 (function(){
   var textEl = document.getElementById('demoTypedText');
   var caretEl = document.getElementById('demoCaret');
+  var attachEl = document.getElementById('demoAttach');
   var searchingEl = document.getElementById('demoSearching');
   var resultsEl = document.getElementById('demoResults');
+  var citationsEl = document.getElementById('demoCitations');
   var demoWindow = document.querySelector('.demo-window');
   if(!textEl || !demoWindow) return;
 
@@ -1372,8 +1415,10 @@
   function settle(){
     textEl.textContent = prompt;
     if(caretEl) caretEl.classList.add('done');
+    attachEl?.classList.add('show');
     searchingEl?.classList.remove('show');
     resultsEl?.classList.add('show');
+    citationsEl?.classList.add('show');
   }
 
   function playSequence(){
@@ -1382,11 +1427,15 @@
       if(i > prompt.length){
         caretEl?.classList.add('done');
         setTimeout(function(){
-          searchingEl?.classList.add('show');
+          attachEl?.classList.add('show');
           setTimeout(function(){
-            searchingEl?.classList.remove('show');
-            resultsEl?.classList.add('show');
-          }, 1300);
+            searchingEl?.classList.add('show');
+            setTimeout(function(){
+              searchingEl?.classList.remove('show');
+              resultsEl?.classList.add('show');
+              citationsEl?.classList.add('show');
+            }, 1300);
+          }, 500);
         }, 450);
         return;
       }
