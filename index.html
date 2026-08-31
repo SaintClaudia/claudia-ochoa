@@ -38,7 +38,7 @@
   });
   </script>
   <link rel="stylesheet" href="css/style.css">
-  <style>:root{--font-display:'Fraunces',Georgia,serif;}.nav-wordmark{font-family:var(--font-display);}.home-hero h1 em{font-style:italic;color:#BE5B39;}[data-theme=dark] .home-hero h1 em{color:#E2825A;}.card-cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:20px;}.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:999px;text-decoration:none;font-size:14.5px;font-weight:600;letter-spacing:.02em;transition:background var(--transition),border-color var(--transition),color var(--transition);}.btn.primary{background:#9C4227;color:var(--off-white);}[data-theme=dark] .btn.primary{background:#C96A42;}.btn.primary:hover{background:var(--black);}.btn.ghost{border:1px solid var(--border);color:var(--black);}.btn.ghost:hover{border-color:var(--mid);}</style>
+  <style>:root{--font-display:'Fraunces',Georgia,serif;}.nav-wordmark{font-family:var(--font-display);}.home-hero h1 em{font-style:italic;color:#BE5B39;}[data-theme=dark] .home-hero h1 em{color:#E2825A;}.card-cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:20px;}.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:999px;text-decoration:none;font-size:14.5px;font-weight:600;letter-spacing:.02em;transition:background var(--transition),border-color var(--transition),color var(--transition);}.btn.primary{background:#9C4227;color:var(--off-white);}[data-theme=dark] .btn.primary{background:#C96A42;}.btn.primary:hover{background:var(--black);}.btn.ghost{border:1px solid var(--border);color:var(--black);}.btn.ghost:hover{border-color:var(--mid);}@media (max-width:600px){.theme-toggle{display:flex;}}</style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -74,12 +74,15 @@
       <span class="icon-moon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 10.5A6 6 0 0 1 5.5 2.5a6 6 0 1 0 8 8z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       <span class="icon-sun"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="1.6" fill="currentColor"/><line x1="8" y1="1" x2="8" y2="3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="8" y1="13" x2="8" y2="15" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="1" y1="8" x2="3" y2="8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="13" y1="8" x2="15" y2="8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="3.05" y1="3.05" x2="4.46" y2="4.46" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="11.54" y1="11.54" x2="12.95" y2="12.95" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="12.95" y1="3.05" x2="11.54" y2="4.46" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="4.46" y1="11.54" x2="3.05" y2="12.95" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span>
     </button>
+    <!-- TEMP: hidden for pitch — restore by removing this comment block (menu is unused with Home/About/Contact hidden above)
     <button class="burger" id="burger" aria-expanded="false" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
+    -->
     </div>
   </div>
 </nav>
+<!-- TEMP: hidden for pitch — restore by removing this comment block (mobile menu is unreachable without the burger button above)
 <div class="mobile-menu" id="mobile-menu">
   <div class="mobile-menu-main">
   <a href="/"><span class="mobile-menu-icon"><svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 7.2L8 2L14 7.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.5 6.5V13C3.5 13.3 3.7 13.5 4 13.5H6.5V10C6.5 9.4 7 9 7.5 9H8.5C9 9 9.5 9.4 9.5 10V13.5H12C12.3 13.5 12.5 13.3 12.5 13V6.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Home</span></a>
@@ -93,6 +96,7 @@
     <span><span class="theme-label-dark">Dark Mode</span><span class="theme-label-light">Light Mode</span></span>
   </a>
 </div>
+-->
 
 <div class="contact-overlay" id="contact-drawer" aria-hidden="true">
   <button class="contact-overlay-close" id="contact-drawer-close" aria-label="Close contact form">&times;</button>
