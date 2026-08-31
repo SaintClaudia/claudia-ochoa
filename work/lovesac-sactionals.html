@@ -1506,11 +1506,11 @@ document.addEventListener('dragstart', function(e){ if (e.target.closest('img'))
       <div class="space-field-label">Room dimensions</div>
       <div class="space-field-help">Enter your room dimensions to see what fits.</div>
       <div class="space-room-row">
-        <label>Width (in)<input type="number" id="roomWidth" min="1" placeholder="e.g. 144"></label>
-        <label>Length (in)<input type="number" id="roomLength" min="1" placeholder="e.g. 168"></label>
+        <label>Width (in)<input type="number" id="roomWidth" min="1" placeholder="e.g. 144" value="144" readonly></label>
+        <label>Length (in)<input type="number" id="roomLength" min="1" placeholder="e.g. 168" value="168" readonly></label>
       </div>
     </div>
-    <div class="space-field-group">
+    <div class="space-field-group" hidden>
       <div class="space-field-label">See it come together</div>
       <div class="space-field-help">Add any furniture, rugs, lighting, or other pieces you want to keep. We'll include them in your room layout.</div>
       <div class="space-furniture-list" id="spaceFurnitureList"></div>
@@ -1898,8 +1898,8 @@ document.addEventListener('dragstart', function(e){ if (e.target.closest('img'))
   addFurnitureRow();
 
   function resetRoomFitForm(){
-    roomWidthEl.value = '';
-    roomLengthEl.value = '';
+    roomWidthEl.value = '144';
+    roomLengthEl.value = '168';
     list.innerHTML = '';
     addFurnitureRow();
     errorEl.style.display = 'none';

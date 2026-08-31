@@ -875,11 +875,11 @@ document.querySelectorAll('link[rel="preload"][as="style"]').forEach(function (l
                   <div class="rf-field-label">Room dimensions</div>
                   <div class="rf-field-help">Enter your room dimensions to see what fits.</div>
                   <div class="rf-room-row">
-                    <label>Width (in)<input type="number" id="rfRoomWidth" min="1" placeholder="e.g. 144"></label>
-                    <label>Length (in)<input type="number" id="rfRoomLength" min="1" placeholder="e.g. 168"></label>
+                    <label>Width (in)<input type="number" id="rfRoomWidth" min="1" placeholder="e.g. 144" value="144" readonly></label>
+                    <label>Length (in)<input type="number" id="rfRoomLength" min="1" placeholder="e.g. 168" value="168" readonly></label>
                   </div>
                 </div>
-                <div class="rf-field-group">
+                <div class="rf-field-group" hidden>
                   <div class="rf-field-label">See it come together</div>
                   <div class="rf-field-help">Add any furniture you want to keep. We'll factor it into the fit.</div>
                   <div class="rf-furniture-list" id="rfFurnitureList"></div>
@@ -1797,7 +1797,6 @@ document.querySelectorAll('link[rel="preload"][as="style"]').forEach(function (l
     closedView.hidden = true;
     openView.hidden = false;
     caption.textContent = 'Expanded state';
-    roomWidthEl.focus();
   }
   function closeForm(){
     openView.hidden = true;
