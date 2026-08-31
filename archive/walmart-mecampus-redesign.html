@@ -29,7 +29,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@400;500;600&family=DM+Mono&display=swap">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@400;500;600&family=DM+Mono&display=swap"></noscript>
-  <script src="/js/font-preload.js"></script>
+  <script>
+  document.querySelectorAll('link[rel="preload"][as="style"]').forEach(function (link) {
+    link.addEventListener('load', function () {
+      link.rel = 'stylesheet';
+    });
+  });
+  </script>
   <link rel="stylesheet" href="/css/style.css">
   <style>
     .process-note { font-size: 0.82rem; color: var(--mid); font-style: italic; margin-bottom: 20px; }

@@ -48,7 +48,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"></noscript>
-<script src="/js/font-preload.js"></script>
+<script>
+document.querySelectorAll('link[rel="preload"][as="style"]').forEach(function (link) {
+  link.addEventListener('load', function () {
+    link.rel = 'stylesheet';
+  });
+});
+</script>
 <style>
   :root{
     --canvas:#EDE7DA;
