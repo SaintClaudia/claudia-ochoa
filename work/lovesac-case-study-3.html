@@ -240,13 +240,76 @@
     border:1px solid var(--line);
     border-radius:16px;
     padding:32px 36px;
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    gap:32px;
+    align-items:start;
   }
+  .field-note-text{min-width:0;}
   .field-note-label{
     display:block; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; font-weight:800;
     color:var(--clay-deep); margin-bottom:12px;
   }
   .field-note p{margin-top:16px; font-size:15px; line-height:1.7; color:var(--ink-soft); max-width:70ch;}
   .field-note p:first-of-type{margin-top:0;}
+
+  /* Live-example chat demo */
+  .demo-window{
+    background:var(--cream);
+    border:1px solid var(--line);
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:0 12px 30px -14px rgba(36,28,22,0.25);
+  }
+  [data-theme=dark] .demo-window{box-shadow:0 12px 30px -14px rgba(0,0,0,0.55);}
+  .demo-titlebar{
+    display:flex; align-items:center; gap:5px;
+    padding:10px 14px;
+    background:var(--sand);
+    border-bottom:1px solid var(--line);
+  }
+  .demo-dot{width:7px; height:7px; border-radius:50%; background:var(--line); flex-shrink:0;}
+  .demo-titlebar-label{margin-left:6px; font-size:10.5px; letter-spacing:0.04em; color:var(--ink-soft);}
+  .demo-body{padding:16px; display:flex; flex-direction:column; gap:14px;}
+  .demo-msg-user{
+    align-self:flex-end;
+    max-width:94%;
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:12px 12px 4px 12px;
+    padding:10px;
+    display:flex; flex-direction:column; gap:8px;
+  }
+  .demo-attach{width:52px; height:52px; object-fit:contain; background:#fff; border-radius:8px; border:1px solid var(--line); padding:4px;}
+  .demo-typed{font-size:12px; line-height:1.55; color:var(--ink); margin:0;}
+  .demo-caret{display:inline-block; width:2px; height:11px; background:var(--ink); margin-left:1px; vertical-align:-2px; animation:demo-blink 1s step-end infinite;}
+  .demo-caret.done{display:none;}
+  @keyframes demo-blink{0%,50%{opacity:1} 51%,100%{opacity:0}}
+  .demo-msg-assistant{align-self:flex-start; width:100%;}
+  .demo-searching{
+    display:flex; align-items:center; gap:7px;
+    font-size:11.5px; color:var(--ink-soft);
+    opacity:0; transition:opacity .3s ease;
+  }
+  .demo-searching.show{opacity:1;}
+  .demo-dot-pulse{width:5px; height:5px; border-radius:50%; background:var(--clay-deep); animation:demo-pulse 1.2s ease-in-out infinite;}
+  .demo-dot-pulse:nth-child(2){animation-delay:.15s;}
+  .demo-dot-pulse:nth-child(3){animation-delay:.3s;}
+  @keyframes demo-pulse{0%,80%,100%{opacity:.25} 40%{opacity:1}}
+  .demo-results{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:8px;
+    margin-top:10px;
+    opacity:0; transform:translateY(6px);
+    transition:opacity .5s ease, transform .5s ease;
+  }
+  .demo-results.show{opacity:1; transform:translateY(0);}
+  .demo-result{background:var(--cream); border:1px solid var(--line); border-radius:8px; overflow:hidden;}
+  .demo-result img{width:100%; aspect-ratio:1; object-fit:cover; display:block;}
+  .demo-result span{display:block; font-size:9px; line-height:1.3; color:var(--ink-soft); padding:5px 6px;}
+  @media (prefers-reduced-motion: reduce){
+    .demo-caret{animation:none;}
+    .demo-dot-pulse{animation:none;}
+  }
 
   /* Sentiment cards */
   .sentiment-grid{display:grid; grid-template-columns:1fr 1fr; gap:28px;}
@@ -363,7 +426,7 @@
     .topbar a.back, .series-nav, .topbar-right{justify-self:start; text-align:left;}
     .tip-card{display:none;}
     .section-head{grid-template-columns:1fr; gap:14px;}
-    .nav-compare, .roomfit-layout, .agentic-charts{grid-template-columns:1fr;}
+    .nav-compare, .roomfit-layout, .agentic-charts, .field-note{grid-template-columns:1fr;}
     .agentic-charts{gap:28px;}
     .roomfit-shots{gap:16px; flex-wrap:wrap;}
     .phone-frame{width:160px;}
@@ -871,11 +934,38 @@
     </div>
 
     <div class="field-note">
-      <span class="field-note-label">A live example</span>
-      <p>Figure 4 measures whether a page can be read by an agent. Here's what it looks like when one succeeds.</p>
-      <p>I was trying to find a bottle opener I used to own &mdash; a specific silhouette, remembered loosely, no product name, no saved link. I sent Claude a reference image with a description of the shape; it searched the web and came back with a set of candidates, including the Geo Brass Bottle Opener from Abroad Modern, a small ethically-sourced home goods retailer. I browsed the results and purchased directly.</p>
-      <p>That's the gap Figure 4 is measuring: not whether a page loads for a person, but whether its product data is legible enough for an agent to find, compare, and hand back a real answer. Abroad Modern's listing had enough of it. That's the difference between "agentic commerce" as a stated priority and as a completed order.</p>
-      <p>Not every purchase looks like this one. A plain search for something ordinary &mdash; body wash, say &mdash; returns a wall of near-identical options built for comparison, not recall. That's a different job for an agent: not finding the one thing I can barely describe, but skipping the search entirely for the thing I already buy every time. "Hey Google, order me a coffee" works because it assumes the usual order and only asks when something's actually changed. Agent-readiness isn't one capability &mdash; it's a page's ability to be found when I'm discovering something new, and a system's ability to get out of the way when I'm not.</p>
+      <div class="field-note-text">
+        <span class="field-note-label">A live example</span>
+        <p>Figure 4 measures whether a page can be read by an agent. Here's what it looks like when one succeeds.</p>
+        <p>I was trying to find a bottle opener I used to own &mdash; a specific silhouette, remembered loosely, no product name, no saved link. I sent Claude a reference image with a description of the shape; it searched the web and came back with a set of candidates, including the Geo Brass Bottle Opener from Abroad Modern, a small ethically-sourced home goods retailer. I browsed the results and purchased directly.</p>
+        <p>That's the gap Figure 4 is measuring: not whether a page loads for a person, but whether its product data is legible enough for an agent to find, compare, and hand back a real answer. Abroad Modern's listing had enough of it. That's the difference between "agentic commerce" as a stated priority and as a completed order.</p>
+        <p>Not every purchase looks like this one. A plain search for something ordinary &mdash; body wash, say &mdash; returns a wall of near-identical options built for comparison, not recall. That's a different job for an agent: not finding the one thing I can barely describe, but skipping the search entirely for the thing I already buy every time. "Hey Google, order me a coffee" works because it assumes the usual order and only asks when something's actually changed. Agent-readiness isn't one capability &mdash; it's a page's ability to be found when I'm discovering something new, and a system's ability to get out of the way when I'm not.</p>
+      </div>
+      <div class="field-note-demo" aria-hidden="true">
+        <div class="demo-window">
+          <div class="demo-titlebar">
+            <span class="demo-dot"></span><span class="demo-dot"></span><span class="demo-dot"></span>
+            <span class="demo-titlebar-label">New chat</span>
+          </div>
+          <div class="demo-body">
+            <div class="demo-msg-user">
+              <img class="demo-attach" src="/images/bottleopener-reference.webp" alt="" loading="lazy" decoding="async">
+              <p class="demo-typed"><span id="demoTypedText"></span><span class="demo-caret" id="demoCaret"></span></p>
+            </div>
+            <div class="demo-msg-assistant">
+              <div class="demo-searching" id="demoSearching">
+                <span class="demo-dot-pulse"></span><span class="demo-dot-pulse"></span><span class="demo-dot-pulse"></span>
+                Searching the web&hellip;
+              </div>
+              <div class="demo-results" id="demoResults">
+                <div class="demo-result"><img src="/images/bottleopener-result-1.webp" alt="" loading="lazy" decoding="async"><span>Geo Brass Opener</span></div>
+                <div class="demo-result"><img src="/images/bottleopener-result-2.webp" alt="" loading="lazy" decoding="async"><span>In use</span></div>
+                <div class="demo-result"><img src="/images/bottleopener-result-3.webp" alt="" loading="lazy" decoding="async"><span>Similar style</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1263,6 +1353,63 @@
   }, {threshold:0.4});
 
   bars.forEach(function(bar){ observer.observe(bar); });
+})();
+</script>
+<script>
+(function(){
+  var textEl = document.getElementById('demoTypedText');
+  var caretEl = document.getElementById('demoCaret');
+  var searchingEl = document.getElementById('demoSearching');
+  var resultsEl = document.getElementById('demoResults');
+  var demoWindow = document.querySelector('.demo-window');
+  if(!textEl || !demoWindow) return;
+
+  var prompt = "i am looking for a bottle opener in this sort of style but it has arrows chevrons like two not a dog shape but all inclosed in a long rounded rectangle similiar to this";
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function settle(){
+    textEl.textContent = prompt;
+    if(caretEl) caretEl.classList.add('done');
+    searchingEl?.classList.remove('show');
+    resultsEl?.classList.add('show');
+  }
+
+  function playSequence(){
+    var i = 0;
+    (function type(){
+      if(i > prompt.length){
+        caretEl?.classList.add('done');
+        setTimeout(function(){
+          searchingEl?.classList.add('show');
+          setTimeout(function(){
+            searchingEl?.classList.remove('show');
+            resultsEl?.classList.add('show');
+          }, 1300);
+        }, 450);
+        return;
+      }
+      textEl.textContent = prompt.slice(0, i);
+      i++;
+      setTimeout(type, 18 + Math.random() * 22);
+    })();
+  }
+
+  if(reduced || !('IntersectionObserver' in window)){
+    settle();
+    return;
+  }
+
+  var played = false;
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting && !played){
+        played = true;
+        playSequence();
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.5});
+  observer.observe(demoWindow);
 })();
 </script>
 
