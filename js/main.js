@@ -8,7 +8,7 @@ if (saved) {
 }
 
 function applyThemeColor(theme) {
-  const color = theme === 'dark' ? '#0D0D0D' : '#FFFFFF';
+  const color = theme === 'dark' ? '#1B1512' : '#F1E8D9';
   let meta = document.querySelector('meta[name="theme-color"]');
   if (!meta) {
     meta = document.createElement('meta');
