@@ -337,8 +337,9 @@ document.querySelectorAll('link[rel="preload"][as="style"]').forEach(function (l
     .table-scroll::after{
       content:''; position:absolute; top:0; right:0; bottom:0; width:32px;
       background:linear-gradient(to right, transparent, var(--cream));
-      pointer-events:none;
+      opacity:1; transition:opacity .2s ease; pointer-events:none;
     }
+    .table-scroll.at-end::after{opacity:0;}
   }
 
   /* Section table-of-contents rail */
