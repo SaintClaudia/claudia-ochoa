@@ -7,12 +7,6 @@
     <priority>1.0</priority>
   </url>
 
-  <url>
-    <loc>https://claudiaochoa.co/about.html</loc>
-    <lastmod>2026-06-19</lastmod>
-    <priority>0.8</priority>
-  </url>
-
   <!-- Work case studies -->
   <url>
     <loc>https://claudiaochoa.co/work/lovesac-case-study.html</loc>
@@ -72,18 +66,6 @@
     <loc>https://claudiaochoa.co/work/lovesac-support.html</loc>
     <lastmod>2026-08-27</lastmod>
     <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://claudiaochoa.co/work/bible-study.html</loc>
-    <lastmod>2026-06-19</lastmod>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://claudiaochoa.co/work/personal-portfolio.html</loc>
-    <lastmod>2026-06-19</lastmod>
-    <priority>0.7</priority>
   </url>
 
 

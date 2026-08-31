@@ -15,11 +15,9 @@ Plain HTML, CSS, and vanilla JS. No frameworks, no build step, no dependencies. 
 ```
 /
 ├── index.html                        # Homepage — featured work grid
-├── about.html                        # About page
 ├── 404.html                          # Custom error page
 ├── _nav.html                         # Shared nav partial (single source of truth)
 ├── _footer.html                      # Shared footer partial (single source of truth)
-├── _hidden-work-cards.html           # Archived work-grid cards (Personal, bible-study) — not a live page, not included anywhere
 ├── build.py                          # Stamps _nav.html and _footer.html into all pages
 ├── favicon.svg                       # Heart favicon (SVG)
 ├── favicon-192.png                   # Heart favicon (PNG, for Google Search)
@@ -42,10 +40,10 @@ Plain HTML, CSS, and vanilla JS. No frameworks, no build step, no dependencies. 
 │   ├── lovesac-redesign.html         # Lovesac — working interactive prototype (linked from the case study)
 │   ├── lovesac-sactionals.html       # Lovesac prototype — product/cart page
 │   ├── lovesac-what-to-expect.html   # Lovesac prototype — what to expect page
-│   ├── lovesac-support.html          # Lovesac prototype — customer support page
-│   ├── bible-study.html              # Designing for Formation (personal)
-│   └── personal-portfolio.html       # From Template to Code (personal)
+│   └── lovesac-support.html          # Lovesac prototype — customer support page
 ```
+
+Everything on the live site is linked from somewhere — no hidden or orphaned pages. Anything retired goes to `archive/` (see below) instead of staying in place unlinked.
 
 ## Deploying changes
 
@@ -62,7 +60,7 @@ GitHub Pages deploys automatically. Changes are live within 1–2 minutes.
 The nav and footer each live in a single file:
 
 - **`_nav.html`** — skip link, top nav, mobile menu, contact overlay
-- **`_footer.html`** — footer links (Home, About, Contact) and copyright
+- **`_footer.html`** — footer links (Home, Contact) and copyright
 
 To change either:
 1. Edit `_nav.html` or `_footer.html`
@@ -111,6 +109,21 @@ When adding new pages: use `<h2>` for section headings under the page `<h1>`, in
 - Case study thumbnails are compressed JPEG or WebP (photographic content) or PNG (flat UI screenshots) — never an uncompressed PNG of a photo
 - Fonts are preconnected via `<link rel="preconnect">`
 - No external JS dependencies
+
+## Archive
+
+`archive/` holds pages that have been fully retired from the live site — not linked from any nav, card, or `sitemap.xml`, and not processed by `build.py`. They're kept as static snapshots in case any come back; nothing in this folder is guaranteed to render with the current nav/footer/site chrome.
+
+**Retention policy:** anything moved here is fair game to delete outright one year after its archive date below, if it hasn't been restored to the live site by then.
+
+| Page(s) | Archived | Reason |
+|---|---|---|
+| `walmart-careers.html`, `walmart-genai.html`, `walmart-connect.html`, `walmart-mecampus-redesign.html`, `walmart-my-hiring-dashboard.html`, `walmart-carplay.html`, `thd-giftcards.html`, `thd-militarydiscount.html` | 2026-08-31 | Unlinked case studies, fully retired |
+| `about.html` | 2026-08-31 | About page, unlinked from nav (was commented out in `_nav.html`/`_footer.html`) |
+| `bible-study.html`, `personal-portfolio.html` | 2026-08-31 | Unlinked personal-project case studies |
+| `about-work-orphan.html` | 2026-08-31 | Stale duplicate About page found living under `work/` with zero inbound links anywhere on the site — superseded by `about.html` long ago |
+
+To restore a page: move it back out of `archive/`, re-add it to `index.html`'s work grid or the nav (as applicable), add it back to `sitemap.xml`, and run `python3 build.py`.
 
 ## Infrastructure
 
