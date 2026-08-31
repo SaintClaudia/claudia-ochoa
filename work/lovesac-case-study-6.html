@@ -299,6 +299,12 @@
     .phone-frame{width:160px;}
     .sentiment-grid{grid-template-columns:1fr;}
     .impact-stats{grid-template-columns:repeat(2,1fr);}
+    .table-scroll{position:relative;}
+    .table-scroll::after{
+      content:''; position:absolute; top:0; right:0; bottom:0; width:32px;
+      background:linear-gradient(to right, transparent, var(--cream));
+      pointer-events:none;
+    }
   }
   .skip-link{
     position:absolute; top:-100%; left:24px; z-index:9999;
