@@ -281,12 +281,13 @@
     display:flex; flex-direction:column; gap:8px;
   }
   .demo-attach{
+    display:none;
     width:52px; height:52px; object-fit:contain; background:#fff; border-radius:8px; border:1px solid var(--line); padding:4px;
     margin-top:8px;
     opacity:0; transform:translateY(4px);
     transition:opacity .35s ease, transform .35s ease;
   }
-  .demo-attach.show{opacity:1; transform:translateY(0);}
+  .demo-attach.show{display:block; opacity:1; transform:translateY(0);}
   .demo-typed{font-size:12px; line-height:1.55; color:var(--ink); margin:0;}
   .demo-caret{display:inline-block; width:2px; height:11px; background:var(--ink); margin-left:1px; vertical-align:-2px; animation:demo-blink 1s step-end infinite;}
   .demo-caret.done{display:none;}
@@ -964,7 +965,7 @@
         <p>I was trying to find a bottle opener I used to own &mdash; a specific silhouette, remembered loosely. I sent Claude a reference image and description; it returned a set of options, including the Geo Brass Bottle Opener from Abroad Modern, a retailer I'd never heard of.</p>
         <p>I bought it &mdash; because it was a strong match and I wanted to trust the agentic path rather than fall back into another round of searching. Abroad Modern had made its product legible enough for an agent to find it, and that discoverability earned the sale.</p>
         <p>That's what the score is measuring: whether product data is legible enough for an agent to find, compare, and return a useful answer. It's the difference between "agentic commerce" as a stated priority and as a completed order.</p>
-        <p>Not every purchase needs discovery. Once an agent knows where I get my coffee and how I like it, "Hey Google, order me a coffee" should be enough. No search, no menu, no rebuilding the same decision &mdash; just place my usual order so all I have to do is pick it up.</p>
+        <p>Not every purchase needs discovery. Once an agent knows where I get my coffee and how I like it, "Hey Google, order me a coffee" should be enough. No search, no menu, no repeating the same order every day &mdash; just place my usual so all I have to do is pick it up.</p>
         <p>That's the shift: agent-readiness has to support both discovery when I don't know exactly what I'm looking for, and familiarity when I do.</p>
       </div>
       <div class="field-note-demo" aria-hidden="true">
