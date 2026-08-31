@@ -65,6 +65,7 @@ The nav and footer each live in a single file:
 To change either:
 1. Edit `_nav.html` or `_footer.html`
 2. Run `python3 build.py` — stamps the update into every page
+3. Re-check `index.html`'s nav: it has a page-specific override hiding the Home and Contact icons from its desktop nav (theme toggle only) — `build.py` overwrites it with the generic template every time, so re-wrap those two `<a class="nav-icon">` lines in the `<!-- TEMP: hidden for pitch -->` comment block afterward if they came back
 3. Commit and push all changed files
 
 ## Adding a case study
