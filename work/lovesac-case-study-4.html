@@ -716,6 +716,7 @@
   var ticking = false;
   function update(){
     var y = Math.max(window.scrollY, 0);
+    if(window.__tocNav){ lastY = y; ticking = false; return; }
     if(y > topbar.offsetHeight){
       if(y > lastY + 4){
         topbar.classList.add('topbar-hidden');
@@ -791,7 +792,24 @@ document.addEventListener('dragstart', function(e){ if (e.target.closest('img'))
     d.addEventListener('click', function(e){
       e.preventDefault();
       var target = document.getElementById(d.getAttribute('href').slice(1));
-      if(target) target.scrollIntoView({behavior: reduced ? 'auto' : 'smooth', block:'start'});
+      if(!target) return;
+      window.__tocNav = true;
+      var topbarEl = document.querySelector('.topbar');
+      if(topbarEl) topbarEl.classList.remove('topbar-hidden');
+      target.scrollIntoView({behavior: reduced ? 'auto' : 'smooth', block:'start'});
+      var lastY = window.scrollY;
+      (function checkSettled(){
+        setTimeout(function(){
+          if(window.scrollY === lastY){
+            var prevBehavior = document.documentElement.style.scrollBehavior;
+            document.documentElement.style.scrollBehavior = 'auto';
+            target.scrollIntoView({behavior:'auto', block:'start'});
+            document.documentElement.style.scrollBehavior = prevBehavior;
+            setTimeout(function(){ window.__tocNav = false; }, 60);
+          }
+          else { lastY = window.scrollY; checkSettled(); }
+        }, 100);
+      })();
     });
   });
 
