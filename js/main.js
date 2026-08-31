@@ -165,6 +165,7 @@ function closeContactOverlay() {
   if (contactStatus) contactStatus.textContent = '';
   contactStatus?.classList.remove('success', 'error');
 }
+if (location.hash === '#contact') openContactOverlay();
 [contactToggle, mobileContactToggle, footerContactToggle].forEach((toggle) => {
   toggle?.addEventListener('click', (e) => {
     e.preventDefault();
