@@ -1199,7 +1199,10 @@
     </div>
   </div>
 </nav>
-<div class="nav-mega-backdrop" id="navMegaBackdrop"></div>
+<script>
+document.addEventListener('contextmenu', function(e){ if (e.target.closest('img')) e.preventDefault(); });
+document.addEventListener('dragstart', function(e){ if (e.target.closest('img')) e.preventDefault(); });
+</script>
 <!-- LOVESAC-NAV:END -->
 
 <main id="main-content">
@@ -1573,6 +1576,7 @@
     });
   }
   function openBar(b){
+    if(window.holdNavVisible) holdNavVisible(900);
     closeAllBars();
     document.querySelectorAll('.nav-item.open').forEach(function(item){
       item.classList.remove('open');

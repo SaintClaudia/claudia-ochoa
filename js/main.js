@@ -227,3 +227,11 @@ contactForm?.addEventListener('submit', async (e) => {
     submitBtn.disabled = false;
   }
 });
+
+// === IMAGE PROTECTION ===
+document.addEventListener('contextmenu', (e) => {
+  if (e.target.closest('img')) e.preventDefault();
+});
+document.addEventListener('dragstart', (e) => {
+  if (e.target.closest('img')) e.preventDefault();
+});

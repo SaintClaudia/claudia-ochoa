@@ -1169,6 +1169,10 @@
     </div>
   </div>
 </nav>
+<script>
+document.addEventListener('contextmenu', function(e){ if (e.target.closest('img')) e.preventDefault(); });
+document.addEventListener('dragstart', function(e){ if (e.target.closest('img')) e.preventDefault(); });
+</script>
 <!-- LOVESAC-NAV:END -->
 
 <main id="main-content">

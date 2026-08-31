@@ -800,7 +800,7 @@
                 <a href="#" class="mega-shopall nav-mock">Shop all &rarr;</a>
               </div>
               <div class="mega-grid-4">
-                <a href="lovesac-sactionals.html" class="mega-tile-wide">
+                <a href="#" class="mega-tile-wide nav-mock">
                   <span class="mega-tile-color mega-tile-photo" style="background-color:#F6F6F6; background-image:url('../images/nav-sactionals.webp')" aria-hidden="true"></span>
                   <span class="mega-label">Sactionals</span>
                 </a>
@@ -935,7 +935,7 @@
     </div>
   </div>
   </div>
-  <div class="desktop-search" id="desktopSearch" inert>
+  <div class="desktop-search" id="desktopSearch">
     <div class="wrap">
       <form class="desktop-search-inner" role="search" action="#">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.2" y2="16.2"/></svg>
@@ -970,13 +970,13 @@
         </div>
       </div>
 
-      <div class="mobile-tier-2" id="mobileTierFurniture" inert>
+      <div class="mobile-tier-2" id="mobileTierFurniture">
         <button type="button" class="mobile-tier-back">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
           <span>Furniture</span>
         </button>
         <div class="mobile-tile-grid">
-          <a href="lovesac-sactionals.html" class="mobile-tile">
+          <a href="#" class="mobile-tile nav-mock">
             <span class="mobile-tile-img" style="background-color:#F6F6F6; background-image:url('../images/nav-sactionals.webp')" aria-hidden="true"></span>
             <span class="mobile-tile-label">Sactionals</span>
           </a>
@@ -1012,7 +1012,7 @@
         <a href="#" class="mobile-clearance-row nav-mock">Clearance</a>
       </div>
 
-      <div class="mobile-tier-2" id="mobileTierAccessories" inert>
+      <div class="mobile-tier-2" id="mobileTierAccessories">
         <button type="button" class="mobile-tier-back">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
           <span>Accessories</span>
@@ -1056,6 +1056,10 @@
     </div>
   </div>
 </nav>
+<script>
+document.addEventListener('contextmenu', function(e){ if (e.target.closest('img')) e.preventDefault(); });
+document.addEventListener('dragstart', function(e){ if (e.target.closest('img')) e.preventDefault(); });
+</script>
 <!-- LOVESAC-NAV:END -->
 
 <main id="main-content">
