@@ -36,6 +36,7 @@
   });
   </script>
   <link rel="stylesheet" href="/css/style.css">
+  <style>:root{--black:#0A0A0A;--white:#FFFFFF;--off-white:#F7F7F7;--mid:#6B6B6B;--border:#E8E8E8;}[data-theme=dark]{--black:#F0F0F0;--white:#0D0D0D;--off-white:#1A1A1A;--mid:#888888;--border:#2A2A2A;}body>nav{background:rgba(255,255,255,.96);}[data-theme=dark] body>nav{background:rgba(13,13,13,.96);}</style>
   <style>
     /* ── Walmart brand tokens ── */
     :root {
@@ -246,7 +247,7 @@
       var t = localStorage.getItem('theme') || 'light';
       var m = document.createElement('meta');
       m.name = 'theme-color';
-      m.content = t === 'dark' ? '#1B1512' : '#F1E8D9';
+      m.content = t === 'dark' ? '#0D0D0D' : '#FFFFFF';
       document.head.appendChild(m);
     })();
   </script>

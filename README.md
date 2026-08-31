@@ -19,7 +19,7 @@ Plain HTML, CSS, and vanilla JS. No frameworks, no build step, no dependencies. 
 ├── 404.html                          # Custom error page
 ├── _nav.html                         # Shared nav partial (single source of truth)
 ├── _footer.html                      # Shared footer partial (single source of truth)
-├── _hidden-work-cards.html           # Archived work-grid cards (Personal, bible-study, Walmart, Home Depot) — not a live page, not included anywhere
+├── _hidden-work-cards.html           # Archived work-grid cards (Personal, bible-study) — not a live page, not included anywhere
 ├── build.py                          # Stamps _nav.html and _footer.html into all pages
 ├── favicon.svg                       # Heart favicon (SVG)
 ├── favicon-192.png                   # Heart favicon (PNG, for Google Search)
@@ -43,14 +43,6 @@ Plain HTML, CSS, and vanilla JS. No frameworks, no build step, no dependencies. 
 │   ├── lovesac-sactionals.html       # Lovesac prototype — product/cart page
 │   ├── lovesac-what-to-expect.html   # Lovesac prototype — what to expect page
 │   ├── lovesac-support.html          # Lovesac prototype — customer support page
-│   ├── walmart-careers.html          # Redesigning Walmart's Candidate Experience
-│   ├── walmart-genai.html            # Transforming Hiring with GenAI
-│   ├── walmart-my-hiring-dashboard.html  # My Hiring Dashboard
-│   ├── walmart-mecampus-redesign.html    # Me@Campus Redesign
-│   ├── walmart-carplay.html          # CarPlay Experience for Associates
-│   ├── walmart-connect.html          # Building Community for Relocating Associates
-│   ├── thd-giftcards.html            # The Home Depot Gift Cards
-│   ├── thd-militarydiscount.html     # The Home Depot Military Discount
 │   ├── bible-study.html              # Designing for Formation (personal)
 │   └── personal-portfolio.html       # From Template to Code (personal)
 ```
