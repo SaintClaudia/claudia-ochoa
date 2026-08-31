@@ -336,7 +336,7 @@
 <section class="divider">
   <div class="wrap">
     <div class="section-head">
-      <div><span class="num">The Problem</span></div>
+      <div><span class="num">01 &middot; The Problem</span></div>
       <div>
         <h2>The product is flexible. The experience wasn't.</h2>
         <p class="lede">Lovesac sells a highly configurable product, but its digital experience made that complexity harder to navigate, understand, and act on. The opportunity was to bring the same clarity, flexibility, and confidence to the customer journey.</p>
@@ -354,7 +354,7 @@
 <section class="divider">
   <div class="wrap">
     <div class="section-head">
-      <div><span class="num">The Approach</span></div>
+      <div><span class="num">02 &middot; The Approach</span></div>
       <div>
         <h2>Turn complexity into confidence.</h2>
         <p class="lede">The strategy was simple: remove friction from the customer journey without removing the flexibility that makes the product different. That meant simplifying discovery, bringing critical purchase questions into the experience, and making accessibility part of the foundation rather than an optional layer.</p>
@@ -372,7 +372,7 @@
 <section class="divider">
   <div class="wrap">
     <div class="section-head">
-      <div><span class="num">The Research</span></div>
+      <div><span class="num">03 &middot; The Research</span></div>
       <div>
         <h2>Public reviews back some of it up.</h2>
         <p class="lede">A pass through Reddit threads, BBB complaints, and review sites — no internal analytics, no usability testing.</p>
@@ -397,7 +397,7 @@
 <section class="divider">
   <div class="wrap">
     <div class="section-head">
-      <div><span class="num">The Impact</span></div>
+      <div><span class="num">04 &middot; The Impact</span></div>
       <div>
         <h2>What success could look like.</h2>
         <p class="lede">This is a concept redesign, not a live deployment. The numbers are projections based on the changes proposed, with a measurement plan for validating them in practice.</p>
@@ -409,15 +409,15 @@
         <div class="label">UX/UI Redesign Concept</div>
       </div>
       <div class="impact-stat">
-        <div class="big">0 &rarr; 1</div>
+        <div class="big" data-count-to="1" data-prefix="0 &rarr; ">0 &rarr; 0</div>
         <div class="label">Room-Fit Tools Added</div>
       </div>
       <div class="impact-stat">
-        <div class="big">~30&ndash;40%*</div>
+        <div class="big" data-count-to="40" data-prefix="~30&ndash;" data-suffix="%*">~30&ndash;0%*</div>
         <div class="label">Projected Reduction in Purchase-Path Clicks</div>
       </div>
       <div class="impact-stat">
-        <div class="big">81 &rarr; 100</div>
+        <div class="big" data-count-to="100" data-prefix="81 &rarr; ">81 &rarr; 0</div>
         <div class="label">Lighthouse Accessibility Score, Lovesac.com vs. Redesign</div>
       </div>
     </div>
@@ -448,7 +448,7 @@
 <section class="divider">
   <div class="wrap">
     <div class="section-head">
-      <div><span class="num">The Business Case</span></div>
+      <div><span class="num">05 &middot; The Business Value</span></div>
       <div>
         <h2>Designing for value, not just experience.</h2>
         <p class="lede">Each recommendation solves a specific customer or operational problem, but the opportunity extends beyond the experience itself.</p>
@@ -544,7 +544,7 @@
 <section class="divider">
   <div class="wrap">
     <div class="section-head">
-      <div><span class="num">The Outcome</span></div>
+      <div><span class="num">06 &middot; The Outcome</span></div>
       <div>
         <h2>What real compensation looks like.</h2>
         <p class="lede">Derick Cahill was offered a pair of floral gardening gloves, size small. This case study is what happens when you take the actual problem seriously: set better expectations, listen to what customers are actually saying, and run a full holistic evaluation.</p>
@@ -621,6 +621,54 @@
     window.addEventListener('resize', update);
     update();
   });
+})();
+</script>
+<script>
+(function(){
+  var counters = document.querySelectorAll('[data-count-to]');
+  if(!counters.length) return;
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function setText(el, value){
+    var prefix = el.getAttribute('data-prefix') || '';
+    var suffix = el.getAttribute('data-suffix') || '';
+    el.textContent = prefix + value + suffix;
+  }
+
+  counters.forEach(function(el){
+    var target = parseFloat(el.getAttribute('data-count-to'));
+    if(reduceMotion){ setText(el, target); return; }
+    setText(el, 0);
+  });
+
+  if(reduceMotion || !('IntersectionObserver' in window)) return;
+
+  function animate(el){
+    var target = parseFloat(el.getAttribute('data-count-to'));
+    var duration = 1000;
+    var start = null;
+    function ease(t){ return 1 - Math.pow(1 - t, 3); }
+    function step(ts){
+      if(start === null) start = ts;
+      var progress = Math.min((ts - start) / duration, 1);
+      var value = Math.round(target * ease(progress));
+      setText(el, value);
+      if(progress < 1){ requestAnimationFrame(step); }
+    }
+    requestAnimationFrame(step);
+  }
+
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        animate(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.5});
+
+  counters.forEach(function(el){ observer.observe(el); });
 })();
 </script>
 
