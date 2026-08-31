@@ -37,7 +37,7 @@ Plain HTML, CSS, and vanilla JS. No frameworks, no build step, no dependencies. 
 │   ├── lovesac-case-study-2.html     # Lovesac — deep dive: mobile nav & Room Fit (linked from case study 1)
 │   ├── lovesac-case-study-3.html     # Lovesac — research: sentiment, competitors, StealthTech (linked from case study 2)
 │   ├── lovesac-case-study-4.html     # Lovesac — voice & content strategy (linked from case study 3)
-│   ├── lovesac-case-study-5.html     # Lovesac — heuristic evaluation: security headers, console health, accessibility & agentic browsing beyond the automated score (linked from case study 4)
+│   ├── lovesac-case-study-5.html     # Lovesac — Development: Heuristic Evaluation — security headers, console health, accessibility & agentic browsing beyond the automated score (linked from case study 4)
 │   ├── lovesac-case-study-6.html     # Lovesac — one-page synopsis of case studies 1-5 (linked from case study 5)
 │   ├── lovesac-redesign.html         # Lovesac — working interactive prototype (linked from the case study)
 │   ├── lovesac-sactionals.html       # Lovesac prototype — product/cart page
