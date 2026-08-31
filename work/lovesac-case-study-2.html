@@ -555,6 +555,42 @@
     .phone-frame{width:160px;}
     .phone-frame.rf-frame{width:240px;}
   }
+
+  /* Section table-of-contents rail */
+  [id^="toc-"]{scroll-margin-top:96px;}
+  .toc-rail{
+    position:fixed; top:50%; right:28px; z-index:15;
+    transform:translateY(-50%);
+    display:flex; flex-direction:column; align-items:center; gap:4px;
+  }
+  .toc-rail::before{
+    content:''; position:absolute; left:50%; top:0; bottom:0; width:1px;
+    background:var(--line); transform:translateX(-50%);
+  }
+  .toc-dot{position:relative; display:flex; align-items:center; justify-content:center; width:20px; height:20px;}
+  .toc-dot::after{
+    content:''; width:7px; height:7px; border-radius:50%;
+    background:var(--paper); border:1.5px solid var(--line);
+    transition:background .2s ease, border-color .2s ease, transform .2s ease;
+  }
+  .toc-dot:hover::after, .toc-dot:focus-visible::after{transform:scale(1.35);}
+  .toc-dot.active::after{background:var(--clay-deep); border-color:var(--clay-deep);}
+  .toc-dot::before{
+    content:attr(data-label);
+    position:absolute; right:calc(100% + 12px); top:50%;
+    transform:translateY(-50%) translateX(4px);
+    background:var(--espresso); color:var(--paper);
+    font-size:11px; font-weight:600; letter-spacing:0.02em;
+    padding:6px 10px; border-radius:6px; white-space:nowrap;
+    opacity:0; visibility:hidden; pointer-events:none;
+    transition:opacity .15s ease, transform .15s ease, visibility .15s;
+  }
+  .toc-dot:hover::before, .toc-dot:focus-visible::before{
+    opacity:1; visibility:visible; transform:translateY(-50%) translateX(0);
+  }
+  @media (max-width:1400px){.toc-rail{display:none;}}
+  @media (prefers-reduced-motion: reduce){.toc-dot::after{transition:none;}}
+
   .skip-link{
     position:absolute; top:-100%; left:24px; z-index:9999;
     padding:12px 20px; background:var(--espresso); color:var(--paper);
@@ -592,6 +628,16 @@
   </div>
 </div>
 
+<nav class="toc-rail" aria-label="Page sections">
+  <a href="#toc-mobile-nav" class="toc-dot" data-label="Mobile Nav"></a>
+  <a href="#toc-desktop-nav" class="toc-dot" data-label="Desktop Nav"></a>
+  <a href="#toc-new-feature" class="toc-dot" data-label="New Feature"></a>
+  <a href="#toc-accessibility" class="toc-dot" data-label="Accessibility"></a>
+  <a href="#toc-seo" class="toc-dot" data-label="SEO"></a>
+  <a href="#toc-trust-signals" class="toc-dot" data-label="Trust Signals"></a>
+  <a href="#toc-reviews" class="toc-dot" data-label="Ratings &amp; Reviews"></a>
+  <a href="#toc-financing" class="toc-dot" data-label="Financing"></a>
+</nav>
 <main id="main-content">
 <header class="hero">
   <div class="wrap">
@@ -602,7 +648,7 @@
   </div>
 </header>
 
-<section class="divider">
+<section class="divider" id="toc-mobile-nav">
   <div class="wrap">
     <div class="section-head">
       <div><span class="num">01 · Mobile Nav</span></div>
@@ -638,7 +684,7 @@
   </div>
 </section>
 
-<section class="divider">
+<section class="divider" id="toc-desktop-nav">
   <div class="wrap">
     <div class="section-head">
       <div><span class="num">02 · Desktop Nav</span></div>
@@ -789,7 +835,7 @@
   </div>
 </section>
 
-<section class="divider">
+<section class="divider" id="toc-new-feature">
   <div class="wrap">
     <div class="section-head">
       <div><span class="num">03 · New Feature</span></div>
@@ -861,7 +907,7 @@
   </div>
 </section>
 
-<section class="divider">
+<section class="divider" id="toc-accessibility">
   <div class="wrap">
     <div class="section-head">
       <div><span class="num">04 · Accessibility</span></div>
@@ -951,7 +997,7 @@
   </div>
 </section>
 
-<section class="divider">
+<section class="divider" id="toc-seo">
   <div class="wrap">
     <div class="section-head">
       <div><span class="num">05 · SEO</span></div>
@@ -976,7 +1022,7 @@
   </div>
 </section>
 
-<section class="divider">
+<section class="divider" id="toc-trust-signals">
   <div class="wrap">
     <div class="section-head">
       <div><span class="num">06 · Trust Signals</span></div>
@@ -1020,7 +1066,7 @@
   </div>
 </section>
 
-<section class="divider">
+<section class="divider" id="toc-reviews">
   <div class="wrap">
     <div class="section-head">
       <div><span class="num">07 · Ratings &amp; Reviews</span></div>
@@ -1095,7 +1141,7 @@
   </div>
 </section>
 
-<section class="divider">
+<section class="divider" id="toc-financing">
   <div class="wrap">
     <div class="section-head">
       <div><span class="num">08 · Financing</span></div>
@@ -1819,6 +1865,54 @@
 <script>
 document.addEventListener('contextmenu', function(e){ if (e.target.closest('img')) e.preventDefault(); });
 document.addEventListener('dragstart', function(e){ if (e.target.closest('img')) e.preventDefault(); });
+</script>
+<script>
+(function(){
+  var dots = document.querySelectorAll('.toc-dot');
+  if(!dots.length) return;
+
+  var map = {};
+  dots.forEach(function(d){
+    var id = d.getAttribute('href').slice(1);
+    var target = document.getElementById(id);
+    if(target) map[id] = d;
+  });
+  var ids = Object.keys(map);
+  if(!ids.length) return;
+
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function setActive(id){
+    dots.forEach(function(d){ d.classList.remove('active'); });
+    if(map[id]) map[id].classList.add('active');
+  }
+
+  dots.forEach(function(d){
+    d.addEventListener('click', function(e){
+      e.preventDefault();
+      var target = document.getElementById(d.getAttribute('href').slice(1));
+      if(target) target.scrollIntoView({behavior: reduced ? 'auto' : 'smooth', block:'start'});
+    });
+  });
+
+  var lastId = ids[ids.length - 1];
+  function checkBottom(){
+    if(window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4){
+      setActive(lastId);
+    }
+  }
+  window.addEventListener('scroll', checkBottom, {passive:true});
+
+  if(!('IntersectionObserver' in window)) return;
+
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting) setActive(entry.target.id);
+    });
+  }, {rootMargin:'0px 0px -60% 0px', threshold:0});
+
+  ids.forEach(function(id){ observer.observe(document.getElementById(id)); });
+})();
 </script>
 <script src="/js/main.js"></script>
 </body>
