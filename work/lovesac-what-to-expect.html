@@ -142,6 +142,13 @@
   }
   nav.nav-hidden .nav-bar{transform:translateY(-100%);}
   nav.dropdown-open .nav-bar{background:var(--canvas); backdrop-filter:none;}
+  .nav-mega-backdrop{
+    position:fixed; inset:0; z-index:45;
+    background:rgba(31,26,20,0.5);
+    opacity:0; visibility:hidden; pointer-events:none;
+    transition:opacity .2s ease, visibility .2s;
+  }
+  .nav-mega-backdrop.open{opacity:1; visibility:visible; pointer-events:auto;}
   .nav-bar > .wrap{
     display:grid; grid-template-columns:1fr auto 1fr; align-items:center;
     height:76px;
@@ -1257,7 +1264,7 @@ document.addEventListener('dragstart', function(e){ if (e.target.closest('img'))
     <div class="footer-cols">
       <div class="footer-col">
         <h3>Shop</h3>
-        <a href="#" class="nav-mock">Sactionals</a>
+        <a href="lovesac-sactionals.html">Sactionals</a>
         <a href="#" class="nav-mock">Sacs</a>
         <a href="#" class="nav-mock">StealthTech</a>
       </div>
@@ -1284,6 +1291,7 @@ document.addEventListener('dragstart', function(e){ if (e.target.closest('img'))
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+<div class="nav-mega-backdrop" id="navMegaBackdrop"></div>
 <div class="store-backdrop" id="storeBackdrop"></div>
 <div class="store-drop" id="storeDropdown">
   <div class="store-drop-header">
@@ -1727,6 +1735,7 @@ document.addEventListener('dragstart', function(e){ if (e.target.closest('img'))
   var navItems = document.querySelectorAll('.nav-item');
   if(!navItems.length) return;
   var navEl = document.querySelector('nav');
+  var navMegaBackdrop = document.getElementById('navMegaBackdrop');
   function closeAll(){
     navItems.forEach(function(item){
       item.classList.remove('open');
@@ -1734,6 +1743,7 @@ document.addEventListener('dragstart', function(e){ if (e.target.closest('img'))
       if(trigger) trigger.setAttribute('aria-expanded', 'false');
     });
     if(navEl) navEl.classList.remove('dropdown-open');
+    if(navMegaBackdrop) navMegaBackdrop.classList.remove('open');
     if(window.__closeStoreDrop) window.__closeStoreDrop();
     if(window.__closeAccountDrop) window.__closeAccountDrop();
     if(window.__closeCartDrop) window.__closeCartDrop();
@@ -1748,6 +1758,7 @@ document.addEventListener('dragstart', function(e){ if (e.target.closest('img'))
         item.classList.add('open');
         trigger.setAttribute('aria-expanded', 'true');
         if(navEl) navEl.classList.add('dropdown-open');
+        if(navMegaBackdrop) navMegaBackdrop.classList.add('open');
       }
     });
     item.querySelectorAll('.mega-menu a').forEach(function(link){
