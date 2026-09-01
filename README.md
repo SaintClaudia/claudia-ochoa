@@ -43,7 +43,7 @@ Plain HTML, CSS, and vanilla JS. No frameworks, no build step, no dependencies. 
 │   └── lovesac-support.html          # Lovesac prototype — customer support page
 ```
 
-Everything on the live site is linked from somewhere — no hidden or orphaned pages. Anything retired goes to `archive/` (see below) instead of staying in place unlinked.
+Everything on the live site is linked from somewhere — no hidden or orphaned pages.
 
 ## Deploying changes
 
@@ -110,21 +110,6 @@ When adding new pages: use `<h2>` for section headings under the page `<h1>`, in
 - Case study thumbnails are compressed JPEG or WebP (photographic content) or PNG (flat UI screenshots) — never an uncompressed PNG of a photo
 - Fonts are preconnected via `<link rel="preconnect">`
 - No external JS dependencies
-
-## Archive
-
-`archive/` holds pages that have been fully retired from the live site — not linked from any nav, card, or `sitemap.xml`, and not processed by `build.py`. They're kept as static snapshots in case any come back; nothing in this folder is guaranteed to render with the current nav/footer/site chrome.
-
-**Retention policy:** anything moved here is fair game to delete outright one year after its archive date below, if it hasn't been restored to the live site by then.
-
-| Page(s) | Archived | Reason |
-|---|---|---|
-| `walmart-careers.html`, `walmart-genai.html`, `walmart-connect.html`, `walmart-mecampus-redesign.html`, `walmart-my-hiring-dashboard.html`, `walmart-carplay.html`, `thd-giftcards.html`, `thd-militarydiscount.html` | 2026-08-31 | Unlinked case studies, fully retired |
-| `about.html` | 2026-08-31 | About page, unlinked from nav (was commented out in `_nav.html`/`_footer.html`) |
-| `bible-study.html`, `personal-portfolio.html` | 2026-08-31 | Unlinked personal-project case studies |
-| `about-work-orphan.html` | 2026-08-31 | Stale duplicate About page found living under `work/` with zero inbound links anywhere on the site — superseded by `about.html` long ago |
-
-To restore a page: move it back out of `archive/`, re-add it to `index.html`'s work grid or the nav (as applicable), add it back to `sitemap.xml`, and run `python3 build.py`.
 
 ## Infrastructure
 
