@@ -17,6 +17,7 @@ Plain HTML, CSS, and vanilla JS. No frameworks, no build step, no dependencies. 
 ├── index.html                        # Homepage — featured work grid
 ├── 404.html                          # Custom error page
 ├── _footer.html                      # Shared footer partial (single source of truth)
+├── _case-study-topbar.html           # Shared topbar template for the six case studies
 ├── _case-study-footer.html           # Shared footer for the six case studies
 ├── _lovesac-nav.html                 # Shared navigation for the Lovesac prototype pages
 ├── _lovesac-footer.html              # Shared footer for three Lovesac prototype pages
@@ -66,14 +67,16 @@ GitHub Pages deploys automatically. Changes are live within 1–2 minutes.
 theme toggle — but it's written directly into each page, not stamped from a
 partial (its only per-page difference is one CSS line hiding the wordmark on
 `index.html`, since linking home from the homepage is redundant). Edit it in
-both places if it changes. The 6 case studies each have their own separate
-`.topbar` component (back link, series nav, tag) — a different, unrelated
-markup pattern.
+both places if it changes. The six case studies use a separate `.topbar`
+component (back link, series nav, tag), generated from
+`_case-study-topbar.html` and the per-page metadata in `build.py`.
 
 Shared markup is maintained in partial files and stamped into the applicable
 pages by `build.py`:
 
 - `_footer.html` — portfolio footer used by `index.html` and `404.html`
+- `_case-study-topbar.html` — topbar used by all six case studies; its active
+  series item and page tag are generated from the metadata in `build.py`
 - `_case-study-footer.html` — footer used by all six case studies
 - `_lovesac-nav.html` — navigation used by all four Lovesac prototype pages
 - `_lovesac-footer.html` — footer used by the Sactionals, What to Expect, and
