@@ -26,7 +26,10 @@ Plain HTML, CSS, and vanilla JS. No frameworks, no build step, no dependencies. 
 ├── robots.txt                        # Crawl directives
 ├── CNAME                             # Custom domain for GitHub Pages
 ├── css/
-│   └── style.css                     # All styles
+│   ├── style.css                     # Site chrome: nav, footer, contact form, password gate (index.html, 404.html)
+│   └── case-study.css                # Shared design system: colors, type, topbar, hero, buttons, footer
+│                                      # typography — used by index.html + all 6 case studies. Not used by the
+│                                      # Lovesac redesign prototype pages (a deliberately separate system).
 ├── js/
 │   └── main.js                       # Scroll reveal, nav, contact form
 ├── images/
@@ -77,6 +80,17 @@ To change either:
 5. Add a card to `index.html`
 6. Add the URL to `sitemap.xml`
 7. Push
+
+## Editing shared case-study styles
+
+Colors, typography, topbar, hero, section-head, context-strip, buttons, and footer
+typography live once in `css/case-study.css` and are linked by `index.html` and all
+6 case studies — not copy-pasted per page. Edit `css/case-study.css` for anything
+that should change everywhere; edit a page's own `<style>` block only for content
+specific to that page (narrative sections, charts, demos). This file is unrelated
+to the Lovesac redesign prototype pages (`lovesac-redesign.html`, `lovesac-sactionals.html`,
+`lovesac-what-to-expect.html`, `lovesac-support.html`), which mock the real Lovesac
+site's own look and are a deliberately separate system.
 
 ## SEO
 
