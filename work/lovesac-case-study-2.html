@@ -454,15 +454,15 @@ document.querySelectorAll('link[rel="preload"][as="style"]').forEach(function (l
   .rf-results{margin-top:12px; font-size:11.5px;}
   .rf-results-summary{font-weight:700; color:#3D3128; font-size:13px; margin-bottom:2px;}
   .rf-results-sub{color:#5C4F42; margin-bottom:8px; line-height:1.4;}
-  .rf-result-row{display:flex; align-items:center; gap:8px; padding:6px 0; border-top:1px solid rgba(61,49,40,0.14);}
-  .rf-result-row:first-of-type{border-top:none;}
-  .rf-result-icon{width:18px; height:18px; border-radius:50%; background:#E1D6C4; flex-shrink:0; display:flex; align-items:center; justify-content:center;}
-  .rf-result-icon svg{width:10px; height:10px;}
-  .rf-result-row.fit .rf-result-icon{color:#835844;}
-  .rf-result-row.nofit .rf-result-icon{color:#5C4F42; opacity:0.6;}
-  .rf-result-name{flex:1; min-width:0; font-size:11px; color:#3D3128;}
-  .rf-result-row.nofit .rf-result-name{color:#5C4F42; opacity:0.75;}
-  .rf-result-dims{font-size:10px; color:#5C4F42; flex-shrink:0;}
+  .rf-result-card{display:flex; align-items:center; gap:8px; padding:7px 0; border-top:1px solid rgba(61,49,40,0.14);}
+  .rf-result-card:first-of-type{border-top:none;}
+  .rf-result-thumb{width:34px; height:34px; border-radius:6px; overflow:hidden; flex-shrink:0; background:#E1D6C4;}
+  .rf-result-thumb img{width:100%; height:100%; object-fit:cover; display:block;}
+  .rf-result-info{flex:1; min-width:0;}
+  .rf-result-name{display:block; font-size:11px; color:#3D3128; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .rf-result-dims{font-size:9.5px; color:#5C4F42;}
+  .rf-result-price{font-size:10.5px; font-weight:700; color:#3D3128; flex-shrink:0;}
+  .rf-results-empty{color:#5C4F42; padding:6px 0; line-height:1.4;}
   .roomfit-copy h3{font-size:24px; margin-bottom:16px; line-height:1.2;}
   .section-subhead{font-size:22px; margin:36px 0 14px; line-height:1.22;}
   .roomfit-copy p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin:0 0 20px;}
@@ -1779,15 +1779,15 @@ document.querySelectorAll('link[rel="preload"][as="style"]').forEach(function (l
 <script>
 (function(){
   var products = [
-    {name:'The Weekend Lounger', w:100, d:66},
-    {name:'The Movie Night Sectional', w:130, d:84},
-    {name:'The Everyday L-Shape', w:112, d:88},
-    {name:'The Family Room Corner', w:128, d:66},
-    {name:'The Game Day U-Shape', w:156, d:96},
-    {name:'The Compact Loveseat', w:64, d:38},
-    {name:'The Reading Nook', w:84, d:38},
-    {name:'The Grand Sectional', w:180, d:100},
-    {name:'The Media Room Wrap', w:140, d:100}
+    {name:'The Weekend Lounger', price:2999, w:100, d:66, img:'/images/sactionals-weekend-lounger.webp'},
+    {name:'The Movie Night Sectional', price:4499, w:130, d:84, img:'/images/sactionals-movie-night-sectional.webp'},
+    {name:'The Everyday L-Shape', price:3250, w:112, d:88, img:'/images/sactionals-everyday-l-shape.webp'},
+    {name:'The Family Room Corner', price:5024, w:128, d:66, img:'/images/sactionals-family-room-corner.jpeg'},
+    {name:'The Game Day U-Shape', price:6112, w:156, d:96, img:'/images/sactionals-game-day-u-shape.webp'},
+    {name:'The Compact Loveseat', price:1816, w:64, d:38, img:'/images/sactionals-compact-loveseat.webp'},
+    {name:'The Reading Nook', price:2532, w:84, d:38, img:'/images/sactionals-reading-nook.webp'},
+    {name:'The Grand Sectional', price:7676, w:180, d:100, img:'/images/sactionals-grand-sectional.webp'},
+    {name:'The Media Room Wrap', price:7440, w:140, d:100, img:'/images/sactionals-media-room-wrap.webp'}
   ];
 
   var closedView = document.getElementById('rfClosed');
@@ -1857,24 +1857,26 @@ document.querySelectorAll('link[rel="preload"][as="style"]').forEach(function (l
       var fitsRotated = p.w <= roomL && p.d <= roomW;
       var boundsFit = fitsUnrotated || fitsRotated;
       var areaFit = (p.w * p.d) <= usableArea;
-      return { name: p.name, w: p.w, d: p.d, fits: boundsFit && areaFit };
+      return { name: p.name, price: p.price, img: p.img, w: p.w, d: p.d, fits: boundsFit && areaFit };
     });
-    results.sort(function(a, b){ return (b.fits - a.fits); });
-    var fitCount = results.filter(function(r){ return r.fits; }).length;
+    var fitting = results.filter(function(r){ return r.fits; });
+    var fitCount = fitting.length;
 
     resultsEl.innerHTML =
       '<div class="rf-results-summary">' + fitCount + ' of ' + products.length + ' setups will fit</div>' +
       '<div class="rf-results-sub">Based on ' + roomW + '"\u00d7' + roomL + '" of floor space' + (furnitureArea > 0 ? ', minus what\u2019s already in the room' : '') + '.</div>' +
-      results.map(function(r){
-        return '<div class="rf-result-row ' + (r.fits ? 'fit' : 'nofit') + '">' +
-          '<span class="rf-result-icon">' + (r.fits
-            ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>'
-            : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>') +
-          '</span>' +
-          '<span class="rf-result-name">' + r.name + '</span>' +
-          '<span class="rf-result-dims">' + r.w + '"\u00d7' + r.d + '"</span>' +
-        '</div>';
-      }).join('');
+      (fitCount
+        ? fitting.map(function(r){
+            return '<div class="rf-result-card">' +
+              '<div class="rf-result-thumb"><img src="' + r.img + '" alt="" loading="lazy"></div>' +
+              '<div class="rf-result-info">' +
+                '<span class="rf-result-name">' + r.name + '</span>' +
+                '<span class="rf-result-dims">' + r.w + '"\u00d7' + r.d + '"</span>' +
+              '</div>' +
+              '<span class="rf-result-price">$' + r.price.toLocaleString() + '</span>' +
+            '</div>';
+          }).join('')
+        : '<div class="rf-results-empty">Nothing in the Sactionals lineup fits that space \u2014 try a larger room.</div>');
     resultsEl.style.display = 'block';
   });
 })();
