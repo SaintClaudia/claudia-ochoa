@@ -37,7 +37,8 @@ Plain HTML, CSS, and vanilla JS. No frameworks, no build step, no dependencies. 
 │                                      # separate system).
 ├── js/
 │   ├── main.js                       # Shared theme, contact form, and portfolio behavior
-│   └── case-study-topbar.js          # Shared hide/show-on-scroll behavior for case-study topbars
+│   ├── case-study-topbar.js          # Shared hide/show-on-scroll behavior for case-study topbars
+│   └── case-study-toc.js             # Shared case-study section rail navigation and active states
 ├── images/
 ├── work/
 │   ├── lovesac-case-study.html       # Lovesac — Redesign (featured concept case study)
