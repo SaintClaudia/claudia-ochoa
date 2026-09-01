@@ -36,7 +36,8 @@ Plain HTML, CSS, and vanilla JS. No frameworks, no build step, no dependencies. 
 │                                      # Not used by the Lovesac redesign prototype pages (a deliberately
 │                                      # separate system).
 ├── js/
-│   └── main.js                       # Scroll reveal, nav, contact form
+│   ├── main.js                       # Shared theme, contact form, and portfolio behavior
+│   └── case-study-topbar.js          # Shared hide/show-on-scroll behavior for case-study topbars
 ├── images/
 ├── work/
 │   ├── lovesac-case-study.html       # Lovesac — Redesign (featured concept case study)
