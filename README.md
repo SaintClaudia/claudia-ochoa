@@ -44,7 +44,8 @@ Plain HTML, CSS, and vanilla JS. No frameworks, no build step, no dependencies. 
 │   ├── lovesac-mobile-nav.js         # Shared prototype mobile navigation for three Lovesac pages
 │   ├── lovesac-mega-menu.js          # Shared desktop prototype mega-menu behavior
 │   ├── lovesac-nav-scroll.js         # Shared prototype hide/show-on-scroll navigation behavior
-│   └── lovesac-prototype-feedback.js # Shared mock-link, search, and toast feedback behavior
+│   ├── lovesac-prototype-feedback.js # Shared mock-link, search, and toast feedback behavior
+│   └── lovesac-store-finder.js       # Shared prototype store drawer and map behavior
 ├── images/
 ├── work/
 │   ├── lovesac-case-study.html       # Lovesac — Redesign (featured concept case study)
