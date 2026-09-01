@@ -60,15 +60,22 @@ GitHub Pages deploys automatically. Changes are live within 1–2 minutes.
 
 ## Updating the nav or footer
 
-The nav and footer each live in a single file:
+The footer lives in a single file, `_footer.html`, stamped into every page (including
+`index.html`) by `build.py`.
 
-- **`_nav.html`** — skip link, top nav, mobile menu, contact overlay
-- **`_footer.html`** — footer links (Home, Contact) and copyright
+`index.html`'s nav is maintained on its own, directly in `index.html` — not stamped
+from `_nav.html`. It's permanently pared down to a wordmark and a theme toggle (no
+Home/Contact icons, no mobile menu), which is deliberately different from `_nav.html`'s
+full nav used by every other page, so it isn't part of the shared-partial sync.
 
-To change either:
-1. Edit `_nav.html` or `_footer.html`
+To change the footer:
+1. Edit `_footer.html`
 2. Run `python3 build.py` — stamps the update into every page
-3. Re-check `index.html`'s nav: it has a page-specific override hiding the Home and Contact icons from its desktop nav (theme toggle only) — `build.py` overwrites it with the generic template every time, so re-wrap those two `<a class="nav-icon">` lines in the `<!-- TEMP: hidden for pitch -->` comment block afterward if they came back
+3. Commit and push all changed files
+
+To change `_nav.html` (used by every page except `index.html`):
+1. Edit `_nav.html`
+2. Run `python3 build.py` — stamps the update into every page except `index.html`
 3. Commit and push all changed files
 
 ## Adding a case study
