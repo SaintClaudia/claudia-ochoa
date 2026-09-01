@@ -9,6 +9,8 @@ Run this whenever you change a shared partial, then commit and push.
 
 Markers used in HTML files:
     <!-- FOOTER:START --> ... <!-- FOOTER:END -->
+    <!-- PORTFOLIO-NAV:START --> ... <!-- PORTFOLIO-NAV:END -->
+    <!-- CONTACT-OVERLAY:START --> ... <!-- CONTACT-OVERLAY:END -->
     <!-- CASE-STUDY-TOPBAR:START --> ... <!-- CASE-STUDY-TOPBAR:END -->
     <!-- CASE-STUDY-FOOTER:START --> ... <!-- CASE-STUDY-FOOTER:END -->
     <!-- LOVESAC-NAV:START --> ... <!-- LOVESAC-NAV:END -->
@@ -21,6 +23,8 @@ BASE = os.path.dirname(os.path.abspath(__file__))
 
 partials = [
     ('_footer.html',            '<!-- FOOTER:START -->',            '<!-- FOOTER:END -->'),
+    ('_portfolio-nav.html',     '<!-- PORTFOLIO-NAV:START -->',     '<!-- PORTFOLIO-NAV:END -->'),
+    ('_contact-overlay.html',   '<!-- CONTACT-OVERLAY:START -->',   '<!-- CONTACT-OVERLAY:END -->'),
     ('_case-study-footer.html', '<!-- CASE-STUDY-FOOTER:START -->', '<!-- CASE-STUDY-FOOTER:END -->'),
     ('_lovesac-nav.html',       '<!-- LOVESAC-NAV:START -->',       '<!-- LOVESAC-NAV:END -->'),
     ('_lovesac-footer.html',    '<!-- LOVESAC-FOOTER:START -->',    '<!-- LOVESAC-FOOTER:END -->'),
