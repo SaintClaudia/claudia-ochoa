@@ -166,7 +166,7 @@
   .section-head h2,
   .card-body h2{font-size:clamp(26px,3.4vw,36px); line-height:1.14;}
   .section-head .lede,
-  .lede{font-size:16.5px; line-height:1.6; color:var(--ink-soft); padding-top:6px;}
+  .lede{font-size:16.5px; line-height:1.6; color:var(--ink-soft); padding-top:21px;}
   .num{font-family:'Fraunces',serif; font-weight:500; font-size:15px; color:var(--clay-deep);}
 
   /* Context strip */
