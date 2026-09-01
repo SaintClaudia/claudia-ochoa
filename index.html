@@ -46,7 +46,9 @@
     :root{--font-display:'Fraunces',Georgia,serif;--max:1100px;}
     .nav-wordmark{display:none;}
     .nav-inner{padding:0 32px;justify-content:flex-end;}
-    body>nav{background:var(--white);backdrop-filter:none;}
+    body>nav{position:static;background:var(--white);backdrop-filter:none;}
+    body>nav.nav-hidden{transform:none;}
+    .page{padding-top:0;}
     .wrap{max-width:var(--max);margin:0 auto;padding:0 32px;}
     .home-hero .wrap{display:flex;flex-direction:column;gap:16px;}
     .footer-inner{padding:0 32px;}
