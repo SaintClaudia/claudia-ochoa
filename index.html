@@ -30,8 +30,8 @@
   <link rel="canonical" href="https://claudiaochoa.co/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=DM+Mono&display=swap">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=DM+Mono&display=swap"></noscript>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap"></noscript>
   <script>
   document.querySelectorAll('link[rel="preload"][as="style"]').forEach(function (link) {
     link.addEventListener('load', function () {
@@ -39,33 +39,37 @@
     });
   });
   </script>
-  <link rel="stylesheet" href="css/style.css?v=2">
   <link rel="stylesheet" href="css/case-study.css">
   <style>
-    /* Homepage-specific overrides. Fonts, 1100px width, hero eyebrow/h2/lede,
-       context-strip, and buttons now come from css/case-study.css — the same
-       shared stylesheet the case studies use. What's left here is either
-       homepage-only chrome (nav, contact form, password gate) or the home
-       hero's own deliberately larger scale, which isn't shared with the
-       case-study .hero component. */
-    :root{--font-display:'Fraunces',Georgia,serif;--max:1100px;}
+    /* Homepage-only CSS. Everything shared with the case studies (colors,
+       fonts, nav, hero, eyebrow, section-head/lede, context-strip, buttons,
+       footer, contact overlay) lives in css/case-study.css — this page no
+       longer loads a second stylesheet. What's left here is: the home hero's
+       own deliberately larger scale (not shared with the case-study .hero),
+       and the work-grid card, which only this page has. */
     .nav-wordmark{display:none;}
-    .nav-inner{padding:0 32px;justify-content:flex-end;}
-    body>nav{position:static;background:var(--white);backdrop-filter:none;}
-    body>nav.nav-hidden{transform:none;}
-    .page{padding-top:0;}
+    .nav-inner{justify-content:flex-end;}
     .home-hero .wrap{display:flex;flex-direction:column;gap:16px;}
-    .footer-inner{padding:0 32px;}
-    footer{padding:48px 0;margin-top:24px;}
-    @media (max-width:820px){.nav-inner{padding:0 20px;}.footer-inner{padding:0 20px;}}
+    .home-hero{padding-bottom:0;}
     .home-hero h1{font-size:clamp(38px,5.6vw,64px);font-weight:600;line-height:1.04;letter-spacing:-0.01em;}
     .home-hero h1 em{font-style:italic;color:var(--clay);}
     .hero-sub{font-size:19px;line-height:1.55;}
-    .home-hero{padding-bottom:0;}
-    .contact-field-label,.contact-form-status,.password-gate-label{font-family:var(--font-body);}
-    .card-cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:20px;}
     .context-strip{margin-top:32px;}
-    @media (max-width:600px){.theme-toggle{display:flex;}}
+
+    /* Work-grid card */
+    .work-grid{padding:48px 0;}
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+    @media (max-width:720px){.grid{grid-template-columns:1fr;}}
+    .featured-wrap{grid-column:1/-1;}
+    .work-card{position:relative;overflow:hidden;cursor:pointer;display:block;}
+    .work-card.featured{grid-column:1/-1;}
+    .card-image{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--paper);}
+    .work-card.featured .card-image{aspect-ratio:2/1;}
+    @media (max-width:720px){.work-card.featured .card-image{aspect-ratio:auto;height:calc((100vw - 48px)/ 2 + 50px);}}
+    .card-image img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.25,.46,.45,.94);}
+    .work-card:hover .card-image img{transform:scale(1.03);}
+    .card-body{padding:20px 24px 28px 0;}
+    .card-cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:20px;}
   </style>
   <script type="application/ld+json">
   {
@@ -185,7 +189,7 @@
 
 <!-- FOOTER:START -->
 <footer>
-  <div class="footer-inner">
+  <div class="wrap footer-inner">
     <nav class="footer-nav" aria-label="Footer navigation">
       <a href="/">Home</a>
       <a href="#" id="footer-contact-toggle">Contact</a>

@@ -16,9 +16,8 @@ Plain HTML, CSS, and vanilla JS. No frameworks, no build step, no dependencies. 
 /
 ├── index.html                        # Homepage — featured work grid
 ├── 404.html                          # Custom error page
-├── _nav.html                         # Shared nav partial (single source of truth)
 ├── _footer.html                      # Shared footer partial (single source of truth)
-├── build.py                          # Stamps _nav.html and _footer.html into all pages
+├── build.py                          # Stamps _footer.html and _lovesac-nav.html into all pages
 ├── favicon.svg                       # Heart favicon (SVG)
 ├── favicon-192.png                   # Heart favicon (PNG, for Google Search)
 ├── favicon-32.png                    # Heart favicon (PNG, browser tab fallback)
@@ -26,10 +25,10 @@ Plain HTML, CSS, and vanilla JS. No frameworks, no build step, no dependencies. 
 ├── robots.txt                        # Crawl directives
 ├── CNAME                             # Custom domain for GitHub Pages
 ├── css/
-│   ├── style.css                     # Site chrome: nav, footer, contact form, password gate (index.html, 404.html)
-│   └── case-study.css                # Shared design system: colors, type, topbar, hero, buttons, footer
-│                                      # typography — used by index.html + all 6 case studies. Not used by the
-│                                      # Lovesac redesign prototype pages (a deliberately separate system).
+│   └── case-study.css                # The whole design system — colors, type, nav, hero, buttons, footer,
+│                                      # contact overlay — for index.html, 404.html, and all 6 case studies.
+│                                      # Not used by the Lovesac redesign prototype pages (a deliberately
+│                                      # separate system).
 ├── js/
 │   └── main.js                       # Scroll reveal, nav, contact form
 ├── images/
@@ -60,22 +59,20 @@ GitHub Pages deploys automatically. Changes are live within 1–2 minutes.
 
 ## Updating the nav or footer
 
-The footer lives in a single file, `_footer.html`, stamped into every page (including
-`index.html`) by `build.py`.
+`index.html` and `404.html` share the same simple nav markup — a wordmark and a
+theme toggle — but it's written directly into each page, not stamped from a
+partial (its only per-page difference is one CSS line hiding the wordmark on
+`index.html`, since linking home from the homepage is redundant). Edit it in
+both places if it changes. The 6 case studies each have their own separate
+`.topbar` component (back link, series nav, tag) — a different, unrelated
+markup pattern.
 
-`index.html`'s nav is maintained on its own, directly in `index.html` — not stamped
-from `_nav.html`. It's permanently pared down to a wordmark and a theme toggle (no
-Home/Contact icons, no mobile menu), which is deliberately different from `_nav.html`'s
-full nav used by every other page, so it isn't part of the shared-partial sync.
+The footer lives in a single file, `_footer.html`, stamped into `index.html`
+and `404.html` by `build.py`.
 
 To change the footer:
 1. Edit `_footer.html`
-2. Run `python3 build.py` — stamps the update into every page
-3. Commit and push all changed files
-
-To change `_nav.html` (used by every page except `index.html`):
-1. Edit `_nav.html`
-2. Run `python3 build.py` — stamps the update into every page except `index.html`
+2. Run `python3 build.py` — stamps the update into every page that uses it
 3. Commit and push all changed files
 
 ## Adding a case study
@@ -88,16 +85,18 @@ To change `_nav.html` (used by every page except `index.html`):
 6. Add the URL to `sitemap.xml`
 7. Push
 
-## Editing shared case-study styles
+## Editing shared styles
 
-Colors, typography, topbar, hero, section-head, context-strip, buttons, and footer
-typography live once in `css/case-study.css` and are linked by `index.html` and all
-6 case studies — not copy-pasted per page. Edit `css/case-study.css` for anything
+`css/case-study.css` is the entire design system for `index.html`, `404.html`, and
+all 6 case studies — colors, typography, nav/topbar, hero, section-head,
+context-strip, buttons, footer, contact overlay, password gate, and citation
+patterns, all linked once instead of copy-pasted per page. Edit it for anything
 that should change everywhere; edit a page's own `<style>` block only for content
-specific to that page (narrative sections, charts, demos). This file is unrelated
-to the Lovesac redesign prototype pages (`lovesac-redesign.html`, `lovesac-sactionals.html`,
-`lovesac-what-to-expect.html`, `lovesac-support.html`), which mock the real Lovesac
-site's own look and are a deliberately separate system.
+specific to that page (the homepage's work-grid card, a case study's narrative
+sections, charts, demos). This file is unrelated to the Lovesac redesign prototype
+pages (`lovesac-redesign.html`, `lovesac-sactionals.html`, `lovesac-what-to-expect.html`,
+`lovesac-support.html`), which mock the real Lovesac site's own look and are a
+deliberately separate system with their own self-contained styles.
 
 ## SEO
 

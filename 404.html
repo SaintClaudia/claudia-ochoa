@@ -19,8 +19,8 @@
   <title>Page Not Found — Claudia Ochoa</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@400;500;600&family=DM+Mono&display=swap">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@400;500;600&family=DM+Mono&display=swap"></noscript>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap"></noscript>
   <script>
   document.querySelectorAll('link[rel="preload"][as="style"]').forEach(function (link) {
     link.addEventListener('load', function () {
@@ -28,7 +28,7 @@
     });
   });
   </script>
-  <link rel="stylesheet" href="/css/style.css?v=2">
+  <link rel="stylesheet" href="/css/case-study.css">
   <script>
     (function(){
       var t = localStorage.getItem('theme') || 'light';
@@ -49,11 +49,11 @@
       padding: 80px 24px;
     }
     .error-code {
-      font-family: var(--font-display);
+      font-family: 'Fraunces', serif;
       font-size: clamp(6rem, 20vw, 14rem);
       font-weight: 300;
       line-height: 1;
-      color: var(--black);
+      color: var(--espresso);
       opacity: 0.08;
       letter-spacing: -0.04em;
       margin-bottom: -24px;
@@ -64,19 +64,19 @@
     }
     .error-page p {
       font-size: 1rem;
-      color: var(--mid);
+      color: var(--ink-soft);
       max-width: 40ch;
       margin: 0 auto 40px;
     }
     .error-home {
       display: inline-block;
-      font-family: var(--font-body);
+      font-family: 'Inter', sans-serif;
       font-size: 0.75rem;
       font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--black);
-      border-bottom: 1px solid var(--black);
+      color: var(--espresso);
+      border-bottom: 1px solid var(--espresso);
       padding-bottom: 2px;
       transition: opacity 0.3s ease;
     }
@@ -84,37 +84,18 @@
   </style>
 </head>
 <body>
-<!-- NAV:START -->
 <a href="#main-content" class="skip-link">Skip to main content</a>
 <nav>
   <div class="nav-inner">
     <a href="/" class="nav-wordmark">Claudia Ochoa</a>
     <div class="nav-icons">
-    <a href="/" class="nav-icon" aria-label="Home"><svg width="17" height="17" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 7.2L8 2L14 7.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.5 6.5V13C3.5 13.3 3.7 13.5 4 13.5H6.5V10C6.5 9.4 7 9 7.5 9H8.5C9 9 9.5 9.4 9.5 10V13.5H12C12.3 13.5 12.5 13.3 12.5 13V6.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-    <a href="#" class="nav-icon" id="contact-toggle" aria-label="Contact"><svg width="17" height="17" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="1.5" y="3.5" width="13" height="9" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M2 4.5L7.4 8.6C7.76 8.86 8.24 8.86 8.6 8.6L14 4.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-    <button class="theme-toggle" aria-label="Toggle dark mode">
-      <span class="icon-moon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 10.5A6 6 0 0 1 5.5 2.5a6 6 0 1 0 8 8z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      <span class="icon-sun"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="1.6" fill="currentColor"/><line x1="8" y1="1" x2="8" y2="3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="8" y1="13" x2="8" y2="15" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="1" y1="8" x2="3" y2="8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="13" y1="8" x2="15" y2="8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="3.05" y1="3.05" x2="4.46" y2="4.46" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="11.54" y1="11.54" x2="12.95" y2="12.95" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="12.95" y1="3.05" x2="11.54" y2="4.46" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="4.46" y1="11.54" x2="3.05" y2="12.95" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span>
-    </button>
-    <button class="burger" id="burger" aria-expanded="false" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+      <button class="theme-toggle" aria-label="Toggle dark mode">
+        <span class="icon-moon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 10.5A6 6 0 0 1 5.5 2.5a6 6 0 1 0 8 8z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="icon-sun"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="1.6" fill="currentColor"/><line x1="8" y1="1" x2="8" y2="3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="8" y1="13" x2="8" y2="15" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="1" y1="8" x2="3" y2="8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="13" y1="8" x2="15" y2="8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="3.05" y1="3.05" x2="4.46" y2="4.46" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="11.54" y1="11.54" x2="12.95" y2="12.95" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="12.95" y1="3.05" x2="11.54" y2="4.46" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="4.46" y1="11.54" x2="3.05" y2="12.95" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span>
+      </button>
     </div>
   </div>
 </nav>
-<div class="mobile-menu" id="mobile-menu">
-  <div class="mobile-menu-main">
-  <a href="/"><span class="mobile-menu-icon"><svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 7.2L8 2L14 7.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.5 6.5V13C3.5 13.3 3.7 13.5 4 13.5H6.5V10C6.5 9.4 7 9 7.5 9H8.5C9 9 9.5 9.4 9.5 10V13.5H12C12.3 13.5 12.5 13.3 12.5 13V6.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Home</span></a>
-  <a href="#" id="mobile-contact-toggle"><span class="mobile-menu-icon"><svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="1.5" y="3.5" width="13" height="9" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M2 4.5L7.4 8.6C7.76 8.86 8.24 8.86 8.6 8.6L14 4.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Contact</span></a>  </div>
-
-  <a href="#" class="mobile-theme-toggle">
-    <span class="mobile-menu-icon">
-      <span class="icon-moon"><svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 10.5A6 6 0 0 1 5.5 2.5a6 6 0 1 0 8 8z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      <span class="icon-sun"><svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="1.6" fill="currentColor"/><line x1="8" y1="1" x2="8" y2="3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="8" y1="13" x2="8" y2="15" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="1" y1="8" x2="3" y2="8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="13" y1="8" x2="15" y2="8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="3.05" y1="3.05" x2="4.46" y2="4.46" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="11.54" y1="11.54" x2="12.95" y2="12.95" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="12.95" y1="3.05" x2="11.54" y2="4.46" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="4.46" y1="11.54" x2="3.05" y2="12.95" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span>
-    </span>
-    <span><span class="theme-label-dark">Dark Mode</span><span class="theme-label-light">Light Mode</span></span>
-  </a>
-</div>
 
 <div class="contact-overlay" id="contact-drawer" aria-hidden="true">
   <button class="contact-overlay-close" id="contact-drawer-close" aria-label="Close contact form">&times;</button>
@@ -139,7 +120,6 @@
     </form>
   </div>
 </div>
-<!-- NAV:END -->
 <main id="main-content" class="page">
   <div class="error-page">
     <p class="error-code" aria-hidden="true">404</p>
@@ -151,7 +131,7 @@
 
 <!-- FOOTER:START -->
 <footer>
-  <div class="footer-inner">
+  <div class="wrap footer-inner">
     <nav class="footer-nav" aria-label="Footer navigation">
       <a href="/">Home</a>
       <a href="#" id="footer-contact-toggle">Contact</a>

@@ -1,15 +1,17 @@
 #!/usr/bin/env python3
 """
-Stamps _nav.html and _footer.html into every HTML page.
+Stamps _footer.html and _lovesac-nav.html into every HTML page that has
+their markers.
 
 Usage:
     python3 build.py
 
-Run this whenever you change _nav.html or _footer.html, then commit and push.
+Run this whenever you change _footer.html or _lovesac-nav.html, then
+commit and push.
 
 Markers used in HTML files:
-    <!-- NAV:START --> ... <!-- NAV:END -->
     <!-- FOOTER:START --> ... <!-- FOOTER:END -->
+    <!-- LOVESAC-NAV:START --> ... <!-- LOVESAC-NAV:END -->
 """
 
 import os, glob
@@ -17,7 +19,6 @@ import os, glob
 BASE = os.path.dirname(os.path.abspath(__file__))
 
 partials = [
-    ('_nav.html',         '<!-- NAV:START -->',         '<!-- NAV:END -->'),
     ('_footer.html',      '<!-- FOOTER:START -->',      '<!-- FOOTER:END -->'),
     ('_lovesac-nav.html', '<!-- LOVESAC-NAV:START -->', '<!-- LOVESAC-NAV:END -->'),
 ]
