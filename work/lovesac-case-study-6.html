@@ -202,6 +202,12 @@ document.querySelectorAll('link[rel="preload"][as="style"]').forEach(function (l
   .nav-note{margin-top:32px; font-size:16px; line-height:1.7; color:var(--ink-soft); max-width:70ch;}
   .body-copy{font-size:16px; line-height:1.75; color:var(--ink-soft); max-width:72ch;}
   .body-copy + .body-copy{margin-top:20px;}
+  .reference-entry{
+    font-family:'Fraunces',serif; font-weight:400;
+    font-size:13.5px; line-height:1.7; color:var(--ink-soft);
+    padding-left:2em; text-indent:-2em; max-width:70ch;
+  }
+  .reference-entry a{color:var(--clay-deep); text-decoration:underline; overflow-wrap:anywhere;}
 
   /* Room fit */
   .roomfit-layout{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start;}
@@ -696,7 +702,6 @@ document.querySelectorAll('link[rel="preload"][as="style"]').forEach(function (l
         <p class="body-copy">So maybe transparency wasn't just a UX problem after all.</p>
         <p class="body-copy">Without question, this was the most fun I've ever had roasting a website.</p>
         <p class="body-copy">Thank you, Lovesac.<br><em>Good luck!</em></p>
-        <p style="margin-top:16px; font-size:13px; color:var(--ink-soft); font-style:italic;">Source: U.S. Securities and Exchange Commission</p>
       </div>
     </div>
   </div>
@@ -710,6 +715,13 @@ document.querySelectorAll('link[rel="preload"][as="style"]').forEach(function (l
       <a class="btn ghost" href="https://claudiaochoa.co/">&larr; Back to portfolio</a>
       <a class="btn primary" href="https://claudiaochoa.co/work/lovesac-redesign.html" target="_blank" rel="noopener noreferrer">View the live redesign</a>
     </div>
+  </div>
+</section>
+
+<section class="divider">
+  <div class="wrap">
+    <h2 style="font-size:12.5px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:20px;">References</h2>
+    <p class="reference-entry">U.S. Securities and Exchange Commission. (2024, October 29). <em>Donna Dellomo; Yoon Um; The Lovesac Company</em> (Litigation Release No. LR-26166). <a href="https://www.sec.gov/enforcement-litigation/litigation-releases/lr-26166" target="_blank" rel="noopener noreferrer">https://www.sec.gov/<wbr>enforcement-litigation/<wbr>litigation-releases/<wbr>lr-26166</a></p>
   </div>
 </section>
 </main>
