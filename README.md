@@ -17,7 +17,10 @@ Plain HTML, CSS, and vanilla JS. No frameworks, no build step, no dependencies. 
 ├── index.html                        # Homepage — featured work grid
 ├── 404.html                          # Custom error page
 ├── _footer.html                      # Shared footer partial (single source of truth)
-├── build.py                          # Stamps _footer.html and _lovesac-nav.html into all pages
+├── _case-study-footer.html           # Shared footer for the six case studies
+├── _lovesac-nav.html                 # Shared navigation for the Lovesac prototype pages
+├── _lovesac-footer.html              # Shared footer for three Lovesac prototype pages
+├── build.py                          # Stamps shared HTML partials into their pages
 ├── favicon.svg                       # Heart favicon (SVG)
 ├── favicon-192.png                   # Heart favicon (PNG, for Google Search)
 ├── favicon-32.png                    # Heart favicon (PNG, browser tab fallback)
@@ -67,11 +70,18 @@ both places if it changes. The 6 case studies each have their own separate
 `.topbar` component (back link, series nav, tag) — a different, unrelated
 markup pattern.
 
-The footer lives in a single file, `_footer.html`, stamped into `index.html`
-and `404.html` by `build.py`.
+Shared markup is maintained in partial files and stamped into the applicable
+pages by `build.py`:
 
-To change the footer:
-1. Edit `_footer.html`
+- `_footer.html` — portfolio footer used by `index.html` and `404.html`
+- `_case-study-footer.html` — footer used by all six case studies
+- `_lovesac-nav.html` — navigation used by all four Lovesac prototype pages
+- `_lovesac-footer.html` — footer used by the Sactionals, What to Expect, and
+  Customer Support prototype pages; the redesign homepage keeps its intentional
+  footer variant inline
+
+To change shared markup:
+1. Edit the applicable partial
 2. Run `python3 build.py` — stamps the update into every page that uses it
 3. Commit and push all changed files
 

@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
 """
-Stamps _footer.html and _lovesac-nav.html into every HTML page that has
-their markers.
+Stamps shared HTML partials into every page that has their markers.
 
 Usage:
     python3 build.py
 
-Run this whenever you change _footer.html or _lovesac-nav.html, then
-commit and push.
+Run this whenever you change a shared partial, then commit and push.
 
 Markers used in HTML files:
     <!-- FOOTER:START --> ... <!-- FOOTER:END -->
+    <!-- CASE-STUDY-FOOTER:START --> ... <!-- CASE-STUDY-FOOTER:END -->
     <!-- LOVESAC-NAV:START --> ... <!-- LOVESAC-NAV:END -->
+    <!-- LOVESAC-FOOTER:START --> ... <!-- LOVESAC-FOOTER:END -->
 """
 
 import os, glob
@@ -19,8 +19,10 @@ import os, glob
 BASE = os.path.dirname(os.path.abspath(__file__))
 
 partials = [
-    ('_footer.html',      '<!-- FOOTER:START -->',      '<!-- FOOTER:END -->'),
-    ('_lovesac-nav.html', '<!-- LOVESAC-NAV:START -->', '<!-- LOVESAC-NAV:END -->'),
+    ('_footer.html',            '<!-- FOOTER:START -->',            '<!-- FOOTER:END -->'),
+    ('_case-study-footer.html', '<!-- CASE-STUDY-FOOTER:START -->', '<!-- CASE-STUDY-FOOTER:END -->'),
+    ('_lovesac-nav.html',       '<!-- LOVESAC-NAV:START -->',       '<!-- LOVESAC-NAV:END -->'),
+    ('_lovesac-footer.html',    '<!-- LOVESAC-FOOTER:START -->',    '<!-- LOVESAC-FOOTER:END -->'),
 ]
 
 files = (
