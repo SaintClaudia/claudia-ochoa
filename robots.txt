@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /archive/
 
 Sitemap: https://claudiaochoa.co/sitemap.xml
