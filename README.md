@@ -43,7 +43,8 @@ Plain HTML, CSS, and vanilla JS. No frameworks, no build step, no dependencies. 
 │   ├── case-study-tables.js          # Responsive-table scroll state for case studies 02–06
 │   ├── lovesac-mobile-nav.js         # Shared prototype mobile navigation for three Lovesac pages
 │   ├── lovesac-mega-menu.js          # Shared desktop prototype mega-menu behavior
-│   └── lovesac-nav-scroll.js         # Shared prototype hide/show-on-scroll navigation behavior
+│   ├── lovesac-nav-scroll.js         # Shared prototype hide/show-on-scroll navigation behavior
+│   └── lovesac-prototype-feedback.js # Shared mock-link, search, and toast feedback behavior
 ├── images/
 ├── work/
 │   ├── lovesac-case-study.html       # Lovesac — Redesign (featured concept case study)
