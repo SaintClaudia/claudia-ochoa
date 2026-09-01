@@ -152,6 +152,18 @@ const contactOverlay = document.getElementById('contact-drawer');
 const contactClose = document.getElementById('contact-drawer-close');
 const contactForm = document.getElementById('contact-form');
 const contactStatus = document.getElementById('contact-form-status');
+const openedFromContactHash = location.hash === '#contact';
+let returnFromContact = false;
+
+if (openedFromContactHash && document.referrer) {
+  try {
+    const referringPage = new URL(document.referrer);
+    returnFromContact = referringPage.origin === location.origin
+      && referringPage.pathname !== location.pathname;
+  } catch (err) {
+    returnFromContact = false;
+  }
+}
 
 function openContactOverlay() {
   contactOverlay?.classList.add('open');
@@ -164,8 +176,17 @@ function closeContactOverlay() {
   contactForm?.classList.remove('submitted');
   if (contactStatus) contactStatus.textContent = '';
   contactStatus?.classList.remove('success', 'error');
+
+  if (returnFromContact) {
+    history.back();
+    return;
+  }
+
+  if (location.hash === '#contact') {
+    history.replaceState(null, '', `${location.pathname}${location.search}`);
+  }
 }
-if (location.hash === '#contact') openContactOverlay();
+if (openedFromContactHash) openContactOverlay();
 [contactToggle, mobileContactToggle, footerContactToggle].forEach((toggle) => {
   toggle?.addEventListener('click', (e) => {
     e.preventDefault();
