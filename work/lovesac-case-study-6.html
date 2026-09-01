@@ -279,6 +279,10 @@ document.querySelectorAll('link[rel="preload"][as="style"]').forEach(function (l
   .outcome-photo{margin-top:40px; max-width:560px;}
   .outcome-photo img{border-radius:16px; width:100%; height:auto; display:block; border:1px solid var(--line);}
   .outcome-photo-cap{margin-top:12px; font-size:13px; color:var(--ink-soft); font-style:italic;}
+  .outcome-signoff{margin-top:56px; padding-top:40px; border-top:1px solid var(--line);}
+  .outcome-video{margin:24px 0; max-width:320px;}
+  .outcome-video video{border-radius:16px; width:100%; height:auto; display:block; border:1px solid var(--line); aspect-ratio:9/16; background:#000;}
+  .outcome-video-cap{margin-top:12px; font-size:13px; color:var(--ink-soft); font-style:italic;}
 
   /* Sentiment cards */
   .sentiment-grid{display:grid; grid-template-columns:1fr 1fr; gap:28px;}
@@ -678,6 +682,19 @@ document.querySelectorAll('link[rel="preload"][as="style"]').forEach(function (l
       <div class="outcome-photo">
         <img src="/images/lovesac-compensation-gloves.webp" srcset="/images/lovesac-compensation-gloves-640.webp 640w, /images/lovesac-compensation-gloves.webp 1400w" sizes="(max-width: 560px) 100vw, 560px" width="1400" height="764" loading="lazy" decoding="async" alt="A pair of floral gardening gloves, size small — the actual compensation offered to Derick Cahill.">
         <p class="outcome-photo-cap">The actual gloves.</p>
+      </div>
+
+      <div class="outcome-signoff">
+        <p class="body-copy">After thoughtful consideration, I will be withdrawing my name as the next CEO of Lovesac.</p>
+        <p class="body-copy">Not sure if you caught my TikTok response — it went up, came down, went back up, then I took it down myself. But luckily, here it is.</p>
+        <div class="outcome-video">
+          <video controls playsinline preload="metadata" poster="/images/lovesac-tiktok-response-poster.jpg">
+            <source src="/videos/lovesac-tiktok-response.mp4" type="video/mp4">
+          </video>
+          <p class="outcome-video-cap">My response. Up, down, up, then down again — by me.</p>
+        </div>
+        <p class="body-copy">It was, without question, the most fun I've ever had roasting a website.</p>
+        <p class="body-copy">Thank you, Lovesac.<br>Good luck!</p>
       </div>
     </div>
   </div>
