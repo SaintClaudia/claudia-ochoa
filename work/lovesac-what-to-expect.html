@@ -1399,25 +1399,7 @@ document.addEventListener('dragstart', function(e){ if (e.target.closest('img'))
 <script src="/js/lovesac-cart-drawer.js"></script>
 <script src="/js/lovesac-mobile-nav.js"></script>
 <script src="/js/lovesac-mega-menu.js"></script>
-<script>
-(function(){
-  var link = document.querySelector('.back-link');
-  var ctaBand = document.querySelector('.cta-band') || document.querySelector('footer');
-  if(!link || !ctaBand) return;
-  function onScroll(){
-    var threshold = ctaBand.offsetTop;
-    if(window.scrollY + window.innerHeight > threshold){
-      link.classList.add('show');
-    } else {
-      link.classList.remove('show');
-    }
-  }
-  link.addEventListener('focus', function(){ link.classList.add('show'); });
-  window.addEventListener('scroll', onScroll, {passive:true});
-  window.addEventListener('resize', onScroll);
-  onScroll();
-})();
-</script>
+<script src="/js/lovesac-back-link.js"></script>
 <script src="/js/lovesac-nav-scroll.js"></script>
 <script>
 (function(){
