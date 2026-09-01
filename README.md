@@ -41,6 +41,7 @@ Plain HTML, CSS, and vanilla JS. No frameworks, no build step, no dependencies. 
 │   ├── case-study-toc.js             # Shared case-study section rail navigation and active states
 │   ├── case-study-tooltips.js        # Lazy-loads case-study series tooltip images on interaction
 │   ├── case-study-tables.js          # Responsive-table scroll state for case studies 02–06
+│   ├── case-study-counters.js        # Shared in-view metric animation for case studies 02 and 06
 │   ├── lovesac-mobile-nav.js         # Shared prototype mobile navigation for three Lovesac pages
 │   ├── lovesac-mega-menu.js          # Shared desktop prototype mega-menu behavior
 │   ├── lovesac-nav-scroll.js         # Shared prototype hide/show-on-scroll navigation behavior
