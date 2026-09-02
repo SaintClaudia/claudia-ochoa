@@ -16,6 +16,7 @@ Markers used in HTML files:
     <!-- LOVESAC-NAV:START --> ... <!-- LOVESAC-NAV:END -->
     <!-- LOVESAC-FOOTER:START --> ... <!-- LOVESAC-FOOTER:END -->
     <!-- ANALYTICS:START --> ... <!-- ANALYTICS:END -->
+    <!-- FAVICONS:START --> ... <!-- FAVICONS:END -->
 """
 
 import argparse
@@ -35,6 +36,7 @@ BASE = os.path.dirname(os.path.abspath(__file__))
 
 partials = [
     ('_analytics.html',         '<!-- ANALYTICS:START -->',         '<!-- ANALYTICS:END -->'),
+    ('_favicons.html',          '<!-- FAVICONS:START -->',          '<!-- FAVICONS:END -->'),
     ('_footer.html',            '<!-- FOOTER:START -->',            '<!-- FOOTER:END -->'),
     ('_portfolio-nav.html',     '<!-- PORTFOLIO-NAV:START -->',     '<!-- PORTFOLIO-NAV:END -->'),
     ('_contact-overlay.html',   '<!-- CONTACT-OVERLAY:START -->',   '<!-- CONTACT-OVERLAY:END -->'),
