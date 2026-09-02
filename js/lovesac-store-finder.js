@@ -39,9 +39,9 @@
       var position = { lat: parseFloat(item.dataset.lat), lng: parseFloat(item.dataset.lng) };
       var name = item.querySelector('h4').textContent;
       var pin = new google.maps.marker.PinElement({
-        background: '#EDE7DA',
+        background: '#835844',
         borderColor: '#6B4736',
-        glyphColor: '#835844'
+        glyphColor: '#EDE7DA'
       });
       var marker = new google.maps.marker.AdvancedMarkerElement({
         position: position,
