@@ -7,11 +7,11 @@
     clearTimeout(timer);
     timer = setTimeout(function(){ toast.classList.remove('show'); }, 2600);
   }
-  document.querySelectorAll('.nav-mock').forEach(function(el){
-    el.addEventListener('click', function(e){
-      e.preventDefault();
-      showToast("Non-functional prototype — for demonstration purposes only");
-    });
+  document.addEventListener('click', function(e){
+    var target = e.target.closest('.nav-mock');
+    if(!target) return;
+    e.preventDefault();
+    showToast("Non-functional prototype — for demonstration purposes only");
   });
   document.addEventListener('keydown', function(e){
     if(e.key !== 'Enter' && e.key !== ' ') return;
