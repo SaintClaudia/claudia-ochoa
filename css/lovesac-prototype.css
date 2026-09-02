@@ -253,9 +253,7 @@
   .gm-style-iw-d{font-family:'Work Sans', sans-serif; font-size:0.85rem; overflow:visible !important;}
   .gm-style-iw-c{background:var(--canvas) !important; border-radius:12px !important; box-shadow:0 10px 28px rgba(61,49,40,0.22) !important; padding:12px 14px !important;}
   .gm-style-iw-t::after{background:var(--canvas) !important; box-shadow:none !important;}
-  .gm-ui-hover-effect{top:6px !important; right:6px !important; opacity:0.55 !important;}
-  .gm-ui-hover-effect:hover{opacity:1 !important;}
-  .gm-ui-hover-effect span{background-color:var(--ink) !important;}
+  .gm-ui-hover-effect{display:none !important;}
   .store-map-tag h4{margin:0 0 3px; font-size:0.92rem; font-weight:600; color:var(--ink);}
   .store-map-tag p{margin:0 0 4px; font-size:0.8rem; color:var(--ink-soft);}
   .store-map-tag-distance{display:block; color:var(--clay); font-weight:600; font-size:0.76rem;}
