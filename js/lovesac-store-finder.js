@@ -6,41 +6,48 @@
   var form = document.getElementById('storeModalForm');
   if(!toggle || !drop || !backdrop) return;
   var map;
-  var leafletPromise;
+  var googleMapsPromise;
+  var GOOGLE_MAPS_API_KEY = 'AIzaSyDgW5fgfIPCysxv14fzFGRGTIu83ZqO2x8';
+  var GOOGLE_MAPS_MAP_ID = '82e4bce4d64e2ae3ca57f61f';
+  var STORE_MAP_CENTER = { lat: 34.05, lng: -118.35 };
 
-  function loadLeaflet(){
-    if(typeof L !== 'undefined') return Promise.resolve();
-    if(leafletPromise) return leafletPromise;
-    var css = document.createElement('link');
-    css.rel = 'stylesheet';
-    css.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
-    css.integrity = 'sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=';
-    css.crossOrigin = '';
-    document.head.appendChild(css);
-    leafletPromise = new Promise(function(resolve){
+  function loadGoogleMaps(){
+    if(window.google && window.google.maps && window.google.maps.marker) return Promise.resolve();
+    if(googleMapsPromise) return googleMapsPromise;
+    googleMapsPromise = new Promise(function(resolve){
+      window.__lovesacInitMap = resolve;
       var script = document.createElement('script');
-      script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
-      script.integrity = 'sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=';
-      script.crossOrigin = '';
-      script.onload = resolve;
-      document.body.appendChild(script);
+      script.src = 'https://maps.googleapis.com/maps/api/js?key=' + GOOGLE_MAPS_API_KEY + '&loading=async&libraries=marker&callback=__lovesacInitMap';
+      script.async = true;
+      document.head.appendChild(script);
     });
-    return leafletPromise;
+    return googleMapsPromise;
   }
 
   function initMap(){
     if(map) return;
-    map = L.map('storeMap', { scrollWheelZoom: false }).setView([34.05, -118.35], 10);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      maxZoom: 18
-    }).addTo(map);
+    map = new google.maps.Map(document.getElementById('storeMap'), {
+      center: STORE_MAP_CENTER,
+      zoom: 10,
+      mapId: GOOGLE_MAPS_MAP_ID,
+      gestureHandling: 'cooperative',
+      disableDefaultUI: true,
+      zoomControl: true
+    });
+    var infoWindow = new google.maps.InfoWindow();
     document.querySelectorAll('.store-item').forEach(function(item){
-      var lat = parseFloat(item.dataset.lat), lng = parseFloat(item.dataset.lng);
-      var marker = L.marker([lat, lng]).addTo(map).bindPopup(item.querySelector('h4').textContent);
+      var position = { lat: parseFloat(item.dataset.lat), lng: parseFloat(item.dataset.lng) };
+      var name = item.querySelector('h4').textContent;
+      var marker = new google.maps.marker.AdvancedMarkerElement({ position: position, map: map, title: name });
+      marker.addEventListener('gmp-click', function(){
+        infoWindow.setContent(name);
+        infoWindow.open({ map: map, anchor: marker });
+      });
       item.addEventListener('click', function(){
-        map.flyTo([lat, lng], 13);
-        marker.openPopup();
+        map.panTo(position);
+        map.setZoom(13);
+        infoWindow.setContent(name);
+        infoWindow.open({ map: map, anchor: marker });
         document.querySelectorAll('.store-item').forEach(function(i){ i.classList.remove('active'); });
         item.classList.add('active');
       });
@@ -82,9 +89,14 @@
       backdrop.classList.add('open');
       toggle.setAttribute('aria-expanded', 'true');
       document.querySelector('nav').classList.add('dropdown-open');
-      loadLeaflet().then(function(){
+      loadGoogleMaps().then(function(){
+        var justCreated = !map;
         initMap();
-        setTimeout(function(){ if(map) map.invalidateSize(); }, 220);
+        setTimeout(function(){
+          if(!map) return;
+          google.maps.event.trigger(map, 'resize');
+          if(justCreated) map.setCenter(STORE_MAP_CENTER);
+        }, 220);
       });
     } else {
       toggle.setAttribute('aria-expanded', 'false');
