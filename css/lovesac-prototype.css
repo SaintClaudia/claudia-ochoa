@@ -132,20 +132,6 @@
   .nav-item.open .mega-menu{
     opacity:1; visibility:visible; pointer-events:auto;
   }
-  .mega-grid{display:grid; grid-template-columns:repeat(3, 100px); gap:22px;}
-  .mega-tile{display:flex; flex-direction:column; align-items:center; gap:10px; width:100px; text-align:center;}
-  .mega-thumb{
-    display:flex; align-items:center; justify-content:center;
-    width:100px; height:100px; border-radius:10px;
-    background:var(--canvas-2); border:1px solid var(--line);
-    color:var(--ink-soft); opacity:0.6;
-    transition:opacity .2s ease, border-color .2s ease;
-  }
-  .mega-thumb svg{width:30px; height:30px;}
-  .mega-tile:hover .mega-thumb{opacity:0.95; border-color:var(--clay);}
-  .mega-tile span.mega-label{font-size:0.82rem; font-weight:500; opacity:0.85;}
-  .mega-tile:hover span.mega-label{opacity:1;}
-
   /* ---------- WIDE MEGA MENU (Furniture) ---------- */
   .mega-menu.mega-wide{
     --mega-left:0px; --mega-width:auto;
