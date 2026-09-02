@@ -47,7 +47,7 @@
         position: position,
         map: map,
         title: name,
-        content: pin.element
+        content: pin
       });
       marker.addEventListener('gmp-click', function(){
         infoWindow.setContent(buildStoreTag(item));
