@@ -1903,7 +1903,7 @@ function renderProductGrid(){
   document.getElementById('productGrid').innerHTML = products.map((p,i)=>{
     var colorNames = p.hex.map(h=>COLOR_NAMES[h]||'color');
     return `
-    <div class="product-card" data-idx="${i}">
+    <div class="product-card" id="product-${i}" data-idx="${i}">
       <div class="product-thumb${p.img ? ' has-photo' : ''} nav-mock" role="button" tabindex="0" aria-label="${p.name} photo">
         ${p.img ? `<img src="${p.img}" alt="${p.name}">` : `<svg viewBox="0 0 130 60"><path d="M0,20 h90 v20 h30 v40 h-120 Z" fill="${p.hex[0]}"/></svg>`}
       </div>
