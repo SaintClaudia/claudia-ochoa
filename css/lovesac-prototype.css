@@ -439,6 +439,20 @@
     .mobile-menu{display:none !important;}
   }
 
+  /* ---------- PORTFOLIO BACK LINK ---------- */
+  .back-link{
+    position:fixed; bottom:20px; left:20px; z-index:100;
+    background:var(--canvas, var(--ls-canvas)); color:var(--ink, var(--ls-ink));
+    padding:10px 16px; border-radius:8px;
+    border:1px solid var(--line, var(--ls-line));
+    font-size:0.82rem; font-weight:600;
+    box-shadow:0 6px 20px rgba(31,36,33,0.12);
+    transition:opacity .25s ease, transform .25s ease;
+    opacity:0; transform:translateY(12px); pointer-events:none;
+    text-decoration:none;
+  }
+  .back-link.show{opacity:1; transform:translateY(0); pointer-events:auto;}
+
   /* ---------- HERO ---------- */
   .hero{
     position:relative;

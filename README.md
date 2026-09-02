@@ -49,13 +49,14 @@ serves those files directly.
 │   ├── case-study-tooltips.js        # Lazy-loads case-study series tooltip images on interaction
 │   ├── case-study-tables.js          # Responsive-table scroll state for case studies 02–06
 │   ├── case-study-counters.js        # Shared in-view metric animation for case studies 02 and 06
+│   ├── case-study-polls.js           # Shared poll rendering, persistence, and Worker requests
 │   ├── lovesac-mobile-nav.js         # Shared prototype mobile navigation for four Lovesac pages
 │   ├── lovesac-mega-menu.js          # Shared desktop prototype mega-menu behavior
 │   ├── lovesac-nav-scroll.js         # Shared prototype hide/show-on-scroll navigation behavior
 │   ├── lovesac-prototype-feedback.js # Shared mock-link, search, and toast feedback behavior
 │   ├── lovesac-store-finder.js       # Shared prototype store drawer and map behavior
-│   ├── lovesac-account-drawer.js     # Shared prototype account drawer behavior
-│   ├── lovesac-cart-drawer.js        # Shared prototype cart drawer behavior
+│   ├── lovesac-drawers.js            # Shared account and cart drawer controller
+│   ├── lovesac-hero-parallax.js      # Shared prototype hero parallax behavior
 │   ├── lovesac-search-panel.js       # Shared prototype desktop search panel behavior
 │   └── lovesac-back-link.js          # Shared prototype back-to-portfolio visibility behavior
 ├── images/
@@ -85,6 +86,8 @@ git push
 ```
 
 GitHub Pages deploys automatically. Changes are live within 1–2 minutes.
+The `Code quality` GitHub Actions workflow runs the same generated-file and
+syntax checks on every push and pull request.
 
 ## Updating the nav or footer
 

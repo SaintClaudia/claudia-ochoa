@@ -181,16 +181,6 @@
     font-size:0.8rem; opacity:0.78;
   }
 
-  .back-link{
-    position:fixed; bottom:20px; left:20px; z-index:100;
-    background:var(--canvas); color:var(--ink);
-    padding:10px 16px; border-radius:8px; border:1px solid var(--line);
-    font-size:0.82rem; font-weight:600; box-shadow:0 6px 20px rgba(31,36,33,0.12);
-    transition:opacity .25s ease, transform .25s ease;
-    opacity:0; transform:translateY(12px); pointer-events:none;
-  }
-  .back-link.show{opacity:1; transform:translateY(0); pointer-events:auto;}
-
   @media (min-width:861px) and (max-width:1024px){
     .life-track{grid-template-columns:repeat(2,1fr);}
     .timeline{grid-template-columns:repeat(2,1fr); row-gap:40px;}
@@ -776,43 +766,15 @@ document.addEventListener('dragstart', function(e){ if (e.target.closest('img'))
   </div>
 </div>
 
-<script>
-(function(){
-  document.querySelectorAll('.store-drop, .account-drop, .cart-drop').forEach(function(el){
-    el.addEventListener('click', function(e){ e.stopPropagation(); });
-  });
-})();
-</script>
 <script src="/js/lovesac-prototype-feedback.js"></script>
 <script src="/js/lovesac-search-panel.js"></script>
 <script src="/js/lovesac-store-finder.js"></script>
-<script src="/js/lovesac-account-drawer.js"></script>
-<script src="/js/lovesac-cart-drawer.js"></script>
+<script src="/js/lovesac-drawers.js"></script>
 <script src="/js/lovesac-mobile-nav.js"></script>
 <script src="/js/lovesac-mega-menu.js"></script>
 <script src="/js/lovesac-back-link.js"></script>
 <script src="/js/lovesac-nav-scroll.js"></script>
-<script>
-(function(){
-  var bg = document.querySelector('.hero-bg');
-  if(!bg || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var hero = bg.parentElement;
-  var ticking = false;
-  function update(){
-    var offset = -hero.getBoundingClientRect().top * 0.15;
-    bg.style.transform = 'translateY(' + offset + 'px)';
-    ticking = false;
-  }
-  function onScroll(){
-    if(!ticking){
-      requestAnimationFrame(update);
-      ticking = true;
-    }
-  }
-  window.addEventListener('scroll', onScroll, {passive:true});
-  update();
-})();
-</script>
+<script src="/js/lovesac-hero-parallax.js"></script>
 <script>
 (function(){
   var storeLink = document.getElementById('supportStoreLink');

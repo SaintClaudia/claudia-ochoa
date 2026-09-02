@@ -1,5 +1,9 @@
 (function(){
   var toast = document.getElementById('toast');
+
+  document.querySelectorAll('.store-drop, .account-drop, .cart-drop, .space-drop').forEach(function(drawer){
+    drawer.addEventListener('click', function(event){ event.stopPropagation(); });
+  });
   var timer;
   function showToast(msg){
     toast.textContent = msg;

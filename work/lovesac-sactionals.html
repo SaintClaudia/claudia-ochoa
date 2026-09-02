@@ -172,17 +172,6 @@
   .fit-badge{display:flex;align-items:center;gap:4px;font-size:10px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:var(--ls-canvas);background:var(--ls-clay);padding:3px 8px;border-radius:5px;margin-bottom:8px;}
   .fit-badge svg{width:10px;height:10px;}
 
-  .back-link{
-    position:fixed; bottom:20px; left:20px; z-index:100;
-    background:var(--ls-canvas); color:var(--ls-ink);
-    padding:10px 16px; border-radius:8px; border:1px solid var(--ls-line);
-    font-size:0.82rem; font-weight:600; box-shadow:0 6px 20px rgba(31,36,33,0.12);
-    transition:opacity .25s ease, transform .25s ease;
-    opacity:0; transform:translateY(12px); pointer-events:none;
-    text-decoration:none;
-  }
-  .back-link.show{opacity:1; transform:translateY(0); pointer-events:auto;}
-
   .breadcrumbs{display:flex; flex-wrap:wrap; align-items:center; gap:6px; font-size:13px; color:var(--muted); margin:20px 0 4px;}
   .breadcrumbs a{color:var(--muted); text-decoration:none;}
   .breadcrumbs a:hover{color:var(--ink); text-decoration:underline; text-underline-offset:3px;}
@@ -1561,18 +1550,10 @@ document.addEventListener('dragstart', function(e){ if (e.target.closest('img'))
 </div>
 
 <!-- ============ PORTED FROM lovesac-redesign.html (real Lovesac nav/drawer behavior) ============ -->
-<script>
-(function(){
-  document.querySelectorAll('.store-drop, .account-drop, .cart-drop, .space-drop').forEach(function(el){
-    el.addEventListener('click', function(e){ e.stopPropagation(); });
-  });
-})();
-</script>
 <script src="/js/lovesac-prototype-feedback.js"></script>
 <script src="/js/lovesac-search-panel.js"></script>
 <script src="/js/lovesac-store-finder.js"></script>
-<script src="/js/lovesac-account-drawer.js"></script>
-<script src="/js/lovesac-cart-drawer.js"></script>
+<script src="/js/lovesac-drawers.js"></script>
 <script>
 (function(){
   var toggle = document.getElementById('spaceToggle');

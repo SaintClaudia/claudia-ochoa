@@ -447,7 +447,6 @@
 
 [id^="toc-"]{scroll-margin-top:96px;}
 
-@media (max-width:1400px){.toc-rail{display:none;}}
 </style>
 </head>
 <body>
@@ -608,7 +607,7 @@
           <span class="poll-btn-bar"><span class="poll-btn-fill"></span></span>
         </button>
       </div>
-      <p class="poll-meta"><span id="pollCount">0 votes so far</span> &middot; <span id="pollStatus">pick one</span></p>
+      <p class="poll-meta"><span class="poll-count">0 votes so far</span> &middot; <span class="poll-status">pick one</span></p>
     </div>
   </div>
 </section>
@@ -878,75 +877,7 @@
 })();
 </script>
 <script src="/js/case-study-topbar.js"></script>
-<script>
-(function(){
-  var POLL_WORKER_URL = 'https://portfolio-poll.claudiajochoa.workers.dev';
-  var block = document.getElementById('redesignPoll');
-  if(!block) return;
-
-  var pollId = block.getAttribute('data-poll-id');
-  var buttons = Array.prototype.slice.call(block.querySelectorAll('.poll-btn'));
-  var countEl = document.getElementById('pollCount');
-  var statusEl = document.getElementById('pollStatus');
-  var storageKey = 'poll_vote_' + pollId;
-  var voted = false;
-
-  function render(tally){
-    var total = 0;
-    buttons.forEach(function(btn){
-      total += tally[btn.getAttribute('data-choice')] || 0;
-    });
-    buttons.forEach(function(btn){
-      var choice = btn.getAttribute('data-choice');
-      var count = tally[choice] || 0;
-      var pct = total > 0 ? Math.round((count / total) * 100) : 0;
-      btn.querySelector('.poll-btn-pct').textContent = total > 0 ? pct + '%' : '—';
-      btn.querySelector('.poll-btn-fill').style.width = pct + '%';
-    });
-    countEl.textContent = total + (total === 1 ? ' vote so far' : ' votes so far');
-  }
-
-  function lockButtons(selectedChoice){
-    voted = true;
-    buttons.forEach(function(btn){
-      btn.disabled = true;
-      btn.classList.toggle('selected', btn.getAttribute('data-choice') === selectedChoice);
-    });
-    statusEl.textContent = 'thanks for voting';
-  }
-
-  function fetchTally(){
-    fetch(POLL_WORKER_URL + '/poll/' + encodeURIComponent(pollId))
-      .then(function(res){ return res.json(); })
-      .then(function(tally){ render(tally || {}); })
-      .catch(function(){});
-  }
-
-  buttons.forEach(function(btn){
-    btn.addEventListener('click', function(){
-      if(voted) return;
-      var choice = btn.getAttribute('data-choice');
-      lockButtons(choice);
-      try{ localStorage.setItem(storageKey, choice); }catch(e){}
-      fetch(POLL_WORKER_URL + '/poll/' + encodeURIComponent(pollId), {
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({choice: choice})
-      })
-        .then(function(res){ return res.json(); })
-        .then(function(tally){ render(tally || {}); })
-        .catch(function(){});
-    });
-  });
-
-  var previousVote = null;
-  try{ previousVote = localStorage.getItem(storageKey); }catch(e){}
-  if(previousVote){
-    lockButtons(previousVote);
-  }
-  fetchTally();
-})();
-</script>
+<script src="/js/case-study-polls.js"></script>
 
 <script src="/js/case-study-tooltips.js"></script>
 <script src="/js/case-study-toc.js"></script>

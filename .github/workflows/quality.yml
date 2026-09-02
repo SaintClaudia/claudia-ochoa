@@ -1,0 +1,28 @@
+name: Code quality
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Verify generated HTML
+        run: python3 build.py --check
+      - name: Check Python syntax
+        run: python3 -m py_compile build.py
+      - name: Check JavaScript syntax
+        run: |
+          for file in js/*.js worker/src/*.js worker-csp/src/*.js; do
+            node --check "$file"
+          done
+      - name: Check whitespace
+        run: git diff --check
