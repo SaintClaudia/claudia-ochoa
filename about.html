@@ -96,6 +96,10 @@
     .about-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--clay-deep);font-weight:700;padding-top:7px;}
     .about-copy{display:flex;flex-direction:column;gap:22px;max-width:68ch;}
     .about-copy p{font-family:'Fraunces',serif;font-size:clamp(20px,2.2vw,27px);line-height:1.52;color:var(--espresso);}
+    .about-mission{padding-top:0;}
+    .about-mission-card{background:var(--clay);border-radius:20px;padding:48px 56px;color:#1B1512;}
+    .about-mission .about-label{color:#3A2118;margin-bottom:20px;}
+    .about-mission blockquote{font-family:'Fraunces',serif;font-size:clamp(28px,4vw,46px);font-weight:500;line-height:1.25;max-width:27ch;margin:0;}
     .about-capabilities{background:var(--paper);}
     .about-capabilities h2,.about-feature h2{font-size:clamp(30px,4vw,46px);font-weight:600;}
     .capability-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden;margin-top:36px;}
@@ -115,7 +119,7 @@
       .about-hero-grid,.about-story-grid,.about-feature-card{grid-template-columns:1fr;gap:36px;}
       .about-hero-copy{order:2;}.about-portrait{order:1;max-width:520px;}.about-feature-action{justify-self:start;}
     }
-    @media(max-width:560px){.about-hero h1{font-size:46px;}.capability-grid{grid-template-columns:1fr;}.about-feature-card{padding:32px 26px;}}
+    @media(max-width:560px){.about-hero h1{font-size:46px;}.about-mission-card{padding:34px 28px;}.capability-grid{grid-template-columns:1fr;}.about-feature-card{padding:32px 26px;}}
   </style>
 </head>
 <body>
@@ -181,6 +185,15 @@
         <p>I'm a brand and UX strategist with 20+ years of experience helping companies — including Fortune 500 names like Walmart — connect with customers through design that actually understands people.</p>
         <p>My work sits at the intersection of branding, marketing, and user experience: finding the emotional gap in a customer journey and closing it with design that feels intentional, not just functional. That's the lens I brought to my recent Lovesac homepage redesign concept — a case study in what happens when transparency and empathy get built into the buying experience from the start.</p>
         <p>I recently completed my MBA at Purdue Global, and I'm continuing on to a JD at Purdue Global Law School. I'm building toward a future as a CEO in tech — one where design thinking, business strategy, and legal fluency come together to lead differently.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-mission" aria-labelledby="mission-heading">
+    <div class="wrap">
+      <div class="about-mission-card">
+        <div class="about-label" id="mission-heading">My mission</div>
+        <blockquote>To bring emotional intelligence into the business of building a brand.</blockquote>
       </div>
     </div>
   </section>
