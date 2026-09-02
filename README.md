@@ -8,7 +8,9 @@ Personal portfolio of Claudia Ochoa — Product Design Leader blending business 
 
 ## Stack
 
-Plain HTML, CSS, and vanilla JS. No frameworks, no build step, no dependencies. Fast and lightweight.
+Plain HTML, CSS, and vanilla JS. No frameworks or package dependencies. A small
+Python script stamps shared partials into deployable HTML files; GitHub Pages
+serves those files directly.
 
 ## Structure
 
@@ -46,7 +48,7 @@ Plain HTML, CSS, and vanilla JS. No frameworks, no build step, no dependencies. 
 │   ├── case-study-tooltips.js        # Lazy-loads case-study series tooltip images on interaction
 │   ├── case-study-tables.js          # Responsive-table scroll state for case studies 02–06
 │   ├── case-study-counters.js        # Shared in-view metric animation for case studies 02 and 06
-│   ├── lovesac-mobile-nav.js         # Shared prototype mobile navigation for three Lovesac pages
+│   ├── lovesac-mobile-nav.js         # Shared prototype mobile navigation for four Lovesac pages
 │   ├── lovesac-mega-menu.js          # Shared desktop prototype mega-menu behavior
 │   ├── lovesac-nav-scroll.js         # Shared prototype hide/show-on-scroll navigation behavior
 │   ├── lovesac-prototype-feedback.js # Shared mock-link, search, and toast feedback behavior
@@ -74,6 +76,8 @@ Everything on the live site is linked from somewhere — no hidden or orphaned p
 ## Deploying changes
 
 ```bash
+python3 build.py
+python3 build.py --check
 git add <files>
 git commit -m "describe what changed"
 git push
