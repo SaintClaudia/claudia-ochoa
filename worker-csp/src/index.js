@@ -9,15 +9,24 @@ function randomNonce() {
 function buildCSP(nonce) {
   return [
     "default-src 'self'",
-    `script-src 'self' 'nonce-${nonce}' https://www.googletagmanager.com https://www.google-analytics.com https://unpkg.com https://portfolio-poll.claudiajochoa.workers.dev`,
+    // 'wasm-unsafe-eval' (not the broader 'unsafe-eval') is required for
+    // Google's vector map renderer, which compiles WebAssembly for tile
+    // decoding.
+    `script-src 'self' 'nonce-${nonce}' 'wasm-unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://maps.googleapis.com https://portfolio-poll.claudiajochoa.workers.dev`,
     // No nonce here: a nonce- or hash-source in a directive makes browsers
     // ignore 'unsafe-inline' in that same directive, which would break every
     // style="..." attribute on the site. style-src stays unsafe-inline-only
     // until those attributes are converted to classes.
-    `style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com`,
+    `style-src 'self' 'unsafe-inline' https://fonts.googleapis.com`,
     "font-src 'self' https://fonts.gstatic.com",
-    "img-src 'self' https://*.tile.openstreetmap.org https://www.google-analytics.com https://www.googletagmanager.com",
-    "connect-src 'self' https://api.web3forms.com https://portfolio-poll.claudiajochoa.workers.dev https://www.google-analytics.com https://www.googletagmanager.com",
+    // data: is for the map SDK's own inlined control icons (zoom, pan), not
+    // user content.
+    "img-src 'self' data: https://maps.googleapis.com https://maps.gstatic.com https://www.google-analytics.com https://www.googletagmanager.com",
+    "connect-src 'self' https://api.web3forms.com https://maps.googleapis.com https://www.gstatic.com https://portfolio-poll.claudiajochoa.workers.dev https://www.google-analytics.com https://www.googletagmanager.com",
+    // Google's vector map rendering spawns Web Workers from blob: URLs for
+    // tile decoding; without this they fall back to script-src, which has
+    // no blob: source and silently blocks them.
+    "worker-src 'self' blob:",
     "frame-src https://open.spotify.com https://www.tiktok.com",
     "frame-ancestors 'self'",
     "base-uri 'self'",
