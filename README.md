@@ -110,6 +110,10 @@ To change shared markup:
 2. Run `python3 build.py` — stamps the update into every page that uses it
 3. Commit and push all changed files
 
+Run `python3 build.py --check` for a read-only validation. It exits with an
+error if a generated region is stale or if markers are missing, duplicated,
+reversed, or unmatched.
+
 ## Adding a case study
 
 1. Copy an existing file from `work/` and rename it
