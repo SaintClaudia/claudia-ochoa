@@ -3,7 +3,8 @@
   if(!navItems.length) return;
   var navEl = document.querySelector('nav');
   var navMegaBackdrop = document.getElementById('navMegaBackdrop');
-  function closeAll(){
+  function closeAll(restoreFocus){
+    var openTrigger = document.querySelector('.nav-item.open .nav-trigger');
     navItems.forEach(function(item){
       item.classList.remove('open');
       var trigger = item.querySelector('.nav-trigger');
@@ -15,13 +16,15 @@
     if(window.__closeAccountDrop) window.__closeAccountDrop();
     if(window.__closeCartDrop) window.__closeCartDrop();
     if(window.__closeSpaceDrop) window.__closeSpaceDrop();
+    if(restoreFocus && openTrigger) openTrigger.focus({preventScroll:true});
   }
   navItems.forEach(function(item){
     var trigger = item.querySelector('.nav-trigger');
     if(!trigger) return;
     trigger.addEventListener('click', function(){
+      if(window.__closeSearchBars) window.__closeSearchBars(false);
       var isOpen = item.classList.contains('open');
-      closeAll();
+      closeAll(false);
       if(!isOpen){
         item.classList.add('open');
         trigger.setAttribute('aria-expanded', 'true');
@@ -30,14 +33,14 @@
       }
     });
     item.querySelectorAll('.mega-menu a').forEach(function(link){
-      link.addEventListener('click', closeAll);
+      link.addEventListener('click', function(){ closeAll(false); });
     });
   });
   document.addEventListener('click', function(e){
-    if(!e.target.closest('.nav-item')) closeAll();
+    if(!e.target.closest('.nav-item')) closeAll(false);
   });
   document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape') closeAll();
+    if(e.key === 'Escape') closeAll(true);
   });
 
   var wideItems = document.querySelectorAll('.nav-item:has(.mega-menu.mega-wide)');

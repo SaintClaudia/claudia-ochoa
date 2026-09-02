@@ -5,13 +5,16 @@
     var backdrop = document.getElementById(config.id + 'Backdrop');
     var closeBtn = document.getElementById(config.id + 'DropClose');
     if(!toggle || !drop || !backdrop) return null;
+    var focusScope = window.createLovesacFocusScope ? window.createLovesacFocusScope(drop) : null;
 
-    function close(){
+    function close(restoreFocus){
+      var wasOpen = drop.classList.contains('open');
       drop.classList.remove('open');
       drop.inert = true;
       backdrop.classList.remove('open');
       toggle.setAttribute('aria-expanded', 'false');
       document.querySelector('nav').classList.remove('dropdown-open');
+      if(wasOpen && focusScope) focusScope.leave(restoreFocus);
     }
 
     window[config.closeName] = close;
@@ -22,13 +25,7 @@
         var trigger = item.querySelector('.nav-trigger');
         if(trigger) trigger.setAttribute('aria-expanded', 'false');
       });
-      document.querySelectorAll('.desktop-search.open').forEach(function(bar){
-        bar.classList.remove('open');
-        var input = bar.querySelector('input');
-        if(input) input.value = '';
-      });
-      var searchToggle = document.getElementById('searchToggle');
-      if(searchToggle) searchToggle.setAttribute('aria-expanded', 'false');
+      if(window.__closeSearchBars) window.__closeSearchBars(false);
       config.closeOthers.forEach(function(name){
         if(typeof window[name] === 'function') window[name]();
       });
@@ -46,6 +43,7 @@
       backdrop.classList.add('open');
       toggle.setAttribute('aria-expanded', 'true');
       nav.classList.add('dropdown-open');
+      if(focusScope) focusScope.enter(toggle, closeBtn);
     });
 
     if(closeBtn) closeBtn.addEventListener('click', close);

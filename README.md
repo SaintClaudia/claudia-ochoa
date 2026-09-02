@@ -50,6 +50,7 @@ serves those files directly.
 │   ├── case-study-tables.js          # Responsive-table scroll state for case studies 02–06
 │   ├── case-study-counters.js        # Shared in-view metric animation for case studies 02 and 06
 │   ├── case-study-polls.js           # Shared poll rendering, persistence, and Worker requests
+│   ├── lovesac-focus-scope.js         # Shared keyboard focus containment and restoration for prototype overlays
 │   ├── lovesac-mobile-nav.js         # Shared prototype mobile navigation for four Lovesac pages
 │   ├── lovesac-mega-menu.js          # Shared desktop prototype mega-menu behavior
 │   ├── lovesac-nav-scroll.js         # Shared prototype hide/show-on-scroll navigation behavior

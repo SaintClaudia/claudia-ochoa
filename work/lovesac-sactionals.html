@@ -1128,7 +1128,7 @@
       </form>
     </div>
   </div>
-  <div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu" id="mobileMenu" aria-label="Main menu" inert>
     <div class="mobile-menu-tiers" id="mobileTiers">
       <div class="mobile-tier-1">
         <form class="mobile-search" role="search" action="#">
@@ -1442,9 +1442,9 @@ document.addEventListener('dragstart', function(e){ if (e.target.closest('img'))
 <div class="nav-mega-backdrop" id="navMegaBackdrop"></div>
 <!-- LOVESAC-STORE-DROP:START -->
 <div class="store-backdrop" id="storeBackdrop"></div>
-<div class="store-drop" id="storeDropdown" inert>
+<div class="store-drop" id="storeDropdown" role="dialog" aria-modal="true" aria-labelledby="storeDropdownTitle" inert>
   <div class="store-drop-header">
-    <h3>Find a store near you</h3>
+    <h3 id="storeDropdownTitle">Find a store near you</h3>
     <button type="button" class="store-drop-close" id="storeDropClose" aria-label="Close">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
     </button>
@@ -1453,7 +1453,7 @@ document.addEventListener('dragstart', function(e){ if (e.target.closest('img'))
   <div class="store-drop-body">
     <form class="store-drop-search" id="storeModalForm">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.2" y2="16.2"/></svg>
-      <input type="text" id="storeModalInput" placeholder="Enter your zip code or city">
+      <input type="text" id="storeModalInput" placeholder="Enter your zip code or city" aria-label="Search by zip code or city">
     </form>
     <div class="store-list" id="storeList">
       <button type="button" class="store-item" data-lat="34.0716" data-lng="-118.3573">
@@ -1482,9 +1482,9 @@ document.addEventListener('dragstart', function(e){ if (e.target.closest('img'))
 <!-- LOVESAC-STORE-DROP:END -->
 
 <div class="account-backdrop" id="accountBackdrop"></div>
-<div class="account-drop" id="accountDropdown">
+<div class="account-drop" id="accountDropdown" role="dialog" aria-modal="true" aria-labelledby="accountDropdownTitle" inert>
   <div class="account-drop-header">
-    <h3>Sign In or Create an Account</h3>
+    <h3 id="accountDropdownTitle">Sign In or Create an Account</h3>
     <button type="button" class="account-drop-close" id="accountDropClose" aria-label="Close">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
     </button>
@@ -1501,9 +1501,9 @@ document.addEventListener('dragstart', function(e){ if (e.target.closest('img'))
 </div>
 
 <div class="cart-backdrop" id="cartBackdrop"></div>
-<div class="cart-drop" id="cartDropdown">
+<div class="cart-drop" id="cartDropdown" role="dialog" aria-modal="true" aria-labelledby="cartDropdownTitle" inert>
   <div class="cart-drop-header">
-    <h3>Your Cart</h3>
+    <h3 id="cartDropdownTitle">Your Cart</h3>
     <button type="button" class="cart-drop-close" id="cartDropClose" aria-label="Close">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
     </button>
@@ -1553,10 +1553,11 @@ document.addEventListener('dragstart', function(e){ if (e.target.closest('img'))
 </div>
 
 <!-- ============ PORTED FROM lovesac-redesign.html (real Lovesac nav/drawer behavior) ============ -->
-<script src="/js/lovesac-prototype-feedback.js"></script>
-<script src="/js/lovesac-search-panel.js"></script>
-<script src="/js/lovesac-store-finder.js"></script>
-<script src="/js/lovesac-drawers.js"></script>
+<script src="/js/lovesac-focus-scope.js"></script>
+<script src="/js/lovesac-prototype-feedback.js?v=2"></script>
+<script src="/js/lovesac-search-panel.js?v=2"></script>
+<script src="/js/lovesac-store-finder.js?v=2"></script>
+<script src="/js/lovesac-drawers.js?v=2"></script>
 <script>
 (function(){
   var toggle = document.getElementById('spaceToggle');
@@ -1843,8 +1844,8 @@ document.addEventListener('dragstart', function(e){ if (e.target.closest('img'))
   });
 })();
 </script>
-<script src="/js/lovesac-mobile-nav.js"></script>
-<script src="/js/lovesac-mega-menu.js"></script>
+<script src="/js/lovesac-mobile-nav.js?v=2"></script>
+<script src="/js/lovesac-mega-menu.js?v=3"></script>
 <script src="/js/lovesac-nav-scroll.js"></script>
 
 <script>

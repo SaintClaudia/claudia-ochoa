@@ -1,6 +1,10 @@
 (function(){
   var toast = document.getElementById('toast');
 
+  document.querySelectorAll('a.nav-mock').forEach(function(link){
+    link.setAttribute('role', 'button');
+  });
+
   document.querySelectorAll('.store-drop, .account-drop, .cart-drop, .space-drop').forEach(function(drawer){
     drawer.addEventListener('click', function(event){ event.stopPropagation(); });
   });

@@ -3,17 +3,20 @@
     { toggle: document.getElementById('searchToggle'), panel: document.getElementById('desktopSearch'), closeBtn: document.getElementById('desktopSearchClose'), input: document.getElementById('desktopSearchInput') }
   ].filter(function(b){ return b.toggle && b.panel; });
   if(!bars.length) return;
-  function closeAllBars(){
+  function closeAllBars(restoreFocus){
     bars.forEach(function(b){
+      var wasOpen = b.panel.classList.contains('open');
       b.panel.classList.remove('open');
       b.panel.inert = true;
       b.toggle.setAttribute('aria-expanded', 'false');
       b.input.value = '';
+      if(wasOpen && restoreFocus) b.toggle.focus({preventScroll:true});
     });
   }
+  window.__closeSearchBars = closeAllBars;
   function openBar(b){
     if(window.holdNavVisible) window.holdNavVisible(900);
-    closeAllBars();
+    closeAllBars(false);
     document.querySelectorAll('.nav-item.open').forEach(function(item){
       item.classList.remove('open');
       var t = item.querySelector('.nav-trigger, .icon-store');
@@ -30,12 +33,12 @@
   }
   bars.forEach(function(b){
     b.toggle.addEventListener('click', function(){
-      if(b.panel.classList.contains('open')) closeAllBars(); else openBar(b);
+      if(b.panel.classList.contains('open')) closeAllBars(true); else openBar(b);
     });
-    if(b.closeBtn) b.closeBtn.addEventListener('click', closeAllBars);
+    if(b.closeBtn) b.closeBtn.addEventListener('click', function(){ closeAllBars(true); });
   });
   document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape') closeAllBars();
+    if(e.key === 'Escape') closeAllBars(true);
   });
-  window.addEventListener('scroll', closeAllBars, {passive:true});
+  window.addEventListener('scroll', function(){ closeAllBars(false); }, {passive:true});
 })();

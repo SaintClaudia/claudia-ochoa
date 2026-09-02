@@ -5,6 +5,8 @@
   var closeBtn = document.getElementById('storeDropClose');
   var form = document.getElementById('storeModalForm');
   if(!toggle || !drop || !backdrop) return;
+  var input = document.getElementById('storeModalInput');
+  var focusScope = window.createLovesacFocusScope ? window.createLovesacFocusScope(drop) : null;
   var map;
   var googleMapsPromise;
   var GOOGLE_MAPS_API_KEY = 'AIzaSyDgW5fgfIPCysxv14fzFGRGTIu83ZqO2x8';
@@ -83,12 +85,14 @@
     return wrap;
   }
 
-  function closeStoreDrop(){
+  function closeStoreDrop(restoreFocus){
+    var wasOpen = drop.classList.contains('open');
     drop.classList.remove('open');
     drop.inert = true;
     backdrop.classList.remove('open');
     toggle.setAttribute('aria-expanded', 'false');
     document.querySelector('nav').classList.remove('dropdown-open');
+    if(wasOpen && focusScope) focusScope.leave(restoreFocus);
   }
   window.__closeStoreDrop = closeStoreDrop;
 
@@ -99,13 +103,7 @@
       var trig = item.querySelector('.nav-trigger');
       if(trig) trig.setAttribute('aria-expanded', 'false');
     });
-    document.querySelectorAll('.desktop-search.open').forEach(function(bar){
-      bar.classList.remove('open');
-      var input = bar.querySelector('input');
-      if(input) input.value = '';
-    });
-    var searchToggle = document.getElementById('searchToggle');
-    if(searchToggle) searchToggle.setAttribute('aria-expanded', 'false');
+    if(window.__closeSearchBars) window.__closeSearchBars(false);
     if(window.__closeAccountDrop) window.__closeAccountDrop();
     if(window.__closeCartDrop) window.__closeCartDrop();
     if(window.__closeSpaceDrop) window.__closeSpaceDrop();
@@ -118,6 +116,7 @@
       backdrop.classList.add('open');
       toggle.setAttribute('aria-expanded', 'true');
       document.querySelector('nav').classList.add('dropdown-open');
+      if(focusScope) focusScope.enter(toggle, input || closeBtn);
       loadGoogleMaps().then(function(){
         var justCreated = !map;
         initMap();
