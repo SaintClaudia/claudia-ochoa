@@ -14,6 +14,7 @@
     if(window.__closeStoreDrop) window.__closeStoreDrop();
     if(window.__closeAccountDrop) window.__closeAccountDrop();
     if(window.__closeCartDrop) window.__closeCartDrop();
+    if(window.__closeSpaceDrop) window.__closeSpaceDrop();
   }
   navItems.forEach(function(item){
     var trigger = item.querySelector('.nav-trigger');

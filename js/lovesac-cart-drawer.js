@@ -29,6 +29,7 @@
     if(searchToggle) searchToggle.setAttribute('aria-expanded', 'false');
     if(window.__closeStoreDrop) window.__closeStoreDrop();
     if(window.__closeAccountDrop) window.__closeAccountDrop();
+    if(window.__closeSpaceDrop) window.__closeSpaceDrop();
     if(!isOpen){
       var navBottom = window.matchMedia('(max-width:860px)').matches ? 0 : document.querySelector('nav').getBoundingClientRect().bottom;
       drop.style.top = navBottom + 'px';

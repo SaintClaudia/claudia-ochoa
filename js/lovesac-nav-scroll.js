@@ -5,11 +5,16 @@
   nav.addEventListener('focusin', function(){ nav.classList.remove('nav-hidden'); });
   var lastY = window.scrollY;
   var ticking = false;
+  var holdUntil = 0;
+  window.holdNavVisible = function(ms){
+    holdUntil = Date.now() + (ms || 900);
+    nav.classList.remove('nav-hidden');
+  };
   function update(){
     var y = Math.max(window.scrollY, 0);
     var menuOpen = menu && menu.classList.contains('open');
     var dropdownOpen = nav.classList.contains('dropdown-open');
-    if(menuOpen || dropdownOpen || y <= nav.offsetHeight){
+    if(menuOpen || dropdownOpen || y <= nav.offsetHeight || Date.now() < holdUntil){
       nav.classList.remove('nav-hidden');
     } else if(y > lastY + 4){
       nav.classList.add('nav-hidden');

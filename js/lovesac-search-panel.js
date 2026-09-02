@@ -11,6 +11,7 @@
     });
   }
   function openBar(b){
+    if(window.holdNavVisible) window.holdNavVisible(900);
     closeAllBars();
     document.querySelectorAll('.nav-item.open').forEach(function(item){
       item.classList.remove('open');
@@ -20,6 +21,7 @@
     if(window.__closeStoreDrop) window.__closeStoreDrop();
     if(window.__closeAccountDrop) window.__closeAccountDrop();
     if(window.__closeCartDrop) window.__closeCartDrop();
+    if(window.__closeSpaceDrop) window.__closeSpaceDrop();
     b.panel.classList.add('open');
     b.toggle.setAttribute('aria-expanded', 'true');
     setTimeout(function(){ b.input.focus(); }, 200);

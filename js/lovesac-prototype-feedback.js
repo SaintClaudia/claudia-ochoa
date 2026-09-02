@@ -13,6 +13,13 @@
       showToast("Non-functional prototype — for demonstration purposes only");
     });
   });
+  document.addEventListener('keydown', function(e){
+    if(e.key !== 'Enter' && e.key !== ' ') return;
+    var target = e.target.closest('.nav-mock[role="button"]');
+    if(!target) return;
+    e.preventDefault();
+    target.click();
+  });
   var mobileSearch = document.querySelector('.mobile-search');
   if(mobileSearch){
     mobileSearch.addEventListener('submit', function(e){
