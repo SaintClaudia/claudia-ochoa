@@ -15,6 +15,7 @@ Markers used in HTML files:
     <!-- CASE-STUDY-FOOTER:START --> ... <!-- CASE-STUDY-FOOTER:END -->
     <!-- LOVESAC-NAV:START --> ... <!-- LOVESAC-NAV:END -->
     <!-- LOVESAC-FOOTER:START --> ... <!-- LOVESAC-FOOTER:END -->
+    <!-- ANALYTICS:START --> ... <!-- ANALYTICS:END -->
 """
 
 import os, glob
@@ -22,6 +23,7 @@ import os, glob
 BASE = os.path.dirname(os.path.abspath(__file__))
 
 partials = [
+    ('_analytics.html',         '<!-- ANALYTICS:START -->',         '<!-- ANALYTICS:END -->'),
     ('_footer.html',            '<!-- FOOTER:START -->',            '<!-- FOOTER:END -->'),
     ('_portfolio-nav.html',     '<!-- PORTFOLIO-NAV:START -->',     '<!-- PORTFOLIO-NAV:END -->'),
     ('_contact-overlay.html',   '<!-- CONTACT-OVERLAY:START -->',   '<!-- CONTACT-OVERLAY:END -->'),

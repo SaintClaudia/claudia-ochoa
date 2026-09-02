@@ -19,6 +19,7 @@ Plain HTML, CSS, and vanilla JS. No frameworks, no build step, no dependencies. 
 ├── _footer.html                      # Shared footer partial (single source of truth)
 ├── _portfolio-nav.html               # Shared navigation for the homepage and 404 page
 ├── _contact-overlay.html             # Shared contact form for the homepage and 404 page
+├── _analytics.html                   # Shared Google Analytics bootstrap for every rendered page
 ├── _case-study-topbar.html           # Shared topbar template for the six case studies
 ├── _case-study-footer.html           # Shared footer for the six case studies
 ├── _lovesac-nav.html                 # Shared navigation for the Lovesac prototype pages
@@ -92,6 +93,7 @@ Shared markup is maintained in partial files and stamped into the applicable
 pages by `build.py`:
 
 - `_footer.html` — portfolio footer used by `index.html` and `404.html`
+- `_analytics.html` — Google Analytics bootstrap used by every rendered page
 - `_portfolio-nav.html` — navigation used by `index.html` and `404.html`
 - `_contact-overlay.html` — contact form used by `index.html` and `404.html`
 - `_case-study-topbar.html` — topbar used by all six case studies; its active
