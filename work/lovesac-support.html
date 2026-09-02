@@ -698,8 +698,9 @@ document.addEventListener('dragstart', function(e){ if (e.target.closest('img'))
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <div class="nav-mega-backdrop" id="navMegaBackdrop"></div>
+<!-- LOVESAC-STORE-DROP:START -->
 <div class="store-backdrop" id="storeBackdrop"></div>
-<div class="store-drop" id="storeDropdown">
+<div class="store-drop" id="storeDropdown" inert>
   <div class="store-drop-header">
     <h3>Find a store near you</h3>
     <button type="button" class="store-drop-close" id="storeDropClose" aria-label="Close">
@@ -713,29 +714,30 @@ document.addEventListener('dragstart', function(e){ if (e.target.closest('img'))
       <input type="text" id="storeModalInput" placeholder="Enter your zip code or city">
     </form>
     <div class="store-list" id="storeList">
-      <button type="button" class="store-item" data-lat="33.8462" data-lng="-84.3621">
-        <h4>Lovesac – Lenox Square</h4>
-        <p>3393 Peachtree Rd NE, Atlanta, GA</p>
-        <span class="store-distance">2.1 mi away</span>
+      <button type="button" class="store-item" data-lat="34.0716" data-lng="-118.3573">
+        <h4>Lovesac – The Grove</h4>
+        <p>189 The Grove Dr, Los Angeles, CA</p>
+        <span class="store-distance">1.6 mi away</span>
       </button>
-      <button type="button" class="store-item" data-lat="33.9304" data-lng="-84.3421">
-        <h4>Lovesac – Perimeter Mall</h4>
-        <p>4400 Ashford Dunwoody Rd, Dunwoody, GA</p>
-        <span class="store-distance">6.4 mi away</span>
+      <button type="button" class="store-item" data-lat="34.0583" data-lng="-118.4172">
+        <h4>Lovesac – Westfield Century City</h4>
+        <p>10250 Santa Monica Blvd, Los Angeles, CA</p>
+        <span class="store-distance">3.9 mi away</span>
       </button>
-      <button type="button" class="store-item" data-lat="33.8843" data-lng="-84.4649">
-        <h4>Lovesac – Cumberland Mall</h4>
-        <p>1000 Cumberland Mall SE, Atlanta, GA</p>
-        <span class="store-distance">9.8 mi away</span>
+      <button type="button" class="store-item" data-lat="34.1425" data-lng="-118.2551">
+        <h4>Lovesac – Glendale Galleria</h4>
+        <p>100 W Broadway, Glendale, CA</p>
+        <span class="store-distance">8.4 mi away</span>
       </button>
-      <button type="button" class="store-item" data-lat="34.0754" data-lng="-84.2963">
-        <h4>Lovesac – North Point Mall</h4>
-        <p>1000 North Point Cir, Alpharetta, GA</p>
-        <span class="store-distance">15.2 mi away</span>
+      <button type="button" class="store-item" data-lat="34.1863" data-lng="-118.6046">
+        <h4>Lovesac – Westfield Topanga</h4>
+        <p>6600 Topanga Canyon Blvd, Canoga Park, CA</p>
+        <span class="store-distance">17.3 mi away</span>
       </button>
     </div>
   </div>
 </div>
+<!-- LOVESAC-STORE-DROP:END -->
 
 <div class="account-backdrop" id="accountBackdrop"></div>
 <div class="account-drop" id="accountDropdown">

@@ -15,6 +15,7 @@ Markers used in HTML files:
     <!-- CASE-STUDY-FOOTER:START --> ... <!-- CASE-STUDY-FOOTER:END -->
     <!-- LOVESAC-NAV:START --> ... <!-- LOVESAC-NAV:END -->
     <!-- LOVESAC-FOOTER:START --> ... <!-- LOVESAC-FOOTER:END -->
+    <!-- LOVESAC-STORE-DROP:START --> ... <!-- LOVESAC-STORE-DROP:END -->
     <!-- ANALYTICS:START --> ... <!-- ANALYTICS:END -->
     <!-- HEAD-BASICS:START --> ... <!-- HEAD-BASICS:END -->
 """
@@ -43,6 +44,7 @@ partials = [
     ('_case-study-footer.html', '<!-- CASE-STUDY-FOOTER:START -->', '<!-- CASE-STUDY-FOOTER:END -->'),
     ('_lovesac-nav.html',       '<!-- LOVESAC-NAV:START -->',       '<!-- LOVESAC-NAV:END -->'),
     ('_lovesac-footer.html',    '<!-- LOVESAC-FOOTER:START -->',    '<!-- LOVESAC-FOOTER:END -->'),
+    ('_lovesac-store-drop.html', '<!-- LOVESAC-STORE-DROP:START -->', '<!-- LOVESAC-STORE-DROP:END -->'),
 ]
 
 files = (

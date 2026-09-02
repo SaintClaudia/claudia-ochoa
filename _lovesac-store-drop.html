@@ -1,0 +1,38 @@
+<div class="store-backdrop" id="storeBackdrop"></div>
+<div class="store-drop" id="storeDropdown" inert>
+  <div class="store-drop-header">
+    <h3>Find a store near you</h3>
+    <button type="button" class="store-drop-close" id="storeDropClose" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="store-drop-map" id="storeMap"></div>
+  <div class="store-drop-body">
+    <form class="store-drop-search" id="storeModalForm">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.2" y2="16.2"/></svg>
+      <input type="text" id="storeModalInput" placeholder="Enter your zip code or city">
+    </form>
+    <div class="store-list" id="storeList">
+      <button type="button" class="store-item" data-lat="34.0716" data-lng="-118.3573">
+        <h4>Lovesac – The Grove</h4>
+        <p>189 The Grove Dr, Los Angeles, CA</p>
+        <span class="store-distance">1.6 mi away</span>
+      </button>
+      <button type="button" class="store-item" data-lat="34.0583" data-lng="-118.4172">
+        <h4>Lovesac – Westfield Century City</h4>
+        <p>10250 Santa Monica Blvd, Los Angeles, CA</p>
+        <span class="store-distance">3.9 mi away</span>
+      </button>
+      <button type="button" class="store-item" data-lat="34.1425" data-lng="-118.2551">
+        <h4>Lovesac – Glendale Galleria</h4>
+        <p>100 W Broadway, Glendale, CA</p>
+        <span class="store-distance">8.4 mi away</span>
+      </button>
+      <button type="button" class="store-item" data-lat="34.1863" data-lng="-118.6046">
+        <h4>Lovesac – Westfield Topanga</h4>
+        <p>6600 Topanga Canyon Blvd, Canoga Park, CA</p>
+        <span class="store-distance">17.3 mi away</span>
+      </button>
+    </div>
+  </div>
+</div>
