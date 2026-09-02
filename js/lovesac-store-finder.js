@@ -38,20 +38,49 @@
     document.querySelectorAll('.store-item').forEach(function(item){
       var position = { lat: parseFloat(item.dataset.lat), lng: parseFloat(item.dataset.lng) };
       var name = item.querySelector('h4').textContent;
-      var marker = new google.maps.marker.AdvancedMarkerElement({ position: position, map: map, title: name });
+      var pin = new google.maps.marker.PinElement({
+        background: '#835844',
+        borderColor: '#6B4736',
+        glyphColor: '#EDE7DA'
+      });
+      var marker = new google.maps.marker.AdvancedMarkerElement({
+        position: position,
+        map: map,
+        title: name,
+        content: pin.element
+      });
       marker.addEventListener('gmp-click', function(){
-        infoWindow.setContent(name);
+        infoWindow.setContent(buildStoreTag(item));
         infoWindow.open({ map: map, anchor: marker });
       });
       item.addEventListener('click', function(){
         map.panTo(position);
         map.setZoom(13);
-        infoWindow.setContent(name);
+        infoWindow.setContent(buildStoreTag(item));
         infoWindow.open({ map: map, anchor: marker });
         document.querySelectorAll('.store-item').forEach(function(i){ i.classList.remove('active'); });
         item.classList.add('active');
       });
     });
+  }
+
+  function buildStoreTag(item){
+    var wrap = document.createElement('div');
+    wrap.className = 'store-map-tag';
+    var h4 = document.createElement('h4');
+    h4.textContent = item.querySelector('h4').textContent;
+    var p = document.createElement('p');
+    p.textContent = item.querySelector('p').textContent;
+    wrap.appendChild(h4);
+    wrap.appendChild(p);
+    var distanceEl = item.querySelector('.store-distance');
+    if(distanceEl){
+      var dist = document.createElement('span');
+      dist.className = 'store-map-tag-distance';
+      dist.textContent = distanceEl.textContent;
+      wrap.appendChild(dist);
+    }
+    return wrap;
   }
 
   function closeStoreDrop(){
