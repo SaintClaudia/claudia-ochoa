@@ -175,7 +175,8 @@ When adding new pages: use `<h2>` for section headings under the page `<h1>`, in
 
 - Case study thumbnails are compressed JPEG or WebP (photographic content) or PNG (flat UI screenshots) — never an uncompressed PNG of a photo
 - Fonts are preconnected via `<link rel="preconnect">`
-- No external JS dependencies
+- No framework or package-runtime dependencies
+- Leaflet map assets load on demand only when the prototype store finder opens
 
 ## Infrastructure
 
