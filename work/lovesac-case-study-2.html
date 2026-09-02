@@ -422,7 +422,13 @@ document.querySelectorAll('link[rel="preload"][as="style"]').forEach(function (l
 
 .rf-furniture-row .rf-fdim{flex:0.7; min-width:0;}
 
-.rf-furniture-remove{background:none; border:none; padding:2px; cursor:pointer; color:#5C4F42; flex-shrink:0; display:flex;}
+.rf-furniture-remove{
+    flex-shrink:0; display:flex; align-items:center; justify-content:center;
+    width:22px; height:22px; border-radius:50%; border:none; background:none;
+    color:#5C4F42; cursor:pointer; transition:color .2s, background .2s;
+  }
+
+.rf-furniture-remove:hover{color:#B3402F; background:#E1D6C4;}
 
 .rf-furniture-remove svg{width:13px; height:13px;}
 
@@ -439,7 +445,15 @@ document.querySelectorAll('link[rel="preload"][as="style"]').forEach(function (l
 
 .rf-results{margin-top:12px; font-size:11.5px;}
 
+.rf-results-header{display:flex; align-items:center; justify-content:space-between; gap:10px;}
+
+.rf-results-header .rf-results-summary{margin-bottom:0;}
+
 .rf-results-summary{font-weight:700; color:#3D3128; font-size:13px; margin-bottom:2px;}
+
+.rf-clear-btn{flex-shrink:0; background:none; border:none; padding:2px; font-family:inherit; font-size:10.5px; color:#5C4F42; text-decoration:underline; cursor:pointer; transition:color .2s;}
+
+.rf-clear-btn:hover{color:#3D3128;}
 
 .rf-results-sub{color:#5C4F42; margin-bottom:8px; line-height:1.4;}
 
@@ -811,13 +825,13 @@ document.querySelectorAll('link[rel="preload"][as="style"]').forEach(function (l
                   <div class="rf-field-label">Room dimensions</div>
                   <div class="rf-field-help">Enter your room dimensions to see what fits.</div>
                   <div class="rf-room-row">
-                    <label>Width (in)<input type="number" id="rfRoomWidth" min="1" placeholder="e.g. 144"></label>
-                    <label>Length (in)<input type="number" id="rfRoomLength" min="1" placeholder="e.g. 168"></label>
+                    <label>Width (in)<input type="number" id="rfRoomWidth" min="1" placeholder="e.g. 144" value="144" readonly></label>
+                    <label>Length (in)<input type="number" id="rfRoomLength" min="1" placeholder="e.g. 168" value="168" readonly></label>
                   </div>
                 </div>
                 <div class="rf-field-group">
                   <div class="rf-field-label">See it come together</div>
-                  <div class="rf-field-help">Add any furniture you want to keep. We'll factor it into the fit.</div>
+                  <div class="rf-field-help">Add any furniture, rugs, lighting, or other pieces you want to keep. We'll include them in your room layout.</div>
                   <div class="rf-furniture-list" id="rfFurnitureList"></div>
                   <button type="button" class="rf-add-btn" id="rfAddFurniture">
                     <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
@@ -1661,6 +1675,21 @@ document.querySelectorAll('link[rel="preload"][as="style"]').forEach(function (l
   addBtn.addEventListener('click', addFurnitureRow);
   addFurnitureRow();
 
+  function resetRoomFitForm(){
+    roomWidthEl.value = '144';
+    roomLengthEl.value = '168';
+    list.innerHTML = '';
+    addFurnitureRow();
+    errorEl.style.display = 'none';
+    resultsEl.style.display = 'none';
+    resultsEl.innerHTML = '';
+  }
+
+  resultsEl.addEventListener('click', function(e){
+    if(!e.target.closest('#rfClearBtn')) return;
+    resetRoomFitForm();
+  });
+
   checkBtn.addEventListener('click', function(){
     var roomW = parseFloat(roomWidthEl.value);
     var roomL = parseFloat(roomLengthEl.value);
@@ -1692,7 +1721,7 @@ document.querySelectorAll('link[rel="preload"][as="style"]').forEach(function (l
     var fitCount = fitting.length;
 
     resultsEl.innerHTML =
-      '<div class="rf-results-summary">' + fitCount + ' of ' + products.length + ' setups will fit</div>' +
+      '<div class="rf-results-header"><div class="rf-results-summary">' + fitCount + ' of ' + products.length + ' setups will fit</div><button type="button" class="rf-clear-btn" id="rfClearBtn">Clear</button></div>' +
       '<div class="rf-results-sub">Based on ' + roomW + '"\u00d7' + roomL + '" of floor space' + (furnitureArea > 0 ? ', minus what\u2019s already in the room' : '') + '.</div>' +
       (fitCount
         ? fitting.map(function(r){
