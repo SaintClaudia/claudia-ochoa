@@ -23,13 +23,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap"></noscript>
-  <script>
-  document.querySelectorAll('link[rel="preload"][as="style"]').forEach(function (link) {
-    link.addEventListener('load', function () {
-      link.rel = 'stylesheet';
-    });
-  });
-  </script>
+
+<script src="/js/font-preload.js"></script>
   <link rel="stylesheet" href="/css/case-study.css">
   <script>
     (function(){

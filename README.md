@@ -40,6 +40,7 @@ Plain HTML, CSS, and vanilla JS. No frameworks, no build step, no dependencies. 
 │                                      # prototype pages — tokens, nav, drawers, common sections, and footer
 ├── js/
 │   ├── main.js                       # Shared theme, contact form, and portfolio behavior
+│   ├── font-preload.js               # Activates asynchronously preloaded font stylesheets site-wide
 │   ├── case-study-topbar.js          # Shared hide/show-on-scroll behavior for case-study topbars
 │   ├── case-study-toc.js             # Shared case-study section rail navigation and active states
 │   ├── case-study-tooltips.js        # Lazy-loads case-study series tooltip images on interaction
