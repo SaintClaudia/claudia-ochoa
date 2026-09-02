@@ -1546,8 +1546,8 @@ document.addEventListener('dragstart', function(e){ if (e.target.closest('img'))
       <div class="space-field-label">Room dimensions</div>
       <div class="space-field-help">Enter your room dimensions to see what fits.</div>
       <div class="space-room-row">
-        <label>Width (in)<input type="number" id="roomWidth" min="1" placeholder="e.g. 144" value="144" readonly></label>
-        <label>Length (in)<input type="number" id="roomLength" min="1" placeholder="e.g. 168" value="168" readonly></label>
+        <label>Width (in)<input type="number" id="roomWidth" min="1" placeholder="e.g. 144"></label>
+        <label>Length (in)<input type="number" id="roomLength" min="1" placeholder="e.g. 168"></label>
       </div>
     </div>
     <div class="space-field-group">
@@ -1938,8 +1938,8 @@ document.addEventListener('dragstart', function(e){ if (e.target.closest('img'))
   addFurnitureRow();
 
   function resetRoomFitForm(){
-    roomWidthEl.value = '144';
-    roomLengthEl.value = '168';
+    roomWidthEl.value = '';
+    roomLengthEl.value = '';
     list.innerHTML = '';
     addFurnitureRow();
     errorEl.style.display = 'none';
@@ -2016,6 +2016,10 @@ document.addEventListener('dragstart', function(e){ if (e.target.closest('img'))
   }
   window.applyRoomFitBadges = applyRoomFitBadges;
 
+  function thumbSrc(src){
+    return src ? src.replace(/\.(webp|jpe?g)$/i, '-thumb.webp') : src;
+  }
+
   function renderConfigurations(results, roomW, roomL, fitCount){
     var groups = { small: [], medium: [], large: [] };
     results.forEach(function(r){
@@ -2030,7 +2034,7 @@ document.addEventListener('dragstart', function(e){ if (e.target.closest('img'))
         '<div class="space-config-group-title">' + configLabel(products[items[0].idx]) + ' · ' + items.length + (items.length === 1 ? ' option' : ' options') + '</div>' +
         items.map(function(r){
           return '<button type="button" class="space-config-card" data-idx="' + r.idx + '">' +
-            '<div class="space-config-thumb">' + (r.img ? '<img src="' + r.img + '" alt="' + r.name + '">' : '') + '</div>' +
+            '<div class="space-config-thumb">' + (r.img ? '<img src="' + thumbSrc(r.img) + '" alt="' + r.name + '">' : '') + '</div>' +
             '<div class="space-config-info">' +
               '<div class="space-config-name">' + r.name + '</div>' +
               '<div class="space-config-meta">' + r.meta + ' · ' + r.w + '"×' + r.d + '"</div>' +

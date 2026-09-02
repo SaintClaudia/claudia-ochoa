@@ -825,8 +825,8 @@ document.querySelectorAll('link[rel="preload"][as="style"]').forEach(function (l
                   <div class="rf-field-label">Room dimensions</div>
                   <div class="rf-field-help">Enter your room dimensions to see what fits.</div>
                   <div class="rf-room-row">
-                    <label>Width (in)<input type="number" id="rfRoomWidth" min="1" placeholder="e.g. 144" value="144" readonly></label>
-                    <label>Length (in)<input type="number" id="rfRoomLength" min="1" placeholder="e.g. 168" value="168" readonly></label>
+                    <label>Width (in)<input type="number" id="rfRoomWidth" min="1" placeholder="e.g. 144"></label>
+                    <label>Length (in)<input type="number" id="rfRoomLength" min="1" placeholder="e.g. 168"></label>
                   </div>
                 </div>
                 <div class="rf-field-group">
@@ -1622,15 +1622,15 @@ document.querySelectorAll('link[rel="preload"][as="style"]').forEach(function (l
 <script>
 (function(){
   var products = [
-    {name:'The Weekend Lounger', price:2999, w:100, d:66, img:'/images/sactionals-weekend-lounger.webp'},
-    {name:'The Movie Night Sectional', price:4499, w:130, d:84, img:'/images/sactionals-movie-night-sectional.webp'},
-    {name:'The Everyday L-Shape', price:3250, w:112, d:88, img:'/images/sactionals-everyday-l-shape.webp'},
-    {name:'The Family Room Corner', price:5024, w:128, d:66, img:'/images/sactionals-family-room-corner.jpeg'},
-    {name:'The Game Day U-Shape', price:6112, w:156, d:96, img:'/images/sactionals-game-day-u-shape.webp'},
-    {name:'The Compact Loveseat', price:1816, w:64, d:38, img:'/images/sactionals-compact-loveseat.webp'},
-    {name:'The Reading Nook', price:2532, w:84, d:38, img:'/images/sactionals-reading-nook.webp'},
-    {name:'The Grand Sectional', price:7676, w:180, d:100, img:'/images/sactionals-grand-sectional.webp'},
-    {name:'The Media Room Wrap', price:7440, w:140, d:100, img:'/images/sactionals-media-room-wrap.webp'}
+    {name:'The Weekend Lounger', price:2999, w:100, d:66, img:'/images/sactionals-weekend-lounger-thumb.webp'},
+    {name:'The Movie Night Sectional', price:4499, w:130, d:84, img:'/images/sactionals-movie-night-sectional-thumb.webp'},
+    {name:'The Everyday L-Shape', price:3250, w:112, d:88, img:'/images/sactionals-everyday-l-shape-thumb.webp'},
+    {name:'The Family Room Corner', price:5024, w:128, d:66, img:'/images/sactionals-family-room-corner-thumb.webp'},
+    {name:'The Game Day U-Shape', price:6112, w:156, d:96, img:'/images/sactionals-game-day-u-shape-thumb.webp'},
+    {name:'The Compact Loveseat', price:1816, w:64, d:38, img:'/images/sactionals-compact-loveseat-thumb.webp'},
+    {name:'The Reading Nook', price:2532, w:84, d:38, img:'/images/sactionals-reading-nook-thumb.webp'},
+    {name:'The Grand Sectional', price:7676, w:180, d:100, img:'/images/sactionals-grand-sectional-thumb.webp'},
+    {name:'The Media Room Wrap', price:7440, w:140, d:100, img:'/images/sactionals-media-room-wrap-thumb.webp'}
   ];
 
   var closedView = document.getElementById('rfClosed');
@@ -1676,8 +1676,8 @@ document.querySelectorAll('link[rel="preload"][as="style"]').forEach(function (l
   addFurnitureRow();
 
   function resetRoomFitForm(){
-    roomWidthEl.value = '144';
-    roomLengthEl.value = '168';
+    roomWidthEl.value = '';
+    roomLengthEl.value = '';
     list.innerHTML = '';
     addFurnitureRow();
     errorEl.style.display = 'none';
