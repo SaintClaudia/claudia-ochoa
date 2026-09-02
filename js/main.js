@@ -57,56 +57,6 @@ window.addEventListener('scroll', () => {
   lastScroll = current;
 });
 
-// Mobile hamburger
-const burger = document.getElementById('burger');
-const mobileMenu = document.getElementById('mobile-menu');
-if (burger && mobileMenu) {
-  burger.addEventListener('click', () => {
-    const open = mobileMenu.classList.toggle('open');
-    burger.setAttribute('aria-expanded', open);
-  });
-  // Close on link click
-  mobileMenu.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => mobileMenu.classList.remove('open'));
-  });
-}
-
-// Progress bar scroll
-const progressFill = document.querySelector('.progress-bar-fill');
-if (progressFill) {
-  window.addEventListener('scroll', () => {
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const pct = docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0;
-    progressFill.style.width = pct + '%';
-  });
-}
-
-// === ABOUT PAGE DOCK ACCORDION ===
-const dockItems = document.querySelectorAll('.dock-item');
-const aboutPanels = document.querySelectorAll('.about-panel');
-dockItems.forEach((item) => {
-  item.addEventListener('click', () => {
-    const target = item.dataset.panel;
-    const panel = document.getElementById(`panel-${target}`);
-    const isOpen = item.classList.contains('active');
-    dockItems.forEach((i) => { i.classList.remove('active'); i.setAttribute('aria-expanded', 'false'); });
-    aboutPanels.forEach((p) => p.classList.remove('open'));
-    if (!isOpen) {
-      item.classList.add('active');
-      item.setAttribute('aria-expanded', 'true');
-      panel?.classList.add('open');
-    }
-  });
-});
-
-// === ABOUT PAGE EXPERIENCE TIMELINE ===
-const runButton = document.querySelector('.run-button');
-const timeline = document.querySelector('.timeline');
-runButton?.addEventListener('click', () => {
-  const open = timeline.classList.toggle('open');
-  runButton.textContent = open ? '■ stop experience.sh' : '▶ run experience.sh';
-});
-
 // === CONTACT OVERLAY ===
 const contactToggle = document.getElementById('contact-toggle');
 const mobileContactToggle = document.getElementById('mobile-contact-toggle');
@@ -153,7 +103,6 @@ if (openedFromContactHash) openContactOverlay();
 [contactToggle, mobileContactToggle, footerContactToggle].forEach((toggle) => {
   toggle?.addEventListener('click', (e) => {
     e.preventDefault();
-    mobileMenu?.classList.remove('open');
     openContactOverlay();
   });
 });
