@@ -31,10 +31,12 @@ Plain HTML, CSS, and vanilla JS. No frameworks, no build step, no dependencies. 
 ├── robots.txt                        # Crawl directives
 ├── CNAME                             # Custom domain for GitHub Pages
 ├── css/
-│   └── case-study.css                # The whole design system — colors, type, nav, hero, buttons, footer,
+│   ├── case-study.css                # The whole design system — colors, type, nav, hero, buttons, footer,
 │                                      # contact overlay — for index.html, 404.html, and all 6 case studies.
 │                                      # Not used by the Lovesac redesign prototype pages (a deliberately
 │                                      # separate system).
+│   └── lovesac-prototype.css          # Shared foundation for the Lovesac Support and What to Expect
+│                                      # prototype pages — tokens, nav, drawers, common sections, and footer
 ├── js/
 │   ├── main.js                       # Shared theme, contact form, and portfolio behavior
 │   ├── case-study-topbar.js          # Shared hide/show-on-scroll behavior for case-study topbars
@@ -126,7 +128,8 @@ specific to that page (the homepage's work-grid card, a case study's narrative
 sections, charts, demos). This file is unrelated to the Lovesac redesign prototype
 pages (`lovesac-redesign.html`, `lovesac-sactionals.html`, `lovesac-what-to-expect.html`,
 `lovesac-support.html`), which mock the real Lovesac site's own look and are a
-deliberately separate system with their own self-contained styles.
+deliberately separate system. Shared Support and What to Expect styles live in
+`css/lovesac-prototype.css`; their inline style blocks contain page-specific rules.
 
 ## SEO
 
