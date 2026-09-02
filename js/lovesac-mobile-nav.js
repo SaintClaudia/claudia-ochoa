@@ -12,7 +12,10 @@
     tiers.style.height = el.scrollHeight + 'px';
   }
   function resetTiers(){
-    menu.querySelectorAll('.mobile-tier-2.active').forEach(function(t){ t.classList.remove('active'); });
+    menu.querySelectorAll('.mobile-tier-2.active').forEach(function(t){
+      t.classList.remove('active');
+      t.inert = true;
+    });
     syncHeight(tier1);
   }
   function closeMenu(){
@@ -48,13 +51,16 @@
       var target = document.getElementById(row.dataset.tier);
       if(target){
         target.classList.add('active');
+        target.inert = false;
         syncHeight(target);
       }
     });
   });
   menu.querySelectorAll('.mobile-tier-back').forEach(function(backBtn){
     backBtn.addEventListener('click', function(){
-      backBtn.closest('.mobile-tier-2').classList.remove('active');
+      var tier = backBtn.closest('.mobile-tier-2');
+      tier.classList.remove('active');
+      tier.inert = true;
       syncHeight(tier1);
     });
   });

@@ -7,6 +7,7 @@
 
   function closeCartDrop(){
     drop.classList.remove('open');
+    drop.inert = true;
     backdrop.classList.remove('open');
     toggle.setAttribute('aria-expanded', 'false');
     document.querySelector('nav').classList.remove('dropdown-open');
@@ -35,6 +36,7 @@
       drop.style.top = navBottom + 'px';
       backdrop.style.top = navBottom + 'px';
       drop.classList.add('open');
+      drop.inert = false;
       backdrop.classList.add('open');
       toggle.setAttribute('aria-expanded', 'true');
       document.querySelector('nav').classList.add('dropdown-open');

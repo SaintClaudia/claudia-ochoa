@@ -4,8 +4,29 @@
   var backdrop = document.getElementById('storeBackdrop');
   var closeBtn = document.getElementById('storeDropClose');
   var form = document.getElementById('storeModalForm');
-  if(!toggle || !drop || !backdrop || typeof L === 'undefined') return;
+  if(!toggle || !drop || !backdrop) return;
   var map;
+  var leafletPromise;
+
+  function loadLeaflet(){
+    if(typeof L !== 'undefined') return Promise.resolve();
+    if(leafletPromise) return leafletPromise;
+    var css = document.createElement('link');
+    css.rel = 'stylesheet';
+    css.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+    css.integrity = 'sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=';
+    css.crossOrigin = '';
+    document.head.appendChild(css);
+    leafletPromise = new Promise(function(resolve){
+      var script = document.createElement('script');
+      script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+      script.integrity = 'sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=';
+      script.crossOrigin = '';
+      script.onload = resolve;
+      document.body.appendChild(script);
+    });
+    return leafletPromise;
+  }
 
   function initMap(){
     if(map) return;
@@ -28,6 +49,7 @@
 
   function closeStoreDrop(){
     drop.classList.remove('open');
+    drop.inert = true;
     backdrop.classList.remove('open');
     toggle.setAttribute('aria-expanded', 'false');
     document.querySelector('nav').classList.remove('dropdown-open');
@@ -56,11 +78,14 @@
       drop.style.top = navBottom + 'px';
       backdrop.style.top = navBottom + 'px';
       drop.classList.add('open');
+      drop.inert = false;
       backdrop.classList.add('open');
       toggle.setAttribute('aria-expanded', 'true');
       document.querySelector('nav').classList.add('dropdown-open');
-      initMap();
-      setTimeout(function(){ if(map) map.invalidateSize(); }, 220);
+      loadLeaflet().then(function(){
+        initMap();
+        setTimeout(function(){ if(map) map.invalidateSize(); }, 220);
+      });
     } else {
       toggle.setAttribute('aria-expanded', 'false');
     }

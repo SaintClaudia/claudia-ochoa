@@ -6,6 +6,7 @@
   function closeAllBars(){
     bars.forEach(function(b){
       b.panel.classList.remove('open');
+      b.panel.inert = true;
       b.toggle.setAttribute('aria-expanded', 'false');
       b.input.value = '';
     });
@@ -23,6 +24,7 @@
     if(window.__closeCartDrop) window.__closeCartDrop();
     if(window.__closeSpaceDrop) window.__closeSpaceDrop();
     b.panel.classList.add('open');
+    b.panel.inert = false;
     b.toggle.setAttribute('aria-expanded', 'true');
     setTimeout(function(){ b.input.focus(); }, 200);
   }
