@@ -1,8 +1,20 @@
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3G6X2P2669"></script>
+<!-- Google Analytics loads after the critical rendering window. -->
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-3G6X2P2669');
+  (function () {
+    function loadAnalytics() {
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      window.gtag('js', new Date());
+      window.gtag('config', 'G-3G6X2P2669');
+
+      var script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-3G6X2P2669';
+      document.head.appendChild(script);
+    }
+
+    window.addEventListener('load', function () {
+      window.setTimeout(loadAnalytics, 3000);
+    }, { once: true });
+  }());
 </script>

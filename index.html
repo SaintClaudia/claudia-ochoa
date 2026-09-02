@@ -2,13 +2,25 @@
 <html lang="en">
 <head>
 <!-- ANALYTICS:START -->
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3G6X2P2669"></script>
+<!-- Google Analytics loads after the critical rendering window. -->
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-3G6X2P2669');
+  (function () {
+    function loadAnalytics() {
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      window.gtag('js', new Date());
+      window.gtag('config', 'G-3G6X2P2669');
+
+      var script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-3G6X2P2669';
+      document.head.appendChild(script);
+    }
+
+    window.addEventListener('load', function () {
+      window.setTimeout(loadAnalytics, 3000);
+    }, { once: true });
+  }());
 </script>
 <!-- ANALYTICS:END -->
 <!-- HEAD-BASICS:START -->
@@ -37,7 +49,7 @@
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap"></noscript>
 
-<script src="/js/font-preload.js"></script>
+<script defer src="/js/font-preload.js"></script>
   <link rel="stylesheet" href="css/case-study.css">
   <style>
     /* Homepage-only CSS. Everything shared with the case studies (colors,
@@ -134,9 +146,9 @@
 <main id="main-content" class="page">
   <section class="home-hero">
     <div class="wrap">
-      <div class="eyebrow reveal">Claudia Ochoa</div>
-      <h1 class="reveal">Design from my <em>point of view</em>.</h1>
-      <p class="hero-sub reveal">I work across disciplines to turn complex problems into clear, connected experiences. Because the best solutions rarely come from one area of expertise.</p>
+      <div class="eyebrow">Claudia Ochoa</div>
+      <h1>Design from my <em>point of view</em>.</h1>
+      <p class="hero-sub">I work across disciplines to turn complex problems into clear, connected experiences. Because the best solutions rarely come from one area of expertise.</p>
     </div>
   </section>
 
@@ -147,7 +159,10 @@
         <div class="featured-wrap">
           <a href="work/lovesac-case-study.html" class="work-card featured">
             <div class="card-image">
-              <img src="images/lovesac-redesign-thumb.jpg" srcset="images/lovesac-redesign-thumb-640.jpg 640w, images/lovesac-redesign-thumb.jpg 1280w" sizes="(max-width: 720px) 100vw, 1200px" width="1280" height="800" alt="Lovesac Sactionals redesign concept — UX case study by Claudia Ochoa" fetchpriority="high">
+              <picture>
+                <source type="image/webp" srcset="images/lovesac-redesign-thumb-640.webp 640w, images/lovesac-redesign-thumb-960.webp 960w, images/lovesac-redesign-thumb.webp 1280w" sizes="(max-width: 720px) calc(100vw - 64px), 1036px">
+                <img src="images/lovesac-redesign-thumb.jpg" srcset="images/lovesac-redesign-thumb-640.jpg 640w, images/lovesac-redesign-thumb.jpg 1280w" sizes="(max-width: 720px) calc(100vw - 64px), 1036px" width="1280" height="800" alt="Lovesac Sactionals redesign concept — UX case study by Claudia Ochoa" fetchpriority="high" decoding="async">
+              </picture>
             </div>
           </a>
           <div class="card-body">

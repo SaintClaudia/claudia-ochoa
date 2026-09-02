@@ -2,13 +2,25 @@
 <html lang="en">
 <head>
 <!-- ANALYTICS:START -->
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3G6X2P2669"></script>
+<!-- Google Analytics loads after the critical rendering window. -->
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-3G6X2P2669');
+  (function () {
+    function loadAnalytics() {
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      window.gtag('js', new Date());
+      window.gtag('config', 'G-3G6X2P2669');
+
+      var script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-3G6X2P2669';
+      document.head.appendChild(script);
+    }
+
+    window.addEventListener('load', function () {
+      window.setTimeout(loadAnalytics, 3000);
+    }, { once: true });
+  }());
 </script>
 <!-- ANALYTICS:END -->
 <!-- HEAD-BASICS:START -->
@@ -54,7 +66,7 @@
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"></noscript>
 
-<script src="/js/font-preload.js"></script>
+<script defer src="/js/font-preload.js"></script>
 <link rel="stylesheet" href="/css/lovesac-prototype.css">
 <style>
 
