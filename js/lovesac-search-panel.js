@@ -37,4 +37,5 @@
   document.addEventListener('keydown', function(e){
     if(e.key === 'Escape') closeAllBars();
   });
+  window.addEventListener('scroll', closeAllBars, {passive:true});
 })();
