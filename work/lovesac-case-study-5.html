@@ -32,15 +32,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- HEAD-BASICS:END -->
 <title>Case Study 05 · Development — Claudia Ochoa</title>
-<meta name="description" content="What the automated scores don’t catch — security headers, console health, and the manual testing behind the Lovesac redesign’s accessibility and agentic browsing claims.">
+<meta name="description" content="What the automated scores don't catch — security headers, console health, and the manual testing behind the Lovesac redesign's accessibility and agentic browsing claims.">
 <meta property="og:title" content="Case Study 05 · Development — Claudia Ochoa">
-<meta property="og:description" content="What the automated scores don’t catch — security headers, console health, and the manual testing behind the Lovesac redesign’s accessibility and agentic browsing claims.">
+<meta property="og:description" content="What the automated scores don't catch — security headers, console health, and the manual testing behind the Lovesac redesign's accessibility and agentic browsing claims.">
 <meta property="og:url" content="https://claudiaochoa.co/work/lovesac-case-study-5.html">
 <meta property="og:type" content="article">
 <meta property="og:image" content="https://claudiaochoa.co/images/lovesac-redesign-thumb.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Case Study 05 · Development — Claudia Ochoa">
-<meta name="twitter:description" content="What the automated scores don’t catch — security headers, console health, and the manual testing behind the Lovesac redesign’s accessibility and agentic browsing claims.">
+<meta name="twitter:description" content="What the automated scores don't catch — security headers, console health, and the manual testing behind the Lovesac redesign's accessibility and agentic browsing claims.">
 <meta name="twitter:image" content="https://claudiaochoa.co/images/lovesac-redesign-thumb.jpg">
 <link rel="canonical" href="https://claudiaochoa.co/work/lovesac-case-study-5.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -298,8 +298,8 @@
         <div><span class="num">The Thesis</span></div>
         <div></div>
       </div>
-      <p class="pull">An automated score tells you a check passed. It doesn’t tell you whether anyone actually had a good experience.</p>
-      <p class="body-copy" style="color:#D9CBB8; margin-top:20px; max-width:62ch;">Lighthouse, PageSpeed, and security scanners are genuinely useful — they catch real, fixable problems fast, and every score cited earlier in this series is real. But they’re pattern-matchers, not people. A heuristic evaluation is the manual layer on top: expert review against known usability principles, plus actually using the thing the way someone real would. This case study applies that layer to four claims made earlier in the series.</p>
+      <p class="pull">An automated score tells you a check passed. It doesn't tell you whether anyone actually had a good experience.</p>
+      <p class="body-copy" style="color:#D9CBB8; margin-top:20px; max-width:62ch;">Lighthouse, PageSpeed, and security scanners are genuinely useful — they catch real, fixable problems fast, and every score cited earlier in this series is real. But they're pattern-matchers, not people. A heuristic evaluation is the manual layer on top: expert review against known usability principles, plus actually using the thing the way someone real would. This case study applies that layer to four claims made earlier in the series.</p>
     </div>
   </div>
 </section>
@@ -309,12 +309,12 @@
     <div class="section-head">
       <div><span class="num">01 · Security Headers</span></div>
       <div>
-        <h2>A grade isn’t the same as being safe.</h2>
-        <p class="lede">Header scanners check whether a policy exists — not whether it’s configured well, or whether one obvious gap got missed entirely. Reading the raw response headers directly tells a fuller story than a badge does.</p>
+        <h2>A grade isn't the same as being safe.</h2>
+        <p class="lede">Header scanners check whether a policy exists — not whether it's configured well, or whether one obvious gap got missed entirely. Reading the raw response headers directly tells a fuller story than a badge does.</p>
       </div>
     </div>
 
-    <p class="body-copy">Lovesac.com actually gets a lot right here: it ships a Content-Security-Policy, a Permissions-Policy, HSTS, and the smaller headers that are easy to skip. What it’s missing is <strong>X-Frame-Options</strong> — the one header whose entire job is stopping another site from loading yours inside an invisible frame and tricking a visitor into clicking something they didn’t mean to. That single gap is enough to cap an otherwise strong header set at a B.</p>
+    <p class="body-copy">Lovesac.com actually gets a lot right here: it ships a Content-Security-Policy, a Permissions-Policy, HSTS, and the smaller headers that are easy to skip. What it's missing is <strong>X-Frame-Options</strong> — the one header whose entire job is stopping another site from loading yours inside an invisible frame and tricking a visitor into clicking something they didn't mean to. That single gap is enough to cap an otherwise strong header set at a B.</p>
 
     <p class="apa-label"><span class="apa-num">Table 1</span><span class="apa-title">Response Headers, Lovesac.com vs. This Redesign</span></p>
     <div class="table-scroll-wrap">
@@ -362,11 +362,11 @@
       </table>
       </div>
     </div>
-    <p class="apa-note"><em>Note.</em> Headers retrieved directly from the live response via curl, August 30, 2026. Letter grades reflect securityheaders.com’s methodology: Lovesac.com scores a B, capped by the missing header; this redesign scores an A+ with all six present.</p>
+    <p class="apa-note"><em>Note.</em> Headers retrieved directly from the live response via curl, August 30, 2026. Letter grades reflect securityheaders.com's methodology: Lovesac.com scores a B, capped by the missing header; this redesign scores an A+ with all six present.</p>
 
     <div class="context-strip">
       <span class="tag">Why this took reading raw headers, not a badge</span>
-      A grade only helps if you already know to go check it. This redesign’s own headers weren’t a given either — X-Frame-Options and Strict-Transport-Security were already in place, but Content-Security-Policy and Permissions-Policy needed a Cloudflare Worker built specifically to add them, then a headless-browser sweep of every page on the site to confirm nothing broke before it went anywhere near real traffic. The badge is the summary. The verification is the actual work.
+      A grade only helps if you already know to go check it. This redesign's own headers weren't a given either — X-Frame-Options and Strict-Transport-Security were already in place, but Content-Security-Policy and Permissions-Policy needed a Cloudflare Worker built specifically to add them, then a headless-browser sweep of every page on the site to confirm nothing broke before it went anywhere near real traffic. The badge is the summary. The verification is the actual work.
     </div>
   </div>
 </section>
@@ -376,8 +376,8 @@
     <div class="section-head">
       <div><span class="num">02 · Console Health</span></div>
       <div>
-        <h2>What’s running, whether you asked for it or not.</h2>
-        <p class="lede">A clean-looking homepage says nothing about what’s happening underneath it. Opening the console on both sites for a few seconds tells a very different story than either one tells on its own.</p>
+        <h2>What's running, whether you asked for it or not.</h2>
+        <p class="lede">A clean-looking homepage says nothing about what's happening underneath it. Opening the console on both sites for a few seconds tells a very different story than either one tells on its own.</p>
       </div>
     </div>
 
@@ -401,7 +401,7 @@
     </div>
     <p class="apa-note"><em>Note.</em> Captured via the Chrome DevTools Protocol against each live homepage, August 30, 2026. Third-party tracking scripts can change independent of either page.</p>
 
-    <p class="body-copy" style="margin-top:28px;">None of this breaks the page a visitor actually sees — that’s exactly what makes it easy to miss. A heuristic evaluation isn’t only “does it look right,” it’s “what else is happening that a visual review alone wouldn’t catch.” Every line on the left is a third-party script — consent management, an ad pixel, an A/B testing tag — running in the background of every visit, misconfigured or not, whether or not the visitor ever notices.</p>
+    <p class="body-copy" style="margin-top:28px;">None of this breaks the page a visitor actually sees — that's exactly what makes it easy to miss. A heuristic evaluation isn't only “does it look right,” it's “what else is happening that a visual review alone wouldn't catch.” Every line on the left is a third-party script — consent management, an ad pixel, an A/B testing tag — running in the background of every visit, misconfigured or not, whether or not the visitor ever notices.</p>
   </div>
 </section>
 
@@ -411,16 +411,16 @@
       <div><span class="num">03 · Accessibility</span></div>
       <div>
         <h2>100/100 is a ceiling, not a floor.</h2>
-        <p class="lede">The redesign scores a perfect 100/100 on Lighthouse accessibility (see the Deep Dive). That number is real — and it’s also the easiest one in this whole series to over-trust.</p>
+        <p class="lede">The redesign scores a perfect 100/100 on Lighthouse accessibility (see the Deep Dive). That number is real — and it's also the easiest one in this whole series to over-trust.</p>
       </div>
     </div>
 
-    <p class="body-copy">Lighthouse’s accessibility audit is a checklist: does every image have an alt attribute, does every control have a name, does contrast clear a ratio. It can tell you nothing is obviously broken. It cannot tell you whether that alt text is actually useful, whether the page makes sense read aloud in order, or whether a screen reader user comes away understanding what the page was trying to say.</p>
+    <p class="body-copy">Lighthouse's accessibility audit is a checklist: does every image have an alt attribute, does every control have a name, does contrast clear a ratio. It can tell you nothing is obviously broken. It cannot tell you whether that alt text is actually useful, whether the page makes sense read aloud in order, or whether a screen reader user comes away understanding what the page was trying to say.</p>
 
     <ul class="why-list">
-      <li><span class="mark">1</span><span><strong>Alt text existing isn’t the same as alt text helping.</strong> The score checks whether the attribute is present. Listening checks whether hearing it out loud tells you anything you needed to know, or just that an image is there.</span></li>
-      <li><span class="mark">2</span><span><strong>A valid reading order isn’t the same as a reading order that makes sense.</strong> The audit confirms headings descend in sequence. It has no opinion on whether that sequence is how a person would actually want to explore the page.</span></li>
-      <li><span class="mark">3</span><span><strong>An accessible name being present isn’t the same as it being clear.</strong> A button can pass the check and still leave a screen reader user guessing at what happens when they activate it.</span></li>
+      <li><span class="mark">1</span><span><strong>Alt text existing isn't the same as alt text helping.</strong> The score checks whether the attribute is present. Listening checks whether hearing it out loud tells you anything you needed to know, or just that an image is there.</span></li>
+      <li><span class="mark">2</span><span><strong>A valid reading order isn't the same as a reading order that makes sense.</strong> The audit confirms headings descend in sequence. It has no opinion on whether that sequence is how a person would actually want to explore the page.</span></li>
+      <li><span class="mark">3</span><span><strong>An accessible name being present isn't the same as it being clear.</strong> A button can pass the check and still leave a screen reader user guessing at what happens when they activate it.</span></li>
     </ul>
 
     <p class="body-copy" style="margin-top:24px;">Getting past the score meant actually listening to both sites end to end with a screen reader, not just confirming the audit had passed. Press play below to hear the announcement order each one gives — synthesized live in your browser, the same comparison built into the Deep Dive.</p>
@@ -453,15 +453,15 @@
             <button type="button" class="a11y-stop" id="stop-redesign" aria-label="Stop and reset to beginning">&#9632;</button>
           </div>
           <div class="a11y-status" id="status-redesign">Stopped &middot; 0%</div>
-          <p class="a11y-caption">The redesign’s own copy carries it &mdash; headline, trial terms, section titles read back almost exactly as written, giving the brand an actual voice instead of a list of unlabeled controls.</p>
+          <p class="a11y-caption">The redesign's own copy carries it &mdash; headline, trial terms, section titles read back almost exactly as written, giving the brand an actual voice instead of a list of unlabeled controls.</p>
         </div>
       </div>
     </div>
-    <p class="apa-note">Synthesized live with your browser’s built-in speech synthesis (Web Speech API) &mdash; not a recording. The Lovesac.com script is approximated from a markup review of the live site rather than a captured screen-reader session and can drift as the site updates; the redesign script matches its own case study page’s current markup.</p>
+    <p class="apa-note">Synthesized live with your browser's built-in speech synthesis (Web Speech API) &mdash; not a recording. The Lovesac.com script is approximated from a markup review of the live site rather than a captured screen-reader session and can drift as the site updates; the redesign script matches its own case study page's current markup.</p>
 
     <div class="context-strip">
-      <span class="tag">The score didn’t ask this question</span>
-      A perfect Lighthouse score has no opinion on whether a screen reader user actually enjoys using the site. That’s a heuristic question, not an automated one — and the only honest way to answer it is to listen.
+      <span class="tag">The score didn't ask this question</span>
+      A perfect Lighthouse score has no opinion on whether a screen reader user actually enjoys using the site. That's a heuristic question, not an automated one — and the only honest way to answer it is to listen.
     </div>
   </div>
 </section>
@@ -471,13 +471,13 @@
     <div class="section-head">
       <div><span class="num">04 · Agentic Browsing</span></div>
       <div>
-        <h2>2 of 2 checks passed isn’t the same as an agent succeeding.</h2>
-        <p class="lede">The redesign passes PageSpeed’s Agentic Browsing audit in full — 2 of 2 checks, both mobile and desktop (see the Research). That audit confirms a page can be parsed by an agent. It doesn’t confirm an agent can actually get something done on it.</p>
+        <h2>2 of 2 checks passed isn't the same as an agent succeeding.</h2>
+        <p class="lede">The redesign passes PageSpeed's Agentic Browsing audit in full — 2 of 2 checks, both mobile and desktop (see the Research). That audit confirms a page can be parsed by an agent. It doesn't confirm an agent can actually get something done on it.</p>
       </div>
     </div>
 
     <p class="body-copy">Those are two different tests. A checks-passed audit asks whether the content is structured in a way a machine could theoretically read. Actually pointing an agent at the page and asking it to do something — find the return window, compare two setups by price, add a specific configuration to a cart — asks whether it can.</p>
-    <p class="body-copy">The redesign’s structured data — the schema.org Product markup carried on each Sactionals setup in the Deep Dive’s working prototype — exists because of that second question, not the first. A page can pass every structural check and still leave an agent guessing, if the price or fit only lives inside a rendered tag instead of the page’s own markup. Passing the audit was the floor. Making the actual task work was the target. 🎯</p>
+    <p class="body-copy">The redesign's structured data — the schema.org Product markup carried on each Sactionals setup in the Deep Dive's working prototype — exists because of that second question, not the first. A page can pass every structural check and still leave an agent guessing, if the price or fit only lives inside a rendered tag instead of the page's own markup. Passing the audit was the floor. Making the actual task work was the target. 🎯</p>
   </div>
 </section>
 
@@ -497,7 +497,7 @@
 <section class="cta">
   <div class="wrap">
     <h2>The case beyond the interface.</h2>
-    <p>Headers, code, and accessibility internals don’t show up in a screenshot — but they’re part of the case. The synopsis pulls all of it together into a single business case.</p>
+    <p>Headers, code, and accessibility internals don't show up in a screenshot — but they're part of the case. The synopsis pulls all of it together into a single business case.</p>
     <div class="btn-row">
       <a class="btn primary" href="https://claudiaochoa.co/work/lovesac-redesign.html" target="_blank" rel="noopener noreferrer">View the live redesign</a>
       <a class="btn ghost" href="lovesac-case-study-6.html">See the synopsis &rarr;</a>
