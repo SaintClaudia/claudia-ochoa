@@ -52,15 +52,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- HEAD-BASICS:END -->
 <title>Case Study 05 · Development — Claudia Ochoa</title>
-<meta name="description" content="What the automated scores don't catch — security headers, console health, and the manual testing behind the Lovesac redesign's accessibility and agentic browsing claims.">
+<meta name="description" content="An AI-readiness and development case study covering security, accessibility, agentic task completion, evaluation, guardrails, and human recovery beyond automated scores.">
 <meta property="og:title" content="Case Study 05 · Development — Claudia Ochoa">
-<meta property="og:description" content="What the automated scores don't catch — security headers, console health, and the manual testing behind the Lovesac redesign's accessibility and agentic browsing claims.">
+<meta property="og:description" content="AI readiness beyond the score: agentic tasks, evaluation, guardrails, accessibility, security, and human recovery.">
 <meta property="og:url" content="https://claudiaochoa.co/work/lovesac-case-study-5.html">
 <meta property="og:type" content="article">
 <meta property="og:image" content="https://claudiaochoa.co/images/lovesac-redesign-thumb.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Case Study 05 · Development — Claudia Ochoa">
-<meta name="twitter:description" content="What the automated scores don't catch — security headers, console health, and the manual testing behind the Lovesac redesign's accessibility and agentic browsing claims.">
+<meta name="twitter:description" content="AI readiness beyond the score: agentic tasks, evaluation, guardrails, accessibility, security, and human recovery.">
 <meta name="twitter:image" content="https://claudiaochoa.co/images/lovesac-redesign-thumb.jpg">
 <link rel="canonical" href="https://claudiaochoa.co/work/lovesac-case-study-5.html">
 <script type="application/ld+json">
@@ -71,11 +71,11 @@
       "@type": "CreativeWork",
       "@id": "https://claudiaochoa.co/work/lovesac-case-study-5.html#case-study",
       "name": "Past the Score",
-      "description": "What the automated scores don't catch — security headers, console health, and the manual testing behind the Lovesac redesign's accessibility and agentic browsing claims.",
+      "description": "An AI-readiness and development case study covering security, accessibility, agentic task completion, evaluation, guardrails, and human recovery beyond automated scores.",
       "url": "https://claudiaochoa.co/work/lovesac-case-study-5.html",
       "image": "https://claudiaochoa.co/images/lovesac-redesign-thumb.jpg",
       "dateModified": "2026-09-02",
-      "keywords": "Lovesac, front-end development, accessibility testing, security headers, console health, agentic browsing",
+      "keywords": "Lovesac, AI readiness, AI evaluation, agentic browsing, responsible AI, front-end development, accessibility testing, security headers",
       "author": {"@id": "https://claudiaochoa.co/about.html#claudia-ochoa"}
     },
     {
@@ -243,6 +243,17 @@
     .spark{padding:32px 24px;}
   }
 
+.ai-leadership-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:32px;}
+.ai-leadership-card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:24px 22px;}
+.ai-leadership-card .num{display:block;margin-bottom:12px;}
+.ai-leadership-card h3{font-family:'Fraunces',serif;font-size:21px;line-height:1.2;color:var(--espresso);}
+.ai-leadership-card p{font-size:14.5px;line-height:1.65;color:var(--ink-soft);margin-top:10px;}
+.ai-eval-table{width:100%;border-collapse:collapse;margin-top:32px;font-size:14px;}
+.ai-eval-table th,.ai-eval-table td{padding:15px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;line-height:1.55;}
+.ai-eval-table thead th{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--clay-deep);}
+.ai-eval-table tbody th{font-weight:700;color:var(--espresso);width:25%;}
+@media (max-width:720px){.ai-leadership-grid{grid-template-columns:1fr;}.ai-eval-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}.ai-eval-table{min-width:680px;}}
+
 </style>
 </head>
 <body>
@@ -254,12 +265,12 @@
   <div class="wrap">
     <a class="back" href="https://claudiaochoa.co/">&larr; Back to portfolio</a>
     <nav class="series-nav" aria-label="Case study series">
-      <a href="lovesac-case-study.html" aria-label="Part 1 of 6: Redesign">01<span class="tip-card" aria-hidden="true"><span class="tip-media"><img class="tip-photo" data-src="/images/lovesac-hero.webp" alt="" decoding="async"><img class="tip-logo" data-src="/images/lovesac-wordmark-cream.png" alt="" decoding="async"></span><span class="tip-body"><span class="tip-kicker">Redesign</span><span class="tip-title">Lovesac: from a viral critique to a full redesign</span></span></span></a>
-      <a href="lovesac-case-study-2.html" aria-label="Part 2 of 6: Deep Dive">02<span class="tip-card" aria-hidden="true"><span class="tip-media"><img class="tip-photo" data-src="/images/lovesac-life-moving.webp" alt="" decoding="async"><img class="tip-logo" data-src="/images/lovesac-wordmark-cream.png" alt="" decoding="async"></span><span class="tip-body"><span class="tip-kicker">Deep Dive</span><span class="tip-title">A closer look at the moments that matter</span></span></span></a>
-      <a href="lovesac-case-study-3.html" aria-label="Part 3 of 6: Research">03<span class="tip-card" aria-hidden="true"><span class="tip-media"><img class="tip-photo" data-src="/images/lovesac-life-kids.webp" alt="" decoding="async"><img class="tip-logo" data-src="/images/lovesac-wordmark-cream.png" alt="" decoding="async"></span><span class="tip-body"><span class="tip-kicker">Research</span><span class="tip-title">What the research actually says</span></span></span></a>
-      <a href="lovesac-case-study-4.html" aria-label="Part 4 of 6: Content Strategy">04<span class="tip-card" aria-hidden="true"><span class="tip-media"><img class="tip-photo" data-src="/images/lovesac-life-apartment.webp" alt="" decoding="async"><img class="tip-logo" data-src="/images/lovesac-wordmark-cream.png" alt="" decoding="async"></span><span class="tip-body"><span class="tip-kicker">Content Strategy</span><span class="tip-title">Say it like you mean it</span></span></span></a>
-      <span class="current" aria-current="page" aria-label="Part 5 of 6: Development">05<span class="tip-card" aria-hidden="true"><span class="tip-media"><img class="tip-photo" data-src="/images/lovesac-life-stealthtech.webp" alt="" decoding="async"><img class="tip-logo" data-src="/images/lovesac-wordmark-cream.png" alt="" decoding="async"></span><span class="tip-body"><span class="tip-kicker">Development</span><span class="tip-title">Past the score</span></span></span></span>
-      <a href="lovesac-case-study-6.html" aria-label="Part 6 of 6: Synopsis">06<span class="tip-card" aria-hidden="true"><span class="tip-media"><img class="tip-photo" data-src="/images/lovesac-life-house.webp" alt="" decoding="async"><img class="tip-logo" data-src="/images/lovesac-wordmark-cream.png" alt="" decoding="async"></span><span class="tip-body"><span class="tip-kicker">Synopsis</span><span class="tip-title">The Business Case</span></span></span></a>
+      <a href="lovesac-case-study.html" aria-label="Part 1 of 6: Redesign">01<span class="tip-card" aria-hidden="true"><span class="tip-media"><img class="tip-photo" data-src="/images/lovesac-hero.webp" width="1440" height="802" alt="" decoding="async"><img class="tip-logo" data-src="/images/lovesac-wordmark-cream.png" width="714" height="129" alt="" decoding="async"></span><span class="tip-body"><span class="tip-kicker">Redesign</span><span class="tip-title">Lovesac: from a viral critique to a full redesign</span></span></span></a>
+      <a href="lovesac-case-study-2.html" aria-label="Part 2 of 6: Deep Dive">02<span class="tip-card" aria-hidden="true"><span class="tip-media"><img class="tip-photo" data-src="/images/lovesac-life-moving.webp" width="700" height="660" alt="" decoding="async"><img class="tip-logo" data-src="/images/lovesac-wordmark-cream.png" width="714" height="129" alt="" decoding="async"></span><span class="tip-body"><span class="tip-kicker">Deep Dive</span><span class="tip-title">A closer look at the moments that matter</span></span></span></a>
+      <a href="lovesac-case-study-3.html" aria-label="Part 3 of 6: Research">03<span class="tip-card" aria-hidden="true"><span class="tip-media"><img class="tip-photo" data-src="/images/lovesac-life-kids.webp" width="700" height="677" alt="" decoding="async"><img class="tip-logo" data-src="/images/lovesac-wordmark-cream.png" width="714" height="129" alt="" decoding="async"></span><span class="tip-body"><span class="tip-kicker">Research</span><span class="tip-title">What the research actually says</span></span></span></a>
+      <a href="lovesac-case-study-4.html" aria-label="Part 4 of 6: Content Strategy">04<span class="tip-card" aria-hidden="true"><span class="tip-media"><img class="tip-photo" data-src="/images/lovesac-life-apartment.webp" width="700" height="768" alt="" decoding="async"><img class="tip-logo" data-src="/images/lovesac-wordmark-cream.png" width="714" height="129" alt="" decoding="async"></span><span class="tip-body"><span class="tip-kicker">Content Strategy</span><span class="tip-title">Say it like you mean it</span></span></span></a>
+      <span class="current" aria-current="page" aria-label="Part 5 of 6: Development">05<span class="tip-card" aria-hidden="true"><span class="tip-media"><img class="tip-photo" data-src="/images/lovesac-life-stealthtech.webp" width="650" height="716" alt="" decoding="async"><img class="tip-logo" data-src="/images/lovesac-wordmark-cream.png" width="714" height="129" alt="" decoding="async"></span><span class="tip-body"><span class="tip-kicker">Development</span><span class="tip-title">Past the score</span></span></span></span>
+      <a href="lovesac-case-study-6.html" aria-label="Part 6 of 6: Synopsis">06<span class="tip-card" aria-hidden="true"><span class="tip-media"><img class="tip-photo" data-src="/images/lovesac-life-house.webp" width="700" height="624" alt="" decoding="async"><img class="tip-logo" data-src="/images/lovesac-wordmark-cream.png" width="714" height="129" alt="" decoding="async"></span><span class="tip-body"><span class="tip-kicker">Synopsis</span><span class="tip-title">The Business Case</span></span></span></a>
     </nav>
     <div class="topbar-right">
       <span class="tag">Case Study 05 · Development</span>
@@ -477,6 +488,31 @@
 
     <p class="body-copy">Those are two different tests. A checks-passed audit asks whether the content is structured in a way a machine could theoretically read. Actually pointing an agent at the page and asking it to do something — find the return window, compare two setups by price, add a specific configuration to a cart — asks whether it can.</p>
     <p class="body-copy">The redesign's structured data — the schema.org Product markup carried on each Sactionals setup in the Deep Dive's working prototype — exists because of that second question, not the first. A page can pass every structural check and still leave an agent guessing, if the price or fit only lives inside a rendered tag instead of the page's own markup. Passing the audit was the floor. Making the actual task work was the target. 🎯</p>
+
+    <div class="ai-leadership-grid">
+      <article class="ai-leadership-card"><span class="num">01 · Use Case</span><h3>Test work, not AI theater.</h3><p>Define the jobs an agent should complete and the customer value each one creates. Product comparison, policy retrieval, fit guidance, and cart configuration are concrete tasks with observable outcomes.</p></article>
+      <article class="ai-leadership-card"><span class="num">02 · Grounding</span><h3>Make facts machine-legible.</h3><p>Prices, configurations, availability, return terms, and warranty scope should come from approved, current sources. The agent should never have to infer a fact the business already knows.</p></article>
+      <article class="ai-leadership-card"><span class="num">03 · Guardrails</span><h3>Design the uncertain moment.</h3><p>When information is missing or conflicting, the experience should say so, preserve the user's work, and offer a clear human path instead of producing a confident guess.</p></article>
+      <article class="ai-leadership-card"><span class="num">04 · Ownership</span><h3>Give every failure an owner.</h3><p>Product, commerce, support, legal, security, accessibility, and data teams need shared rules for what the agent may do, how incidents are reviewed, and who can change its behavior.</p></article>
+    </div>
+
+    <div class="ai-eval-scroll">
+      <table class="ai-eval-table">
+        <thead><tr><th>Evaluation layer</th><th>Question</th><th>Evidence</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Task success</th><td>Did the agent complete the requested job correctly?</td><td>Completion rate, correct configuration, correct destination, and repeat attempts.</td></tr>
+          <tr><th scope="row">Answer quality</th><td>Was the response accurate, current, and supported?</td><td>Grounded-answer rate, source freshness, contradiction tests, and expert review.</td></tr>
+          <tr><th scope="row">Recovery</th><td>What happens when the system is uncertain or wrong?</td><td>Abstention quality, state preservation, escalation success, and time to human help.</td></tr>
+          <tr><th scope="row">Human impact</th><td>Can people understand, trust, and control the experience?</td><td>Comprehension, confidence, accessibility, segmented failure rates, complaints, and opt-out behavior.</td></tr>
+          <tr><th scope="row">Business value</th><td>Is the capability improving the outcome that justified it?</td><td>Conversion, support deflection without repeat contact, returns, satisfaction, and cost to serve.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="context-strip">
+      <span class="tag">The leadership standard</span>
+      A production launch would require approved data sources, bounded actions, privacy and security review, accessibility testing, human escalation, ongoing evaluations, incident ownership, and a rollback plan. Agentic readiness is an operating model, not a badge.
+    </div>
   </div>
 </section>
 
@@ -843,7 +879,7 @@
 
 <script src="/js/case-study-tooltips.js"></script>
 <script src="/js/case-study-toc.js"></script>
-<script src="/js/main.js"></script>
+<script src="/js/main.js?v=2"></script>
 
 </body>
 </html>

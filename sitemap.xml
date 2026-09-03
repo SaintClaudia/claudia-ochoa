@@ -3,50 +3,56 @@
 
   <url>
     <loc>https://claudiaochoa.co/</loc>
-    <lastmod>2026-09-02</lastmod>
+    <lastmod>2026-09-03</lastmod>
     <priority>1.0</priority>
   </url>
 
   <url>
     <loc>https://claudiaochoa.co/about.html</loc>
-    <lastmod>2026-09-02</lastmod>
+    <lastmod>2026-09-03</lastmod>
     <priority>0.8</priority>
   </url>
 
   <!-- Work case studies -->
   <url>
-    <loc>https://claudiaochoa.co/work/lovesac-case-study.html</loc>
-    <lastmod>2026-09-02</lastmod>
+    <loc>https://claudiaochoa.co/work/walmart-genai.html</loc>
+    <lastmod>2026-09-03</lastmod>
     <priority>0.9</priority>
   </url>
 
   <url>
+    <loc>https://claudiaochoa.co/work/lovesac-case-study.html</loc>
+    <lastmod>2026-09-03</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
     <loc>https://claudiaochoa.co/work/lovesac-case-study-2.html</loc>
-    <lastmod>2026-09-02</lastmod>
+    <lastmod>2026-09-03</lastmod>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://claudiaochoa.co/work/lovesac-case-study-3.html</loc>
-    <lastmod>2026-09-02</lastmod>
+    <lastmod>2026-09-03</lastmod>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://claudiaochoa.co/work/lovesac-case-study-4.html</loc>
-    <lastmod>2026-09-02</lastmod>
+    <lastmod>2026-09-03</lastmod>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://claudiaochoa.co/work/lovesac-case-study-5.html</loc>
-    <lastmod>2026-09-02</lastmod>
+    <lastmod>2026-09-03</lastmod>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://claudiaochoa.co/work/lovesac-case-study-6.html</loc>
-    <lastmod>2026-09-02</lastmod>
+    <lastmod>2026-09-03</lastmod>
     <priority>0.7</priority>
   </url>
 

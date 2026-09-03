@@ -70,16 +70,26 @@ case_studies = [
     ('lovesac-case-study-6.html', '06', 'Synopsis',         'lovesac-life-house.webp',       'The Business Case'),
 ]
 
+case_study_tip_dimensions = {
+    'lovesac-hero.webp': (1440, 802),
+    'lovesac-life-moving.webp': (700, 660),
+    'lovesac-life-kids.webp': (700, 677),
+    'lovesac-life-apartment.webp': (700, 768),
+    'lovesac-life-stealthtech.webp': (650, 716),
+    'lovesac-life-house.webp': (700, 624),
+}
+
 
 def render_case_study_topbar(current_file):
     """Render the shared series topbar with the current page marked accessibly."""
     items = []
     current = next(item for item in case_studies if item[0] == current_file)
     for filename, number, label, image, title in case_studies:
+        image_width, image_height = case_study_tip_dimensions[image]
         tip = (
             f'<span class="tip-card" aria-hidden="true"><span class="tip-media">'
-            f'<img class="tip-photo" data-src="/images/{image}" alt="" decoding="async">'
-            f'<img class="tip-logo" data-src="/images/lovesac-wordmark-cream.png" alt="" decoding="async">'
+            f'<img class="tip-photo" data-src="/images/{image}" width="{image_width}" height="{image_height}" alt="" decoding="async">'
+            f'<img class="tip-logo" data-src="/images/lovesac-wordmark-cream.png" width="714" height="129" alt="" decoding="async">'
             f'</span><span class="tip-body"><span class="tip-kicker">{label}</span>'
             f'<span class="tip-title">{title}</span></span></span>'
         )

@@ -1,6 +1,6 @@
 # claudiaochoa.co
 
-Personal portfolio of Claudia Ochoa — Product Design Leader blending business strategy with human-centered design.
+Personal portfolio of Claudia Ochoa — AI Experience and Product Design Leader blending emerging technology, business strategy, and human-centered design.
 
 ## Live site
 
@@ -66,6 +66,7 @@ serves those files directly.
 ├── images/
 ├── work/
 │   ├── lovesac-case-study.html       # Lovesac — Redesign (featured concept case study)
+│   ├── walmart-genai.html             # Walmart — human-centered GenAI candidate-experience leadership case study
 │   ├── lovesac-case-study-2.html     # Lovesac — deep dive: mobile nav & Room Fit (linked from case study 1)
 │   ├── lovesac-case-study-3.html     # Lovesac — research: sentiment, competitors, StealthTech (linked from case study 2)
 │   ├── lovesac-case-study-4.html     # Lovesac — voice & content strategy (linked from case study 3)
@@ -176,7 +177,7 @@ Every page has:
 - `<link rel="canonical">` to prevent duplicate content issues
 - PNG favicons at 192×192 and 32×32 for Google Search and browser tabs
 
-The homepage has JSON-LD `Person` schema. `lovesac-case-study.html` additionally has JSON-LD `CreativeWork` schema (with a nested `author` referencing the Person) — the featured piece, prioritized in `sitemap.xml` at 0.9 and kept with a current `lastmod` whenever it's meaningfully updated.
+The homepage has JSON-LD `Person` schema. The Walmart GenAI and featured Lovesac case studies additionally use `CreativeWork` schema with an `author` reference to the Person. The AI leadership case is prioritized in `sitemap.xml` at 0.9; meaningful content updates should keep each page's `lastmod` current.
 
 `sitemap.xml` lists all pages and is referenced in `robots.txt`. The sitemap is submitted to Google Search Console at `https://claudiaochoa.co/sitemap.xml`. Bump a page's `lastmod` (and `priority`, if it's a piece you want surfaced) whenever its content changes materially — stale dates and generic priorities give search engines less reason to recrawl or rank it.
 

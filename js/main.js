@@ -67,6 +67,7 @@ const contactForm = document.getElementById('contact-form');
 const contactStatus = document.getElementById('contact-form-status');
 const openedFromContactHash = location.hash === '#contact';
 let returnFromContact = false;
+let contactTrigger = null;
 
 if (openedFromContactHash && document.referrer) {
   try {
@@ -79,8 +80,10 @@ if (openedFromContactHash && document.referrer) {
 }
 
 function openContactOverlay() {
+  contactTrigger = document.activeElement instanceof HTMLElement ? document.activeElement : null;
   contactOverlay?.classList.add('open');
   contactOverlay?.setAttribute('aria-hidden', 'false');
+  requestAnimationFrame(() => contactClose?.focus());
 }
 function closeContactOverlay() {
   contactOverlay?.classList.remove('open');
@@ -98,6 +101,9 @@ function closeContactOverlay() {
   if (location.hash === '#contact') {
     history.replaceState(null, '', `${location.pathname}${location.search}`);
   }
+
+  contactTrigger?.focus();
+  contactTrigger = null;
 }
 if (openedFromContactHash) openContactOverlay();
 [contactToggle, mobileContactToggle, footerContactToggle].forEach((toggle) => {
@@ -126,7 +132,28 @@ contactOverlay?.addEventListener('click', (e) => {
   if (e.target === contactOverlay) closeContactOverlay();
 });
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && contactOverlay?.classList.contains('open')) closeContactOverlay();
+  if (!contactOverlay?.classList.contains('open')) return;
+
+  if (e.key === 'Escape') {
+    closeContactOverlay();
+    return;
+  }
+
+  if (e.key !== 'Tab') return;
+  const focusable = Array.from(contactOverlay.querySelectorAll(
+    'button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])'
+  )).filter((element) => element.getClientRects().length > 0);
+  if (!focusable.length) return;
+
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  if (e.shiftKey && document.activeElement === first) {
+    e.preventDefault();
+    last.focus();
+  } else if (!e.shiftKey && document.activeElement === last) {
+    e.preventDefault();
+    first.focus();
+  }
 });
 
 // Contact form submission (Web3Forms)
