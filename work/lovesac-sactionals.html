@@ -1705,7 +1705,16 @@ document.addEventListener('dragstart', function(e){ if (e.target.closest('img'))
     if(window.updateRoomFitUI) window.updateRoomFitUI();
     else applyRoomFitBadges(room);
 
-    if(autoClose) closeSpaceDrop();
+    if(autoClose){
+      closeSpaceDrop();
+      // The fit results render into the product grid below (badges + the
+      // roomFitNote fallback), not inside the drawer that just closed, so
+      // scroll there the same way Browse Setups does — otherwise closing
+      // the drawer leaves the page looking unchanged, especially on mobile.
+      if(window.holdNavVisible) holdNavVisible(900);
+      var filtersAnchor = document.getElementById('filtersAnchor');
+      if(filtersAnchor) filtersAnchor.scrollIntoView({behavior:'smooth'});
+    }
   }
   checkBtn.addEventListener('click', function(){ runCheckFit(true); });
   window.__runCheckFit = function(){ runCheckFit(false); };
