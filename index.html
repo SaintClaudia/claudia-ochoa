@@ -76,8 +76,8 @@
     .work-card{position:relative;overflow:hidden;cursor:pointer;display:block;}
     .work-card.featured{grid-column:1/-1;}
     .card-image{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--paper);border-radius:14px;border:1px solid var(--line);box-shadow:0 1px 2px rgba(36,28,22,0.06);}
-    .work-card.featured .card-image{aspect-ratio:2/1;}
-    @media (max-width:720px){.work-card.featured .card-image{aspect-ratio:auto;height:calc((100vw - 48px)/ 2 + 50px);}}
+    .work-card.featured .card-image{aspect-ratio:2/1;max-width:640px;}
+    @media (max-width:720px){.work-card.featured .card-image{aspect-ratio:auto;height:calc((100vw - 48px)/ 2 + 50px);max-width:none;}}
     .card-image img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.25,.46,.45,.94);}
     .work-card:hover .card-image img{transform:scale(1.03);}
     .card-body{padding:20px 24px 28px 0;}
