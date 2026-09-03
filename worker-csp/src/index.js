@@ -35,28 +35,24 @@ function buildCSP(nonce) {
     "frame-ancestors 'self'",
     "base-uri 'self'",
     "form-action 'self' https://api.web3forms.com",
+    "require-trusted-types-for 'script'",
+    // `case-study-html`, `site-analytics`, and `lovesac-store-finder` are
+    // this site's own policies. `goog#html` is what the Maps JS API
+    // actually creates internally when loaded via a raw script tag
+    // (confirmed by live console testing — public docs describe
+    // `google-maps-api#html`, used by the separate @googlemaps/js-api-loader
+    // npm package, which this site doesn't use; kept below in case any Maps
+    // feature does end up using it). `'allow-duplicates'` is required
+    // because Maps' library creates `goog#html` more than once per page
+    // load. Verified clean via Report-Only testing (headless page loads
+    // plus manual click-through of the store finder, Maps, room-fit
+    // calculator, and product filters) before switching this to enforcing.
+    "trusted-types case-study-html site-analytics lovesac-store-finder goog#html google-maps-api-loader google-maps-api#html lit-html 'allow-duplicates'",
   ].join("; ");
 }
 
 const PERMISSIONS_POLICY =
   "geolocation=(), microphone=(), camera=(), payment=(), usb=(), interest-cohort=()";
-
-// Report-Only: logs Trusted Types violations to the console without
-// blocking anything, so third-party script compatibility (Google
-// Analytics' gtag.js loads on every page; the Maps JS API loads on the
-// store-finder pages) can be verified live before switching this to an
-// enforcing directive. `case-study-html`, `site-analytics`, and
-// `lovesac-store-finder` are this site's own policies. `goog#html` is what
-// the Maps JS API actually creates internally when loaded via a raw
-// script tag (confirmed by live console testing — public docs describe
-// `google-maps-api#html`, used by the separate @googlemaps/js-api-loader
-// npm package, which this site doesn't use; kept below in case any Maps
-// feature does end up using it). `'allow-duplicates'` is required because
-// Maps' library creates `goog#html` more than once per page load — without
-// it, the second creation would throw for real once this becomes
-// enforcing, not just report-only.
-const TRUSTED_TYPES_REPORT_ONLY =
-  "require-trusted-types-for 'script'; trusted-types case-study-html site-analytics lovesac-store-finder goog#html google-maps-api-loader google-maps-api#html lit-html 'allow-duplicates'";
 
 class NonceInjector {
   constructor(nonce) {
@@ -98,7 +94,6 @@ export default {
     // Isolates the top-level browsing context from cross-origin popups/openers
     // (the site opens no windows via window.open, so this has no UX impact).
     newResponse.headers.set("Cross-Origin-Opener-Policy", "same-origin");
-    newResponse.headers.set("Content-Security-Policy-Report-Only", TRUSTED_TYPES_REPORT_ONLY);
     return newResponse;
   },
 };
