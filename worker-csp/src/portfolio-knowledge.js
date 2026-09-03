@@ -9,8 +9,8 @@ export const PORTFOLIO_RESOURCES = [
     summary:
       "Claudia Ochoa is an AI experience and product design leader with more than 20 years of experience connecting emerging technology, business strategy, brand, and customer experience.",
     details:
-      "Her leadership starts with the problem rather than the technology. She connects customer needs, business value, brand, and delivery so AI has a clear role, measurable purpose, and human experience around it. Her MBA from Purdue Global strengthens the business side of that work; JD studies at Purdue Global Law School are expanding the legal fluency she brings to emerging-technology decisions.",
-    tags: ["AI leadership", "product design", "human-centered AI", "business strategy", "brand", "MBA", "legal fluency"],
+      "Her leadership starts with the problem rather than the technology. She connects customer needs, business value, brand, and delivery so AI has a clear role, measurable purpose, and human experience around it. Her published working principles are to create clear direction and shared ownership: frame the human and business problem first, build a direction leaders and delivery partners can use, make trade-offs and risks visible, and hold the experience vision through delivery while giving specialists room to shape the solution. Her MBA from Purdue Global strengthens the business side of that work; JD studies at Purdue Global Law School are expanding the legal fluency she brings to emerging-technology decisions.",
+    tags: ["AI leadership", "product design", "human-centered AI", "business strategy", "brand", "collaboration", "shared ownership", "delivery partnership", "MBA", "legal fluency"],
   },
   {
     id: "walmart-genai",
