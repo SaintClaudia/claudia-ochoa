@@ -41,10 +41,15 @@
   .wrap{max-width:1100px; margin:0 auto; padding:0 32px;}
   .page{min-height:100vh;}
 
-  /* Simple nav — homepage + 404. A wordmark blended into the body rather than
-     a distinct bar; not fixed, since these are short pages with no need to
-     follow the reader down the page. */
-  body>nav{background:var(--cream);}
+  /* Simple nav — homepage + 404. Sticky, hiding on scroll down and
+     reappearing on scroll up (main.js toggles .nav-hidden). */
+  body>nav{
+    background:var(--cream);
+    position:sticky; top:0; z-index:20;
+    border-bottom:1px solid var(--line);
+    transition:transform .3s ease;
+  }
+  body>nav.nav-hidden{transform:translateY(-100%);}
   .nav-inner{max-width:1100px; margin:0 auto; padding:0 32px; height:64px; display:flex; align-items:center; justify-content:space-between;}
   .nav-wordmark{font-family:'Inter',sans-serif; font-size:0.95rem; font-weight:600; color:var(--espresso); text-decoration:none;}
   .nav-icons{display:flex; align-items:center; gap:12px;}
