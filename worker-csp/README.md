@@ -15,6 +15,10 @@ representations declare `Content-Signal: ai-train=no, search=yes,
 ai-input=yes`, allowing AI search, citation, and agentic use while reserving
 model-training rights.
 
+HTML responses advertise their negotiated Markdown representation with
+`rel="alternate"`. HTML and Markdown responses point agents to the site's
+curated [`/llms.txt`](../llms.txt) guide with `rel="describedby"`.
+
 ## How it works
 
 - Passes non-HTML responses straight through, unmodified.

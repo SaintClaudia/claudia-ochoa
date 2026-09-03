@@ -255,6 +255,24 @@ function addVary(headers, value) {
   headers.set("Vary", [...values].join(", "));
 }
 
+function addLink(headers, value) {
+  const existing = headers.get("Link");
+  headers.set("Link", existing ? `${existing}, ${value}` : value);
+}
+
+function addAgentDiscoveryHeaders(headers, pageUrl, includeMarkdownAlternate) {
+  if (includeMarkdownAlternate) {
+    addLink(
+      headers,
+      `<${pageUrl}>; rel="alternate"; type="text/markdown"`,
+    );
+  }
+  addLink(
+    headers,
+    '<https://claudiaochoa.co/llms.txt>; rel="describedby"; type="text/markdown"',
+  );
+}
+
 class NonceInjector {
   constructor(nonce) {
     this.nonce = nonce;
@@ -294,6 +312,7 @@ export default {
       headers.set("X-Markdown-Tokens", String(Math.ceil(markdown.length / 4)));
       headers.set("X-Original-Tokens", String(Math.ceil(html.length / 4)));
       addVary(headers, "Accept");
+      addAgentDiscoveryHeaders(headers, request.url, false);
       for (const header of [
         "Content-Encoding",
         "Content-Length",
@@ -322,6 +341,7 @@ export default {
     newResponse.headers.set("Permissions-Policy", PERMISSIONS_POLICY);
     newResponse.headers.set("Content-Signal", CONTENT_SIGNAL);
     addVary(newResponse.headers, "Accept");
+    addAgentDiscoveryHeaders(newResponse.headers, request.url, true);
     // Isolates the top-level browsing context from cross-origin popups/openers
     // (the site opens no windows via window.open, so this has no UX impact).
     newResponse.headers.set("Cross-Origin-Opener-Policy", "same-origin");

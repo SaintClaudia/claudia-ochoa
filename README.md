@@ -34,6 +34,7 @@ serves those files directly.
 ├── favicon-32.png                    # Heart favicon (PNG, browser tab fallback)
 ├── sitemap.xml                       # All pages for search engine discovery
 ├── robots.txt                        # Crawl directives
+├── llms.txt                          # Curated AI/agent guide to authoritative portfolio content
 ├── output/pdf/Claudia_Ochoa_Resume.pdf # Branded, ATS-readable two-page résumé
 ├── resume/build_resume.py            # Editable ReportLab source for the résumé PDF
 ├── CNAME                             # Custom domain for GitHub Pages
