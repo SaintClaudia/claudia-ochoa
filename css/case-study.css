@@ -54,11 +54,19 @@
   .nav-menu-btn{
     background:none; border:1.5px solid var(--line); border-radius:50%;
     width:34px; height:34px; padding:0; cursor:pointer; flex-shrink:0;
-    display:flex; align-items:center; justify-content:center;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px;
     color:var(--ink-soft);
     transition:border-color .15s ease, color .15s ease;
   }
   .nav-menu-btn:hover, .nav-menu.open .nav-menu-btn{border-color:var(--espresso); color:var(--espresso);}
+  .nav-menu-bar{
+    width:14px; height:1.4px; border-radius:1px; background:currentColor;
+    transition:transform .25s ease, opacity .2s ease;
+  }
+  .nav-menu.open .nav-menu-bar:nth-child(1){transform:translateY(5.4px) rotate(45deg);}
+  .nav-menu.open .nav-menu-bar:nth-child(2){opacity:0;}
+  .nav-menu.open .nav-menu-bar:nth-child(3){transform:translateY(-5.4px) rotate(-45deg);}
+  @media (prefers-reduced-motion: reduce){.nav-menu-bar{transition:none;}}
   .nav-menu-panel{
     position:absolute; top:calc(100% + 10px); right:0;
     min-width:180px;

@@ -30,11 +30,13 @@ if (navMenu && navMenuBtn) {
   const closeNavMenu = () => {
     navMenu.classList.remove('open');
     navMenuBtn.setAttribute('aria-expanded', 'false');
+    navMenuBtn.setAttribute('aria-label', 'Open menu');
   };
   navMenuBtn.addEventListener('click', (e) => {
     e.stopPropagation();
     const isOpen = navMenu.classList.toggle('open');
     navMenuBtn.setAttribute('aria-expanded', String(isOpen));
+    navMenuBtn.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
   });
   navMenu.querySelectorAll('.nav-menu-panel a').forEach((link) => {
     link.addEventListener('click', closeNavMenu);
