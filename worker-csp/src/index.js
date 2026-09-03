@@ -11,8 +11,12 @@ function buildCSP(nonce) {
     "default-src 'self'",
     // 'wasm-unsafe-eval' (not the broader 'unsafe-eval') is required for
     // Google's vector map renderer, which compiles WebAssembly for tile
-    // decoding.
-    `script-src 'self' 'nonce-${nonce}' 'wasm-unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://maps.googleapis.com https://portfolio-poll.claudiajochoa.workers.dev`,
+    // decoding. 'strict-dynamic' lets browsers that honor it ignore the host
+    // allowlist (host allowlists can be bypassed via JSONP-style endpoints on
+    // those domains) and trust only scripts the nonce'd scripts themselves
+    // load; 'unsafe-inline' is a no-op fallback for browsers too old to
+    // support nonces (they ignore it once a nonce is present).
+    `script-src 'self' 'nonce-${nonce}' 'strict-dynamic' 'unsafe-inline' 'wasm-unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://maps.googleapis.com https://portfolio-poll.claudiajochoa.workers.dev`,
     // No nonce here: a nonce- or hash-source in a directive makes browsers
     // ignore 'unsafe-inline' in that same directive, which would break every
     // style="..." attribute on the site. style-src stays unsafe-inline-only
@@ -74,6 +78,9 @@ export default {
     const newResponse = new Response(rewritten.body, rewritten);
     newResponse.headers.set("Content-Security-Policy", buildCSP(nonce));
     newResponse.headers.set("Permissions-Policy", PERMISSIONS_POLICY);
+    // Isolates the top-level browsing context from cross-origin popups/openers
+    // (the site opens no windows via window.open, so this has no UX impact).
+    newResponse.headers.set("Cross-Origin-Opener-Policy", "same-origin");
     return newResponse;
   },
 };
