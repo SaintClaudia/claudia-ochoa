@@ -46,10 +46,17 @@ const PERMISSIONS_POLICY =
 // Analytics' gtag.js loads on every page; the Maps JS API loads on the
 // store-finder pages) can be verified live before switching this to an
 // enforcing directive. `case-study-html`, `site-analytics`, and
-// `lovesac-store-finder` are this site's own policies; the other three are
-// policy names the Maps JS API creates internally once it's running.
+// `lovesac-store-finder` are this site's own policies. `goog#html` is what
+// the Maps JS API actually creates internally when loaded via a raw
+// script tag (confirmed by live console testing — public docs describe
+// `google-maps-api#html`, used by the separate @googlemaps/js-api-loader
+// npm package, which this site doesn't use; kept below in case any Maps
+// feature does end up using it). `'allow-duplicates'` is required because
+// Maps' library creates `goog#html` more than once per page load — without
+// it, the second creation would throw for real once this becomes
+// enforcing, not just report-only.
 const TRUSTED_TYPES_REPORT_ONLY =
-  "require-trusted-types-for 'script'; trusted-types case-study-html site-analytics lovesac-store-finder google-maps-api-loader google-maps-api#html lit-html";
+  "require-trusted-types-for 'script'; trusted-types case-study-html site-analytics lovesac-store-finder goog#html google-maps-api-loader google-maps-api#html lit-html 'allow-duplicates'";
 
 class NonceInjector {
   constructor(nonce) {
