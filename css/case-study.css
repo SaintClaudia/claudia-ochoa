@@ -49,6 +49,37 @@
   .nav-wordmark{font-family:'Inter',sans-serif; font-size:0.95rem; font-weight:600; color:var(--espresso); text-decoration:none;}
   .nav-icons{display:flex; align-items:center; gap:12px;}
 
+  /* Nav menu — home + about only. A glass dropdown off a hamburger icon. */
+  .nav-menu{position:relative;}
+  .nav-menu-btn{
+    background:none; border:1.5px solid var(--line); border-radius:50%;
+    width:34px; height:34px; padding:0; cursor:pointer; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    color:var(--ink-soft);
+    transition:border-color .15s ease, color .15s ease;
+  }
+  .nav-menu-btn:hover, .nav-menu.open .nav-menu-btn{border-color:var(--espresso); color:var(--espresso);}
+  .nav-menu-panel{
+    position:absolute; top:calc(100% + 10px); right:0;
+    min-width:180px;
+    background:var(--glass-bg);
+    backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+    border:1px solid var(--glass-border);
+    border-radius:14px;
+    padding:8px;
+    display:flex; flex-direction:column; gap:2px;
+    opacity:0; visibility:hidden; transform:translateY(-6px);
+    transition:opacity .18s ease, transform .18s ease, visibility .18s;
+    z-index:60;
+  }
+  .nav-menu.open .nav-menu-panel{opacity:1; visibility:visible; transform:translateY(0);}
+  .nav-menu-panel a{
+    display:block; padding:10px 12px; border-radius:8px;
+    font-size:14px; font-weight:500; color:var(--ink); text-decoration:none;
+    transition:background .15s ease, color .15s ease;
+  }
+  .nav-menu-panel a:hover, .nav-menu-panel a:focus-visible{background:var(--line); color:var(--espresso);}
+
   /* Topbar — case studies only. A sticky glass bar with series nav. */
   .topbar{
     position:sticky; top:0; z-index:20; font-size:13px; transition:transform .3s ease;

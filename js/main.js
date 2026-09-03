@@ -23,10 +23,35 @@ window.addEventListener('scroll', () => {
   lastScroll = current;
 });
 
+// === NAV MENU ===
+const navMenu = document.getElementById('nav-menu');
+const navMenuBtn = document.getElementById('nav-menu-btn');
+if (navMenu && navMenuBtn) {
+  const closeNavMenu = () => {
+    navMenu.classList.remove('open');
+    navMenuBtn.setAttribute('aria-expanded', 'false');
+  };
+  navMenuBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = navMenu.classList.toggle('open');
+    navMenuBtn.setAttribute('aria-expanded', String(isOpen));
+  });
+  navMenu.querySelectorAll('.nav-menu-panel a').forEach((link) => {
+    link.addEventListener('click', closeNavMenu);
+  });
+  document.addEventListener('click', (e) => {
+    if (!navMenu.contains(e.target)) closeNavMenu();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeNavMenu();
+  });
+}
+
 // === CONTACT OVERLAY ===
 const contactToggle = document.getElementById('contact-toggle');
 const mobileContactToggle = document.getElementById('mobile-contact-toggle');
 const footerContactToggle = document.getElementById('footer-contact-toggle');
+const navMenuContactToggle = document.getElementById('nav-menu-contact-toggle');
 const contactOverlay = document.getElementById('contact-drawer');
 const contactClose = document.getElementById('contact-drawer-close');
 const contactForm = document.getElementById('contact-form');
@@ -72,7 +97,7 @@ function closeContactOverlay() {
   contactTrigger = null;
 }
 if (openedFromContactHash) openContactOverlay();
-[contactToggle, mobileContactToggle, footerContactToggle].forEach((toggle) => {
+[contactToggle, mobileContactToggle, footerContactToggle, navMenuContactToggle].forEach((toggle) => {
   toggle?.addEventListener('click', (e) => {
     e.preventDefault();
     openContactOverlay();
