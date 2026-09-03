@@ -45,11 +45,11 @@ const PERMISSIONS_POLICY =
 // blocking anything, so third-party script compatibility (Google
 // Analytics' gtag.js loads on every page; the Maps JS API loads on the
 // store-finder pages) can be verified live before switching this to an
-// enforcing directive. `case-study-html` and `lovesac-store-finder` are
-// this site's own policies; the other three are policy names the Maps JS
-// API creates internally once it's running.
+// enforcing directive. `case-study-html`, `site-analytics`, and
+// `lovesac-store-finder` are this site's own policies; the other three are
+// policy names the Maps JS API creates internally once it's running.
 const TRUSTED_TYPES_REPORT_ONLY =
-  "require-trusted-types-for 'script'; trusted-types case-study-html lovesac-store-finder google-maps-api-loader google-maps-api#html lit-html";
+  "require-trusted-types-for 'script'; trusted-types case-study-html site-analytics lovesac-store-finder google-maps-api-loader google-maps-api#html lit-html";
 
 class NonceInjector {
   constructor(nonce) {

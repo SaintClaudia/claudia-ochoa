@@ -19,15 +19,22 @@
 <!-- Google Analytics loads after the critical rendering window. -->
 <script>
   (function () {
+    // The gtag.js URL is a fixed, hardcoded string — never user input — so
+    // this policy is a pass-through, not a sanitizer.
+    var ttPolicy = (window.trustedTypes && trustedTypes.createPolicy)
+      ? trustedTypes.createPolicy('site-analytics', { createScriptURL: function (url) { return url; } })
+      : null;
+
     function loadAnalytics() {
       window.dataLayer = window.dataLayer || [];
       window.gtag = function () { window.dataLayer.push(arguments); };
       window.gtag('js', new Date());
       window.gtag('config', 'G-3G6X2P2669');
 
+      var gtagUrl = 'https://www.googletagmanager.com/gtag/js?id=G-3G6X2P2669';
       var script = document.createElement('script');
       script.async = true;
-      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-3G6X2P2669';
+      script.src = ttPolicy ? ttPolicy.createScriptURL(gtagUrl) : gtagUrl;
       document.head.appendChild(script);
     }
 
