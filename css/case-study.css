@@ -44,9 +44,9 @@
   /* Simple nav — homepage + 404. Sticky, hiding on scroll down and
      reappearing on scroll up (main.js toggles .nav-hidden). */
   body>nav{
-    background:var(--cream);
+    background:var(--glass-bg);
+    backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
     position:sticky; top:0; z-index:20;
-    border-bottom:1px solid var(--line);
     transition:transform .3s ease;
   }
   body>nav.nav-hidden{transform:translateY(-100%);}
