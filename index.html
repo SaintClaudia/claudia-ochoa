@@ -38,6 +38,7 @@
   <meta property="og:description" content="Claudia Ochoa is a product design leader working across business, brand, people, product, and technology — see her Lovesac e-commerce redesign and other UX case studies.">
   <meta property="og:url" content="https://claudiaochoa.co/">
   <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Claudia Ochoa">
   <meta property="og:image" content="https://claudiaochoa.co/images/og-card.png?v=2">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Claudia Ochoa — Design from my point of view.">
@@ -87,13 +88,23 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "@id": "https://claudiaochoa.co/about.html#claudia-ochoa",
-    "name": "Claudia Ochoa",
-    "url": "https://claudiaochoa.co/about.html",
-    "image": "https://claudiaochoa.co/images/claudia-ochoa-headshot.jpg",
-    "jobTitle": ["Product Design Leader", "Brand and UX Strategist"],
-    "description": "Claudia Ochoa is a product design leader working across business, brand, people, product, and technology — see her Lovesac e-commerce redesign and other UX case studies."
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://claudiaochoa.co/#website",
+        "name": "Claudia Ochoa",
+        "url": "https://claudiaochoa.co/"
+      },
+      {
+        "@type": "Person",
+        "@id": "https://claudiaochoa.co/about.html#claudia-ochoa",
+        "name": "Claudia Ochoa",
+        "url": "https://claudiaochoa.co/about.html",
+        "image": "https://claudiaochoa.co/images/claudia-ochoa-headshot.jpg",
+        "jobTitle": ["Product Design Leader", "Brand and UX Strategist"],
+        "description": "Claudia Ochoa is a product design leader working across business, brand, people, product, and technology — see her Lovesac e-commerce redesign and other UX case studies."
+      }
+    ]
   }
   </script>
   <script>
