@@ -77,12 +77,6 @@
 <script defer src="/js/font-preload.js"></script>
 <link rel="stylesheet" href="../css/case-study.css">
 <style>
-.body-copy{font-size:16px; line-height:1.75; color:var(--ink-soft); max-width:72ch;}
-
-.body-copy + .body-copy{margin-top:20px;}
-
-.body-copy strong{color:var(--espresso);}
-
 .spark{background:#241C16; color:#FBF6EC; border-radius:18px; padding:52px;}
 
 .spark .num{color:#FBF6EC;}
@@ -93,54 +87,15 @@
     color:#FBF6EC; max-width:52ch; margin:8px 0 0;
   }
 
-.table-scroll-wrap{position:relative;}
-
-.table-scroll{overflow-x:auto; margin-top:8px; -webkit-overflow-scrolling:touch;}
-
-.table-scroll-wrap::after{
-    content:''; position:absolute; top:0; right:0; bottom:0; width:36px;
-    background:linear-gradient(to right, transparent, var(--cream));
-    opacity:1; transition:opacity .2s ease; pointer-events:none;
-  }
-
-.table-scroll-wrap:has(.table-scroll.at-end)::after{opacity:0;}
-
-.data-table{width:100%; border-collapse:collapse; min-width:520px; font-size:14px;}
-
-.data-table th, .data-table td{
-    text-align:left; padding:14px 18px; border-bottom:1px solid var(--line);
-    vertical-align:top; line-height:1.5;
-  }
-
-.data-table thead th{
-    font-family:'Fraunces',serif; font-weight:600; font-size:13px;
-    color:var(--espresso); border-bottom:2px solid var(--espresso);
-  }
-
-.data-table tbody th{
-    font-weight:700; color:var(--espresso); white-space:nowrap;
-  }
-
-.data-table td{color:var(--ink-soft);}
-
-.data-table td strong, .data-table td em{color:var(--espresso); font-style:normal;}
+.data-table{min-width:520px;}
 
 .pass{color:var(--sage); font-weight:700;}
 
 .fail{color:var(--clay-deep); font-weight:700;}
 
-.why-list{list-style:none; margin:20px 0 0; padding:0; display:flex; flex-direction:column; gap:16px; max-width:72ch;}
+.why-list{margin-top:20px; max-width:72ch;}
 
-.why-list li{display:flex; gap:14px; align-items:flex-start; font-size:16px; line-height:1.65; color:var(--ink-soft);}
-
-.why-list .mark{
-    flex:0 0 auto; width:22px; height:22px; border-radius:50%;
-    background:rgba(190,91,57,0.12); color:var(--clay-deep);
-    display:flex; align-items:center; justify-content:center;
-    font-size:12px; font-weight:700; margin-top:2px;
-  }
-
-.why-list strong{color:var(--espresso);}
+.why-list li{line-height:1.65;}
 
 .console-compare{display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:24px;}
 
@@ -267,8 +222,6 @@
     .console-compare{grid-template-columns:1fr;}
     .spark{padding:32px 24px;}
   }
-
-[id^="toc-"]{scroll-margin-top:96px;}
 
 </style>
 </head>
