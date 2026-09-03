@@ -35,6 +35,8 @@ serves those files directly.
 ├── sitemap.xml                       # All pages for search engine discovery
 ├── robots.txt                        # Crawl directives
 ├── CNAME                             # Custom domain for GitHub Pages
+├── worker/                           # Cloudflare Worker + KV API for case-study polls
+├── worker-csp/                       # Cloudflare Worker that adds CSP and Permissions-Policy headers
 ├── css/
 │   ├── case-study.css                # The whole design system — colors, type, nav, hero, buttons, footer,
 │                                      # contact overlay — for index.html, about.html, 404.html, and all 6 case studies.
@@ -76,6 +78,20 @@ serves those files directly.
 ```
 
 Everything on the live site is linked from somewhere — no hidden or orphaned pages.
+
+## Local development
+
+The portfolio is static, so preview it with any local HTTP server:
+
+```bash
+python3 -m http.server 8000
+```
+
+Then open [http://localhost:8000](http://localhost:8000). Run
+`python3 build.py --check` before committing to verify that generated HTML is
+current. The Cloudflare Workers have their own setup and development commands
+in [`worker/README.md`](worker/README.md) and
+[`worker-csp/README.md`](worker-csp/README.md).
 
 ## Deploying changes
 
@@ -191,4 +207,6 @@ When adding new pages: use `<h2>` for section headings under the page `<h1>`, in
 - Custom domain configured via GoDaddy DNS → GitHub Pages A records
 - TLS enforced via GitHub Pages
 - Analytics via **Google Analytics 4** (`G-3G6X2P2669`)
+- Case-study poll counts stored in Cloudflare KV through [`worker/`](worker/)
+- CSP and Permissions-Policy response headers added by [`worker-csp/`](worker-csp/)
 - Domain verified with Google Search Console
