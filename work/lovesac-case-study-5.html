@@ -97,19 +97,19 @@
 <script defer src="/js/font-preload.js"></script>
 <link rel="stylesheet" href="../css/case-study.css?v=2">
 <style>
-.spark{background:#241C16; color:#FBF6EC; border-radius:18px; padding:52px;}
+.spark{background:var(--glass-bg); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); color:#F2F2F4; border-radius:18px; padding:52px; border:1px solid var(--glass-border);}
 
-.spark .num{color:#FBF6EC;}
+.spark .num{color:#F2F2F4;}
 
 .pull{
     font-family:'Fraunces',serif; font-style:italic;
     font-size:clamp(22px,2.6vw,30px); line-height:1.42;
-    color:#FBF6EC; max-width:52ch; margin:8px 0 0;
+    color:#F2F2F4; max-width:52ch; margin:8px 0 0;
   }
 
 .data-table{min-width:520px;}
 
-.pass{color:var(--sage); font-weight:700;}
+.pass{color:var(--accent); font-weight:700;}
 
 .fail{color:var(--clay-deep); font-weight:700;}
 
@@ -120,7 +120,8 @@
 .console-compare{display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:24px;}
 
 .console-block{
-    background:#241C16;
+    background:var(--paper);
+    border:1px solid var(--line);
     border-radius:14px;
     padding:22px 22px 24px;
     font-family:'SF Mono','Menlo','Consolas',monospace;
@@ -137,15 +138,14 @@
 
 .console-label .sw{width:10px; height:10px; border-radius:3px; flex:0 0 auto;}
 
-.console-label.before .sw{background:#B9AB94;}
+.console-label.before .sw{background:#48484F;}
 
-[data-theme=dark] .console-label.before .sw{background:#8A7A64;}
 
-.console-label.after .sw{background:var(--clay);}
+.console-label.after .sw{background:var(--espresso);}
 
 .console-label.after{color:var(--clay-deep);}
 
-.console-block .line{display:block; white-space:pre-wrap; word-break:break-word; color:#D9CBB8;}
+.console-block .line{display:block; white-space:pre-wrap; word-break:break-word; color:#9B9BA3;}
 
 .console-block .line + .line{margin-top:10px;}
 
@@ -174,7 +174,7 @@
     cursor:pointer; font-size:13px; padding:0; line-height:1;
   }
 
-.a11y-player.redesign .a11y-play{background:#241C16; color:#F1E8D9; border-color:#000000;}
+.a11y-player.redesign .a11y-play{background:var(--espresso); color:var(--invert-ink); border-color:var(--espresso);}
 
 .a11y-player-main{flex:1 1 auto; min-width:0;}
 
@@ -182,7 +182,7 @@
 
 .a11y-scrub{width:100%; accent-color:var(--ink-soft); display:block;}
 
-.a11y-player.redesign .a11y-scrub{accent-color:var(--clay);}
+.a11y-player.redesign .a11y-scrub{accent-color:var(--espresso);}
 
 .a11y-stop{
     flex:0 0 auto; border:1px solid var(--line); background:var(--cream); border-radius:8px;
@@ -200,9 +200,11 @@
 .a11y-mini{
     position:fixed; left:50%; bottom:10px; z-index:80;
     display:flex; align-items:center; gap:14px;
-    background:#241C16; color:#FBF6EC;
+    background:rgba(20,20,22,0.72); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+    color:#F2F2F4;
+    border:1px solid var(--glass-border);
     border-radius:999px; padding:7px 14px 7px 7px;
-    box-shadow:0 14px 34px rgba(36,28,22,0.3);
+    box-shadow:0 14px 34px rgba(0,0,0,0.4);
     max-width:calc(100vw - 32px);
     transform:translate(-50%, 140%); opacity:0; pointer-events:none;
     transition:transform .28s cubic-bezier(.2,.9,.3,1), opacity .28s ease;
@@ -212,7 +214,7 @@
 
 .a11y-mini-play{
     flex:0 0 auto; width:40px; height:40px; border-radius:50%; border:none;
-    background:#F1E8D9; color:#241C16;
+    background:#F2F2F4; color:#0A0A0B;
     display:flex; align-items:center; justify-content:center;
     font-size:13px; cursor:pointer; padding:0; line-height:1;
   }
@@ -221,11 +223,11 @@
 
 .a11y-mini-label{font-size:12px; font-weight:700; letter-spacing:0.02em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:34vw;}
 
-.a11y-mini-status{font-size:11px; color:rgba(251,246,236,0.7); margin-top:1px;}
+.a11y-mini-status{font-size:11px; color:rgba(242,242,244,0.7); margin-top:1px;}
 
 .a11y-mini-stop{
     flex:0 0 auto; width:32px; height:32px; border-radius:50%;
-    border:1px solid rgba(251,246,236,0.3); background:transparent; color:#FBF6EC;
+    border:1px solid rgba(242,242,244,0.3); background:transparent; color:#F2F2F4;
     font-size:11px; cursor:pointer; padding:0;
   }
 
@@ -274,10 +276,6 @@
     </nav>
     <div class="topbar-right">
       <span class="tag">Case Study 05 · Development</span>
-      <button class="theme-toggle" aria-label="Toggle dark mode">
-        <span class="icon-moon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 10.5A6 6 0 0 1 5.5 2.5a6 6 0 1 0 8 8z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        <span class="icon-sun"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="1.6" fill="currentColor"/><line x1="8" y1="1" x2="8" y2="3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="8" y1="13" x2="8" y2="15" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="1" y1="8" x2="3" y2="8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="13" y1="8" x2="15" y2="8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="3.05" y1="3.05" x2="4.46" y2="4.46" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="11.54" y1="11.54" x2="12.95" y2="12.95" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="12.95" y1="3.05" x2="11.54" y2="4.46" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="4.46" y1="11.54" x2="3.05" y2="12.95" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span>
-      </button>
     </div>
   </div>
 </div>
@@ -309,7 +307,7 @@
         <div></div>
       </div>
       <p class="pull">An automated score tells you a check passed. It doesn't tell you whether anyone actually had a good experience.</p>
-      <p class="body-copy" style="color:#D9CBB8; margin-top:20px; max-width:62ch;">Lighthouse, PageSpeed, and security scanners are genuinely useful — they catch real, fixable problems fast, and every score cited earlier in this series is real. But they're pattern-matchers, not people. A heuristic evaluation is the manual layer on top: expert review against known usability principles, plus actually using the thing the way someone real would. This case study applies that layer to four claims made earlier in the series.</p>
+      <p class="body-copy" style="color:#9B9BA3; margin-top:20px; max-width:62ch;">Lighthouse, PageSpeed, and security scanners are genuinely useful — they catch real, fixable problems fast, and every score cited earlier in this series is real. But they're pattern-matchers, not people. A heuristic evaluation is the manual layer on top: expert review against known usability principles, plus actually using the thing the way someone real would. This case study applies that layer to four claims made earlier in the series.</p>
     </div>
   </div>
 </section>
@@ -523,7 +521,7 @@
         <div><span class="num">The Takeaway</span></div>
         <div></div>
       </div>
-      <p class="body-copy" style="color:#D9CBB8; max-width:62ch;">Every score cited in this series — Lighthouse, PageSpeed, securityheaders.com — is a real, useful signal. None of them is the finish line.</p>
+      <p class="body-copy" style="color:#9B9BA3; max-width:62ch;">Every score cited in this series — Lighthouse, PageSpeed, securityheaders.com — is a real, useful signal. None of them is the finish line.</p>
       <p class="pull" style="margin-top:24px;">A heuristic evaluation is what happens after the automated pass: reading the raw output instead of the badge, listening instead of assuming, and testing the actual task instead of the check that stands in for it.</p>
     </div>
   </div>

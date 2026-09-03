@@ -82,15 +82,7 @@
     "knowsAbout": ["AI experience strategy", "Human-centered AI", "Product design leadership", "Brand strategy and identity", "User experience design", "Customer journey mapping", "Agentic commerce"]
   }
   </script>
-  <script>
-    (function(){
-      var t = localStorage.getItem('theme') || 'light';
-      var m = document.createElement('meta');
-      m.name = 'theme-color';
-      m.content = t === 'dark' ? '#1B1512' : '#F1E8D9';
-      document.head.appendChild(m);
-    })();
-  </script>
+  <meta name="theme-color" content="#0A0A0B">
   <style>
     .about-hero{padding:72px 0 40px;}
     .about-hero .wrap{border-bottom:1px solid var(--line);padding-bottom:48px;}
@@ -110,13 +102,13 @@
     .about-capabilities h2,.about-feature h2{font-size:clamp(30px,4vw,46px);font-weight:600;}
     .capability-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden;margin-top:36px;}
     .capability{background:var(--paper);padding:28px 30px;font-family:'Fraunces',serif;font-size:20px;color:var(--espresso);}
-    .about-feature-card{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:end;background:#241C16;color:#FBF6EC;border-radius:20px;padding:48px;}
-    .about-feature .about-label{color:#D9CBB8;margin-bottom:16px;}
-    .about-feature h2{color:#FBF6EC;}
-    .about-feature p{font-size:16px;line-height:1.65;color:#D9CBB8;max-width:54ch;margin-top:18px;}
+    .about-feature-card{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:end;background:var(--glass-bg);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);color:#F2F2F4;border-radius:20px;padding:48px;border:1px solid var(--glass-border);}
+    .about-feature .about-label{color:#9B9BA3;margin-bottom:16px;}
+    .about-feature h2{color:#F2F2F4;}
+    .about-feature p{font-size:16px;line-height:1.65;color:#9B9BA3;max-width:54ch;margin-top:18px;}
     .about-feature-action{justify-self:end;align-self:center;}
-    .about-feature-action .btn{border-color:rgba(251,246,236,.35);color:#FBF6EC;}
-    .about-feature-action .btn:hover{border-color:#FBF6EC;color:#FBF6EC;}
+    .about-feature-action .btn{border-color:rgba(242,242,244,.35);color:#F2F2F4;}
+    .about-feature-action .btn:hover{border-color:#F2F2F4;color:#F2F2F4;}
     .about-connect{text-align:center;padding:88px 0 104px;}
     .about-connect h2{font-size:clamp(32px,4vw,48px);font-weight:600;max-width:18ch;margin:0 auto 16px;}
     .about-connect p{font-size:17px;line-height:1.6;color:var(--ink-soft);max-width:58ch;margin:0 auto 30px;}
@@ -134,12 +126,6 @@
 <nav>
   <div class="nav-inner">
     <a href="/" class="nav-wordmark">Claudia Ochoa</a>
-    <div class="nav-icons">
-      <button class="theme-toggle" aria-label="Toggle dark mode">
-        <span class="icon-moon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 10.5A6 6 0 0 1 5.5 2.5a6 6 0 1 0 8 8z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        <span class="icon-sun"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="1.6" fill="currentColor"/><line x1="8" y1="1" x2="8" y2="3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="8" y1="13" x2="8" y2="15" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="1" y1="8" x2="3" y2="8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="13" y1="8" x2="15" y2="8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="3.05" y1="3.05" x2="4.46" y2="4.46" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="11.54" y1="11.54" x2="12.95" y2="12.95" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="12.95" y1="3.05" x2="11.54" y2="4.46" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="4.46" y1="11.54" x2="3.05" y2="12.95" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span>
-      </button>
-    </div>
   </div>
 </nav>
 <!-- PORTFOLIO-NAV:END -->

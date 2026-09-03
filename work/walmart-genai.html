@@ -75,15 +75,7 @@
   "keywords": "AI leadership, GenAI, candidate experience, conversational AI, product design, Walmart"
 }
 </script>
-<script>
-  (function(){
-    var t = localStorage.getItem('theme') || 'light';
-    var m = document.createElement('meta');
-    m.name = 'theme-color';
-    m.content = t === 'dark' ? '#1B1512' : '#F1E8D9';
-    document.head.appendChild(m);
-  })();
-</script>
+  <meta name="theme-color" content="#0A0A0B">
 <style>
   .ai-hero{padding:72px 0 56px;}
   .ai-hero h1{font-size:clamp(46px,7vw,78px);font-weight:600;line-height:1;max-width:12ch;}
@@ -113,10 +105,10 @@
   .decision-table th,.decision-table td{padding:16px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;line-height:1.55;}
   .decision-table thead th{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--clay-deep);}
   .decision-table tbody th{font-weight:700;color:var(--espresso);width:23%;}
-  .ai-outcome{background:#241C16;color:#FBF6EC;}
-  .ai-outcome .num,.ai-outcome h2{color:#FBF6EC;}
-  .ai-outcome .lede,.ai-outcome .ai-body p{color:#D9CBB8;}
-  .ai-outcome .ai-body strong{color:#FBF6EC;}
+  .ai-outcome{background:var(--glass-bg);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);color:#F2F2F4;border-top:1px solid var(--glass-border);border-bottom:1px solid var(--glass-border);}
+  .ai-outcome .num,.ai-outcome h2{color:#F2F2F4;}
+  .ai-outcome .lede,.ai-outcome .ai-body p{color:#9B9BA3;}
+  .ai-outcome .ai-body strong{color:#F2F2F4;}
   @media(max-width:720px){
     .ai-hero{padding-top:48px;}
     .ai-stats,.ai-grid{grid-template-columns:1fr;}
@@ -132,12 +124,6 @@
 <nav>
   <div class="nav-inner">
     <a href="/" class="nav-wordmark">Claudia Ochoa</a>
-    <div class="nav-icons">
-      <button class="theme-toggle" aria-label="Toggle dark mode">
-        <span class="icon-moon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 10.5A6 6 0 0 1 5.5 2.5a6 6 0 1 0 8 8z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        <span class="icon-sun"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="1.6" fill="currentColor"/><line x1="8" y1="1" x2="8" y2="3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="8" y1="13" x2="8" y2="15" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="1" y1="8" x2="3" y2="8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="13" y1="8" x2="15" y2="8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="3.05" y1="3.05" x2="4.46" y2="4.46" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="11.54" y1="11.54" x2="12.95" y2="12.95" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="12.95" y1="3.05" x2="11.54" y2="4.46" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="4.46" y1="11.54" x2="3.05" y2="12.95" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span>
-      </button>
-    </div>
   </div>
 </nav>
 <!-- PORTFOLIO-NAV:END -->

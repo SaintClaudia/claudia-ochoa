@@ -98,11 +98,10 @@
 <script defer src="/js/font-preload.js"></script>
 <link rel="stylesheet" href="../css/case-study.css?v=2">
 <style>
-.nav-label.before .sw{background:#B9AB94;}
+.nav-label.before .sw{background:#48484F;}
 
-[data-theme=dark] .nav-label.before .sw{background:#8A7A64;}
 
-.nav-label.after .sw{background:var(--clay);}
+.nav-label.after .sw{background:var(--espresso);}
 
 .nav-label.before{color:var(--ink-soft);}
 
@@ -115,7 +114,7 @@
     border-radius:14px;
     overflow:hidden;
     background:var(--paper);
-    box-shadow:0 1px 2px rgba(36,28,22,0.06);
+    box-shadow:0 1px 2px rgba(0,0,0,0.06);
     -webkit-mask-image:-webkit-radial-gradient(white, black);
     -webkit-transform:translateZ(0);
     transform:translateZ(0);
@@ -176,7 +175,7 @@
     cursor:pointer; font-size:13px; padding:0; line-height:1;
   }
 
-.nav-col.after .a11y-play{background:#241C16; color:#F1E8D9; border-color:#000000;}
+.nav-col.after .a11y-play{background:var(--espresso); color:var(--invert-ink); border-color:var(--espresso);}
 
 .a11y-player-main{flex:1 1 auto; min-width:0;}
 
@@ -184,7 +183,7 @@
 
 .a11y-scrub{width:100%; accent-color:var(--ink-soft); display:block;}
 
-.nav-col.after .a11y-scrub{accent-color:var(--clay);}
+.nav-col.after .a11y-scrub{accent-color:var(--espresso);}
 
 .a11y-stop{
     flex:0 0 auto; border:1px solid var(--line); background:var(--cream); border-radius:8px;
@@ -197,9 +196,8 @@
 
 .a11y-scorecard{display:grid; grid-template-columns:1fr 1fr; gap:20px; max-width:70ch; margin-top:28px;}
 
-.a11y-scorecard .expect-stat .big{color:#B9AB94;}
+.a11y-scorecard .expect-stat .big{color:#48484F;}
 
-[data-theme=dark] .a11y-scorecard .expect-stat .big{color:#8A7A64;}
 
 .a11y-scorecard .expect-stat.after .big{color:var(--clay-deep);}
 
@@ -210,9 +208,11 @@
 .a11y-mini{
     position:fixed; left:50%; bottom:10px; z-index:80;
     display:flex; align-items:center; gap:14px;
-    background:#241C16; color:#FBF6EC;
+    background:rgba(20,20,22,0.72); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+    color:#F2F2F4;
+    border:1px solid var(--glass-border);
     border-radius:999px; padding:7px 14px 7px 7px;
-    box-shadow:0 14px 34px rgba(36,28,22,0.3);
+    box-shadow:0 14px 34px rgba(0,0,0,0.4);
     max-width:calc(100vw - 32px);
     transform:translate(-50%, 140%); opacity:0; pointer-events:none;
     transition:transform .28s cubic-bezier(.2,.9,.3,1), opacity .28s ease;
@@ -222,7 +222,7 @@
 
 .a11y-mini-play{
     flex:0 0 auto; width:40px; height:40px; border-radius:50%; border:none;
-    background:#F1E8D9; color:#241C16;
+    background:#F2F2F4; color:#0A0A0B;
     display:flex; align-items:center; justify-content:center;
     font-size:13px; cursor:pointer; padding:0; line-height:1;
   }
@@ -231,11 +231,11 @@
 
 .a11y-mini-label{font-size:12px; font-weight:700; letter-spacing:0.02em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:34vw;}
 
-.a11y-mini-status{font-size:11px; color:rgba(251,246,236,0.7); margin-top:1px;}
+.a11y-mini-status{font-size:11px; color:rgba(242,242,244,0.7); margin-top:1px;}
 
 .a11y-mini-stop{
     flex:0 0 auto; width:32px; height:32px; border-radius:50%;
-    border:1px solid rgba(251,246,236,0.3); background:transparent; color:#FBF6EC;
+    border:1px solid rgba(242,242,244,0.3); background:transparent; color:#F2F2F4;
     font-size:11px; cursor:pointer; padding:0;
   }
 
@@ -325,11 +325,10 @@
     font-size:14px; font-weight:600; color:var(--espresso);
   }
 
-.poll-btn-label .sw{width:10px; height:10px; border-radius:3px; background:#B9AB94;}
+.poll-btn-label .sw{width:10px; height:10px; border-radius:3px; background:#48484F;}
 
-[data-theme=dark] .poll-btn-label .sw{background:#8A7A64;}
 
-.poll-btn[data-choice="after"] .poll-btn-label .sw{background:var(--clay);}
+.poll-btn[data-choice="after"] .poll-btn-label .sw{background:var(--espresso);}
 
 .poll-btn-pct{font-size:13px; font-weight:700; color:var(--ink-soft); font-variant-numeric:tabular-nums;}
 
@@ -340,13 +339,12 @@
 
 .poll-btn-fill{
     display:block; height:100%; width:0%;
-    background:#B9AB94;
+    background:#48484F;
     transition:width .4s ease;
   }
 
-[data-theme=dark] .poll-btn-fill{background:#8A7A64;}
 
-.poll-btn[data-choice="after"] .poll-btn-fill{background:var(--clay);}
+.poll-btn[data-choice="after"] .poll-btn-fill{background:var(--espresso);}
 
 .poll-btn.selected{border-color:var(--clay-deep); background:var(--paper);}
 
@@ -520,10 +518,6 @@
     </nav>
     <div class="topbar-right">
       <span class="tag">Case Study 02 · Deep Dive</span>
-      <button class="theme-toggle" aria-label="Toggle dark mode">
-        <span class="icon-moon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 10.5A6 6 0 0 1 5.5 2.5a6 6 0 1 0 8 8z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        <span class="icon-sun"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="1.6" fill="currentColor"/><line x1="8" y1="1" x2="8" y2="3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="8" y1="13" x2="8" y2="15" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="1" y1="8" x2="3" y2="8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="13" y1="8" x2="15" y2="8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="3.05" y1="3.05" x2="4.46" y2="4.46" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="11.54" y1="11.54" x2="12.95" y2="12.95" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="12.95" y1="3.05" x2="11.54" y2="4.46" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="4.46" y1="11.54" x2="3.05" y2="12.95" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span>
-      </button>
     </div>
   </div>
 </div>

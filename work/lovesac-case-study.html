@@ -83,25 +83,28 @@
 <script defer src="/js/font-preload.js"></script>
 <link rel="stylesheet" href="../css/case-study.css?v=2">
 <style>
-.hero h1 em{font-style:italic; color:var(--clay);}
+.hero h1 em{font-style:italic;}
 
 .spark{
-    background:#241C16;
-    color:#FBF6EC;
+    background:var(--glass-bg);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+    color:#F2F2F4;
     border-radius:18px;
     padding:52px;
+    border:1px solid var(--glass-border);
   }
 
-.spark .section-head h2, .spark .num{color:#FBF6EC;}
+.spark .section-head h2, .spark .num{color:#F2F2F4;}
 
-.spark .section-head .lede{color:#D9CBB8;}
+.spark .section-head .lede{color:#9B9BA3;}
 
 .pull{
     font-family:'Fraunces',serif;
     font-style:italic;
     font-size:clamp(22px,2.6vw,30px);
     line-height:1.42;
-    color:#FBF6EC;
+    color:#F2F2F4;
     max-width:44ch;
     margin:8px 0 28px;
   }
@@ -110,15 +113,21 @@
 
 .chip{
     display:inline-flex; align-items:center; gap:8px;
-    background:rgba(241,232,217,0.08);
-    border:1px solid rgba(241,232,217,0.22);
-    color:#FBF6EC;
+    background:rgba(242,242,244,0.08);
+    border:1px solid rgba(242,242,244,0.22);
+    color:#F2F2F4;
     padding:9px 16px;
     border-radius:999px;
     font-size:13px;
   }
 
-.chip .dot{width:6px;height:6px;border-radius:50%;background:#BE5B39;}
+.chip .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 var(--accent-wash);animation:chip-pulse 2s ease-in-out infinite;}
+@keyframes chip-pulse{
+  0%{box-shadow:0 0 0 0 rgba(74,222,128,0.55);}
+  70%{box-shadow:0 0 0 6px rgba(74,222,128,0);}
+  100%{box-shadow:0 0 0 0 rgba(74,222,128,0);}
+}
+@media (prefers-reduced-motion: reduce){.chip .dot{animation:none;}}
 
 .problem-grid{
     display:grid;
@@ -153,11 +162,10 @@
 
 .compare-label .sw{width:10px;height:10px;border-radius:3px;}
 
-.before .sw{background:#B9AB94;}
+.before .sw{background:#48484F;}
 
-[data-theme=dark] .before .sw{background:#8A7A64;}
 
-.after .sw{background:var(--clay);}
+.after .sw{background:var(--espresso);}
 
 .compare-grid{
     display:grid; grid-template-columns:1fr 1fr; gap:28px;
@@ -183,7 +191,9 @@
 .compare-frame-hint{
     position:absolute; right:12px; bottom:12px;
     display:flex; align-items:center; gap:6px;
-    background:#241C16; color:#FBF6EC;
+    background:rgba(20,20,22,0.7); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+    border:1px solid var(--glass-border);
+    color:#F2F2F4;
     font-size:12px; font-weight:600;
     padding:7px 13px; border-radius:999px;
     opacity:0; transform:translateY(4px);
@@ -204,7 +214,7 @@
 
 .lightbox.open{opacity:1; visibility:visible; pointer-events:auto;}
 
-.lightbox-backdrop{position:absolute; inset:0; background:rgba(15,11,8,0.94);}
+.lightbox-backdrop{position:absolute; inset:0; background:rgba(5,5,6,0.94);}
 
 .lightbox-panel{
     position:relative;
@@ -218,7 +228,8 @@
 .lightbox.open .lightbox-panel{transform:translateY(0) scale(1);}
 
 .lightbox-panel-inner{
-    background:var(--paper);
+    background:var(--sand);
+    border:1px solid var(--glass-border);
     border-radius:16px;
     height:100%;
     max-height:85vh;
@@ -256,11 +267,12 @@
 
 .video-lightbox.open{opacity:1; visibility:visible; pointer-events:auto;}
 
-.video-lightbox-backdrop{position:absolute; inset:0; background:rgba(15,11,8,0.94);}
+.video-lightbox-backdrop{position:absolute; inset:0; background:rgba(5,5,6,0.94);}
 
 .video-lightbox-panel{
     position:relative;
-    background:#241C16;
+    background:var(--sand);
+    border:1px solid var(--glass-border);
     border-radius:16px;
     flex:0 1 346px;
     min-width:0;
@@ -283,9 +295,9 @@
 .lightbox-close{
     position:absolute; top:20px; right:20px; z-index:3;
     width:34px; height:34px; border-radius:50%;
-    background:rgba(251,246,236,0.12);
-    border:1px solid rgba(251,246,236,0.35);
-    color:#FBF6EC;
+    background:rgba(242,242,244,0.12);
+    border:1px solid rgba(242,242,244,0.35);
+    color:#F2F2F4;
     backdrop-filter:blur(6px);
     -webkit-backdrop-filter:blur(6px);
     cursor:pointer;
@@ -294,14 +306,14 @@
     transition:background .2s ease, border-color .2s ease;
   }
 
-.lightbox-close:hover{background:rgba(251,246,236,0.22); border-color:rgba(251,246,236,0.55);}
+.lightbox-close:hover{background:rgba(242,242,244,0.22); border-color:rgba(242,242,244,0.55);}
 
 .lightbox-arrow{
     flex:0 0 auto; z-index:2;
     width:44px; height:44px; border-radius:50%;
-    background:rgba(251,246,236,0.12);
-    border:1px solid rgba(251,246,236,0.35);
-    color:#FBF6EC;
+    background:rgba(242,242,244,0.12);
+    border:1px solid rgba(242,242,244,0.35);
+    color:#F2F2F4;
     backdrop-filter:blur(6px);
     -webkit-backdrop-filter:blur(6px);
     cursor:pointer;
@@ -310,7 +322,7 @@
     transition:background .2s ease, border-color .2s ease, opacity .2s ease;
   }
 
-.lightbox-arrow:hover{background:rgba(251,246,236,0.22); border-color:rgba(251,246,236,0.55);}
+.lightbox-arrow:hover{background:rgba(242,242,244,0.22); border-color:rgba(242,242,244,0.55);}
 
 .lightbox-arrow:disabled{opacity:0; pointer-events:none;}
 
@@ -382,11 +394,10 @@
     font-size:14px; font-weight:600; color:var(--espresso);
   }
 
-.poll-btn-label .sw{width:10px; height:10px; border-radius:3px; background:#B9AB94;}
+.poll-btn-label .sw{width:10px; height:10px; border-radius:3px; background:#48484F;}
 
-[data-theme=dark] .poll-btn-label .sw{background:#8A7A64;}
 
-.poll-btn[data-choice="after"] .poll-btn-label .sw{background:var(--clay);}
+.poll-btn[data-choice="after"] .poll-btn-label .sw{background:var(--espresso);}
 
 .poll-btn-pct{font-size:13px; font-weight:700; color:var(--ink-soft); font-variant-numeric:tabular-nums;}
 
@@ -397,13 +408,12 @@
 
 .poll-btn-fill{
     display:block; height:100%; width:0%;
-    background:#B9AB94;
+    background:#48484F;
     transition:width .4s ease;
   }
 
-[data-theme=dark] .poll-btn-fill{background:#8A7A64;}
 
-.poll-btn[data-choice="after"] .poll-btn-fill{background:var(--clay);}
+.poll-btn[data-choice="after"] .poll-btn-fill{background:var(--espresso);}
 
 .poll-btn.selected{border-color:var(--clay-deep); background:var(--paper);}
 
@@ -429,8 +439,8 @@
 .pillar .tag{
     display:inline-block;
     font-size:11px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700;
-    color:var(--sage);
-    background:rgba(110,115,80,0.1);
+    color:var(--accent);
+    background:var(--accent-wash);
     padding:6px 12px; border-radius:999px;
     margin-bottom:18px;
   }
@@ -492,10 +502,6 @@
     </nav>
     <div class="topbar-right">
       <span class="tag">Case Study 01 · Redesign</span>
-      <button class="theme-toggle" aria-label="Toggle dark mode">
-        <span class="icon-moon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 10.5A6 6 0 0 1 5.5 2.5a6 6 0 1 0 8 8z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        <span class="icon-sun"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="1.6" fill="currentColor"/><line x1="8" y1="1" x2="8" y2="3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="8" y1="13" x2="8" y2="15" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="1" y1="8" x2="3" y2="8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="13" y1="8" x2="15" y2="8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="3.05" y1="3.05" x2="4.46" y2="4.46" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="11.54" y1="11.54" x2="12.95" y2="12.95" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="12.95" y1="3.05" x2="11.54" y2="4.46" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="4.46" y1="11.54" x2="3.05" y2="12.95" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span>
-      </button>
     </div>
   </div>
 </div>
@@ -535,13 +541,13 @@
         </div>
       </div>
       <p class="pull">&#8220;If I ran this company, this homepage <br class="pull-break">wouldn&#8217;t survive week&nbsp;one.&#8221;</p>
-      <p style="color:#D9CBB8; font-size:15px; line-height:1.7; max-width:62ch; margin-bottom:16px;">
+      <p style="color:#9B9BA3; font-size:15px; line-height:1.7; max-width:62ch; margin-bottom:16px;">
         The project started with Lovesac CEO Shawn Nelson's response to customer Derick Cahill, who had spent $8,000 on a sectional. His response made me look more closely at the experience surrounding the product&mdash;and what the brand was communicating to its customers.
       </p>
-      <p style="color:#D9CBB8; font-size:15px; line-height:1.7; max-width:62ch; margin-bottom:16px;">
+      <p style="color:#9B9BA3; font-size:15px; line-height:1.7; max-width:62ch; margin-bottom:16px;">
         The homepage revealed a fragmented experience: cluttered navigation, discount-led messaging, and accessibility treated as a toggle rather than a foundation. What began as a reaction to the moment became an opportunity to rethink how Lovesac communicates its product, value, and brand online.
       </p>
-      <p style="color:#D9CBB8; font-size:15px; line-height:1.7; max-width:62ch; margin-bottom:28px;">
+      <p style="color:#9B9BA3; font-size:15px; line-height:1.7; max-width:62ch; margin-bottom:28px;">
         I approached it as a business problem: identify the friction, understand the opportunity, and build a better experience around the customer.
       </p>
       <div class="chip-row">

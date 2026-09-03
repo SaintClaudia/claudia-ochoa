@@ -1,37 +1,3 @@
-// === DARK MODE TOGGLE ===
-const root = document.documentElement;
-const saved = localStorage.getItem('theme');
-if (saved) {
-  root.setAttribute('data-theme', saved);
-} else {
-  root.setAttribute('data-theme', 'light');
-}
-
-function applyThemeColor(theme) {
-  const color = theme === 'dark' ? '#1B1512' : '#F1E8D9';
-  let meta = document.querySelector('meta[name="theme-color"]');
-  if (!meta) {
-    meta = document.createElement('meta');
-    meta.name = 'theme-color';
-    document.head.appendChild(meta);
-  }
-  meta.setAttribute('content', color);
-  document.documentElement.style.backgroundColor = color;
-}
-
-// Apply on load
-applyThemeColor(root.getAttribute('data-theme'));
-
-document.querySelectorAll('.theme-toggle, .mobile-theme-toggle').forEach((toggle) => {
-  toggle.addEventListener('click', (e) => {
-    e.preventDefault();
-    const isDark = root.getAttribute('data-theme') === 'dark';
-    const next = isDark ? 'light' : 'dark';
-    localStorage.setItem('theme', next);
-    location.reload();
-  });
-});
-
 // Scroll reveal
 const revealEls = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver((entries) => {

@@ -90,14 +90,14 @@
 
 .subhead-block h3{font-size:22px; margin-bottom:14px; line-height:1.2;}
 
-.spark{background:#241C16; color:#FBF6EC; border-radius:18px; padding:52px;}
+.spark{background:var(--glass-bg); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); color:#F2F2F4; border-radius:18px; padding:52px; border:1px solid var(--glass-border);}
 
-.spark .num{color:#FBF6EC;}
+.spark .num{color:#F2F2F4;}
 
 .pull{
     font-family:'Fraunces',serif; font-style:italic;
     font-size:clamp(22px,2.6vw,30px); line-height:1.42;
-    color:#FBF6EC; max-width:52ch; margin:8px 0 0;
+    color:#F2F2F4; max-width:52ch; margin:8px 0 0;
   }
 
 .pull.on-paper{color:var(--espresso); max-width:56ch;}
@@ -110,7 +110,7 @@
 
 .compare-card{background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:22px 24px;}
 
-.compare-card.redesign{background:rgba(190,91,57,0.06); border-color:rgba(190,91,57,0.28);}
+.compare-card.redesign{background:var(--sand); border-color:var(--line);}
 
 .compare-card .compare-label{
     display:block; font-size:11px; font-weight:700; letter-spacing:0.08em;
@@ -130,7 +130,7 @@
     border-radius:14px;
     overflow:hidden;
     background:var(--paper);
-    box-shadow:0 1px 2px rgba(36,28,22,0.06);
+    box-shadow:0 1px 2px rgba(0,0,0,0.06);
     margin:20px 0;
     -webkit-mask-image:-webkit-radial-gradient(white, black);
     -webkit-transform:translateZ(0);
@@ -155,7 +155,7 @@
 .stage-card .stage-title{font-size:15.5px; font-weight:600; color:var(--espresso); margin:0;}
 
 blockquote{
-    margin:32px 0; padding:2px 0 2px 24px; border-left:3px solid var(--clay);
+    margin:32px 0; padding:2px 0 2px 24px; border-left:3px solid var(--espresso);
     max-width:60ch;
   }
 
@@ -190,10 +190,6 @@ blockquote p{
     </nav>
     <div class="topbar-right">
       <span class="tag">Case Study 04 · Content Strategy</span>
-      <button class="theme-toggle" aria-label="Toggle dark mode">
-        <span class="icon-moon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 10.5A6 6 0 0 1 5.5 2.5a6 6 0 1 0 8 8z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        <span class="icon-sun"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="1.6" fill="currentColor"/><line x1="8" y1="1" x2="8" y2="3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="8" y1="13" x2="8" y2="15" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="1" y1="8" x2="3" y2="8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="13" y1="8" x2="15" y2="8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="3.05" y1="3.05" x2="4.46" y2="4.46" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="11.54" y1="11.54" x2="12.95" y2="12.95" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="12.95" y1="3.05" x2="11.54" y2="4.46" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="4.46" y1="11.54" x2="3.05" y2="12.95" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span>
-      </button>
     </div>
   </div>
 </div>
@@ -227,7 +223,7 @@ blockquote p{
         <div></div>
       </div>
       <p class="pull">Shaping brands with emotional intelligence means understanding what a customer needs in a given moment — and designing for it.</p>
-      <p class="body-copy" style="color:#D9CBB8; margin-top:20px; max-width:62ch;">This is where emotional intelligence becomes the design. A brand voice isn't just how it sounds. It's how it makes the customer feel.</p>
+      <p class="body-copy" style="color:#9B9BA3; margin-top:20px; max-width:62ch;">This is where emotional intelligence becomes the design. A brand voice isn't just how it sounds. It's how it makes the customer feel.</p>
     </div>
   </div>
 </section>
@@ -331,7 +327,7 @@ blockquote p{
         <div><span class="num">Why This Is Strategy</span></div>
         <div></div>
       </div>
-      <p class="body-copy" style="color:#D9CBB8; max-width:62ch;">Content strategy isn't about giving every page the same personality. It's about understanding what the content needs to do in each moment, then choosing the right language to do it.</p>
+      <p class="body-copy" style="color:#9B9BA3; max-width:62ch;">Content strategy isn't about giving every page the same personality. It's about understanding what the content needs to do in each moment, then choosing the right language to do it.</p>
       <p class="pull" style="margin-top:24px;">Some moments need warmth. Some need personality. Some just need a clear answer. The strategy is knowing the difference—and making those choices deliberately.</p>
     </div>
   </div>
