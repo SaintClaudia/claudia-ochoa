@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- TRUSTED-TYPES:START -->
+<script>
+(function(){
+  // Every string this page passes to an innerHTML sink is built from this
+  // page's own hardcoded config (the `products`/`compactPieces` arrays,
+  // numeric room dimensions) — never raw user input — so the policy is a
+  // pass-through, not a sanitizer.
+  var policy = (window.trustedTypes && trustedTypes.createPolicy)
+    ? trustedTypes.createPolicy('case-study-html', { createHTML: function(s){ return s; } })
+    : null;
+  window.__ttHTML = function(s){ return policy ? policy.createHTML(s) : s; };
+})();
+</script>
+<!-- TRUSTED-TYPES:END -->
 <!-- ANALYTICS:START -->
 <!-- Google Analytics loads after the critical rendering window. -->
 <script>
@@ -1474,11 +1488,11 @@ document.addEventListener('dragstart', function(e){ if (e.target.closest('img'))
     furnitureCount++;
     var row = document.createElement('div');
     row.className = 'space-furniture-row';
-    row.innerHTML =
+    row.innerHTML = window.__ttHTML(
       '<input class="sf-name" type="text" placeholder="e.g. TV console" aria-label="Furniture name">' +
       '<input class="sf-dim" type="number" min="1" placeholder="Width" aria-label="Furniture width in inches">' +
       '<input class="sf-dim" type="number" min="1" placeholder="Depth" aria-label="Furniture depth in inches">' +
-      '<button type="button" class="space-furniture-remove" aria-label="Remove"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>';
+      '<button type="button" class="space-furniture-remove" aria-label="Remove"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>');
     row.querySelector('.space-furniture-remove').addEventListener('click', function(){
       row.remove();
     });
@@ -1490,11 +1504,11 @@ document.addEventListener('dragstart', function(e){ if (e.target.closest('img'))
   function resetRoomFitForm(){
     roomWidthEl.value = '';
     roomLengthEl.value = '';
-    list.innerHTML = '';
+    list.innerHTML = window.__ttHTML('');
     addFurnitureRow();
     errorEl.style.display = 'none';
     resultsEl.style.display = 'none';
-    resultsEl.innerHTML = '';
+    resultsEl.innerHTML = window.__ttHTML('');
   }
   window.resetRoomFitForm = resetRoomFitForm;
 
@@ -1524,7 +1538,7 @@ document.addEventListener('dragstart', function(e){ if (e.target.closest('img'))
   }
 
   function renderFitList(results, roomW, roomL, fitCount){
-    resultsEl.innerHTML =
+    resultsEl.innerHTML = window.__ttHTML(
       '<div class="space-results-header"><div class="space-results-summary">' + fitCount + ' of ' + products.length + ' setups will fit</div><button type="button" class="space-clear-btn" id="spaceClearBtn">Clear</button></div>' +
       '<div class="space-results-sub">Based on ' + roomW + '"×' + roomL + '" of floor space, minus what’s already in the room.</div>' +
       results.map(function(r){
@@ -1536,7 +1550,7 @@ document.addEventListener('dragstart', function(e){ if (e.target.closest('img'))
           '<span class="space-result-name">' + r.name + '</span>' +
           '<span class="space-result-dims">' + r.w + '"×' + r.d + '"</span>' +
         '</div>';
-      }).join('');
+      }).join(''));
   }
 
   function configLabel(p){
@@ -1555,7 +1569,7 @@ document.addEventListener('dragstart', function(e){ if (e.target.closest('img'))
       if(productFitsRoom(p, room)){
         var badge = document.createElement('div');
         badge.className = 'fit-badge';
-        badge.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Fits your room';
+        badge.innerHTML = window.__ttHTML('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Fits your room');
         card.insertBefore(badge, card.firstChild);
         card.style.order = '0';
       } else {
@@ -1625,10 +1639,10 @@ document.addEventListener('dragstart', function(e){ if (e.target.closest('img'))
       }
     }
 
-    resultsEl.innerHTML =
+    resultsEl.innerHTML = window.__ttHTML(
       '<div class="space-results-header"><div class="space-results-summary">' + fitCount + ' configuration' + (fitCount === 1 ? '' : 's') + ' fit your room</div><button type="button" class="space-clear-btn" id="spaceClearBtn">Clear</button></div>' +
       '<div class="space-results-sub">Based on ' + roomW + '"×' + roomL + '" of floor space.</div>' +
-      (fitCount ? groupHtml : fallbackHtml);
+      (fitCount ? groupHtml : fallbackHtml));
 
     resultsEl.querySelectorAll('.space-config-fallback').forEach(function(card){
       card.addEventListener('click', function(){
@@ -1761,7 +1775,7 @@ var COLOR_NAMES = {
 };
 
 function renderProductGrid(){
-  document.getElementById('productGrid').innerHTML = products.map((p,i)=>{
+  document.getElementById('productGrid').innerHTML = window.__ttHTML(products.map((p,i)=>{
     var colorNames = p.hex.map(h=>COLOR_NAMES[h]||'color');
     return `
     <div class="product-card" id="product-${i}" data-idx="${i}">
@@ -1774,7 +1788,7 @@ function renderProductGrid(){
       <div class="product-swatches nav-mock" role="button" tabindex="0" aria-label="Colors: ${colorNames.join(', ')}">${p.hex.map(h=>`<div class="pswatch" style="background:${h}" aria-hidden="true"></div>`).join('')}</div>
       <div class="product-price nav-mock" role="button" tabindex="0" aria-label="$${p.price.toLocaleString()}.00">$${p.price.toLocaleString()}.00</div>
     </div>`;
-  }).join('');
+  }).join(''));
   applyFilters();
 }
 
@@ -1822,7 +1836,7 @@ function applyFilters(){
     if(room && roomProductFitCount === 0){
       var fittingCompact = compactPieces.filter(function(p){ return fitsBounds(p, room.width, room.length); });
       if(fittingCompact.length){
-        noteEl.innerHTML =
+        noteEl.innerHTML = window.__ttHTML(
           '<div class="room-fit-note-msg">None of our Sactionals setups fit a ' + room.width + '"×' + room.length + '" room, but this would:</div>' +
           fittingCompact.map(function(p){
             return '<button type="button" class="fallback-card nav-mock" aria-label="' + p.name + ', $' + p.price.toLocaleString() + '">' +
@@ -1831,7 +1845,7 @@ function applyFilters(){
               '<div class="fallback-card-meta">' + p.meta + ' · ' + p.w + '"×' + p.d + '"</div>' +
               '<div class="fallback-card-price">$' + p.price.toLocaleString() + '</div>' +
             '</button>';
-          }).join('');
+          }).join(''));
       } else {
         noteEl.textContent = 'Nothing in our Sactionals lineup fits a ' + room.width + '"×' + room.length + '" room — try a larger space.';
       }

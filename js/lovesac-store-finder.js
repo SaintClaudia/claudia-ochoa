@@ -1,4 +1,12 @@
 (function(){
+  // The Maps script URL is built entirely from a hardcoded API key and
+  // fixed hostname — never user input — so the policy is a pass-through,
+  // not a sanitizer.
+  var ttPolicy = (window.trustedTypes && trustedTypes.createPolicy)
+    ? trustedTypes.createPolicy('lovesac-store-finder', { createScriptURL: function(url){ return url; } })
+    : null;
+  function ttScriptURL(url){ return ttPolicy ? ttPolicy.createScriptURL(url) : url; }
+
   var toggle = document.getElementById('storeToggle');
   var drop = document.getElementById('storeDropdown');
   var backdrop = document.getElementById('storeBackdrop');
@@ -19,7 +27,7 @@
     googleMapsPromise = new Promise(function(resolve){
       window.__lovesacInitMap = resolve;
       var script = document.createElement('script');
-      script.src = 'https://maps.googleapis.com/maps/api/js?key=' + GOOGLE_MAPS_API_KEY + '&loading=async&libraries=marker&callback=__lovesacInitMap';
+      script.src = ttScriptURL('https://maps.googleapis.com/maps/api/js?key=' + GOOGLE_MAPS_API_KEY + '&loading=async&libraries=marker&callback=__lovesacInitMap');
       script.async = true;
       document.head.appendChild(script);
     });

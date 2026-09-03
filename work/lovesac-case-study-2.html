@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- TRUSTED-TYPES:START -->
+<script>
+(function(){
+  // Every string this page passes to an innerHTML/insertAdjacentHTML sink is
+  // built from this page's own hardcoded config (the `products` array,
+  // numeric room dimensions) — never raw user input — so the policy is a
+  // pass-through, not a sanitizer.
+  var policy = (window.trustedTypes && trustedTypes.createPolicy)
+    ? trustedTypes.createPolicy('case-study-html', { createHTML: function(s){ return s; } })
+    : null;
+  window.__ttHTML = function(s){ return policy ? policy.createHTML(s) : s; };
+})();
+</script>
+<!-- TRUSTED-TYPES:END -->
 <!-- ANALYTICS:START -->
 <!-- Google Analytics loads after the critical rendering window. -->
 <script>
@@ -1418,7 +1432,7 @@
     render(key);
   });
 
-  document.body.insertAdjacentHTML('beforeend',
+  document.body.insertAdjacentHTML('beforeend', window.__ttHTML(
     '<div class="a11y-mini" id="a11yMini">' +
       '<button type="button" class="a11y-mini-play" id="a11yMiniPlay" aria-label="Play or pause">▶</button>' +
       '<div class="a11y-mini-info" id="a11yMiniInfo" role="button" tabindex="0">' +
@@ -1427,7 +1441,7 @@
       '</div>' +
       '<button type="button" class="a11y-mini-stop" id="a11yMiniStop" aria-label="Stop and reset to beginning">■</button>' +
     '</div>'
-  );
+  ));
   var mini = document.getElementById('a11yMini');
   var miniPlay = document.getElementById('a11yMiniPlay');
   var miniLabel = document.getElementById('a11yMiniLabel');
@@ -1548,11 +1562,11 @@
   function addFurnitureRow(){
     var row = document.createElement('div');
     row.className = 'rf-furniture-row';
-    row.innerHTML =
+    row.innerHTML = window.__ttHTML(
       '<input class="rf-fname" type="text" placeholder="e.g. TV console" aria-label="Furniture name">' +
       '<input class="rf-fdim" type="number" min="1" placeholder="Width" aria-label="Furniture width in inches">' +
       '<input class="rf-fdim" type="number" min="1" placeholder="Depth" aria-label="Furniture depth in inches">' +
-      '<button type="button" class="rf-furniture-remove" aria-label="Remove furniture row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>';
+      '<button type="button" class="rf-furniture-remove" aria-label="Remove furniture row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>');
     row.querySelector('.rf-furniture-remove').addEventListener('click', function(){ row.remove(); });
     list.appendChild(row);
   }
@@ -1562,11 +1576,11 @@
   function resetRoomFitForm(){
     roomWidthEl.value = '';
     roomLengthEl.value = '';
-    list.innerHTML = '';
+    list.innerHTML = window.__ttHTML('');
     addFurnitureRow();
     errorEl.style.display = 'none';
     resultsEl.style.display = 'none';
-    resultsEl.innerHTML = '';
+    resultsEl.innerHTML = window.__ttHTML('');
   }
 
   resultsEl.addEventListener('click', function(e){
@@ -1604,7 +1618,7 @@
     var fitting = results.filter(function(r){ return r.fits; });
     var fitCount = fitting.length;
 
-    resultsEl.innerHTML =
+    resultsEl.innerHTML = window.__ttHTML(
       '<div class="rf-results-header"><div class="rf-results-summary">' + fitCount + ' of ' + products.length + ' setups will fit</div><button type="button" class="rf-clear-btn" id="rfClearBtn">Clear</button></div>' +
       '<div class="rf-results-sub">Based on ' + roomW + '"\u00d7' + roomL + '" of floor space' + (furnitureArea > 0 ? ', minus what\u2019s already in the room' : '') + '.</div>' +
       (fitCount
@@ -1618,7 +1632,7 @@
               '<span class="rf-result-price">$' + r.price.toLocaleString() + '</span>' +
             '</div>';
           }).join('')
-        : '<div class="rf-results-empty">Nothing in the Sactionals lineup fits that space \u2014 try a larger room.</div>');
+        : '<div class="rf-results-empty">Nothing in the Sactionals lineup fits that space \u2014 try a larger room.</div>'));
     resultsEl.style.display = 'block';
   });
 })();

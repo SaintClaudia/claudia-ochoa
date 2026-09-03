@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- TRUSTED-TYPES:START -->
+<script>
+(function(){
+  // Every string this page passes to an innerHTML/insertAdjacentHTML sink is
+  // a hardcoded template — never raw user input — so the policy is a
+  // pass-through, not a sanitizer.
+  var policy = (window.trustedTypes && trustedTypes.createPolicy)
+    ? trustedTypes.createPolicy('case-study-html', { createHTML: function(s){ return s; } })
+    : null;
+  window.__ttHTML = function(s){ return policy ? policy.createHTML(s) : s; };
+})();
+</script>
+<!-- TRUSTED-TYPES:END -->
 <!-- ANALYTICS:START -->
 <!-- Google Analytics loads after the critical rendering window. -->
 <script>
@@ -738,7 +751,7 @@
     render(key);
   });
 
-  document.body.insertAdjacentHTML('beforeend',
+  document.body.insertAdjacentHTML('beforeend', window.__ttHTML(
     '<div class="a11y-mini" id="a11yMini">' +
       '<button type="button" class="a11y-mini-play" id="a11yMiniPlay" aria-label="Play or pause">▶</button>' +
       '<div class="a11y-mini-info" id="a11yMiniInfo" role="button" tabindex="0">' +
@@ -747,7 +760,7 @@
       '</div>' +
       '<button type="button" class="a11y-mini-stop" id="a11yMiniStop" aria-label="Stop and reset to beginning">■</button>' +
     '</div>'
-  );
+  ));
   var mini = document.getElementById('a11yMini');
   var miniPlay = document.getElementById('a11yMiniPlay');
   var miniLabel = document.getElementById('a11yMiniLabel');
