@@ -26,21 +26,25 @@ window.addEventListener('scroll', () => {
 // === NAV MENU ===
 const navMenu = document.getElementById('nav-menu');
 const navMenuBtn = document.getElementById('nav-menu-btn');
+const navMenuBackdrop = document.getElementById('nav-menu-backdrop');
 if (navMenu && navMenuBtn) {
   const closeNavMenu = () => {
     navMenu.classList.remove('open');
     navMenuBtn.setAttribute('aria-expanded', 'false');
     navMenuBtn.setAttribute('aria-label', 'Open menu');
+    document.body.style.overflow = '';
   };
   navMenuBtn.addEventListener('click', (e) => {
     e.stopPropagation();
     const isOpen = navMenu.classList.toggle('open');
     navMenuBtn.setAttribute('aria-expanded', String(isOpen));
     navMenuBtn.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+    document.body.style.overflow = isOpen ? 'hidden' : '';
   });
   navMenu.querySelectorAll('.nav-menu-panel a').forEach((link) => {
     link.addEventListener('click', closeNavMenu);
   });
+  navMenuBackdrop?.addEventListener('click', closeNavMenu);
   document.addEventListener('click', (e) => {
     if (!navMenu.contains(e.target)) closeNavMenu();
   });
