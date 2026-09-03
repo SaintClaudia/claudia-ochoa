@@ -41,6 +41,16 @@ function buildCSP(nonce) {
 const PERMISSIONS_POLICY =
   "geolocation=(), microphone=(), camera=(), payment=(), usb=(), interest-cohort=()";
 
+// Report-Only: logs Trusted Types violations to the console without
+// blocking anything, so third-party script compatibility (Google
+// Analytics' gtag.js loads on every page; the Maps JS API loads on the
+// store-finder pages) can be verified live before switching this to an
+// enforcing directive. `case-study-html` and `lovesac-store-finder` are
+// this site's own policies; the other three are policy names the Maps JS
+// API creates internally once it's running.
+const TRUSTED_TYPES_REPORT_ONLY =
+  "require-trusted-types-for 'script'; trusted-types case-study-html lovesac-store-finder google-maps-api-loader google-maps-api#html lit-html";
+
 class NonceInjector {
   constructor(nonce) {
     this.nonce = nonce;
@@ -81,6 +91,7 @@ export default {
     // Isolates the top-level browsing context from cross-origin popups/openers
     // (the site opens no windows via window.open, so this has no UX impact).
     newResponse.headers.set("Cross-Origin-Opener-Policy", "same-origin");
+    newResponse.headers.set("Content-Security-Policy-Report-Only", TRUSTED_TYPES_REPORT_ONLY);
     return newResponse;
   },
 };
