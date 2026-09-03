@@ -89,6 +89,39 @@
     .card-body .section-head{margin-bottom:0;}
     .card-body h2{margin-top:24px;}
     .card-cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:20px;}
+
+    /* Portfolio guide — a live, cited demonstration of the site's AI layer. */
+    .portfolio-agent{padding:56px 0 10px;}
+    .portfolio-agent-shell{position:relative;overflow:hidden;display:grid;grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr);gap:48px;padding:clamp(28px,5vw,56px);border:1px solid var(--glass-border);border-radius:24px;background:linear-gradient(145deg,rgba(255,255,255,.065),rgba(255,255,255,.025));box-shadow:0 24px 80px rgba(0,0,0,.28);}
+    .portfolio-agent-shell::before{content:'';position:absolute;width:260px;height:260px;right:-120px;top:-140px;border-radius:50%;background:radial-gradient(circle,rgba(74,222,128,.13),transparent 68%);pointer-events:none;}
+    .portfolio-agent-kicker{display:flex;align-items:center;gap:9px;margin-bottom:18px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);}
+    .portfolio-agent-kicker::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 18px rgba(74,222,128,.6);}
+    .portfolio-agent h2{font-size:clamp(30px,4vw,46px);font-weight:600;line-height:1.04;max-width:10ch;}
+    .portfolio-agent-intro{margin-top:18px;max-width:40ch;color:var(--ink-soft);font-size:16px;line-height:1.65;}
+    .portfolio-agent-tech{margin-top:22px;color:var(--ink-soft);font-size:12.5px;line-height:1.6;}
+    .portfolio-agent-form{position:relative;z-index:1;display:flex;flex-direction:column;gap:14px;}
+    .portfolio-agent-label{font-size:14px;font-weight:600;color:var(--espresso);}
+    .portfolio-agent-suggestions{display:flex;flex-wrap:wrap;gap:8px;}
+    .portfolio-agent-suggestion{appearance:none;border:1px solid var(--line);border-radius:999px;background:rgba(10,10,11,.35);color:var(--ink);padding:9px 13px;font:500 12.5px/1.35 'Inter',sans-serif;text-align:left;cursor:pointer;transition:border-color .2s ease,color .2s ease,background .2s ease;}
+    .portfolio-agent-suggestion:hover,.portfolio-agent-suggestion:focus-visible{border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.06);color:var(--espresso);}
+    .portfolio-agent-input-row{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:stretch;margin-top:2px;}
+    .portfolio-agent-input{min-width:0;border:1px solid var(--line);border-radius:14px;background:rgba(10,10,11,.5);color:var(--espresso);padding:15px 16px;font:400 16px/1.45 'Inter',sans-serif;outline:0;}
+    .portfolio-agent-input::placeholder{color:#77777f;}
+    .portfolio-agent-input:focus{border-color:rgba(242,242,244,.55);box-shadow:0 0 0 3px rgba(242,242,244,.07);}
+    .portfolio-agent-submit{border:0;border-radius:14px;background:var(--espresso);color:var(--invert-ink);padding:0 21px;font:700 13px/1 'Inter',sans-serif;cursor:pointer;transition:opacity .2s ease,transform .2s ease;}
+    .portfolio-agent-submit:hover{opacity:.88;}
+    .portfolio-agent-submit:disabled{opacity:.5;cursor:wait;}
+    .portfolio-agent-answer{display:none;margin-top:4px;padding:20px;border:1px solid var(--line);border-radius:16px;background:rgba(10,10,11,.4);}
+    .portfolio-agent-answer.visible{display:block;}
+    .portfolio-agent-answer-text{font-family:'Fraunces',serif;font-size:17px;line-height:1.65;color:var(--espresso);}
+    .portfolio-agent-sources{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
+    .portfolio-agent-sources a{border-bottom:1px solid var(--line);padding-bottom:2px;color:var(--ink-soft);font-size:12.5px;text-decoration:none;}
+    .portfolio-agent-sources a:hover{color:var(--espresso);border-color:var(--espresso);}
+    .portfolio-agent-disclosure{margin-top:14px;color:#77777f;font-size:11.5px;line-height:1.5;}
+    .portfolio-agent-status{min-height:1.4em;color:var(--ink-soft);font-size:12.5px;}
+    @media (max-width:820px){.portfolio-agent-shell{grid-template-columns:1fr;gap:32px;}.portfolio-agent h2{max-width:16ch;}}
+    @media (max-width:560px){.portfolio-agent{padding-top:40px;}.portfolio-agent-input-row{grid-template-columns:1fr;}.portfolio-agent-submit{min-height:48px;}.portfolio-agent-suggestion{width:100%;}}
+    @media (prefers-reduced-motion:reduce){.portfolio-agent-suggestion,.portfolio-agent-submit{transition:none;}}
   </style>
   <script type="application/ld+json">
   {
@@ -170,6 +203,37 @@
       <div class="eyebrow">AI Experience &amp; Product Design Leader</div>
       <h1>AI leadership, from a human <em>point of view</em>.</h1>
       <p class="hero-sub">I connect AI, product, design, and business to turn complex systems into clear experiences people can trust — and organizations can scale.</p>
+    </div>
+  </section>
+
+  <section class="portfolio-agent" aria-labelledby="portfolio-agent-title">
+    <div class="wrap">
+      <div class="portfolio-agent-shell">
+        <div>
+          <div class="portfolio-agent-kicker">Live portfolio intelligence</div>
+          <h2 id="portfolio-agent-title">Ask the work.</h2>
+          <p class="portfolio-agent-intro">Explore my leadership approach through answers grounded in the case studies—not a generic profile summary.</p>
+          <p class="portfolio-agent-tech">Read-only · Published sources only · No conversation history stored</p>
+        </div>
+        <form class="portfolio-agent-form" id="portfolio-agent-form">
+          <label class="portfolio-agent-label" for="portfolio-agent-input">What would you like to know?</label>
+          <div class="portfolio-agent-suggestions" aria-label="Suggested questions">
+            <button class="portfolio-agent-suggestion" type="button">How does Claudia lead responsible AI work?</button>
+            <button class="portfolio-agent-suggestion" type="button">What evidence shows executive influence?</button>
+            <button class="portfolio-agent-suggestion" type="button">How does she connect AI to business value?</button>
+          </div>
+          <div class="portfolio-agent-input-row">
+            <input class="portfolio-agent-input" id="portfolio-agent-input" name="query" type="text" minlength="2" maxlength="500" autocomplete="off" placeholder="Ask about AI leadership, strategy, or delivery" required>
+            <button class="portfolio-agent-submit" type="submit">Ask portfolio</button>
+          </div>
+          <p class="portfolio-agent-status" id="portfolio-agent-status" role="status" aria-live="polite"></p>
+          <div class="portfolio-agent-answer" id="portfolio-agent-answer" aria-live="polite">
+            <p class="portfolio-agent-answer-text" id="portfolio-agent-answer-text"></p>
+            <div class="portfolio-agent-sources" id="portfolio-agent-sources" aria-label="Sources"></div>
+            <p class="portfolio-agent-disclosure" id="portfolio-agent-disclosure"></p>
+          </div>
+        </form>
+      </div>
     </div>
   </section>
 
@@ -259,6 +323,6 @@
 </footer>
 <!-- FOOTER:END -->
 
-<script src="js/main.js?v=3"></script>
+<script src="js/main.js?v=4"></script>
 </body>
 </html>

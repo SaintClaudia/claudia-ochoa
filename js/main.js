@@ -188,6 +188,62 @@ contactForm?.addEventListener('submit', async (e) => {
   }
 });
 
+// === CITED PORTFOLIO GUIDE ===
+const portfolioAgentForm = document.getElementById('portfolio-agent-form');
+const portfolioAgentInput = document.getElementById('portfolio-agent-input');
+const portfolioAgentStatus = document.getElementById('portfolio-agent-status');
+const portfolioAgentAnswer = document.getElementById('portfolio-agent-answer');
+const portfolioAgentAnswerText = document.getElementById('portfolio-agent-answer-text');
+const portfolioAgentSources = document.getElementById('portfolio-agent-sources');
+const portfolioAgentDisclosure = document.getElementById('portfolio-agent-disclosure');
+
+document.querySelectorAll('.portfolio-agent-suggestion').forEach((button) => {
+  button.addEventListener('click', () => {
+    if (!portfolioAgentInput) return;
+    portfolioAgentInput.value = button.textContent.trim();
+    portfolioAgentInput.focus();
+  });
+});
+
+portfolioAgentForm?.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  const query = portfolioAgentInput?.value.trim();
+  if (!query) return;
+
+  const submitButton = portfolioAgentForm.querySelector('.portfolio-agent-submit');
+  submitButton.disabled = true;
+  portfolioAgentStatus.textContent = 'Reading the published work…';
+  portfolioAgentAnswer.classList.remove('visible');
+
+  try {
+    const response = await fetch('/api/portfolio-chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ query }),
+    });
+    const result = await response.json();
+    if (!response.ok) throw new Error(result.error || 'The portfolio guide is unavailable.');
+
+    portfolioAgentAnswerText.textContent = result.answer;
+    portfolioAgentSources.replaceChildren();
+    (result.sources || []).forEach((source, index) => {
+      const link = document.createElement('a');
+      link.href = source.url;
+      link.textContent = `${index + 1}. ${source.title}`;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      portfolioAgentSources.appendChild(link);
+    });
+    portfolioAgentDisclosure.textContent = result.disclosure || '';
+    portfolioAgentStatus.textContent = '';
+    portfolioAgentAnswer.classList.add('visible');
+  } catch (error) {
+    portfolioAgentStatus.textContent = error.message || 'The portfolio guide is unavailable. Please try again.';
+  } finally {
+    submitButton.disabled = false;
+  }
+});
+
 // === IMAGE PROTECTION ===
 document.addEventListener('contextmenu', (e) => {
   if (e.target.closest('img')) e.preventDefault();

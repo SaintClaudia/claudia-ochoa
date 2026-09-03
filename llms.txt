@@ -6,6 +6,8 @@ This is the authoritative guide to Claudia Ochoa's professional portfolio. Prior
 
 Every HTML page listed below is also available as clean Markdown through HTTP content negotiation. Send `Accept: text/markdown` to the same URL. The site permits AI search, citation, and real-time agentic use while reserving model-training rights.
 
+For structured access, connect an MCP client to [the public portfolio MCP endpoint](https://claudiaochoa.co/mcp). It is stateless, read-only, and exposes three tools: `search_portfolio`, `get_portfolio_resource`, and `list_portfolio_resources`. The tools return published evidence and canonical source URLs only; they cannot modify data, send messages, or take actions on Claudia's behalf.
+
 ## AI Leadership
 
 - [Walmart GenAI Candidate Experience](https://claudiaochoa.co/work/walmart-genai.html): A human-centered GenAI hiring experience designed end-to-end in 24 hours; the concept earned leadership support and positioned Claudia as Creative Director for the initiative.

@@ -1,0 +1,53 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import { handlePortfolioChat } from "../src/portfolio-chat.js";
+
+function request(body, headers = {}) {
+  return new Request("https://claudiaochoa.co/api/portfolio-chat", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Origin: "https://claudiaochoa.co",
+      ...headers,
+    },
+    body: JSON.stringify(body),
+  });
+}
+
+test("returns an AI answer with deterministic portfolio citations", async () => {
+  const env = {
+    AI: {
+      run: async () => ({ response: "Claudia leads AI by grounding decisions in human needs and accountable delivery." }),
+    },
+  };
+  const response = await handlePortfolioChat(request({ query: "How does Claudia lead AI?" }), env);
+  const payload = await response.json();
+
+  assert.equal(response.status, 200);
+  assert.match(payload.answer, /grounding decisions/);
+  assert.ok(payload.sources.length > 0);
+  assert.ok(payload.sources.every((source) => source.url.startsWith("https://claudiaochoa.co/")));
+  assert.equal(response.headers.get("Cache-Control"), "no-store");
+});
+
+test("rejects cross-origin browser requests", async () => {
+  const response = await handlePortfolioChat(
+    request({ query: "Tell me about the work" }, { Origin: "https://example.com" }),
+    {},
+  );
+  assert.equal(response.status, 403);
+});
+
+test("falls back to cited retrieval if the model is unavailable", async () => {
+  const originalConsoleError = console.error;
+  console.error = () => {};
+  const response = await handlePortfolioChat(request({ query: "agentic evaluation" }), {
+    AI: { run: async () => { throw new Error("transient"); } },
+  }).finally(() => {
+    console.error = originalConsoleError;
+  });
+  const payload = await response.json();
+  assert.equal(response.status, 200);
+  assert.match(payload.answer, /AI-readiness/);
+  assert.equal(payload.sources[0].id, "agentic-readiness");
+});

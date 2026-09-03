@@ -1,3 +1,6 @@
+import { handlePortfolioChat } from "./portfolio-chat.js";
+import { portfolioMcpHandler } from "./portfolio-mcp.js";
+
 function randomNonce() {
   const bytes = new Uint8Array(16);
   crypto.getRandomValues(bytes);
@@ -285,12 +288,18 @@ class NonceInjector {
 export { htmlToMarkdown, markdownRequested };
 
 export default {
-  async fetch(request) {
+  async fetch(request, env, ctx) {
     // fetch(request) re-enters the zone's routing and falls through to the
     // real origin once this worker has a production route on claudiaochoa.co.
     // Under `wrangler dev` there's no zone route to fall through to, so
     // proxy explicitly to the live site for local testing only.
     const url = new URL(request.url);
+    if (url.pathname === "/api/portfolio-chat") {
+      return handlePortfolioChat(request, env);
+    }
+    if (url.pathname === "/mcp") {
+      return portfolioMcpHandler(request, env, ctx);
+    }
     const isLocalDev = url.hostname === "localhost" || url.hostname === "127.0.0.1";
     const upstreamRequest = isLocalDev
       ? new Request("https://claudiaochoa.co" + url.pathname + url.search, request)
