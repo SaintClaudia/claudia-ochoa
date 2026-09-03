@@ -135,6 +135,10 @@ function scoreResource(resource, terms, phrase) {
       matches: ["business value", "roi", "revenue", "margin", "cost to serve"],
       ids: { "lovesac-business-case": 22, profile: 6 },
     },
+    {
+      matches: ["good to work", "work with", "collaborat", "team", "stakeholder", "partner"],
+      ids: { "walmart-genai": 30, profile: 22, "agentic-readiness": 12 },
+    },
   ];
   for (const boost of intentBoosts) {
     if (boost.matches.some((match) => phrase.includes(match))) {

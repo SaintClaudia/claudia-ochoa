@@ -23,6 +23,10 @@ test("maps employer language to the strongest published evidence", () => {
   assert.equal(executiveResults[0].id, "walmart-genai");
   assert.deepEqual(executiveResults.map((result) => result.id), ["walmart-genai"]);
   assert.equal(searchPortfolio("How does she connect AI to business value?")[0].id, "lovesac-business-case");
+  assert.deepEqual(
+    searchPortfolio("Is Claudia good to work with?").slice(0, 2).map((result) => result.id),
+    ["walmart-genai", "profile"],
+  );
 });
 
 test("lists and retrieves only the curated public resources", () => {

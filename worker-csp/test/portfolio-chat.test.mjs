@@ -15,9 +15,13 @@ function request(body, headers = {}) {
 }
 
 test("returns an AI answer with deterministic portfolio citations", async () => {
+  let modelRequest;
   const env = {
     AI: {
-      run: async () => ({ response: "Claudia leads AI by grounding decisions in human needs and accountable delivery." }),
+      run: async (_model, request) => {
+        modelRequest = request;
+        return { response: "Claudia leads AI by grounding decisions in human needs and accountable delivery." };
+      },
     },
   };
   const response = await handlePortfolioChat(request({ query: "How does Claudia lead AI?" }), env);
@@ -28,6 +32,8 @@ test("returns an AI answer with deterministic portfolio citations", async () => 
   assert.ok(payload.sources.length > 0);
   assert.ok(payload.sources.every((source) => source.url.startsWith("https://claudiaochoa.co/")));
   assert.equal(response.headers.get("Cache-Control"), "no-store");
+  assert.match(modelRequest.messages[0].content, /give the evidence-based assessment first/);
+  assert.match(modelRequest.messages[0].content, /never present an inference as a verified fact/);
 });
 
 test("rejects cross-origin browser requests", async () => {
