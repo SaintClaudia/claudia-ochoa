@@ -10,7 +10,8 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 revealEls.forEach(el => observer.observe(el));
 
-// Hide nav on scroll down, show on scroll up
+// Hide nav on scroll down, show on scroll up. Glass only once scrolled
+// past the top (so it still blends with the page like before on load).
 let lastScroll = 0;
 const nav = document.querySelector('body > nav');
 window.addEventListener('scroll', () => {
@@ -20,6 +21,7 @@ window.addEventListener('scroll', () => {
   } else {
     nav?.classList.remove('nav-hidden');
   }
+  nav?.classList.toggle('nav-scrolled', current > 8);
   lastScroll = current;
 });
 

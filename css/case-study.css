@@ -42,14 +42,19 @@
   .page{min-height:100vh;}
 
   /* Simple nav — homepage + 404. Sticky, hiding on scroll down and
-     reappearing on scroll up (main.js toggles .nav-hidden). */
+     reappearing on scroll up (main.js toggles .nav-hidden). Blended with
+     the page at the very top; once scrolled it's overlaying arbitrary
+     content, so main.js adds .nav-scrolled to switch it to glass. */
   body>nav{
-    background:var(--glass-bg);
-    backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+    background:var(--cream);
     position:sticky; top:0; z-index:20;
-    transition:transform .3s ease;
+    transition:transform .3s ease, background-color .2s ease;
   }
   body>nav.nav-hidden{transform:translateY(-100%);}
+  body>nav.nav-scrolled{
+    background:var(--glass-bg);
+    backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+  }
   .nav-inner{max-width:1100px; margin:0 auto; padding:0 32px; height:64px; display:flex; align-items:center; justify-content:space-between;}
   .nav-wordmark{font-family:'Inter',sans-serif; font-size:0.95rem; font-weight:600; color:var(--espresso); text-decoration:none;}
   .nav-icons{display:flex; align-items:center; gap:12px;}
