@@ -57,3 +57,21 @@ test("falls back to cited retrieval if the model is unavailable", async () => {
   assert.match(payload.answer, /AI-readiness/);
   assert.equal(payload.sources[0].id, "agentic-readiness");
 });
+
+test("retries malformed model output before returning it to an employer", async () => {
+  let calls = 0;
+  const response = await handlePortfolioChat(request({ query: "Can Claudia move quickly?" }), {
+    AI: {
+      run: async () => {
+        calls += 1;
+        return calls === 1
+          ? { response: "\" (s, \" (s, \" (s" }
+          : { response: "Claudia's Walmart work suggests she can move quickly: she developed the end-to-end GenAI experience concept in 24 hours." };
+      },
+    },
+  });
+  const payload = await response.json();
+  assert.equal(calls, 2);
+  assert.match(payload.answer, /24 hours/);
+  assert.doesNotMatch(payload.answer, /\" \(s/);
+});

@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "wrangler dev",
     "deploy": "wrangler deploy",
-    "test": "node --test test/*.test.mjs"
+    "test": "node --test test/*.test.mjs",
+    "eval:live": "node eval/portfolio-employer-eval.mjs"
   },
   "devDependencies": {
     "wrangler": "^4.129.0"
