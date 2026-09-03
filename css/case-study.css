@@ -49,24 +49,20 @@
   .nav-wordmark{font-family:'Inter',sans-serif; font-size:0.95rem; font-weight:600; color:var(--espresso); text-decoration:none;}
   .nav-icons{display:flex; align-items:center; gap:12px;}
 
-  /* Nav menu — home + about only. A glass dropdown off a hamburger icon. */
+  /* Nav menu — home + about only. A glass dropdown off a bento-grid icon. */
   .nav-menu{position:relative;}
   .nav-menu-btn{
     background:none; border:1.5px solid var(--line); border-radius:50%;
     width:34px; height:34px; padding:0; cursor:pointer; flex-shrink:0;
-    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px;
+    display:grid; grid-template-columns:repeat(2,1fr); grid-template-rows:repeat(2,1fr); gap:3px;
+    place-items:center;
     color:var(--ink-soft);
-    transition:border-color .15s ease, color .15s ease;
+    transition:border-color .15s ease, color .15s ease, transform .2s ease;
   }
   .nav-menu-btn:hover, .nav-menu.open .nav-menu-btn{border-color:var(--espresso); color:var(--espresso);}
-  .nav-menu-bar{
-    width:14px; height:1.4px; border-radius:1px; background:currentColor;
-    transition:transform .25s ease, opacity .2s ease;
-  }
-  .nav-menu.open .nav-menu-bar:nth-child(1){transform:translateY(5.4px) rotate(45deg);}
-  .nav-menu.open .nav-menu-bar:nth-child(2){opacity:0;}
-  .nav-menu.open .nav-menu-bar:nth-child(3){transform:translateY(-5.4px) rotate(-45deg);}
-  @media (prefers-reduced-motion: reduce){.nav-menu-bar{transition:none;}}
+  .nav-menu.open .nav-menu-btn{transform:rotate(90deg);}
+  .nav-menu-dot{width:5px; height:5px; border-radius:1.5px; background:currentColor;}
+  @media (prefers-reduced-motion: reduce){.nav-menu-btn{transition:none;}}
   .nav-menu-panel{
     position:absolute; top:calc(100% + 10px); right:0;
     min-width:180px;
