@@ -193,7 +193,7 @@
   .phone-frame-wide{
     box-sizing:content-box; border:10px solid #232326; border-radius:32px;
     background:var(--sand); max-width:300px; margin:0 auto; overflow:hidden;
-    box-shadow:inset 0 0 0 1px rgba(255,255,255,0.16), inset 0 0 14px rgba(255,255,255,0.05);
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,0.16);
     -webkit-mask-image:-webkit-radial-gradient(white, black);
     -webkit-transform:translateZ(0); transform:translateZ(0);
   }
@@ -207,7 +207,7 @@
   .phone-frame{
     box-sizing:content-box; border:10px solid #232326; border-radius:32px;
     overflow:hidden; background:var(--sand); width:210px;
-    box-shadow:inset 0 0 0 1px rgba(255,255,255,0.16), inset 0 0 14px rgba(255,255,255,0.05);
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,0.16);
     -webkit-mask-image:-webkit-radial-gradient(white, black);
     -webkit-transform:translateZ(0); transform:translateZ(0);
   }
