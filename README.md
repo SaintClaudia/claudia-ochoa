@@ -115,6 +115,8 @@ pages by `build.py`:
 - `_lovesac-footer.html` — footer used by the Sactionals, What to Expect, and
   Customer Support prototype pages; the redesign homepage keeps its intentional
   footer variant inline
+- `_lovesac-core-scripts.html` — focus, feedback, search, store, and drawer behavior used by all four Lovesac prototype pages
+- `_lovesac-page-scripts.html` — mobile navigation, mega menu, back link, nav scroll, and hero behavior used by the three editorial Lovesac prototype pages
 
 To change shared markup:
 1. Edit the applicable partial

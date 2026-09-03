@@ -16,6 +16,8 @@ Markers used in HTML files:
     <!-- LOVESAC-NAV:START --> ... <!-- LOVESAC-NAV:END -->
     <!-- LOVESAC-FOOTER:START --> ... <!-- LOVESAC-FOOTER:END -->
     <!-- LOVESAC-STORE-DROP:START --> ... <!-- LOVESAC-STORE-DROP:END -->
+    <!-- LOVESAC-CORE-SCRIPTS:START --> ... <!-- LOVESAC-CORE-SCRIPTS:END -->
+    <!-- LOVESAC-PAGE-SCRIPTS:START --> ... <!-- LOVESAC-PAGE-SCRIPTS:END -->
     <!-- ANALYTICS:START --> ... <!-- ANALYTICS:END -->
     <!-- HEAD-BASICS:START --> ... <!-- HEAD-BASICS:END -->
 """
@@ -45,6 +47,8 @@ partials = [
     ('_lovesac-nav.html',       '<!-- LOVESAC-NAV:START -->',       '<!-- LOVESAC-NAV:END -->'),
     ('_lovesac-footer.html',    '<!-- LOVESAC-FOOTER:START -->',    '<!-- LOVESAC-FOOTER:END -->'),
     ('_lovesac-store-drop.html', '<!-- LOVESAC-STORE-DROP:START -->', '<!-- LOVESAC-STORE-DROP:END -->'),
+    ('_lovesac-core-scripts.html', '<!-- LOVESAC-CORE-SCRIPTS:START -->', '<!-- LOVESAC-CORE-SCRIPTS:END -->'),
+    ('_lovesac-page-scripts.html', '<!-- LOVESAC-PAGE-SCRIPTS:START -->', '<!-- LOVESAC-PAGE-SCRIPTS:END -->'),
 ]
 
 files = (
