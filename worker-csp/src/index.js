@@ -54,6 +54,207 @@ function buildCSP(nonce) {
 const PERMISSIONS_POLICY =
   "geolocation=(), microphone=(), camera=(), payment=(), usb=(), interest-cohort=()";
 
+// Allow AI search, citation, and agentic use while reserving model-training
+// rights. This mirrors the site's Cloudflare-managed robots.txt policy, but
+// makes the intent explicit on negotiated Markdown responses too.
+const CONTENT_SIGNAL = "ai-train=no, search=yes, ai-input=yes";
+
+function markdownRequested(acceptHeader) {
+  if (!acceptHeader) return false;
+
+  let markdownQuality = -1;
+  let htmlQuality = -1;
+  let explicitlyRequestsMarkdown = false;
+
+  for (const range of acceptHeader.toLowerCase().split(",")) {
+    const [mediaType, ...parameters] = range.trim().split(";");
+    const qualityParameter = parameters.find((parameter) =>
+      parameter.trim().startsWith("q="),
+    );
+    const quality = qualityParameter
+      ? Number.parseFloat(qualityParameter.trim().slice(2))
+      : 1;
+    const normalizedQuality = Number.isFinite(quality) ? quality : 0;
+
+    if (mediaType === "text/markdown" || mediaType === "text/*") {
+      explicitlyRequestsMarkdown = true;
+      markdownQuality = Math.max(markdownQuality, normalizedQuality);
+    }
+    if (
+      mediaType === "text/html" ||
+      mediaType === "application/xhtml+xml" ||
+      mediaType === "*/*"
+    ) {
+      htmlQuality = Math.max(htmlQuality, normalizedQuality);
+    }
+  }
+
+  return (
+    explicitlyRequestsMarkdown &&
+    markdownQuality > 0 &&
+    markdownQuality >= htmlQuality
+  );
+}
+
+function decodeHtml(text) {
+  const namedEntities = {
+    amp: "&",
+    apos: "'",
+    gt: ">",
+    hellip: "…",
+    laquo: "«",
+    ldquo: "“",
+    lsquo: "‘",
+    lt: "<",
+    mdash: "—",
+    middot: "·",
+    nbsp: " ",
+    ndash: "–",
+    quot: '"',
+    raquo: "»",
+    rdquo: "”",
+    rsquo: "’",
+  };
+
+  return text.replace(
+    /&(#x[0-9a-f]+|#\d+|[a-z][a-z0-9]+);/gi,
+    (entity, value) => {
+      if (value.startsWith("#x") || value.startsWith("#X")) {
+        return String.fromCodePoint(Number.parseInt(value.slice(2), 16));
+      }
+      if (value.startsWith("#")) {
+        return String.fromCodePoint(Number.parseInt(value.slice(1), 10));
+      }
+      return namedEntities[value.toLowerCase()] ?? entity;
+    },
+  );
+}
+
+function stripTags(value) {
+  return decodeHtml(value.replace(/<[^>]*>/g, ""))
+    .replace(/[\t ]+/g, " ")
+    .trim();
+}
+
+function attributeValue(tag, attribute) {
+  const match = tag.match(
+    new RegExp(`${attribute}\\s*=\\s*(?:"([^"]*)"|'([^']*)')`, "i"),
+  );
+  return match ? decodeHtml(match[1] ?? match[2] ?? "") : "";
+}
+
+function metaContent(html, key, value) {
+  for (const match of html.matchAll(/<meta\b[^>]*>/gi)) {
+    const tag = match[0];
+    if (attributeValue(tag, key).toLowerCase() === value.toLowerCase()) {
+      return attributeValue(tag, "content");
+    }
+  }
+  return "";
+}
+
+function yamlValue(value) {
+  return JSON.stringify(value)
+    .replaceAll(String.fromCharCode(0x2028), " ")
+    .replaceAll(String.fromCharCode(0x2029), " ");
+}
+
+function absoluteUrl(value, sourceUrl) {
+  if (!value || value.startsWith("#") || value.startsWith("mailto:")) {
+    return value;
+  }
+  try {
+    return new URL(value, sourceUrl).href;
+  } catch {
+    return value;
+  }
+}
+
+function htmlToMarkdown(html, sourceUrl) {
+  const titleMatch = html.match(/<title\b[^>]*>([\s\S]*?)<\/title>/i);
+  const title = titleMatch ? stripTags(titleMatch[1]) : "";
+  const description = metaContent(html, "name", "description");
+  const author = metaContent(html, "name", "author");
+  const canonicalTag = html.match(/<link\b[^>]*rel=["']canonical["'][^>]*>/i);
+  const canonical = canonicalTag
+    ? absoluteUrl(attributeValue(canonicalTag[0], "href"), sourceUrl)
+    : sourceUrl;
+  const jsonLd = [...html.matchAll(
+    /<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi,
+  )].map((match) => match[1].trim());
+
+  const mainMatch = html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/i);
+  let body = mainMatch
+    ? mainMatch[1]
+    : html.match(/<body\b[^>]*>([\s\S]*?)<\/body>/i)?.[1] ?? html;
+
+  body = body
+    .replace(/<(script|style|svg|template|noscript)\b[^>]*>[\s\S]*?<\/\1>/gi, "")
+    .replace(/<(nav|header|footer|dialog)\b[^>]*>[\s\S]*?<\/\1>/gi, "")
+    .replace(/<!--([\s\S]*?)-->/g, "")
+    .replace(/<img\b[^>]*>/gi, (tag) => {
+      const alt = attributeValue(tag, "alt");
+      const src = absoluteUrl(attributeValue(tag, "src"), sourceUrl);
+      return alt && src ? `\n\n![${alt}](${src})\n\n` : "";
+    })
+    .replace(
+      /<a\b[^>]*href\s*=\s*(?:"([^"]*)"|'([^']*)')[^>]*>([\s\S]*?)<\/a>/gi,
+      (_match, doubleQuoted, singleQuoted, label) => {
+        const text = stripTags(label);
+        const href = absoluteUrl(doubleQuoted ?? singleQuoted ?? "", sourceUrl);
+        return text && href ? `[${text}](${href})` : text;
+      },
+    )
+    .replace(
+      /<h([1-6])\b[^>]*>([\s\S]*?)<\/h\1>/gi,
+      (_match, level, heading) =>
+        `\n\n${"#".repeat(Number(level))} ${stripTags(heading)}\n\n`,
+    )
+    .replace(/<li\b[^>]*>([\s\S]*?)<\/li>/gi, (_match, item) =>
+      `\n- ${stripTags(item)}\n`,
+    )
+    .replace(/<br\s*\/?>/gi, "\n")
+    .replace(/<hr\b[^>]*>/gi, "\n\n---\n\n")
+    .replace(
+      /<\/(p|div|section|article|aside|figure|figcaption|blockquote|ul|ol|dl|dt|dd)>/gi,
+      "\n\n",
+    )
+    .replace(/<[^>]*>/g, " ");
+
+  body = decodeHtml(body)
+    .replace(/\r/g, "")
+    .replace(/[\t ]+\n/g, "\n")
+    .replace(/\n[\t ]+/g, "\n")
+    .replace(/[\t ]{2,}/g, " ")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
+
+  const metadata = [
+    title && `title: ${yamlValue(title)}`,
+    description && `description: ${yamlValue(description)}`,
+    author && `author: ${yamlValue(author)}`,
+    `url: ${yamlValue(canonical)}`,
+  ].filter(Boolean);
+  const structuredData = jsonLd.length
+    ? `\n\n## Structured data\n\n${jsonLd
+        .map((value) => `\`\`\`json\n${value}\n\`\`\``)
+        .join("\n\n")}`
+    : "";
+
+  return `---\n${metadata.join("\n")}\n---\n\n${body}${structuredData}\n`;
+}
+
+function addVary(headers, value) {
+  const existing = headers.get("Vary");
+  const values = new Set(
+    (existing ? existing.split(",") : [])
+      .map((item) => item.trim())
+      .filter(Boolean),
+  );
+  values.add(value);
+  headers.set("Vary", [...values].join(", "));
+}
+
 class NonceInjector {
   constructor(nonce) {
     this.nonce = nonce;
@@ -62,6 +263,8 @@ class NonceInjector {
     element.setAttribute("nonce", this.nonce);
   }
 }
+
+export { htmlToMarkdown, markdownRequested };
 
 export default {
   async fetch(request) {
@@ -82,6 +285,32 @@ export default {
       return response;
     }
 
+    if (markdownRequested(request.headers.get("Accept"))) {
+      const html = await response.text();
+      const markdown = htmlToMarkdown(html, request.url);
+      const headers = new Headers(response.headers);
+      headers.set("Content-Type", "text/markdown; charset=utf-8");
+      headers.set("Content-Signal", CONTENT_SIGNAL);
+      headers.set("X-Markdown-Tokens", String(Math.ceil(markdown.length / 4)));
+      headers.set("X-Original-Tokens", String(Math.ceil(html.length / 4)));
+      addVary(headers, "Accept");
+      for (const header of [
+        "Content-Encoding",
+        "Content-Length",
+        "Content-Range",
+        "ETag",
+        "Last-Modified",
+        "Transfer-Encoding",
+      ]) {
+        headers.delete(header);
+      }
+      return new Response(markdown, {
+        status: response.status,
+        statusText: response.statusText,
+        headers,
+      });
+    }
+
     const nonce = randomNonce();
     // Only <script> gets a nonce; see the style-src comment in buildCSP for why
     // <style> doesn't.
@@ -91,6 +320,8 @@ export default {
     const newResponse = new Response(rewritten.body, rewritten);
     newResponse.headers.set("Content-Security-Policy", buildCSP(nonce));
     newResponse.headers.set("Permissions-Policy", PERMISSIONS_POLICY);
+    newResponse.headers.set("Content-Signal", CONTENT_SIGNAL);
+    addVary(newResponse.headers, "Accept");
     // Isolates the top-level browsing context from cross-origin popups/openers
     // (the site opens no windows via window.open, so this has no UX impact).
     newResponse.headers.set("Cross-Origin-Opener-Policy", "same-origin");

@@ -1,4 +1,4 @@
-# portfolio-csp
+# portfolio-csp-and-markdown
 
 Cloudflare Worker that sits in front of claudiaochoa.co (GitHub Pages) to add
 `Content-Security-Policy` and `Permissions-Policy` response headers, which
@@ -7,9 +7,19 @@ GitHub Pages can't set on its own. The other security headers
 `X-Content-Type-Options`) are already added separately via a Cloudflare
 Transform Rule and are untouched by this worker.
 
+The same worker also provides standards-based Markdown negotiation for AI
+agents. HTML pages requested with `Accept: text/markdown` (or a preferred
+`text/*` range) are converted to concise Markdown with YAML metadata and
+preserved JSON-LD. Regular browser requests continue to receive HTML. Both
+representations declare `Content-Signal: ai-train=no, search=yes,
+ai-input=yes`, allowing AI search, citation, and agentic use while reserving
+model-training rights.
+
 ## How it works
 
 - Passes non-HTML responses straight through, unmodified.
+- Converts HTML to Markdown only when the request explicitly prefers Markdown,
+  adds `Vary: Accept`, and reports approximate original/Markdown token counts.
 - For HTML responses, uses `HTMLRewriter` to add a fresh per-request
   `nonce="..."` attribute to every `<script>` tag, then sets
   `script-src 'self' 'nonce-...' <allowed CDNs>` — no `'unsafe-inline'`
@@ -36,6 +46,12 @@ npm run dev
 Hits `http://localhost:8787` and proxies to the real `https://claudiaochoa.co`
 for content, so you're testing the rewrite/header logic against real pages
 without touching production.
+
+Test Markdown negotiation locally with:
+
+```bash
+curl -H 'Accept: text/markdown' http://localhost:8787/
+```
 
 ## Deploy
 
