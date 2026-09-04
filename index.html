@@ -85,6 +85,9 @@
     @media (max-width:720px){.work-card.featured .card-image{aspect-ratio:auto;height:calc((100vw - 48px)/ 2 + 50px);max-width:none;}}
     .card-image img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.25,.46,.45,.94);}
     .work-card:hover .card-image img{transform:scale(1.03);}
+    .card-image-inset{padding:28px;background:#F2F2F2;}
+    .card-image-inset img{object-fit:contain;border-radius:8px;}
+    @media (max-width:720px){.card-image-inset{padding:20px;}}
     .card-body{padding:0;}
     .card-body .section-head{margin-bottom:0;}
     .card-body h2{margin-top:24px;}
@@ -283,7 +286,7 @@
               <div><span class="num">AI Leadership · Walmart</span></div>
               <div>
                 <a href="work/walmart-genai.html" class="work-card featured">
-                  <div class="card-image">
+                  <div class="card-image card-image-inset">
                     <img src="images/walmart-AI-thumb.png" width="1296" height="730" alt="Walmart GenAI candidate experience case study by Claudia Ochoa" decoding="async">
                   </div>
                 </a>
