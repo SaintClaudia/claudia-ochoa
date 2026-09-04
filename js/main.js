@@ -13,7 +13,7 @@ revealEls.forEach(el => observer.observe(el));
 // Hide nav on scroll down, show on scroll up. Glass only once scrolled
 // past the top (so it still blends with the page like before on load).
 let lastScroll = 0;
-const nav = document.querySelector('body > nav');
+const nav = document.querySelector('body > nav:not(.toc-rail)');
 window.addEventListener('scroll', () => {
   const current = window.scrollY;
   if (current > 100 && current > lastScroll) {
