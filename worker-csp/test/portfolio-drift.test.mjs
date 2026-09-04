@@ -7,6 +7,8 @@ import { PORTFOLIO_RESOURCES } from "../src/portfolio-knowledge.js";
 const repositoryRoot = fileURLToPath(new URL("../../", import.meta.url));
 const llmsGuide = readFileSync(new URL("../../llms.txt", import.meta.url), "utf8");
 const sitemap = readFileSync(new URL("../../sitemap.xml", import.meta.url), "utf8");
+const homepage = readFileSync(new URL("../../index.html", import.meta.url), "utf8");
+const worker = readFileSync(new URL("../src/index.js", import.meta.url), "utf8");
 
 test("curated agent resources remain unique, public, and locally resolvable", () => {
   const ids = PORTFOLIO_RESOURCES.map((resource) => resource.id);
@@ -42,4 +44,10 @@ test("agentic score copy uses the current three-check result", () => {
   assert.match(research, /redesign 3 of 3/i);
   assert.match(readiness, /3 of 3 checks passed/i);
   assert.doesNotMatch(`${research}\n${readiness}`, /redesign (?:already )?(?:scores|passes) 2(?:\/| of )2/i);
+});
+
+test("homepage WebMCP pilot remains progressive and same-origin", () => {
+  assert.match(homepage, /<script type="module" src="js\/portfolio-webmcp\.js\?v=1"><\/script>/);
+  assert.match(worker, /tools=\(self\)/);
+  assert.doesNotMatch(worker, /tools=\(\*\)/);
 });

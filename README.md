@@ -52,6 +52,7 @@ serves those files directly.
 │                                      # prototype pages — tokens, nav, drawers, common sections, and footer
 ├── js/
 │   ├── main.js                       # Shared theme, contact form, and portfolio behavior
+│   ├── portfolio-webmcp.js           # Progressive WebMCP pilot for grounded, read-only portfolio questions
 │   ├── font-preload.js               # Activates asynchronously preloaded font stylesheets site-wide
 │   ├── case-study-topbar.js          # Shared hide/show-on-scroll behavior for case-study topbars
 │   ├── case-study-toc.js             # Shared case-study section rail navigation and active states
@@ -85,6 +86,20 @@ serves those files directly.
 ```
 
 Everything on the live site is linked from somewhere — no hidden or orphaned pages.
+
+## Agent interfaces
+
+The site exposes the same published evidence through complementary interfaces:
+
+- `/llms.txt` provides a curated discovery guide.
+- Content negotiation serves concise Markdown when an agent prefers `text/markdown`.
+- `/mcp` provides a public, stateless, read-only MCP server.
+- Supporting browsers receive one progressive WebMCP tool, `ask_portfolio`, on the
+  homepage. It uses the existing grounded portfolio guide, returns canonical source
+  links, and is unavailable to cross-origin frames through the `tools=(self)` policy.
+
+WebMCP is an experimental enhancement. Browsers without `document.modelContext`
+continue to receive the normal site with no fallback script or user-facing change.
 
 ## Local development
 

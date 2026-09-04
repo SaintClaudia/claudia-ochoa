@@ -66,6 +66,20 @@ const checks = [
     },
   },
   {
+    name: "Homepage delivers the same-origin WebMCP pilot",
+    run: async () => {
+      const { response, body } = await request("/");
+      const policy = response.headers.get("permissions-policy") || "";
+      assert(policy.includes("tools=(self)"), "WebMCP is not restricted to the same origin");
+      assert(body.includes('src="js/portfolio-webmcp.js?v=1"'), "homepage is missing the WebMCP module");
+
+      const { body: module } = await request("/js/portfolio-webmcp.js?v=1");
+      assert(module.includes("document.modelContext"), "WebMCP feature detection is missing");
+      assert(module.includes("name: 'ask_portfolio'"), "ask_portfolio tool is missing");
+      assert(module.includes("readOnlyHint: true"), "WebMCP tool is not marked read-only");
+    },
+  },
+  {
     name: "Negotiated Markdown preserves evidence",
     run: async () => {
       const { response, body } = await request("/work/walmart-genai.html", {

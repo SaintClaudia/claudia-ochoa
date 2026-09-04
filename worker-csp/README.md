@@ -19,6 +19,12 @@ HTML responses advertise their negotiated Markdown representation with
 `rel="alternate"`. HTML and Markdown responses point agents to the site's
 curated [`/llms.txt`](../llms.txt) guide with `rel="describedby"`.
 
+The homepage also registers a progressive, read-only WebMCP `ask_portfolio`
+tool in browsers that implement `document.modelContext`. The permissions policy
+limits tool access to the top-level page and same-origin frames; no cross-origin
+delegation is enabled. The tool reuses the same grounded `/api/portfolio-chat`
+response and canonical citations as the visible portfolio guide.
+
 ## How it works
 
 - Passes non-HTML responses straight through, unmodified.
@@ -77,9 +83,10 @@ npm run eval:readiness
 ```
 
 This exercises the public agent journey without model inference: `llms.txt`
-discovery, HTML representation headers, Markdown negotiation, MCP initialization,
-tool discovery, evidence search, concept-versus-shipped boundaries, safe unknown
-resource handling, and resolution of MCP citations back to canonical Markdown.
+discovery, HTML representation headers, WebMCP delivery and same-origin policy,
+Markdown negotiation, MCP initialization, tool discovery, evidence search,
+concept-versus-shipped boundaries, safe unknown resource handling, and resolution
+of MCP citations back to canonical Markdown.
 Set `PORTFOLIO_EVAL_BASE_URL` to run the same checks against another deployment.
 The GitHub Actions `Agent readiness` workflow runs the local contracts and this
 live journey every Monday, and can also be started manually.
