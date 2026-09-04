@@ -221,8 +221,14 @@ portfolioAgentForm?.addEventListener('submit', async (event) => {
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify({ query }),
     });
-    const result = await response.json();
-    if (!response.ok) throw new Error(result.error || 'The portfolio guide is unavailable.');
+    const contentType = response.headers.get('content-type') || '';
+    const result = contentType.includes('application/json') ? await response.json() : null;
+
+    if (response.status === 429) {
+      throw new Error('The portfolio guide is taking a brief pause. Please try again in about 10 seconds.');
+    }
+    if (!response.ok) throw new Error(result?.error || 'The portfolio guide is temporarily unavailable. Please try again.');
+    if (!result) throw new Error('The portfolio guide returned an unexpected response. Please try again.');
 
     portfolioAgentAnswerText.textContent = result.answer;
     portfolioAgentSources.replaceChildren();
