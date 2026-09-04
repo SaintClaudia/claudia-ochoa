@@ -6,7 +6,8 @@
     "dev": "wrangler dev",
     "deploy": "wrangler deploy",
     "test": "node --test test/*.test.mjs",
-    "eval:live": "node eval/portfolio-employer-eval.mjs"
+    "eval:live": "node eval/portfolio-employer-eval.mjs",
+    "eval:readiness": "node eval/agent-readiness-eval.mjs"
   },
   "devDependencies": {
     "wrangler": "^4.129.0"

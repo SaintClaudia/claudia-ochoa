@@ -70,6 +70,20 @@ quality failures. They can be adjusted with `PORTFOLIO_EVAL_CONCURRENCY`,
 `PORTFOLIO_EVAL_BATCH_DELAY_MS`, `PORTFOLIO_EVAL_ATTEMPTS`, and
 `PORTFOLIO_EVAL_RETRY_MS`.
 
+Run the deterministic end-to-end readiness suite with:
+
+```bash
+npm run eval:readiness
+```
+
+This exercises the public agent journey without model inference: `llms.txt`
+discovery, HTML representation headers, Markdown negotiation, MCP initialization,
+tool discovery, evidence search, concept-versus-shipped boundaries, safe unknown
+resource handling, and resolution of MCP citations back to canonical Markdown.
+Set `PORTFOLIO_EVAL_BASE_URL` to run the same checks against another deployment.
+The GitHub Actions `Agent readiness` workflow runs the local contracts and this
+live journey every Monday, and can also be started manually.
+
 ## Deploy
 
 ```bash
