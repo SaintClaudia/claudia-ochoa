@@ -100,7 +100,9 @@
   @media (max-width:720px){.ai-cover{aspect-ratio:auto;height:calc((100vw - 48px)/ 2 + 50px);max-width:none;}}
   .ai-section{padding:72px 0;}
   .ai-section .section-head{margin-bottom:32px;}
-  .ai-body{max-width:68ch;margin-left:auto;}
+  .ai-body-row{display:grid;grid-template-columns:1fr 2.2fr;gap:48px;}
+  .ai-body{max-width:68ch;}
+  @media (max-width:820px){.ai-body-row{grid-template-columns:1fr;} .ai-body-row .ai-body-spacer{display:none;}}
   .ai-body p{font-size:16px;line-height:1.75;color:var(--ink-soft);margin-top:18px;}
   .ai-body p:first-child{margin-top:0;}
   .ai-body strong{color:var(--espresso);}
@@ -229,9 +231,12 @@
           <p class="lede">Hourly applicants moved among disconnected tools, repeated information, completed a long assessment, and received little sense of progress. The technology reflected the organization chart rather than the candidate's goal.</p>
         </div>
       </div>
-      <div class="ai-body">
-        <p>I mapped the journey from job search through interview scheduling and offer acceptance. I also completed a competitor's chat-to-apply flow through the in-store interview, which exposed an operational issue beyond the screen: the handoff had to work for store associates as well as candidates.</p>
-        <p>The leadership question was not “Where can we add GenAI?” It was “Where can one intelligent, conversational layer remove fragmentation without hiding important decisions from the candidate?”</p>
+      <div class="ai-body-row">
+        <div class="ai-body-spacer"></div>
+        <div class="ai-body">
+          <p>I mapped the journey from job search through interview scheduling and offer acceptance. I also completed a competitor's chat-to-apply flow through the in-store interview, which exposed an operational issue beyond the screen: the handoff had to work for store associates as well as candidates.</p>
+          <p>The leadership question was not “Where can we add GenAI?” It was “Where can one intelligent, conversational layer remove fragmentation without hiding important decisions from the candidate?”</p>
+        </div>
       </div>
     </div>
   </section>
@@ -312,9 +317,12 @@
           <p class="lede">The 24-hour concept earned leadership buy-in and repositioned the work from exploration toward a new candidate application experience.</p>
         </div>
       </div>
-      <div class="ai-body">
-        <p>I was positioned as Creative Director for the initiative and held the experience vision through delivery, while a delivery partner integrated the direction into the broader hiring platform.</p>
-        <p><strong>The enduring lesson:</strong> speed created the opening, but clarity created alignment. The work succeeded because it gave leaders, delivery teams, and candidates one understandable picture of what AI was there to do.</p>
+      <div class="ai-body-row">
+        <div class="ai-body-spacer"></div>
+        <div class="ai-body">
+          <p>I was positioned as Creative Director for the initiative and held the experience vision through delivery, while a delivery partner integrated the direction into the broader hiring platform.</p>
+          <p><strong>The enduring lesson:</strong> speed created the opening, but clarity created alignment. The work succeeded because it gave leaders, delivery teams, and candidates one understandable picture of what AI was there to do.</p>
+        </div>
       </div>
     </div>
   </section>
