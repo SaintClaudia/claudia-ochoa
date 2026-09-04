@@ -52,13 +52,11 @@
   <meta name="twitter:description" content="Human-centered AI and product leadership that turns complex systems into clear experiences people can trust and organizations can scale.">
   <meta name="twitter:image" content="https://claudiaochoa.co/images/og-card.png?v=2">
   <link rel="canonical" href="https://claudiaochoa.co/">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap"></noscript>
-
-<script defer src="/js/font-preload.js"></script>
-  <link rel="stylesheet" href="css/case-study.css?v=12">
+<!-- PORTFOLIO-FONTS:START -->
+<link rel="preload" href="/fonts/inter-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fraunces-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
+<!-- PORTFOLIO-FONTS:END -->
+  <link rel="stylesheet" href="css/case-study.css?v=13">
   <style>
     /* Homepage-only CSS. Everything shared with the case studies (colors,
        fonts, nav, hero, eyebrow, section-head/lede, context-strip, buttons,
@@ -253,8 +251,8 @@
                 <a href="work/lovesac-case-study.html" class="work-card featured">
                   <div class="card-image">
                     <picture>
-                      <source type="image/webp" srcset="images/lovesac-redesign-thumb-640.webp 640w, images/lovesac-redesign-thumb-960.webp 960w, images/lovesac-redesign-thumb.webp 1280w" sizes="(max-width: 720px) calc(100vw - 64px), 1036px">
-                      <img src="images/lovesac-redesign-thumb.jpg" srcset="images/lovesac-redesign-thumb-640.jpg 640w, images/lovesac-redesign-thumb.jpg 1280w" sizes="(max-width: 720px) calc(100vw - 64px), 1036px" width="1280" height="800" alt="Lovesac Sactionals redesign concept — UX case study by Claudia Ochoa" fetchpriority="high" decoding="async">
+                      <source type="image/webp" srcset="images/lovesac-redesign-thumb-640.webp 640w, images/lovesac-redesign-thumb-960.webp 960w, images/lovesac-redesign-thumb.webp 1280w" sizes="(max-width: 720px) calc(100vw - 64px), 640px">
+                      <img src="images/lovesac-redesign-thumb.jpg" srcset="images/lovesac-redesign-thumb-640.jpg 640w, images/lovesac-redesign-thumb.jpg 1280w" sizes="(max-width: 720px) calc(100vw - 64px), 640px" width="1280" height="800" alt="Lovesac Sactionals redesign concept — UX case study by Claudia Ochoa" fetchpriority="high" decoding="async">
                     </picture>
                   </div>
                 </a>
@@ -288,7 +286,10 @@
               <div>
                 <a href="work/walmart-genai.html" class="work-card featured">
                   <div class="card-image card-image-inset">
-                    <img src="images/walmart-AI-thumb.png" width="1296" height="730" alt="Walmart GenAI candidate experience case study by Claudia Ochoa" decoding="async">
+                    <picture>
+                      <source type="image/avif" srcset="images/walmart-AI-thumb-640.avif 640w, images/walmart-AI-thumb-960.avif 960w" sizes="(max-width: 720px) calc(100vw - 64px), 638px">
+                      <img src="images/walmart-AI-thumb.png" width="1296" height="730" alt="Walmart GenAI candidate experience case study by Claudia Ochoa" loading="lazy" decoding="async">
+                    </picture>
                   </div>
                 </a>
                 <h2>Transforming hiring with GenAI</h2>
