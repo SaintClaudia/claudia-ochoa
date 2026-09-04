@@ -463,6 +463,15 @@
     will-change:transform;
     z-index:0;
   }
+  @media (max-width:600px){
+    .hero-bg{
+      background-image:url('../images/lovesac-hero-mobile.webp');
+      background-image:image-set(
+        url('../images/lovesac-hero-mobile.avif') type('image/avif') 1x,
+        url('../images/lovesac-hero-mobile.webp') type('image/webp') 1x
+      );
+    }
+  }
   .hero::before{
     content:'';
     position:absolute; inset:0;

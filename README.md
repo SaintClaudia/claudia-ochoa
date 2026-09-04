@@ -68,6 +68,7 @@ serves those files directly.
 │   ├── lovesac-store-finder.js       # Shared prototype store drawer and map behavior
 │   ├── lovesac-drawers.js            # Shared account and cart drawer controller
 │   ├── lovesac-hero-parallax.js      # Shared prototype hero parallax behavior
+│   ├── lovesac-lazy-backgrounds.js   # Loads below-fold prototype background images near the viewport
 │   ├── lovesac-search-panel.js       # Shared prototype desktop search panel behavior
 │   └── lovesac-back-link.js          # Shared prototype back-to-portfolio visibility behavior
 ├── images/

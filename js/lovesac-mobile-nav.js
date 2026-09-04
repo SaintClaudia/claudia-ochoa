@@ -7,6 +7,12 @@
   var tier1 = menu.querySelector('.mobile-tier-1');
   var activeTier = tier1;
   var focusScope = window.createLovesacFocusScope ? window.createLovesacFocusScope(menu) : null;
+  function loadBackgrounds(container){
+    container.querySelectorAll('[data-bg]').forEach(function(image){
+      image.style.backgroundImage = 'url("' + image.dataset.bg + '")';
+      image.removeAttribute('data-bg');
+    });
+  }
   function syncHeight(el){
     if(!tiers || !el) return;
     activeTier = el;
@@ -56,6 +62,7 @@
     row.addEventListener('click', function(){
       var target = document.getElementById(row.dataset.tier);
       if(target){
+        loadBackgrounds(target);
         target.classList.add('active');
         target.inert = false;
         syncHeight(target);

@@ -3,6 +3,12 @@
   if(!navItems.length) return;
   var navEl = document.querySelector('nav');
   var navMegaBackdrop = document.getElementById('navMegaBackdrop');
+  function loadBackgrounds(container){
+    container.querySelectorAll('[data-bg]').forEach(function(image){
+      image.style.backgroundImage = 'url("' + image.dataset.bg + '")';
+      image.removeAttribute('data-bg');
+    });
+  }
   function closeAll(restoreFocus){
     var openTrigger = document.querySelector('.nav-item.open .nav-trigger');
     navItems.forEach(function(item){
@@ -26,6 +32,7 @@
       var isOpen = item.classList.contains('open');
       closeAll(false);
       if(!isOpen){
+        loadBackgrounds(item);
         item.classList.add('open');
         trigger.setAttribute('aria-expanded', 'true');
         if(navEl) navEl.classList.add('dropdown-open');
