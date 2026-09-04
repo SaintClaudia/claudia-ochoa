@@ -57,6 +57,19 @@ Test Markdown negotiation locally with:
 curl -H 'Accept: text/markdown' http://localhost:8787/
 ```
 
+Run the employer-facing evaluation suite against the live cited assistant with:
+
+```bash
+npm run eval:live
+```
+
+The runner uses two concurrent scenarios, spaces batches seven seconds apart,
+and retries transient `429` and `5xx` responses with backoff. Those defaults
+keep a full evaluation from mistaking temporary model capacity limits for answer
+quality failures. They can be adjusted with `PORTFOLIO_EVAL_CONCURRENCY`,
+`PORTFOLIO_EVAL_BATCH_DELAY_MS`, `PORTFOLIO_EVAL_ATTEMPTS`, and
+`PORTFOLIO_EVAL_RETRY_MS`.
+
 ## Deploy
 
 ```bash

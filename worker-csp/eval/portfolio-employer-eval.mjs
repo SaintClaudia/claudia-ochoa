@@ -160,30 +160,75 @@ function validate(testCase, result) {
 }
 
 async function runCase(testCase) {
-  const response = await fetch(endpoint, {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      Origin: origin,
-    },
-    body: JSON.stringify({ query: testCase.query }),
-  });
-  const result = await response.json().catch(() => ({}));
-  const failures = response.ok
-    ? validate(testCase, result)
-    : [`HTTP ${response.status}: ${result.error || "unknown error"}`];
-  return { ...testCase, result, failures };
+  const maxAttempts = Math.max(1, Number(process.env.PORTFOLIO_EVAL_ATTEMPTS) || 4);
+  const baseDelayMs = Math.max(250, Number(process.env.PORTFOLIO_EVAL_RETRY_MS) || 5_000);
+
+  for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
+    let response;
+    try {
+      response = await fetch(endpoint, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Origin: origin,
+        },
+        body: JSON.stringify({ query: testCase.query }),
+      });
+    } catch (error) {
+      if (attempt === maxAttempts) {
+        return {
+          ...testCase,
+          result: {},
+          attempts: attempt,
+          failures: [`network error after ${attempt} attempts: ${error.message}`],
+        };
+      }
+      await new Promise((resolve) => setTimeout(resolve, baseDelayMs * (2 ** (attempt - 1))));
+      continue;
+    }
+
+    const result = await response.json().catch(() => ({}));
+    if (response.ok) {
+      return {
+        ...testCase,
+        result,
+        attempts: attempt,
+        failures: validate(testCase, result),
+      };
+    }
+
+    const retryable = response.status === 429 || response.status >= 500;
+    if (!retryable || attempt === maxAttempts) {
+      const message = result.error || result.message || response.statusText || "unknown error";
+      return {
+        ...testCase,
+        result,
+        attempts: attempt,
+        failures: [`HTTP ${response.status} after ${attempt} attempts: ${message}`],
+      };
+    }
+
+    const retryAfterSeconds = Number(response.headers.get("Retry-After"));
+    const retryDelayMs = Number.isFinite(retryAfterSeconds) && retryAfterSeconds > 0
+      ? retryAfterSeconds * 1_000
+      : baseDelayMs * (2 ** (attempt - 1));
+    await new Promise((resolve) => setTimeout(resolve, retryDelayMs));
+  }
 }
 
 const filter = process.env.PORTFOLIO_EVAL_FILTER;
 const selectedCases = filter
   ? cases.filter((testCase) => new RegExp(filter, "i").test(testCase.name))
   : cases;
-const concurrency = 4;
+const concurrency = Math.max(1, Number(process.env.PORTFOLIO_EVAL_CONCURRENCY) || 2);
+const batchDelayMs = Math.max(0, Number(process.env.PORTFOLIO_EVAL_BATCH_DELAY_MS) || 7_000);
 const results = [];
 for (let index = 0; index < selectedCases.length; index += concurrency) {
   results.push(...await Promise.all(selectedCases.slice(index, index + concurrency).map(runCase)));
+  if (index + concurrency < selectedCases.length && batchDelayMs) {
+    await new Promise((resolve) => setTimeout(resolve, batchDelayMs));
+  }
 }
 
 for (const result of results) {
@@ -192,7 +237,8 @@ for (const result of results) {
     for (const failure of result.failures) console.log(`      - ${failure}`);
     console.log(`      ${result.result.answer || "No answer returned"}`);
   } else {
-    console.log(`PASS  ${result.name}`);
+    const retryNote = result.attempts > 1 ? ` (${result.attempts} attempts)` : "";
+    console.log(`PASS  ${result.name}${retryNote}`);
   }
 }
 
