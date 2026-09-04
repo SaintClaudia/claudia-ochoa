@@ -111,7 +111,11 @@
   .ai-card .num{display:block;margin-bottom:13px;}
   .ai-card h3{font-family:'Fraunces',serif;font-size:22px;line-height:1.2;color:var(--espresso);}
   .ai-card p{font-size:14.5px;line-height:1.65;color:var(--ink-soft);margin-top:10px;}
-  .prototype-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:36px;}
+  .compare-label{display:flex;align-items:center;gap:10px;font-size:13px;letter-spacing:0.06em;text-transform:uppercase;font-weight:700;margin-top:36px;margin-bottom:14px;}
+  .compare-label.after{color:var(--clay-deep);}
+  .compare-label .sw{width:10px;height:10px;border-radius:3px;}
+  .compare-label.after .sw{background:var(--espresso);}
+  .prototype-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
   .prototype-card{margin:0;}
   .prototype-card img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:16px;}
   .prototype-card figcaption{font-size:12.5px;line-height:1.5;color:var(--ink-soft);margin-top:10px;}
@@ -211,7 +215,7 @@
       </div>
       <div class="ai-stats">
         <div class="ai-stat"><strong>24 hours</strong><span>To deliver the end-to-end experience concept.</span></div>
-        <div class="ai-stat"><strong>1 journey</strong><span>Application, scheduling, offer, and onboarding connected through one AI guide.</span></div>
+        <div class="ai-stat"><strong>0 &rarr; 1</strong><span>Application, scheduling, offer, and onboarding connected through one AI guide.</span></div>
         <div class="ai-stat"><strong>Creative Director</strong><span>My role after the concept earned early leadership support.</span></div>
       </div>
     </div>
@@ -260,6 +264,7 @@
           <p class="lede">The prototype demonstrated how the AI guide could reduce cognitive load while keeping candidate choice visible.</p>
         </div>
       </div>
+      <div class="compare-label after"><span class="sw"></span>AI guide concept — approved design</div>
       <div class="prototype-grid">
         <figure class="prototype-card"><img src="/images/sam-genai-intro.png" width="880" height="1912" loading="lazy" decoding="async" alt="Conversational AI welcome screen introducing the Walmart candidate experience"><figcaption>01 · A clear introduction and a low-friction starting point.</figcaption></figure>
         <figure class="prototype-card"><img src="/images/sam-genai-avail.png" width="880" height="1912" loading="lazy" decoding="async" alt="Candidate availability step in the conversational hiring experience"><figcaption>02 · Availability translated into an understandable choice.</figcaption></figure>
