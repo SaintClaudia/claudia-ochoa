@@ -20,6 +20,10 @@ For structured access, connect an MCP client to [the public portfolio MCP endpoi
 - [Résumé](https://claudiaochoa.co/output/pdf/Claudia_Ochoa_Resume.pdf): Two-page professional résumé focused on AI experience and product design leadership.
 - [LinkedIn](https://www.linkedin.com/in/claudiajochoa/): Professional profile and career history.
 
+## Commerce Experience
+
+- [The Home Depot Gift Cards](https://claudiaochoa.co/work/thd-giftcards.html): Research-led gift card discovery, balance checks, and integrated mixed-cart checkout; includes original design screens and usability findings from 30 participants.
+
 ## Experience Strategy Case Study
 
 - [01 — Lovesac Redesign](https://claudiaochoa.co/work/lovesac-case-study.html): Project framing, experience strategy, information architecture, accessibility, and trust.
