@@ -24,8 +24,6 @@
       var target = document.getElementById(d.getAttribute('href').slice(1));
       if(!target) return;
       window.__tocNav = true;
-      var topbarEl = document.querySelector('.topbar');
-      if(topbarEl) topbarEl.classList.remove('topbar-hidden');
       target.scrollIntoView({behavior: reduced ? 'auto' : 'smooth', block:'start'});
       var lastY = window.scrollY;
       (function checkSettled(){
