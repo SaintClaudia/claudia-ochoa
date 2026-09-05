@@ -90,6 +90,10 @@
 <style>
 .hiring-hero > .wrap:first-child{border-bottom:1px solid var(--line);padding-bottom:48px;}
 .hiring-hero{padding:72px 0 56px}.hiring-hero h1{font-size:clamp(34px,4.8vw,54px);line-height:1.06;max-width:20ch}.hiring-hero .sub{margin-top:20px;font-size:18px;line-height:1.55;color:var(--ink-soft);max-width:58ch}.hiring-section{padding:64px 0}.hiring-content{margin-left:calc((100% - 48px)/3.2 + 48px)}.hiring-content p{font-size:16px;line-height:1.75;color:var(--ink-soft);margin:20px 0}.hiring-content h3{font-family:'Fraunces',serif;font-size:25px;margin-top:32px}.hiring-figure{margin:32px 0}.hiring-figure img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:14px;background:#fff}.hiring-figure figcaption{font-size:14px;line-height:1.55;color:var(--ink-soft);margin-top:12px}.hiring-figure a{display:block}.hiring-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:28px 0}.hiring-stat{border:1px solid var(--line);border-radius:14px;padding:20px;background:var(--paper)}.hiring-stat strong{display:block;font-family:'Fraunces',serif;font-size:28px;color:var(--clay-deep)}.hiring-stat span{font-size:14px;line-height:1.5}
+.hiring-content .compare-label{display:flex;align-items:center;gap:10px;font-size:13px;letter-spacing:0.06em;text-transform:uppercase;font-weight:700;margin-top:36px;margin-bottom:14px}
+.hiring-content .compare-label.after{color:var(--clay-deep)}
+.hiring-content .compare-label .sw{width:10px;height:10px;border-radius:3px}
+.hiring-content .compare-label.after .sw{background:var(--espresso)}
 @media(max-width:820px){.hiring-content{margin-left:0}}@media(max-width:720px){.hiring-hero{padding-top:48px}.hiring-section{padding:48px 0}.hiring-stats{grid-template-columns:1fr}}
 
 .hiring-content{--black:var(--espresso);--white:var(--paper);--off-white:var(--cream);--mid:var(--ink-soft);--border:var(--line)}
@@ -458,11 +462,11 @@
       <div><span class="num">05 · My Hiring Dashboard</span></div>
       <div>
         <h2>Your day, at a glance.</h2>
-        <p class="lede">The dashboard brings new applicants, scheduled interviews, and pending feedback into one place, helping hiring managers identify their next action.</p>
+        <p class="lede">The dashboard surfaces new applicants, upcoming interviews, and pending feedback in one place — so hiring managers always know their next action. Requisitions and Candidates offer deeper views into the workflow when more detail is needed.</p>
       </div>
     </div>
     <div class="hiring-content">
-      <p>Dashboard, Requisitions, and Candidates provide distinct views of the hiring workflow. The dashboard prioritizes the day’s work: review new applicants, view interview details, and follow up on outstanding feedback.</p>
+      <div class="compare-label after"><span class="sw"></span>My Hiring dashboard — approved design</div>
       <figure class="hiring-mobile-example">
         <a class="phone-frame-wide" href="/images/walmart-hiring-dashboard.png" target="_blank" rel="noopener" aria-label="Open full-size My Hiring dashboard screen"><img src="/images/walmart-hiring-dashboard.png" width="880" height="1912" loading="lazy" decoding="async" alt="My Hiring dashboard showing new applicants, today's interviews, and pending feedback with swipe actions"></a>
         <figcaption class="frame-cap">My Hiring · Daily priorities and hiring activity.</figcaption>
@@ -481,6 +485,7 @@
     </div>
     <div class="hiring-content">
       <p>The role title and key details remain visible above an editable role summary. A progress indicator establishes where the manager is in the creation flow, while the mobile keyboard supports writing and refining the description.</p>
+      <div class="compare-label after"><span class="sw"></span>Create requisition — approved design</div>
       <figure class="hiring-mobile-example">
         <a class="phone-frame-wide" href="/images/walmart-hiring-create-requisition.png?v=2" target="_blank" rel="noopener" aria-label="Open full-size Create requisition screen"><img src="/images/walmart-hiring-create-requisition.png?v=2" width="880" height="1912" loading="lazy" decoding="async" alt="Create requisition experience showing Product Manager role details, an editable role summary, a blue submit button, and the mobile keyboard"></a>
         <figcaption class="frame-cap">Create requisition · Role details and summary editing.</figcaption>
