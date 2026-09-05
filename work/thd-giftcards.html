@@ -90,8 +90,8 @@
 <style>
 .thd-hero>.wrap:first-child{border-bottom:1px solid var(--line);padding-bottom:48px}.thd-hero{padding:72px 0 56px}.thd-hero h1{font-size:clamp(34px,4.8vw,54px);line-height:1.06;max-width:20ch}.thd-hero .sub{margin-top:20px;font-size:18px;line-height:1.55;color:var(--ink-soft);max-width:58ch}.thd-section{padding:64px 0}.thd-content{margin-left:calc((100% - 48px)/3.2 + 48px)}.thd-content p{font-size:16px;line-height:1.75;color:var(--ink-soft);margin:20px 0}.thd-content h3{font-family:'Fraunces',serif;font-size:25px;margin-top:32px}.thd-figure{margin:32px 0}.thd-figure img{display:block;width:100%;height:auto;border-radius:14px}.thd-figure figcaption{font-size:14px;line-height:1.55;color:var(--ink-soft);margin-top:12px}.thd-figure a{display:block}.thd-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:28px 0}.thd-stat{border:1px solid var(--line);border-radius:14px;padding:20px;background:var(--paper)}.thd-stat strong{display:block;font-family:'Fraunces',serif;font-size:28px;color:var(--clay-deep)}.thd-stat span{font-size:14px;line-height:1.5}.thd-cover{max-width:640px;margin-bottom:36px}.thd-cover img{width:100%;height:auto;border-radius:14px}
 .thd-finding-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:24px 0}.thd-finding-cell{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:24px}.thd-finding-icon{display:block;width:32px;height:32px;color:var(--ink-soft);margin-bottom:16px}.thd-finding-icon svg{width:100%;height:100%;display:block}.thd-finding-cell p{font-size:15px;line-height:1.65;color:var(--ink-soft);margin:0}.thd-finding-cell strong{color:var(--clay-deep);font-weight:600}
-.compare-label{display:flex;align-items:center;gap:10px;font-size:13px;letter-spacing:0.06em;text-transform:uppercase;font-weight:700;margin-bottom:14px}.compare-label.after{color:var(--clay-deep)}.compare-label .sw{width:10px;height:10px;border-radius:3px}.compare-label.after .sw{background:var(--espresso)}
-.thd-mobile-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:28px 0}.thd-mobile-half{overflow:hidden;border-radius:14px;aspect-ratio:900/1722}.thd-mobile-half img{width:100%;height:100%;object-fit:cover;display:block}.thd-mobile-half.is-left img{object-position:0% 50%}.thd-mobile-half.is-right img{object-position:100% 50%}
+.compare-label{display:flex;align-items:center;gap:10px;font-size:13px;letter-spacing:0.06em;text-transform:uppercase;font-weight:700;margin-bottom:14px}.compare-label.before{color:var(--ink-soft)}.compare-label.after{color:var(--clay-deep)}.compare-label .sw{width:10px;height:10px;border-radius:3px}.compare-label.before .sw{background:#48484F}.compare-label.after .sw{background:var(--espresso)}
+.thd-mobile-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:28px 0}.thd-mobile-half{overflow:hidden;border-radius:14px}.thd-mobile-half img{width:100%;height:100%;object-fit:cover;display:block}.thd-mobile-half.is-left img{object-position:0% 50%}.thd-mobile-half.is-right img{object-position:100% 50%}
 @media(max-width:820px){.thd-content{margin-left:0}}@media(max-width:720px){.thd-hero{padding-top:48px}.thd-section{padding:48px 0}.thd-stats{grid-template-columns:1fr}.thd-finding-grid{grid-template-columns:1fr}.thd-mobile-grid{grid-template-columns:1fr}}
 </style></head><body><a href="#main-content" class="skip-link">Skip to main content</a>
 <div class="topbar">
@@ -155,8 +155,16 @@
 <div class="thd-content">
 <p>The Home Depot’s Gift Card Business team wanted to move away from a third-party provider. The existing setup limited control over design and optimization, and customers could not purchase gift cards alongside regular merchandise.</p>
 <p>Initially scoped as an MVP for mixed-cart functionality, the work expanded to specialty gift cards and a refreshed experience informed by research. I connected the landing page, card selection, cart, and checkout so the journey could work as a whole.</p>
-<figure class="thd-figure"><a href="/images/HD-gift-card-initial.webp" target="_blank" rel="noopener" aria-label="Open full-size image: Legacy Home Depot mobile gift card landing and purchase screens"><img src="/images/HD-gift-card-initial.webp" width="1706" height="1684" alt="Legacy Home Depot mobile gift card landing and purchase screens" loading="lazy" decoding="async"></a><figcaption>Before · The existing mobile experience separated discovery from the purchase flow.</figcaption>
-</figure></div></div>
+<div class="thd-mobile-grid">
+<figure>
+<div class="compare-label before"><span class="sw"></span>Discovery</div>
+<div class="thd-mobile-half is-left" style="aspect-ratio:853/1684"><img src="/images/HD-gift-card-initial.webp" width="853" height="1684" alt="Legacy Home Depot mobile gift card landing screen" loading="lazy" decoding="async"></div>
+</figure>
+<figure>
+<div class="compare-label before"><span class="sw"></span>Purchase</div>
+<div class="thd-mobile-half is-right" style="aspect-ratio:853/1684"><img src="/images/HD-gift-card-initial.webp" width="853" height="1684" alt="Legacy Home Depot mobile gift card purchase screen" loading="lazy" decoding="async"></div>
+</figure>
+</div></div></div>
 </section>
 <section class="thd-section" id="toc-research">
 <div class="wrap">
@@ -248,8 +256,16 @@
 <h2>Keep gift cards in the shopping journey.</h2>
 <p class="lede">Moving away from third-party checkout meant designing how physical and digital gift cards worked within The Home Depot’s own cart and checkout.</p></div></div>
 <div class="thd-content">
-<figure class="thd-figure"><a href="/images/HD-gift-card-mobile.webp" target="_blank" rel="noopener" aria-label="Open full-size image: Mobile gift card discovery and card selection screens"><img src="/images/HD-gift-card-mobile.webp" width="1800" height="1722" alt="Mobile gift card discovery and card selection screens" loading="lazy" decoding="async"></a><figcaption>Mobile experience · Browse gift cards and choose a design.</figcaption>
+<div class="thd-mobile-grid">
+<figure>
+<div class="compare-label after"><span class="sw"></span>Homepage</div>
+<div class="thd-mobile-half is-left" style="aspect-ratio:900/1722"><img src="/images/HD-gift-card-mobile.webp" width="900" height="1722" alt="The Home Depot gift cards homepage on mobile" loading="lazy" decoding="async"></div>
 </figure>
+<figure>
+<div class="compare-label after"><span class="sw"></span>Product page</div>
+<div class="thd-mobile-half is-right" style="aspect-ratio:900/1722"><img src="/images/HD-gift-card-mobile.webp" width="900" height="1722" alt="The Home Depot gift cards product page on mobile" loading="lazy" decoding="async"></div>
+</figure>
+</div>
 <figure class="thd-figure"><a href="/images/HD-gift-card-screens.webp" target="_blank" rel="noopener" aria-label="Open full-size image: Original desktop and mobile Home Depot cart designs with a gift card"><img src="/images/HD-gift-card-screens.webp" width="1800" height="773" alt="Original desktop and mobile Home Depot cart designs with a gift card" loading="lazy" decoding="async"></a><figcaption>Cart · Gift cards became part of the retailer’s own cart experience, supporting the mixed-cart scope.</figcaption>
 </figure>
 <figure class="thd-figure"><a href="/images/HD-gift-card-checkout.webp" target="_blank" rel="noopener" aria-label="Open full-size image: Original Home Depot secure checkout and order summary screens"><img src="/images/HD-gift-card-checkout.webp" width="1800" height="1416" alt="Original Home Depot secure checkout and order summary screens" loading="lazy" decoding="async"></a><figcaption>Checkout · Gift card delivery and order details within the integrated purchase flow.</figcaption>
@@ -268,11 +284,11 @@
 <div class="thd-mobile-grid">
 <figure>
 <div class="compare-label after"><span class="sw"></span>Homepage</div>
-<div class="thd-mobile-half is-left"><img src="/images/HD-gift-card-mobile.webp" width="900" height="1722" alt="The Home Depot gift cards homepage on mobile" loading="lazy" decoding="async"></div>
+<div class="thd-mobile-half is-left" style="aspect-ratio:900/1722"><img src="/images/HD-gift-card-mobile.webp" width="900" height="1722" alt="The Home Depot gift cards homepage on mobile" loading="lazy" decoding="async"></div>
 </figure>
 <figure>
 <div class="compare-label after"><span class="sw"></span>Product page</div>
-<div class="thd-mobile-half is-right"><img src="/images/HD-gift-card-mobile.webp" width="900" height="1722" alt="The Home Depot gift cards product page on mobile" loading="lazy" decoding="async"></div>
+<div class="thd-mobile-half is-right" style="aspect-ratio:900/1722"><img src="/images/HD-gift-card-mobile.webp" width="900" height="1722" alt="The Home Depot gift cards product page on mobile" loading="lazy" decoding="async"></div>
 </figure>
 </div>
 <p>The central lesson: a gifting experience must serve the quick, transactional visit as carefully as the more exploratory purchase.</p>
