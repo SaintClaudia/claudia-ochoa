@@ -98,6 +98,7 @@
 .needs-grid{display:grid;grid-template-columns:1fr;gap:16px;margin:28px 0}.needs-cell{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:24px}.hiring-content .needs-label{font-size:14px;color:var(--clay-deep);margin:0 0 10px}.hiring-content .needs-title{font-weight:600;color:var(--espresso);margin:0 0 8px}.hiring-content .needs-body{margin:0}
 .process-filmstrip{display:grid;grid-template-columns:1fr;gap:24px;margin:24px 0}.process-frame{border:1px solid var(--line);border-radius:14px;overflow:hidden}.process-frame svg{width:100%;height:auto;display:block}.process-caption{padding:16px 24px}.hiring-content .process-caption p{margin:8px 0}.hiring-content .process-caption .stage{font-size:14px;font-weight:600;color:var(--clay-deep)}
 .workflow-figure{margin:40px 0 0}.workflow-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:8px}.workflow-diagram{display:block;width:100%;min-width:860px;height:auto}.workflow-diagram .node{fill:var(--paper);stroke-width:2}.workflow-diagram .manager{stroke:#5B8DEF}.workflow-diagram .recruiter{stroke:#D79A32}.workflow-diagram .joint{stroke:#9C74D4}.workflow-diagram .interview{stroke:#D46A7E}.workflow-diagram .outcome{stroke:#46A36E}.workflow-diagram .node-label{fill:var(--espresso);font-family:'Inter',sans-serif;font-size:15px;font-weight:600}.workflow-diagram .role-label{fill:var(--ink-soft);font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}.workflow-diagram .handoff{fill:none;stroke:var(--ink-soft);stroke-width:1.5;marker-end:url(#workflow-arrow)}.workflow-diagram .loop{fill:none;stroke:var(--ink-soft);stroke-width:1.5;stroke-dasharray:5 5;marker-end:url(#workflow-arrow)}.workflow-diagram .handoff-label{fill:var(--ink-soft);font-family:'Inter',sans-serif;font-size:12.5px}.workflow-diagram .friction{fill:var(--cream);stroke:var(--line);stroke-width:1.5;stroke-dasharray:5 5}.workflow-diagram .friction-label{fill:var(--ink-soft);font-family:'Inter',sans-serif;font-size:12px}.workflow-figure .apa-label{margin-top:0}
+.wireframe-figure{margin:56px 0 0}.wireframe-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:8px}.wireframe-diagram{display:block;width:100%;min-width:800px;height:auto}.wireframe-diagram .phone{fill:var(--paper);stroke:var(--espresso);stroke-width:2}.wireframe-diagram .surface{fill:var(--cream);stroke:var(--line);stroke-width:1.5}.wireframe-diagram .line{stroke:var(--ink-soft);stroke-width:1.5;stroke-linecap:round}.wireframe-diagram .active{fill:var(--clay-deep)}.wireframe-diagram .wire-label{fill:var(--espresso);font-family:'Inter',sans-serif;font-size:13px;font-weight:600}.wireframe-diagram .wire-meta{fill:var(--ink-soft);font-family:'Inter',sans-serif;font-size:10px}.wireframe-diagram .callout{fill:var(--paper);stroke:var(--line);stroke-width:1.5}.wireframe-diagram .callout-line{fill:none;stroke:var(--ink-soft);stroke-width:1.25;stroke-dasharray:4 4}.wireframe-diagram .callout-num{fill:var(--clay-deep);font-family:'Inter',sans-serif;font-size:11px;font-weight:800}.wireframe-diagram .callout-title{fill:var(--espresso);font-family:'Inter',sans-serif;font-size:14px;font-weight:700}.wireframe-diagram .callout-copy{fill:var(--ink-soft);font-family:'Inter',sans-serif;font-size:11.5px}.wireframe-figure .apa-label{margin-top:0}
 
 
 .hiring-mobile-example{margin:32px 0}
@@ -284,30 +285,109 @@
           <figcaption class="apa-note"><em>Note.</em> Recreated for this case study from the current-state workflow. The process relied on manual handoffs across calls, email, and messaging, without one centralized view of hiring activity.</figcaption>
         </figure>
 
+        <figure class="wireframe-figure">
+          <p class="apa-label"><span class="apa-num">Figure 3</span><span class="apa-title">02 · Wireframe: My Hiring Dashboard Structure</span></p>
+          <div class="wireframe-scroll">
+            <svg class="wireframe-diagram" viewBox="0 0 1000 780" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="wireframe-title wireframe-desc">
+              <title id="wireframe-title">Annotated My Hiring Dashboard mobile wireframe</title>
+              <desc id="wireframe-desc">A mobile dashboard wireframe with six callouts identifying the applicant alert, primary views, search, today's schedule, pending feedback actions, and persistent app navigation.</desc>
+
+              <rect class="phone" x="360" y="35" width="280" height="700" rx="30"/>
+              <rect class="surface" x="360" y="35" width="280" height="60" rx="30"/>
+              <rect class="surface" x="360" y="65" width="280" height="30"/>
+              <path class="line" d="M382 57 L372 65 L382 73" fill="none"/>
+              <text class="wire-label" x="395" y="70">My hiring</text>
+              <path class="line" d="M612 55 V78 M600 66.5 H624"/>
+
+              <rect class="surface" x="378" y="112" width="244" height="105" rx="18"/>
+              <text class="wire-label" x="396" y="142"><tspan x="396">8 new applicants</tspan><tspan x="396" dy="20">ready for review</tspan></text>
+              <rect x="396" y="177" width="88" height="25" rx="13" fill="none" stroke="var(--espresso)" stroke-width="1.5"/>
+              <text class="wire-meta" x="440" y="193" text-anchor="middle">Review now</text>
+              <circle cx="575" cy="157" r="28" fill="none" stroke="var(--ink-soft)" stroke-width="1.5"/>
+
+              <text class="wire-label" x="378" y="251">Dashboard</text>
+              <text class="wire-meta" x="480" y="251">Requisitions</text>
+              <text class="wire-meta" x="570" y="251">Candidates</text>
+              <line class="line" x1="360" y1="270" x2="640" y2="270"/>
+              <rect class="active" x="360" y="267" width="90" height="3"/>
+
+              <rect class="surface" x="378" y="292" width="244" height="42" rx="21"/>
+              <circle cx="398" cy="313" r="7" fill="none" stroke="var(--ink-soft)" stroke-width="1.5"/>
+              <path class="line" d="M403 318 L410 325"/>
+              <text class="wire-meta" x="420" y="317">Search dashboard</text>
+
+              <text class="wire-label" x="378" y="370">Today</text>
+              <text class="wire-meta" x="378" y="393">Scheduled interviews</text>
+              <rect class="surface" x="378" y="405" width="244" height="56" rx="8"/>
+              <circle cx="596" cy="427" r="10" fill="none" stroke="var(--ink-soft)"/>
+              <circle cx="607" cy="427" r="10" fill="none" stroke="var(--ink-soft)"/>
+              <line class="line" x1="396" y1="423" x2="510" y2="423"/>
+              <line class="line" x1="396" y1="442" x2="545" y2="442"/>
+              <rect class="surface" x="378" y="470" width="244" height="56" rx="8"/>
+              <circle cx="596" cy="492" r="10" fill="none" stroke="var(--ink-soft)"/>
+              <circle cx="607" cy="492" r="10" fill="none" stroke="var(--ink-soft)"/>
+              <line class="line" x1="396" y1="488" x2="500" y2="488"/>
+              <line class="line" x1="396" y1="507" x2="545" y2="507"/>
+
+              <text class="wire-meta" x="378" y="558">Pending feedback</text>
+              <rect class="surface" x="378" y="572" width="150" height="50" rx="8"/>
+              <line class="line" x1="396" y1="591" x2="480" y2="591"/>
+              <line class="line" x1="396" y1="608" x2="500" y2="608"/>
+              <rect x="528" y="572" width="31" height="50" fill="var(--line)"/>
+              <rect x="559" y="572" width="31" height="50" fill="none" stroke="var(--ink-soft)"/>
+              <rect x="590" y="572" width="32" height="50" fill="none" stroke="var(--ink-soft)"/>
+
+              <line class="line" x1="360" y1="650" x2="640" y2="650"/>
+              <circle cx="394" cy="681" r="12" fill="none" stroke="var(--ink-soft)" stroke-width="1.5"/>
+              <circle cx="447" cy="681" r="12" fill="none" stroke="var(--ink-soft)" stroke-width="1.5"/>
+              <circle cx="500" cy="681" r="12" fill="none" stroke="var(--clay-deep)" stroke-width="2"/>
+              <circle cx="553" cy="681" r="12" fill="none" stroke="var(--ink-soft)" stroke-width="1.5"/>
+              <circle cx="606" cy="681" r="12" fill="none" stroke="var(--ink-soft)" stroke-width="1.5"/>
+              <text class="wire-meta" x="500" y="713" text-anchor="middle">Me@Campus navigation</text>
+
+              <rect class="callout" x="25" y="85" width="250" height="100" rx="12"/>
+              <text class="callout-num" x="45" y="111">01</text>
+              <text class="callout-title" x="45" y="136">Applicant alert</text>
+              <text class="callout-copy" x="45" y="158"><tspan x="45">Makes the review workload</tspan><tspan x="45" dy="16">visible and actionable.</tspan></text>
+              <path class="callout-line" d="M275 135 H330 L378 160"/>
+
+              <rect class="callout" x="725" y="145" width="250" height="100" rx="12"/>
+              <text class="callout-num" x="745" y="171">02</text>
+              <text class="callout-title" x="745" y="196">Primary views</text>
+              <text class="callout-copy" x="745" y="218"><tspan x="745">Separates daily activity,</tspan><tspan x="745" dy="16">requisitions, and candidates.</tspan></text>
+              <path class="callout-line" d="M725 195 H690 L620 246"/>
+
+              <rect class="callout" x="25" y="265" width="250" height="90" rx="12"/>
+              <text class="callout-num" x="45" y="291">03</text>
+              <text class="callout-title" x="45" y="316">Dashboard search</text>
+              <text class="callout-copy" x="45" y="338">Finds activity without digging.</text>
+              <path class="callout-line" d="M275 310 H330 L378 313"/>
+
+              <rect class="callout" x="725" y="340" width="250" height="100" rx="12"/>
+              <text class="callout-num" x="745" y="366">04</text>
+              <text class="callout-title" x="745" y="391">Today’s schedule</text>
+              <text class="callout-copy" x="745" y="413"><tspan x="745">Keeps interview timing and</tspan><tspan x="745" dy="16">role context together.</tspan></text>
+              <path class="callout-line" d="M725 390 H690 L622 432"/>
+
+              <rect class="callout" x="25" y="510" width="250" height="100" rx="12"/>
+              <text class="callout-num" x="45" y="536">05</text>
+              <text class="callout-title" x="45" y="561">Pending feedback</text>
+              <text class="callout-copy" x="45" y="583"><tspan x="45">Puts follow-up actions beside</tspan><tspan x="45" dy="16">the item that needs attention.</tspan></text>
+              <path class="callout-line" d="M275 560 H330 L378 592"/>
+
+              <rect class="callout" x="725" y="590" width="250" height="100" rx="12"/>
+              <text class="callout-num" x="745" y="616">06</text>
+              <text class="callout-title" x="745" y="641">Persistent navigation</text>
+              <text class="callout-copy" x="745" y="663"><tspan x="745">Keeps hiring connected to the</tspan><tspan x="745" dy="16">broader Me@Campus experience.</tspan></text>
+              <path class="callout-line" d="M725 640 H690 L622 681"/>
+            </svg>
+          </div>
+          <figcaption class="apa-note"><em>Note.</em> Recreated for this case study from the retained dashboard screen. The wireframe makes the information hierarchy and action model explicit without representing confidential production specifications.</figcaption>
+        </figure>
+
         <div class="hiring-content">
         <p class="process-note">Recreated for this case study — original working files are confidential and were not retained.</p>
         <div class="process-filmstrip">
-          <div class="process-frame">
-            <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Structured wireframe with pipeline, alerts, and action zones labeled">
-              <rect width="320" height="200" style="fill:var(--off-white)"/>
-              <rect x="16" y="16" width="288" height="20" style="fill:none;stroke:var(--black);stroke-width:1.1"/>
-              <rect x="16" y="46" width="170" height="138" style="fill:none;stroke:var(--black);stroke-width:1.2"/>
-              <text x="101" y="62" text-anchor="middle" font-family="DM Mono, monospace" font-size="8" style="fill:var(--mid)">PIPELINE</text>
-              <rect x="28" y="70" width="146" height="18" style="fill:none;stroke:var(--mid);stroke-width:0.8"/>
-              <rect x="28" y="94" width="146" height="18" style="fill:none;stroke:var(--mid);stroke-width:0.8"/>
-              <rect x="28" y="118" width="146" height="18" style="fill:none;stroke:var(--mid);stroke-width:0.8"/>
-              <rect x="196" y="46" width="108" height="64" style="fill:none;stroke:var(--black);stroke-width:1.2"/>
-              <text x="250" y="62" text-anchor="middle" font-family="DM Mono, monospace" font-size="8" style="fill:var(--mid)">ALERTS</text>
-              <rect x="206" y="70" width="88" height="14" style="fill:none;stroke:var(--mid);stroke-width:0.8"/>
-              <rect x="206" y="88" width="88" height="14" style="fill:none;stroke:var(--mid);stroke-width:0.8"/>
-              <rect x="196" y="120" width="108" height="30" rx="4" style="fill:none;stroke:var(--black);stroke-width:1.2"/>
-              <text x="250" y="139" text-anchor="middle" font-family="DM Mono, monospace" font-size="8" style="fill:var(--mid)">ACTION</text>
-            </svg>
-            <div class="process-caption">
-              <p class="stage">02 · Wireframe</p>
-              <p>Locking the core layout: pipeline at the center, alerts and quick actions surfaced around it, not buried in a menu.</p>
-            </div>
-          </div>
           <div class="process-frame">
             <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Higher fidelity pass with filled blocks and brand-ready treatment">
               <rect width="320" height="200" style="fill:var(--off-white)"/>
