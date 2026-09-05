@@ -89,6 +89,28 @@
   <meta name="theme-color" content="#0A0A0B">
 <style>
 .thd-hero>.wrap:first-child{border-bottom:1px solid var(--line);padding-bottom:48px}.thd-hero{padding:72px 0 56px}.thd-hero h1{font-size:clamp(34px,4.8vw,54px);line-height:1.06;max-width:20ch}.thd-hero .sub{margin-top:20px;font-size:18px;line-height:1.55;color:var(--ink-soft);max-width:58ch}.thd-section{padding:64px 0}.thd-content{max-width:70ch}.thd-content>p:not(.apa-label){font-size:16px;line-height:1.75;color:var(--ink-soft);margin:20px 0}.thd-content p strong{color:var(--clay-deep);font-weight:600}.thd-content h3{font-family:'Fraunces',serif;font-size:25px;margin-top:32px}.thd-figure{margin:32px 0}.thd-figure-centered{width:100%}.thd-figure-centered>a{max-width:70ch;margin-left:auto;margin-right:auto}.thd-figure-centered .apa-label,.thd-figure-centered figcaption{max-width:70ch}.thd-figure-wide{width:100%;margin-left:auto;margin-right:auto}.thd-figure-wide .apa-note{max-width:none}.thd-figure .apa-label{margin-top:0}.thd-figure img{display:block;width:100%;height:auto;border-radius:14px}.thd-figure figcaption:not(.apa-note){font-size:14px;line-height:1.55;color:var(--ink-soft);margin-top:12px}.thd-figure a{display:block;margin-top:14px}.thd-metrics-figure{margin:32px 0 40px}.thd-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:28px}.thd-metric{text-align:center}.thd-metric .big{font-family:'Fraunces',serif;font-size:28px;font-weight:600;color:var(--clay-deep)}.thd-metric .label{font-size:13px;color:var(--ink-soft);margin-top:6px;line-height:1.4}.thd-metrics-note{max-width:70ch;margin:28px 0 0;font-size:16px;line-height:1.75;color:var(--ink-soft)}.thd-cover{max-width:640px;margin-bottom:36px}.thd-cover img{width:100%;height:auto;border-radius:14px}
+.compare-frame{position:relative;display:block;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--paper);cursor:zoom-in}
+.compare-frame img{transition:transform .3s ease}
+.compare-frame:hover img,.compare-frame:focus-visible img{transform:scale(1.02)}
+.compare-frame-hint{position:absolute;right:12px;bottom:12px;display:flex;align-items:center;gap:6px;background:rgba(20,20,22,0.7);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--glass-border);color:#F2F2F4;font-size:12px;font-weight:600;padding:7px 13px;border-radius:999px;opacity:0;transform:translateY(4px);transition:opacity .2s ease,transform .2s ease}
+.compare-frame:hover .compare-frame-hint,.compare-frame:focus-visible .compare-frame-hint{opacity:1;transform:translateY(0)}
+.lightbox{position:fixed;inset:0;z-index:400;display:flex;align-items:center;justify-content:center;padding:32px;gap:20px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .22s ease,visibility .22s}
+.lightbox.open{opacity:1;visibility:visible;pointer-events:auto}
+.lightbox-backdrop{position:absolute;inset:0;background:rgba(5,5,6,0.94)}
+.lightbox-panel{position:relative;flex:0 1 900px;min-width:0;max-height:85vh;transform:translateY(10px) scale(0.98);transition:transform .22s ease}
+.lightbox.open .lightbox-panel{transform:translateY(0) scale(1)}
+.lightbox-panel-inner{background:var(--sand);border:1px solid var(--glass-border);border-radius:16px;height:100%;max-height:85vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 40px 80px -20px rgba(0,0,0,0.5)}
+.lightbox-caption{flex:0 0 auto;padding:16px 52px 0 20px;font-size:13px;font-weight:600;color:var(--ink-soft)}
+.lightbox-scroll{flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;padding:16px 20px 20px}
+.lightbox-scroll img{width:100%;height:auto;display:block;border-radius:10px}
+@media (max-width:600px){.lightbox{padding:14px}.lightbox-panel{max-height:90vh}.lightbox-panel-inner{max-height:90vh}}
+.lightbox-close{position:absolute;top:20px;right:20px;z-index:3;width:34px;height:34px;border-radius:50%;background:rgba(242,242,244,0.12);border:1px solid rgba(242,242,244,0.35);color:#F2F2F4;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:20px;line-height:1;padding:0;transition:background .2s ease,border-color .2s ease}
+.lightbox-close:hover{background:rgba(242,242,244,0.22);border-color:rgba(242,242,244,0.55)}
+.lightbox-arrow{flex:0 0 auto;z-index:2;width:44px;height:44px;border-radius:50%;background:rgba(242,242,244,0.12);border:1px solid rgba(242,242,244,0.35);color:#F2F2F4;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:20px;line-height:1;padding:0;transition:background .2s ease,border-color .2s ease,opacity .2s ease}
+.lightbox-arrow:hover{background:rgba(242,242,244,0.22);border-color:rgba(242,242,244,0.55)}
+.lightbox-arrow:disabled{opacity:0;pointer-events:none}
+@media (min-width:640px){.lightbox{gap:150px}}
+@media (max-width:639px){.lightbox{gap:0}.lightbox-arrow{position:absolute;top:50%;transform:translateY(-50%);width:38px;height:38px;font-size:18px}#lightboxPrev{left:8px}#lightboxNext{right:8px}}
 .thd-finding-figure{margin:24px 0 0}.thd-finding-figure .thd-finding-grid{margin:14px 0 0}.thd-finding-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:24px 0}.thd-finding-cell{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:24px}.thd-finding-icon{display:block;width:32px;height:32px;color:var(--ink-soft);margin-bottom:16px}.thd-finding-icon svg{width:100%;height:100%;display:block}.thd-finding-cell p{font-size:15px;line-height:1.65;color:var(--ink-soft);margin:0}.thd-finding-cell strong{color:var(--clay-deep);font-weight:600}
 .thd-data-figure{margin-top:14px;overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--paper)}
 .thd-compare-table{width:100%;min-width:700px;border-collapse:collapse;font-size:13px}.thd-compare-table th,.thd-compare-table td{padding:13px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:middle}.thd-compare-table thead th{font-family:'Fraunces',serif;font-size:13px;font-weight:600;color:var(--espresso);background:rgba(255,255,255,.025)}.thd-compare-table tbody th{font-weight:600;color:var(--ink)}.thd-compare-table tbody tr:last-child>*{border-bottom:0}.feature-level{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;padding:5px 9px;color:var(--ink-soft);font-size:11.5px;line-height:1;font-weight:600;white-space:nowrap}.feature-level.full,.feature-level.robust{color:var(--espresso);border-color:rgba(242,242,244,.28)}.feature-level.robust{background:var(--espresso);color:var(--invert-ink)}
@@ -472,6 +494,13 @@
 <p>The final design paired Design I's gift-card-centered hero with feedback from Design II, which suggested pushing secondary links further down the page. Both tests also surfaced strong customer sentiment toward specialty gift cards, so that was addressed directly in the new design.</p>
 <p>Check balance moved into the hero, specialty cards stayed reachable through pagination rather than crowding the primary assortment, and the redundant promotional sections from Design II were moved so the product listing could load above the fold. The result was tested, approved, and later launched.</p>
 </div>
+<figure class="thd-figure thd-figure-wide">
+<p class="apa-label"><span class="apa-num">Figure 8</span><span class="apa-title">Final Gift Card Landing Page Design</span></p>
+<a href="/images/thd-final-design-full.webp" class="compare-frame" data-group="thd-final" data-caption="The Home Depot Redesigned Gift Card Landing Page (Desktop)" aria-label="Open full-size image: the final Home Depot gift card page, tested, approved, and launched">
+<img src="/images/thd-final-design-hero.webp" srcset="/images/thd-final-design-hero-640.webp 640w, /images/thd-final-design-hero.webp 2882w" sizes="(max-width: 720px) 100vw, 900px" width="2882" height="1310" loading="lazy" decoding="async" alt="Final Home Depot gift card hero: real gift card photography, a single headline, a Check Balance CTA, and a streamlined filter bar.">
+<span class="compare-frame-hint">View full page &#8599;</span>
+</a>
+</figure>
 </div>
 </section>
 <section class="thd-section" id="toc-outcome">
@@ -521,9 +550,97 @@
   </div>
 </footer>
 <!-- FOOTER:END -->
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Screenshot preview">
+  <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
+  <button type="button" class="lightbox-arrow" id="lightboxPrev" aria-label="Previous screenshot">&#8249;</button>
+  <div class="lightbox-panel">
+    <div class="lightbox-panel-inner">
+      <div class="lightbox-caption" id="lightboxCaption"></div>
+      <div class="lightbox-scroll" id="lightboxScroll">
+        <img id="lightboxImg" src="" alt="">
+      </div>
+    </div>
+  </div>
+  <button type="button" class="lightbox-arrow" id="lightboxNext" aria-label="Next screenshot">&#8250;</button>
+  <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+</div>
+
 <script src="/js/case-study-topbar.js"></script>
 <script src="/js/case-study-toc.js"></script>
 <script src="/js/case-study-counters.js"></script>
 <script src="/js/main.js?v=3"></script>
+<script>
+(function(){
+  var lightbox = document.getElementById('lightbox');
+  var backdrop = document.getElementById('lightboxBackdrop');
+  var closeBtn = document.getElementById('lightboxClose');
+  var prevBtn = document.getElementById('lightboxPrev');
+  var nextBtn = document.getElementById('lightboxNext');
+  var imgEl = document.getElementById('lightboxImg');
+  var captionEl = document.getElementById('lightboxCaption');
+  var scrollEl = document.getElementById('lightboxScroll');
+  if(!lightbox) return;
+
+  var slides = [];
+  var currentIndex = -1;
+
+  document.querySelectorAll('.compare-frame').forEach(function(frame){
+    frame.addEventListener('click', function(e){
+      e.preventDefault();
+      var group = frame.getAttribute('data-group') || 'default';
+      var groupFrames = Array.prototype.slice.call(document.querySelectorAll('.compare-frame[data-group="' + group + '"]'));
+      slides = groupFrames.map(function(f){
+        var img = f.querySelector('img');
+        return {
+          src: f.getAttribute('href'),
+          caption: f.getAttribute('data-caption') || '',
+          alt: img ? img.alt : ''
+        };
+      });
+      openLightbox(groupFrames.indexOf(frame));
+    });
+  });
+
+  function updateNav(){
+    prevBtn.disabled = currentIndex <= 0;
+    nextBtn.disabled = currentIndex >= slides.length - 1;
+  }
+  function showSlide(index){
+    if(index < 0 || index >= slides.length) return;
+    currentIndex = index;
+    var slide = slides[currentIndex];
+    imgEl.src = slide.src;
+    imgEl.alt = slide.alt;
+    captionEl.textContent = slide.caption;
+    scrollEl.scrollTop = 0;
+    updateNav();
+  }
+  function openLightbox(index){
+    showSlide(index);
+    lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    closeBtn.focus();
+  }
+  function closeLightbox(){
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    imgEl.src = '';
+    currentIndex = -1;
+  }
+  prevBtn.addEventListener('click', function(){ showSlide(currentIndex - 1); });
+  nextBtn.addEventListener('click', function(){ showSlide(currentIndex + 1); });
+  closeBtn.addEventListener('click', closeLightbox);
+  backdrop.addEventListener('click', closeLightbox);
+  document.addEventListener('keydown', function(e){
+    if(!lightbox.classList.contains('open')) return;
+    if(e.key === 'Escape') closeLightbox();
+    else if(e.key === 'ArrowLeft') showSlide(currentIndex - 1);
+    else if(e.key === 'ArrowRight') showSlide(currentIndex + 1);
+  });
+})();
+</script>
 </body>
 </html>
