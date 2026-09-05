@@ -20,6 +20,10 @@ For structured access, connect an MCP client to [the public portfolio MCP endpoi
 - [Résumé](https://claudiaochoa.co/output/pdf/Claudia_Ochoa_Resume.pdf): Two-page professional résumé focused on AI experience and product design leadership.
 - [LinkedIn](https://www.linkedin.com/in/claudiajochoa/): Professional profile and career history.
 
+## Enterprise Product Design
+
+- [Walmart My Hiring Dashboard](https://claudiaochoa.co/work/walmart-my-hiring-dashboard.html): A 0-to-1 concept within Me@Campus for corporate hiring managers, focused on visibility, accountability, and clear next steps. Prioritized on the modernization roadmap; benefits are anticipated, not measured launch results. Process diagrams are labeled recreations.
+
 ## Commerce Experience
 
 - [The Home Depot Gift Cards](https://claudiaochoa.co/work/thd-giftcards.html): Research-led gift card discovery, balance checks, and integrated mixed-cart checkout; includes original design screens and usability findings from 30 participants.

@@ -74,6 +74,7 @@ serves those files directly.
 ├── images/
 ├── work/
 │   ├── lovesac-case-study.html       # Lovesac — Redesign (featured concept case study)
+│   ├── walmart-my-hiring-dashboard.html # Walmart — corporate hiring manager dashboard within Me@Campus
 │   ├── thd-giftcards.html             # The Home Depot — research-led gift card and mixed-cart checkout case study
 │   ├── walmart-genai.html             # Walmart — human-centered GenAI candidate-experience leadership case study
 │   ├── lovesac-case-study-2.html     # Lovesac — deep dive: mobile nav & Room Fit (linked from case study 1)
