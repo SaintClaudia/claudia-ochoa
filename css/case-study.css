@@ -121,6 +121,9 @@
   .nav-menu-panel a:hover, .nav-menu-panel a:focus-visible{background:var(--line); color:var(--espresso);}
   .nav-menu-panel-label{font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); padding:16px 12px 4px; margin-top:8px;}
   .nav-menu-panel-label:first-child{margin-top:0;}
+  .nav-menu-panel a.sub{padding-left:12px; font-size:14px; font-weight:400; color:var(--ink-soft);}
+  .nav-menu-panel a.sub::before{content:''; width:6px; height:6px; border:1.3px solid var(--ink-soft); border-radius:50%; flex:0 0 auto;}
+  .nav-menu-panel a.sub:hover::before, .nav-menu-panel a.sub:focus-visible::before{border-color:var(--espresso);}
   .nav-menu-panel a svg{flex:0 0 auto; color:var(--ink-soft);}
   .nav-menu-panel a:hover svg, .nav-menu-panel a:focus-visible svg{color:var(--espresso);}
   @media (prefers-reduced-motion: reduce){.nav-menu-panel{transition:none;} .nav-menu-backdrop{transition:none;}}
