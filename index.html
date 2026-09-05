@@ -78,17 +78,21 @@
     .featured-wrap{grid-column:1/-1;}
     .work-card{position:relative;overflow:hidden;cursor:pointer;display:block;}
     .work-card.featured{grid-column:1/-1;}
-    .card-image{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--paper);border-radius:14px;box-shadow:0 1px 2px rgba(0,0,0,0.06);}
+    .card-image{position:relative;box-sizing:border-box;aspect-ratio:16/9;overflow:hidden;background:var(--paper);border-radius:14px;box-shadow:0 1px 2px rgba(0,0,0,0.06);}
     .work-card.featured .card-image{aspect-ratio:2/1;max-width:640px;}
     @media (max-width:720px){.work-card.featured .card-image{aspect-ratio:auto;height:calc((100vw - 48px)/ 2 + 50px);max-width:none;}}
+    .card-image picture{display:block;width:100%;height:100%;}
     .card-image img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.25,.46,.45,.94);}
     .work-card:hover .card-image img{transform:scale(1.03);}
-    .card-image-inset{background:#F2F2F2;}
+    .card-image-mat{background:#F2F2F2;border-radius:14px;box-shadow:0 1px 2px rgba(0,0,0,0.06);}
+    .work-card.featured .card-image-mat{max-width:640px;}
+    @media (max-width:720px){.work-card.featured .card-image-mat{max-width:none;}}
+    @media (min-width:721px){.card-image-mat{padding-top:20px;}}
+    .card-image-mat .card-image{box-shadow:none;background:transparent;}
     .card-image-inset img{transform:scale(1.3);transform-origin:50% 0%;}
+    .work-card:hover .card-image-inset img{transform:scale(1.34);}
     .work-card.featured .card-image-thd{aspect-ratio:1296/730;}
     .card-image-thd img{transform-origin:50% 50%;}
-    .work-card:hover .card-image-inset img{transform:scale(1.34);}
-    @media (min-width:721px){.card-image-inset{padding-top:20px;}}
     @media (max-width:720px){.work-card.featured .card-image-thd{aspect-ratio:1296/730;height:auto;}}
     .card-body{padding:0;}
     .card-body .section-head{margin-bottom:0;}
@@ -288,12 +292,12 @@
               <div><span class="num">AI Leadership · Walmart</span></div>
               <div>
                 <a href="work/walmart-genai.html" class="work-card featured">
-                  <div class="card-image card-image-inset">
+                  <div class="card-image-mat"><div class="card-image card-image-inset">
                     <picture>
                       <source type="image/avif" srcset="images/walmart-AI-thumb-640.avif 640w, images/walmart-AI-thumb-960.avif 960w" sizes="(max-width: 720px) calc(100vw - 64px), 638px">
                       <img src="images/walmart-AI-thumb.png" width="1296" height="730" alt="Walmart GenAI candidate experience case study by Claudia Ochoa" loading="lazy" decoding="async">
                     </picture>
-                  </div>
+                  </div></div>
                 </a>
                 <h2>Transforming hiring with GenAI</h2>
                 <p class="lede">A conversational candidate experience designed end-to-end in 24 hours. The concept earned leadership support and positioned me as Creative Director for the initiative — shaping one human-centered journey across application, scheduling, offer, and onboarding.</p>
@@ -313,9 +317,9 @@
           <div class="card-body"><div class="section-head">
             <div><span class="num">Enterprise Product Design · Walmart</span></div>
             <div>
-              <a href="work/walmart-my-hiring-dashboard.html" class="work-card featured"><div class="card-image card-image-inset">
+              <a href="work/walmart-my-hiring-dashboard.html" class="work-card featured"><div class="card-image-mat"><div class="card-image card-image-inset">
                 <img src="images/walmart-hiring-thumb.webp" srcset="images/walmart-hiring-thumb-640.webp 640w, images/walmart-hiring-thumb.webp 1296w" sizes="(max-width: 720px) calc(100vw - 64px), 638px" width="1296" height="730" alt="Walmart My Hiring Dashboard and create requisition mobile screens" loading="lazy" decoding="async">
-              </div></a>
+              </div></div></a>
               <h2>Building confidence in hiring</h2>
               <p class="lede">A 0→1 hiring dashboard within Me@Campus, designed to help corporate hiring managers track open roles, see candidate progress, and act on the next step — bringing clarity to a fragmented hiring workflow.</p>
               <div class="card-cta-row"><a class="btn primary" href="work/walmart-my-hiring-dashboard.html">Read the My Hiring Dashboard case study →</a></div>
