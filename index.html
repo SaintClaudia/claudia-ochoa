@@ -85,9 +85,11 @@
     .work-card:hover .card-image img{transform:scale(1.03);}
     .card-image-inset{background:#F2F2F2;}
     .card-image-inset img{transform:scale(1.3);transform-origin:50% 0%;}
-    .card-image-thd img{transform-origin:38% 0%;}
+    .work-card.featured .card-image-thd{aspect-ratio:1296/730;}
+    .card-image-thd img{transform-origin:50% 50%;}
     .work-card:hover .card-image-inset img{transform:scale(1.34);}
     @media (min-width:721px){.card-image-inset{padding-top:20px;}}
+    @media (max-width:720px){.work-card.featured .card-image-thd{aspect-ratio:1296/730;height:auto;}}
     .card-body{padding:0;}
     .card-body .section-head{margin-bottom:0;}
     .card-body h2{margin-top:24px;}
@@ -325,8 +327,8 @@
           <div class="card-body"><div class="section-head">
             <div><span class="num">Commerce Experience · The Home Depot</span></div>
             <div>
-              <a href="work/thd-giftcards.html" class="work-card featured"><div class="card-image card-image-inset card-image-thd">
-                <img src="images/homedepot-giftcards-thumb.webp" srcset="images/homedepot-giftcards-thumb-640.webp 640w, images/homedepot-giftcards-thumb.webp 1296w" sizes="(max-width: 720px) calc(100vw - 64px), 638px" width="1296" height="730" alt="The Home Depot gift card experience on desktop and mobile" loading="lazy" decoding="async">
+              <a href="work/thd-giftcards.html" class="work-card featured"><div class="card-image card-image-thd">
+                <img src="images/homedepot-giftcards-thumb.webp" width="1296" height="730" alt="The Home Depot gift card landing page on desktop and mobile" loading="lazy" decoding="async">
               </div></a>
               <h2>Simplifying gifting, from discovery to checkout</h2>
               <p class="lede">A research-led redesign of The Home Depot’s gift card experience — bringing card discovery, balance checks, and mixed-cart checkout into one customer journey, informed by usability testing with 30 participants.</p>
