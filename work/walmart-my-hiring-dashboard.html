@@ -97,6 +97,7 @@
 .fragment-figure{--black:var(--espresso);--white:var(--paper);--off-white:var(--cream);--mid:var(--ink-soft);--border:var(--line);margin:40px 0 0}.fragment-figure svg{width:100%;height:auto;display:block}.hiring-content .process-note{font-size:14px;line-height:1.6}
 .needs-grid{display:grid;grid-template-columns:1fr;gap:16px;margin:28px 0}.needs-cell{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:24px}.hiring-content .needs-label{font-size:14px;color:var(--clay-deep);margin:0 0 10px}.hiring-content .needs-title{font-weight:600;color:var(--espresso);margin:0 0 8px}.hiring-content .needs-body{margin:0}
 .process-filmstrip{display:grid;grid-template-columns:1fr;gap:24px;margin:24px 0}.process-frame{border:1px solid var(--line);border-radius:14px;overflow:hidden}.process-frame svg{width:100%;height:auto;display:block}.process-caption{padding:16px 24px}.hiring-content .process-caption p{margin:8px 0}.hiring-content .process-caption .stage{font-size:14px;font-weight:600;color:var(--clay-deep)}
+.workflow-figure{margin:40px 0 0}.workflow-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:8px}.workflow-diagram{display:block;width:100%;min-width:860px;height:auto}.workflow-diagram .node{fill:var(--paper);stroke-width:2}.workflow-diagram .manager{stroke:#5B8DEF}.workflow-diagram .recruiter{stroke:#D79A32}.workflow-diagram .joint{stroke:#9C74D4}.workflow-diagram .interview{stroke:#D46A7E}.workflow-diagram .outcome{stroke:#46A36E}.workflow-diagram .node-label{fill:var(--espresso);font-family:'Inter',sans-serif;font-size:15px;font-weight:600}.workflow-diagram .role-label{fill:var(--ink-soft);font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}.workflow-diagram .handoff{fill:none;stroke:var(--ink-soft);stroke-width:1.5;marker-end:url(#workflow-arrow)}.workflow-diagram .loop{fill:none;stroke:var(--ink-soft);stroke-width:1.5;stroke-dasharray:5 5;marker-end:url(#workflow-arrow)}.workflow-diagram .handoff-label{fill:var(--ink-soft);font-family:'Inter',sans-serif;font-size:12.5px}.workflow-diagram .friction{fill:var(--cream);stroke:var(--line);stroke-width:1.5;stroke-dasharray:5 5}.workflow-diagram .friction-label{fill:var(--ink-soft);font-family:'Inter',sans-serif;font-size:12px}.workflow-figure .apa-label{margin-top:0}
 
 
 .hiring-mobile-example{margin:32px 0}
@@ -208,28 +209,92 @@
           <li><span class="mark">3</span><span>Iterated based on feedback from stakeholders across People Product &amp; Design to align with evolving roadmap priorities</span></li>
         </ul>
 
+        </div>
+
+        <figure class="workflow-figure">
+          <p class="apa-label"><span class="apa-num">Figure 2</span><span class="apa-title">Hiring Workflow Before My Hiring Dashboard</span></p>
+          <div class="workflow-scroll">
+            <svg class="workflow-diagram" viewBox="0 0 1000 650" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="workflow-title workflow-desc">
+              <title id="workflow-title">Hiring workflow before My Hiring Dashboard</title>
+              <desc id="workflow-desc">A process map showing a hiring manager creating a requisition, approval and recruiter handoffs, role alignment, sourcing, shortlist review, scheduling, interviews, feedback, additional interview rounds, and offer approval. The handoffs rely on calls, email, and messaging without centralized tracking.</desc>
+              <defs>
+                <marker id="workflow-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="var(--ink-soft)"/></marker>
+              </defs>
+
+              <rect class="node manager" x="30" y="55" width="190" height="100" rx="12"/>
+              <text class="role-label" x="48" y="78">Hiring manager</text>
+              <text class="node-label" x="48" y="105"><tspan x="48">Creates requisition</tspan><tspan x="48" dy="21">and defines role details</tspan></text>
+
+              <path class="handoff" d="M220 105 H278"/>
+              <text class="handoff-label" x="249" y="72" text-anchor="middle"><tspan x="249">Manual approval</tspan><tspan x="249" dy="16">request</tspan></text>
+
+              <rect class="node manager" x="285" y="55" width="190" height="100" rx="12"/>
+              <text class="role-label" x="303" y="78">Manager</text>
+              <text class="node-label" x="303" y="111"><tspan x="303">Approves requisition</tspan></text>
+
+              <path class="handoff" d="M475 105 H533"/>
+              <text class="handoff-label" x="504" y="72" text-anchor="middle"><tspan x="504">Approved request</tspan><tspan x="504" dy="16">handed off</tspan></text>
+
+              <rect class="node recruiter" x="540" y="55" width="190" height="100" rx="12"/>
+              <text class="role-label" x="558" y="78">Recruiting</text>
+              <text class="node-label" x="558" y="105"><tspan x="558">Receives approved</tspan><tspan x="558" dy="21">requisition</tspan></text>
+
+              <path class="handoff" d="M730 105 H788"/>
+              <text class="handoff-label" x="759" y="72" text-anchor="middle"><tspan x="759">Phone call or</tspan><tspan x="759" dy="16">intake meeting</tspan></text>
+
+              <rect class="node joint" x="795" y="55" width="175" height="100" rx="12"/>
+              <text class="role-label" x="813" y="78">Manager + recruiter</text>
+              <text class="node-label" x="813" y="105"><tspan x="813">Align on role</tspan><tspan x="813" dy="21">needs</tspan></text>
+
+              <path class="handoff" d="M883 155 V238"/>
+              <text class="handoff-label" x="865" y="184" text-anchor="end"><tspan x="865">Email and messaging</tspan><tspan x="865" dy="16">Channel varies by candidate</tspan></text>
+
+              <rect class="node recruiter" x="795" y="245" width="175" height="100" rx="12"/>
+              <text class="role-label" x="813" y="268">Recruiter</text>
+              <text class="node-label" x="813" y="295"><tspan x="813">Sources candidates</tspan><tspan x="813" dy="21">and sends shortlist</tspan></text>
+
+              <path class="handoff" d="M795 295 H737"/>
+              <text class="handoff-label" x="766" y="262" text-anchor="middle"><tspan x="766">Messages back</tspan><tspan x="766" dy="16">to recruiter</tspan></text>
+
+              <rect class="node manager" x="540" y="245" width="190" height="100" rx="12"/>
+              <text class="role-label" x="558" y="268">Hiring manager</text>
+              <text class="node-label" x="558" y="295"><tspan x="558">Reviews and approves</tspan><tspan x="558" dy="21">shortlist manually</tspan></text>
+
+              <path class="handoff" d="M540 295 H482"/>
+              <text class="handoff-label" x="511" y="262" text-anchor="middle"><tspan x="511">Scheduling via</tspan><tspan x="511" dy="16">email or messaging</tspan></text>
+
+              <rect class="node interview" x="285" y="245" width="190" height="100" rx="12"/>
+              <text class="role-label" x="303" y="268">Interview team</text>
+              <text class="node-label" x="303" y="295"><tspan x="303">Conducts interviews</tspan><tspan x="303" dy="21">across multiple teams</tspan></text>
+
+              <path class="handoff" d="M380 345 V438"/>
+              <text class="handoff-label" x="362" y="375" text-anchor="end"><tspan x="362">Feedback sent to recruiter</tspan><tspan x="362" dy="16">via email or messaging</tspan></text>
+
+              <rect class="friction" x="735" y="385" width="235" height="70" rx="12"/>
+              <text class="friction-label" x="853" y="414" text-anchor="middle"><tspan x="853">No centralized tracking</tspan><tspan x="853" dy="18">or visibility into data</tspan></text>
+              <path class="loop" d="M883 345 V378"/>
+
+              <rect class="node interview" x="285" y="445" width="190" height="100" rx="12"/>
+              <text class="role-label" x="303" y="468">Interview team</text>
+              <text class="node-label" x="303" y="495"><tspan x="303">Feedback collected</tspan><tspan x="303" dy="21">across interviewers</tspan></text>
+
+              <path class="loop" d="M475 485 C540 460 540 355 475 320"/>
+              <text class="handoff-label" x="548" y="405"><tspan x="548">Additional</tspan><tspan x="548" dy="16">interview rounds</tspan></text>
+
+              <path class="handoff" d="M475 495 H558"/>
+              <text class="handoff-label" x="517" y="462" text-anchor="middle"><tspan x="517">All communication via</tspan><tspan x="517" dy="16">email or messaging</tspan></text>
+
+              <rect class="node outcome" x="565" y="445" width="190" height="100" rx="12"/>
+              <text class="role-label" x="583" y="468">Outcome</text>
+              <text class="node-label" x="583" y="501">Offer approved</text>
+            </svg>
+          </div>
+          <figcaption class="apa-note"><em>Note.</em> Recreated for this case study from the current-state workflow. The process relied on manual handoffs across calls, email, and messaging, without one centralized view of hiring activity.</figcaption>
+        </figure>
+
+        <div class="hiring-content">
         <p class="process-note">Recreated for this case study — original working files are confidential and were not retained.</p>
         <div class="process-filmstrip">
-          <div class="process-frame">
-            <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sketch mapping how a hiring request moves between teams">
-              <rect width="320" height="200" style="fill:var(--off-white)"/>
-              <rect x="16" y="80" width="56" height="34" rx="4" style="fill:none;stroke:var(--black);stroke-width:1.3"/>
-              <path d="M76 97 Q92 95 108 97" style="stroke:var(--black);stroke-width:1.3;fill:none" marker-end="url(#arrow1)"/>
-              <rect x="112" y="80" width="56" height="34" rx="4" style="fill:none;stroke:var(--black);stroke-width:1.3"/>
-              <path d="M172 97 Q188 95 204 97" style="stroke:var(--black);stroke-width:1.3;fill:none" marker-end="url(#arrow1)"/>
-              <rect x="208" y="80" width="56" height="34" rx="4" style="fill:none;stroke:var(--black);stroke-width:1.3"/>
-              <path d="M268 97 Q278 95 286 97" style="stroke:var(--black);stroke-width:1.3;fill:none" marker-end="url(#arrow1)"/>
-              <circle cx="300" cy="97" r="10" style="fill:none;stroke:var(--black);stroke-width:1.3"/>
-              <path d="M28 95 Q44 92 60 96" style="stroke:var(--mid);stroke-width:2.2;fill:none" stroke-linecap="round"/>
-              <path d="M124 95 Q140 92 156 96" style="stroke:var(--mid);stroke-width:2.2;fill:none" stroke-linecap="round"/>
-              <path d="M220 95 Q236 92 252 96" style="stroke:var(--mid);stroke-width:2.2;fill:none" stroke-linecap="round"/>
-              <defs><marker id="arrow1" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 Z" style="fill:var(--black)"/></marker></defs>
-            </svg>
-            <div class="process-caption">
-              <p class="stage">01 · Flow mapping</p>
-              <p>Mapping how a request actually moved between recruiting, HR, and the hiring manager — and which systems were involved at each step — before any screen existed.</p>
-            </div>
-          </div>
           <div class="process-frame">
             <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Structured wireframe with pipeline, alerts, and action zones labeled">
               <rect width="320" height="200" style="fill:var(--off-white)"/>
