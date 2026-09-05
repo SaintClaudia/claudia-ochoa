@@ -93,7 +93,7 @@
 .thd-data-figure{margin-top:14px;overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--paper)}
 .thd-compare-table{width:100%;min-width:700px;border-collapse:collapse;font-size:13px}.thd-compare-table th,.thd-compare-table td{padding:13px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:middle}.thd-compare-table thead th{font-family:'Fraunces',serif;font-size:13px;font-weight:600;color:var(--espresso);background:rgba(255,255,255,.025)}.thd-compare-table tbody th{font-weight:600;color:var(--ink)}.thd-compare-table tbody tr:last-child>*{border-bottom:0}.feature-level{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;padding:5px 9px;color:var(--ink-soft);font-size:11.5px;line-height:1;font-weight:600;white-space:nowrap}.feature-level.full,.feature-level.robust{color:var(--espresso);border-color:rgba(242,242,244,.28)}.feature-level.robust{background:var(--espresso);color:var(--invert-ink)}
 .thd-flow-figure{margin-top:14px}.thd-flow-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:8px}.thd-flow-diagram{display:block;width:100%;min-width:820px;height:auto}.thd-flow-diagram .node{fill:var(--paper);stroke-width:2}.thd-flow-diagram .task-a{stroke:#5B8DEF}.thd-flow-diagram .task-b{stroke:#D79A32}.thd-flow-diagram .task-c{stroke:#9C74D4}.thd-flow-diagram .hub{stroke:var(--clay-deep);stroke-width:2.5}.thd-flow-diagram .product{stroke:#46A36E}.thd-flow-diagram .node-label{fill:var(--espresso);font-family:'Inter',sans-serif;font-size:15px;font-weight:600}.thd-flow-diagram .role-label{fill:var(--ink-soft);font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}.thd-flow-diagram .connector{fill:none;stroke:var(--ink-soft);stroke-width:1.5;marker-end:url(#thd-flow-arrow)}
-.thd-wireframe-figure{margin-top:14px}.thd-wireframe-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:8px}.thd-wireframe-diagram{display:block;width:100%;min-width:1100px;height:auto}.thd-wireframe-diagram .frame{fill:var(--paper);stroke:var(--espresso);stroke-width:2}.thd-wireframe-diagram .surface{fill:var(--cream);stroke:var(--line);stroke-width:1.5}.thd-wireframe-diagram .active{fill:var(--clay-deep)}.thd-wireframe-diagram .wire-label{fill:var(--espresso);font-family:'Inter',sans-serif;font-size:13px;font-weight:600}.thd-wireframe-diagram .wire-meta{fill:var(--ink-soft);font-family:'Inter',sans-serif;font-size:10px}.thd-wireframe-diagram .wire-heading{fill:var(--clay-deep);font-family:'Inter',sans-serif;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}.thd-wireframe-diagram .callout{fill:var(--paper);stroke:var(--line);stroke-width:1.5}.thd-wireframe-diagram .callout-line{fill:none;stroke:var(--ink-soft);stroke-width:1.25;stroke-dasharray:4 4}.thd-wireframe-diagram .callout-num{fill:var(--clay-deep);font-family:'Inter',sans-serif;font-size:11px;font-weight:800}.thd-wireframe-diagram .callout-title{fill:var(--espresso);font-family:'Inter',sans-serif;font-size:14px;font-weight:700}.thd-wireframe-diagram .callout-copy{fill:var(--ink-soft);font-family:'Inter',sans-serif;font-size:11.5px}.thd-wireframe-figure .apa-label{margin-top:0}
+.thd-wireframe-figure{margin-top:14px}.thd-wireframe-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:8px}.thd-wireframe-diagram{display:block;width:100%;height:auto}.thd-wireframe-diagram .frame{fill:var(--paper);stroke:var(--espresso);stroke-width:2}.thd-wireframe-diagram .surface{fill:var(--cream);stroke:var(--line);stroke-width:1.5}.thd-wireframe-diagram .active{fill:var(--clay-deep)}.thd-wireframe-diagram .wire-label{fill:var(--espresso);font-family:'Inter',sans-serif;font-size:13px;font-weight:600}.thd-wireframe-diagram .wire-meta{fill:var(--ink-soft);font-family:'Inter',sans-serif;font-size:10px}.thd-wireframe-diagram .wire-heading{fill:var(--clay-deep);font-family:'Inter',sans-serif;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}.thd-wireframe-diagram .callout{fill:var(--paper);stroke:var(--line);stroke-width:1.5}.thd-wireframe-diagram .callout-line{fill:none;stroke:var(--ink-soft);stroke-width:1.25;stroke-dasharray:4 4}.thd-wireframe-diagram .callout-num{fill:var(--clay-deep);font-family:'Inter',sans-serif;font-size:11px;font-weight:800}.thd-wireframe-diagram .callout-title{fill:var(--espresso);font-family:'Inter',sans-serif;font-size:14px;font-weight:700}.thd-wireframe-diagram .callout-copy{fill:var(--ink-soft);font-family:'Inter',sans-serif;font-size:11.5px}.thd-wireframe-figure .apa-label{margin-top:0}
 .thd-mobile-figure{margin:32px 0 0}
 @media(max-width:720px){.thd-hero{padding-top:48px}.thd-section{padding:48px 0}.thd-metrics{grid-template-columns:1fr;gap:24px}.thd-finding-grid{grid-template-columns:1fr}}
 </style></head><body><a href="#main-content" class="skip-link">Skip to main content</a>
@@ -267,87 +267,100 @@
 <figure class="thd-figure thd-figure-wide thd-wireframe-figure">
 <p class="apa-label"><span class="apa-num">Figure 4</span><span class="apa-title">Wireframe: Establishing Content Placement</span></p>
 <div class="thd-wireframe-scroll">
-<svg class="thd-wireframe-diagram" viewBox="0 0 1660 620" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="thd-wireframe-title thd-wireframe-desc">
+<svg class="thd-wireframe-diagram" viewBox="0 0 1200 1340" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="thd-wireframe-title thd-wireframe-desc">
 <title id="thd-wireframe-title">Design I and Design II content placement wireframes</title>
-<desc id="thd-wireframe-desc">Two desktop gift card page wireframes compared side by side. Design I places a compact hero, a Shop by Brand row, and filters directly above two full rows of product cards. Design II stacks a larger hero, a five-icon services row, a best-sellers row, and two repeated specialty banners above filters and a single row of product cards.</desc>
+<desc id="thd-wireframe-desc">Two gift card page wireframes tested with the same new gift-card-focused hero and the same text links beneath it. Design I follows the hero and links with a Shop by Brand row introducing specialty gift cards, then the full product listing of every gift card design, visible online for the first time. Design II follows the hero and links with category links to Home Depot and specialty gift cards, then pushes a mixed product assortment in a PLP format down to the bottom of a much longer page.</desc>
 
-<rect class="frame" x="260" y="20" width="560" height="560" rx="16"/>
-<rect class="surface" x="276" y="36" width="528" height="40" rx="8"/>
-<text class="wire-heading" x="292" y="60">Design I</text>
-<rect class="surface" x="276" y="88" width="528" height="70" rx="10"/>
-<text class="wire-label" x="292" y="118">Shop Home Depot gift cards</text>
-<rect class="active" x="292" y="132" width="90" height="20" rx="4"/>
-<text class="wire-meta" x="276" y="178">Check Balance/Reload · Corporate Gift Cards · Group Gifting</text>
-<text class="wire-label" x="276" y="206">Shop by Brand</text>
-<rect class="surface" x="276" y="218" width="96" height="60" rx="6"/>
-<rect class="surface" x="384" y="218" width="96" height="60" rx="6"/>
-<rect class="surface" x="492" y="218" width="96" height="60" rx="6"/>
-<rect class="surface" x="600" y="218" width="96" height="60" rx="6"/>
-<rect class="surface" x="708" y="218" width="96" height="60" rx="6"/>
-<text class="wire-meta" x="276" y="306">Filter</text>
-<text class="wire-meta" x="804" y="306" text-anchor="end">75 results</text>
-<rect class="surface" x="276" y="326" width="168" height="100" rx="8"/>
-<rect class="surface" x="456" y="326" width="168" height="100" rx="8"/>
-<rect class="surface" x="636" y="326" width="168" height="100" rx="8"/>
-<rect class="surface" x="276" y="438" width="168" height="100" rx="8"/>
-<rect class="surface" x="456" y="438" width="168" height="100" rx="8"/>
-<rect class="surface" x="636" y="438" width="168" height="100" rx="8"/>
+<rect class="frame" x="280" y="20" width="640" height="580" rx="16"/>
+<rect class="surface" x="296" y="36" width="608" height="40" rx="8"/>
+<text class="wire-heading" x="312" y="60">Design I</text>
+<rect class="surface" x="296" y="92" width="608" height="90" rx="10"/>
+<text class="wire-label" x="312" y="118">Shop Home Depot Gift Cards</text>
+<rect class="active" x="312" y="134" width="90" height="22" rx="4"/>
+<text class="wire-meta" x="357" y="149" text-anchor="middle" style="font-size:9px">Shop Now</text>
+<text class="wire-meta" x="600" y="208" text-anchor="middle">Check Balance/Reload · Corporate Gift Cards · Group Gifting</text>
+<text class="wire-label" x="296" y="246">Shop by Brand</text>
+<rect class="surface" x="296" y="258" width="112" height="60" rx="6"/>
+<rect class="surface" x="420" y="258" width="112" height="60" rx="6"/>
+<rect class="surface" x="544" y="258" width="112" height="60" rx="6"/>
+<rect class="surface" x="668" y="258" width="112" height="60" rx="6"/>
+<rect class="surface" x="792" y="258" width="112" height="60" rx="6"/>
+<text class="wire-meta" x="296" y="356">Filter</text>
+<text class="wire-meta" x="904" y="356" text-anchor="end">75 results</text>
+<rect class="surface" x="296" y="372" width="143" height="95" rx="8"/>
+<rect class="surface" x="451" y="372" width="143" height="95" rx="8"/>
+<rect class="surface" x="606" y="372" width="143" height="95" rx="8"/>
+<rect class="surface" x="761" y="372" width="143" height="95" rx="8"/>
+<rect class="surface" x="296" y="479" width="143" height="95" rx="8"/>
+<rect class="surface" x="451" y="479" width="143" height="95" rx="8"/>
+<rect class="surface" x="606" y="479" width="143" height="95" rx="8"/>
+<rect class="surface" x="761" y="479" width="143" height="95" rx="8"/>
 
-<rect class="frame" x="860" y="20" width="560" height="560" rx="16"/>
-<rect class="surface" x="876" y="36" width="528" height="40" rx="8"/>
-<text class="wire-heading" x="892" y="60">Design II</text>
-<rect class="surface" x="876" y="88" width="528" height="110" rx="10"/>
-<text class="wire-label" x="892" y="128">Helping Doers Get More Done</text>
-<rect class="active" x="892" y="150" width="90" height="20" rx="4"/>
-<text class="wire-label" x="876" y="222">Gift Card Programs and Services</text>
-<circle cx="929" cy="258" r="24" fill="none" stroke="var(--ink-soft)" stroke-width="1.5"/>
-<circle cx="1034" cy="258" r="24" fill="none" stroke="var(--ink-soft)" stroke-width="1.5"/>
-<circle cx="1140" cy="258" r="24" fill="none" stroke="var(--ink-soft)" stroke-width="1.5"/>
-<circle cx="1246" cy="258" r="24" fill="none" stroke="var(--ink-soft)" stroke-width="1.5"/>
-<circle cx="1351" cy="258" r="24" fill="none" stroke="var(--ink-soft)" stroke-width="1.5"/>
-<text class="wire-meta" x="876" y="298">5 service shortcuts</text>
-<text class="wire-label" x="876" y="326">Shop Our Best Sellers</text>
-<rect class="surface" x="876" y="338" width="96" height="54" rx="6"/>
-<rect class="surface" x="984" y="338" width="96" height="54" rx="6"/>
-<rect class="surface" x="1092" y="338" width="96" height="54" rx="6"/>
-<rect class="surface" x="1200" y="338" width="96" height="54" rx="6"/>
-<rect class="surface" x="1308" y="338" width="96" height="54" rx="6"/>
-<rect class="surface" x="876" y="406" width="258" height="54" rx="8"/>
-<text class="wire-meta" x="1005" y="438" text-anchor="middle">Home Depot cards</text>
-<rect class="surface" x="1146" y="406" width="258" height="54" rx="8"/>
-<text class="wire-meta" x="1275" y="438" text-anchor="middle">Specialty cards</text>
-<text class="wire-meta" x="876" y="478">Filter · Delivery Type · Occasion · Category · Brand</text>
-<text class="wire-meta" x="1404" y="478" text-anchor="end">75 results</text>
-<rect class="surface" x="876" y="498" width="168" height="66" rx="8"/>
-<rect class="surface" x="1056" y="498" width="168" height="66" rx="8"/>
-<rect class="surface" x="1236" y="498" width="168" height="66" rx="8"/>
+<rect class="frame" x="280" y="710" width="640" height="600" rx="16"/>
+<rect class="surface" x="296" y="726" width="608" height="40" rx="8"/>
+<text class="wire-heading" x="312" y="750">Design II</text>
+<rect class="surface" x="296" y="778" width="608" height="90" rx="10"/>
+<text class="wire-meta" x="312" y="796" style="letter-spacing:.05em">NEW GIFT CARD–FOCUSED HERO</text>
+<text class="wire-label" x="312" y="818">Shop Home Depot Gift Cards</text>
+<rect class="active" x="312" y="832" width="90" height="22" rx="4"/>
+<text class="wire-meta" x="357" y="847" text-anchor="middle" style="font-size:9px">Shop Now</text>
+<text class="wire-meta" x="600" y="894" text-anchor="middle">Check Balance/Reload · Corporate Gift Cards · Group Gifting</text>
+<rect class="surface" x="296" y="918" width="298" height="40" rx="20"/>
+<text class="wire-meta" x="445" y="943" text-anchor="middle">Home Depot Gift Cards</text>
+<rect class="surface" x="606" y="918" width="298" height="40" rx="20"/>
+<text class="wire-meta" x="755" y="943" text-anchor="middle">Specialty Gift Cards</text>
+<rect x="296" y="986" width="608" height="140" rx="8" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="6 6"/>
+<text class="wire-meta" x="600" y="1061" text-anchor="middle">Page continues</text>
+<text class="wire-label" x="296" y="1166">Mixed assortment · PLP format</text>
+<rect class="surface" x="296" y="1178" width="143" height="95" rx="8"/>
+<rect class="surface" x="451" y="1178" width="143" height="95" rx="8"/>
+<rect class="surface" x="606" y="1178" width="143" height="95" rx="8"/>
+<rect class="surface" x="761" y="1178" width="143" height="95" rx="8"/>
 
-<rect class="callout" x="30" y="170" width="200" height="90" rx="12"/>
-<text class="callout-num" x="46" y="196">01</text>
-<text class="callout-title" x="46" y="220">Specialty found early</text>
-<text class="callout-copy" x="46" y="240"><tspan x="46">Shop by Brand surfaces</tspan><tspan x="46" dy="16">specialty cards up front.</tspan></text>
-<path class="callout-line" d="M230 215 H246 L276 244"/>
+<rect class="callout" x="30" y="77" width="230" height="120" rx="12"/>
+<text class="callout-num" x="46" y="103">01</text>
+<text class="callout-title" x="46" y="127">New gift card–focused hero</text>
+<text class="callout-copy" x="46" y="147"><tspan x="46">A hero built specifically</tspan><tspan x="46" dy="16">for gift card shopping.</tspan></text>
+<path class="callout-line" d="M260 137 H276 L296 137"/>
 
-<rect class="callout" x="30" y="350" width="200" height="90" rx="12"/>
-<text class="callout-num" x="46" y="376">02</text>
-<text class="callout-title" x="46" y="400">Filters drive the grid</text>
-<text class="callout-copy" x="46" y="420"><tspan x="46">Straightforward filtering</tspan><tspan x="46" dy="16">participants relied on.</tspan></text>
-<path class="callout-line" d="M230 395 H246 L276 322"/>
+<rect class="callout" x="940" y="148" width="230" height="120" rx="12"/>
+<text class="callout-num" x="956" y="174">02</text>
+<text class="callout-title" x="956" y="198">Secondary links</text>
+<text class="callout-copy" x="956" y="218"><tspan x="956">Balance, corporate, and group</tspan><tspan x="956" dy="16">gifting links following HD's</tspan><tspan x="956" dy="16">existing pattern.</tspan></text>
+<path class="callout-line" d="M940 208 H924 L904 208"/>
 
-<rect class="callout" x="1430" y="170" width="200" height="90" rx="12"/>
-<text class="callout-num" x="1446" y="196">01</text>
-<text class="callout-title" x="1446" y="220">Services lead the page</text>
-<text class="callout-copy" x="1446" y="240"><tspan x="1446">Icon row competes with</tspan><tspan x="1446" dy="16">the primary shopping task.</tspan></text>
-<path class="callout-line" d="M1430 215 H1414 L1404 258"/>
+<rect class="callout" x="30" y="222" width="230" height="120" rx="12"/>
+<text class="callout-num" x="46" y="248">03</text>
+<text class="callout-title" x="46" y="272">Specialty found early</text>
+<text class="callout-copy" x="46" y="292"><tspan x="46">Shop by Brand introduces</tspan><tspan x="46" dy="16">specialty gift cards.</tspan></text>
+<path class="callout-line" d="M260 282 H276 L296 282"/>
 
-<rect class="callout" x="1430" y="350" width="200" height="90" rx="12"/>
-<text class="callout-num" x="1446" y="376">02</text>
-<text class="callout-title" x="1446" y="400">Specialty repeated</text>
-<text class="callout-copy" x="1446" y="420"><tspan x="1446">Called out three times</tspan><tspan x="1446" dy="16">before the product grid.</tspan></text>
-<path class="callout-line" d="M1430 395 H1414 L1404 432"/>
+<rect class="callout" x="940" y="296" width="230" height="120" rx="12"/>
+<text class="callout-num" x="956" y="322">04</text>
+<text class="callout-title" x="956" y="346">Gift card filters</text>
+<text class="callout-copy" x="956" y="366"><tspan x="956">Allowing users to sort by</tspan><tspan x="956" dy="16">delivery type, occasion,</tspan><tspan x="956" dy="16">category and brand.</tspan></text>
+<path class="callout-line" d="M940 356 H924 L904 356"/>
+
+<rect class="callout" x="30" y="413" width="230" height="120" rx="12"/>
+<text class="callout-num" x="46" y="439">05</text>
+<text class="callout-title" x="46" y="463">Product listing assortment</text>
+<text class="callout-copy" x="46" y="483"><tspan x="46">Leading with Home Depot</tspan><tspan x="46" dy="16">gift cards in pagination.</tspan></text>
+<path class="callout-line" d="M260 473 H276 L296 473"/>
+
+<rect class="callout" x="30" y="900" width="230" height="90" rx="12"/>
+<text class="callout-num" x="46" y="926">01</text>
+<text class="callout-title" x="46" y="950">Category links up top</text>
+<text class="callout-copy" x="46" y="970"><tspan x="46">Home Depot and specialty</tspan><tspan x="46" dy="16">links lead the page.</tspan></text>
+<path class="callout-line" d="M260 945 H276 L296 938"/>
+
+<rect class="callout" x="940" y="1180" width="230" height="90" rx="12"/>
+<text class="callout-num" x="956" y="1206">02</text>
+<text class="callout-title" x="956" y="1230">Assortment at the bottom</text>
+<text class="callout-copy" x="956" y="1250"><tspan x="956">Mixed PLP grid appears only</tspan><tspan x="956" dy="16">after scrolling past the links.</tspan></text>
+<path class="callout-line" d="M940 1225 H924 L904 1200"/>
 </svg>
 </div>
-<figcaption class="apa-note"><em>Note.</em> Recreated for this case study from the two tested layouts. Design I was favored: participants moved quickly from brand and specialty discovery into a filtered product grid. Design II stacked more promotional sections above the fold, which participants experienced as cluttered and repetitive.</figcaption>
+<figcaption class="apa-note"><em>Note.</em> Recreated for this case study from the two tested layouts. Both designs tested the same new gift-card-focused hero and the same text links beneath it, following Home Depot's existing pattern. Design I was favored: a Shop by Brand row introduced specialty gift cards, followed immediately by the full product listing — every gift card design visible online for the first time. Design II followed the hero and links with two more category links, pushing the mixed assortment in a PLP format down to the bottom of a much longer page.</figcaption>
 </figure>
 </div>
 </section>
