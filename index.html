@@ -78,13 +78,14 @@
     .featured-wrap{grid-column:1/-1;}
     .work-card{position:relative;overflow:hidden;cursor:pointer;display:block;}
     .work-card.featured{grid-column:1/-1;}
-    .card-image{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--paper);border-radius:14px;border:1px solid var(--line);box-shadow:0 1px 2px rgba(0,0,0,0.06);}
+    .card-image{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--paper);border-radius:14px;box-shadow:0 1px 2px rgba(0,0,0,0.06);}
     .work-card.featured .card-image{aspect-ratio:2/1;max-width:640px;}
     @media (max-width:720px){.work-card.featured .card-image{aspect-ratio:auto;height:calc((100vw - 48px)/ 2 + 50px);max-width:none;}}
     .card-image img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.25,.46,.45,.94);}
     .work-card:hover .card-image img{transform:scale(1.03);}
     .card-image-inset{background:#F2F2F2;}
     .card-image-inset img{transform:scale(1.3);transform-origin:50% 0%;}
+    .card-image-thd img{transform-origin:38% 0%;}
     .work-card:hover .card-image-inset img{transform:scale(1.34);}
     @media (min-width:721px){.card-image-inset{padding-top:20px;}}
     .card-body{padding:0;}
@@ -324,7 +325,7 @@
           <div class="card-body"><div class="section-head">
             <div><span class="num">Commerce Experience · The Home Depot</span></div>
             <div>
-              <a href="work/thd-giftcards.html" class="work-card featured"><div class="card-image card-image-inset">
+              <a href="work/thd-giftcards.html" class="work-card featured"><div class="card-image card-image-inset card-image-thd">
                 <img src="images/homedepot-giftcards-thumb.webp" srcset="images/homedepot-giftcards-thumb-640.webp 640w, images/homedepot-giftcards-thumb.webp 1296w" sizes="(max-width: 720px) calc(100vw - 64px), 638px" width="1296" height="730" alt="The Home Depot gift card experience on desktop and mobile" loading="lazy" decoding="async">
               </div></a>
               <h2>Simplifying gifting, from discovery to checkout</h2>
