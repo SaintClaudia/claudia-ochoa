@@ -102,7 +102,7 @@ summary_style = ParagraphStyle(
     'Summary', fontName='Arial', fontSize=10.1, leading=15.2, textColor=SECONDARY, spaceAfter=7
 )
 role_style = ParagraphStyle(
-    'Role', fontName='Georgia-Bold', fontSize=13.3, leading=16, textColor=PRIMARY, spaceAfter=1
+    'Role', fontName='Georgia', fontSize=12.4, leading=15, textColor=PRIMARY, spaceAfter=2.5
 )
 company_style = ParagraphStyle(
     'Company', fontName='Arial', fontSize=10, leading=13, textColor=SECONDARY, spaceAfter=7
