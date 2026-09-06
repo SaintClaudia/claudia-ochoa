@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+  Starting point for a new blog post.
+
+  1. Copy this file to blog/<slug>.html (lowercase, hyphenated, no dates in the slug).
+  2. Fill in every REPLACE: marker below — title, dates, description, OG/Twitter tags,
+     canonical URL, byline, and body copy.
+  3. Add a card for the post to blog/index.html (above the "Add new posts above this
+     line" comment), newest first, and remove the "first post is on its way" empty state
+     the first time.
+  4. Add the new URL to sitemap.xml.
+  5. Run python3 build.py, then python3 build.py --check.
+-->
+<!-- ANALYTICS:START -->
+<!-- Google Analytics loads after the critical rendering window. -->
+<script>
+  (function () {
+    // The gtag.js URL is a fixed, hardcoded string — never user input — so
+    // this policy is a pass-through, not a sanitizer.
+    var ttPolicy = (window.trustedTypes && trustedTypes.createPolicy)
+      ? trustedTypes.createPolicy('site-analytics', { createScriptURL: function (url) { return url; } })
+      : null;
+
+    function loadAnalytics() {
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      window.gtag('js', new Date());
+      window.gtag('config', 'G-3G6X2P2669');
+
+      var gtagUrl = 'https://www.googletagmanager.com/gtag/js?id=G-3G6X2P2669';
+      var script = document.createElement('script');
+      script.async = true;
+      script.src = ttPolicy ? ttPolicy.createScriptURL(gtagUrl) : gtagUrl;
+      document.head.appendChild(script);
+    }
+
+    window.addEventListener('load', function () {
+      window.setTimeout(loadAnalytics, 3000);
+    }, { once: true });
+  }());
+</script>
+<!-- ANALYTICS:END -->
+<!-- HEAD-BASICS:START -->
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=7">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png?v=7">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=7">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=6">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- HEAD-BASICS:END -->
+  <title>REPLACE: Post Title — Claudia Ochoa</title>
+  <meta name="description" content="REPLACE: one or two sentences describing the post.">
+  <meta property="og:title" content="REPLACE: Post Title — Claudia Ochoa">
+  <meta property="og:description" content="REPLACE: same as meta description, or a slightly shorter version.">
+  <meta property="og:url" content="https://claudiaochoa.co/blog/REPLACE-slug.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Claudia Ochoa">
+  <meta property="og:image" content="https://claudiaochoa.co/images/og-card.png?v=2">
+  <meta property="article:published_time" content="REPLACE: 2026-01-01">
+  <meta property="article:author" content="Claudia Ochoa">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="REPLACE: Post Title — Claudia Ochoa">
+  <meta name="twitter:description" content="REPLACE: same as meta description, or a slightly shorter version.">
+  <meta name="twitter:image" content="https://claudiaochoa.co/images/og-card.png?v=2">
+  <link rel="canonical" href="https://claudiaochoa.co/blog/REPLACE-slug.html">
+<!-- PORTFOLIO-FONTS:START -->
+<link rel="preload" href="/fonts/inter-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fraunces-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
+<!-- PORTFOLIO-FONTS:END -->
+  <link rel="stylesheet" href="/css/case-study.css?v=28">
+  <meta name="theme-color" content="#0A0A0B">
+  <style>
+    .post-hero{padding:80px 0 56px;}
+    .post-hero .wrap{border-bottom:1px solid var(--line);padding-bottom:48px;}
+    .post-hero h1{font-size:clamp(32px,4.4vw,50px);font-weight:600;line-height:1.1;max-width:20ch;}
+    .post-hero .sub{margin-top:20px;font-size:18px;line-height:1.55;color:var(--ink-soft);max-width:60ch;}
+    .post-byline{margin-top:20px;font-size:12px;letter-spacing:.06em;color:var(--ink-soft);font-weight:500;}
+    .post-body{padding-top:56px;display:flex;flex-direction:column;gap:24px;max-width:72ch;}
+    .post-body h2{margin-top:16px;font-size:clamp(22px,2.8vw,30px);}
+    .post-back{padding:24px 0 0;}
+    .post-back a{font-size:14px;color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px;}
+    .post-back a:hover{color:var(--espresso);border-color:var(--espresso);}
+  </style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<!-- PORTFOLIO-NAV-MENU:START -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-menu" id="nav-menu">
+      <button type="button" class="nav-menu-btn" id="nav-menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu-panel">
+        <svg width="24" height="24" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2.5" y="2.5" width="13" height="13" rx="2.5" stroke="currentColor" stroke-width="1.4"/><line class="nav-menu-icon-divider" x1="7.5" y1="2.5" x2="7.5" y2="15.5" stroke="currentColor" stroke-width="1.4"/><path class="nav-menu-icon-arrow nav-menu-icon-arrow-closed" d="M13 6.7 L10 9 L13 11.3" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path class="nav-menu-icon-arrow nav-menu-icon-arrow-open" d="M10 6.7 L13 9 L10 11.3" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+<div class="nav-menu-backdrop" id="nav-menu-backdrop"></div>
+<div class="nav-menu-panel" id="nav-menu-panel" inert>
+        <a class="nav-menu-profile" href="/about.html">
+          <span class="nav-menu-avatar" aria-hidden="true"><img src="/images/nav-profile.png" alt="" width="160" height="160"></span>
+          <span>Claudia Ochoa</span>
+        </a>
+        <a href="/"><svg width="16" height="16" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2.5 8.5L9 3l6.5 5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 7.5v7a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 15.5V11h4v4.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Home</span></a>
+        <a href="/blog/"><svg width="16" height="16" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M11.5 2.8l3.7 3.7L6.4 15.3l-4.1.8.8-4.1L11.5 2.8z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/><path d="M9.8 4.5l3.7 3.7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><span>Blog</span></a>
+        <div class="nav-menu-panel-label">Lovesac</div>
+        <a class="sub" href="/work/lovesac-case-study.html"><span>Redesign</span></a>
+        <a class="sub" href="/work/lovesac-case-study-2.html"><span>Deep Dive</span></a>
+        <a class="sub" href="/work/lovesac-case-study-3.html"><span>Research</span></a>
+        <a class="sub" href="/work/lovesac-case-study-4.html"><span>Content Strategy</span></a>
+        <a class="sub" href="/work/lovesac-case-study-5.html"><span>Development</span></a>
+        <a class="sub" href="/work/lovesac-case-study-6.html"><span>Synopsis</span></a>
+        <div class="nav-menu-panel-label">Walmart</div>
+        <a class="sub" href="/work/walmart-genai.html"><span>GenAI Candidate Experience</span></a>
+        <a class="sub" href="/work/walmart-my-hiring-dashboard.html"><span>My Hiring Dashboard</span></a>
+        <div class="nav-menu-panel-label">Home Depot</div>
+        <a class="sub" href="/work/thd-giftcards.html"><span>Gift Cards</span></a>
+        <div class="nav-menu-panel-label">More</div>
+        <a href="/about.html"><svg width="16" height="16" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="9" cy="6" r="3" stroke="currentColor" stroke-width="1.4"/><path d="M3.5 15c0-3 2.5-5 5.5-5s5.5 2 5.5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><span>About</span></a>
+        <a href="/output/pdf/Claudia_Ochoa_Resume.pdf" target="_blank" rel="noopener noreferrer"><svg width="16" height="16" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 2.5h5.5L14 6v9a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M10.5 2.5V6H14" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M6.5 10h5M6.5 12.5h5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg><span>Résumé</span></a>
+        <a href="https://www.linkedin.com/in/claudiajochoa/" target="_blank" rel="noopener noreferrer"><svg width="16" height="16" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="2" y="2" width="14" height="14" rx="3" stroke="currentColor" stroke-width="1.4"/><path d="M6.2 7.5v6M6.2 5.3v.01" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M9 13.5V9.8c0-1 .7-1.8 1.8-1.8s1.8.8 1.8 1.8v3.7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>LinkedIn</span></a>
+        <a href="#" id="nav-menu-contact-toggle"><svg width="16" height="16" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="2" y="4" width="14" height="10" rx="1.5" stroke="currentColor" stroke-width="1.4"/><path d="M2.5 5l6.5 5 6.5-5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Contact</span></a>
+      </div>
+<!-- PORTFOLIO-NAV-MENU:END -->
+<!-- CONTACT-OVERLAY:START -->
+<div class="contact-overlay" id="contact-drawer" role="dialog" aria-modal="true" aria-labelledby="contact-drawer-title" aria-hidden="true">
+  <button class="contact-overlay-close" id="contact-drawer-close" aria-label="Close contact form">&times;</button>
+  <div class="contact-overlay-inner">
+    <h2 class="contact-overlay-label" id="contact-drawer-title">Say hello</h2>
+    <form id="contact-form" class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="2135e194-3403-43df-b617-bdb4ce01ba13">
+      <div class="contact-field">
+        <label for="contact-name" class="contact-field-label">Name</label>
+        <input type="text" id="contact-name" name="name" class="contact-input" required>
+      </div>
+      <div class="contact-field">
+        <label for="contact-email" class="contact-field-label">Email or phone</label>
+        <input type="text" id="contact-email" name="email_or_phone" class="contact-input" required>
+      </div>
+      <div class="contact-field">
+        <label for="contact-message" class="contact-field-label">Message</label>
+        <textarea id="contact-message" name="message" class="contact-input contact-textarea" required></textarea>
+      </div>
+      <button type="submit" class="contact-submit">Send</button>
+      <p class="contact-form-status" id="contact-form-status" role="status"></p>
+    </form>
+  </div>
+</div>
+<!-- CONTACT-OVERLAY:END -->
+
+<main id="main-content" class="page">
+  <section class="post-hero">
+    <div class="wrap">
+      <div class="eyebrow">Blog</div>
+      <h1>REPLACE: Post title</h1>
+      <p class="sub">REPLACE: one- or two-sentence dek that expands on the title.</p>
+      <p class="post-byline">REPLACE: Month D, YYYY · X min read</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="post-body body-copy">
+        <p>REPLACE: opening paragraph.</p>
+        <p>REPLACE: more paragraphs. Use &lt;h2&gt; for subheadings if the post has distinct sections.</p>
+      </div>
+      <div class="post-back">
+        <a href="/blog/">&larr; Back to all posts</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER:START -->
+<footer>
+  <div class="wrap footer-inner">
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="/">Home</a>
+      <a href="/blog/">Blog</a>
+      <a href="/about.html">About</a>
+      <a href="/output/pdf/Claudia_Ochoa_Resume.pdf" target="_blank" rel="noopener noreferrer">Résumé</a>
+      <a href="https://www.linkedin.com/in/claudiajochoa/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="#" id="footer-contact-toggle">Contact</a>
+    </nav>
+    <p class="footer-copy">© 2026 Claudia Ochoa</p>
+  </div>
+</footer>
+<!-- FOOTER:END -->
+<script src="/js/main.js?v=8"></script>
+</body>
+</html>

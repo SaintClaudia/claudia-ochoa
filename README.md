@@ -72,6 +72,9 @@ serves those files directly.
 │   ├── lovesac-search-panel.js       # Shared prototype desktop search panel behavior
 │   └── lovesac-back-link.js          # Shared prototype back-to-portfolio visibility behavior
 ├── images/
+├── blog/
+│   ├── index.html                    # Blog listing page
+│   └── _template.html                # Starting point for a new post (copy, don't edit in place)
 ├── work/
 │   ├── lovesac-case-study.html       # Lovesac — Redesign (featured concept case study)
 │   ├── walmart-my-hiring-dashboard.html # Walmart — corporate hiring manager dashboard within Me@Campus
@@ -167,6 +170,15 @@ To change shared markup:
 Run `python3 build.py --check` for a read-only validation. It exits with an
 error if a generated region is stale or if markers are missing, duplicated,
 reversed, or unmatched.
+
+## Adding a blog post
+
+1. Copy `blog/_template.html` to `blog/<slug>.html` (lowercase, hyphenated, no dates in the slug)
+2. Fill in every `REPLACE:` marker — title, dates, description, OG/Twitter tags, canonical URL, byline, and body copy
+3. Add a card for the post to `blog/index.html`, newest first, above the "Add new posts above this line" comment (and remove the "first post is on its way" empty state the first time)
+4. Add the new URL to `sitemap.xml`
+5. Run `python3 build.py`, then `python3 build.py --check`
+6. Push
 
 ## Adding a case study
 
