@@ -66,7 +66,12 @@
     .post-hero .wrap{border-bottom:1px solid var(--line);padding-bottom:48px;}
     .post-hero h1{font-size:clamp(32px,4.4vw,50px);font-weight:600;line-height:1.1;max-width:20ch;}
     .post-hero .sub{margin-top:20px;font-size:18px;line-height:1.55;color:var(--ink-soft);max-width:60ch;}
-    .post-byline{margin-top:20px;font-size:12px;letter-spacing:.06em;color:var(--ink-soft);font-weight:500;}
+    .post-author{display:inline-flex;align-items:center;gap:12px;margin-top:24px;text-decoration:none;}
+    .post-author-avatar{width:40px;height:40px;border-radius:50%;object-fit:cover;flex:0 0 auto;}
+    .post-author-info{display:flex;flex-direction:column;gap:2px;}
+    .post-author-name{font-size:14px;font-weight:600;color:var(--espresso);}
+    .post-author:hover .post-author-name{text-decoration:underline;}
+    .post-author-meta{font-size:12px;letter-spacing:.06em;color:var(--ink-soft);font-weight:500;}
     .post-hero-image{margin-top:32px;border-radius:20px;overflow:hidden;background:var(--sand);}
     .post-hero-image img{display:block;width:100%;height:auto;}
     .post-back{padding:24px 0 0;}
@@ -180,7 +185,13 @@
       <div class="eyebrow">Blog</div>
       <h1>Eat Your Own Dog Food</h1>
       <p class="sub">AI companies are pitching agentic everything. Their own websites tell a different story.</p>
-      <p class="post-byline">September 6, 2026 · 5 min read</p>
+      <a class="post-author" href="/about.html">
+        <img class="post-author-avatar" src="/images/claudia-ochoa-headshot.webp" width="40" height="40" alt="">
+        <span class="post-author-info">
+          <span class="post-author-name">Claudia Ochoa</span>
+          <span class="post-author-meta">September 6, 2026 · 5 min read</span>
+        </span>
+      </a>
       <figure class="post-hero-image">
         <img srcset="/images/blog-eyodf-hero-960.webp 960w, /images/blog-eyodf-hero.webp 1800w" sizes="(max-width: 820px) 100vw, 1036px" src="/images/blog-eyodf-hero.webp" width="1800" height="982" alt="A golden retriever sits eagerly beside a full bowl of kibble on a wooden kitchen table, waiting to be fed" fetchpriority="high" decoding="async">
       </figure>
