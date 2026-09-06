@@ -25,13 +25,15 @@ from reportlab.platypus import (
 ROOT = Path('/Users/claudiaochoa/Documents/Projects/claudia-ochoa')
 OUTPUT = ROOT / 'output/pdf/Claudia_Ochoa_Resume.pdf'
 
-ESPRESSO = colors.HexColor('#2D211B')
-CLAY = colors.HexColor('#A54F33')
-CLAY_DEEP = colors.HexColor('#7D3B28')
-CREAM = colors.HexColor('#F7F0E3')
-SAND = colors.HexColor('#E8DDCC')
-INK_SOFT = colors.HexColor('#5D514A')
-WHITE = colors.white
+BACKGROUND = colors.HexColor('#0A0A0B')
+SURFACE = colors.HexColor('#151517')
+ESPRESSO = colors.HexColor('#F2F2F4')
+CLAY = colors.HexColor('#B4B4BC')
+CLAY_DEEP = colors.HexColor('#F2F2F4')
+CREAM = colors.HexColor('#151517')
+SAND = colors.HexColor('#303034')
+INK_SOFT = colors.HexColor('#A4A4AC')
+WHITE = colors.HexColor('#F2F2F4')
 
 pdfmetrics.registerFont(TTFont('Georgia', '/System/Library/Fonts/Supplemental/Georgia.ttf'))
 pdfmetrics.registerFont(TTFont('Georgia-Bold', '/System/Library/Fonts/Supplemental/Georgia Bold.ttf'))
@@ -50,9 +52,9 @@ class ResumeDoc(BaseDocTemplate):
             pagesize=letter,
             leftMargin=0.65 * inch,
             rightMargin=0.65 * inch,
-            topMargin=0.62 * inch,
+            topMargin=0.58 * inch,
             bottomMargin=0.55 * inch,
-            title='Claudia Ochoa - AI Experience and Product Design Leader',
+            title='Claudia Ochoa - AI Experience, Product Design, and Brand Strategy Leader',
             author='Claudia Ochoa',
             subject='Resume',
         )
@@ -72,10 +74,12 @@ class ResumeDoc(BaseDocTemplate):
 def draw_page(canvas: Canvas, doc):
     canvas.saveState()
     width, height = letter
-    canvas.setFillColor(CREAM)
-    canvas.rect(0, height - 0.17 * inch, width, 0.17 * inch, stroke=0, fill=1)
-    canvas.setFillColor(CLAY)
-    canvas.rect(0, height - 0.17 * inch, 1.65 * inch, 0.17 * inch, stroke=0, fill=1)
+    canvas.setFillColor(BACKGROUND)
+    canvas.rect(0, 0, width, height, stroke=0, fill=1)
+    canvas.setFillColor(SAND)
+    canvas.rect(0, height - 0.12 * inch, width, 0.12 * inch, stroke=0, fill=1)
+    canvas.setFillColor(ESPRESSO)
+    canvas.rect(0, height - 0.12 * inch, 1.15 * inch, 0.12 * inch, stroke=0, fill=1)
     canvas.setStrokeColor(SAND)
     canvas.line(doc.leftMargin, 0.37 * inch, width - doc.rightMargin, 0.37 * inch)
     canvas.setFont('Arial', 7.5)
@@ -87,40 +91,40 @@ def draw_page(canvas: Canvas, doc):
 
 styles = getSampleStyleSheet()
 name_style = ParagraphStyle(
-    'Name', fontName='Georgia-Bold', fontSize=25, leading=27, textColor=ESPRESSO, spaceAfter=3
+    'Name', fontName='Georgia-Bold', fontSize=26, leading=28, textColor=ESPRESSO, spaceAfter=3
 )
 title_style = ParagraphStyle(
-    'Title', fontName='Arial-Bold', fontSize=9.3, leading=11, textColor=CLAY_DEEP,
-    tracking=1.1, spaceAfter=7
+    'Title', fontName='Arial-Bold', fontSize=9.1, leading=11, textColor=CLAY,
+    tracking=1.15, spaceAfter=7
 )
 contact_style = ParagraphStyle(
     'Contact', fontName='Arial', fontSize=8.7, leading=11, textColor=INK_SOFT, spaceAfter=11
 )
 section_style = ParagraphStyle(
-    'Section', fontName='Arial-Bold', fontSize=8.4, leading=10, textColor=CLAY_DEEP,
+    'Section', fontName='Arial-Bold', fontSize=8.5, leading=10, textColor=ESPRESSO,
     tracking=1.0, spaceBefore=8, spaceAfter=5
 )
 summary_style = ParagraphStyle(
-    'Summary', fontName='Arial', fontSize=9.25, leading=12.4, textColor=ESPRESSO, spaceAfter=5
+    'Summary', fontName='Arial', fontSize=9.15, leading=12.2, textColor=WHITE, spaceAfter=5
 )
 role_style = ParagraphStyle(
     'Role', fontName='Georgia-Bold', fontSize=11.1, leading=13, textColor=ESPRESSO, spaceAfter=1
 )
 company_style = ParagraphStyle(
-    'Company', fontName='Arial-Bold', fontSize=8.8, leading=10.5, textColor=CLAY_DEEP, spaceAfter=3
+    'Company', fontName='Arial-Bold', fontSize=8.8, leading=10.5, textColor=CLAY, spaceAfter=3
 )
 body_style = ParagraphStyle(
     'Body', fontName='Arial', fontSize=8.45, leading=11.25, textColor=INK_SOFT, spaceAfter=3
 )
 bullet_style = ParagraphStyle(
-    'Bullet', fontName='Arial', fontSize=8.35, leading=10.9, textColor=ESPRESSO,
+    'Bullet', fontName='Arial', fontSize=8.35, leading=10.9, textColor=WHITE,
     leftIndent=12, firstLineIndent=-7, bulletIndent=0, spaceAfter=1.7
 )
 small_style = ParagraphStyle(
-    'Small', fontName='Arial', fontSize=8.2, leading=10.6, textColor=ESPRESSO, spaceAfter=2
+    'Small', fontName='Arial', fontSize=8.2, leading=10.6, textColor=WHITE, spaceAfter=2
 )
 impact_number_style = ParagraphStyle(
-    'ImpactNumber', fontName='Georgia-Bold', fontSize=12.2, leading=13, textColor=CLAY_DEEP,
+    'ImpactNumber', fontName='Georgia-Bold', fontSize=12.2, leading=13, textColor=ESPRESSO,
     alignment=TA_CENTER, spaceAfter=2
 )
 impact_label_style = ParagraphStyle(
@@ -154,31 +158,31 @@ def role(title, company, dates, intro, items):
 
 story = [
     P('Claudia Ochoa', name_style),
-    P('AI EXPERIENCE &amp; PRODUCT DESIGN LEADER', title_style),
+    P('AI EXPERIENCE  |  PRODUCT DESIGN  |  BRAND STRATEGY', title_style),
     P(
-        '<link href="https://claudiaochoa.co" color="#5D514A">claudiaochoa.co</link>'
-        '  |  <link href="https://www.linkedin.com/in/claudiajochoa/" color="#5D514A">linkedin.com/in/claudiajochoa</link>',
+        '<link href="https://claudiaochoa.co" color="#B4B4BC">claudiaochoa.co</link>'
+        '  |  <link href="https://www.linkedin.com/in/claudiajochoa/" color="#B4B4BC">linkedin.com/in/claudiajochoa</link>',
         contact_style,
     ),
     *section('Leadership Profile'),
     P(
         '<b>AI experience and product design leader with 20+ years of experience</b> connecting emerging technology, '
-        'business strategy, and human-centered design. Builds enterprise products, teams, and operating clarity '
-        'across complex organizations. Known for turning ambiguous problems into useful experiences, aligning '
-        'executives and cross-functional partners, and carrying a coherent product vision through delivery.',
+        'business strategy, brand, and human-centered design. Sets product direction, turns ambiguous problems into '
+        'clear experiences, and aligns leaders, designers, product managers, and engineers through delivery. Work spans '
+        'enterprise platforms, consumer e-commerce, design systems, and responsible AI.',
         summary_style,
     ),
     Spacer(1, 4),
 ]
 
 impact_data = [[
-    [P('0 to 16', impact_number_style), P('Scaled Walmart People Product &amp; Design team', impact_label_style)],
-    [P('24 hours', impact_number_style), P('Built an end-to-end GenAI hiring direction', impact_label_style)],
-    [P('20+ years', impact_number_style), P('Product, UX, brand, and creative leadership', impact_label_style)],
+    [P('0 to 16', impact_number_style), P('Built Walmart People Product &amp; Design team', impact_label_style)],
+    [P('24 hours', impact_number_style), P('Created GenAI hiring vision that earned executive support', impact_label_style)],
+    [P('30 participants', impact_number_style), P('Validated Home Depot gift-card redesign before launch', impact_label_style)],
 ]]
 impact_table = Table(impact_data, colWidths=[story_width := (letter[0] - 2 * 0.65 * inch) / 3] * 3)
 impact_table.setStyle(TableStyle([
-    ('BACKGROUND', (0, 0), (-1, -1), CREAM),
+    ('BACKGROUND', (0, 0), (-1, -1), SURFACE),
     ('BOX', (0, 0), (-1, -1), 0.6, SAND),
     ('INNERGRID', (0, 0), (-1, -1), 0.6, SAND),
     ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
@@ -191,53 +195,41 @@ story.extend([
     impact_table,
     *section('Core Expertise'),
     P(
-        '<b>AI experience strategy</b>  |  Human-centered AI  |  Responsible AI frameworks  |  Product vision and roadmaps  |  '
-        'Design organization leadership  |  Enterprise UX  |  Customer research  |  Design systems  |  Accessibility  |  '
-        'Prototyping  |  Executive storytelling  |  Cross-functional alignment  |  Figma  |  v0.dev',
+        '<b>AI product and experience strategy</b>  |  Human-centered and responsible AI  |  Product vision and roadmaps  |  '
+        'Design organization leadership  |  Enterprise UX and e-commerce  |  Research and usability testing  |  '
+        'Design systems and accessibility  |  Executive storytelling  |  Prototyping and front-end delivery',
         small_style,
     ),
     *section('Professional Experience'),
-    role(
-        'Founder &amp; AI Product Lead',
-        'Bible Study',
-        'May 2025 - Present',
-        'Conceived and built an AI-powered Bible study and faith-formation platform from concept to working MVP.',
-        [
-            'Own product vision, roadmap, experience strategy, content architecture, brand, and front-end implementation as a solo founder.',
-            'Designed AI-assisted guidance around Scripture, reflection, readings, saints, and prayer while preserving a clear, human learning experience.',
-            'Use generative AI across research, content, design exploration, prototyping, and development to accelerate iteration without surrendering product judgment.',
-            'Established a scalable foundation for ongoing feature development, user feedback, and future platform growth.',
-        ],
-    ),
     role(
         'Senior User Experience Designer / Interim Design Manager',
         'Walmart',
         'July 2024 - May 2025',
         'Led design across internal People products, team formation, and AI-enabled candidate experiences.',
         [
-            'Scaled the People Product &amp; Design team from 0 to 16 full-time hires, managing contractors while establishing hiring practices, onboarding, and team culture.',
-            'Served as interim design manager, mentoring designers and aligning execution, resources, and career development with business objectives.',
+            'Scaled the People Product &amp; Design team from 0 to 16 full-time hires; managed contractors and established hiring, onboarding, and team practices.',
+            'Served as interim design manager, mentoring designers and aligning resources, delivery, and career development with business priorities.',
             'Designed an end-to-end conversational GenAI candidate experience in 24 hours; earned executive approval and was positioned as Creative Director for the broader initiative.',
-            'Partnered with product managers on roadmaps, priorities, resourcing, and delivery; facilitated workshops introducing v0.dev for faster prototyping.',
-            'Directed visual design, storytelling, and photography strategy to humanize store associates and strengthen Walmart\'s employer brand.',
+            'Led a 0-to-1 hiring dashboard within Me@Campus that was prioritized as a foundation for Walmart\'s hiring and recruiting modernization roadmap.',
+            'Partnered with product managers on roadmaps, priorities, resourcing, and delivery; introduced faster AI-assisted prototyping through team workshops.',
         ],
     ),
-    PageBreak(),
-    P('Claudia Ochoa', ParagraphStyle('PageName', parent=name_style, fontSize=17, leading=19, spaceAfter=2)),
-    P('AI EXPERIENCE &amp; PRODUCT DESIGN LEADER', ParagraphStyle('PageTitle', parent=title_style, fontSize=8.2, spaceAfter=9)),
-    *section('Professional Experience - Continued'),
     role(
         'Senior User Experience Designer',
         'The Home Depot',
         'November 2019 - April 2024',
         'Owned enterprise and customer-facing product design across complex, cross-functional initiatives.',
         [
-            'Led flagship e-commerce experiences from discovery through delivery with product managers and engineers in agile teams.',
+            'Led a research-driven gift-card redesign across discovery, card selection, mixed-cart checkout, and balance management; tested with 30 participants, approved, and launched.',
             'Led the Military Discount initiative from concept through delivery, aligning executive leadership around an experience supporting veterans and military families.',
             'Combined interviews, usability testing, Google Analytics, and Quantum Metric insights to prioritize improvements and validate design decisions.',
-            'Contributed to company-wide design-system standards and roadmap planning, balancing customer value, consistency, and delivery constraints.',
+            'Shaped design-system standards and product roadmaps across agile delivery teams.',
         ],
     ),
+    PageBreak(),
+    P('Claudia Ochoa', ParagraphStyle('PageName', parent=name_style, fontSize=17, leading=19, spaceAfter=2)),
+    P('AI EXPERIENCE  |  PRODUCT DESIGN  |  BRAND STRATEGY', ParagraphStyle('PageTitle', parent=title_style, fontSize=8.2, spaceAfter=9)),
+    *section('Professional Experience - Continued'),
     role(
         'Senior User Interface Designer',
         'Dell',
@@ -266,7 +258,7 @@ story.extend([
         'July 2012 - October 2016',
         'Led digital brand initiatives that modernized Workday\'s online presence during rapid growth leading up to its IPO.',
         [
-            'Selected by the Creative Director to lead the Workday.com redesign and establish the company\'s first responsive, mobile-first web experience.',
+            'Led Workday.com\'s first responsive, mobile-first redesign at the Creative Director\'s request.',
             'Led creative direction for Workday Rising across event identity, digital experiences, microsites, and environmental design.',
             'Aligned executives, marketing teams, designers, agencies, and delivery partners around cohesive high-visibility experiences.',
             'Mentored designers while remaining hands-on in execution and quality review.',
@@ -281,10 +273,12 @@ story.extend([
     P('<b>Juris Doctor studies</b>, Purdue Global Law School  |  In progress', small_style),
     P('<b>Master of Business Administration</b>, Purdue University Global  |  2026', small_style),
     P('<b>Bachelor of Fine Arts, Communication Design</b>, Texas State University  |  2003', small_style),
-    *section('Leadership Focus'),
+    *section('Selected Independent Work'),
     P(
-        'AI product and experience strategy  |  Responsible adoption  |  Design organization growth  |  '
-        'Business and customer-value alignment  |  Human-centered transformation',
+        '<b>Lovesac customer experience redesign</b>  |  2026<br/>'
+        'Created a live e-commerce redesign and six-part case study spanning research, information architecture, '
+        'content strategy, accessibility, performance, AI readiness, and front-end development.  '
+        '<link href="https://claudiaochoa.co/work/lovesac-case-study.html" color="#B4B4BC">View case study</link>',
         small_style,
     ),
 ])
