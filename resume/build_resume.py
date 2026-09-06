@@ -170,7 +170,7 @@ story = [
 ]
 
 impact_data = [[
-    [P('0 to 16', impact_number_style), P('Built Walmart People Product &amp; Design team', impact_label_style)],
+    [P('0 to 16', impact_number_style), P('Built Walmart People<br/>Product &amp; Design team', impact_label_style)],
     [P('24 hours', impact_number_style), P('Created GenAI hiring vision that earned executive support', impact_label_style)],
     [P('30 participants', impact_number_style), P('Validated Home Depot gift-card redesign before launch', impact_label_style)],
 ]]
