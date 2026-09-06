@@ -259,7 +259,7 @@ story.extend([
         'Senior Art Director',
         'Workday',
         'July 2012 - October 2016',
-        'Led digital brand initiatives that modernized Workday\'s online presence during rapid growth leading up to its IPO.',
+        'Led digital brand initiatives that modernized Workday\'s online presence during rapid growth leading and post IPO.',
         [
             'Led Workday.com\'s first responsive, mobile-first redesign at the Creative Director\'s request.',
             'Led creative direction for Workday Rising across event identity, digital experiences, microsites, and environmental design.',
