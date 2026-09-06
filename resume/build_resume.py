@@ -41,6 +41,7 @@ pdfmetrics.registerFont(TTFont('Georgia-Italic', '/System/Library/Fonts/Suppleme
 pdfmetrics.registerFont(TTFont('Arial', '/System/Library/Fonts/Supplemental/Arial.ttf'))
 pdfmetrics.registerFont(TTFont('Arial-Bold', '/System/Library/Fonts/Supplemental/Arial Bold.ttf'))
 pdfmetrics.registerFont(TTFont('Arial-Italic', '/System/Library/Fonts/Supplemental/Arial Italic.ttf'))
+pdfmetrics.registerFont(TTFont('Fraunces', str(Path(__file__).parent / 'fonts/Fraunces-Regular.ttf')))
 pdfmetrics.registerFontFamily('Arial', normal='Arial', bold='Arial-Bold', italic='Arial-Italic')
 pdfmetrics.registerFontFamily('Georgia', normal='Georgia', bold='Georgia-Bold', italic='Georgia-Italic')
 
@@ -258,10 +259,10 @@ story.extend([
         ],
     ),
     *section('Earlier Leadership Experience'),
-    P('<font color="#FFFFFF"><b>VMware</b></font> - Art Director, Brand &amp; Marketing Web Design  |  2011 - 2012', small_style),
-    P('<font color="#FFFFFF"><b>Salesforce</b></font> - Visual Designer, Dreamforce Identity &amp; Web  |  2010 - 2011', small_style),
-    P('<font color="#FFFFFF"><b>Bio-Rad</b></font> - Interactive Designer, Data Visualization &amp; UX  |  2009 - 2010', small_style),
-    P('<font color="#FFFFFF"><b>RedEnvelope</b></font> - Design Manager, E-commerce UX &amp; Brand  |  2005 - 2008', small_style),
+    P('<font name="Fraunces" color="#FFFFFF">VMware</font> - Art Director, Brand &amp; Marketing Web Design  |  2011 - 2012', small_style),
+    P('<font name="Fraunces" color="#FFFFFF">Salesforce</font> - Visual Designer, Dreamforce Identity &amp; Web  |  2010 - 2011', small_style),
+    P('<font name="Fraunces" color="#FFFFFF">Bio-Rad</font> - Interactive Designer, Data Visualization &amp; UX  |  2009 - 2010', small_style),
+    P('<font name="Fraunces" color="#FFFFFF">RedEnvelope</font> - Design Manager, E-commerce UX &amp; Brand  |  2005 - 2008', small_style),
     *section('Education'),
     P('<font color="#FFFFFF"><b>Juris Doctor studies</b></font>, Purdue Global Law School  |  In progress', small_style),
     P('<font color="#FFFFFF"><b>Master of Business Administration</b></font>, Purdue University Global  |  2026', small_style),
