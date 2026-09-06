@@ -137,8 +137,6 @@
   .nav-menu-panel a.sub:hover::before, .nav-menu-panel a.sub:focus-visible::before{border-color:var(--espresso);}
   .nav-menu-panel a svg{flex:0 0 auto; color:var(--ink-soft);}
   .nav-menu-panel a:hover svg, .nav-menu-panel a:focus-visible svg{color:var(--espresso);}
-  .nav-menu-panel a.active:not(.nav-menu-profile){background:var(--line); color:var(--espresso);}
-  .nav-menu-panel a.active:not(.nav-menu-profile) svg{color:var(--espresso);}
   .nav-menu-panel a.sub.active::before{background:var(--clay-deep); border-color:var(--clay-deep);}
   @media (prefers-reduced-motion: reduce){.nav-menu-panel{transition:none;} .nav-menu-backdrop{transition:none;}}
 
