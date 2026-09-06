@@ -149,7 +149,7 @@ def role(title, company, dates, intro, items, trailing_space=10):
     content = [
         P(title, role_style),
         P(f'{company}  |  <font name="Arial"><i>{dates}</i></font>', company_style),
-        P(intro, body_style),
+        *([P(intro, body_style)] if intro else []),
         *bullets(items),
         Spacer(1, trailing_space),
     ]
@@ -254,12 +254,12 @@ story.extend([
         'Senior Art Director',
         'Workday',
         'July 2012 - October 2016',
-        'Led digital brand initiatives that modernized Workday\'s online presence during rapid growth leading and post IPO.',
+        None,
         [
-            'Led Workday.com\'s first responsive, mobile-first redesign at the Creative Director\'s request.',
-            'Led creative direction for Workday Rising across event identity, digital experiences, microsites, and environmental design.',
-            'Aligned executives, marketing teams, designers, agencies, and delivery partners around cohesive high-visibility experiences.',
-            'Mentored designers while remaining hands-on in execution and quality review.',
+            'Hand-picked by the Creative Director to lead the redesign of Workday.com ahead of IPO, modernizing the brand\'s digital presence.',
+            'Directed and executed the first responsive, mobile-first Workday site and designed the event identity for Workday Rising.',
+            'Partnered with internal teams and agencies to deliver a cohesive brand vision, securing executive approvals for high-impact projects.',
+            'Mentored junior designers and ensured visual consistency as a hands-on IC and team lead.',
         ],
     ),
     *section('Earlier Leadership Experience'),
