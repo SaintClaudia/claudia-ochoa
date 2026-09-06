@@ -87,11 +87,11 @@ def draw_page(canvas: Canvas, doc):
 
 styles = getSampleStyleSheet()
 name_style = ParagraphStyle(
-    'Name', fontName='Arial-Bold', fontSize=26, leading=28, textColor=ESPRESSO, spaceAfter=3
+    'Name', fontName='Arial-Bold', fontSize=17, leading=19, textColor=ESPRESSO, spaceAfter=2
 )
 title_style = ParagraphStyle(
-    'Title', fontName='Arial-Bold', fontSize=9.1, leading=11, textColor=ESPRESSO,
-    tracking=1.15, spaceAfter=7
+    'Title', fontName='Arial-Bold', fontSize=8.2, leading=11, textColor=ESPRESSO,
+    tracking=1.15, spaceAfter=9
 )
 contact_style = ParagraphStyle(
     'Contact', fontName='Arial', fontSize=8.7, leading=11, textColor=ESPRESSO, spaceAfter=11
@@ -220,8 +220,8 @@ story.extend([
         ],
     ),
     PageBreak(),
-    P('Claudia Ochoa', ParagraphStyle('PageName', parent=name_style, fontSize=17, leading=19, spaceAfter=2)),
-    P('AI EXPERIENCE  |  PRODUCT DESIGN  |  BRAND STRATEGY', ParagraphStyle('PageTitle', parent=title_style, fontSize=8.2, spaceAfter=9)),
+    P('Claudia Ochoa', name_style),
+    P('AI EXPERIENCE  |  PRODUCT DESIGN  |  BRAND STRATEGY', title_style),
     *section('Professional Experience - Continued'),
     role(
         'Senior User Interface Designer',
