@@ -259,9 +259,9 @@ story.extend([
     P('<font name="Fraunces" color="#FFFFFF">Bio-Rad</font> - Interactive Designer, Data Visualization &amp; UX  |  <i>2009 - 2010</i>', small_style),
     P('<font name="Fraunces" color="#FFFFFF">RedEnvelope</font> - Design Manager, E-commerce UX &amp; Brand  |  <i>2005 - 2008</i>', small_style),
     *section('Education'),
-    P('<font color="#FFFFFF"><b>Juris Doctor studies</b></font>, Purdue Global Law School  |  <i>In progress</i>', small_style),
-    P('<font color="#FFFFFF"><b>Master of Business Administration</b></font>, Purdue University Global  |  <i>2026</i>', small_style),
-    P('<font color="#FFFFFF"><b>Bachelor of Fine Arts, Communication Design</b></font>, Texas State University  |  <i>2003</i>', small_style),
+    P('<font name="Fraunces" color="#FFFFFF">Juris Doctor studies</font>, Purdue Global Law School  |  <i>In progress</i>', small_style),
+    P('<font name="Fraunces" color="#FFFFFF">Master of Business Administration</font>, Purdue University Global  |  <i>2026</i>', small_style),
+    P('<font name="Fraunces" color="#FFFFFF">Bachelor of Fine Arts, Communication Design</font>, Texas State University  |  <i>2003</i>', small_style),
     *section('Selected Independent Work'),
     P(
         '<font color="#FFFFFF"><b>Lovesac customer experience redesign</b></font>  |  <i>2026</i><br/>'
