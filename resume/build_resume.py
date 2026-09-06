@@ -112,7 +112,7 @@ body_style = ParagraphStyle(
 )
 bullet_style = ParagraphStyle(
     'Bullet', fontName='Arial', fontSize=10, leading=14.7, textColor=SECONDARY,
-    leftIndent=15, firstLineIndent=-10, bulletIndent=0, spaceAfter=1.5
+    leftIndent=5, firstLineIndent=0, bulletIndent=0, spaceAfter=1.5
 )
 small_style = ParagraphStyle(
     'Small', fontName='Arial', fontSize=9.6, leading=14.1, textColor=SECONDARY, spaceAfter=0
