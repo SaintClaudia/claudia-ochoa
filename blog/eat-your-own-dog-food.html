@@ -65,18 +65,23 @@
     .post-hero h1{font-size:clamp(32px,4.4vw,50px);font-weight:600;line-height:1.1;max-width:20ch;}
     .post-hero .sub{margin-top:20px;font-size:18px;line-height:1.55;color:var(--ink-soft);max-width:60ch;}
     .post-byline{margin-top:20px;font-size:12px;letter-spacing:.06em;color:var(--ink-soft);font-weight:500;}
-    .post-body{padding-top:56px;display:flex;flex-direction:column;gap:24px;max-width:72ch;}
-    .post-body h2{margin-top:16px;font-size:clamp(22px,2.8vw,30px);}
     .post-back{padding:24px 0 0;}
     .post-back a{font-size:14px;color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px;}
     .post-back a:hover{color:var(--espresso);border-color:var(--espresso);}
 
-    .dogfood-list{list-style:none;display:flex;flex-direction:column;gap:16px;}
+    /* Numbered sections use the shared case-study section-head (label
+       column + h2/lede column) so the blog reads like the case studies
+       instead of a flat column of paragraphs. */
+    .body-copy + .body-copy{margin-top:20px;}
+
+    .dogfood-list{list-style:none;display:flex;flex-direction:column;gap:16px;margin-top:24px;}
     .dogfood-list li{position:relative;padding-left:24px;font-size:16px;line-height:1.7;color:var(--ink-soft);}
     .dogfood-list li::before{content:'';position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%;background:var(--clay-deep);}
     .dogfood-list strong{color:var(--espresso);}
+    .dogfood-list + .body-copy{margin-top:24px;}
 
-    .dogfood-shots{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+    .dogfood-shots{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:24px;}
+    .dogfood-shots + .body-copy{margin-top:24px;}
     .dogfood-shot{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--paper);}
     .dogfood-shot-btn{display:block;width:100%;padding:0;margin:0;border:0;background:none;cursor:zoom-in;}
     .dogfood-shot-btn img{display:block;width:100%;height:auto;}
@@ -85,11 +90,11 @@
     .score-poor{color:#f87171;}
     .score-ok{color:var(--ink);}
     .score-good{color:var(--accent);}
-    .dogfood-source{font-size:13.5px;color:var(--ink-soft);font-style:italic;}
+    .dogfood-source{margin-top:20px;font-size:13.5px;color:var(--ink-soft);font-style:italic;}
     @media(max-width:640px){.dogfood-shots{grid-template-columns:1fr;}}
 
-    /* The full-picture table needs the whole .wrap, not the 72ch prose column */
-    .post-table-wide{width:100%;margin:8px 0;}
+    .table-scroll-wrap{margin-top:24px;}
+    .table-scroll-wrap + .body-copy{margin-top:32px;}
 
     .img-lightbox{display:none;position:fixed;inset:0;z-index:300;justify-content:center;background:rgba(10,10,11,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:64px 32px;overflow-y:auto;cursor:zoom-out;}
     .img-lightbox.open{display:flex;}
@@ -175,88 +180,130 @@
 
   <section>
     <div class="wrap">
-      <div class="post-body body-copy">
-        <p>The phrase has a history worth remembering before we talk about where it applies today. Back in the 1980s, Microsoft was getting crushed by Novell in networking. Paul Maritz, tasked with turning around a product nobody was using, sent his team a blunt email: if they didn't have real customers, they'd have to become their own. Engineering leader Brian Valentine set up an internal server literally named "dogfood," and the practice stuck. It became shorthand for a simple standard: don't ask anyone to trust what you haven't tested on yourself first. (<a href="https://www.geekwire.com/2025/eat-your-own-dog-food-how-microsoft-popularized-one-of-the-yuckiest-terms-in-tech-history/" target="_blank" rel="noopener noreferrer">GeekWire has the full origin story.</a>)</p>
+      <p class="body-copy">The phrase has a history worth remembering before we talk about where it applies today. Back in the 1980s, Microsoft was getting crushed by Novell in networking. Paul Maritz, tasked with turning around a product nobody was using, sent his team a blunt email: if they didn't have real customers, they'd have to become their own. Engineering leader Brian Valentine set up an internal server literally named "dogfood," and the practice stuck. It became shorthand for a simple standard: don't ask anyone to trust what you haven't tested on yourself first. (<a href="https://www.geekwire.com/2025/eat-your-own-dog-food-how-microsoft-popularized-one-of-the-yuckiest-terms-in-tech-history/" target="_blank" rel="noopener noreferrer">GeekWire has the full origin story.</a>)</p>
+      <p class="body-copy">Forty years later, it's worth asking how many companies still live by that standard — especially the ones currently telling the world that AI is about to change everything.</p>
+    </div>
+  </section>
 
-        <p>Forty years later, it's worth asking how many companies still live by that standard — especially the ones currently telling the world that AI is about to change everything.</p>
-
-        <h2>The pitch vs. the product</h2>
-        <p>Walk through the homepages of some of the biggest names in tech and retail right now and the message is nearly identical: agentic AI, intelligent automation, "put AI agents to work for you." It's the dominant narrative in every boardroom deck and every keynote. These companies are asking customers, investors, and employees to believe that they are the ones who understand where technology is headed.</p>
-        <p>Then run their own websites through Google's PageSpeed Insights.</p>
-
-        <ul class="dogfood-list">
-          <li>A company marketing itself as the "#1 Agentic CRM" scores a <strong>7 out of 100</strong> on mobile performance, with a Largest Contentful Paint of over 31 seconds and a layout that visibly shifts while it loads.</li>
-          <li>A workplace platform pitching "AI agents to work for you" takes over <strong>26 seconds</strong> for its largest content to appear on mobile.</li>
-          <li>Major retailers running Labor Day AI-assisted shopping promotions load their mobile pages in the 30s and 40s out of 100, with users waiting 15+ seconds and staring at layout jumps before they can act.</li>
-        </ul>
-
-        <div class="dogfood-shots">
-          <figure class="dogfood-shot">
-            <button type="button" class="dogfood-shot-btn" aria-label="Enlarge screenshot" data-full="/images/blog-eyodf-salesforce-mobile.webp" data-full-alt="Full Google PageSpeed Insights mobile report for Salesforce, performance score 7 out of 100, captured September 6, 2026">
-              <img src="/images/blog-eyodf-salesforce-mobile-thumb.webp" width="1400" height="1441" alt="Google PageSpeed Insights mobile report showing a performance score of 7 out of 100 and a 31.3 second Largest Contentful Paint, for a homepage promoting itself as the number one Agentic CRM" loading="lazy" decoding="async">
-            </button>
-            <figcaption><span class="dogfood-score score-poor">7/100</span> mobile — the page pitching itself as the "#1 Agentic CRM" · captured September 6, 2026, 12:00 PM CDT. Click to view the full report.</figcaption>
-          </figure>
-          <figure class="dogfood-shot">
-            <button type="button" class="dogfood-shot-btn" aria-label="Enlarge screenshot" data-full="/images/blog-eyodf-workday-mobile.webp" data-full-alt="Full Google PageSpeed Insights mobile report for Workday, performance score 32 out of 100, captured September 6, 2026">
-              <img src="/images/blog-eyodf-workday-mobile-thumb.webp" width="1400" height="1441" alt="Google PageSpeed Insights mobile report showing a performance score of 32 out of 100 and a 26.6 second Largest Contentful Paint, with the homepage headline reading Put AI agents to work for you" loading="lazy" decoding="async">
-            </button>
-            <figcaption><span class="dogfood-score score-poor">32/100</span> mobile — the page telling you to "put AI agents to work for you" · captured September 6, 2026, 11:51 AM CDT. Click to view the full report.</figcaption>
-          </figure>
-        </div>
-
-        <p>These aren't obscure players. These are companies with enormous engineering budgets, entire teams dedicated to performance, and leadership actively telling the market they're the future of intelligent software. If they can't get their own front door to load quickly and reliably, what exactly is the AI supposed to be fixing?</p>
-        <p>This is the dog food test. If the product were as good as the pitch, they'd be running it themselves — and it would show.</p>
-
-        <h2>Leadership sets the direction. Leadership owns the outcome.</h2>
-        <p>Here's the part that doesn't show up in a performance audit but matters just as much: when a product underperforms, it's rarely because the people building it didn't know how to fix it.</p>
-        <p>In most organizations, the people closest to the actual work — the designers, engineers, and product specialists who live inside the interface every day — know exactly where the friction is. They've flagged it. They've proposed fixes. They understand the product better than anyone sitting above them in the org chart, because they're the ones who actually touch it.</p>
-        <p>Leadership's job is to take a product to its full potential — to make the calls on priority, timeline, and investment that let good work actually ship. When that doesn't happen, the instinct in a lot of organizations is to look downward for someone to blame. It's easier to point at "execution" than to examine the decisions, the shifting priorities, or the roadmap that never gave the team room to fix what they already knew was broken.</p>
-        <p>I spent over two decades in design, and I was never put in a management role. For a long time I saw that as something to prove myself against. Looking back, it turned out to be a vantage point. I got to watch, from inside the work itself, how often the gap between what leadership promises publicly and what actually ships comes down to decisions made well above the people doing the building — and how often the people doing the building get blamed for it anyway.</p>
-
-        <h2>The other weapon: PIP culture</h2>
-        <p>There's a companion piece to this that doesn't get talked about enough: the Performance Improvement Plan.</p>
-        <p>On paper, a PIP is supposed to be a good-faith tool — a structured way to help someone close a real skills gap, with clear targets and real support to get there. In practice, at a lot of companies, that's not what it's for anymore. It's become a mechanism for manufacturing a paper trail during layoff cycles: put someone on a plan with vague, compressed, or unreachable goals, document the "failure," and terminate for cause instead of counting it as a layoff. No severance owed. No layoff number reported. No unemployment complications for the company to manage.</p>
-        <p>It doesn't do what it's supposed to do. If the goal is actually improving performance, timelines built to be unsurvivable and feedback that arrives after the plan is already in motion aren't designed to help anyone succeed — they're designed to end in the outcome leadership already decided on. And the cost isn't limited to the person on the plan. Everyone else on the team watches it happen. They know what a real improvement plan looks like and what a manufactured one looks like, and once they've seen the second kind, trust in leadership doesn't come back easily. That's a morale hit that spreads far past one person's exit.</p>
-        <p>This is the same pattern as everything above it: a decision made at the top — cut costs, reduce headcount, protect the balance sheet — dressed up and handed downward as an individual performance problem. The company saves the severance. Someone else absorbs the blame.</p>
-
-        <h2>So if you're looking for someone to blame</h2>
-        <p>Don't blame the people closest to the product. They usually know exactly what's wrong and have said so, often more than once. Blame is easy to send downward because it doesn't require anyone at the top to look at their own roadmap, their own incentives, or their own follow-through.</p>
-        <p>If a company wants to sell the world on AI, the least it can do is eat its own dog food first. Ship something fast, stable, and worth trusting — on its own site, for its own customers — before asking anyone else to believe the pitch.</p>
-
-        <h2>The full picture</h2>
-        <p>I re-ran every URL on September 6 and expanded the check past Performance to PageSpeed Insights' other three categories — Accessibility, Best Practices, and SEO — plus Agentic Browsing, the newest and most experimental one. Two Oracle rows are included on purpose:</p>
-      </div>
-
-      <div class="post-table-wide">
-        <div class="table-scroll-wrap">
-          <div class="table-scroll">
-            <table class="data-table">
-              <thead>
-                <tr><th>Company</th><th>View</th><th>Captured</th><th>Perf.</th><th>A11y</th><th>Practices</th><th>SEO</th><th>Agentic</th><th>LCP</th><th>Note</th></tr>
-              </thead>
-              <tbody>
-                <tr><th scope="row">Salesforce</th><td>Mobile</td><td>Sep 6, 12:00 PM</td><td><span class="score-poor">7</span></td><td><span class="score-good">100</span></td><td><span class="score-ok">77</span></td><td><span class="score-good">92</span></td><td><span class="score-poor">1/3</span></td><td>31.3s</td><td>"#1 Agentic CRM" pitch</td></tr>
-                <tr><th scope="row">Workday</th><td>Mobile</td><td>Sep 6, 11:51 AM</td><td><span class="score-poor">32</span></td><td><span class="score-ok">80</span></td><td><span class="score-poor">54</span></td><td><span class="score-ok">77</span></td><td><span class="score-poor">1/2</span></td><td>26.6s</td><td>"Put AI agents to work for you"</td></tr>
-                <tr><th scope="row">Walmart</th><td>Mobile</td><td>Sep 6, 11:52 AM</td><td><span class="score-poor">40</span></td><td><span class="score-good">100</span></td><td><span class="score-poor">54</span></td><td><span class="score-ok">85</span></td><td><span class="score-good">2/2</span></td><td>15.3s</td><td>Labor Day AI shopping promo</td></tr>
-                <tr><th scope="row">Lowe's</th><td>Mobile</td><td>Sep 6, 11:52 AM</td><td><span class="score-poor">33</span></td><td><span class="score-ok">88</span></td><td><span class="score-poor">54</span></td><td><span class="score-good">100</span></td><td><span class="score-poor">1/3</span></td><td>15.9s</td><td>Labor Day promo</td></tr>
-                <tr><th scope="row">Home Depot</th><td>Mobile</td><td>Sep 6, 11:51 AM</td><td><span class="score-poor">33</span></td><td><span class="score-ok">88</span></td><td><span class="score-ok">73</span></td><td><span class="score-good">100</span></td><td><span class="score-good">2/2</span></td><td>5.8s</td><td>Labor Day promo</td></tr>
-                <tr><th scope="row">Amazon</th><td>Mobile</td><td>Sep 6, 11:52 AM</td><td><span class="score-ok">60</span></td><td><span class="score-ok">89</span></td><td><span class="score-ok">77</span></td><td><span class="score-good">92</span></td><td><span class="score-poor">1/2</span></td><td>17.1s</td><td>—</td></tr>
-                <tr><th scope="row">SpaceX</th><td>Mobile</td><td>Sep 6, 11:59 AM</td><td><span class="score-ok">73</span></td><td><span class="score-ok">83</span></td><td><span class="score-good">100</span></td><td><span class="score-ok">82</span></td><td><span class="score-poor">1/2</span></td><td>5.8s</td><td>Not an AI pitch, included for contrast</td></tr>
-                <tr><th scope="row">Oracle</th><td>Mobile</td><td>Sep 6, 11:59 AM</td><td><span class="score-ok">65</span></td><td><span class="score-good">96</span></td><td><span class="score-good">100</span></td><td><span class="score-good">92</span></td><td><span class="score-good">2/2</span></td><td>10.1s</td><td>—</td></tr>
-                <tr><th scope="row">Oracle</th><td>Desktop</td><td>Sep 5, 6:46 PM</td><td><span class="score-ok">71</span></td><td><span class="score-good">97</span></td><td><span class="score-good">100</span></td><td><span class="score-good">92</span></td><td><span class="score-poor">1/2</span></td><td>1.9s</td><td>Re-checked a day later ↓</td></tr>
-                <tr><th scope="row">Oracle</th><td>Desktop</td><td>Sep 6, 11:59 AM</td><td><span class="score-good">92</span></td><td><span class="score-good">97</span></td><td><span class="score-good">100</span></td><td><span class="score-good">92</span></td><td><span class="score-good">2/2</span></td><td>1.7s</td><td>Same URL, one day later</td></tr>
-              </tbody>
-            </table>
-          </div>
+  <section id="pitch-vs-product">
+    <div class="wrap">
+      <div class="section-head">
+        <div><span class="num">01</span></div>
+        <div>
+          <h2>The pitch vs. the product</h2>
+          <p class="lede">Walk through the homepages of some of the biggest names in tech and retail right now and the message is nearly identical: agentic AI, intelligent automation, "put AI agents to work for you."</p>
         </div>
       </div>
+      <p class="body-copy">It's the dominant narrative in every boardroom deck and every keynote. These companies are asking customers, investors, and employees to believe that they are the ones who understand where technology is headed.</p>
+      <p class="body-copy">Then run their own websites through Google's PageSpeed Insights.</p>
 
-      <div class="post-body body-copy">
-        <p>Look at the last two rows. Same URL, same desktop view, one day apart — and the score moved on its own: Performance climbed from 71 to 92, and Agentic Browsing — the newest category in PageSpeed Insights — went from 1/2 to 2/2. Google's own copy on that category calls it "still under development and subject to change," and this is what that looks like in practice: a live, moving rubric, not a settled one. It's a good reminder that every score in this piece — including the "7 out of 100" and "26 seconds" above — is a single point-in-time read, not a permanent verdict. The direction of the story doesn't move with a re-run. Some of these numbers still will.</p>
+      <ul class="dogfood-list">
+        <li>A company marketing itself as the "#1 Agentic CRM" scores a <strong>7 out of 100</strong> on mobile performance, with a Largest Contentful Paint of over 31 seconds and a layout that visibly shifts while it loads.</li>
+        <li>A workplace platform pitching "AI agents to work for you" takes over <strong>26 seconds</strong> for its largest content to appear on mobile.</li>
+        <li>Major retailers running Labor Day AI-assisted shopping promotions load their mobile pages in the 30s and 40s out of 100, with users waiting 15+ seconds and staring at layout jumps before they can act.</li>
+      </ul>
 
-        <p class="dogfood-source"><em>Performance data pulled from Google PageSpeed Insights, captured September 6, 2026, mobile results unless marked desktop. The one exception is the earlier Oracle desktop row, captured September 5, kept for the day-over-day comparison above.</em></p>
+      <div class="dogfood-shots">
+        <figure class="dogfood-shot">
+          <button type="button" class="dogfood-shot-btn" aria-label="Enlarge screenshot" data-full="/images/blog-eyodf-salesforce-mobile.webp" data-full-alt="Full Google PageSpeed Insights mobile report for Salesforce, performance score 7 out of 100, captured September 6, 2026">
+            <img src="/images/blog-eyodf-salesforce-mobile-thumb.webp" width="1400" height="1441" alt="Google PageSpeed Insights mobile report showing a performance score of 7 out of 100 and a 31.3 second Largest Contentful Paint, for a homepage promoting itself as the number one Agentic CRM" loading="lazy" decoding="async">
+          </button>
+          <figcaption><span class="dogfood-score score-poor">7/100</span> mobile — the page pitching itself as the "#1 Agentic CRM" · captured September 6, 2026, 12:00 PM CDT. Click to view the full report.</figcaption>
+        </figure>
+        <figure class="dogfood-shot">
+          <button type="button" class="dogfood-shot-btn" aria-label="Enlarge screenshot" data-full="/images/blog-eyodf-workday-mobile.webp" data-full-alt="Full Google PageSpeed Insights mobile report for Workday, performance score 32 out of 100, captured September 6, 2026">
+            <img src="/images/blog-eyodf-workday-mobile-thumb.webp" width="1400" height="1441" alt="Google PageSpeed Insights mobile report showing a performance score of 32 out of 100 and a 26.6 second Largest Contentful Paint, with the homepage headline reading Put AI agents to work for you" loading="lazy" decoding="async">
+          </button>
+          <figcaption><span class="dogfood-score score-poor">32/100</span> mobile — the page telling you to "put AI agents to work for you" · captured September 6, 2026, 11:51 AM CDT. Click to view the full report.</figcaption>
+        </figure>
       </div>
+
+      <p class="body-copy">These aren't obscure players. These are companies with enormous engineering budgets, entire teams dedicated to performance, and leadership actively telling the market they're the future of intelligent software. If they can't get their own front door to load quickly and reliably, what exactly is the AI supposed to be fixing?</p>
+      <p class="body-copy">This is the dog food test. If the product were as good as the pitch, they'd be running it themselves — and it would show.</p>
+    </div>
+  </section>
+
+  <section id="leadership">
+    <div class="wrap">
+      <div class="section-head">
+        <div><span class="num">02</span></div>
+        <div>
+          <h2>Leadership sets the direction. Leadership owns the outcome.</h2>
+          <p class="lede">Here's the part that doesn't show up in a performance audit but matters just as much: when a product underperforms, it's rarely because the people building it didn't know how to fix it.</p>
+        </div>
+      </div>
+      <p class="body-copy">In most organizations, the people closest to the actual work — the designers, engineers, and product specialists who live inside the interface every day — know exactly where the friction is. They've flagged it. They've proposed fixes. They understand the product better than anyone sitting above them in the org chart, because they're the ones who actually touch it.</p>
+      <p class="body-copy">Leadership's job is to take a product to its full potential — to make the calls on priority, timeline, and investment that let good work actually ship. When that doesn't happen, the instinct in a lot of organizations is to look downward for someone to blame. It's easier to point at "execution" than to examine the decisions, the shifting priorities, or the roadmap that never gave the team room to fix what they already knew was broken.</p>
+      <p class="body-copy">I spent over two decades in design, and I was never put in a management role. For a long time I saw that as something to prove myself against. Looking back, it turned out to be a vantage point. I got to watch, from inside the work itself, how often the gap between what leadership promises publicly and what actually ships comes down to decisions made well above the people doing the building — and how often the people doing the building get blamed for it anyway.</p>
+    </div>
+  </section>
+
+  <section id="pip-culture">
+    <div class="wrap">
+      <div class="section-head">
+        <div><span class="num">03</span></div>
+        <div>
+          <h2>The other weapon: PIP culture</h2>
+          <p class="lede">There's a companion piece to this that doesn't get talked about enough: the Performance Improvement Plan.</p>
+        </div>
+      </div>
+      <p class="body-copy">On paper, a PIP is supposed to be a good-faith tool — a structured way to help someone close a real skills gap, with clear targets and real support to get there. In practice, at a lot of companies, that's not what it's for anymore. It's become a mechanism for manufacturing a paper trail during layoff cycles: put someone on a plan with vague, compressed, or unreachable goals, document the "failure," and terminate for cause instead of counting it as a layoff. No severance owed. No layoff number reported. No unemployment complications for the company to manage.</p>
+      <p class="body-copy">It doesn't do what it's supposed to do. If the goal is actually improving performance, timelines built to be unsurvivable and feedback that arrives after the plan is already in motion aren't designed to help anyone succeed — they're designed to end in the outcome leadership already decided on. And the cost isn't limited to the person on the plan. Everyone else on the team watches it happen. They know what a real improvement plan looks like and what a manufactured one looks like, and once they've seen the second kind, trust in leadership doesn't come back easily. That's a morale hit that spreads far past one person's exit.</p>
+      <p class="body-copy">This is the same pattern as everything above it: a decision made at the top — cut costs, reduce headcount, protect the balance sheet — dressed up and handed downward as an individual performance problem. The company saves the severance. Someone else absorbs the blame.</p>
+    </div>
+  </section>
+
+  <section id="blame">
+    <div class="wrap">
+      <div class="section-head">
+        <div><span class="num">04</span></div>
+        <div>
+          <h2>So if you're looking for someone to blame</h2>
+          <p class="lede">Don't blame the people closest to the product. They usually know exactly what's wrong and have said so, often more than once.</p>
+        </div>
+      </div>
+      <p class="body-copy">Blame is easy to send downward because it doesn't require anyone at the top to look at their own roadmap, their own incentives, or their own follow-through.</p>
+      <p class="body-copy">If a company wants to sell the world on AI, the least it can do is eat its own dog food first. Ship something fast, stable, and worth trusting — on its own site, for its own customers — before asking anyone else to believe the pitch.</p>
+    </div>
+  </section>
+
+  <section id="full-picture">
+    <div class="wrap">
+      <div class="section-head">
+        <div><span class="num">05</span></div>
+        <div>
+          <h2>The full picture</h2>
+          <p class="lede">I re-ran every URL on September 6 and expanded the check past Performance to PageSpeed Insights' other three categories — Accessibility, Best Practices, and SEO — plus Agentic Browsing, the newest and most experimental one.</p>
+        </div>
+      </div>
+      <p class="body-copy">Two Oracle rows are included on purpose:</p>
+
+      <div class="table-scroll-wrap">
+        <div class="table-scroll">
+          <table class="data-table">
+            <thead>
+              <tr><th>Company</th><th>View</th><th>Captured</th><th>Perf.</th><th>A11y</th><th>Practices</th><th>SEO</th><th>Agentic</th><th>LCP</th><th>Note</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Salesforce</th><td>Mobile</td><td>Sep 6, 12:00 PM</td><td><span class="score-poor">7</span></td><td><span class="score-good">100</span></td><td><span class="score-ok">77</span></td><td><span class="score-good">92</span></td><td><span class="score-poor">1/3</span></td><td>31.3s</td><td>"#1 Agentic CRM" pitch</td></tr>
+              <tr><th scope="row">Workday</th><td>Mobile</td><td>Sep 6, 11:51 AM</td><td><span class="score-poor">32</span></td><td><span class="score-ok">80</span></td><td><span class="score-poor">54</span></td><td><span class="score-ok">77</span></td><td><span class="score-poor">1/2</span></td><td>26.6s</td><td>"Put AI agents to work for you"</td></tr>
+              <tr><th scope="row">Walmart</th><td>Mobile</td><td>Sep 6, 11:52 AM</td><td><span class="score-poor">40</span></td><td><span class="score-good">100</span></td><td><span class="score-poor">54</span></td><td><span class="score-ok">85</span></td><td><span class="score-good">2/2</span></td><td>15.3s</td><td>Labor Day AI shopping promo</td></tr>
+              <tr><th scope="row">Lowe's</th><td>Mobile</td><td>Sep 6, 11:52 AM</td><td><span class="score-poor">33</span></td><td><span class="score-ok">88</span></td><td><span class="score-poor">54</span></td><td><span class="score-good">100</span></td><td><span class="score-poor">1/3</span></td><td>15.9s</td><td>Labor Day promo</td></tr>
+              <tr><th scope="row">Home Depot</th><td>Mobile</td><td>Sep 6, 11:51 AM</td><td><span class="score-poor">33</span></td><td><span class="score-ok">88</span></td><td><span class="score-ok">73</span></td><td><span class="score-good">100</span></td><td><span class="score-good">2/2</span></td><td>5.8s</td><td>Labor Day promo</td></tr>
+              <tr><th scope="row">Amazon</th><td>Mobile</td><td>Sep 6, 11:52 AM</td><td><span class="score-ok">60</span></td><td><span class="score-ok">89</span></td><td><span class="score-ok">77</span></td><td><span class="score-good">92</span></td><td><span class="score-poor">1/2</span></td><td>17.1s</td><td>—</td></tr>
+              <tr><th scope="row">SpaceX</th><td>Mobile</td><td>Sep 6, 11:59 AM</td><td><span class="score-ok">73</span></td><td><span class="score-ok">83</span></td><td><span class="score-good">100</span></td><td><span class="score-ok">82</span></td><td><span class="score-poor">1/2</span></td><td>5.8s</td><td>Not an AI pitch, included for contrast</td></tr>
+              <tr><th scope="row">Oracle</th><td>Mobile</td><td>Sep 6, 11:59 AM</td><td><span class="score-ok">65</span></td><td><span class="score-good">96</span></td><td><span class="score-good">100</span></td><td><span class="score-good">92</span></td><td><span class="score-good">2/2</span></td><td>10.1s</td><td>—</td></tr>
+              <tr><th scope="row">Oracle</th><td>Desktop</td><td>Sep 5, 6:46 PM</td><td><span class="score-ok">71</span></td><td><span class="score-good">97</span></td><td><span class="score-good">100</span></td><td><span class="score-good">92</span></td><td><span class="score-poor">1/2</span></td><td>1.9s</td><td>Re-checked a day later ↓</td></tr>
+              <tr><th scope="row">Oracle</th><td>Desktop</td><td>Sep 6, 11:59 AM</td><td><span class="score-good">92</span></td><td><span class="score-good">97</span></td><td><span class="score-good">100</span></td><td><span class="score-good">92</span></td><td><span class="score-good">2/2</span></td><td>1.7s</td><td>Same URL, one day later</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <p class="body-copy">Look at the last two rows. Same URL, same desktop view, one day apart — and the score moved on its own: Performance climbed from 71 to 92, and Agentic Browsing — the newest category in PageSpeed Insights — went from 1/2 to 2/2. Google's own copy on that category calls it "still under development and subject to change," and this is what that looks like in practice: a live, moving rubric, not a settled one. It's a good reminder that every score in this piece — including the "7 out of 100" and "26 seconds" above — is a single point-in-time read, not a permanent verdict. The direction of the story doesn't move with a re-run. Some of these numbers still will.</p>
+
+      <p class="dogfood-source"><em>Performance data pulled from Google PageSpeed Insights, captured September 6, 2026, mobile results unless marked desktop. The one exception is the earlier Oracle desktop row, captured September 5, kept for the day-over-day comparison above.</em></p>
+
       <div class="post-back">
         <a href="/blog/">&larr; Back to all posts</a>
       </div>
