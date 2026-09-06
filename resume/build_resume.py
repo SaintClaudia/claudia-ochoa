@@ -25,15 +25,15 @@ from reportlab.platypus import (
 ROOT = Path('/Users/claudiaochoa/Documents/Projects/claudia-ochoa')
 OUTPUT = ROOT / 'output/pdf/Claudia_Ochoa_Resume.pdf'
 
-BACKGROUND = colors.HexColor('#0A0A0B')
+BACKGROUND = colors.HexColor('#131313')
 SURFACE = colors.HexColor('#151517')
-ESPRESSO = colors.HexColor('#F2F2F4')
-CLAY = colors.HexColor('#B4B4BC')
+ESPRESSO = colors.HexColor('#FFFFFF')
+CLAY = colors.HexColor('#999999')
 CLAY_DEEP = colors.HexColor('#F2F2F4')
 CREAM = colors.HexColor('#151517')
 SAND = colors.HexColor('#303034')
 INK_SOFT = colors.HexColor('#A4A4AC')
-WHITE = colors.HexColor('#F2F2F4')
+WHITE = colors.HexColor('#999999')
 
 pdfmetrics.registerFont(TTFont('Georgia', '/System/Library/Fonts/Supplemental/Georgia.ttf'))
 pdfmetrics.registerFont(TTFont('Georgia-Bold', '/System/Library/Fonts/Supplemental/Georgia Bold.ttf'))
@@ -50,10 +50,10 @@ class ResumeDoc(BaseDocTemplate):
         super().__init__(
             filename,
             pagesize=letter,
-            leftMargin=0.65 * inch,
-            rightMargin=0.65 * inch,
-            topMargin=0.58 * inch,
-            bottomMargin=0.55 * inch,
+            leftMargin=0.3 * inch,
+            rightMargin=0.3 * inch,
+            topMargin=0.28 * inch,
+            bottomMargin=0.45 * inch,
             title='Claudia Ochoa - AI Experience, Product Design, and Brand Strategy Leader',
             author='Claudia Ochoa',
             subject='Resume',
@@ -76,10 +76,6 @@ def draw_page(canvas: Canvas, doc):
     width, height = letter
     canvas.setFillColor(BACKGROUND)
     canvas.rect(0, 0, width, height, stroke=0, fill=1)
-    canvas.setFillColor(SAND)
-    canvas.rect(0, height - 0.12 * inch, width, 0.12 * inch, stroke=0, fill=1)
-    canvas.setFillColor(ESPRESSO)
-    canvas.rect(0, height - 0.12 * inch, 1.15 * inch, 0.12 * inch, stroke=0, fill=1)
     canvas.setStrokeColor(SAND)
     canvas.line(doc.leftMargin, 0.37 * inch, width - doc.rightMargin, 0.37 * inch)
     canvas.setFont('Arial', 7.5)
@@ -91,14 +87,14 @@ def draw_page(canvas: Canvas, doc):
 
 styles = getSampleStyleSheet()
 name_style = ParagraphStyle(
-    'Name', fontName='Georgia-Bold', fontSize=26, leading=28, textColor=ESPRESSO, spaceAfter=3
+    'Name', fontName='Arial-Bold', fontSize=26, leading=28, textColor=ESPRESSO, spaceAfter=3
 )
 title_style = ParagraphStyle(
-    'Title', fontName='Arial-Bold', fontSize=9.1, leading=11, textColor=CLAY,
+    'Title', fontName='Arial-Bold', fontSize=9.1, leading=11, textColor=ESPRESSO,
     tracking=1.15, spaceAfter=7
 )
 contact_style = ParagraphStyle(
-    'Contact', fontName='Arial', fontSize=8.7, leading=11, textColor=INK_SOFT, spaceAfter=11
+    'Contact', fontName='Arial', fontSize=8.7, leading=11, textColor=ESPRESSO, spaceAfter=11
 )
 section_style = ParagraphStyle(
     'Section', fontName='Arial-Bold', fontSize=8.5, leading=10, textColor=ESPRESSO,
@@ -114,7 +110,7 @@ company_style = ParagraphStyle(
     'Company', fontName='Arial-Bold', fontSize=8.8, leading=10.5, textColor=CLAY, spaceAfter=3
 )
 body_style = ParagraphStyle(
-    'Body', fontName='Arial', fontSize=8.45, leading=11.25, textColor=INK_SOFT, spaceAfter=3
+    'Body', fontName='Arial', fontSize=8.45, leading=11.25, textColor=CLAY, spaceAfter=3
 )
 bullet_style = ParagraphStyle(
     'Bullet', fontName='Arial', fontSize=8.35, leading=10.9, textColor=WHITE,
@@ -128,7 +124,7 @@ impact_number_style = ParagraphStyle(
     alignment=TA_CENTER, spaceAfter=2
 )
 impact_label_style = ParagraphStyle(
-    'ImpactLabel', fontName='Arial', fontSize=7.5, leading=9.2, textColor=INK_SOFT,
+    'ImpactLabel', fontName='Arial', fontSize=7.5, leading=9.2, textColor=CLAY,
     alignment=TA_CENTER
 )
 
@@ -138,11 +134,11 @@ def P(text, style):
 
 
 def section(title):
-    return [P(title.upper(), section_style), HRFlowable(width='100%', thickness=0.7, color=SAND, spaceAfter=5)]
+    return [P(title.upper(), section_style)]
 
 
 def bullets(items):
-    return [P(f'- {item}', bullet_style) for item in items]
+    return [P(f'• {item}', bullet_style) for item in items]
 
 
 def role(title, company, dates, intro, items, trailing_space=5):
@@ -160,13 +156,13 @@ story = [
     P('Claudia Ochoa', name_style),
     P('AI EXPERIENCE  |  PRODUCT DESIGN  |  BRAND STRATEGY', title_style),
     P(
-        '<link href="https://claudiaochoa.co" color="#B4B4BC">claudiaochoa.co</link>'
-        '  |  <link href="https://www.linkedin.com/in/claudiajochoa/" color="#B4B4BC">linkedin.com/in/claudiajochoa</link>',
+        '<link href="https://claudiaochoa.co" color="#FFFFFF">claudiaochoa.co</link>'
+        '  |  <link href="https://www.linkedin.com/in/claudiajochoa/" color="#FFFFFF">linkedin.com/in/claudiajochoa</link>',
         contact_style,
     ),
     *section('Leadership Profile'),
     P(
-        '<b>AI experience and product design leader with 20+ years of experience</b> connecting emerging technology, '
+        'AI experience and product design leader with 20+ years of experience connecting emerging technology, '
         'business strategy, brand, and human-centered design. Sets product direction, turns ambiguous problems into '
         'clear experiences, and aligns leaders, designers, product managers, and engineers through delivery. Work spans '
         'enterprise platforms, consumer e-commerce, design systems, and responsible AI.',
@@ -180,11 +176,8 @@ impact_data = [[
     [P('24 hours', impact_number_style), P('Created GenAI hiring vision that earned executive support', impact_label_style)],
     [P('30 participants', impact_number_style), P('Validated Home Depot gift-card redesign before launch', impact_label_style)],
 ]]
-impact_table = Table(impact_data, colWidths=[story_width := (letter[0] - 2 * 0.65 * inch) / 3] * 3)
+impact_table = Table(impact_data, colWidths=[story_width := (letter[0] - 2 * 0.3 * inch) / 3] * 3)
 impact_table.setStyle(TableStyle([
-    ('BACKGROUND', (0, 0), (-1, -1), SURFACE),
-    ('BOX', (0, 0), (-1, -1), 0.6, SAND),
-    ('INNERGRID', (0, 0), (-1, -1), 0.6, SAND),
     ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
     ('TOPPADDING', (0, 0), (-1, -1), 8),
     ('BOTTOMPADDING', (0, 0), (-1, -1), 8),
@@ -195,7 +188,7 @@ story.extend([
     impact_table,
     *section('Core Expertise'),
     P(
-        '<b>AI product and experience strategy</b>  |  Human-centered and responsible AI  |  Product vision and roadmaps  |  '
+        'AI product and experience strategy  |  Human-centered and responsible AI  |  Product vision and roadmaps  |  '
         'Design organization leadership  |  Enterprise UX and e-commerce  |  Research and usability testing  |  '
         'Design systems and accessibility  |  Executive storytelling  |  Prototyping and front-end delivery',
         small_style,
@@ -270,22 +263,22 @@ story.extend([
     ),
     Spacer(1, 18),
     *section('Earlier Leadership Experience'),
-    P('<b>VMware</b> - Art Director, Brand &amp; Marketing Web Design  |  2011 - 2012', small_style),
-    P('<b>Salesforce</b> - Visual Designer, Dreamforce Identity &amp; Web  |  2010 - 2011', small_style),
-    P('<b>Bio-Rad</b> - Interactive Designer, Data Visualization &amp; UX  |  2009 - 2010', small_style),
-    P('<b>RedEnvelope</b> - Design Manager, E-commerce UX &amp; Brand  |  2005 - 2008', small_style),
+    P('<font color="#FFFFFF"><b>VMware</b></font> - Art Director, Brand &amp; Marketing Web Design  |  2011 - 2012', small_style),
+    P('<font color="#FFFFFF"><b>Salesforce</b></font> - Visual Designer, Dreamforce Identity &amp; Web  |  2010 - 2011', small_style),
+    P('<font color="#FFFFFF"><b>Bio-Rad</b></font> - Interactive Designer, Data Visualization &amp; UX  |  2009 - 2010', small_style),
+    P('<font color="#FFFFFF"><b>RedEnvelope</b></font> - Design Manager, E-commerce UX &amp; Brand  |  2005 - 2008', small_style),
     Spacer(1, 18),
     *section('Education'),
-    P('<b>Juris Doctor studies</b>, Purdue Global Law School  |  In progress', small_style),
-    P('<b>Master of Business Administration</b>, Purdue University Global  |  2026', small_style),
-    P('<b>Bachelor of Fine Arts, Communication Design</b>, Texas State University  |  2003', small_style),
+    P('<font color="#FFFFFF"><b>Juris Doctor studies</b></font>, Purdue Global Law School  |  In progress', small_style),
+    P('<font color="#FFFFFF"><b>Master of Business Administration</b></font>, Purdue University Global  |  2026', small_style),
+    P('<font color="#FFFFFF"><b>Bachelor of Fine Arts, Communication Design</b></font>, Texas State University  |  2003', small_style),
     Spacer(1, 18),
     *section('Selected Independent Work'),
     P(
-        '<b>Lovesac customer experience redesign</b>  |  2026<br/>'
+        '<font color="#FFFFFF"><b>Lovesac customer experience redesign</b></font>  |  2026<br/>'
         'Created a live e-commerce redesign and six-part case study spanning research, information architecture, '
         'content strategy, accessibility, performance, AI readiness, and front-end development.  '
-        '<link href="https://claudiaochoa.co/work/lovesac-case-study.html" color="#B4B4BC">View case study</link>',
+        '<link href="https://claudiaochoa.co/work/lovesac-case-study.html" color="#999999">View case study</link>',
         small_style,
     ),
 ])
