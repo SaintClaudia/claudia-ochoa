@@ -16,7 +16,9 @@ let lastScroll = 0;
 const nav = document.querySelector('body > nav:not(.toc-rail)');
 window.addEventListener('scroll', () => {
   const current = window.scrollY;
-  if (current > 100 && current > lastScroll) {
+  if (document.body.classList.contains('nav-menu-open')) {
+    nav?.classList.remove('nav-hidden');
+  } else if (current > 100 && current > lastScroll) {
     nav?.classList.add('nav-hidden');
   } else {
     nav?.classList.remove('nav-hidden');
@@ -29,6 +31,7 @@ window.addEventListener('scroll', () => {
 const navMenu = document.getElementById('nav-menu');
 const navMenuBtn = document.getElementById('nav-menu-btn');
 const navMenuBackdrop = document.getElementById('nav-menu-backdrop');
+const navMenuPanel = document.getElementById('nav-menu-panel');
 if (navMenu && navMenuBtn) {
   const closeNavMenu = () => {
     navMenu.classList.remove('open');
@@ -36,6 +39,7 @@ if (navMenu && navMenuBtn) {
     navMenuBtn.setAttribute('aria-label', 'Open menu');
     document.body.style.overflow = '';
     document.body.classList.remove('nav-menu-open');
+    if (navMenuPanel) navMenuPanel.inert = true;
   };
   navMenuBtn.addEventListener('click', (e) => {
     e.stopPropagation();
@@ -44,13 +48,15 @@ if (navMenu && navMenuBtn) {
     navMenuBtn.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
     document.body.style.overflow = isOpen ? 'hidden' : '';
     document.body.classList.toggle('nav-menu-open', isOpen);
+    nav?.classList.remove('nav-hidden');
+    if (navMenuPanel) navMenuPanel.inert = !isOpen;
   });
-  navMenu.querySelectorAll('.nav-menu-panel a').forEach((link) => {
+  navMenuPanel?.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', closeNavMenu);
   });
   navMenuBackdrop?.addEventListener('click', closeNavMenu);
   document.addEventListener('click', (e) => {
-    if (!navMenu.contains(e.target)) closeNavMenu();
+    if (!navMenu.contains(e.target) && !navMenuPanel?.contains(e.target)) closeNavMenu();
   });
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeNavMenu();
@@ -58,7 +64,7 @@ if (navMenu && navMenuBtn) {
 
   // Mark the current page's link (and its dot, for sub-items) active.
   const currentPath = location.pathname.replace(/index\.html$/, '') || '/';
-  navMenu.querySelectorAll('.nav-menu-panel a[href]').forEach((link) => {
+  navMenuPanel?.querySelectorAll('a[href]').forEach((link) => {
     const href = link.getAttribute('href');
     if (!href || href === '#' || /^https?:\/\//.test(href) || href.endsWith('.pdf')) return;
     const linkPath = href.replace(/index\.html$/, '') || '/';
