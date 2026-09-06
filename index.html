@@ -107,9 +107,10 @@
     .portfolio-agent-kicker::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 18px rgba(74,222,128,.6);}
     .portfolio-agent h2{font-size:clamp(30px,4vw,46px);font-weight:600;line-height:1.04;max-width:10ch;}
     .portfolio-agent-intro{margin-top:18px;max-width:40ch;color:var(--ink-soft);font-size:16px;line-height:1.65;}
+    .portfolio-agent-prompt{color:var(--espresso);font-weight:600;}
     .portfolio-agent-tech{margin-top:22px;color:var(--ink-soft);font-size:12.5px;line-height:1.6;}
     .portfolio-agent-form{position:relative;z-index:1;display:flex;flex-direction:column;gap:14px;}
-    .portfolio-agent-label{font-size:14px;font-weight:600;color:var(--espresso);}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
     .portfolio-agent-suggestions{display:flex;flex-wrap:wrap;gap:8px;}
     .portfolio-agent-suggestion{appearance:none;border:1px solid var(--line);border-radius:999px;background:rgba(10,10,11,.35);color:var(--ink);padding:9px 13px;font:500 12.5px/1.35 'Inter',sans-serif;text-align:left;cursor:pointer;transition:border-color .2s ease,color .2s ease,background .2s ease;}
     .portfolio-agent-suggestion:hover,.portfolio-agent-suggestion:focus-visible{border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.06);color:var(--espresso);}
@@ -237,11 +238,11 @@
         <div>
           <div class="portfolio-agent-kicker">Live portfolio intelligence</div>
           <h2 id="portfolio-agent-title">Ask the work.</h2>
-          <p class="portfolio-agent-intro">Every answer traces back to a real project.</p>
+          <p class="portfolio-agent-intro">Every answer traces back to a real project. <span class="portfolio-agent-prompt">What would you like to know?</span></p>
           <p class="portfolio-agent-tech">Read-only · Published sources only · No conversation history stored</p>
         </div>
         <form class="portfolio-agent-form" id="portfolio-agent-form">
-          <label class="portfolio-agent-label" for="portfolio-agent-input">What would you like to know?</label>
+          <label class="sr-only" for="portfolio-agent-input">What would you like to know?</label>
           <div class="portfolio-agent-suggestions" aria-label="Suggested questions">
             <button class="portfolio-agent-suggestion" type="button">How does Claudia lead responsible AI work?</button>
             <button class="portfolio-agent-suggestion" type="button">What evidence shows executive influence?</button>
