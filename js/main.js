@@ -55,6 +55,15 @@ if (navMenu && navMenuBtn) {
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeNavMenu();
   });
+
+  // Mark the current page's link (and its dot, for sub-items) active.
+  const currentPath = location.pathname.replace(/index\.html$/, '') || '/';
+  navMenu.querySelectorAll('.nav-menu-panel a[href]').forEach((link) => {
+    const href = link.getAttribute('href');
+    if (!href || href === '#' || /^https?:\/\//.test(href) || href.endsWith('.pdf')) return;
+    const linkPath = href.replace(/index\.html$/, '') || '/';
+    if (linkPath === currentPath) link.classList.add('active');
+  });
 }
 
 // === CONTACT OVERLAY ===
