@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- ANALYTICS:START -->
+<!-- Google Analytics loads after the critical rendering window. -->
+<script>
+  (function () {
+    // The gtag.js URL is a fixed, hardcoded string — never user input — so
+    // this policy is a pass-through, not a sanitizer.
+    var ttPolicy = (window.trustedTypes && trustedTypes.createPolicy)
+      ? trustedTypes.createPolicy('site-analytics', { createScriptURL: function (url) { return url; } })
+      : null;
+
+    function loadAnalytics() {
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      window.gtag('js', new Date());
+      window.gtag('config', 'G-3G6X2P2669');
+
+      var gtagUrl = 'https://www.googletagmanager.com/gtag/js?id=G-3G6X2P2669';
+      var script = document.createElement('script');
+      script.async = true;
+      script.src = ttPolicy ? ttPolicy.createScriptURL(gtagUrl) : gtagUrl;
+      document.head.appendChild(script);
+    }
+
+    window.addEventListener('load', function () {
+      window.setTimeout(loadAnalytics, 3000);
+    }, { once: true });
+  }());
+</script>
+<!-- ANALYTICS:END -->
+<!-- HEAD-BASICS:START -->
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=7">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png?v=7">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=7">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=6">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- HEAD-BASICS:END -->
+  <title>Eat Your Own Dog Food — Claudia Ochoa</title>
+  <meta name="description" content="AI companies are pitching agentic everything, but running their own websites through PageSpeed Insights tells a different story. On leadership, blame, and the gap between the pitch and the product.">
+  <meta property="og:title" content="Eat Your Own Dog Food — Claudia Ochoa">
+  <meta property="og:description" content="AI companies are pitching agentic everything. Their own websites tell a different story.">
+  <meta property="og:url" content="https://claudiaochoa.co/blog/eat-your-own-dog-food.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Claudia Ochoa">
+  <meta property="og:image" content="https://claudiaochoa.co/images/og-card.png?v=2">
+  <meta property="article:published_time" content="2026-09-06">
+  <meta property="article:author" content="Claudia Ochoa">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Eat Your Own Dog Food — Claudia Ochoa">
+  <meta name="twitter:description" content="AI companies are pitching agentic everything. Their own websites tell a different story.">
+  <meta name="twitter:image" content="https://claudiaochoa.co/images/og-card.png?v=2">
+  <link rel="canonical" href="https://claudiaochoa.co/blog/eat-your-own-dog-food.html">
+<!-- PORTFOLIO-FONTS:START -->
+<link rel="preload" href="/fonts/inter-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fraunces-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
+<!-- PORTFOLIO-FONTS:END -->
+  <link rel="stylesheet" href="/css/case-study.css?v=28">
+  <meta name="theme-color" content="#0A0A0B">
+  <style>
+    .post-hero{padding:80px 0 56px;}
+    .post-hero .wrap{border-bottom:1px solid var(--line);padding-bottom:48px;}
+    .post-hero h1{font-size:clamp(32px,4.4vw,50px);font-weight:600;line-height:1.1;max-width:20ch;}
+    .post-hero .sub{margin-top:20px;font-size:18px;line-height:1.55;color:var(--ink-soft);max-width:60ch;}
+    .post-byline{margin-top:20px;font-size:12px;letter-spacing:.06em;color:var(--ink-soft);font-weight:500;}
+    .post-body{padding-top:56px;display:flex;flex-direction:column;gap:24px;max-width:72ch;}
+    .post-body h2{margin-top:16px;font-size:clamp(22px,2.8vw,30px);}
+    .post-back{padding:24px 0 0;}
+    .post-back a{font-size:14px;color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px;}
+    .post-back a:hover{color:var(--espresso);border-color:var(--espresso);}
+
+    .dogfood-list{list-style:none;display:flex;flex-direction:column;gap:16px;}
+    .dogfood-list li{position:relative;padding-left:24px;font-size:16px;line-height:1.7;color:var(--ink-soft);}
+    .dogfood-list li::before{content:'';position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%;background:var(--clay-deep);}
+    .dogfood-list strong{color:var(--espresso);}
+
+    .dogfood-shots{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+    .dogfood-shot{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--paper);}
+    .dogfood-shot img{display:block;width:100%;height:auto;}
+    .dogfood-shot figcaption{padding:14px 16px;font-size:13px;line-height:1.5;color:var(--ink-soft);}
+    .dogfood-score{font-weight:700;color:var(--espresso);}
+    .score-poor{color:#f87171;}
+    .score-ok{color:var(--ink);}
+    .score-good{color:var(--accent);}
+    .dogfood-source{font-size:13.5px;color:var(--ink-soft);font-style:italic;}
+    @media(max-width:640px){.dogfood-shots{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<!-- PORTFOLIO-NAV-MENU:START -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-menu" id="nav-menu">
+      <button type="button" class="nav-menu-btn" id="nav-menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu-panel">
+        <svg width="24" height="24" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2.5" y="2.5" width="13" height="13" rx="2.5" stroke="currentColor" stroke-width="1.4"/><line class="nav-menu-icon-divider" x1="7.5" y1="2.5" x2="7.5" y2="15.5" stroke="currentColor" stroke-width="1.4"/><path class="nav-menu-icon-arrow nav-menu-icon-arrow-closed" d="M13 6.7 L10 9 L13 11.3" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path class="nav-menu-icon-arrow nav-menu-icon-arrow-open" d="M10 6.7 L13 9 L10 11.3" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+<div class="nav-menu-backdrop" id="nav-menu-backdrop"></div>
+<div class="nav-menu-panel" id="nav-menu-panel" inert>
+        <a class="nav-menu-profile" href="/about.html">
+          <span class="nav-menu-avatar" aria-hidden="true"><img src="/images/nav-profile.png" alt="" width="160" height="160"></span>
+          <span>Claudia Ochoa</span>
+        </a>
+        <a href="/"><svg width="16" height="16" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2.5 8.5L9 3l6.5 5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 7.5v7a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 15.5V11h4v4.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Home</span></a>
+        <div class="nav-menu-panel-label">Lovesac</div>
+        <a class="sub" href="/work/lovesac-case-study.html"><span>Redesign</span></a>
+        <a class="sub" href="/work/lovesac-case-study-2.html"><span>Deep Dive</span></a>
+        <a class="sub" href="/work/lovesac-case-study-3.html"><span>Research</span></a>
+        <a class="sub" href="/work/lovesac-case-study-4.html"><span>Content Strategy</span></a>
+        <a class="sub" href="/work/lovesac-case-study-5.html"><span>Development</span></a>
+        <a class="sub" href="/work/lovesac-case-study-6.html"><span>Synopsis</span></a>
+        <div class="nav-menu-panel-label">Walmart</div>
+        <a class="sub" href="/work/walmart-genai.html"><span>GenAI Candidate Experience</span></a>
+        <a class="sub" href="/work/walmart-my-hiring-dashboard.html"><span>My Hiring Dashboard</span></a>
+        <div class="nav-menu-panel-label">Home Depot</div>
+        <a class="sub" href="/work/thd-giftcards.html"><span>Gift Cards</span></a>
+        <div class="nav-menu-panel-label">More</div>
+        <a href="/about.html"><svg width="16" height="16" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="9" cy="6" r="3" stroke="currentColor" stroke-width="1.4"/><path d="M3.5 15c0-3 2.5-5 5.5-5s5.5 2 5.5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><span>About</span></a>
+        <a href="/blog/"><svg width="16" height="16" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M11.5 2.8l3.7 3.7L6.4 15.3l-4.1.8.8-4.1L11.5 2.8z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/><path d="M9.8 4.5l3.7 3.7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><span>Blog</span></a>
+        <a href="/output/pdf/Claudia_Ochoa_Resume.pdf" target="_blank" rel="noopener noreferrer"><svg width="16" height="16" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 2.5h5.5L14 6v9a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M10.5 2.5V6H14" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M6.5 10h5M6.5 12.5h5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg><span>Résumé</span></a>
+        <a href="https://www.linkedin.com/in/claudiajochoa/" target="_blank" rel="noopener noreferrer"><svg width="16" height="16" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="2" y="2" width="14" height="14" rx="3" stroke="currentColor" stroke-width="1.4"/><path d="M6.2 7.5v6M6.2 5.3v.01" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M9 13.5V9.8c0-1 .7-1.8 1.8-1.8s1.8.8 1.8 1.8v3.7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>LinkedIn</span></a>
+        <a href="#" id="nav-menu-contact-toggle"><svg width="16" height="16" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="2" y="4" width="14" height="10" rx="1.5" stroke="currentColor" stroke-width="1.4"/><path d="M2.5 5l6.5 5 6.5-5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Contact</span></a>
+      </div>
+<!-- PORTFOLIO-NAV-MENU:END -->
+<!-- CONTACT-OVERLAY:START -->
+<div class="contact-overlay" id="contact-drawer" role="dialog" aria-modal="true" aria-labelledby="contact-drawer-title" aria-hidden="true">
+  <button class="contact-overlay-close" id="contact-drawer-close" aria-label="Close contact form">&times;</button>
+  <div class="contact-overlay-inner">
+    <h2 class="contact-overlay-label" id="contact-drawer-title">Say hello</h2>
+    <form id="contact-form" class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="2135e194-3403-43df-b617-bdb4ce01ba13">
+      <div class="contact-field">
+        <label for="contact-name" class="contact-field-label">Name</label>
+        <input type="text" id="contact-name" name="name" class="contact-input" required>
+      </div>
+      <div class="contact-field">
+        <label for="contact-email" class="contact-field-label">Email or phone</label>
+        <input type="text" id="contact-email" name="email_or_phone" class="contact-input" required>
+      </div>
+      <div class="contact-field">
+        <label for="contact-message" class="contact-field-label">Message</label>
+        <textarea id="contact-message" name="message" class="contact-input contact-textarea" required></textarea>
+      </div>
+      <button type="submit" class="contact-submit">Send</button>
+      <p class="contact-form-status" id="contact-form-status" role="status"></p>
+    </form>
+  </div>
+</div>
+<!-- CONTACT-OVERLAY:END -->
+
+<main id="main-content" class="page">
+  <section class="post-hero">
+    <div class="wrap">
+      <div class="eyebrow">Blog</div>
+      <h1>Eat Your Own Dog Food</h1>
+      <p class="sub">AI companies are pitching agentic everything. Their own websites tell a different story.</p>
+      <p class="post-byline">September 6, 2026 · 5 min read</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="post-body body-copy">
+        <p>The phrase has a history worth remembering before we talk about where it applies today. Back in the 1980s, Microsoft was getting crushed by Novell in networking. Paul Maritz, tasked with turning around a product nobody was using, sent his team a blunt email: if they didn't have real customers, they'd have to become their own. Engineering leader Brian Valentine set up an internal server literally named "dogfood," and the practice stuck. It became shorthand for a simple standard: don't ask anyone to trust what you haven't tested on yourself first. (<a href="https://www.geekwire.com/2025/eat-your-own-dog-food-how-microsoft-popularized-one-of-the-yuckiest-terms-in-tech-history/">GeekWire has the full origin story.</a>)</p>
+
+        <p>Forty years later, it's worth asking how many companies still live by that standard — especially the ones currently telling the world that AI is about to change everything.</p>
+
+        <h2>The pitch vs. the product</h2>
+        <p>Walk through the homepages of some of the biggest names in tech and retail right now and the message is nearly identical: agentic AI, intelligent automation, "put AI agents to work for you." It's the dominant narrative in every boardroom deck and every keynote. These companies are asking customers, investors, and employees to believe that they are the ones who understand where technology is headed.</p>
+        <p>Then run their own websites through Google's PageSpeed Insights.</p>
+
+        <ul class="dogfood-list">
+          <li>A company marketing itself as the "#1 Agentic CRM" scores a <strong>4 out of 100</strong> on mobile performance, with a Largest Contentful Paint of over 14 seconds and a layout that visibly shifts while it loads.</li>
+          <li>A workplace platform pitching "AI agents to work for you" takes nearly <strong>26 seconds</strong> for its largest content to appear on mobile.</li>
+          <li>Major retailers running Labor Day AI-assisted shopping promotions load their mobile pages in the 30s out of 100, with users waiting 15+ seconds and staring at layout jumps before they can act.</li>
+        </ul>
+
+        <div class="dogfood-shots">
+          <figure class="dogfood-shot">
+            <img src="/images/blog-eyodf-salesforce-mobile.webp" width="1400" height="805" alt="Google PageSpeed Insights mobile report showing a performance score of 4 out of 100 and a 14.3 second Largest Contentful Paint, for a homepage promoting itself as the number one Agentic CRM" loading="lazy" decoding="async">
+            <figcaption><span class="dogfood-score score-poor">4/100</span> mobile — the page pitching itself as the "#1 Agentic CRM"</figcaption>
+          </figure>
+          <figure class="dogfood-shot">
+            <img src="/images/blog-eyodf-workday-mobile.webp" width="1400" height="805" alt="Google PageSpeed Insights mobile report showing a performance score of 28 out of 100 and a 25.9 second Largest Contentful Paint, with the homepage headline reading Put AI agents to work for you" loading="lazy" decoding="async">
+            <figcaption><span class="dogfood-score score-poor">28/100</span> mobile — the page telling you to "put AI agents to work for you"</figcaption>
+          </figure>
+        </div>
+
+        <p>These aren't obscure players. These are companies with enormous engineering budgets, entire teams dedicated to performance, and leadership actively telling the market they're the future of intelligent software. If they can't get their own front door to load quickly and reliably, what exactly is the AI supposed to be fixing?</p>
+        <p>This is the dog food test. If the product were as good as the pitch, they'd be running it themselves — and it would show.</p>
+
+        <h2>Leadership sets the direction. Leadership owns the outcome.</h2>
+        <p>Here's the part that doesn't show up in a performance audit but matters just as much: when a product underperforms, it's rarely because the people building it didn't know how to fix it.</p>
+        <p>In most organizations, the people closest to the actual work — the designers, engineers, and product specialists who live inside the interface every day — know exactly where the friction is. They've flagged it. They've proposed fixes. They understand the product better than anyone sitting above them in the org chart, because they're the ones who actually touch it.</p>
+        <p>Leadership's job is to take a product to its full potential — to make the calls on priority, timeline, and investment that let good work actually ship. When that doesn't happen, the instinct in a lot of organizations is to look downward for someone to blame. It's easier to point at "execution" than to examine the decisions, the shifting priorities, or the roadmap that never gave the team room to fix what they already knew was broken.</p>
+        <p>I spent over two decades in design, and I was never put in a management role. For a long time I saw that as something to prove myself against. Looking back, it turned out to be a vantage point. I got to watch, from inside the work itself, how often the gap between what leadership promises publicly and what actually ships comes down to decisions made well above the people doing the building — and how often the people doing the building get blamed for it anyway.</p>
+
+        <h2>The other weapon: PIP culture</h2>
+        <p>There's a companion piece to this that doesn't get talked about enough: the Performance Improvement Plan.</p>
+        <p>On paper, a PIP is supposed to be a good-faith tool — a structured way to help someone close a real skills gap, with clear targets and real support to get there. In practice, at a lot of companies, that's not what it's for anymore. It's become a mechanism for manufacturing a paper trail during layoff cycles: put someone on a plan with vague, compressed, or unreachable goals, document the "failure," and terminate for cause instead of counting it as a layoff. No severance owed. No layoff number reported. No unemployment complications for the company to manage.</p>
+        <p>It doesn't do what it's supposed to do. If the goal is actually improving performance, timelines built to be unsurvivable and feedback that arrives after the plan is already in motion aren't designed to help anyone succeed — they're designed to end in the outcome leadership already decided on. And the cost isn't limited to the person on the plan. Everyone else on the team watches it happen. They know what a real improvement plan looks like and what a manufactured one looks like, and once they've seen the second kind, trust in leadership doesn't come back easily. That's a morale hit that spreads far past one person's exit.</p>
+        <p>This is the same pattern as everything above it: a decision made at the top — cut costs, reduce headcount, protect the balance sheet — dressed up and handed downward as an individual performance problem. The company saves the severance. Someone else absorbs the blame.</p>
+
+        <h2>So if you're looking for someone to blame</h2>
+        <p>Don't blame the people closest to the product. They usually know exactly what's wrong and have said so, often more than once. Blame is easy to send downward because it doesn't require anyone at the top to look at their own roadmap, their own incentives, or their own follow-through.</p>
+        <p>If a company wants to sell the world on AI, the least it can do is eat its own dog food first. Ship something fast, stable, and worth trusting — on its own site, for its own customers — before asking anyone else to believe the pitch.</p>
+
+        <h2>The full picture</h2>
+        <p>For the record — including a couple of companies that prove it's possible to do better — here's every capture referenced above:</p>
+
+        <div class="table-scroll-wrap">
+          <div class="table-scroll">
+            <table class="data-table">
+              <thead>
+                <tr><th>Company</th><th>View</th><th>Performance</th><th>LCP</th><th>Note</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Salesforce</th><td>Mobile</td><td><span class="score-poor">4</span></td><td>14.3s</td><td>"#1 Agentic CRM" pitch</td></tr>
+                <tr><th scope="row">Salesforce</th><td>Desktop</td><td><span class="score-poor">34</span></td><td>7.0s</td><td>—</td></tr>
+                <tr><th scope="row">Workday</th><td>Mobile</td><td><span class="score-poor">28</span></td><td>25.9s</td><td>"Put AI agents to work for you"</td></tr>
+                <tr><th scope="row">Walmart</th><td>Mobile</td><td><span class="score-poor">35</span></td><td>19.2s</td><td>Labor Day AI shopping promo</td></tr>
+                <tr><th scope="row">Lowe's</th><td>Mobile</td><td><span class="score-poor">34</span></td><td>7.4s</td><td>Labor Day promo</td></tr>
+                <tr><th scope="row">Home Depot</th><td>Mobile</td><td><span class="score-poor">30</span></td><td>6.2s</td><td>Labor Day promo</td></tr>
+                <tr><th scope="row">Amazon</th><td>Mobile</td><td><span class="score-ok">61</span></td><td>18.0s</td><td>—</td></tr>
+                <tr><th scope="row">Oracle</th><td>Desktop</td><td><span class="score-ok">71</span></td><td>1.9s</td><td>—</td></tr>
+                <tr><th scope="row">SpaceX</th><td>Mobile</td><td><span class="score-ok">76</span></td><td>5.2s</td><td>Not an AI pitch, included for contrast</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <p class="dogfood-source"><em>Performance data referenced above pulled from Google PageSpeed Insights, mobile results unless marked desktop, captured in early September 2026.</em></p>
+      </div>
+      <div class="post-back">
+        <a href="/blog/">&larr; Back to all posts</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER:START -->
+<footer>
+  <div class="wrap footer-inner">
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="/">Home</a>
+      <a href="/blog/">Blog</a>
+      <a href="/about.html">About</a>
+      <a href="/output/pdf/Claudia_Ochoa_Resume.pdf" target="_blank" rel="noopener noreferrer">Résumé</a>
+      <a href="https://www.linkedin.com/in/claudiajochoa/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="#" id="footer-contact-toggle">Contact</a>
+    </nav>
+    <p class="footer-copy">© 2026 Claudia Ochoa</p>
+  </div>
+</footer>
+<!-- FOOTER:END -->
+<script src="/js/main.js?v=8"></script>
+</body>
+</html>
