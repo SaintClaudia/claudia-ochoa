@@ -259,17 +259,17 @@ story.extend([
         ],
     ),
     *section('Earlier Leadership Experience'),
-    P('<font name="Fraunces" color="#FFFFFF">VMware</font> - Art Director, Brand &amp; Marketing Web Design  |  2011 - 2012', small_style),
-    P('<font name="Fraunces" color="#FFFFFF">Salesforce</font> - Visual Designer, Dreamforce Identity &amp; Web  |  2010 - 2011', small_style),
-    P('<font name="Fraunces" color="#FFFFFF">Bio-Rad</font> - Interactive Designer, Data Visualization &amp; UX  |  2009 - 2010', small_style),
-    P('<font name="Fraunces" color="#FFFFFF">RedEnvelope</font> - Design Manager, E-commerce UX &amp; Brand  |  2005 - 2008', small_style),
+    P('<font name="Fraunces" color="#FFFFFF">VMware</font> - Art Director, Brand &amp; Marketing Web Design  |  <i>2011 - 2012</i>', small_style),
+    P('<font name="Fraunces" color="#FFFFFF">Salesforce</font> - Visual Designer, Dreamforce Identity &amp; Web  |  <i>2010 - 2011</i>', small_style),
+    P('<font name="Fraunces" color="#FFFFFF">Bio-Rad</font> - Interactive Designer, Data Visualization &amp; UX  |  <i>2009 - 2010</i>', small_style),
+    P('<font name="Fraunces" color="#FFFFFF">RedEnvelope</font> - Design Manager, E-commerce UX &amp; Brand  |  <i>2005 - 2008</i>', small_style),
     *section('Education'),
-    P('<font color="#FFFFFF"><b>Juris Doctor studies</b></font>, Purdue Global Law School  |  In progress', small_style),
-    P('<font color="#FFFFFF"><b>Master of Business Administration</b></font>, Purdue University Global  |  2026', small_style),
-    P('<font color="#FFFFFF"><b>Bachelor of Fine Arts, Communication Design</b></font>, Texas State University  |  2003', small_style),
+    P('<font color="#FFFFFF"><b>Juris Doctor studies</b></font>, Purdue Global Law School  |  <i>In progress</i>', small_style),
+    P('<font color="#FFFFFF"><b>Master of Business Administration</b></font>, Purdue University Global  |  <i>2026</i>', small_style),
+    P('<font color="#FFFFFF"><b>Bachelor of Fine Arts, Communication Design</b></font>, Texas State University  |  <i>2003</i>', small_style),
     *section('Selected Independent Work'),
     P(
-        '<font color="#FFFFFF"><b>Lovesac customer experience redesign</b></font>  |  2026<br/>'
+        '<font color="#FFFFFF"><b>Lovesac customer experience redesign</b></font>  |  <i>2026</i><br/>'
         'Created a live e-commerce redesign and six-part case study spanning research, information architecture, '
         'content strategy, accessibility, performance, AI readiness, and front-end development.  '
         '<link href="https://claudiaochoa.co/work/lovesac-case-study.html" color="#999999">View case study</link>',
