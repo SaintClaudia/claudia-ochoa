@@ -70,12 +70,19 @@
     .blog-entry{padding:36px 0;border-bottom:1px solid var(--line);}
     .blog-list .blog-entry:first-child{padding-top:0;}
     .blog-entry .section-head{margin-bottom:0;}
-    .blog-entry .eyebrow{margin-top:24px;}
     .work-card{position:relative;overflow:hidden;cursor:pointer;display:block;}
     .card-image{position:relative;box-sizing:border-box;aspect-ratio:16/9;overflow:hidden;background:var(--paper);border-radius:14px;box-shadow:0 1px 2px rgba(0,0,0,.06);}
     .card-image img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.25,.46,.45,.94);}
     .work-card:hover .card-image img{transform:scale(1.03);}
     .card-cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:20px;}
+
+    .blog-card-author{display:flex;align-items:center;gap:10px;margin-top:24px;text-decoration:none;}
+    .blog-card-author + h2{margin-top:16px;}
+    .blog-card-avatar{width:32px;height:32px;border-radius:50%;object-fit:cover;flex:0 0 auto;}
+    .blog-card-author-info{display:flex;flex-direction:column;gap:2px;}
+    .blog-card-author-name{font-size:13.5px;font-weight:600;color:var(--espresso);}
+    .blog-card-author:hover .blog-card-author-name{text-decoration:underline;}
+    .blog-card-author-meta{font-size:11.5px;letter-spacing:.06em;color:var(--ink-soft);font-weight:500;}
   </style>
 </head>
 <body>
@@ -164,7 +171,13 @@
                   <img src="/images/blog-eyodf-hero-960.webp" srcset="/images/blog-eyodf-hero-960.webp 960w, /images/blog-eyodf-hero.webp 1800w" sizes="(max-width: 720px) 100vw, 1036px" width="960" height="524" alt="A golden retriever sits eagerly beside a full bowl of kibble on a wooden kitchen table" loading="lazy" decoding="async">
                 </div>
               </a>
-              <div class="eyebrow">September 6, 2026 · 5 min read</div>
+              <a class="blog-card-author" href="/about.html">
+                <img class="blog-card-avatar" src="/images/claudia-ochoa-headshot.webp" width="32" height="32" alt="">
+                <span class="blog-card-author-info">
+                  <span class="blog-card-author-name">Claudia Ochoa</span>
+                  <span class="blog-card-author-meta">September 6, 2026 · 5 min read</span>
+                </span>
+              </a>
               <h2>Eat Your Own Dog Food</h2>
               <p class="lede">AI companies are pitching agentic everything. Running their own websites through PageSpeed Insights tells a different story — and raises the question of who actually gets blamed when the gap shows.</p>
               <div class="card-cta-row"><a class="btn primary" href="/blog/eat-your-own-dog-food.html">Read the post →</a></div>
