@@ -95,7 +95,12 @@
   .nav-menu-icon-divider{transition:opacity .15s ease;}
   .nav-menu-icon-arrow{opacity:0; transform:translateX(-2px); transition:opacity .15s ease, transform .15s ease;}
   .nav-menu-btn:hover .nav-menu-icon-divider, .nav-menu-btn:focus-visible .nav-menu-icon-divider{opacity:0;}
-  .nav-menu-btn:hover .nav-menu-icon-arrow, .nav-menu-btn:focus-visible .nav-menu-icon-arrow{opacity:1; transform:translateX(0);}
+  /* Closed: hovering shows a left-pointing arrow (opens leftward). */
+  .nav-menu:not(.open) .nav-menu-btn:hover .nav-menu-icon-arrow-closed,
+  .nav-menu:not(.open) .nav-menu-btn:focus-visible .nav-menu-icon-arrow-closed{opacity:1; transform:translateX(0);}
+  /* Open: hovering shows a right-pointing arrow (closes rightward). */
+  .nav-menu.open .nav-menu-btn:hover .nav-menu-icon-arrow-open,
+  .nav-menu.open .nav-menu-btn:focus-visible .nav-menu-icon-arrow-open{opacity:1; transform:translateX(0);}
   .nav-menu-backdrop{
     position:fixed; inset:0;
     background:rgba(0,0,0,0.5);
