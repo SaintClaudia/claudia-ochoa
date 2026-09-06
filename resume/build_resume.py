@@ -98,7 +98,7 @@ contact_style = ParagraphStyle(
 )
 section_style = ParagraphStyle(
     'Section', fontName='Arial-Bold', fontSize=8.5, leading=10, textColor=ESPRESSO,
-    tracking=1.0, spaceBefore=8, spaceAfter=5
+    tracking=1.0, spaceBefore=16, spaceAfter=8
 )
 summary_style = ParagraphStyle(
     'Summary', fontName='Arial', fontSize=9.15, leading=12.2, textColor=WHITE, spaceAfter=5
@@ -114,7 +114,7 @@ body_style = ParagraphStyle(
 )
 bullet_style = ParagraphStyle(
     'Bullet', fontName='Arial', fontSize=8.35, leading=10.9, textColor=WHITE,
-    leftIndent=12, firstLineIndent=-7, bulletIndent=0, spaceAfter=1.7
+    leftIndent=12, firstLineIndent=-7, bulletIndent=0, spaceAfter=4.5
 )
 small_style = ParagraphStyle(
     'Small', fontName='Arial', fontSize=8.2, leading=10.6, textColor=WHITE, spaceAfter=2
@@ -141,7 +141,7 @@ def bullets(items):
     return [P(f'• {item}', bullet_style) for item in items]
 
 
-def role(title, company, dates, intro, items, trailing_space=5):
+def role(title, company, dates, intro, items, trailing_space=10):
     content = [
         P(title, role_style),
         P(f'{company}  |  <font name="Arial"><i>{dates}</i></font>', company_style),
@@ -223,7 +223,6 @@ story.extend([
     P('Claudia Ochoa', ParagraphStyle('PageName', parent=name_style, fontSize=17, leading=19, spaceAfter=2)),
     P('AI EXPERIENCE  |  PRODUCT DESIGN  |  BRAND STRATEGY', ParagraphStyle('PageTitle', parent=title_style, fontSize=8.2, spaceAfter=9)),
     *section('Professional Experience - Continued'),
-    Spacer(1, 8),
     role(
         'Senior User Interface Designer',
         'Dell',
@@ -234,7 +233,6 @@ story.extend([
             'Synthesized customer interviews into simplified information architecture, modernized interface patterns, and clearer task flows.',
             'Delivered high-fidelity prototypes and implementation-ready specifications in close partnership with engineering.',
         ],
-        trailing_space=20,
     ),
     role(
         'Founder &amp; Product Lead',
@@ -246,7 +244,6 @@ story.extend([
             'Led end-to-end UX, research, front-end delivery, vendors, and timelines through launch and iterative improvement.',
             'Directed cross-channel creative for digital campaigns, social media, sponsorship activations, and music-festival experiences.',
         ],
-        trailing_space=20,
     ),
     role(
         'Senior Art Director',
@@ -259,20 +256,16 @@ story.extend([
             'Aligned executives, marketing teams, designers, agencies, and delivery partners around cohesive high-visibility experiences.',
             'Mentored designers while remaining hands-on in execution and quality review.',
         ],
-        trailing_space=20,
     ),
-    Spacer(1, 18),
     *section('Earlier Leadership Experience'),
     P('<font color="#FFFFFF"><b>VMware</b></font> - Art Director, Brand &amp; Marketing Web Design  |  2011 - 2012', small_style),
     P('<font color="#FFFFFF"><b>Salesforce</b></font> - Visual Designer, Dreamforce Identity &amp; Web  |  2010 - 2011', small_style),
     P('<font color="#FFFFFF"><b>Bio-Rad</b></font> - Interactive Designer, Data Visualization &amp; UX  |  2009 - 2010', small_style),
     P('<font color="#FFFFFF"><b>RedEnvelope</b></font> - Design Manager, E-commerce UX &amp; Brand  |  2005 - 2008', small_style),
-    Spacer(1, 18),
     *section('Education'),
     P('<font color="#FFFFFF"><b>Juris Doctor studies</b></font>, Purdue Global Law School  |  In progress', small_style),
     P('<font color="#FFFFFF"><b>Master of Business Administration</b></font>, Purdue University Global  |  2026', small_style),
     P('<font color="#FFFFFF"><b>Bachelor of Fine Arts, Communication Design</b></font>, Texas State University  |  2003', small_style),
-    Spacer(1, 18),
     *section('Selected Independent Work'),
     P(
         '<font color="#FFFFFF"><b>Lovesac customer experience redesign</b></font>  |  2026<br/>'
