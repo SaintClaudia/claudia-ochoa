@@ -35,6 +35,7 @@ if (navMenu && navMenuBtn) {
     navMenuBtn.setAttribute('aria-expanded', 'false');
     navMenuBtn.setAttribute('aria-label', 'Open menu');
     document.body.style.overflow = '';
+    document.body.classList.remove('nav-menu-open');
   };
   navMenuBtn.addEventListener('click', (e) => {
     e.stopPropagation();
@@ -42,6 +43,7 @@ if (navMenu && navMenuBtn) {
     navMenuBtn.setAttribute('aria-expanded', String(isOpen));
     navMenuBtn.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
     document.body.style.overflow = isOpen ? 'hidden' : '';
+    document.body.classList.toggle('nav-menu-open', isOpen);
   });
   navMenu.querySelectorAll('.nav-menu-panel a').forEach((link) => {
     link.addEventListener('click', closeNavMenu);
