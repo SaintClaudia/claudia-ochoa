@@ -63,17 +63,19 @@
     .blog-hero h1{font-size:clamp(34px,4.8vw,54px);font-weight:600;line-height:1.06;max-width:18ch;}
     .blog-hero .sub{margin-top:20px;font-size:18px;line-height:1.55;color:var(--ink-soft);max-width:56ch;}
 
+    /* Post list uses the same featured work-card pattern as the
+       homepage's case-study grid (section-head label + image + eyebrow
+       + h2/lede + CTA), so a post reads the same way a case study does. */
     .blog-list{display:flex;flex-direction:column;}
-    .blog-post{display:grid;grid-template-columns:220px 1fr;gap:28px;align-items:start;text-decoration:none;padding:36px 0;border-bottom:1px solid var(--line);transition:opacity .2s ease;}
-    .blog-list .blog-post:first-child{padding-top:0;}
-    .blog-post:hover{opacity:.72;}
-    .blog-post-thumb{aspect-ratio:16/10;border-radius:14px;overflow:hidden;background:var(--sand);}
-    .blog-post-thumb img{display:block;width:100%;height:100%;object-fit:cover;}
-    .blog-post-meta{display:flex;align-items:center;gap:14px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;}
-    .blog-post-meta .tag{color:var(--clay-deep);}
-    .blog-post h2{margin-top:14px;font-size:clamp(22px,2.6vw,28px);font-weight:600;line-height:1.2;}
-    .blog-post p{margin-top:10px;font-size:15.5px;line-height:1.65;color:var(--ink-soft);max-width:68ch;}
-    @media(max-width:640px){.blog-post{grid-template-columns:1fr;gap:16px;}}
+    .blog-entry{padding:36px 0;border-bottom:1px solid var(--line);}
+    .blog-list .blog-entry:first-child{padding-top:0;}
+    .blog-entry .section-head{margin-bottom:0;}
+    .blog-entry .eyebrow{margin-top:24px;}
+    .work-card{position:relative;overflow:hidden;cursor:pointer;display:block;}
+    .card-image{position:relative;box-sizing:border-box;aspect-ratio:16/9;overflow:hidden;background:var(--paper);border-radius:14px;box-shadow:0 1px 2px rgba(0,0,0,.06);}
+    .card-image img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.25,.46,.45,.94);}
+    .work-card:hover .card-image img{transform:scale(1.03);}
+    .card-cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:20px;}
   </style>
 </head>
 <body>
@@ -153,16 +155,22 @@
   <section>
     <div class="wrap">
       <div class="blog-list">
-        <a class="blog-post" href="/blog/eat-your-own-dog-food.html">
-          <div class="blog-post-thumb">
-            <img src="/images/blog-eyodf-hero-960.webp" width="960" height="524" alt="A golden retriever sits eagerly beside a full bowl of kibble on a wooden kitchen table" loading="lazy" decoding="async">
+        <article class="blog-entry">
+          <div class="section-head">
+            <div><span class="num">Blog</span></div>
+            <div>
+              <a href="/blog/eat-your-own-dog-food.html" class="work-card featured">
+                <div class="card-image">
+                  <img src="/images/blog-eyodf-hero-960.webp" srcset="/images/blog-eyodf-hero-960.webp 960w, /images/blog-eyodf-hero.webp 1800w" sizes="(max-width: 720px) 100vw, 1036px" width="960" height="524" alt="A golden retriever sits eagerly beside a full bowl of kibble on a wooden kitchen table" loading="lazy" decoding="async">
+                </div>
+              </a>
+              <div class="eyebrow">September 6, 2026 · 5 min read</div>
+              <h2>Eat Your Own Dog Food</h2>
+              <p class="lede">AI companies are pitching agentic everything. Running their own websites through PageSpeed Insights tells a different story — and raises the question of who actually gets blamed when the gap shows.</p>
+              <div class="card-cta-row"><a class="btn primary" href="/blog/eat-your-own-dog-food.html">Read the post →</a></div>
+            </div>
           </div>
-          <div>
-            <div class="blog-post-meta"><span>September 6, 2026</span><span>·</span><span>5 min read</span></div>
-            <h2>Eat Your Own Dog Food</h2>
-            <p>AI companies are pitching agentic everything. Running their own websites through PageSpeed Insights tells a different story — and raises the question of who actually gets blamed when the gap shows.</p>
-          </div>
-        </a>
+        </article>
         <!-- Add new posts above this line, newest first. -->
       </div>
     </div>
