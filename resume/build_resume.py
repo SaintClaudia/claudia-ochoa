@@ -112,7 +112,8 @@ body_style = ParagraphStyle(
 )
 bullet_style = ParagraphStyle(
     'Bullet', fontName='Arial', fontSize=10, leading=14.7, textColor=SECONDARY,
-    leftIndent=5, firstLineIndent=0, bulletIndent=0, spaceAfter=1.5
+    leftIndent=13, firstLineIndent=0, bulletIndent=5,
+    bulletFontName='Arial', bulletFontSize=10, spaceAfter=1.5
 )
 small_style = ParagraphStyle(
     'Small', fontName='Arial', fontSize=9.6, leading=14.1, textColor=SECONDARY, spaceAfter=0
@@ -136,7 +137,7 @@ def section(title, first=False):
 
 
 def bullets(items):
-    return [P(f'• {item}', bullet_style) for item in items]
+    return [Paragraph(item, bullet_style, bulletText='•') for item in items]
 
 
 def role(title, company, dates, intro, items, trailing_space=10):
