@@ -88,18 +88,18 @@
     .dogfood-list strong{color:var(--espresso);}
     .dogfood-list + .body-copy{margin-top:24px;}
 
-    .dogfood-shots{display:grid;grid-template-columns:1fr;gap:24px;margin-top:24px;}
+    .dogfood-shots{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:24px;}
     .dogfood-shots + .body-copy{margin-top:24px;}
     .dogfood-shot{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--paper);}
-    .dogfood-shot-btn{display:block;width:100%;padding:16px 16px 0;margin:0;border:0;background:none;cursor:zoom-in;}
-    .dogfood-shot-btn img{display:block;width:100%;height:auto;border-radius:8px;filter:brightness(.96);transition:filter .2s ease;}
-    .dogfood-shot-btn:hover img,.dogfood-shot-btn:focus-visible img{filter:brightness(1);}
+    .dogfood-shot-btn{display:block;width:100%;padding:0;margin:0;border:0;background:none;cursor:zoom-in;}
+    .dogfood-shot-btn img{display:block;width:100%;height:auto;}
     .dogfood-shot figcaption{padding:14px 16px;font-size:13px;line-height:1.5;color:var(--ink-soft);}
     .dogfood-score{font-weight:700;color:var(--espresso);}
     .score-poor{color:#f87171;}
     .score-ok{color:var(--ink);}
     .score-good{color:var(--accent);}
     .dogfood-source{margin-top:20px;font-size:13.5px;color:var(--ink-soft);font-style:italic;}
+    @media(max-width:640px){.dogfood-shots{grid-template-columns:1fr;}}
 
     .table-scroll-wrap{margin-top:24px;}
     .table-scroll-wrap + .body-copy{margin-top:32px;}
