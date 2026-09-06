@@ -120,15 +120,26 @@
     .about-feature-action{justify-self:end;align-self:center;}
     .about-feature-action .btn{border-color:rgba(242,242,244,.35);color:#F2F2F4;}
     .about-feature-action .btn:hover{border-color:#F2F2F4;color:#F2F2F4;}
+    .about-life{padding-top:32px;}
+    .about-life-card{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(360px,.92fr);overflow:hidden;background:var(--paper);border:1px solid var(--line);border-radius:24px;}
+    .about-life-figure{position:relative;min-height:100%;margin:0;background:var(--sand);}
+    .about-life-figure img{width:100%;height:100%;object-fit:cover;}
+    .about-life-figure figcaption{position:absolute;right:18px;bottom:16px;left:18px;width:max-content;max-width:calc(100% - 36px);padding:8px 12px;border:1px solid rgba(255,255,255,.24);border-radius:999px;background:rgba(10,10,11,.72);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:#F2F2F4;font-size:11px;line-height:1.3;}
+    .about-life-copy{display:flex;flex-direction:column;justify-content:center;padding:48px;}
+    .about-life-copy .about-label{margin-bottom:16px;}
+    .about-life-copy h2{font-size:clamp(30px,3.5vw,44px);font-weight:600;line-height:1.08;max-width:13ch;}
+    .about-life-copy p{font-size:15.5px;line-height:1.72;color:var(--ink-soft);margin-top:18px;}
+    .about-life-copy .about-life-closing{font-family:'Fraunces',serif;font-size:21px;line-height:1.48;color:var(--espresso);padding-top:22px;margin-top:24px;border-top:1px solid var(--line);}
     .about-connect{text-align:center;padding:88px 0 104px;}
     .about-connect h2{font-size:clamp(32px,4vw,48px);font-weight:600;max-width:18ch;margin:0 auto 16px;}
     .about-connect p{font-size:17px;line-height:1.6;color:var(--ink-soft);max-width:58ch;margin:0 auto 30px;}
     @media(max-width:820px){
       .about-hero{padding:48px 0 16px;}
-      .about-hero-grid,.about-story-grid,.about-working-head,.about-feature-card{grid-template-columns:1fr;gap:36px;}
+      .about-hero-grid,.about-story-grid,.about-working-head,.about-feature-card,.about-life-card{grid-template-columns:1fr;gap:36px;}
       .about-hero-copy{order:2;}.about-portrait{order:1;max-width:520px;}.about-feature-action{justify-self:start;}
+      .about-life-figure{aspect-ratio:4/3;}.about-life-copy{padding:0 36px 40px;}
     }
-    @media(max-width:560px){.about-hero h1{font-size:46px;}.working-grid,.capability-grid{grid-template-columns:1fr;}.working-card{padding:28px 26px;}.about-feature-card{padding:32px 26px;}}
+    @media(max-width:560px){.about-hero h1{font-size:46px;}.working-grid,.capability-grid{grid-template-columns:1fr;}.working-card{padding:28px 26px;}.about-feature-card{padding:32px 26px;}.about-life-card{gap:30px;}.about-life-copy{padding:0 26px 32px;}}
   </style>
 </head>
 <body>
@@ -288,6 +299,25 @@
           <p>A 24-hour, end-to-end concept for a conversational Walmart candidate experience. It earned leadership support and grew into a broader platform initiative with me holding the creative vision through delivery.</p>
         </div>
         <div class="about-feature-action"><a class="btn ghost" href="/work/walmart-genai.html">Explore the AI case study →</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-life" aria-labelledby="about-life-heading">
+    <div class="wrap">
+      <div class="about-life-card">
+        <figure class="about-life-figure">
+          <img src="/images/jalapeno-tofu.webp" width="1800" height="1350" alt="Homemade jalapeño tofu with broccoli and red and green peppers in a ceramic bowl" loading="lazy" decoding="async">
+          <figcaption>My homemade jalapeño tofu, inspired by Golden Era</figcaption>
+        </figure>
+        <div class="about-life-copy">
+          <div class="about-label">Beyond the work</div>
+          <h2 id="about-life-heading">A recipe. A memory. A little help from AI.</h2>
+          <p>I’ve lived in several places and traveled to other countries. Food has a way of holding those places for me. One dish I have loved for years is the jalapeño tofu from Golden Era, a Bay Area restaurant.</p>
+          <p>For decades, I tried to master fried tofu and never quite got there. Recently, I showed ChatGPT a photo of the dish and the ingredients listed on the menu. It helped me build a recipe—and reminded me to look for fresh tofu. I went to my local Asian market and bought every ingredient.</p>
+          <p>Mind you, if I were in San Francisco—or anywhere near Golden Era—I would never make this myself. I would go straight to the restaurant. But when I tasted my version, the memories came rushing back.</p>
+          <p class="about-life-closing">I use AI for everything—not only for the work that changes systems, but for the small, good things that reconnect us to who we are and the places we have loved.</p>
+        </div>
       </div>
     </div>
   </section>
