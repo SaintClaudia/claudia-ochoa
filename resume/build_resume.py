@@ -149,7 +149,7 @@ def role(title, company, dates, intro, items, trailing_space=10):
     content = [
         P(title, role_style),
         P(f'{company}  |  <font name="Arial"><i>{dates}</i></font>', company_style),
-        *([P(intro, body_style)] if intro else []),
+        P(intro, body_style),
         *bullets(items),
         Spacer(1, trailing_space),
     ]
@@ -254,7 +254,7 @@ story.extend([
         'Senior Art Director',
         'Workday',
         'July 2012 - October 2016',
-        None,
+        'Led digital brand initiatives that modernized Workday\'s online presence during rapid growth leading and post IPO.',
         [
             'Hand-picked by the Creative Director to lead the redesign of Workday.com ahead of IPO, modernizing the brand\'s digital presence.',
             'Directed and executed the first responsive, mobile-first Workday site and designed the event identity for Workday Rising.',
