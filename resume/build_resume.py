@@ -66,6 +66,11 @@ class ResumeDoc(BaseDocTemplate):
         self.addPageTemplates(PageTemplate(id='resume', frames=[frame], onPage=draw_page))
 
 
+class OpticallyCenteredImpactTable(Table):
+    def drawOn(self, canvas, x, y, _sW=0):
+        return super().drawOn(canvas, x - 16, y, _sW)
+
+
 def draw_page(canvas: Canvas, doc):
     canvas.saveState()
     width, height = letter
@@ -175,7 +180,10 @@ impact_data = [[
     [P('24 hours', impact_number_style), P('Created GenAI hiring vision that earned executive support', impact_label_style)],
     [P('30 participants', impact_number_style), P('Validated Home Depot gift-card redesign before launch', impact_label_style)],
 ]]
-impact_table = Table(impact_data, colWidths=[story_width := (letter[0] - 40) / 3] * 3)
+impact_table = OpticallyCenteredImpactTable(
+    impact_data,
+    colWidths=[story_width := (letter[0] - 40) / 3] * 3,
+)
 impact_table.setStyle(TableStyle([
     ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
     ('TOPPADDING', (0, 0), (-1, -1), 5),
