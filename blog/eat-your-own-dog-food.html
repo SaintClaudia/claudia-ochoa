@@ -81,7 +81,6 @@
     .dogfood-shot-btn{display:block;width:100%;padding:0;margin:0;border:0;background:none;cursor:zoom-in;}
     .dogfood-shot-btn img{display:block;width:100%;height:auto;}
     .dogfood-shot figcaption{padding:14px 16px;font-size:13px;line-height:1.5;color:var(--ink-soft);}
-    .dogfood-recheck{display:block;margin-top:4px;color:var(--ink-soft);}
     .dogfood-score{font-weight:700;color:var(--espresso);}
     .score-poor{color:#f87171;}
     .score-ok{color:var(--ink);}
@@ -89,10 +88,13 @@
     .dogfood-source{font-size:13.5px;color:var(--ink-soft);font-style:italic;}
     @media(max-width:640px){.dogfood-shots{grid-template-columns:1fr;}}
 
-    .img-lightbox{display:none;position:fixed;inset:0;z-index:300;align-items:center;justify-content:center;background:rgba(10,10,11,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:32px;cursor:zoom-out;}
+    /* The full-picture table needs the whole .wrap, not the 72ch prose column */
+    .post-table-wide{width:100%;margin:8px 0;}
+
+    .img-lightbox{display:none;position:fixed;inset:0;z-index:300;justify-content:center;background:rgba(10,10,11,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:64px 32px;overflow-y:auto;cursor:zoom-out;}
     .img-lightbox.open{display:flex;}
-    .img-lightbox img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.5);cursor:auto;}
-    .img-lightbox-close{position:absolute;top:24px;right:24px;background:none;border:1px solid var(--glass-border);border-radius:50%;width:40px;height:40px;color:var(--ink-soft);font-size:1.5rem;line-height:1;cursor:pointer;}
+    .img-lightbox img{display:block;max-width:100%;width:auto;height:auto;margin:auto;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.5);cursor:auto;}
+    .img-lightbox-close{position:fixed;top:24px;right:24px;background:var(--cream);border:1px solid var(--glass-border);border-radius:50%;width:40px;height:40px;color:var(--ink-soft);font-size:1.5rem;line-height:1;cursor:pointer;}
     .img-lightbox-close:hover{color:var(--espresso);border-color:var(--espresso);}
   </style>
 </head>
@@ -183,23 +185,23 @@
         <p>Then run their own websites through Google's PageSpeed Insights.</p>
 
         <ul class="dogfood-list">
-          <li>A company marketing itself as the "#1 Agentic CRM" scores a <strong>4 out of 100</strong> on mobile performance, with a Largest Contentful Paint of over 14 seconds and a layout that visibly shifts while it loads.</li>
-          <li>A workplace platform pitching "AI agents to work for you" takes nearly <strong>26 seconds</strong> for its largest content to appear on mobile.</li>
-          <li>Major retailers running Labor Day AI-assisted shopping promotions load their mobile pages in the 30s out of 100, with users waiting 15+ seconds and staring at layout jumps before they can act.</li>
+          <li>A company marketing itself as the "#1 Agentic CRM" scores a <strong>7 out of 100</strong> on mobile performance, with a Largest Contentful Paint of over 31 seconds and a layout that visibly shifts while it loads.</li>
+          <li>A workplace platform pitching "AI agents to work for you" takes over <strong>26 seconds</strong> for its largest content to appear on mobile.</li>
+          <li>Major retailers running Labor Day AI-assisted shopping promotions load their mobile pages in the 30s and 40s out of 100, with users waiting 15+ seconds and staring at layout jumps before they can act.</li>
         </ul>
 
         <div class="dogfood-shots">
           <figure class="dogfood-shot">
-            <button type="button" class="dogfood-shot-btn" aria-label="Enlarge screenshot">
-              <img src="/images/blog-eyodf-salesforce-mobile.webp" width="1400" height="805" alt="Google PageSpeed Insights mobile report showing a performance score of 4 out of 100 and a 14.3 second Largest Contentful Paint, for a homepage promoting itself as the number one Agentic CRM" loading="lazy" decoding="async">
+            <button type="button" class="dogfood-shot-btn" aria-label="Enlarge screenshot" data-full="/images/blog-eyodf-salesforce-mobile.webp" data-full-alt="Full Google PageSpeed Insights mobile report for Salesforce, performance score 7 out of 100, captured September 6, 2026">
+              <img src="/images/blog-eyodf-salesforce-mobile-thumb.webp" width="1400" height="1441" alt="Google PageSpeed Insights mobile report showing a performance score of 7 out of 100 and a 31.3 second Largest Contentful Paint, for a homepage promoting itself as the number one Agentic CRM" loading="lazy" decoding="async">
             </button>
-            <figcaption><span class="dogfood-score score-poor">4/100</span> mobile — the page pitching itself as the "#1 Agentic CRM" · captured September 5, 2026, 6:27 PM CDT<span class="dogfood-recheck">Re-checked September 6, 2026: 7/100, LCP now 31.3s — see the full table below.</span></figcaption>
+            <figcaption><span class="dogfood-score score-poor">7/100</span> mobile — the page pitching itself as the "#1 Agentic CRM" · captured September 6, 2026, 12:00 PM CDT. Click to view the full report.</figcaption>
           </figure>
           <figure class="dogfood-shot">
-            <button type="button" class="dogfood-shot-btn" aria-label="Enlarge screenshot">
-              <img src="/images/blog-eyodf-workday-mobile.webp" width="1400" height="805" alt="Google PageSpeed Insights mobile report showing a performance score of 28 out of 100 and a 25.9 second Largest Contentful Paint, with the homepage headline reading Put AI agents to work for you" loading="lazy" decoding="async">
+            <button type="button" class="dogfood-shot-btn" aria-label="Enlarge screenshot" data-full="/images/blog-eyodf-workday-mobile.webp" data-full-alt="Full Google PageSpeed Insights mobile report for Workday, performance score 32 out of 100, captured September 6, 2026">
+              <img src="/images/blog-eyodf-workday-mobile-thumb.webp" width="1400" height="1441" alt="Google PageSpeed Insights mobile report showing a performance score of 32 out of 100 and a 26.6 second Largest Contentful Paint, with the homepage headline reading Put AI agents to work for you" loading="lazy" decoding="async">
             </button>
-            <figcaption><span class="dogfood-score score-poor">28/100</span> mobile — the page telling you to "put AI agents to work for you" · captured September 3, 2026, 8:10 AM CDT<span class="dogfood-recheck">Re-checked September 6, 2026: 32/100 — see the full table below.</span></figcaption>
+            <figcaption><span class="dogfood-score score-poor">32/100</span> mobile — the page telling you to "put AI agents to work for you" · captured September 6, 2026, 11:51 AM CDT. Click to view the full report.</figcaption>
           </figure>
         </div>
 
@@ -224,7 +226,9 @@
 
         <h2>The full picture</h2>
         <p>I re-ran every URL on September 6 and expanded the check past Performance to PageSpeed Insights' other three categories — Accessibility, Best Practices, and SEO — plus Agentic Browsing, the newest and most experimental one. Two Oracle rows are included on purpose:</p>
+      </div>
 
+      <div class="post-table-wide">
         <div class="table-scroll-wrap">
           <div class="table-scroll">
             <table class="data-table">
@@ -246,10 +250,12 @@
             </table>
           </div>
         </div>
+      </div>
 
-        <p>Look at the last two rows. Same URL, same desktop view, one day apart — and the score moved on its own: Performance climbed from 71 to 92, and Agentic Browsing — the newest category in PageSpeed Insights — went from 1/2 to 2/2. Google's own copy on that category calls it "still under development and subject to change," and this is what that looks like in practice: a live, moving rubric, not a settled one. It's a good reminder that every score in this piece — including the "4 out of 100" and "26 seconds" above — is a single point-in-time read, not a permanent verdict. The direction of the story doesn't move with a re-run. Some of these numbers still will.</p>
+      <div class="post-body body-copy">
+        <p>Look at the last two rows. Same URL, same desktop view, one day apart — and the score moved on its own: Performance climbed from 71 to 92, and Agentic Browsing — the newest category in PageSpeed Insights — went from 1/2 to 2/2. Google's own copy on that category calls it "still under development and subject to change," and this is what that looks like in practice: a live, moving rubric, not a settled one. It's a good reminder that every score in this piece — including the "7 out of 100" and "26 seconds" above — is a single point-in-time read, not a permanent verdict. The direction of the story doesn't move with a re-run. Some of these numbers still will.</p>
 
-        <p class="dogfood-source"><em>Performance data pulled from Google PageSpeed Insights. The two headline screenshots above were captured September 3 and September 5, 2026, and re-checked September 6; the full table reflects the September 6 re-run, mobile results unless marked desktop.</em></p>
+        <p class="dogfood-source"><em>Performance data pulled from Google PageSpeed Insights, captured September 6, 2026, mobile results unless marked desktop. The one exception is the earlier Oracle desktop row, captured September 5, kept for the day-over-day comparison above.</em></p>
       </div>
       <div class="post-back">
         <a href="/blog/">&larr; Back to all posts</a>
@@ -285,9 +291,10 @@
   var closeBtn = document.getElementById('img-lightbox-close');
   if (!lb) return;
 
-  function openLightbox(img) {
-    lbImg.src = img.src;
-    lbImg.alt = img.alt;
+  function openLightbox(src, alt) {
+    lbImg.src = src;
+    lbImg.alt = alt;
+    lb.scrollTop = 0;
     lb.classList.add('open');
     lb.setAttribute('aria-hidden', 'false');
     closeBtn.focus();
@@ -300,8 +307,13 @@
 
   document.querySelectorAll('.dogfood-shot-btn').forEach(function (btn) {
     btn.addEventListener('click', function () {
+      var fullSrc = btn.getAttribute('data-full');
       var img = btn.querySelector('img');
-      if (img) openLightbox(img);
+      if (fullSrc) {
+        openLightbox(fullSrc, btn.getAttribute('data-full-alt') || (img ? img.alt : ''));
+      } else if (img) {
+        openLightbox(img.src, img.alt);
+      }
     });
   });
   closeBtn.addEventListener('click', closeLightbox);
