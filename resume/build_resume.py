@@ -273,7 +273,7 @@ story.extend([
     P('<font name="Fraunces" color="#FFFFFF">Bachelor of Fine Arts, Communication Design</font>, Texas State University  |  <i>2003</i>', small_style),
     *section('Selected Independent Work'),
     P(
-        '<font color="#FFFFFF"><b>Lovesac customer experience redesign</b></font>  |  <i>2026</i><br/>'
+        '<font name="Fraunces" color="#FFFFFF">Lovesac customer experience redesign</font>  |  <i>2026</i><br/>'
         'Created a live e-commerce redesign and six-part case study spanning research, information architecture, '
         'content strategy, accessibility, performance, AI readiness, and front-end development.  '
         '<link href="https://claudiaochoa.co/work/lovesac-case-study.html" color="#999999">View case study</link>',
