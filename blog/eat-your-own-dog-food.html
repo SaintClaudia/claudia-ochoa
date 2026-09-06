@@ -69,7 +69,8 @@
     .post-author{display:flex;align-items:center;gap:12px;margin-top:24px;}
     .post-author-avatar{width:40px;height:40px;border-radius:50%;object-fit:cover;flex:0 0 auto;}
     .post-author-info{display:flex;flex-direction:column;gap:2px;}
-    .post-author-name{font-size:14px;font-weight:600;color:var(--espresso);}
+    .post-author-name{font-size:14px;font-weight:600;color:var(--espresso);text-decoration:none;}
+    .post-author-name:hover,.post-author-name:focus-visible{text-decoration:underline;text-underline-offset:3px;}
     .post-author-meta{font-size:12px;letter-spacing:.06em;color:var(--ink-soft);font-weight:500;}
     .post-hero-image{margin-bottom:24px;border-radius:20px;overflow:hidden;background:var(--sand);}
     .post-hero-image img{display:block;width:100%;height:auto;}
@@ -187,7 +188,7 @@
       <div class="post-author">
         <img class="post-author-avatar" src="/images/claudia-ochoa-headshot.jpg" width="40" height="40" alt="">
         <span class="post-author-info">
-          <span class="post-author-name">Claudia Ochoa</span>
+          <a class="post-author-name" href="/about.html">Claudia Ochoa</a>
           <span class="post-author-meta">September 6, 2026 · 5 min read</span>
         </span>
       </div>
