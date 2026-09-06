@@ -1,7 +1,7 @@
 from pathlib import Path
 
 from reportlab.lib import colors
-from reportlab.lib.enums import TA_CENTER, TA_LEFT
+from reportlab.lib.enums import TA_CENTER
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.lib.units import inch
@@ -11,7 +11,6 @@ from reportlab.pdfgen.canvas import Canvas
 from reportlab.platypus import (
     BaseDocTemplate,
     Frame,
-    HRFlowable,
     KeepTogether,
     PageBreak,
     PageTemplate,
@@ -22,18 +21,13 @@ from reportlab.platypus import (
 )
 
 
-ROOT = Path('/Users/claudiaochoa/Documents/Projects/claudia-ochoa')
+ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / 'output/pdf/Claudia_Ochoa_Resume.pdf'
 
-BACKGROUND = colors.HexColor('#131313')
-SURFACE = colors.HexColor('#151517')
-ESPRESSO = colors.HexColor('#FFFFFF')
-CLAY = colors.HexColor('#999999')
-CLAY_DEEP = colors.HexColor('#F2F2F4')
-CREAM = colors.HexColor('#151517')
-SAND = colors.HexColor('#303034')
-INK_SOFT = colors.HexColor('#A4A4AC')
-WHITE = colors.HexColor('#999999')
+BACKGROUND = colors.HexColor('#121212')
+PRIMARY = colors.HexColor('#F4F4F4')
+SECONDARY = colors.HexColor('#99999F')
+RULE = colors.HexColor('#303034')
 
 pdfmetrics.registerFont(TTFont('Georgia', '/System/Library/Fonts/Supplemental/Georgia.ttf'))
 pdfmetrics.registerFont(TTFont('Georgia-Bold', '/System/Library/Fonts/Supplemental/Georgia Bold.ttf'))
@@ -51,10 +45,10 @@ class ResumeDoc(BaseDocTemplate):
         super().__init__(
             filename,
             pagesize=letter,
-            leftMargin=0.3 * inch,
-            rightMargin=0.3 * inch,
-            topMargin=0.28 * inch,
-            bottomMargin=0.45 * inch,
+            leftMargin=20,
+            rightMargin=20,
+            topMargin=18,
+            bottomMargin=36,
             title='Claudia Ochoa - AI Experience, Product Design, and Brand Strategy Leader',
             author='Claudia Ochoa',
             subject='Resume',
@@ -77,55 +71,58 @@ def draw_page(canvas: Canvas, doc):
     width, height = letter
     canvas.setFillColor(BACKGROUND)
     canvas.rect(0, 0, width, height, stroke=0, fill=1)
-    canvas.setStrokeColor(SAND)
-    canvas.line(doc.leftMargin, 0.37 * inch, width - doc.rightMargin, 0.37 * inch)
-    canvas.setFont('Arial', 7.5)
-    canvas.setFillColor(INK_SOFT)
-    canvas.drawString(doc.leftMargin, 0.22 * inch, 'claudiaochoa.co  |  linkedin.com/in/claudiajochoa')
-    canvas.drawRightString(width - doc.rightMargin, 0.22 * inch, str(doc.page))
+    canvas.setStrokeColor(RULE)
+    canvas.line(doc.leftMargin, 31, width - doc.rightMargin, 31)
+    canvas.setFont('Arial', 8.2)
+    canvas.setFillColor(SECONDARY)
+    canvas.drawString(doc.leftMargin, 15, 'claudiaochoa.co | linkedin.com/in/claudiajochoa')
+    canvas.drawRightString(width - doc.rightMargin, 15, str(doc.page))
     canvas.restoreState()
 
 
 styles = getSampleStyleSheet()
 name_style = ParagraphStyle(
-    'Name', fontName='Arial-Bold', fontSize=17, leading=19, textColor=ESPRESSO, spaceAfter=2
+    'Name', fontName='Arial-Bold', fontSize=13.2, leading=16, textColor=PRIMARY, spaceAfter=4
 )
 title_style = ParagraphStyle(
-    'Title', fontName='Arial-Bold', fontSize=8.2, leading=11, textColor=ESPRESSO,
-    tracking=1.15, spaceAfter=9
+    'Title', fontName='Arial', fontSize=8.5, leading=11, textColor=PRIMARY,
+    spaceAfter=6
 )
 contact_style = ParagraphStyle(
-    'Contact', fontName='Arial', fontSize=8.7, leading=11, textColor=ESPRESSO, spaceAfter=11
+    'Contact', fontName='Arial', fontSize=8.8, leading=11, textColor=PRIMARY, spaceAfter=13
 )
 section_style = ParagraphStyle(
-    'Section', fontName='Arial-Bold', fontSize=8.5, leading=10, textColor=ESPRESSO,
-    tracking=1.0, spaceBefore=16, spaceAfter=8
+    'Section', fontName='Arial-Bold', fontSize=9.2, leading=11.5, textColor=PRIMARY,
+    spaceBefore=17, spaceAfter=9
+)
+first_section_style = ParagraphStyle(
+    'FirstSection', parent=section_style, spaceBefore=0
 )
 summary_style = ParagraphStyle(
-    'Summary', fontName='Arial', fontSize=9.15, leading=12.2, textColor=WHITE, spaceAfter=5
+    'Summary', fontName='Arial', fontSize=10.1, leading=15.2, textColor=SECONDARY, spaceAfter=7
 )
 role_style = ParagraphStyle(
-    'Role', fontName='Georgia-Bold', fontSize=11.1, leading=13, textColor=ESPRESSO, spaceAfter=1
+    'Role', fontName='Georgia-Bold', fontSize=13.3, leading=16, textColor=PRIMARY, spaceAfter=1
 )
 company_style = ParagraphStyle(
-    'Company', fontName='Arial-Bold', fontSize=8.8, leading=10.5, textColor=CLAY, spaceAfter=3
+    'Company', fontName='Arial', fontSize=10, leading=13, textColor=SECONDARY, spaceAfter=7
 )
 body_style = ParagraphStyle(
-    'Body', fontName='Arial', fontSize=8.45, leading=11.25, textColor=CLAY, spaceAfter=3
+    'Body', fontName='Arial', fontSize=10.2, leading=14.8, textColor=SECONDARY, spaceAfter=7
 )
 bullet_style = ParagraphStyle(
-    'Bullet', fontName='Arial', fontSize=8.35, leading=10.9, textColor=WHITE,
-    leftIndent=12, firstLineIndent=-7, bulletIndent=0, spaceAfter=4.5
+    'Bullet', fontName='Arial', fontSize=10, leading=14.7, textColor=SECONDARY,
+    leftIndent=15, firstLineIndent=-10, bulletIndent=0, spaceAfter=1.5
 )
 small_style = ParagraphStyle(
-    'Small', fontName='Arial', fontSize=8.2, leading=10.6, textColor=WHITE, spaceAfter=2
+    'Small', fontName='Arial', fontSize=9.6, leading=14.1, textColor=SECONDARY, spaceAfter=0
 )
 impact_number_style = ParagraphStyle(
-    'ImpactNumber', fontName='Georgia-Bold', fontSize=12.2, leading=13, textColor=ESPRESSO,
-    alignment=TA_CENTER, spaceAfter=2
+    'ImpactNumber', fontName='Georgia', fontSize=18, leading=21, textColor=PRIMARY,
+    alignment=TA_CENTER, spaceAfter=6
 )
 impact_label_style = ParagraphStyle(
-    'ImpactLabel', fontName='Arial', fontSize=7.5, leading=9.2, textColor=CLAY,
+    'ImpactLabel', fontName='Arial', fontSize=8.3, leading=11, textColor=SECONDARY,
     alignment=TA_CENTER
 )
 
@@ -134,8 +131,8 @@ def P(text, style):
     return Paragraph(text, style)
 
 
-def section(title):
-    return [P(title.upper(), section_style)]
+def section(title, first=False):
+    return [P(title.upper(), first_section_style if first else section_style)]
 
 
 def bullets(items):
@@ -155,10 +152,10 @@ def role(title, company, dates, intro, items, trailing_space=10):
 
 story = [
     P('Claudia Ochoa', name_style),
-    P('AI EXPERIENCE  |  PRODUCT DESIGN  |  BRAND STRATEGY', title_style),
+    P('AI EXPERIENCE | PRODUCT DESIGN | BRAND STRATEGY', title_style),
     P(
-        '<link href="https://claudiaochoa.co" color="#FFFFFF">claudiaochoa.co</link>'
-        '  |  <link href="https://www.linkedin.com/in/claudiajochoa/" color="#FFFFFF">linkedin.com/in/claudiajochoa</link>',
+        '<link href="https://claudiaochoa.co" color="#F4F4F4">claudiaochoa.co</link>'
+        ' | <link href="https://www.linkedin.com/in/claudiajochoa/" color="#F4F4F4">linkedin.com/in/claudiajochoa</link>',
         contact_style,
     ),
     *section('Leadership Profile'),
@@ -169,7 +166,7 @@ story = [
         'enterprise platforms, consumer e-commerce, design systems, and responsible AI.',
         summary_style,
     ),
-    Spacer(1, 4),
+    Spacer(1, 5),
 ]
 
 impact_data = [[
@@ -177,11 +174,11 @@ impact_data = [[
     [P('24 hours', impact_number_style), P('Created GenAI hiring vision that earned executive support', impact_label_style)],
     [P('30 participants', impact_number_style), P('Validated Home Depot gift-card redesign before launch', impact_label_style)],
 ]]
-impact_table = Table(impact_data, colWidths=[story_width := (letter[0] - 2 * 0.3 * inch) / 3] * 3)
+impact_table = Table(impact_data, colWidths=[story_width := (letter[0] - 40) / 3] * 3)
 impact_table.setStyle(TableStyle([
     ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
-    ('TOPPADDING', (0, 0), (-1, -1), 8),
-    ('BOTTOMPADDING', (0, 0), (-1, -1), 8),
+    ('TOPPADDING', (0, 0), (-1, -1), 5),
+    ('BOTTOMPADDING', (0, 0), (-1, -1), 5),
     ('LEFTPADDING', (0, 0), (-1, -1), 8),
     ('RIGHTPADDING', (0, 0), (-1, -1), 8),
 ]))
@@ -221,9 +218,7 @@ story.extend([
         ],
     ),
     PageBreak(),
-    P('Claudia Ochoa', name_style),
-    P('AI EXPERIENCE  |  PRODUCT DESIGN  |  BRAND STRATEGY', title_style),
-    *section('Professional Experience - Continued'),
+    *section('Professional Experience - Continued', first=True),
     role(
         'Senior User Interface Designer',
         'Dell',
