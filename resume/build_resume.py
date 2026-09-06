@@ -232,9 +232,9 @@ story.extend([
         'Senior User Interface Designer',
         'Dell',
         'August 2018 - June 2019',
-        'Designed a global enterprise shipment-tracking experience that made complex logistics data easier for business customers to act on.',
+        'Designed a global enterprise shipment-tracking experience that simplified complex logistics data.',
         [
-            'Partnered with UX architects, product stakeholders, and customers to align workflows, interaction design, and operational needs.',
+            'Partnered with UX architects, product stakeholders, and customers to align workflows, design, and operational needs.',
             'Synthesized customer interviews into simplified information architecture, modernized interface patterns, and clearer task flows.',
             'Delivered high-fidelity prototypes and implementation-ready specifications in close partnership with engineering.',
         ],
