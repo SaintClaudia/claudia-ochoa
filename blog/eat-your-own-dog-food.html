@@ -114,8 +114,6 @@
     .dogfood-source{margin-top:20px;font-size:13.5px;color:var(--ink-soft);font-style:italic;}
     @media(max-width:640px){
       .dogfood-shots{grid-template-columns:1fr;}
-      .img-lightbox{padding:56px 12px 12px;}
-      .img-lightbox iframe{height:calc(100vh - 68px);min-height:0;}
     }
 
     .table-scroll-wrap{margin-top:24px;}
@@ -130,6 +128,20 @@
     .img-lightbox.report-open iframe{display:block;}
     .img-lightbox-close{position:fixed;top:24px;right:24px;background:var(--cream);border:1px solid var(--glass-border);border-radius:50%;width:40px;height:40px;color:var(--ink-soft);font-size:1.5rem;line-height:1;cursor:pointer;}
     .img-lightbox-close:hover{color:var(--espresso);border-color:var(--espresso);}
+    .report-nav{display:none;position:fixed;top:50%;z-index:2;place-items:center;width:46px;height:46px;padding:0;border:1px solid var(--glass-border);border-radius:50%;background:var(--cream);color:var(--ink-soft);box-shadow:0 10px 28px rgba(0,0,0,.24);cursor:pointer;transform:translateY(-50%);}
+    .img-lightbox.report-open .report-nav:not([hidden]){display:grid;}
+    .report-nav:hover{color:var(--espresso);border-color:var(--espresso);}
+    .report-nav:focus-visible{outline:3px solid var(--accent);outline-offset:3px;}
+    .report-nav svg{width:22px;height:22px;}
+    .report-nav.prev{left:max(18px,calc((100vw - 920px)/2 - 64px));}
+    .report-nav.next{right:max(18px,calc((100vw - 920px)/2 - 64px));}
+    @media(max-width:640px){
+      .img-lightbox{padding:56px 12px 12px;}
+      .img-lightbox iframe{height:calc(100vh - 68px);min-height:0;}
+      .report-nav{width:40px;height:40px;background:rgba(253,251,247,.94);}
+      .report-nav.prev{left:18px;}
+      .report-nav.next{right:18px;}
+    }
   </style>
 </head>
 <body>
@@ -245,7 +257,7 @@
           <figcaption>The page pitching itself as the “#1 Agentic CRM” · captured September 6, 2026, 12:00 PM CDT.</figcaption>
         </figure>
         <figure class="dogfood-shot">
-          <button type="button" class="dogfood-shot-btn workday" aria-label="View Workday mobile PageSpeed score" data-report="/blog/reports/workday-pagespeed-report.html?v=6" data-report-title="Workday site speed and health report">
+          <button type="button" class="dogfood-shot-btn workday" aria-label="View Workday mobile PageSpeed score" data-report="/blog/reports/workday-pagespeed-report.html?v=7" data-report-title="Workday site speed and health report">
             <img class="dogfood-brand-logo" src="/images/blog-eyodf-workday-logo.webp" width="900" height="362" alt="Workday" loading="lazy" decoding="async">
             <span class="dogfood-reveal-label"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="2.5" stroke="currentColor" stroke-width="1.7"/></svg>View mobile score</span>
           </button>
@@ -365,6 +377,8 @@
 <!-- FOOTER:END -->
 <div class="img-lightbox" id="img-lightbox" role="dialog" aria-modal="true" aria-label="Expanded report" aria-hidden="true">
   <button type="button" class="img-lightbox-close" id="img-lightbox-close" aria-label="Close expanded report">&times;</button>
+  <button type="button" class="report-nav prev" id="report-prev" aria-label="View previous company report" hidden><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m15 5-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  <button type="button" class="report-nav next" id="report-next" aria-label="View next company report" hidden><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m9 5 7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
   <img id="img-lightbox-img" src="" alt="">
   <iframe id="img-lightbox-report" src="about:blank" title="Workday site speed and health report"></iframe>
 </div>
@@ -377,6 +391,10 @@
   var lbImg = document.getElementById('img-lightbox-img');
   var lbReport = document.getElementById('img-lightbox-report');
   var closeBtn = document.getElementById('img-lightbox-close');
+  var prevBtn = document.getElementById('report-prev');
+  var nextBtn = document.getElementById('report-next');
+  var reportTriggers = Array.prototype.slice.call(document.querySelectorAll('.dogfood-shot-btn[data-report]'));
+  var currentReportIndex = -1;
   var lastTrigger = null;
   if (!lb) return;
 
@@ -393,6 +411,7 @@
   }
   function openReport(src, title, trigger) {
     lastTrigger = trigger;
+    currentReportIndex = reportTriggers.indexOf(trigger);
     lbImg.src = '';
     lbImg.alt = '';
     lbReport.src = src;
@@ -400,7 +419,23 @@
     lb.classList.add('open', 'report-open');
     document.body.classList.add('lightbox-open');
     lb.setAttribute('aria-hidden', 'false');
+    updateReportNav();
     closeBtn.focus();
+  }
+  function updateReportNav() {
+    prevBtn.hidden = currentReportIndex <= 0;
+    nextBtn.hidden = currentReportIndex < 0 || currentReportIndex >= reportTriggers.length - 1;
+  }
+  function switchReport(direction) {
+    var nextIndex = currentReportIndex + direction;
+    if (nextIndex < 0 || nextIndex >= reportTriggers.length) return;
+    var trigger = reportTriggers[nextIndex];
+    currentReportIndex = nextIndex;
+    lastTrigger = trigger;
+    lbReport.src = trigger.getAttribute('data-report');
+    lbReport.title = trigger.getAttribute('data-report-title') || 'Site speed and health report';
+    updateReportNav();
+    (direction > 0 ? prevBtn : nextBtn).focus();
   }
   function closeLightbox() {
     lb.classList.remove('open', 'report-open');
@@ -408,6 +443,8 @@
     lb.setAttribute('aria-hidden', 'true');
     lbImg.src = '';
     lbReport.src = 'about:blank';
+    currentReportIndex = -1;
+    updateReportNav();
     if (lastTrigger) {
       var trigger = lastTrigger;
       window.setTimeout(function () { trigger.focus(); }, 0);
@@ -428,12 +465,16 @@
       }
     });
   });
+  prevBtn.addEventListener('click', function () { switchReport(-1); });
+  nextBtn.addEventListener('click', function () { switchReport(1); });
   closeBtn.addEventListener('click', closeLightbox);
   lb.addEventListener('click', function (e) {
     if (e.target === lb) closeLightbox();
   });
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && lb.classList.contains('open')) closeLightbox();
+    if (e.key === 'ArrowLeft' && lb.classList.contains('report-open') && !prevBtn.hidden) switchReport(-1);
+    if (e.key === 'ArrowRight' && lb.classList.contains('report-open') && !nextBtn.hidden) switchReport(1);
   });
 }());
 </script>
