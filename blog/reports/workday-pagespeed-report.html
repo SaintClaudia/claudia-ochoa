@@ -12,6 +12,7 @@
     --paper:#f4f7f9;
     --card:#ffffff;
     --line:rgba(18,32,51,0.10);
+    --track-bg:#e7ecf1;
     --wd-blue:#0b5fa8;
     --wd-blue-deep:#073a68;
     --wd-orange:#f6a21e;
@@ -21,6 +22,24 @@
     --warn-bg:#fbf1de;
     --poor:#c33d2e;
     --poor-bg:#fbe8e5;
+    --poor-border-soft:rgba(195,61,46,.22);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --ink:#eef2f6;
+      --ink-soft:#98a5b3;
+      --paper:#121316;
+      --card:#1c1e23;
+      --line:rgba(255,255,255,.09);
+      --track-bg:rgba(255,255,255,.10);
+      --good:#3ddc97;
+      --good-bg:rgba(61,220,151,.14);
+      --warn:#f4b24a;
+      --warn-bg:rgba(244,178,74,.14);
+      --poor:#f2685f;
+      --poor-bg:rgba(242,104,95,.14);
+      --poor-border-soft:rgba(242,104,95,.35);
+    }
   }
   *{box-sizing:border-box;}
   body{
@@ -43,7 +62,7 @@
     align-items:center;
     gap:9px;
     background:var(--poor-bg);
-    border:1px solid rgba(195,61,46,.22);
+    border:1px solid var(--poor-border-soft);
     color:var(--poor);
     padding:10px 18px;
     border-radius:100px;
@@ -216,8 +235,12 @@
     align-items:center;
     gap:10px;
   }
-  .bar-track{width:80px;height:6px;background:#e7ecf1;border-radius:4px;overflow:hidden;}
+  .bar-track{width:80px;height:6px;background:var(--track-bg);border-radius:4px;overflow:hidden;}
   .bar-fill{height:100%;border-radius:4px;}
+  .gauge-svg-wrap svg path:not(.gauge-fill){stroke:var(--track-bg);}
+  .gauge-fill.fill-poor{stroke:var(--poor);}
+  .gauge-fill.fill-warn{stroke:var(--warn);}
+  .gauge-fill.fill-good{stroke:var(--good);}
 
   footer{
     margin-top:56px;
@@ -259,7 +282,7 @@
           <svg viewBox="0 0 160 100">
             <path d="M10,90 A70,70 0 0,1 150,90" fill="none" stroke="#e7ecf1" stroke-width="14" stroke-linecap="round"/>
             <path d="M10,90 A70,70 0 0,1 150,90" fill="none" stroke="#c33d2e" stroke-width="14" stroke-linecap="round"
-              stroke-dasharray="219.9" stroke-dashoffset="219.9" class="gauge-fill" data-offset="149.5"/>
+              stroke-dasharray="219.9" stroke-dashoffset="219.9" class="gauge-fill fill-poor" data-offset="149.5"/>
           </svg>
           <div class="gauge-number" data-target="32">0</div>
         </div>
@@ -272,7 +295,7 @@
           <svg viewBox="0 0 160 100">
             <path d="M10,90 A70,70 0 0,1 150,90" fill="none" stroke="#e7ecf1" stroke-width="14" stroke-linecap="round"/>
             <path d="M10,90 A70,70 0 0,1 150,90" fill="none" stroke="#c97a12" stroke-width="14" stroke-linecap="round"
-              stroke-dasharray="219.9" stroke-dashoffset="219.9" class="gauge-fill" data-offset="44"/>
+              stroke-dasharray="219.9" stroke-dashoffset="219.9" class="gauge-fill fill-warn" data-offset="44"/>
           </svg>
           <div class="gauge-number" data-target="80">0</div>
         </div>
@@ -285,7 +308,7 @@
           <svg viewBox="0 0 160 100">
             <path d="M10,90 A70,70 0 0,1 150,90" fill="none" stroke="#e7ecf1" stroke-width="14" stroke-linecap="round"/>
             <path d="M10,90 A70,70 0 0,1 150,90" fill="none" stroke="#c97a12" stroke-width="14" stroke-linecap="round"
-              stroke-dasharray="219.9" stroke-dashoffset="219.9" class="gauge-fill" data-offset="101.2"/>
+              stroke-dasharray="219.9" stroke-dashoffset="219.9" class="gauge-fill fill-warn" data-offset="101.2"/>
           </svg>
           <div class="gauge-number" data-target="54">0</div>
         </div>
@@ -298,7 +321,7 @@
           <svg viewBox="0 0 160 100">
             <path d="M10,90 A70,70 0 0,1 150,90" fill="none" stroke="#e7ecf1" stroke-width="14" stroke-linecap="round"/>
             <path d="M10,90 A70,70 0 0,1 150,90" fill="none" stroke="#c97a12" stroke-width="14" stroke-linecap="round"
-              stroke-dasharray="219.9" stroke-dashoffset="219.9" class="gauge-fill" data-offset="50.6"/>
+              stroke-dasharray="219.9" stroke-dashoffset="219.9" class="gauge-fill fill-warn" data-offset="50.6"/>
           </svg>
           <div class="gauge-number" data-target="77">0</div>
         </div>
