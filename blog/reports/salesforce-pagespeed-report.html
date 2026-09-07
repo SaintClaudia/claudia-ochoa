@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>salesforce.com — Site Speed Report</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  @font-face{font-family:'Inter';src:url('/fonts/inter-latin-variable.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:swap;}
+  :root{
+    --ink:#032d60;
+    --ink-soft:#4b6484;
+    --paper:#f4f8fb;
+    --card:#ffffff;
+    --line:rgba(3,45,96,0.10);
+    --sf-blue:#00a1e0;
+    --sf-blue-deep:#032d60;
+    --good:#1e8a5f;
+    --good-bg:#e7f4ee;
+    --warn:#c97a12;
+    --warn-bg:#fbf1de;
+    --poor:#c33d2e;
+    --poor-bg:#fbe8e5;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:920px;margin:0 auto;padding:48px 28px 64px;}
+  .verdict-row{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    flex-wrap:wrap;
+    margin-bottom:18px;
+  }
+  .verdict-pill{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    background:var(--poor-bg);
+    border:1px solid rgba(195,61,46,.22);
+    color:var(--poor);
+    padding:10px 18px;
+    border-radius:100px;
+    font-family:'Inter',system-ui,sans-serif;
+    font-weight:700;
+    font-size:15px;
+  }
+  .verdict-pill .dot{width:9px;height:9px;border-radius:50%;background:var(--poor);}
+
+  /* ---------- SECTIONS ---------- */
+  section{margin-top:52px;}
+  .score-overview{margin-top:0;}
+  .score-overview-head{display:flex;align-items:flex-start;justify-content:space-between;gap:36px;}
+  .score-overview-copy{min-width:0;}
+  .score-overview-logo{display:block;width:180px;height:auto;flex:0 0 auto;margin-top:0;}
+  .section-head{margin-bottom:20px;}
+  .section-head h1,.section-head h2{
+    font-family:'Inter',system-ui,sans-serif;
+    font-size:21px;
+    font-weight:800;
+    margin:0 0 6px;
+  }
+  .section-head p{
+    margin:0;
+    font-size:14.5px;
+    color:var(--ink-soft);
+    max-width:560px;
+    line-height:1.5;
+  }
+
+  /* ---------- LIGHTHOUSE GAUGES ---------- */
+  .gauge-row{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:14px;
+  }
+  .gauge-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:20px 14px 18px;
+    text-align:center;
+  }
+  .gauge-svg-wrap{position:relative;width:100%;max-width:150px;margin:0 auto;}
+  .gauge-svg-wrap svg{width:100%;display:block;}
+  .gauge-number{
+    position:absolute;
+    left:0;right:0;
+    bottom:6px;
+    font-family:'Inter',system-ui,sans-serif;
+    font-weight:800;
+    font-size:30px;
+  }
+  .gauge-label{
+    font-size:13.5px;
+    font-weight:600;
+    color:var(--ink);
+    margin-top:2px;
+  }
+  .gauge-status{
+    font-size:12px;
+    font-weight:600;
+    margin-top:3px;
+  }
+  .status-poor{color:var(--poor);}
+  .status-warn{color:var(--warn);}
+  .status-good{color:var(--good);}
+
+  .agentic-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:20px 16px;
+    margin-top:14px;
+    display:flex;
+    align-items:center;
+    gap:18px;
+  }
+  .agentic-frac{
+    font-family:'Inter',system-ui,sans-serif;
+    font-weight:800;
+    font-size:28px;
+    color:var(--poor);
+    background:var(--poor-bg);
+    border-radius:10px;
+    padding:8px 16px;
+    flex-shrink:0;
+  }
+  .agentic-text .t{font-weight:700;font-size:14.5px;margin-bottom:3px;}
+  .agentic-text .d{font-size:13.5px;color:var(--ink-soft);line-height:1.5;}
+
+  .legend{
+    display:flex;
+    gap:22px;
+    margin-top:16px;
+    flex-wrap:wrap;
+  }
+  .legend span{
+    font-size:12.5px;
+    color:var(--ink-soft);
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+  }
+  .legend i{width:9px;height:9px;border-radius:50%;display:inline-block;}
+
+  /* ---------- FIELD DATA CARDS ---------- */
+  .field-row{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+  }
+  .field-card{
+    border-radius:14px;
+    padding:20px;
+    border:1px solid var(--line);
+  }
+  .field-card.poor{background:var(--poor-bg);}
+  .field-card.warn{background:var(--warn-bg);}
+  .field-card.good{background:var(--good-bg);}
+  .field-metric{font-size:13px;font-weight:700;color:var(--ink-soft);margin-bottom:8px;}
+  .field-value{font-family:'Inter',system-ui,sans-serif;font-weight:800;font-size:32px;line-height:1;}
+  .field-value small{font-size:16px;font-weight:700;}
+  .field-tag{
+    display:inline-block;
+    margin-top:10px;
+    font-size:12px;
+    font-weight:700;
+    padding:3px 10px;
+    border-radius:100px;
+  }
+  .field-card.poor .field-tag{background:var(--poor);color:#fff;}
+  .field-card.warn .field-tag{background:var(--warn);color:#fff;}
+  .field-card.good .field-tag{background:var(--good);color:#fff;}
+
+  .field-row-secondary{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:14px;
+    margin-top:14px;
+  }
+
+  /* ---------- LAB DIAGNOSTICS ---------- */
+  .lab-list{
+    border:1px solid var(--line);
+    border-radius:14px;
+    overflow:hidden;
+    background:var(--card);
+  }
+  .lab-item{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:15px 20px;
+    border-bottom:1px solid var(--line);
+  }
+  .lab-item:last-child{border-bottom:none;}
+  .lab-item .name{font-size:14.5px;font-weight:600;}
+  .lab-item .name span{display:block;font-size:12.5px;font-weight:400;color:var(--ink-soft);margin-top:2px;}
+  .lab-item .val{
+    font-family:'Inter',system-ui,sans-serif;
+    font-weight:800;
+    font-size:18px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .bar-track{width:80px;height:6px;background:#e3edf5;border-radius:4px;overflow:hidden;}
+  .bar-fill{height:100%;border-radius:4px;}
+
+  footer{
+    margin-top:56px;
+    padding-top:22px;
+    border-top:1px solid var(--line);
+    font-size:12.5px;
+    color:var(--ink-soft);
+    line-height:1.6;
+  }
+
+  @media (max-width:680px){
+    .gauge-row{grid-template-columns:repeat(2,1fr);}
+    .field-row{grid-template-columns:1fr;}
+    .field-row-secondary{grid-template-columns:1fr;}
+    .wrap{padding:32px 20px 48px;}
+    .score-overview-head{gap:18px;}
+    .score-overview-logo{width:120px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <section class="score-overview">
+    <div class="score-overview-head">
+      <div class="score-overview-copy">
+        <div class="verdict-row">
+          <div class="verdict-pill"><span class="dot"></span>Core Web Vitals: Failed</div>
+        </div>
+        <div class="section-head">
+          <h1>Lighthouse scores</h1>
+          <p>Automated scoring of the page, 0–100. Accessibility and SEO are strong; Performance is the clear outlier.</p>
+        </div>
+      </div>
+      <img class="score-overview-logo" src="/images/blog-eyodf-salesforce-logo.webp" width="720" height="503" alt="Salesforce">
+    </div>
+    <div class="gauge-row">
+
+      <div class="gauge-card">
+        <div class="gauge-svg-wrap">
+          <svg viewBox="0 0 160 100">
+            <path d="M10,90 A70,70 0 0,1 150,90" fill="none" stroke="#e3edf5" stroke-width="14" stroke-linecap="round"/>
+            <path d="M10,90 A70,70 0 0,1 150,90" fill="none" stroke="#c33d2e" stroke-width="14" stroke-linecap="round"
+              stroke-dasharray="219.9" stroke-dashoffset="204.5"/>
+          </svg>
+          <div class="gauge-number">7</div>
+        </div>
+        <div class="gauge-label">Performance</div>
+        <div class="gauge-status status-poor">Poor</div>
+      </div>
+
+      <div class="gauge-card">
+        <div class="gauge-svg-wrap">
+          <svg viewBox="0 0 160 100">
+            <path d="M10,90 A70,70 0 0,1 150,90" fill="none" stroke="#e3edf5" stroke-width="14" stroke-linecap="round"/>
+            <path d="M10,90 A70,70 0 0,1 150,90" fill="none" stroke="#1e8a5f" stroke-width="14" stroke-linecap="round"
+              stroke-dasharray="219.9" stroke-dashoffset="0"/>
+          </svg>
+          <div class="gauge-number">100</div>
+        </div>
+        <div class="gauge-label">Accessibility</div>
+        <div class="gauge-status status-good">Good</div>
+      </div>
+
+      <div class="gauge-card">
+        <div class="gauge-svg-wrap">
+          <svg viewBox="0 0 160 100">
+            <path d="M10,90 A70,70 0 0,1 150,90" fill="none" stroke="#e3edf5" stroke-width="14" stroke-linecap="round"/>
+            <path d="M10,90 A70,70 0 0,1 150,90" fill="none" stroke="#c97a12" stroke-width="14" stroke-linecap="round"
+              stroke-dasharray="219.9" stroke-dashoffset="50.6"/>
+          </svg>
+          <div class="gauge-number">77</div>
+        </div>
+        <div class="gauge-label">Best Practices</div>
+        <div class="gauge-status status-warn">Needs work</div>
+      </div>
+
+      <div class="gauge-card">
+        <div class="gauge-svg-wrap">
+          <svg viewBox="0 0 160 100">
+            <path d="M10,90 A70,70 0 0,1 150,90" fill="none" stroke="#e3edf5" stroke-width="14" stroke-linecap="round"/>
+            <path d="M10,90 A70,70 0 0,1 150,90" fill="none" stroke="#1e8a5f" stroke-width="14" stroke-linecap="round"
+              stroke-dasharray="219.9" stroke-dashoffset="17.6"/>
+          </svg>
+          <div class="gauge-number">92</div>
+        </div>
+        <div class="gauge-label">SEO</div>
+        <div class="gauge-status status-good">Good</div>
+      </div>
+
+    </div>
+
+    <div class="agentic-card">
+      <div class="agentic-frac">1/3</div>
+      <div class="agentic-text">
+        <div class="t">Agentic Browsing checks passed</div>
+        <div class="d">A newer PageSpeed category checking how well the page works for AI agents. The page's layout shift (0.641) and DOM structure are both flagged as unreliable for an agent to navigate. This category is still under development.</div>
+      </div>
+    </div>
+
+    <div class="legend">
+      <span><i style="background:var(--poor)"></i>Poor</span>
+      <span><i style="background:var(--warn)"></i>Needs work</span>
+      <span><i style="background:var(--good)"></i>Good</span>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>What real visitors experience</h2>
+      <p>Field data from actual Salesforce visitors on mobile over the past 28 days (Chrome UX Report).</p>
+    </div>
+    <div class="field-row">
+      <div class="field-card warn">
+        <div class="field-metric">Largest Contentful Paint</div>
+        <div class="field-value">3.1<small>s</small></div>
+        <span class="field-tag">Needs work</span>
+      </div>
+      <div class="field-card warn">
+        <div class="field-metric">Interaction to Next Paint</div>
+        <div class="field-value">324<small>ms</small></div>
+        <span class="field-tag">Needs work</span>
+      </div>
+      <div class="field-card poor">
+        <div class="field-metric">Cumulative Layout Shift</div>
+        <div class="field-value">0.28</div>
+        <span class="field-tag">Poor</span>
+      </div>
+    </div>
+    <div class="field-row-secondary">
+      <div class="field-card good">
+        <div class="field-metric">First Contentful Paint</div>
+        <div class="field-value">1.6<small>s</small></div>
+        <span class="field-tag">Good</span>
+      </div>
+      <div class="field-card good">
+        <div class="field-metric">Time to First Byte</div>
+        <div class="field-value">0.6<small>s</small></div>
+        <span class="field-tag">Good</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Lab diagnostic snapshot</h2>
+      <p>A single simulated mobile page load, controlled conditions. Shows where the performance score of 7 is coming from.</p>
+    </div>
+    <div class="lab-list">
+      <div class="lab-item">
+        <div class="name">Largest Contentful Paint<span>The main content takes a very long time to appear</span></div>
+        <div class="val">31.3s<div class="bar-track"><div class="bar-fill" style="width:98%;background:var(--poor)"></div></div></div>
+      </div>
+      <div class="lab-item">
+        <div class="name">Speed Index<span>How quickly the page fills in visually</span></div>
+        <div class="val">22.5s<div class="bar-track"><div class="bar-fill" style="width:88%;background:var(--poor)"></div></div></div>
+      </div>
+      <div class="lab-item">
+        <div class="name">Total Blocking Time<span>The page's main thread is too busy to respond</span></div>
+        <div class="val">4,270ms<div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--poor)"></div></div></div>
+      </div>
+      <div class="lab-item">
+        <div class="name">First Contentful Paint<span>Time until the first pixel shows up</span></div>
+        <div class="val">3.3s<div class="bar-track"><div class="bar-fill" style="width:45%;background:var(--warn)"></div></div></div>
+      </div>
+      <div class="lab-item">
+        <div class="name">Cumulative Layout Shift<span>Content is jumping around while loading</span></div>
+        <div class="val">0.641<div class="bar-track"><div class="bar-fill" style="width:90%;background:var(--poor)"></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Data pulled from Google PageSpeed Insights, mobile report for salesforce.com, run Sep 6, 2026 at 12:00:50 PM. Lighthouse lab scores are estimated from a single simulated page load and can vary between runs; field data reflects real user experience over the trailing 28 days.
+  </footer>
+
+</div>
+</body>
+</html>
