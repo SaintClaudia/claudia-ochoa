@@ -720,6 +720,11 @@
     p.status.textContent = label + " · " + Math.round(pct(key)) + "%";
   }
 
+  function clearProgressTimer(key){
+    var p = players[key];
+    if(p._progressTimer){ clearInterval(p._progressTimer); p._progressTimer = null; }
+  }
+
   function stopAllExcept(key){
     Object.keys(players).forEach(function(k){
       if(k !== key && players[k].state === "playing"){
@@ -727,6 +732,7 @@
         // remembered position, same as pressing its own pause button,
         // instead of being force-reset to the beginning.
         players[k].state = "paused";
+        clearProgressTimer(k);
         render(k);
       }
     });
@@ -736,6 +742,7 @@
     stopAllExcept(key);
     synth.cancel();
     var p = players[key];
+    clearProgressTimer(key);
     p.baseOffset = charIndex;
     var remaining = p.text.substring(charIndex);
     if(remaining.length === 0){ p.state = "stopped"; p.baseOffset = 0; render(key); return; }
@@ -746,7 +753,22 @@
       var v = findVoice(p.voiceCandidates, key !== "original");
       if(v) utter.voice = v;
     }
-    utter.onstart = function(){ p.state = "playing"; activeKey = key; render(key); };
+    // Some Chrome voices — the premium/"Natural"/network ones, which is
+    // exactly what the redesign player prefers — never fire onboundary;
+    // the browser gets no word-timing back from them, so the scrub bar
+    // would otherwise sit frozen at its starting position. Estimate
+    // progress from elapsed time as a fallback; real onboundary events
+    // (when the voice supports them) always win since this only ever
+    // pushes the position forward, never backward.
+    var estimatedMs = (remaining.length / (15 * p.rate)) * 1000;
+    utter.onstart = function(){
+      p.state = "playing"; activeKey = key; render(key);
+      var tickStart = Date.now();
+      p._progressTimer = setInterval(function(){
+        var estOffset = charIndex + Math.min(remaining.length, ((Date.now() - tickStart) / estimatedMs) * remaining.length);
+        if(estOffset > p.baseOffset){ p.baseOffset = estOffset; render(key); }
+      }, 200);
+    };
     utter.onboundary = function(e){
       if(typeof e.charIndex === "number"){
         p.baseOffset = charIndex + e.charIndex;
@@ -754,6 +776,7 @@
       }
     };
     utter.onend = function(){
+      clearProgressTimer(key);
       if(p.state !== "paused"){ p.state = "stopped"; p.baseOffset = 0; }
       if(activeKey === key) activeKey = null;
       render(key);
@@ -778,6 +801,7 @@
       // pressing play again re-speaks starting from that word instead
       // of the beginning.
       synth.cancel();
+      clearProgressTimer(key);
       p.state = "paused";
       if(activeKey === key) activeKey = null;
       render(key);
@@ -788,6 +812,7 @@
 
   function stop(key){
     if(activeKey === key) synth.cancel();
+    clearProgressTimer(key);
     var p = players[key];
     p.state = "stopped";
     p.baseOffset = 0;
