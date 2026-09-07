@@ -496,8 +496,8 @@
     <div class="section-head">
       <div><span class="num">04 · Agentic Browsing</span></div>
       <div>
-        <h2>3 of 3 checks passed isn't the same as an agent succeeding.</h2>
-        <p class="lede">The redesign passes Lighthouse's Agentic Browsing audit in full — 3 of 3 checks, both mobile and desktop (see the Research). Those checks confirm a well-formed accessibility tree, stable layout, and a recommended <code>llms.txt</code> file. They don't confirm an agent can actually get something done.</p>
+        <h2>2 of 2 checks passed isn't the same as an agent succeeding.</h2>
+        <p class="lede">The redesign passes Lighthouse's Agentic Browsing audit in full — 2 of 2 checks, both mobile and desktop (see the Research). Those checks confirm a well-formed accessibility tree, stable layout, and a recommended <code>llms.txt</code> file. They don't confirm an agent can actually get something done.</p>
       </div>
     </div>
 
@@ -759,7 +759,14 @@
       render(key);
     };
     p._utter = utter;
-    synth.speak(utter);
+    // Chrome has a known race: speak() called synchronously right after
+    // cancel() can silently drop the new utterance's start/boundary events
+    // (audio still plays) unless a tick passes first — so the button icon
+    // never flips and the scrub bar never advances. A short delay lets
+    // cancel() finish before the new utterance is queued.
+    setTimeout(function(){
+      if(p._utter === utter) synth.speak(utter);
+    }, 50);
   }
 
   function togglePlayPause(key){

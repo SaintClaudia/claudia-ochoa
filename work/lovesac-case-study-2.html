@@ -1488,7 +1488,14 @@
       render(key);
     };
     p._utter = utter;
-    synth.speak(utter);
+    // Chrome has a known race: speak() called synchronously right after
+    // cancel() can silently drop the new utterance's start/boundary events
+    // (audio still plays) unless a tick passes first — so the button icon
+    // never flips and the scrub bar never advances. A short delay lets
+    // cancel() finish before the new utterance is queued.
+    setTimeout(function(){
+      if(p._utter === utter) synth.speak(utter);
+    }, 50);
   }
 
   function togglePlayPause(key){
