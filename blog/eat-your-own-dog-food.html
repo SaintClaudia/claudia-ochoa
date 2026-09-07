@@ -114,6 +114,7 @@
     .dogfood-shot-btn.workday .dogfood-brand-logo{transform:translateY(-7px);}
     .dogfood-shot-btn:hover .dogfood-brand-logo{transform:translateY(-3px) scale(1.025);}
     .dogfood-shot-btn.workday:hover .dogfood-brand-logo{transform:translateY(-10px) scale(1.025);}
+    .dogfood-card-score{position:absolute;left:16px;bottom:14px;padding:7px 10px;border-radius:999px;background:rgba(10,10,11,.76);box-shadow:0 4px 16px rgba(0,0,0,.16);color:#fff;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;}
     .dogfood-reveal-label{position:absolute;right:16px;bottom:14px;display:inline-flex;align-items:center;gap:7px;padding:7px 10px;border-radius:999px;background:rgba(10,10,11,.76);box-shadow:0 4px 16px rgba(0,0,0,.16);color:#fff;font-size:11px;font-weight:650;letter-spacing:.08em;text-transform:uppercase;}
     .dogfood-reveal-label svg{width:14px;height:14px;flex:none;}
     .dogfood-shot figcaption{padding:14px 16px;font-size:13px;line-height:1.5;color:var(--ink-soft);}
@@ -277,15 +278,17 @@
 
       <div class="dogfood-shots reveal">
         <figure class="dogfood-shot">
-          <button type="button" class="dogfood-shot-btn salesforce" aria-label="View Salesforce mobile PageSpeed score" data-report="/blog/reports/salesforce-pagespeed-report.html?v=1" data-report-title="Salesforce site speed and health report">
+          <button type="button" class="dogfood-shot-btn salesforce" aria-label="View Salesforce mobile PageSpeed score, 7 out of 100" data-report="/blog/reports/salesforce-pagespeed-report.html?v=1" data-report-title="Salesforce site speed and health report">
             <img class="dogfood-brand-logo" src="/images/blog-eyodf-salesforce-logo.webp" width="720" height="503" alt="Salesforce" loading="lazy" decoding="async">
+            <span class="dogfood-card-score">7 of 100</span>
             <span class="dogfood-reveal-label"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="2.5" stroke="currentColor" stroke-width="1.7"/></svg>View mobile score</span>
           </button>
           <figcaption>The page pitching itself as the “#1 Agentic CRM” · captured September 6, 2026, 12:00 PM CDT.</figcaption>
         </figure>
         <figure class="dogfood-shot">
-          <button type="button" class="dogfood-shot-btn workday" aria-label="View Workday mobile PageSpeed score" data-report="/blog/reports/workday-pagespeed-report.html?v=7" data-report-title="Workday site speed and health report">
+          <button type="button" class="dogfood-shot-btn workday" aria-label="View Workday mobile PageSpeed score, 32 out of 100" data-report="/blog/reports/workday-pagespeed-report.html?v=7" data-report-title="Workday site speed and health report">
             <img class="dogfood-brand-logo" src="/images/blog-eyodf-workday-logo.webp" width="900" height="362" alt="Workday" loading="lazy" decoding="async">
+            <span class="dogfood-card-score">32 of 100</span>
             <span class="dogfood-reveal-label"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="2.5" stroke="currentColor" stroke-width="1.7"/></svg>View mobile score</span>
           </button>
           <figcaption>The page telling you to “put AI agents to work for you” · captured September 6, 2026, 11:51 AM CDT.</figcaption>
