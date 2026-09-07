@@ -88,6 +88,10 @@
   }
   .gauge-svg-wrap{position:relative;width:100%;max-width:150px;margin:0 auto;}
   .gauge-svg-wrap svg{width:100%;display:block;}
+  .gauge-fill{transition:stroke-dashoffset 1.1s cubic-bezier(.16,1,.3,1);}
+  @media (prefers-reduced-motion: reduce){
+    .gauge-fill{transition:none;}
+  }
   .gauge-number{
     position:absolute;
     left:0;right:0;
@@ -217,9 +221,9 @@
           <svg viewBox="0 0 160 100">
             <path d="M10,90 A70,70 0 0,1 150,90" fill="none" stroke="#ece7e0" stroke-width="14" stroke-linecap="round"/>
             <path d="M10,90 A70,70 0 0,1 150,90" fill="none" stroke="#c33d2e" stroke-width="14" stroke-linecap="round"
-              stroke-dasharray="219.9" stroke-dashoffset="147.3"/>
+              stroke-dasharray="219.9" stroke-dashoffset="219.9" class="gauge-fill" data-offset="147.3"/>
           </svg>
-          <div class="gauge-number">33</div>
+          <div class="gauge-number" data-target="33">0</div>
         </div>
         <div class="gauge-label">Performance</div>
         <div class="gauge-status status-poor">Poor</div>
@@ -230,9 +234,9 @@
           <svg viewBox="0 0 160 100">
             <path d="M10,90 A70,70 0 0,1 150,90" fill="none" stroke="#ece7e0" stroke-width="14" stroke-linecap="round"/>
             <path d="M10,90 A70,70 0 0,1 150,90" fill="none" stroke="#c97a12" stroke-width="14" stroke-linecap="round"
-              stroke-dasharray="219.9" stroke-dashoffset="26.4"/>
+              stroke-dasharray="219.9" stroke-dashoffset="219.9" class="gauge-fill" data-offset="26.4"/>
           </svg>
-          <div class="gauge-number">88</div>
+          <div class="gauge-number" data-target="88">0</div>
         </div>
         <div class="gauge-label">Accessibility</div>
         <div class="gauge-status status-warn">Needs work</div>
@@ -243,9 +247,9 @@
           <svg viewBox="0 0 160 100">
             <path d="M10,90 A70,70 0 0,1 150,90" fill="none" stroke="#ece7e0" stroke-width="14" stroke-linecap="round"/>
             <path d="M10,90 A70,70 0 0,1 150,90" fill="none" stroke="#c97a12" stroke-width="14" stroke-linecap="round"
-              stroke-dasharray="219.9" stroke-dashoffset="59.4"/>
+              stroke-dasharray="219.9" stroke-dashoffset="219.9" class="gauge-fill" data-offset="59.4"/>
           </svg>
-          <div class="gauge-number">73</div>
+          <div class="gauge-number" data-target="73">0</div>
         </div>
         <div class="gauge-label">Best Practices</div>
         <div class="gauge-status status-warn">Needs work</div>
@@ -256,9 +260,9 @@
           <svg viewBox="0 0 160 100">
             <path d="M10,90 A70,70 0 0,1 150,90" fill="none" stroke="#ece7e0" stroke-width="14" stroke-linecap="round"/>
             <path d="M10,90 A70,70 0 0,1 150,90" fill="none" stroke="#1e8a5f" stroke-width="14" stroke-linecap="round"
-              stroke-dasharray="219.9" stroke-dashoffset="0"/>
+              stroke-dasharray="219.9" stroke-dashoffset="219.9" class="gauge-fill" data-offset="0"/>
           </svg>
-          <div class="gauge-number">100</div>
+          <div class="gauge-number" data-target="100">0</div>
         </div>
         <div class="gauge-label">SEO</div>
         <div class="gauge-status status-good">Good</div>
@@ -300,5 +304,40 @@
   </footer>
 
 </div>
+<script>
+(function () {
+  var rings = document.querySelectorAll('.gauge-fill[data-offset]');
+  var numbers = document.querySelectorAll('.gauge-number[data-target]');
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var duration = 1100;
+
+  function setFinal() {
+    rings.forEach(function (r) { r.style.strokeDashoffset = r.getAttribute('data-offset'); });
+    numbers.forEach(function (n) { n.textContent = n.getAttribute('data-target'); });
+  }
+
+  if (reduceMotion) { setFinal(); return; }
+
+  function animateNumber(el) {
+    var target = parseInt(el.getAttribute('data-target'), 10);
+    var start = null;
+    function step(ts) {
+      if (start === null) start = ts;
+      var progress = Math.min((ts - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(target * eased);
+      if (progress < 1) window.requestAnimationFrame(step);
+    }
+    window.requestAnimationFrame(step);
+  }
+
+  window.requestAnimationFrame(function () {
+    window.requestAnimationFrame(function () {
+      rings.forEach(function (r) { r.style.strokeDashoffset = r.getAttribute('data-offset'); });
+      numbers.forEach(animateNumber);
+    });
+  });
+}());
+</script>
 </body>
 </html>
