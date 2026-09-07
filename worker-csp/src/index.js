@@ -34,7 +34,8 @@ function buildCSP(nonce) {
     // tile decoding; without this they fall back to script-src, which has
     // no blob: source and silently blocks them.
     "worker-src 'self' blob:",
-    "frame-src https://open.spotify.com https://www.tiktok.com",
+    // Same-origin frames power the expanded PageSpeed report modals.
+    "frame-src 'self' https://open.spotify.com https://www.tiktok.com",
     "frame-ancestors 'self'",
     "base-uri 'self'",
     "form-action 'self' https://api.web3forms.com",
