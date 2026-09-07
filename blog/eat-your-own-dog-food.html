@@ -129,18 +129,6 @@
 
     .table-scroll-wrap{margin-top:24px;}
     .table-scroll-wrap + .body-copy{margin-top:32px;}
-    .score-shift{max-width:72ch;margin-top:32px;padding:clamp(22px,4vw,34px);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:18px;background:var(--paper);}
-    .score-shift h3{font-size:clamp(22px,3vw,28px);line-height:1.2;}
-    .score-shift-intro,.score-shift-copy{margin-top:12px;font-size:16px;line-height:1.7;color:var(--ink-soft);}
-    .score-shift-metrics{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px;}
-    .score-shift-metric{padding:18px;border:1px solid var(--line);border-radius:12px;background:var(--glass-bg);}
-    .score-shift-label{display:block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);}
-    .score-shift-value{display:flex;align-items:center;gap:10px;margin-top:6px;font-family:'Fraunces',serif;font-size:clamp(28px,5vw,38px);line-height:1;color:var(--espresso);}
-    .score-shift-value .arrow{color:var(--accent);}
-    .score-shift-note{display:block;margin-top:8px;font-size:12px;line-height:1.45;color:var(--ink-soft);}
-    .score-shift q{color:var(--espresso);font-weight:600;}
-    @media(max-width:520px){.score-shift-metrics{grid-template-columns:1fr;}}
-
     .img-lightbox{display:none;position:fixed;inset:0;z-index:300;justify-content:center;background:rgba(10,10,11,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:64px 32px;overflow-y:auto;cursor:zoom-out;}
     .img-lightbox.open{display:flex;}
     body.lightbox-open{overflow:hidden;}
@@ -384,25 +372,6 @@
           </table>
         </div>
       </div>
-
-      <aside class="score-shift reveal" aria-labelledby="score-shift-title">
-        <h3 id="score-shift-title">Look at the last two rows.</h3>
-        <p class="score-shift-intro">Same URL, same desktop view, one day apart — and the score moved on its own.</p>
-        <div class="score-shift-metrics" aria-label="Oracle score changes over one day">
-          <div class="score-shift-metric">
-            <span class="score-shift-label">Performance</span>
-            <strong class="score-shift-value" aria-label="71 to 92"><span>71</span><span class="arrow" aria-hidden="true">→</span><span>92</span></strong>
-            <span class="score-shift-note">Climbed in one day</span>
-          </div>
-          <div class="score-shift-metric">
-            <span class="score-shift-label">Agentic Browsing</span>
-            <strong class="score-shift-value" aria-label="1 out of 2 to 2 out of 2"><span>1/2</span><span class="arrow" aria-hidden="true">→</span><span>2/2</span></strong>
-            <span class="score-shift-note">PageSpeed Insights' newest category</span>
-          </div>
-        </div>
-        <p class="score-shift-copy">Google's own copy calls this category <q>still under development and subject to change</q>. This is what that looks like in practice: a live, moving rubric, not a settled one.</p>
-        <p class="score-shift-copy">Every score in this piece — including the “7 out of 100” and “26 seconds” above — is a single point-in-time read, not a permanent verdict.</p>
-      </aside>
 
       <p class="dogfood-source"><em>Performance data pulled from Google PageSpeed Insights, captured September 6, 2026, mobile results unless marked desktop. The one exception is the earlier Oracle desktop row, captured September 5, kept for the day-over-day comparison above.</em></p>
 
