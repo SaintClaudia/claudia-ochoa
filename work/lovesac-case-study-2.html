@@ -1486,19 +1486,26 @@
     // exactly what the redesign player prefers — never fire onboundary;
     // the browser gets no word-timing back from them, so the scrub bar
     // would otherwise sit frozen at its starting position. Estimate
-    // progress from elapsed time as a fallback; real onboundary events
-    // (when the voice supports them) always win since this only ever
-    // pushes the position forward, never backward.
+    // progress from elapsed time as a fallback until a real onboundary
+    // event shows up — the instant one does, this browser/voice clearly
+    // supports them, so the estimate stands down for the rest of this
+    // utterance instead of fighting the real position and making the
+    // scrub bar and percentage visibly jitter (Safari's default voice
+    // fires onboundary regularly, so this matters there).
     var estimatedMs = (remaining.length / (15 * p.rate)) * 1000;
+    var hasBoundary = false;
     utter.onstart = function(){
-      p.state = "playing"; activeKey = key; render(key);
+      if(p._utter !== utter) return;
       var tickStart = Date.now();
       p._progressTimer = setInterval(function(){
+        if(hasBoundary){ clearProgressTimer(key); return; }
         var estOffset = charIndex + Math.min(remaining.length, ((Date.now() - tickStart) / estimatedMs) * remaining.length);
         if(estOffset > p.baseOffset){ p.baseOffset = estOffset; render(key); }
       }, 200);
     };
     utter.onboundary = function(e){
+      hasBoundary = true;
+      clearProgressTimer(key);
       if(typeof e.charIndex === "number"){
         p.baseOffset = charIndex + e.charIndex;
         render(key);
@@ -1511,6 +1518,13 @@
       render(key);
     };
     p._utter = utter;
+    // Optimistically mark this player as playing right away instead of
+    // waiting for onstart — Safari in particular can take a beat before
+    // the utterance actually produces audio, and until onstart fires the
+    // state was still "stopped", so clicking the button again during that
+    // window read as another play request instead of a pause. The player
+    // looked like it wouldn't pause when clicked soon after starting.
+    p.state = "playing"; activeKey = key; render(key);
     // Chrome has a known race: speak() called synchronously right after
     // cancel() can silently drop the new utterance's start/boundary events
     // (audio still plays) unless a tick passes first — so the button icon
