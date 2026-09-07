@@ -207,6 +207,8 @@
   }
   .data-table tbody th{font-weight:700; color:var(--espresso); white-space:nowrap;}
   .data-table td{color:var(--ink-soft);}
+  .data-table tbody tr{transition:background-color .15s ease;}
+  .data-table tbody tr:hover{background-color:var(--sand);}
   .data-table td strong, .data-table td em{color:var(--espresso); font-style:normal;}
 
   .nav-compare{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:28px;}
