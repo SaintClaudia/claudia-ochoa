@@ -153,6 +153,42 @@
   }
   .legend i{width:9px;height:9px;border-radius:50%;display:inline-block;}
 
+  /* ---------- FIELD DATA CARDS ---------- */
+  .field-row{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+  }
+  .field-card{
+    border-radius:14px;
+    padding:20px;
+    border:1px solid var(--line);
+  }
+  .field-card.poor{background:var(--poor-bg);}
+  .field-card.warn{background:var(--warn-bg);}
+  .field-card.good{background:var(--good-bg);}
+  .field-metric{font-size:13px;font-weight:700;color:var(--ink-soft);margin-bottom:8px;}
+  .field-value{font-family:'Inter',system-ui,sans-serif;font-weight:800;font-size:32px;line-height:1;}
+  .field-value small{font-size:16px;font-weight:700;}
+  .field-tag{
+    display:inline-block;
+    margin-top:10px;
+    font-size:12px;
+    font-weight:700;
+    padding:3px 10px;
+    border-radius:100px;
+  }
+  .field-card.poor .field-tag{background:var(--poor);color:#fff;}
+  .field-card.warn .field-tag{background:var(--warn);color:#fff;}
+  .field-card.good .field-tag{background:var(--good);color:#fff;}
+
+  .field-row-secondary{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:14px;
+    margin-top:14px;
+  }
+
   /* ---------- LAB DIAGNOSTICS ---------- */
   .lab-list{
     border:1px solid var(--line);
@@ -165,7 +201,9 @@
     align-items:center;
     justify-content:space-between;
     padding:15px 20px;
+    border-bottom:1px solid var(--line);
   }
+  .lab-item:last-child{border-bottom:none;}
   .lab-item .name{font-size:14.5px;font-weight:600;}
   .lab-item .name span{display:block;font-size:12.5px;font-weight:400;color:var(--ink-soft);margin-top:2px;}
   .lab-item .val{
@@ -178,7 +216,6 @@
   }
   .bar-track{width:80px;height:6px;background:#ece7e0;border-radius:4px;overflow:hidden;}
   .bar-fill{height:100%;border-radius:4px;}
-  .lab-note{margin-top:14px;font-size:13px;color:var(--ink-soft);line-height:1.5;}
 
   footer{
     margin-top:56px;
@@ -191,6 +228,8 @@
 
   @media (max-width:680px){
     .gauge-row{grid-template-columns:repeat(2,1fr);}
+    .field-row{grid-template-columns:1fr;}
+    .field-row-secondary{grid-template-columns:1fr;}
     .wrap{padding:32px 20px 48px;}
     .score-overview-head{gap:18px;}
     .score-overview-logo{width:80px;}
@@ -204,9 +243,6 @@
   <section class="score-overview">
     <div class="score-overview-head">
       <div class="score-overview-copy">
-        <div class="verdict-row">
-          <div class="verdict-pill"><span class="dot"></span>Core Web Vitals: Failed</div>
-        </div>
         <div class="section-head">
           <h1>Lighthouse scores</h1>
           <p>Automated scoring of the page, 0–100. SEO is perfect and Accessibility is close behind; Performance is the clear weak spot.</p>
@@ -287,6 +323,45 @@
 
   <section>
     <div class="section-head">
+      <h2>What real visitors experience</h2>
+      <p>Field data from actual Home Depot visitors on mobile over the past 28 days (Chrome UX Report).</p>
+    </div>
+    <div class="verdict-row">
+      <div class="verdict-pill"><span class="dot"></span>Core Web Vitals: Failed</div>
+    </div>
+    <div class="field-row">
+      <div class="field-card good">
+        <div class="field-metric">Largest Contentful Paint</div>
+        <div class="field-value">1.6<small>s</small></div>
+        <span class="field-tag">Good</span>
+      </div>
+      <div class="field-card warn">
+        <div class="field-metric">Interaction to Next Paint</div>
+        <div class="field-value">380<small>ms</small></div>
+        <span class="field-tag">Needs work</span>
+      </div>
+      <div class="field-card good">
+        <div class="field-metric">Cumulative Layout Shift</div>
+        <div class="field-value">0.06</div>
+        <span class="field-tag">Good</span>
+      </div>
+    </div>
+    <div class="field-row-secondary">
+      <div class="field-card good">
+        <div class="field-metric">First Contentful Paint</div>
+        <div class="field-value">1.5<small>s</small></div>
+        <span class="field-tag">Good</span>
+      </div>
+      <div class="field-card good">
+        <div class="field-metric">Time to First Byte</div>
+        <div class="field-value">0.7<small>s</small></div>
+        <span class="field-tag">Good</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
       <h2>Lab diagnostic snapshot</h2>
       <p>A single simulated mobile page load, controlled conditions. Shows where the performance score of 33 is coming from.</p>
     </div>
@@ -295,8 +370,23 @@
         <div class="name">Largest Contentful Paint<span>The main content takes a while to appear</span></div>
         <div class="val">5.8s<div class="bar-track"><div class="bar-fill" style="width:55%;background:var(--poor)"></div></div></div>
       </div>
+      <div class="lab-item">
+        <div class="name">Speed Index<span>How quickly the page fills in visually</span></div>
+        <div class="val">18.4s<div class="bar-track"><div class="bar-fill" style="width:84%;background:var(--poor)"></div></div></div>
+      </div>
+      <div class="lab-item">
+        <div class="name">Total Blocking Time<span>The page's main thread is too busy to respond</span></div>
+        <div class="val">7,290ms<div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--poor)"></div></div></div>
+      </div>
+      <div class="lab-item">
+        <div class="name">First Contentful Paint<span>Time until the first pixel shows up</span></div>
+        <div class="val">3.2s<div class="bar-track"><div class="bar-fill" style="width:43%;background:var(--warn)"></div></div></div>
+      </div>
+      <div class="lab-item">
+        <div class="name">Cumulative Layout Shift<span>Nothing jumps around while loading</span></div>
+        <div class="val">0.011<div class="bar-track"><div class="bar-fill" style="width:3%;background:var(--good)"></div></div></div>
+      </div>
     </div>
-    <p class="lab-note">Only Largest Contentful Paint was captured for this run — Speed Index, Total Blocking Time, First Contentful Paint, Cumulative Layout Shift, and real-visitor field data weren't recorded.</p>
   </section>
 
   <footer>
