@@ -128,6 +128,22 @@
       .dogfood-shots{grid-template-columns:1fr;}
     }
 
+    .bar-chart{display:flex;flex-direction:column;gap:14px;margin-top:24px;}
+    .bar-row{display:grid;grid-template-columns:120px 1fr 56px;align-items:center;gap:14px;}
+    .bar-label{font-size:13.5px;font-weight:600;color:var(--espresso);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    .bar-track{background:var(--line);border-radius:999px;height:14px;overflow:hidden;display:flex;}
+    .bar-value{font-size:13.5px;font-weight:700;color:var(--ink-soft);text-align:right;font-variant-numeric:tabular-nums;}
+    .split-segment{display:block;height:100%;width:0;transition:width 1s cubic-bezier(.16,1,.3,1);}
+    .agentic-pass{background:var(--clay-deep);}
+    .agentic-fail{background:#48484F;}
+    @media(max-width:640px){
+      .bar-row{grid-template-columns:84px 1fr 48px;gap:10px;}
+      .bar-label{font-size:12.5px;}
+    }
+    @media (prefers-reduced-motion: reduce){
+      .split-segment{transition:none;}
+    }
+
     .img-lightbox{display:none;position:fixed;inset:0;z-index:300;justify-content:center;background:rgba(10,10,11,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:64px 32px;overflow-y:auto;cursor:zoom-out;}
     .img-lightbox.open{display:flex;}
     body.lightbox-open{overflow:hidden;}
@@ -304,6 +320,74 @@
       </div>
 
       <p class="body-copy reveal">These aren't obscure players. These are companies with enormous engineering budgets, entire teams dedicated to performance, and leadership actively telling the market they're the future of intelligent software. If they can't get their own front door to load quickly and reliably, what exactly is the AI supposed to be fixing?</p>
+
+      <p class="apa-label reveal" style="margin-top:40px;"><span class="apa-num">Figure 1</span><span class="apa-title">Agentic Browsing Checks Passed, by Company</span></p>
+      <p class="nav-note reveal" style="margin:0 0 24px;">PageSpeed's experimental Agentic Browsing category checks machine-readable prerequisites — a well-formed accessibility tree, stable layout, and, when present, a recommended <code>llms.txt</code> file. It does not test whether an agent can complete a real customer task.</p>
+      <div class="bar-chart reveal" role="img" aria-label="Agentic Browsing checks passed by company: Salesforce 1 of 3, Workday 1 of 2, Walmart 2 of 2, Lowe's 1 of 3, Home Depot 2 of 2, Amazon 1 of 2, SpaceX 1 of 2, Oracle 2 of 2">
+        <div class="bar-row">
+          <span class="bar-label">Salesforce</span>
+          <span class="bar-track">
+            <span class="split-segment agentic-pass" data-width="33.33%"></span>
+            <span class="split-segment agentic-fail" data-width="66.67%"></span>
+          </span>
+          <span class="bar-value">1/3</span>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label">Workday</span>
+          <span class="bar-track">
+            <span class="split-segment agentic-pass" data-width="50%"></span>
+            <span class="split-segment agentic-fail" data-width="50%"></span>
+          </span>
+          <span class="bar-value">1/2</span>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label">Walmart</span>
+          <span class="bar-track">
+            <span class="split-segment agentic-pass" data-width="100%"></span>
+          </span>
+          <span class="bar-value">2/2</span>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label">Lowe's</span>
+          <span class="bar-track">
+            <span class="split-segment agentic-pass" data-width="33.33%"></span>
+            <span class="split-segment agentic-fail" data-width="66.67%"></span>
+          </span>
+          <span class="bar-value">1/3</span>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label">Home Depot</span>
+          <span class="bar-track">
+            <span class="split-segment agentic-pass" data-width="100%"></span>
+          </span>
+          <span class="bar-value">2/2</span>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label">Amazon</span>
+          <span class="bar-track">
+            <span class="split-segment agentic-pass" data-width="50%"></span>
+            <span class="split-segment agentic-fail" data-width="50%"></span>
+          </span>
+          <span class="bar-value">1/2</span>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label">SpaceX</span>
+          <span class="bar-track">
+            <span class="split-segment agentic-pass" data-width="50%"></span>
+            <span class="split-segment agentic-fail" data-width="50%"></span>
+          </span>
+          <span class="bar-value">1/2</span>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label">Oracle</span>
+          <span class="bar-track">
+            <span class="split-segment agentic-pass" data-width="100%"></span>
+          </span>
+          <span class="bar-value">2/2</span>
+        </div>
+      </div>
+      <p class="nav-note reveal">SpaceX is included for contrast, not as an AI pitch. Even it clears only half of this category's checks — the ones that do pass tend to be table stakes, not evidence of "agent readiness."</p>
+
       <h3 class="dogfood-subhead reveal">This is the dog food test.</h3>
       <p class="body-copy reveal">If the product were as good as the pitch, they'd be running it themselves — and it would show.</p>
       <p class="body-copy reveal">The phrase has a history worth remembering. Back in the 1980s, Microsoft was getting crushed by Novell in networking. Paul Maritz, tasked with turning around a product nobody was using, sent his team a blunt email: if they didn't have real customers, they'd have to become their own. Engineering leader Brian Valentine set up an internal server literally named "dogfood," and the practice stuck. It became shorthand for a simple standard: don't ask anyone to trust what you haven't tested on yourself first. (<a href="https://www.geekwire.com/2025/eat-your-own-dog-food-how-microsoft-popularized-one-of-the-yuckiest-terms-in-tech-history/" target="_blank" rel="noopener noreferrer">GeekWire has the full origin story.</a>)</p>
@@ -484,6 +568,28 @@
     if (e.key === 'ArrowLeft' && lb.classList.contains('report-open') && !prevBtn.hidden) switchReport(-1);
     if (e.key === 'ArrowRight' && lb.classList.contains('report-open') && !nextBtn.hidden) switchReport(1);
   });
+}());
+</script>
+<script>
+(function () {
+  var bars = document.querySelectorAll('.split-segment[data-width]');
+  if (!bars.length) return;
+
+  if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    bars.forEach(function (bar) { bar.style.width = bar.getAttribute('data-width'); });
+    return;
+  }
+
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.style.width = entry.target.getAttribute('data-width');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+
+  bars.forEach(function (bar) { observer.observe(bar); });
 }());
 </script>
 </body>
