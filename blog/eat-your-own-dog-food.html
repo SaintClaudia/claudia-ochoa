@@ -109,9 +109,13 @@
     .dogfood-shot-btn:focus-visible{outline:3px solid var(--accent);outline-offset:-5px;}
     .dogfood-shot-btn.salesforce{--brand-start:#0d35c9;--brand-end:#1249df;}
     .dogfood-shot-btn.workday{--brand-start:#fff3df;--brand-end:#f7be64;}
+    .dogfood-shot-btn.walmart{--brand-start:#041e42;--brand-end:#0071ce;}
+    .dogfood-shot-btn.homedepot{--brand-start:#c94e00;--brand-end:#f96302;}
     .dogfood-shot-btn .dogfood-brand-logo{display:block;width:72%;height:auto;max-width:none;max-height:none;object-fit:contain;filter:drop-shadow(0 8px 18px rgba(0,0,0,.14));transition:transform .45s cubic-bezier(.25,.46,.45,.94);}
     .dogfood-shot-btn.salesforce .dogfood-brand-logo{width:58%;}
     .dogfood-shot-btn.workday .dogfood-brand-logo{transform:translateY(-7px);}
+    .dogfood-shot-btn.walmart .dogfood-brand-logo{width:50%;}
+    .dogfood-shot-btn.homedepot .dogfood-brand-logo{width:56%;}
     .dogfood-shot-btn:hover .dogfood-brand-logo{transform:translateY(-3px) scale(1.025);}
     .dogfood-shot-btn.workday:hover .dogfood-brand-logo{transform:translateY(-10px) scale(1.025);}
     .dogfood-reveal-label{position:absolute;right:16px;bottom:14px;display:inline-flex;align-items:center;gap:7px;padding:7px 10px;border-radius:999px;background:rgba(10,10,11,.76);box-shadow:0 4px 16px rgba(0,0,0,.16);color:#fff;font-size:11px;font-weight:650;letter-spacing:.08em;text-transform:uppercase;}
@@ -284,6 +288,20 @@
             <span class="dogfood-reveal-label"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="2.5" stroke="currentColor" stroke-width="1.7"/></svg>View mobile score</span>
           </button>
           <figcaption><span class="dogfood-score score-poor">32/100</span> mobile — the page telling you to “put AI agents to work for you” · captured September 6, 2026, 11:51 AM CDT. Click to view the full report.</figcaption>
+        </figure>
+        <figure class="dogfood-shot">
+          <button type="button" class="dogfood-shot-btn walmart" aria-label="View Walmart mobile PageSpeed score, 40 out of 100" data-report="/blog/reports/walmart-pagespeed-report.html?v=1" data-report-title="Walmart site speed and health report">
+            <img class="dogfood-brand-logo" src="/images/blog-eyodf-walmart-logo.webp" width="600" height="600" alt="Walmart" loading="lazy" decoding="async">
+            <span class="dogfood-reveal-label"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="2.5" stroke="currentColor" stroke-width="1.7"/></svg>View mobile score</span>
+          </button>
+          <figcaption><span class="dogfood-score score-poor">40/100</span> mobile — running a Labor Day AI-assisted shopping promo · captured September 6, 2026, 11:52 AM CDT. Click to view the full report.</figcaption>
+        </figure>
+        <figure class="dogfood-shot">
+          <button type="button" class="dogfood-shot-btn homedepot" aria-label="View Home Depot mobile PageSpeed score, 33 out of 100" data-report="/blog/reports/homedepot-pagespeed-report.html?v=1" data-report-title="Home Depot site speed and health report">
+            <img class="dogfood-brand-logo" src="/images/blog-eyodf-homedepot-logo.webp" width="600" height="360" alt="Home Depot" loading="lazy" decoding="async">
+            <span class="dogfood-reveal-label"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="2.5" stroke="currentColor" stroke-width="1.7"/></svg>View mobile score</span>
+          </button>
+          <figcaption><span class="dogfood-score score-poor">33/100</span> mobile — running a Labor Day AI-assisted shopping promo · captured September 6, 2026, 11:51 AM CDT. Click to view the full report.</figcaption>
         </figure>
       </div>
 
