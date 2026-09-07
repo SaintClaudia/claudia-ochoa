@@ -90,11 +90,12 @@
     .dogfood-list + .body-copy{margin-top:24px;}
 
     .dogfood-mobile-sites{display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-top:32px;align-items:start;}
+    .dogfood-mobile-sites + .body-copy{margin-top:32px;}
     .dogfood-mobile-site{min-width:0;}
     .dogfood-mobile-site-label{display:flex;align-items:center;gap:10px;margin:0 0 14px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);}
     .dogfood-mobile-site-label::before{content:'';width:9px;height:9px;border-radius:3px;background:var(--site-dot);flex:0 0 auto;}
     .dogfood-mobile-site.salesforce{--site-dot:#0d9dda;}
-    .dogfood-mobile-site.workday{--site-dot:#ff5a1f;}
+    .dogfood-mobile-site.workday{--site-dot:#f68d2e;}
     .dogfood-mobile-screen{width:min(100%,380px);margin:0 auto;border:9px solid #242426;border-radius:30px;overflow:hidden;background:#fff;box-shadow:0 18px 40px rgba(0,0,0,.28);}
     .dogfood-mobile-screen img{display:block;width:100%;height:auto;}
 
@@ -250,13 +251,6 @@
         </div>
       </div>
       <p class="body-copy reveal">It's the dominant narrative in every boardroom deck and every keynote. These companies are asking customers, investors, and employees to believe that they are the ones who understand where technology is headed.</p>
-      <p class="body-copy reveal">Then run their own websites through Google's PageSpeed Insights.</p>
-
-      <ul class="dogfood-list reveal">
-        <li>A company marketing itself as the "#1 Agentic CRM" scores a <strong>7 out of 100</strong> on mobile performance, with a Largest Contentful Paint of over 31 seconds and a layout that visibly shifts while it loads.</li>
-        <li>A workplace platform pitching "AI agents to work for you" takes over <strong>26 seconds</strong> for its largest content to appear on mobile.</li>
-        <li>Major retailers running Labor Day AI-assisted shopping promotions load their mobile pages in the 30s and 40s out of 100, with users waiting 15+ seconds and staring at layout jumps before they can act.</li>
-      </ul>
 
       <div class="dogfood-mobile-sites reveal" role="group" aria-label="Salesforce and Workday mobile site captures">
         <figure class="dogfood-mobile-site salesforce">
@@ -272,6 +266,14 @@
           </div>
         </figure>
       </div>
+
+      <p class="body-copy reveal">Then run their own websites through Google's PageSpeed Insights.</p>
+
+      <ul class="dogfood-list reveal">
+        <li>A company marketing itself as the "#1 Agentic CRM" scores a <strong>7 out of 100</strong> on mobile performance, with a Largest Contentful Paint of over 31 seconds and a layout that visibly shifts while it loads.</li>
+        <li>A workplace platform pitching "AI agents to work for you" takes over <strong>26 seconds</strong> for its largest content to appear on mobile.</li>
+        <li>Major retailers running Labor Day AI-assisted shopping promotions load their mobile pages in the 30s and 40s out of 100, with users waiting 15+ seconds and staring at layout jumps before they can act.</li>
+      </ul>
 
       <div class="dogfood-shots reveal">
         <figure class="dogfood-shot">
