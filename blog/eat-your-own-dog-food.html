@@ -72,9 +72,6 @@
     .post-author-name{font-size:14px;font-weight:600;color:var(--espresso);text-decoration:none;}
     .post-author-name:hover,.post-author-name:focus-visible{text-decoration:underline;text-underline-offset:3px;}
     .post-author-meta{font-size:12px;letter-spacing:.06em;color:var(--ink-soft);font-weight:500;}
-    .post-back{padding:24px 0 0;}
-    .post-back a{font-size:14px;color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px;}
-    .post-back a:hover{color:var(--espresso);border-color:var(--espresso);}
 
     /* Numbered sections use the shared case-study section-head (label
        column + h2/lede column) so the blog reads like the case studies
@@ -131,8 +128,6 @@
       .dogfood-shots{grid-template-columns:1fr;}
     }
 
-    .table-scroll-wrap{margin-top:24px;}
-    .table-scroll-wrap + .body-copy{margin-top:32px;}
     .img-lightbox{display:none;position:fixed;inset:0;z-index:300;justify-content:center;background:rgba(10,10,11,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:64px 32px;overflow-y:auto;cursor:zoom-out;}
     .img-lightbox.open{display:flex;}
     body.lightbox-open{overflow:hidden;}
@@ -197,7 +192,7 @@
         <a href="#" id="nav-menu-contact-toggle"><svg width="16" height="16" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="2" y="4" width="14" height="10" rx="1.5" stroke="currentColor" stroke-width="1.4"/><path d="M2.5 5l6.5 5 6.5-5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Contact</span></a>
       </div>
 <!-- PORTFOLIO-NAV-MENU:END -->
-<nav class="toc-rail" aria-label="Page sections"><a href="#toc-pitch" class="toc-dot" data-label="The Pitch" aria-label="The Pitch"></a><a href="#toc-leadership" class="toc-dot" data-label="Leadership" aria-label="Leadership"></a><a href="#toc-pip" class="toc-dot" data-label="PIP Culture" aria-label="PIP Culture"></a><a href="#toc-blame" class="toc-dot" data-label="The Blame" aria-label="The Blame"></a><a href="#toc-full-picture" class="toc-dot" data-label="Full Picture" aria-label="Full Picture"></a>
+<nav class="toc-rail" aria-label="Page sections"><a href="#toc-pitch" class="toc-dot" data-label="The Pitch" aria-label="The Pitch"></a><a href="#toc-leadership" class="toc-dot" data-label="Leadership" aria-label="Leadership"></a><a href="#toc-pip" class="toc-dot" data-label="PIP Culture" aria-label="PIP Culture"></a><a href="#toc-blame" class="toc-dot" data-label="The Blame" aria-label="The Blame"></a>
 </nav>
 <!-- CONTACT-OVERLAY:START -->
 <div class="contact-overlay" id="contact-drawer" role="dialog" aria-modal="true" aria-labelledby="contact-drawer-title" aria-hidden="true">
@@ -359,40 +354,13 @@
     </div>
   </section>
 
-  <section id="toc-full-picture">
+  <section class="cta">
     <div class="wrap">
-      <div class="section-head reveal">
-        <div><span class="num">05</span></div>
-        <div>
-          <h2>The full picture</h2>
-          <p class="lede">Every URL was run on September 6, expanding the check past Performance to PageSpeed Insights' other three categories — Accessibility, Best Practices, and SEO — plus Agentic Browsing.</p>
-        </div>
-      </div>
-      <p class="apa-label"><span class="apa-title">PageSpeed Insights Results Across Technology and Retail Websites</span></p>
-      <div class="table-scroll-wrap reveal">
-        <div class="table-scroll">
-          <table class="data-table">
-            <thead>
-              <tr><th>Company</th><th>Captured</th><th>Perf.</th><th>A11y</th><th>Practices</th><th>SEO</th><th>Agentic</th><th>LCP</th><th>Note</th></tr>
-            </thead>
-            <tbody>
-              <tr><th scope="row">Salesforce</th><td>12:00 PM CDT</td><td><span class="score-poor">7</span></td><td><span class="score-good">100</span></td><td><span class="score-ok">77</span></td><td><span class="score-good">92</span></td><td><span class="score-poor">1/3</span></td><td>31.3s</td><td>"#1 Agentic CRM" pitch</td></tr>
-              <tr><th scope="row">Workday</th><td>11:51 AM CDT</td><td><span class="score-poor">32</span></td><td><span class="score-ok">80</span></td><td><span class="score-poor">54</span></td><td><span class="score-ok">77</span></td><td><span class="score-poor">1/2</span></td><td>26.6s</td><td>"Put AI agents to work for you"</td></tr>
-              <tr><th scope="row">Walmart</th><td>11:52 AM CDT</td><td><span class="score-poor">40</span></td><td><span class="score-good">100</span></td><td><span class="score-poor">54</span></td><td><span class="score-ok">85</span></td><td><span class="score-good">2/2</span></td><td>15.3s</td><td>Labor Day AI shopping promo</td></tr>
-              <tr><th scope="row">Lowe's</th><td>11:52 AM CDT</td><td><span class="score-poor">33</span></td><td><span class="score-ok">88</span></td><td><span class="score-poor">54</span></td><td><span class="score-good">100</span></td><td><span class="score-poor">1/3</span></td><td>15.9s</td><td>Labor Day promo</td></tr>
-              <tr><th scope="row">Home Depot</th><td>11:51 AM CDT</td><td><span class="score-poor">33</span></td><td><span class="score-ok">88</span></td><td><span class="score-ok">73</span></td><td><span class="score-good">100</span></td><td><span class="score-good">2/2</span></td><td>5.8s</td><td>Labor Day promo</td></tr>
-              <tr><th scope="row">Amazon</th><td>11:52 AM CDT</td><td><span class="score-ok">60</span></td><td><span class="score-ok">89</span></td><td><span class="score-ok">77</span></td><td><span class="score-good">92</span></td><td><span class="score-poor">1/2</span></td><td>17.1s</td><td>—</td></tr>
-              <tr><th scope="row">SpaceX</th><td>11:59 AM CDT</td><td><span class="score-ok">73</span></td><td><span class="score-ok">83</span></td><td><span class="score-good">100</span></td><td><span class="score-ok">82</span></td><td><span class="score-poor">1/2</span></td><td>5.8s</td><td>Not an AI pitch, included for contrast</td></tr>
-              <tr><th scope="row">Oracle</th><td>11:59 AM CDT</td><td><span class="score-ok">65</span></td><td><span class="score-good">96</span></td><td><span class="score-good">100</span></td><td><span class="score-good">92</span></td><td><span class="score-good">2/2</span></td><td>10.1s</td><td>—</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <p class="apa-note"><em>Note.</em> Performance data pulled from Google PageSpeed Insights. All results reflect mobile scores.</p>
-
-      <div class="post-back">
-        <a href="/blog/">&larr; Back to all posts</a>
+      <h2>The standard works both ways.</h2>
+      <p>This post leaned on automated PageSpeed scores. Here's what happens when you add the human layer those scores can't see.</p>
+      <div class="btn-row">
+        <a class="btn ghost" href="/blog/">&larr; Back to all posts</a>
+        <a class="btn primary" href="/work/lovesac-case-study-5.html">See the heuristic evaluation &rarr;</a>
       </div>
     </div>
   </section>
