@@ -520,11 +520,16 @@
     closeBtn.focus();
   }
   function loadReport(src, title) {
-    lbReport.title = title;
-    lbReport.src = 'about:blank';
-    window.requestAnimationFrame(function () {
-      lbReport.src = src;
-    });
+    // A fresh <iframe> per load, rather than reassigning .src on a reused
+    // one: mobile Safari can apply back/forward-cache navigation logic to
+    // a revisited URL already in that iframe's session history, leaving it
+    // blank instead of reloading. A new element has no history to collide with.
+    var fresh = document.createElement('iframe');
+    fresh.id = 'img-lightbox-report';
+    fresh.title = title;
+    fresh.src = src;
+    lbReport.parentNode.replaceChild(fresh, lbReport);
+    lbReport = fresh;
   }
   function openReport(src, title, trigger) {
     lastTrigger = trigger;
@@ -557,7 +562,7 @@
     unlockScroll();
     lb.setAttribute('aria-hidden', 'true');
     lbImg.src = '';
-    lbReport.src = 'about:blank';
+    loadReport('about:blank', 'Site speed and health report');
     currentReportIndex = -1;
     updateReportNav();
     if (lastTrigger) {
