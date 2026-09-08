@@ -555,7 +555,7 @@
     lastTrigger = trigger;
     loadReport(trigger.getAttribute('data-report'), trigger.getAttribute('data-report-title') || 'Site speed and health report');
     updateReportNav();
-    (direction > 0 ? prevBtn : nextBtn).focus();
+    (direction > 0 ? nextBtn : prevBtn).focus();
   }
   function closeLightbox() {
     lb.classList.remove('open', 'report-open');
