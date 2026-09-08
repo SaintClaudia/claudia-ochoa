@@ -519,13 +519,19 @@
     lb.setAttribute('aria-hidden', 'false');
     closeBtn.focus();
   }
+  function loadReport(src, title) {
+    lbReport.title = title;
+    lbReport.src = 'about:blank';
+    window.requestAnimationFrame(function () {
+      lbReport.src = src;
+    });
+  }
   function openReport(src, title, trigger) {
     lastTrigger = trigger;
     currentReportIndex = reportTriggers.indexOf(trigger);
     lbImg.src = '';
     lbImg.alt = '';
-    lbReport.src = src;
-    lbReport.title = title;
+    loadReport(src, title);
     lb.classList.add('open', 'report-open');
     lockScroll();
     lb.setAttribute('aria-hidden', 'false');
@@ -542,8 +548,7 @@
     var trigger = reportTriggers[nextIndex];
     currentReportIndex = nextIndex;
     lastTrigger = trigger;
-    lbReport.src = trigger.getAttribute('data-report');
-    lbReport.title = trigger.getAttribute('data-report-title') || 'Site speed and health report';
+    loadReport(trigger.getAttribute('data-report'), trigger.getAttribute('data-report-title') || 'Site speed and health report');
     updateReportNav();
     (direction > 0 ? prevBtn : nextBtn).focus();
   }
