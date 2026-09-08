@@ -427,6 +427,8 @@
     .roomfit-layout{grid-template-columns:1fr;}
     .roomfit-shots{gap:16px; flex-wrap:wrap;}
     .phone-frame{width:160px;}
+    /* Mobile nav shows first-tier pages only — no per-case-study links. */
+    .nav-menu-panel-label, .nav-menu-panel a.sub{display:none;}
   }
   @media (max-width:600px){
     .contact-overlay-inner{max-width:100%; padding:48px 24px;}
