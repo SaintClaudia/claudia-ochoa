@@ -15,7 +15,8 @@ For structured access, connect an MCP client to [the public portfolio MCP endpoi
 
 ## Profile
 
-- [Portfolio Home](https://claudiaochoa.co/): Executive overview and selected AI and product-design leadership work.
+- [Portfolio Home](https://claudiaochoa.co/): Personal introduction and entry point to the portfolio.
+- [Work](https://claudiaochoa.co/work/): Executive overview and selected AI and product-design leadership work, including the live portfolio Q&A.
 - [About Claudia Ochoa](https://claudiaochoa.co/about.html): Leadership perspective, career background, capabilities, and education.
 - [Résumé](https://claudiaochoa.co/output/pdf/Claudia_Ochoa_Resume.pdf): Two-page professional résumé focused on AI experience and product design leadership.
 - [LinkedIn](https://www.linkedin.com/in/claudiajochoa/): Professional profile and career history.

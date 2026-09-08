@@ -16,7 +16,8 @@ serves those files directly.
 
 ```
 /
-├── index.html                        # Homepage — featured work grid
+├── index.html                        # Homepage — fixed-viewport intro hero, links out to /work/
+├── work/index.html                   # Work index — featured work grid and the live "Ask the work" agent
 ├── about.html                        # About Claudia — identity, background, and featured work
 ├── 404.html                          # Custom error page
 ├── _footer.html                      # Shared footer partial (single source of truth)
@@ -147,7 +148,7 @@ per-page metadata in `build.py`.
 Shared markup is maintained in partial files and stamped into the applicable
 pages by `build.py`:
 
-- `_footer.html` — portfolio footer used by `index.html`, `about.html`, and `404.html`
+- `_footer.html` — portfolio footer used by `about.html`, `404.html`, and `work/index.html`
 - `_analytics.html` — Google Analytics bootstrap used by every rendered page
 - `_head-basics.html` — charset, viewport, favicon, and Apple touch-icon tags used by every rendered page
 - `_portfolio-nav.html` — navigation used by `index.html`, `about.html`, and `404.html`
@@ -186,19 +187,20 @@ reversed, or unmatched.
 2. Update the title, meta description, Open Graph tags, and canonical URL in `<head>`
 3. Update content and cover image reference
 4. Add the cover image to `images/`
-5. Add a card to `index.html`
+5. Add a card to `work/index.html`
 6. Add the URL to `sitemap.xml`
 7. Push
 
 ## Editing shared styles
 
-`css/case-study.css` is the entire design system for `index.html`, `about.html`, `404.html`, and
-all 6 case studies — colors, typography, nav/topbar, hero, section-head,
+`css/case-study.css` is the entire design system for `index.html`, `about.html`, `404.html`,
+`work/index.html`, and all 6 case studies — colors, typography, nav/topbar, hero, section-head,
 context-strip, buttons, footer, contact overlay, password gate, and citation
 patterns, all linked once instead of copy-pasted per page. Edit it for anything
 that should change everywhere; edit a page's own `<style>` block only for content
-specific to that page (the homepage's work-grid card, a case study's narrative
-sections, charts, demos). This file is unrelated to the Lovesac redesign prototype
+specific to that page (the homepage's fixed-viewport hero and glow, the work
+index's work-grid card, a case study's narrative sections, charts, demos). This
+file is unrelated to the Lovesac redesign prototype
 pages (`lovesac-redesign.html`, `lovesac-sactionals.html`, `lovesac-what-to-expect.html`,
 `lovesac-support.html`), which mock the real Lovesac site's own look and are a
 deliberately separate system. Shared Redesign, Support, and What to Expect styles
