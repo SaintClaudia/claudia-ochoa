@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- HEAD-BASICS:START -->
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=7">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png?v=7">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=7">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=6">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- HEAD-BASICS:END -->
+  <title>Homepage draft — Claudia Ochoa</title>
+<!-- PORTFOLIO-FONTS:START -->
+<link rel="preload" href="/fonts/inter-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fraunces-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
+<!-- PORTFOLIO-FONTS:END -->
+  <link rel="stylesheet" href="css/case-study.css?v=32">
+  <style>
+    /* DRAFT ONLY — not wired into the site yet. Local review of the new
+       fixed-viewport homepage hero before it replaces index.html. */
+    html.draft-locked, body.draft-locked{height:100%; overflow:hidden;}
+
+    .landing{
+      position:relative;
+      height:calc(100vh - 64px);
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+    }
+    /* Glow uses the site's own accent pair (terminal green + the new code
+       pink) instead of inventing new brand hues — same motif as the
+       reference, tuned to tokens already in css/case-study.css. Blurred
+       solid blobs instead of radial-gradients: gradients fading to
+       transparent over near-black show visible banding rings; a heavy
+       blur removes the hard edge entirely instead of just softening it. */
+    .landing-glow{position:absolute; inset:0; overflow:hidden; pointer-events:none;}
+    .glow-blob{
+      position:absolute;
+      border-radius:50%;
+      filter:blur(110px);
+      animation-duration:6s;
+      animation-timing-function:ease-in-out;
+      animation-iteration-count:infinite;
+      animation-direction:alternate;
+    }
+    .glow-blob.pink{
+      width:44vw; height:44vw; max-width:620px; max-height:620px;
+      right:6%; top:62%;
+      background:rgba(232,162,162,0.4);
+      animation-name: landing-pulse-pink;
+    }
+    .glow-blob.green{
+      width:26vw; height:26vw; max-width:380px; max-height:380px;
+      right:0%; top:40%;
+      background:rgba(74,222,128,0.28);
+      animation-name: landing-pulse-green;
+      animation-delay:-3s;
+    }
+    @keyframes landing-pulse-pink{
+      0%   { opacity:0.55; transform:translate(20%,-50%) scale(1); }
+      100% { opacity:1;    transform:translate(20%,-50%) scale(1.1); }
+    }
+    @keyframes landing-pulse-green{
+      0%   { opacity:0.55; transform:translate(10%,-50%) scale(1); }
+      100% { opacity:1;    transform:translate(10%,-50%) scale(1.1); }
+    }
+    @media (prefers-reduced-motion: reduce){ .glow-blob{ animation:none; opacity:0.85; } }
+    @media (prefers-reduced-motion: reduce){ .landing-glow{ animation:none; } }
+
+    .landing-grid{
+      position:relative;
+      z-index:1;
+      width:100%;
+    }
+    .landing-primary{max-width:560px;}
+    .landing-eyebrow{
+      display:flex; align-items:center; gap:9px;
+      font-size:12px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase;
+      color:var(--ink-soft); margin-bottom:22px;
+    }
+    .landing-eyebrow::before{
+      content:''; width:7px; height:7px; border-radius:50%; flex:0 0 auto;
+      background:var(--accent); box-shadow:0 0 14px rgba(74,222,128,.6);
+    }
+    .landing-primary h1{
+      font-size:clamp(34px,4.6vw,54px);
+      font-weight:600;
+      line-height:1.08;
+      letter-spacing:-0.01em;
+      max-width:15ch;
+      margin-bottom:26px;
+    }
+    .landing-primary h1 em{font-style:italic; font-weight:500; color:var(--code-pink);}
+    .landing-sub{font-size:18px; line-height:1.6; color:var(--ink-soft); max-width:46ch; margin-bottom:34px;}
+
+    .btn.glass{
+      background:var(--glass-bg);
+      border:1px solid var(--glass-border);
+      color:var(--espresso);
+      backdrop-filter:blur(20px);
+      -webkit-backdrop-filter:blur(20px);
+    }
+    .btn.glass:hover{border-color:rgba(255,255,255,0.2); background:rgba(255,255,255,0.07);}
+
+    @media (max-width:820px){
+      .landing{height:auto; min-height:calc(100vh - 64px); padding:48px 0;}
+    }
+  </style>
+</head>
+<body class="draft-locked">
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<!-- PORTFOLIO-NAV-MENU:START -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-menu" id="nav-menu">
+      <button type="button" class="nav-menu-btn" id="nav-menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu-panel">
+        <svg width="24" height="24" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2.5" y="2.5" width="13" height="13" rx="2.5" stroke="currentColor" stroke-width="1.4"/><line class="nav-menu-icon-divider" x1="7.5" y1="2.5" x2="7.5" y2="15.5" stroke="currentColor" stroke-width="1.4"/><path class="nav-menu-icon-arrow nav-menu-icon-arrow-closed" d="M13 6.7 L10 9 L13 11.3" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path class="nav-menu-icon-arrow nav-menu-icon-arrow-open" d="M10 6.7 L13 9 L10 11.3" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+<div class="nav-menu-backdrop" id="nav-menu-backdrop"></div>
+<div class="nav-menu-panel" id="nav-menu-panel" inert>
+        <a class="nav-menu-profile" href="/about.html">
+          <span class="nav-menu-avatar" aria-hidden="true"><img src="/images/claudia-ochoa-headshot.jpg" alt="" width="160" height="160"></span>
+          <span>Claudia Ochoa</span>
+        </a>
+        <a href="/"><svg width="16" height="16" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2.5 8.5L9 3l6.5 5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 7.5v7a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 15.5V11h4v4.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Home</span></a>
+        <a href="/work/"><svg width="16" height="16" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="2.5" y="3" width="13" height="10.5" rx="1.5" stroke="currentColor" stroke-width="1.4"/><path d="M6.5 3V2a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><span>Work</span></a>
+        <div class="nav-menu-panel-label">Lovesac</div>
+        <a class="sub" href="/work/lovesac-case-study.html"><span>Redesign</span></a>
+        <a class="sub" href="/work/lovesac-case-study-2.html"><span>Deep Dive</span></a>
+        <a class="sub" href="/work/lovesac-case-study-3.html"><span>Research</span></a>
+        <a class="sub" href="/work/lovesac-case-study-4.html"><span>Content Strategy</span></a>
+        <a class="sub" href="/work/lovesac-case-study-5.html"><span>Development</span></a>
+        <a class="sub" href="/work/lovesac-case-study-6.html"><span>Synopsis</span></a>
+        <div class="nav-menu-panel-label">Walmart</div>
+        <a class="sub" href="/work/walmart-genai.html"><span>GenAI Candidate Experience</span></a>
+        <a class="sub" href="/work/walmart-my-hiring-dashboard.html"><span>My Hiring Dashboard</span></a>
+        <div class="nav-menu-panel-label">Home Depot</div>
+        <a class="sub" href="/work/thd-giftcards.html"><span>Gift Cards</span></a>
+        <div class="nav-menu-panel-label">More</div>
+        <a href="/about.html"><svg width="16" height="16" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="9" cy="6" r="3" stroke="currentColor" stroke-width="1.4"/><path d="M3.5 15c0-3 2.5-5 5.5-5s5.5 2 5.5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><span>About</span></a>
+        <a href="/blog/"><svg width="16" height="16" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M11.5 2.8l3.7 3.7L6.4 15.3l-4.1.8.8-4.1L11.5 2.8z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/><path d="M9.8 4.5l3.7 3.7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><span>Blog</span></a>
+        <a href="/output/pdf/Claudia_Ochoa_Resume.pdf" target="_blank" rel="noopener noreferrer"><svg width="16" height="16" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 2.5h5.5L14 6v9a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M10.5 2.5V6H14" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M6.5 10h5M6.5 12.5h5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg><span>Résumé</span></a>
+        <a href="https://www.linkedin.com/in/claudiajochoa/" target="_blank" rel="noopener noreferrer"><svg width="16" height="16" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="2" y="2" width="14" height="14" rx="3" stroke="currentColor" stroke-width="1.4"/><path d="M6.2 7.5v6M6.2 5.3v.01" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M9 13.5V9.8c0-1 .7-1.8 1.8-1.8s1.8.8 1.8 1.8v3.7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>LinkedIn</span></a>
+        <a href="#" id="nav-menu-contact-toggle"><svg width="16" height="16" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="2" y="4" width="14" height="10" rx="1.5" stroke="currentColor" stroke-width="1.4"/><path d="M2.5 5l6.5 5 6.5-5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Contact</span></a>
+      </div>
+<!-- PORTFOLIO-NAV-MENU:END -->
+
+<!-- CONTACT-OVERLAY:START -->
+<div class="contact-overlay" id="contact-drawer" role="dialog" aria-modal="true" aria-labelledby="contact-drawer-title" aria-hidden="true">
+  <button class="contact-overlay-close" id="contact-drawer-close" aria-label="Close contact form">&times;</button>
+  <div class="contact-overlay-inner">
+    <h2 class="contact-overlay-label" id="contact-drawer-title">Say hello</h2>
+    <form id="contact-form" class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="2135e194-3403-43df-b617-bdb4ce01ba13">
+      <div class="contact-field">
+        <label for="contact-name" class="contact-field-label">Name</label>
+        <input type="text" id="contact-name" name="name" class="contact-input" required>
+      </div>
+      <div class="contact-field">
+        <label for="contact-email" class="contact-field-label">Email or phone</label>
+        <input type="text" id="contact-email" name="email_or_phone" class="contact-input" required>
+      </div>
+      <div class="contact-field">
+        <label for="contact-message" class="contact-field-label">Message</label>
+        <textarea id="contact-message" name="message" class="contact-input contact-textarea" required></textarea>
+      </div>
+      <button type="submit" class="contact-submit">Send</button>
+      <p class="contact-form-status" id="contact-form-status" role="status"></p>
+    </form>
+  </div>
+</div>
+<!-- CONTACT-OVERLAY:END -->
+
+<main id="main-content" class="page">
+  <section class="landing">
+    <div class="landing-glow"><span class="glow-blob pink"></span><span class="glow-blob green"></span></div>
+    <div class="wrap landing-grid">
+      <div class="landing-primary">
+        <div class="landing-eyebrow">AI Experience &amp; Product Leadership</div>
+        <h1>Making emerging technology <em>human</em>.</h1>
+        <p class="landing-sub">20+ years turning complex systems into experiences people trust — for enterprises including Walmart. MBA from Purdue Global. JD in progress.</p>
+        <a class="btn glass" href="/work/">View the work</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="js/main.js?v=8"></script>
+</body>
+</html>
