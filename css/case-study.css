@@ -427,6 +427,7 @@
     .roomfit-layout{grid-template-columns:1fr;}
     .roomfit-shots{gap:16px; flex-wrap:wrap;}
     .phone-frame{width:160px;}
+    .meta-row{grid-template-columns:1fr; row-gap:24px;}
     /* Mobile nav shows first-tier pages only — no per-case-study links. */
     .nav-menu-panel-label, .nav-menu-panel a.sub{display:none;}
   }
