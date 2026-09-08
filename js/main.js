@@ -37,7 +37,7 @@ if (navMenu && navMenuBtn) {
     navMenu.classList.remove('open');
     navMenuBtn.setAttribute('aria-expanded', 'false');
     navMenuBtn.setAttribute('aria-label', 'Open menu');
-    document.body.style.overflow = '';
+    document.documentElement.classList.remove('nav-menu-open');
     document.body.classList.remove('nav-menu-open');
     if (navMenuPanel) navMenuPanel.inert = true;
   };
@@ -46,7 +46,7 @@ if (navMenu && navMenuBtn) {
     const isOpen = navMenu.classList.toggle('open');
     navMenuBtn.setAttribute('aria-expanded', String(isOpen));
     navMenuBtn.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
-    document.body.style.overflow = isOpen ? 'hidden' : '';
+    document.documentElement.classList.toggle('nav-menu-open', isOpen);
     document.body.classList.toggle('nav-menu-open', isOpen);
     nav?.classList.remove('nav-hidden');
     if (navMenuPanel) navMenuPanel.inert = !isOpen;
