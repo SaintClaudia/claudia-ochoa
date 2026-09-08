@@ -60,15 +60,24 @@
     /* Work-index-only CSS. Everything shared with the case studies (colors,
        fonts, nav, hero, eyebrow, section-head/lede, context-strip, buttons,
        footer, contact overlay) lives in css/case-study.css — this page no
-       longer loads a second stylesheet. What's left here is: this page's
-       own deliberately larger hero scale (not shared with the case-study
-       .hero), and the work-grid card, which only this page has. */
-    .work-hero .wrap{display:flex;flex-direction:column;}
-    .work-hero{padding-bottom:0;}
-    .work-hero .eyebrow{text-transform:none;font-variant-caps:all-small-caps;font-size:17px;}
-    .work-hero h1{font-size:clamp(38px,5.6vw,64px);font-weight:600;line-height:1.04;letter-spacing:-0.01em;max-width:14ch;}
+       longer loads a second stylesheet. What's left here is this page's
+       editorial portfolio intro and the work-grid card, which only this
+       page has. */
+    .work-hero{padding:clamp(64px,8vw,96px) 0 0;}
+    .work-hero .wrap{
+      border-bottom:1px solid var(--line);
+      padding-bottom:clamp(40px,6vw,64px);
+    }
+    .work-hero .eyebrow{margin-bottom:18px;}
+    .work-hero h1{font-size:clamp(42px,5.6vw,64px);font-weight:600;line-height:1.04;letter-spacing:-0.01em;max-width:12ch;}
     .work-hero h1 em{font-style:italic;}
-    .hero-sub{margin-top:20px;font-size:19px;line-height:1.55;max-width:56ch;color:var(--ink-soft);}
+    .hero-sub{margin-top:24px;font-size:18px;line-height:1.62;max-width:44ch;color:var(--ink-soft);}
+    @media (max-width:760px){
+      .work-hero{padding-top:48px;}
+      .work-hero .wrap{padding-bottom:44px;}
+      .work-hero h1{font-size:clamp(40px,12vw,54px);}
+      .hero-sub{font-size:17px;}
+    }
 
     /* Work-grid card */
     .work-grid{padding:72px 0;}
@@ -99,7 +108,7 @@
     .card-cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:20px;}
 
     /* Portfolio guide — a live, cited demonstration of the site's AI layer. */
-    .portfolio-agent{padding:56px 0 10px;}
+    .portfolio-agent{padding:calc(clamp(48px,7vw,72px) + 100px) 0 0;}
     .portfolio-agent-shell{position:relative;overflow:hidden;display:grid;grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr);gap:48px;padding:clamp(28px,5vw,56px);border:1px solid var(--glass-border);border-radius:24px;background:linear-gradient(145deg,rgba(255,255,255,.065),rgba(255,255,255,.025));box-shadow:0 24px 80px rgba(0,0,0,.28);}
     .portfolio-agent-shell::before{content:'';position:absolute;width:260px;height:260px;right:-120px;top:-140px;border-radius:50%;background:radial-gradient(circle,rgba(74,222,128,.13),transparent 68%);pointer-events:none;}
     .portfolio-agent-kicker{display:flex;align-items:center;gap:9px;margin-bottom:18px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);}
@@ -225,14 +234,6 @@
 </div>
 <!-- CONTACT-OVERLAY:END -->
 <main id="main-content" class="page">
-  <section class="work-hero">
-    <div class="wrap">
-      <div class="eyebrow">Product &amp; Design Strategist</div>
-      <h1>Scaling Brands at the Enterprise Level</h1>
-      <p class="hero-sub">I connect AI, product, design, and business to turn complex systems into clear experiences people can trust — and organizations can scale.</p>
-    </div>
-  </section>
-
   <section class="portfolio-agent" aria-labelledby="portfolio-agent-title">
     <div class="wrap">
       <div class="portfolio-agent-shell">
@@ -261,6 +262,14 @@
           </div>
         </form>
       </div>
+    </div>
+  </section>
+
+  <section class="work-hero">
+    <div class="wrap">
+      <div class="eyebrow">Selected work</div>
+      <h1>Strategy, made tangible.</h1>
+      <p class="hero-sub">Case studies across AI experiences, enterprise platforms, and commerce — tracing the work from ambiguity through alignment and execution.</p>
     </div>
   </section>
 
