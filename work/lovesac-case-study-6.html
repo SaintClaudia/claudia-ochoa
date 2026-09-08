@@ -145,13 +145,6 @@
 @media (max-width:820px){
     .sentiment-grid{grid-template-columns:1fr;}
     .impact-stats{grid-template-columns:repeat(2,1fr);}
-    .table-scroll{position:relative;}
-    .table-scroll::after{
-      content:''; position:absolute; top:0; right:0; bottom:0; width:32px;
-      background:linear-gradient(to right, transparent, var(--cream));
-      opacity:1; transition:opacity .2s ease; pointer-events:none;
-    }
-    .table-scroll.at-end::after{opacity:0;}
   }
 
 </style>

@@ -469,15 +469,7 @@
 
 .section-subhead{font-size:22px; margin:36px 0 14px; line-height:1.22;}
 
-.table-scroll{position:relative; overflow-x:auto; margin-top:24px; -webkit-overflow-scrolling:touch;}
-
-.table-scroll::after{
-    content:''; position:absolute; top:0; right:0; bottom:0; width:36px;
-    background:linear-gradient(to right, transparent, var(--cream));
-    opacity:1; transition:opacity .2s ease; pointer-events:none;
-  }
-
-.table-scroll.at-end::after{opacity:0;}
+.table-scroll{overflow-x:auto; margin-top:24px; -webkit-overflow-scrolling:touch;}
 
 .nav-note a{color:var(--clay-deep); text-decoration:underline;}
 
@@ -727,8 +719,9 @@
     </ul>
 
     <p class="apa-label"><span class="apa-num">Table 1</span><span class="apa-title">Utility Links Scattered Across Two Systems in the Original Navigation</span></p>
-    <div class="table-scroll">
-      <table class="data-table">
+    <div class="table-scroll-wrap">
+      <div class="table-scroll">
+        <table class="data-table">
         <thead>
           <tr>
             <th>Link</th>
@@ -757,7 +750,8 @@
             <td>Icon, utility row (with Store Locator)</td>
           </tr>
         </tbody>
-      </table>
+        </table>
+      </div>
     </div>
     <p class="nav-note">This is a standard IA convention: separate primary (content) navigation from utility (task) navigation, and keep utility in one consistent system. Store Locator moves down into the icon row because it was never a browsing category to begin with; Quote Lookup moves inside Account because a saved quote is account-specific, not a standalone site-wide function.</p>
 
@@ -766,8 +760,9 @@
     </ul>
 
     <p class="apa-label"><span class="apa-num">Table 2</span><span class="apa-title">Content Links Collapsing into Fewer Top-Level Categories</span></p>
-    <div class="table-scroll">
-      <table class="data-table">
+    <div class="table-scroll-wrap">
+      <div class="table-scroll">
+        <table class="data-table">
         <thead>
           <tr>
             <th>Link</th>
@@ -790,7 +785,8 @@
             <td>1 category (Accessories)</td>
           </tr>
         </tbody>
-      </table>
+        </table>
+      </div>
     </div>
 
     <ul class="why-list" style="margin-top:40px;">
