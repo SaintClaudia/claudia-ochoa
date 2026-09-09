@@ -35,7 +35,7 @@ function buildCSP(nonce) {
     // no blob: source and silently blocks them.
     "worker-src 'self' blob:",
     // Same-origin frames power the expanded PageSpeed report modals.
-    "frame-src 'self' https://open.spotify.com https://www.tiktok.com",
+    "frame-src 'self' https://open.spotify.com https://www.tiktok.com https://www.youtube.com",
     "frame-ancestors 'self'",
     "base-uri 'self'",
     "form-action 'self' https://api.web3forms.com",
