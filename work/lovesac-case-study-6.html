@@ -85,9 +85,9 @@
 
 .impact-stats{display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:8px;}
 
-.impact-stat{background:var(--paper); padding:22px 20px; border:1px solid var(--line); border-radius:14px;}
+.impact-stat{background:var(--surface); padding:22px 20px; border:1px solid var(--line); border-radius:14px;}
 
-.impact-stat .big{font-family:'Fraunces',serif; font-size:26px; color:var(--clay-deep); font-weight:600; line-height:1.15;}
+.impact-stat .big{font-family:'Fraunces',serif; font-size:26px; color:var(--text-bright); font-weight:600; line-height:1.15;}
 
 .impact-stat .label{font-size:12.5px; color:var(--ink-soft); margin-top:8px; line-height:1.45;}
 
@@ -99,12 +99,12 @@
 
 .kpi-item .mark{
     flex:0 0 auto; width:22px; height:22px; border-radius:50%;
-    background:var(--line); color:var(--clay-deep);
+    background:var(--line); color:var(--text-bright);
     display:flex; align-items:center; justify-content:center;
     font-size:12px; font-weight:700; margin-top:2px;
   }
 
-.kpi-num{font-family:'Fraunces',serif; font-weight:600; font-size:15px; color:var(--espresso); margin-bottom:6px;}
+.kpi-num{font-family:'Fraunces',serif; font-weight:600; font-size:15px; color:var(--text-bright); margin-bottom:6px;}
 
 .kpi-item p{font-size:15.5px; line-height:1.6; color:var(--ink-soft); margin:0;}
 
@@ -122,7 +122,7 @@
 
 .sentiment-grid{display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-top:8px;}
 
-.sentiment-card{background:var(--paper); border:1px solid var(--line); border-radius:16px; padding:30px 28px;}
+.sentiment-card{background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:30px 28px;}
 
 .sentiment-card h3{
     display:flex; align-items:center; gap:10px;
@@ -131,7 +131,7 @@
 
 .sentiment-card h3 .dot{width:11px; height:11px; border-radius:50%; flex-shrink:0;}
 
-.sentiment-card.positive h3 .dot{background:var(--clay-deep);}
+.sentiment-card.positive h3 .dot{background:var(--text-bright);}
 
 .sentiment-card.negative h3 .dot{background:#48484F;}
 
@@ -140,7 +140,7 @@
 
 .sentiment-list li{font-size:14.5px; line-height:1.65; color:var(--ink-soft);}
 
-.sentiment-list strong{color:var(--espresso);}
+.sentiment-list strong{color:var(--text-bright);}
 
 @media (max-width:820px){
     .sentiment-grid{grid-template-columns:1fr;}

@@ -141,7 +141,7 @@
   }
 
 .problem-card{
-    background:var(--paper);
+    background:var(--surface);
     padding:28px 30px;
   }
 
@@ -159,14 +159,14 @@
 
 .compare-label.before{color:var(--ink-soft);}
 
-.compare-label.after{color:var(--clay-deep);}
+.compare-label.after{color:var(--text-bright);}
 
 .compare-label .sw{width:10px;height:10px;border-radius:3px;}
 
 .before .sw{background:#48484F;}
 
 
-.after .sw{background:var(--espresso);}
+.after .sw{background:var(--text-bright);}
 
 .compare-grid{
     display:grid; grid-template-columns:1fr 1fr; gap:28px;
@@ -180,7 +180,7 @@
     border-radius:14px;
     overflow:hidden;
     border:1px solid var(--line);
-    background:var(--paper);
+    background:var(--surface);
     cursor:zoom-in;
     aspect-ratio:1400/770;
   }
@@ -229,7 +229,7 @@
 .lightbox.open .lightbox-panel{transform:translateY(0) scale(1);}
 
 .lightbox-panel-inner{
-    background:var(--sand);
+    background:var(--bg-alt);
     border:1px solid var(--glass-border);
     border-radius:16px;
     height:100%;
@@ -272,7 +272,7 @@
 
 .video-lightbox-panel{
     position:relative;
-    background:var(--sand);
+    background:var(--bg-alt);
     border:1px solid var(--glass-border);
     border-radius:16px;
     flex:0 1 346px;
@@ -348,12 +348,12 @@
     max-width:70ch;
   }
 
-.compare-note strong{color:var(--espresso);}
+.compare-note strong{color:var(--text-bright);}
 
 .poll-block{
     margin-top:36px;
     padding:26px 28px;
-    background:var(--paper);
+    background:var(--surface);
     border:1px solid var(--line);
     border-radius:14px;
   }
@@ -362,7 +362,7 @@
     font-family:'Fraunces',serif;
     font-size:18px;
     font-weight:600;
-    color:var(--espresso);
+    color:var(--text-bright);
     margin:0 0 18px;
   }
 
@@ -372,7 +372,7 @@
     display:block;
     width:100%;
     text-align:left;
-    background:var(--cream);
+    background:var(--bg);
     border:1px solid var(--line);
     border-radius:10px;
     padding:14px 16px;
@@ -392,13 +392,13 @@
 
 .poll-btn-label{
     display:flex; align-items:center; gap:8px;
-    font-size:14px; font-weight:600; color:var(--espresso);
+    font-size:14px; font-weight:600; color:var(--text-bright);
   }
 
 .poll-btn-label .sw{width:10px; height:10px; border-radius:3px; background:#48484F;}
 
 
-.poll-btn[data-choice="after"] .poll-btn-label .sw{background:var(--espresso);}
+.poll-btn[data-choice="after"] .poll-btn-label .sw{background:var(--text-bright);}
 
 .poll-btn-pct{font-size:13px; font-weight:700; color:var(--ink-soft); font-variant-numeric:tabular-nums;}
 
@@ -414,9 +414,9 @@
   }
 
 
-.poll-btn[data-choice="after"] .poll-btn-fill{background:var(--espresso);}
+.poll-btn[data-choice="after"] .poll-btn-fill{background:var(--text-bright);}
 
-.poll-btn.selected{border-color:var(--clay-deep); background:var(--paper);}
+.poll-btn.selected{border-color:var(--text-bright); background:var(--surface);}
 
 .poll-meta{margin:16px 0 0; font-size:13px; color:var(--ink-soft);}
 
@@ -431,7 +431,7 @@
   }
 
 .pillar{
-    background:var(--paper);
+    background:var(--surface);
     border:1px solid var(--line);
     border-radius:16px;
     padding:30px 26px;
@@ -460,15 +460,15 @@
     margin-top:8px;
   }
 
-.outcome{background:var(--paper); padding:30px 28px; border:1px solid var(--line); border-radius:14px;}
+.outcome{background:var(--surface); padding:30px 28px; border:1px solid var(--line); border-radius:14px;}
 
-.outcome .big{font-family:'Fraunces',serif; font-size:34px; color:var(--clay-deep); font-weight:600;}
+.outcome .big{font-family:'Fraunces',serif; font-size:34px; color:var(--text-bright); font-weight:600;}
 
 .outcome .label{font-size:13.5px; color:var(--ink-soft); margin-top:6px; line-height:1.5;}
 
 .outcome-detail{list-style:none; margin:14px 0 0; padding:14px 0 0; border-top:1px solid var(--line); font-size:12.5px; color:var(--ink-soft); display:flex; flex-direction:column; gap:5px;}
 
-.outcome-detail strong{color:var(--espresso); font-weight:600;}
+.outcome-detail strong{color:var(--text-bright); font-weight:600;}
 
 .comment-proof{grid-template-columns:1fr; gap:10px; margin-top:14px;}
 
