@@ -321,11 +321,22 @@
   .cta p{font-size:18px; color:var(--ink-soft); max-width:48ch; margin:0 auto 30px; line-height:1.6;}
 
   /* Footer */
-  footer{padding:36px 0; font-size:13px; color:var(--ink-soft); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;}
+  footer{padding:64px 0 32px; font-size:13px; color:var(--ink-soft);}
   footer a{text-decoration:none; color:var(--ink-soft);}
-  footer a:hover{color:var(--text-bright);}
-  .footer-inner{display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; width:100%;}
-  .footer-nav{display:flex; align-items:center; gap:20px; flex-wrap:wrap;}
+  .footer-inner{width:100%; display:flex; flex-direction:column; gap:40px; border-top:1px solid var(--line); padding-top:40px;}
+  .footer-top{display:flex; justify-content:space-between; align-items:stretch; flex-wrap:wrap; gap:32px 48px;}
+  .footer-brand{display:flex; flex-direction:column; max-width:34ch;}
+  .footer-brand-text{display:flex; flex-direction:column; gap:8px;}
+  .footer-signature{font-family:'Fraunces',serif; font-style:italic; font-size:23px; color:var(--text-bright);}
+  .footer-tagline{margin:0; font-size:13.5px; line-height:1.6; color:var(--ink-soft);}
+  .footer-nav-groups{display:flex; flex-wrap:wrap; gap:32px 56px;}
+  .footer-nav-group{display:flex; flex-direction:column; gap:11px;}
+  .footer-nav-label{font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:3px;}
+  .footer-nav-group a{display:inline-flex; align-items:center; gap:8px; font-size:14px; color:var(--ink-soft); transition:color .15s ease;}
+  .footer-nav-group a svg{flex:0 0 auto; opacity:.65; transition:opacity .15s ease;}
+  .footer-nav-group a:hover{color:var(--text-bright);}
+  .footer-nav-group a:hover svg{opacity:1;}
+  .footer-copy{margin:auto 0 0; font-size:12.5px; color:var(--ink-soft);}
 
   /* TOC rail */
   .toc-rail{
@@ -427,11 +438,10 @@
     .meta-row{grid-template-columns:1fr; row-gap:24px;}
     /* Mobile nav shows first-tier pages only — no per-case-study links. */
     .nav-menu-panel-label, .nav-menu-panel a.sub{display:none;}
+    .footer-inner{padding-top:56px;}
   }
   @media (max-width:600px){
     .contact-overlay-inner{max-width:100%; padding:48px 24px;}
-    .footer-inner{flex-direction:column; align-items:flex-start;}
-    .footer-nav{flex-direction:column; align-items:flex-start; gap:12px;}
   }
   @media (max-width:1400px){ .toc-rail{display:none;}}
   @media (prefers-reduced-motion: reduce){.toc-dot::after{transition:none;}}
