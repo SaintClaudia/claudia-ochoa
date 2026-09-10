@@ -613,7 +613,7 @@
   .trust-item + .trust-item{border-left:1px solid var(--line);}
   .trust-item svg{width:34px; height:34px; flex-shrink:0; color:var(--ink-soft);}
   .trust-item p{font-size:0.88rem; color:var(--ink-soft); line-height:1.45;}
-  .trust-item p strong{color:var(--ink); font-weight:700;}
+  .trust-item p strong{color:#3D3128; font-weight:700;}
 
   /* ---------- EXPECT TIMELINE ---------- */
   .expect{
