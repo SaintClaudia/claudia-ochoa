@@ -110,7 +110,13 @@
     /* Portfolio guide — a live, cited demonstration of the site's AI layer. */
     .portfolio-agent{padding:calc(clamp(48px,7vw,72px) + 100px) 0 0;}
     .portfolio-agent-shell{position:relative;overflow:hidden;display:grid;grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr);gap:48px;padding:clamp(28px,5vw,56px);border:1px solid var(--glass-border);border-radius:24px;background:linear-gradient(145deg,rgba(255,255,255,.065),rgba(255,255,255,.025));box-shadow:0 24px 80px rgba(0,0,0,.28);}
-    .portfolio-agent-shell::before{content:'';position:absolute;width:260px;height:260px;right:-120px;top:-140px;border-radius:50%;background:radial-gradient(circle,rgba(74,222,128,.13),transparent 68%);pointer-events:none;}
+    /* Same hero gradient as the homepage's landing-glow / blog's blog-more,
+       dropped to a hint of opacity so the card reads as a continuation of
+       the site rather than a new color moment. */
+    .portfolio-agent-shell::before{content:'';position:absolute;inset:0;background:
+        radial-gradient(ellipse 60% 80% at 90% 10%, rgba(178,58,107,0.18) 0%, rgba(178,58,107,0) 65%),
+        radial-gradient(ellipse 45% 65% at 100% 0%, rgba(217,155,95,0.14) 0%, rgba(217,155,95,0) 65%);
+      pointer-events:none;}
     .portfolio-agent-kicker{display:flex;align-items:center;gap:9px;margin-bottom:18px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);}
     .portfolio-agent-kicker::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 18px rgba(74,222,128,.6);}
     .portfolio-agent h2{font-size:clamp(30px,4vw,46px);font-weight:600;line-height:1.04;max-width:10ch;}
