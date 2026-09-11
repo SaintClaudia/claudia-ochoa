@@ -21,7 +21,7 @@
 
   <url>
     <loc>https://claudiaochoa.co/blog/</loc>
-    <lastmod>2026-09-06</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <priority>0.6</priority>
   </url>
 
@@ -34,6 +34,12 @@
   <url>
     <loc>https://claudiaochoa.co/blog/pump-up-the-volume.html</loc>
     <lastmod>2026-09-09</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://claudiaochoa.co/blog/cultural-intelligence.html</loc>
+    <lastmod>2026-09-11</lastmod>
     <priority>0.6</priority>
   </url>
 

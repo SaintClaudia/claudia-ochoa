@@ -38,19 +38,23 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=6">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- HEAD-BASICS:END -->
-  <title>Blog — Claudia Ochoa</title>
-  <meta name="description" content="Notes from Claudia Ochoa on AI experience, product design leadership, and the human side of building.">
-  <meta property="og:title" content="Blog — Claudia Ochoa">
-  <meta property="og:description" content="Notes on AI experience, product design leadership, and the human side of building.">
-  <meta property="og:url" content="https://claudiaochoa.co/blog/">
-  <meta property="og:type" content="website">
+  <title>Cultural Intelligence — Claudia Ochoa</title>
+  <meta name="description" content="The 49ers did more than arrive in Melbourne. They learned the culture, honored the community, and demonstrated what entering a new market with respect looks like.">
+  <meta property="og:title" content="Cultural Intelligence — Claudia Ochoa">
+  <meta property="og:description" content="What the 49ers understood about entering a new market: showing up gets you through the door. Showing respect makes people remember you.">
+  <meta property="og:url" content="https://claudiaochoa.co/blog/cultural-intelligence.html">
+  <meta property="og:type" content="article">
   <meta property="og:site_name" content="Claudia Ochoa">
-  <meta property="og:image" content="https://claudiaochoa.co/images/og-card.png?v=2">
+  <meta property="og:image" content="https://claudiaochoa.co/images/blog-cultural-intelligence-og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="article:published_time" content="2026-09-11">
+  <meta property="article:author" content="Claudia Ochoa">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Blog — Claudia Ochoa">
-  <meta name="twitter:description" content="Notes on AI experience, product design leadership, and the human side of building.">
-  <meta name="twitter:image" content="https://claudiaochoa.co/images/og-card.png?v=2">
-  <link rel="canonical" href="https://claudiaochoa.co/blog/">
+  <meta name="twitter:title" content="Cultural Intelligence — Claudia Ochoa">
+  <meta name="twitter:description" content="What the 49ers understood about entering a new market: showing up gets you through the door. Showing respect makes people remember you.">
+  <meta name="twitter:image" content="https://claudiaochoa.co/images/blog-cultural-intelligence-og.jpg">
+  <link rel="canonical" href="https://claudiaochoa.co/blog/cultural-intelligence.html">
 <!-- PORTFOLIO-FONTS:START -->
 <link rel="preload" href="/fonts/inter-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/fraunces-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
@@ -58,79 +62,24 @@
   <link rel="stylesheet" href="/css/case-study.css?v=33">
   <meta name="theme-color" content="#0A0A0B">
   <style>
-    .blog-hero{padding:80px 0 56px;}
-    .blog-hero .wrap{border-bottom:1px solid var(--line);padding-bottom:48px;}
-    .blog-hero h1{font-size:clamp(34px,4.8vw,54px);font-weight:600;line-height:1.06;max-width:18ch;}
-    .blog-hero .sub{margin-top:20px;font-size:18px;line-height:1.55;color:var(--ink-soft);max-width:56ch;}
-
-    /* Post list uses the same featured work-card pattern as the
-       homepage's case-study grid (section-head label + image + eyebrow
-       + h2/lede + CTA), so a post reads the same way a case study does. */
-    .blog-list{display:flex;flex-direction:column;}
-    .blog-entry{padding:36px 0;border-bottom:1px solid var(--line);}
-    .blog-list .blog-entry:first-child{padding-top:0;}
-    .blog-entry .section-head{margin-bottom:0;}
-    .work-card{position:relative;overflow:hidden;cursor:pointer;display:block;}
-    .work-card + h2{margin-top:28px;}
-    .card-image{position:relative;box-sizing:border-box;aspect-ratio:16/9;overflow:hidden;background:var(--surface);border-radius:14px;box-shadow:0 1px 2px rgba(0,0,0,.06);}
-    .card-image img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.25,.46,.45,.94);}
-    .work-card:hover .card-image img{transform:scale(1.03);}
-    .card-cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:20px;}
-
-    .blog-card-author{display:flex;align-items:center;gap:10px;margin-top:24px;}
-    .blog-card-avatar{width:32px;height:32px;border-radius:50%;object-fit:cover;flex:0 0 auto;}
-    .blog-card-author-info{display:flex;flex-direction:column;gap:2px;}
-    .blog-card-author-name{font-size:13.5px;font-weight:600;color:var(--text-bright);text-decoration:none;}
-    .blog-card-author-name:hover,.blog-card-author-name:focus-visible{text-decoration:underline;text-underline-offset:3px;}
-    .blog-card-author-meta{font-size:11.5px;letter-spacing:.06em;color:var(--ink-soft);font-weight:500;}
-
-    .blog-more{
-      position:relative;
-      margin-top:36px;
-      padding:36px 40px;
-      border-radius:20px;
-      background:var(--glass-bg);
-      border:1px solid var(--glass-border);
-      backdrop-filter:blur(20px);
-      -webkit-backdrop-filter:blur(20px);
-      overflow:hidden;
-      display:flex;
-      align-items:center;
-      gap:28px;
-    }
-    /* Same hero gradient as the homepage's landing-glow, dropped to a hint
-       of opacity so the card reads as a continuation of the site rather
-       than a new color moment. */
-    .blog-more::before{
-      content:'';
-      position:absolute;
-      inset:0;
-      background:
-        radial-gradient(ellipse 60% 80% at 90% 10%, rgba(178,58,107,0.18) 0%, rgba(178,58,107,0) 65%),
-        radial-gradient(ellipse 45% 65% at 100% 0%, rgba(217,155,95,0.14) 0%, rgba(217,155,95,0) 65%);
-      pointer-events:none;
-    }
-    .blog-more-avatar{position:relative; flex:0 0 auto; width:72px; height:72px;}
-    .blog-more-avatar img{width:72px; height:72px; border-radius:50%; object-fit:cover; display:block;}
-    .blog-more-badge{
-      position:absolute; right:-2px; bottom:-2px;
-      width:26px; height:26px; border-radius:50%;
-      display:flex; align-items:center; justify-content:center;
-      background:var(--bg-alt); border:1px solid var(--glass-border); color:var(--text-bright);
-    }
-    .blog-more-body{position:relative; z-index:1; flex:1 1 auto; min-width:0;}
-    .blog-more .eyebrow{margin-bottom:10px;}
-    .blog-more h2{font-size:clamp(20px,2.4vw,25px); line-height:1.25; margin-bottom:8px;}
-    .blog-more p{font-size:16px;line-height:1.6;color:var(--ink-soft);max-width:52ch;margin:0;}
-    .blog-more-cta{position:relative; z-index:1; flex:0 0 auto; margin-left:auto; white-space:nowrap;}
-    @media (max-width:900px){
-      .blog-more{flex-wrap:wrap;}
-      .blog-more-cta{margin-left:0; margin-top:20px; width:100%;}
-    }
-    @media (max-width:640px){
-      .blog-more{flex-direction:column; align-items:flex-start; padding:32px 24px;}
-      .blog-more-cta{margin-top:20px;}
-    }
+    .post-hero{padding:80px 0 56px;}
+    .post-hero .wrap{border-bottom:1px solid var(--line);padding-bottom:48px;}
+    .post-hero h1{font-size:clamp(32px,4.4vw,50px);font-weight:600;line-height:1.1;max-width:20ch;}
+    .post-hero .sub{margin-top:20px;font-size:18px;line-height:1.55;color:var(--ink-soft);max-width:60ch;}
+    .post-author{display:flex;align-items:center;gap:12px;margin-top:24px;}
+    .post-author-avatar{width:40px;height:40px;border-radius:50%;object-fit:cover;flex:0 0 auto;}
+    .post-author-info{display:flex;flex-direction:column;gap:2px;}
+    .post-author-name{font-size:14px;font-weight:600;color:var(--text-bright);text-decoration:none;}
+    .post-author-name:hover,.post-author-name:focus-visible{text-decoration:underline;text-underline-offset:3px;}
+    .post-author-meta{font-size:12px;letter-spacing:.06em;color:var(--ink-soft);font-weight:500;}
+    .post-body{padding-top:24px;display:flex;flex-direction:column;gap:24px;max-width:72ch;}
+    .post-lead-image{aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:var(--surface);box-shadow:0 1px 2px rgba(0,0,0,.06);}
+    .post-lead-image img{display:block;width:100%;height:100%;object-fit:cover;}
+    .post-video{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#000;}
+    .post-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+    .post-back{padding:24px 0 0;}
+    .post-back a{font-size:14px;color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px;}
+    .post-back a:hover{color:var(--text-bright);border-color:var(--text-bright);}
   </style>
 </head>
 <body>
@@ -200,96 +149,59 @@
 <!-- CONTACT-OVERLAY:END -->
 
 <main id="main-content" class="page">
-  <section class="blog-hero">
+  <section class="post-hero">
     <div class="wrap">
-      <div class="eyebrow">Blog</div>
-      <h1>Notes on AI, product, and the work in between.</h1>
-      <p class="sub">Longer-form thinking on emerging technology, product leadership, and human-centered design — written as I work through it, not after.</p>
+      <div class="eyebrow">Business Insights</div>
+      <h1>Cultural Intelligence</h1>
+      <p class="sub">What the 49ers understood about entering a new market: showing up gets you through the door. Showing respect makes people remember you.</p>
+      <div class="post-author">
+        <img class="post-author-avatar" src="/images/claudia-ochoa-headshot.jpg" width="40" height="40" alt="">
+        <span class="post-author-info">
+          <a class="post-author-name" href="/about.html">Claudia Ochoa</a>
+          <span class="post-author-meta">September 11, 2026 · 4 min read</span>
+        </span>
+      </div>
     </div>
   </section>
 
-  <section>
+  <section id="toc-cultural-intelligence">
     <div class="wrap">
-      <div class="blog-list">
-        <article class="blog-entry">
-          <div class="section-head">
-            <div><span class="num">Business Insights</span></div>
-            <div>
-              <a href="/blog/cultural-intelligence.html" class="work-card featured">
-                <div class="card-image">
-                  <img src="/images/blog-cultural-intelligence-hero-960.jpg" srcset="/images/blog-cultural-intelligence-hero-960.jpg 960w, /images/blog-cultural-intelligence-hero.jpg 1672w" sizes="(max-width: 720px) 100vw, 1036px" width="960" height="540" alt="San Francisco 49ers and Los Angeles Rams logos face off at midfield on a football field" loading="lazy" decoding="async">
-                </div>
-              </a>
-              <h2>Cultural Intelligence</h2>
-              <p class="lede">What the 49ers understood about entering a new market: showing up gets you through the door. Showing respect makes people remember you.</p>
-              <div class="blog-card-author">
-                <img class="blog-card-avatar" src="/images/claudia-ochoa-headshot.jpg" width="32" height="32" alt="">
-                <span class="blog-card-author-info">
-                  <a class="blog-card-author-name" href="/about.html">Claudia Ochoa</a>
-                  <span class="blog-card-author-meta">September 11, 2026 · 4 min read</span>
-                </span>
-              </div>
-              <div class="card-cta-row"><a class="btn ghost" href="/blog/cultural-intelligence.html">Read the post →</a></div>
+      <div class="section-head">
+        <div><span class="num">01</span></div>
+        <div>
+          <figure class="post-lead-image">
+            <img src="/images/blog-cultural-intelligence-hero.jpg" srcset="/images/blog-cultural-intelligence-hero-960.jpg 960w, /images/blog-cultural-intelligence-hero.jpg 1672w" sizes="(max-width: 720px) 100vw, 700px" width="1672" height="941" alt="San Francisco 49ers and Los Angeles Rams logos face off at midfield on a football field" loading="lazy" decoding="async">
+          </figure>
+          <div class="post-body body-copy">
+            <p>Last night, I watched the San Francisco 49ers play the LA Rams live on Netflix from Melbourne.</p>
+            <p>In business school, they teach you that when you enter an international market, you have to do more than arrive. You research the culture. You honor it. You immerse yourself in it before asking the people there to embrace you back.</p>
+            <p>And that is exactly what San Francisco did.</p>
+            <p>The Niners arrived days before the game and spent that time becoming part of Melbourne. They went to an AFL game. They held an event where the Gold Rush cheerleaders handed out pom-poms and led more than a thousand people in a record-breaking cheerleading dance. They hosted a football clinic with Special Olympics athletes. They visited schools, worked with local charities, connected with Australian athletes, and supported local restaurants.</p>
+            <p>They didn’t just fly in, play a game and leave.</p>
+            <p>They showed up.</p>
+            <p>They immersed themselves so deeply in Melbourne that now everyone in America knows we have been pronouncing it wrong. It’s “MEL-buhn.” 🇦🇺</p>
+            <p>That may seem like a small thing, but it isn’t. Learning how people say the name of their own home is a form of respect. And watching the Niners demonstrate that respect brought me back to how I became a fan in the first place. I’m from Texas. My family has been loyal to the Dallas Cowboys my entire life. Cowboys games meant huge family cookouts, jerseys and everyone gathering around the television. But I never felt connected to the team. Honestly, I wasn’t into sports at all. I was the artist in the family. I still kind of am. Sports and art never got along in my mind. They were the Socials and the Greasers.</p>
+            <p>Then I moved to San Francisco.</p>
+            <p>Everyone I knew loved the Giants — my creative friends and everybody else. We went to games all the time. I got to witness the city on fire after the World Series (three times). Somewhere in there, I became a baseball fan without realizing it.</p>
+            <p>So when someone invited me to a Niners game, I thought, sure. I support the baseball team. Now I can support the football team. That game was at Candlestick Park. I experienced everything firsthand: the tailgate, the crowd and the energy. It was my first NFL game. Although, if you ever went to Candlestick, calling it an NFL experience might be generous. It was hood. But it was my hood.</p>
+            <p>Years later, I was staying with my folks in Texas when I decided to reignite my flame for the Niners. I bought a vintage gold 49ers jacket on eBay and wore it to HEB on game day, surrounded by people in Cowboys jerseys.</p>
+            <p>It gave my dad and me a friendly rivalry: his team versus the best.</p>
+            <p>That was the year Brock Purdy became the quarterback. He had been the final pick in the draft. He was humble about not being the fastest or the strongest. He just kept showing up and doing the work. Brock is my Achilles’ heel.</p>
+            <p>Following the Niners also brought new friends. Caring about the game gave me a way to connect with people through their love for a team — and through the surprisingly real emotions that come when that team loses.</p>
+            <p>I have moved around a lot since my San Francisco days. When I came to LA, I briefly thought that maybe I should support my new home team. Yeah, no. Last night settled that. It wasn’t only because the Niners won when many people didn’t expect them to. It was because of how they behaved before the game ever started. They honored the Aussies. They respected the culture. They showed real sportsmanship.</p>
+            <p>There is a business lesson in that.</p>
+            <p>Whether you are a company entering a new market or a football team arriving on foreign soil, being present is not enough. People can tell when you have come only to take something from them. They can also tell when you have taken the time to learn who they are.</p>
+            <p>Showing up gets you through the door. Showing respect makes people remember you. The Niners made a fan out of me a long time ago. Last night, they made me one for life.</p>
+            <p>Forever Faithful.</p>
+            <p>Bang bang‼️</p>
+            <div class="post-video">
+              <iframe src="https://www.youtube.com/embed/g8g2BBmkhMk" title="Cultural Intelligence — featured video" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
           </div>
-        </article>
-        <article class="blog-entry">
-          <div class="section-head">
-            <div><span class="num">AI Experience</span></div>
-            <div>
-              <a href="/blog/pump-up-the-volume.html" class="work-card featured">
-                <div class="card-image">
-                  <img src="/images/blog-potv-hero-960.jpg" srcset="/images/blog-potv-hero-960.jpg 960w, /images/blog-potv-hero.jpg 1800w" sizes="(max-width: 720px) 100vw, 1036px" width="960" height="523" alt="A deep-space nebula glowing in red and blue, dense with stars" loading="lazy" decoding="async">
-                </div>
-              </a>
-              <h2>Pump Up the Volume</h2>
-              <p class="lede">Consider this my life running in beta. Looking for the anomalies as I go.</p>
-              <div class="blog-card-author">
-                <img class="blog-card-avatar" src="/images/claudia-ochoa-headshot.jpg" width="32" height="32" alt="">
-                <span class="blog-card-author-info">
-                  <a class="blog-card-author-name" href="/about.html">Claudia Ochoa</a>
-                  <span class="blog-card-author-meta">September 9, 2026 · 2 min read</span>
-                </span>
-              </div>
-              <div class="card-cta-row"><a class="btn ghost" href="/blog/pump-up-the-volume.html">Read the post →</a></div>
-            </div>
-          </div>
-        </article>
-        <article class="blog-entry">
-          <div class="section-head">
-            <div><span class="num">AI Innovation</span></div>
-            <div>
-              <a href="/blog/eat-your-own-dog-food.html" class="work-card featured">
-                <div class="card-image">
-                  <img src="/images/blog-eyodf-hero-960.webp" srcset="/images/blog-eyodf-hero-960.webp 960w, /images/blog-eyodf-hero.webp 1800w" sizes="(max-width: 720px) 100vw, 1036px" width="960" height="524" alt="A golden retriever sits eagerly beside a full bowl of kibble on a wooden kitchen table" loading="lazy" decoding="async">
-                </div>
-              </a>
-              <h2>Eat Your Own Dog Food</h2>
-              <p class="lede">AI companies are pitching agentic everything. Running their own websites through PageSpeed Insights tells a different story — and raises the question of who actually gets blamed when the gap shows.</p>
-              <div class="blog-card-author">
-                <img class="blog-card-avatar" src="/images/claudia-ochoa-headshot.jpg" width="32" height="32" alt="">
-                <span class="blog-card-author-info">
-                  <a class="blog-card-author-name" href="/about.html">Claudia Ochoa</a>
-                  <span class="blog-card-author-meta">September 6, 2026 · 5 min read</span>
-                </span>
-              </div>
-              <div class="card-cta-row"><a class="btn ghost" href="/blog/eat-your-own-dog-food.html">Read the post →</a></div>
-            </div>
-          </div>
-        </article>
-        <!-- Add new posts above this line, newest first. -->
-        <div class="blog-more">
-          <div class="blog-more-avatar">
-            <img src="/images/claudia-ochoa-headshot.jpg" width="72" height="72" alt="">
-            <span class="blog-more-badge" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="14" height="14" rx="3" stroke="currentColor" stroke-width="1.4"/><path d="M6.2 7.5v6M6.2 5.3v.01" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M9 13.5V9.8c0-1 .7-1.8 1.8-1.8s1.8.8 1.8 1.8v3.7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          </div>
-          <div class="blog-more-body">
-            <div class="eyebrow">Let's connect</div>
-            <h2>Three posts down. It's a start.</h2>
-            <p>I gotta get back to building — more to come.</p>
-          </div>
-          <a class="btn ghost blog-more-cta" href="https://www.linkedin.com/in/claudiajochoa/" target="_blank" rel="noopener noreferrer">Follow along on LinkedIn ↗︎</a>
         </div>
+      </div>
+      <div class="post-back">
+        <a href="/blog/">&larr; Back to all posts</a>
       </div>
     </div>
   </section>
