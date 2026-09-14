@@ -48,6 +48,5 @@ test("agentic score copy uses the current three-check result", () => {
 
 test("homepage WebMCP pilot remains progressive and same-origin", () => {
   assert.match(homepage, /<script type="module" src="js\/portfolio-webmcp\.js\?v=1"><\/script>/);
-  assert.match(worker, /tools=\(self\)/);
-  assert.doesNotMatch(worker, /tools=\(\*\)/);
+  assert.doesNotMatch(worker, /tools=\(/);
 });

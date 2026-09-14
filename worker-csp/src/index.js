@@ -59,7 +59,7 @@ function buildCSP(nonce) {
 }
 
 const PERMISSIONS_POLICY =
-  "geolocation=(), microphone=(), camera=(), payment=(), usb=(), interest-cohort=(), tools=(self)";
+  "geolocation=(), microphone=(), camera=(), payment=(), usb=(), interest-cohort=()";
 
 // Allow AI search, citation, and agentic use while reserving model-training
 // rights. This mirrors the site's Cloudflare-managed robots.txt policy, but

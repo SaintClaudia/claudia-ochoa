@@ -70,7 +70,7 @@ const checks = [
     run: async () => {
       const { response, body } = await request("/");
       const policy = response.headers.get("permissions-policy") || "";
-      assert(policy.includes("tools=(self)"), "WebMCP is not restricted to the same origin");
+      assert(!policy.includes("tools="), "origin-trial-only tools policy should rely on its self default");
       assert(body.includes('src="js/portfolio-webmcp.js?v=1"'), "homepage is missing the WebMCP module");
 
       const { body: module } = await request("/js/portfolio-webmcp.js?v=1");

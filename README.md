@@ -103,7 +103,8 @@ The site exposes the same published evidence through complementary interfaces:
 - `/mcp` provides a public, stateless, read-only MCP server.
 - Supporting browsers receive one progressive WebMCP tool, `ask_portfolio`, on the
   homepage. It uses the existing grounded portfolio guide, returns canonical source
-  links, and is unavailable to cross-origin frames through the `tools=(self)` policy.
+  links, and relies on the WebMCP permission's default `self` allowlist so it is not
+  available to cross-origin frames.
 
 WebMCP is an experimental enhancement. Browsers without `document.modelContext`
 continue to receive the normal site with no fallback script or user-facing change.
