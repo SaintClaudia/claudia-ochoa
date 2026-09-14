@@ -38,12 +38,12 @@ test("sitemap lists every curated HTML source", () => {
   }
 });
 
-test("agentic score copy uses the current three-check result", () => {
+test("agentic score copy uses the current two-applicable-check result", () => {
   const research = readFileSync(new URL("../../work/lovesac-case-study-3.html", import.meta.url), "utf8");
   const readiness = readFileSync(new URL("../../work/lovesac-case-study-5.html", import.meta.url), "utf8");
-  assert.match(research, /redesign 3 of 3/i);
-  assert.match(readiness, /3 of 3 checks passed/i);
-  assert.doesNotMatch(`${research}\n${readiness}`, /redesign (?:already )?(?:scores|passes) 2(?:\/| of )2/i);
+  assert.match(research, /redesign (?:already )?(?:scores|passes) 2(?:\/| of )2/i);
+  assert.match(readiness, /2 of 2 checks passed/i);
+  assert.doesNotMatch(`${research}\n${readiness}`, /redesign 3 of 3/i);
 });
 
 test("homepage WebMCP pilot remains progressive and same-origin", () => {
