@@ -66,10 +66,10 @@
   <meta name="twitter:description" content="20+ years turning complexity into experiences people trust — grounded in Creative Direction, driven by ideas brought to life.">
   <meta name="twitter:image" content="https://claudiaochoa.co/images/og-card.png?v=2">
   <link rel="canonical" href="https://claudiaochoa.co/">
-<!-- PORTFOLIO-FONTS:START -->
+<!-- HOME-FONTS:START -->
 <link rel="preload" href="/fonts/inter-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/fonts/fraunces-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
-<!-- PORTFOLIO-FONTS:END -->
+<link rel="preload" href="/fonts/fraunces-home-variable.woff2" as="font" type="font/woff2" crossorigin>
+<!-- HOME-FONTS:END -->
 <!-- HOME-SHARED-CSS:START -->
 <style>
 /* claudiaochoa.co — shared design system for the homepage, 404 page, and Lovesac
@@ -530,6 +530,14 @@
        plus hero fill exactly one viewport. Everything shared with the rest
        of the site (colors, fonts, nav, buttons, footer, contact overlay)
        lives in css/case-study.css. */
+    @font-face{
+      font-family:'Fraunces Home';
+      font-style:normal;
+      font-weight:400 900;
+      font-display:swap;
+      src:url('/fonts/fraunces-home-variable.woff2') format('woff2');
+    }
+
     html, body{height:100%; overflow:hidden;}
 
     .landing{
@@ -579,6 +587,7 @@
       background:var(--accent); box-shadow:0 0 14px rgba(74,222,128,.6);
     }
     .landing-primary h1{
+      font-family:'Fraunces Home','Fraunces',serif;
       font-size:clamp(34px,4.6vw,54px);
       font-weight:600;
       line-height:1.08;
