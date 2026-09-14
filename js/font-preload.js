@@ -1,3 +1,3 @@
-document.querySelectorAll('link[rel="preload"][as="style"]').forEach(function (link) {
-  link.rel = 'stylesheet';
+document.querySelectorAll('link[data-deferred-fonts]').forEach(function (link) {
+  link.media = 'all';
 });
