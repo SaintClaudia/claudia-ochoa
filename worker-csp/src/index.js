@@ -41,7 +41,10 @@ function buildCSP(nonce) {
     "form-action 'self' https://api.web3forms.com",
     "require-trusted-types-for 'script'",
     // `case-study-html`, `site-analytics`, and `lovesac-store-finder` are
-    // this site's own policies. `goog#html` is what the Maps JS API
+    // this site's own policies. Safari Web Inspector creates
+    // `decodeHTMLEntitiesPolicy` inside the inspected page when displaying
+    // selected DOM nodes, so it is named explicitly to keep inspection from
+    // producing a false-positive console error. `goog#html` is what the Maps JS API
     // actually creates internally when loaded via a raw script tag
     // (confirmed by live console testing — public docs describe
     // `google-maps-api#html`, used by the separate @googlemaps/js-api-loader
@@ -51,7 +54,7 @@ function buildCSP(nonce) {
     // load. Verified clean via Report-Only testing (headless page loads
     // plus manual click-through of the store finder, Maps, room-fit
     // calculator, and product filters) before switching this to enforcing.
-    "trusted-types case-study-html site-analytics lovesac-store-finder goog#html google-maps-api-loader google-maps-api#html lit-html 'allow-duplicates'",
+    "trusted-types case-study-html site-analytics lovesac-store-finder decodeHTMLEntitiesPolicy goog#html google-maps-api-loader google-maps-api#html lit-html 'allow-duplicates'",
   ].join("; ");
 }
 

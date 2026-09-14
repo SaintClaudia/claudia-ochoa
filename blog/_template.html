@@ -14,7 +14,7 @@
   5. Run python3 build.py, then python3 build.py --check.
 -->
 <!-- ANALYTICS:START -->
-<!-- Google Analytics loads after the critical rendering window. -->
+<!-- Google Analytics loads after first interaction or a quiet 30-second window. -->
 <script>
   (function () {
     // The gtag.js URL is a fixed, hardcoded string — never user input — so
@@ -23,7 +23,18 @@
       ? trustedTypes.createPolicy('site-analytics', { createScriptURL: function (url) { return url; } })
       : null;
 
+    var analyticsStarted = false;
+    var analyticsTimer;
+    var interactionEvents = ['pointerdown', 'keydown', 'scroll'];
+
     function loadAnalytics() {
+      if (analyticsStarted) return;
+      analyticsStarted = true;
+      window.clearTimeout(analyticsTimer);
+      interactionEvents.forEach(function (eventName) {
+        window.removeEventListener(eventName, loadAnalytics);
+      });
+
       window.dataLayer = window.dataLayer || [];
       window.gtag = function () { window.dataLayer.push(arguments); };
       window.gtag('js', new Date());
@@ -36,8 +47,11 @@
       document.head.appendChild(script);
     }
 
+    interactionEvents.forEach(function (eventName) {
+      window.addEventListener(eventName, loadAnalytics, { once: true, passive: true });
+    });
     window.addEventListener('load', function () {
-      window.setTimeout(loadAnalytics, 3000);
+      if (!analyticsStarted) analyticsTimer = window.setTimeout(loadAnalytics, 30000);
     }, { once: true });
   }());
 </script>
@@ -99,10 +113,11 @@
 <div class="nav-menu-backdrop" id="nav-menu-backdrop"></div>
 <div class="nav-menu-panel" id="nav-menu-panel" inert>
         <a class="nav-menu-profile" href="/about.html">
-          <span class="nav-menu-avatar" aria-hidden="true"><img src="/images/claudia-ochoa-headshot.jpg" alt="" width="160" height="160"></span>
+          <span class="nav-menu-avatar" aria-hidden="true"><img data-src="/images/claudia-ochoa-headshot.jpg" alt="" width="160" height="160" decoding="async"></span>
           <span>Claudia Ochoa</span>
         </a>
         <a href="/"><svg width="16" height="16" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2.5 8.5L9 3l6.5 5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 7.5v7a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 15.5V11h4v4.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Home</span></a>
+        <a href="/work/"><svg width="16" height="16" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="2.5" y="3" width="13" height="10.5" rx="1.5" stroke="currentColor" stroke-width="1.4"/><path d="M6.5 3V2a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><span>Work</span></a>
         <div class="nav-menu-panel-label">Lovesac</div>
         <a class="sub" href="/work/lovesac-case-study.html"><span>Redesign</span></a>
         <a class="sub" href="/work/lovesac-case-study-2.html"><span>Deep Dive</span></a>
@@ -175,18 +190,32 @@
 <!-- FOOTER:START -->
 <footer>
   <div class="wrap footer-inner">
-    <nav class="footer-nav" aria-label="Footer navigation">
-      <a href="/">Home</a>
-      <a href="/blog/">Blog</a>
-      <a href="/about.html">About</a>
-      <a href="/output/pdf/Claudia_Ochoa_Resume.pdf" target="_blank" rel="noopener noreferrer">Résumé</a>
-      <a href="https://www.linkedin.com/in/claudiajochoa/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      <a href="#" id="footer-contact-toggle">Contact</a>
-    </nav>
-    <p class="footer-copy">© 2026 Claudia Ochoa</p>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-brand-text">
+          <a href="/" class="footer-signature">Claudia Ochoa</a>
+          <p class="footer-tagline">AI experience &amp; product design leadership.</p>
+        </div>
+        <p class="footer-copy">© 2026 Claudia Ochoa</p>
+      </div>
+      <nav class="footer-nav-groups" aria-label="Footer navigation">
+        <div class="footer-nav-group">
+          <div class="footer-nav-label">Explore</div>
+          <a href="/work/"><svg width="16" height="16" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="2.5" y="3" width="13" height="10.5" rx="1.5" stroke="currentColor" stroke-width="1.4"/><path d="M6.5 3V2a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><span>Work</span></a>
+          <a href="/about.html"><svg width="16" height="16" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="9" cy="6" r="3" stroke="currentColor" stroke-width="1.4"/><path d="M3.5 15c0-3 2.5-5 5.5-5s5.5 2 5.5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><span>About</span></a>
+          <a href="/blog/"><svg width="16" height="16" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M11.5 2.8l3.7 3.7L6.4 15.3l-4.1.8.8-4.1L11.5 2.8z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/><path d="M9.8 4.5l3.7 3.7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><span>Blog</span></a>
+        </div>
+        <div class="footer-nav-group">
+          <div class="footer-nav-label">Connect</div>
+          <a href="/output/pdf/Claudia_Ochoa_Resume.pdf" target="_blank" rel="noopener noreferrer"><svg width="16" height="16" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 2.5h5.5L14 6v9a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M10.5 2.5V6H14" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M6.5 10h5M6.5 12.5h5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg><span>Résumé</span></a>
+          <a href="https://www.linkedin.com/in/claudiajochoa/" target="_blank" rel="noopener noreferrer"><svg width="16" height="16" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="2" y="2" width="14" height="14" rx="3" stroke="currentColor" stroke-width="1.4"/><path d="M6.2 7.5v6M6.2 5.3v.01" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M9 13.5V9.8c0-1 .7-1.8 1.8-1.8s1.8.8 1.8 1.8v3.7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>LinkedIn</span></a>
+          <a href="#" id="footer-contact-toggle"><svg width="16" height="16" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="2" y="4" width="14" height="10" rx="1.5" stroke="currentColor" stroke-width="1.4"/><path d="M2.5 5l6.5 5 6.5-5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Contact</span></a>
+        </div>
+      </nav>
+    </div>
   </div>
 </footer>
 <!-- FOOTER:END -->
-<script src="/js/main.js?v=8"></script>
+<script defer src="/js/main.js?v=9"></script>
 </body>
 </html>

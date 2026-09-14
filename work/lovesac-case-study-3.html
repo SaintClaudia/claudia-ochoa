@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <!-- ANALYTICS:START -->
-<!-- Google Analytics loads after the critical rendering window. -->
+<!-- Google Analytics loads after first interaction or a quiet 30-second window. -->
 <script>
   (function () {
     // The gtag.js URL is a fixed, hardcoded string — never user input — so
@@ -11,7 +11,18 @@
       ? trustedTypes.createPolicy('site-analytics', { createScriptURL: function (url) { return url; } })
       : null;
 
+    var analyticsStarted = false;
+    var analyticsTimer;
+    var interactionEvents = ['pointerdown', 'keydown', 'scroll'];
+
     function loadAnalytics() {
+      if (analyticsStarted) return;
+      analyticsStarted = true;
+      window.clearTimeout(analyticsTimer);
+      interactionEvents.forEach(function (eventName) {
+        window.removeEventListener(eventName, loadAnalytics);
+      });
+
       window.dataLayer = window.dataLayer || [];
       window.gtag = function () { window.dataLayer.push(arguments); };
       window.gtag('js', new Date());
@@ -24,8 +35,11 @@
       document.head.appendChild(script);
     }
 
+    interactionEvents.forEach(function (eventName) {
+      window.addEventListener(eventName, loadAnalytics, { once: true, passive: true });
+    });
     window.addEventListener('load', function () {
-      window.setTimeout(loadAnalytics, 3000);
+      if (!analyticsStarted) analyticsTimer = window.setTimeout(loadAnalytics, 30000);
     }, { once: true });
   }());
 </script>
@@ -562,7 +576,7 @@
 <div class="nav-menu-backdrop" id="nav-menu-backdrop"></div>
 <div class="nav-menu-panel" id="nav-menu-panel" inert>
         <a class="nav-menu-profile" href="/about.html">
-          <span class="nav-menu-avatar" aria-hidden="true"><img src="/images/claudia-ochoa-headshot.jpg" alt="" width="160" height="160"></span>
+          <span class="nav-menu-avatar" aria-hidden="true"><img data-src="/images/claudia-ochoa-headshot.jpg" alt="" width="160" height="160" decoding="async"></span>
           <span>Claudia Ochoa</span>
         </a>
         <a href="/"><svg width="16" height="16" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2.5 8.5L9 3l6.5 5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 7.5v7a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 15.5V11h4v4.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Home</span></a>
@@ -1429,7 +1443,7 @@
 })();
 </script>
 <script src="/js/case-study-toc.js"></script>
-<script src="/js/main.js?v=8"></script>
+<script defer src="/js/main.js?v=9"></script>
 
 </body>
 </html>

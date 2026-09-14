@@ -20,6 +20,7 @@ Markers used in HTML files:
     <!-- LOVESAC-PAGE-SCRIPTS:START --> ... <!-- LOVESAC-PAGE-SCRIPTS:END -->
     <!-- ANALYTICS:START --> ... <!-- ANALYTICS:END -->
     <!-- HEAD-BASICS:START --> ... <!-- HEAD-BASICS:END -->
+    <!-- HOME-SHARED-CSS:START --> ... <!-- HOME-SHARED-CSS:END -->
 """
 
 import argparse
@@ -58,10 +59,23 @@ files = (
     glob.glob(f'{BASE}/work/*.html') +
     glob.glob(f'{BASE}/blog/*.html')
 )
-files = [f for f in files if not os.path.basename(f).startswith('_')]
+files = [
+    f for f in files
+    if not os.path.basename(f).startswith('_') or os.path.basename(f) == '_template.html'
+]
 
 total_updated = 0
 total_stale = 0
+
+embedded_assets = [
+    (
+        'css/case-study.css',
+        '<!-- HOME-SHARED-CSS:START -->',
+        '<!-- HOME-SHARED-CSS:END -->',
+        '<style>\n',
+        '\n</style>',
+    ),
+]
 
 
 
@@ -114,6 +128,40 @@ for partial_file, START, END in partials:
 
     if used == 0:
         raise ValueError(f'{partial_file}: no pages contain its marker region')
+    if args.check:
+        total_stale += updated
+    else:
+        total_updated += updated
+
+for asset_file, START, END, prefix, suffix in embedded_assets:
+    asset_path = os.path.join(BASE, asset_file)
+    if not os.path.exists(asset_path):
+        raise FileNotFoundError(f'Required embedded asset not found: {asset_file}')
+
+    embedded_content = prefix + open(asset_path).read().strip() + suffix
+    print(f'\n--- embedded {asset_file} ---')
+    updated = 0
+    used = 0
+
+    for path in sorted(files):
+        content = open(path).read()
+        region = marker_region(content, START, END, path)
+        if region is None:
+            continue
+        used += 1
+        s, e = region
+        new_content = content[:s] + START + '\n' + embedded_content + '\n' + END + content[e:]
+        if new_content != content:
+            status = 'stale' if args.check else 'updated'
+            print(f'  {status} {os.path.relpath(path, BASE)}')
+            if not args.check:
+                open(path, 'w').write(new_content)
+            updated += 1
+        else:
+            print(f'  unchanged {os.path.relpath(path, BASE)}')
+
+    if used == 0:
+        raise ValueError(f'{asset_file}: no pages contain its embedded marker region')
     if args.check:
         total_stale += updated
     else:

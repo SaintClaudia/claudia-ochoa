@@ -32,6 +32,7 @@ const navMenu = document.getElementById('nav-menu');
 const navMenuBtn = document.getElementById('nav-menu-btn');
 const navMenuBackdrop = document.getElementById('nav-menu-backdrop');
 const navMenuPanel = document.getElementById('nav-menu-panel');
+const navMenuProfileImage = navMenuPanel?.querySelector('.nav-menu-avatar img[data-src]');
 if (navMenu && navMenuBtn) {
   const closeNavMenu = () => {
     navMenu.classList.remove('open');
@@ -50,6 +51,10 @@ if (navMenu && navMenuBtn) {
     document.body.classList.toggle('nav-menu-open', isOpen);
     nav?.classList.remove('nav-hidden');
     if (navMenuPanel) navMenuPanel.inert = !isOpen;
+    if (isOpen && navMenuProfileImage) {
+      navMenuProfileImage.src = navMenuProfileImage.dataset.src;
+      navMenuProfileImage.removeAttribute('data-src');
+    }
   });
   navMenuPanel?.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', closeNavMenu);
