@@ -89,7 +89,7 @@ concept-versus-shipped boundaries, safe unknown resource handling, and resolutio
 of MCP citations back to canonical Markdown.
 Set `PORTFOLIO_EVAL_BASE_URL` to run the same checks against another deployment.
 The GitHub Actions `Agent readiness` workflow runs the local contracts and this
-live journey every Monday, and can also be started manually.
+live journey when started manually from the Actions tab.
 
 ## Deploy
 
@@ -97,14 +97,13 @@ live journey every Monday, and can also be started manually.
 npm run deploy
 ```
 
-`wrangler.toml` intentionally ships with **no route**. The first deploy only
-publishes to the worker's own `*.workers.dev` subdomain — it does not affect
-site traffic. Adding
+`wrangler.toml` routes `claudiaochoa.co/*` through this Worker, so a deploy
+updates the production site's response handling and security headers. The active
+route is:
 
 ```toml
 routes = [{ pattern = "claudiaochoa.co/*", zone_name = "claudiaochoa.co" }]
 ```
 
-to `wrangler.toml` and redeploying is what actually puts this worker in
-front of live traffic. Do that only after testing `npm run dev` against the
-pages you care about.
+Test `npm run dev` against the pages you care about before deploying changes to
+that route.
