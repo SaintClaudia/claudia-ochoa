@@ -435,7 +435,7 @@
   /* ---------- PORTFOLIO BACK LINK ---------- */
   .back-link{
     display:inline-flex; align-items:center; gap:6px;
-    margin:20px 0 0;
+    margin:20px 20px 0;
     background:var(--canvas, var(--ls-canvas)); color:var(--ink, var(--ls-ink));
     padding:10px 16px; border-radius:8px;
     border:1px solid var(--line, var(--ls-line));
