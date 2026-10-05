@@ -85,18 +85,7 @@
 <!-- PORTFOLIO-FONTS:END -->
   <link rel="stylesheet" href="/css/case-study.css?v=33">
   <meta name="theme-color" content="#0A0A0B">
-  <style>
-    .post-hero{padding:80px 0 56px;}
-    .post-hero .wrap{border-bottom:1px solid var(--line);padding-bottom:48px;}
-    .post-hero h1{font-size:clamp(32px,4.4vw,50px);font-weight:600;line-height:1.1;max-width:20ch;}
-    .post-hero .sub{margin-top:20px;font-size:18px;line-height:1.55;color:var(--ink-soft);max-width:60ch;}
-    .post-byline{margin-top:20px;font-size:12px;letter-spacing:.06em;color:var(--ink-soft);font-weight:500;}
-    .post-body{padding-top:56px;display:flex;flex-direction:column;gap:24px;max-width:72ch;}
-    .post-body h2{margin-top:16px;font-size:clamp(22px,2.8vw,30px);}
-    .post-back{padding:24px 0 0;}
-    .post-back a{font-size:14px;color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px;}
-    .post-back a:hover{color:var(--text-bright);border-color:var(--text-bright);}
-  </style>
+  <link rel="stylesheet" href="/css/blog.css?v=1">
 </head>
 <body>
 <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -170,15 +159,27 @@
       <div class="eyebrow">Blog</div>
       <h1>REPLACE: Post title</h1>
       <p class="sub">REPLACE: one- or two-sentence dek that expands on the title.</p>
-      <p class="post-byline">REPLACE: Month D, YYYY · X min read</p>
+      <div class="post-author">
+        <img class="post-author-avatar" src="/images/claudia-ochoa-headshot.jpg" width="40" height="40" alt="">
+        <span class="post-author-info">
+          <a class="post-author-name" href="/about.html">Claudia Ochoa</a>
+          <span class="post-author-meta">REPLACE: Month D, YYYY · X min read</span>
+        </span>
+      </div>
     </div>
   </section>
 
-  <section>
+  <section id="toc-post">
     <div class="wrap">
-      <div class="post-body body-copy">
+      <div class="section-head">
+        <div><span class="num">01</span></div>
+        <div>
+          <!-- Add a post-lead-image figure here; use image-full for a full 3:2 image. -->
+          <div class="post-body body-copy">
         <p>REPLACE: opening paragraph.</p>
         <p>REPLACE: more paragraphs. Use &lt;h2&gt; for subheadings if the post has distinct sections.</p>
+          </div>
+        </div>
       </div>
       <div class="post-back">
         <a href="/blog/">&larr; Back to all posts</a>

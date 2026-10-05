@@ -176,11 +176,13 @@ reversed, or unmatched.
 ## Adding a blog post
 
 1. Copy `blog/_template.html` to `blog/<slug>.html` (lowercase, hyphenated, no dates in the slug)
-2. Fill in every `REPLACE:` marker — title, dates, description, OG/Twitter tags, canonical URL, byline, and body copy
-3. Add a card for the post to `blog/index.html`, newest first, above the "Add new posts above this line" comment (and remove the "first post is on its way" empty state the first time)
-4. Add the new URL to `sitemap.xml`
-5. Run `python3 build.py`, then `python3 build.py --check`
-6. Push
+2. Use the shared `/css/blog.css` components and the template’s numbered section layout. Keep listing titles as plain `<h2>` headings; the image and “Read the post” button link to the article. Use `image-full` on a lead image or card image to preserve a full 3:2 composition.
+3. Fill in every `REPLACE:` marker — title, dates, description, OG/Twitter tags, canonical URL, byline, and body copy
+4. Add a card for the post to `blog/index.html`, newest first, above the "Add new posts above this line" comment (and remove the "first post is on its way" empty state the first time)
+5. Add the new URL to `sitemap.xml`
+6. Run `python3 build.py`, then `python3 build.py --check`
+7. Push
+
 
 ## Adding a case study
 
