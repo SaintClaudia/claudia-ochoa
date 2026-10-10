@@ -31,3 +31,46 @@
 #sound{width:44px;height:44px;padding:8px;display:grid;place-items:center;color:var(--cream);flex-shrink:0}#sound svg{width:28px;height:28px}#sound .sound-enabled{display:none}#sound[aria-pressed="true"] .sound-enabled{display:inline}#sound[aria-pressed="true"] .sound-muted{display:none}#sound:hover{background:#f4edda10}#sound:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 
 .header-actions{display:flex;align-items:center;gap:6px;flex-shrink:0}#new-round{width:44px;height:44px;padding:8px;display:grid;place-items:center;color:var(--cream)}#new-round svg{width:28px;height:28px}#new-round:hover{background:#f4edda10}#new-round:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+/* Keep the desktop console and hole title within the available screen height. */
+@media(min-width:701px){
+  #play{max-width:min(1500px,calc((100dvh - 350px)*1.470588 + 322px + 8vw));padding-block:16px}
+  .game-heading{margin-top:16px}
+  .game-heading h1{font-size:30px}
+  .game-heading .eyebrow{margin-bottom:5px}
+  .course-hud{padding:10px 14px;font-size:10px}
+  .course-footer{padding:10px 14px;font-size:8px}
+  .controls{padding:14px}
+  .active-heading .portrait{width:54px;height:68px}
+  .active-heading h2{font-size:21px}
+  .shot-stats{margin-top:12px;padding:9px 10px}
+  .shot-stats strong{font-size:26px;margin-top:3px}
+  .controls fieldset{margin:16px 0}
+  .controls legend{margin-bottom:9px}
+  .clubs button{padding:7px 0;font-size:18px}
+  .slider-label{margin-top:12px;margin-bottom:8px}
+  .controls input[type=range]{margin-bottom:6px}
+  .controls .primary{margin-top:10px;padding:12px 14px}
+  #message{font-size:10px;line-height:1.5;min-height:30px;margin:10px 0}
+  .controls details{padding:9px 0}
+  .score-toggle{margin-top:12px}
+  body:has(#play:not([hidden])) footer{padding-block:16px}
+}
+@media(min-width:701px) and (max-height:800px){
+  #play{padding-block:12px}
+  .game-heading{margin-top:12px}
+  .game-heading h1{font-size:25px}
+  .controls{padding:12px}
+  .active-heading .portrait{width:44px;height:54px}
+  .active-heading h2{font-size:19px}
+  .shot-stats{margin-top:8px;padding:7px 8px}
+  .shot-stats strong{font-size:23px}
+  .controls fieldset{margin:11px 0}
+  .clubs button{padding:5px 0}
+  .slider-label{margin-top:8px;margin-bottom:5px}
+  .controls .primary{padding:9px 12px;margin-top:6px}
+  #message{margin:8px 0}
+  .controls details{padding:6px 0}
+  .score-toggle{margin-top:8px}
+  body:has(#play:not([hidden])) footer{padding-block:12px}
+}
