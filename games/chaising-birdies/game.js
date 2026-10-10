@@ -57,11 +57,54 @@
     }
   }
   $('counts').addEventListener('click',e=>{const b=e.target.closest('[data-count]');if(!b)return;count=Number(b.dataset.count);for(const button of $('counts').children)button.setAttribute('aria-pressed',String(button===b));renderRoster();});
+  const impactBuffers = new Map();
+  const impactProfiles = {
+    driver: {duration:.19,noise:.55,decay:.011,body:[[240,.36,.018],[1750,.24,.015],[4300,.13,.028],[6700,.08,.009]]},
+    iron: {duration:.13,noise:.62,decay:.007,body:[[360,.30,.012],[2600,.26,.010],[5100,.12,.015]]},
+    wedge: {duration:.12,noise:.48,decay:.008,body:[[310,.38,.014],[2200,.18,.009],[4600,.09,.011]]},
+    putter: {duration:.075,noise:.16,decay:.0025,body:[[460,.32,.006],[1250,.22,.004],[3100,.07,.003]]}
+  };
+  function audioContext() {
+    audio ||= new (window.AudioContext||window.webkitAudioContext)();
+    if(audio.state==='suspended')audio.resume().catch(()=>{});
+    return audio;
+  }
+  function impactBuffer(type) {
+    if(impactBuffers.has(type))return impactBuffers.get(type);
+    const profile=impactProfiles[type],rate=audio.sampleRate;
+    const buffer=audio.createBuffer(1,Math.ceil(rate*profile.duration),rate),samples=buffer.getChannelData(0);
+    let seed=137+(Object.keys(impactProfiles).indexOf(type)+1)*997,low=0,peak=0;
+    for(let i=0;i<samples.length;i++) {
+      const t=i/rate,attack=1-Math.exp(-t/.00018);
+      // A short broadband crack plus damped clubhead/ball resonances, rather than a note.
+      seed=(Math.imul(seed,1664525)+1013904223)>>>0;
+      const noise=seed/2147483648-1;low+=.22*(noise-low);
+      let sample=(noise-low*.7)*profile.noise*Math.exp(-t/profile.decay);
+      for(const [frequency,level,decay] of profile.body)
+        sample+=Math.sin(2*Math.PI*frequency*t)*level*Math.exp(-t/decay);
+      samples[i]=sample*attack;peak=Math.max(peak,Math.abs(samples[i]));
+    }
+    for(let i=0;i<samples.length;i++)samples[i]*=.82/Math.max(peak,.01);
+    impactBuffers.set(type,buffer);return buffer;
+  }
+  function impactSound(type,strength=70) {
+    if(!sound)return;
+    try {
+      const context=audioContext(),source=context.createBufferSource(),gain=context.createGain();
+      source.buffer=impactBuffer(type);
+      // Putting is quieter; stronger full shots have a slightly brighter strike.
+      const force=Math.max(0,Math.min(1,strength/100));
+      source.playbackRate.value=.94+force*.10;
+      gain.gain.value=(type==='putter'?.19:.34)*(.45+force*.55);
+      source.connect(gain);gain.connect(context.destination);source.start();
+      source.onended=()=>{source.disconnect();gain.disconnect();};
+    } catch { /* Audio is optional. */ }
+  }
   function beep(frequency,duration=.13) {
     if(!sound)return;
-    try { audio ||= new (window.AudioContext||window.webkitAudioContext)();audio.resume();const o=audio.createOscillator(),g=audio.createGain();o.frequency.value=frequency;g.gain.setValueAtTime(.045,audio.currentTime);g.gain.exponentialRampToValueAtTime(.001,audio.currentTime+duration);o.connect(g);g.connect(audio.destination);o.start();o.stop(audio.currentTime+duration); } catch { /* Audio is optional. */ }
+    try { const context=audioContext(),o=context.createOscillator(),g=context.createGain();o.frequency.value=frequency;g.gain.setValueAtTime(.045,context.currentTime);g.gain.exponentialRampToValueAtTime(.001,context.currentTime+duration);o.connect(g);g.connect(context.destination);o.start();o.stop(context.currentTime+duration);o.onended=()=>{o.disconnect();g.disconnect();}; } catch { /* Audio is optional. */ }
   }
-  $('sound').addEventListener('click',()=>{sound=!sound;$('sound').textContent=sound?'Sound on':'Sound off';$('sound').setAttribute('aria-pressed',String(sound));beep(440);});
+  $('sound').addEventListener('click',()=>{sound=!sound;$('sound').textContent=sound?'Sound on':'Sound off';$('sound').setAttribute('aria-pressed',String(sound));if(sound)impactSound('putter',60);});
   const distance=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
   function pathDistance(p,a,b) {const dx=b[0]-a[0],dy=b[1]-a[1],t=Math.max(0,Math.min(1,((p.x-a[0])*dx+(p.y-a[1])*dy)/(dx*dx+dy*dy)));return Math.hypot(p.x-a[0]-t*dx,p.y-a[1]-t*dy);}
   function inEllipse(p,e) {return ((p.x-e[0])/e[2])**2+((p.y-e[1])/e[3])**2<1;}
@@ -122,7 +165,7 @@
     else {
       p.ball=destination;
       if(distance(destination,h.pin)<(club==='putter'?13:10)){p.ball={...h.pin};p.done=true;p.scores[holeIndex]=p.strokes;message=`${characters[p.character].short}: ${scoreLabel(p.strokes,h.par)}! ${p.strokes} strokes.`;beep(660,.3);}
-      else {message=`${Math.round(distance(origin,destination))}-yard shot. ${lie}.`;beep(300);}
+      else {message=`${Math.round(distance(origin,destination))}-yard shot. ${lie}.`;}
     }
     // A twelve-stroke pickup keeps multiplayer rounds moving.
     if(!p.done&&p.strokes>=12){p.done=true;p.scores[holeIndex]=p.strokes;message+=' Twelve-stroke limit: ball picked up.';}
@@ -148,7 +191,7 @@
         swingPose.frame=putting?0:t<.16?0:t<.46?1:t<.72?2:t<.91?1:3;
         swingPose.progress=t;
       } else {
-        if(!struck){struck=true;beep(480,.06);$('message').textContent=putting?'Rolling toward the pin…':'Ball in flight…';}
+        if(!struck){struck=true;impactSound(club,power);$('message').textContent=putting?'Rolling toward the pin…':'Ball in flight…';}
         const t=Math.min(1,(elapsed-windup)/flightDuration),ease=1-(1-t)**2;
         swingPose.frame=reducedMotion||putting?3:t<.12?3:t<.32?4:5;
         swingPose.progress=1+t;
