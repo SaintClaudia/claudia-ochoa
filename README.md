@@ -92,7 +92,25 @@ serves those files directly.
 │   └── lovesac-support.html          # Lovesac prototype — customer support page
 ```
 
-Everything on the live site is linked from somewhere — no hidden or orphaned pages.
+Portfolio pages are linked from the site. The intentionally unlinked game prototype
+at `/games/chaising-birdies/` is excluded from navigation, the sitemap, and agent
+discovery, and has a `noindex, nofollow` directive. An unlinked URL is still public
+when deployed.
+
+## Chaising Birdies
+
+An independent, buildless arcade golf game at `games/chaising-birdies/index.html`.
+Choose 1–4 local players, select Purdy, McCaffrey, or Kittle for each player,
+and choose a football uniform or Niners golf attire. Three coastal holes feature
+club selection, aim and power controls, drag-to-swing, wind, rough, bunkers,
+water penalties, a scorecard, and round results. Each participant takes one shot
+per turn; finished players are skipped. A twelve-stroke pickup keeps rounds moving.
+
+Preview at `http://localhost:8000/games/chaising-birdies/` using the static server
+below. The game uses its own CSS and JavaScript, self-hosted portfolio fonts,
+procedural canvas course art, and SVG character illustrations. It requires no
+external assets or services. Round state is held in memory and resets on reload.
+Keep it unlinked until ready to announce.
 
 ## Agent interfaces
 
