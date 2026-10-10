@@ -100,7 +100,7 @@ when deployed.
 ## Chaising Birdies
 
 An independent, buildless arcade golf game at `games/chaising-birdies/index.html`.
-Choose 1–4 local players, select Purdy, McCaffrey, or Kittle for each player,
+Choose 1–3 local players, select Purdy, McCaffrey, or Kittle for each player,
 and choose a football uniform or Niners golf attire. Three coastal holes feature
 club selection, aim and power controls, drag-to-swing, wind, rough, bunkers,
 water penalties, a scorecard, and round results. Each participant takes one shot

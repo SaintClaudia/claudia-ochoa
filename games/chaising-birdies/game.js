@@ -12,8 +12,8 @@
     { name: 'The faithful finish', par: 5, tee: {x:165,y:560}, pin: {x:815,y:145}, fairway: [[165,560],[280,435],[490,435],[610,315],[710,205],[815,145]], sand: [[430,365,48,25],[745,140,35,24],[845,245,44,25]], water: [[615,520,140,60]], wind: {x:8,y:2}, trees: [[140,180],[340,180],[410,580],[890,380],[600,130]] }
   ];
   const clubs = { driver: {range:300, loft:95}, iron:{range:185,loft:115}, wedge:{range:95,loft:90}, putter:{range:75,loft:0} };
-  const colors = ['#fff8e4','#e7ba5e','#e48e92','#a4d8ea'];
-  let count = 1, selections = Array.from({length:4},(_,i)=>({character:i%3,attire:'golf'}));
+  const colors = ['#fff8e4','#e7ba5e','#e48e92'];
+  let count = 1, selections = characters.map((_,i)=>({character:i,attire:'golf'}));
   let players = [], holeIndex = 0, turn = 0, angle = 0, club = 'driver', power = 70, busy = false, flying = null, drag = null, animation = null, sound = false, audio;
   const canvas = $('course'), ctx = canvas.getContext('2d');
   const playerArt = characters.map(c => {
