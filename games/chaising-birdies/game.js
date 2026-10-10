@@ -152,21 +152,24 @@
   }
   function draw() {
     if(!players.length)return;const h=holes[holeIndex],p=players[turn];
-    ctx.clearRect(0,0,1000,680);ctx.fillStyle='#366648';ctx.fillRect(0,0,1000,680);
+    ctx.clearRect(0,0,1000,680);
+    const turf=ctx.createLinearGradient(0,0,1000,680);turf.addColorStop(0,'#315627');turf.addColorStop(.5,'#426e30');turf.addColorStop(1,'#254a24');ctx.fillStyle=turf;ctx.fillRect(0,0,1000,680);
+    // Stable turf texture gives the playable map the pitch's arcade character.
+    for(let i=0;i<1700;i++){const x=(i*137.31)%1000,y=(i*73.73)%680;ctx.fillStyle=i%2?'#8ea95520':'#143a2125';ctx.fillRect(x,y,2+i%3,1);}
     // Coastal water and a curving cliff edge frame the playing surface.
-    ctx.fillStyle='#7eb5b2';ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(95,0);ctx.bezierCurveTo(140,210,20,410,80,680);ctx.lineTo(0,680);ctx.closePath();ctx.fill();
+    const ocean=ctx.createLinearGradient(0,0,110,0);ocean.addColorStop(0,'#155f9a');ocean.addColorStop(1,'#4c9bb5');ctx.fillStyle=ocean;ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(95,0);ctx.bezierCurveTo(140,210,20,410,80,680);ctx.lineTo(0,680);ctx.closePath();ctx.fill();
     line([[100,0],[110,90],[88,200],[65,340],[70,480],[85,680]],13,'#d2c6a0');
     ctx.strokeStyle='#d9eee844';ctx.lineWidth=2;for(let y=25;y<680;y+=45){ctx.beginPath();ctx.moveTo(0,y);ctx.quadraticCurveTo(35,y+15,48,y);ctx.stroke();}
     // Mown fairway, with subtle alternating turf bands.
-    line(h.fairway,148,'#2a593f');line(h.fairway,132,'#73a165');
-    ctx.save();ctx.beginPath();h.fairway.forEach(([x,y],i)=>i?ctx.lineTo(x,y):ctx.moveTo(x,y));ctx.lineWidth=115;ctx.strokeStyle='#86ab7130';ctx.setLineDash([28,28]);ctx.stroke();ctx.restore();
+    line(h.fairway,148,'#294c21');line(h.fairway,132,'#85a84b');
+    ctx.save();ctx.beginPath();h.fairway.forEach(([x,y],i)=>i?ctx.lineTo(x,y):ctx.moveTo(x,y));ctx.lineWidth=128;ctx.strokeStyle='#b1c76c35';ctx.setLineDash([24,24]);ctx.stroke();ctx.restore();
     h.water.forEach(([x,y,rx,ry])=>{ellipse(x,y,rx+7,ry+7,'#c1b68c');ellipse(x,y,rx,ry,'#6aaba8');ellipse(x-10,y-7,rx*.75,ry*.7,'#82bab3');ctx.strokeStyle='#d4e8d780';ctx.lineWidth=2;for(let i=-1;i<2;i++){ctx.beginPath();ctx.moveTo(x-35,y+i*14);ctx.quadraticCurveTo(x,y+8+i*14,x+35,y+i*14);ctx.stroke();}});
     h.sand.forEach(([x,y,rx,ry])=>{ellipse(x,y+4,rx+5,ry+4,'#527d4c');ellipse(x,y,rx,ry,'#e5d7ad');ellipse(x-5,y-3,rx*.72,ry*.65,'#efe3bf');});
     ellipse(h.pin.x,h.pin.y,82,63,'#568b52');ellipse(h.pin.x,h.pin.y,74,57,'#a5bf7e');ellipse(h.pin.x-9,h.pin.y-5,58,42,'#aec98b');
-    h.trees.forEach(([x,y])=>{ellipse(x+12,y+14,30,20,'#1d453b50');line([[x,y+10],[x,y-20]],7,'#655b3c');ellipse(x,y-20,28,30,'#224e3a');ellipse(x-8,y-27,19,20,'#416d46');ellipse(x+8,y-35,17,22,'#355f3f');});
+    h.trees.forEach(([x,y])=>{ellipse(x+17,y+16,37,21,'#11271670');line([[x,y+10],[x,y-25]],6,'#695235');ellipse(x,y-20,28,31,'#1a3b20');for(let k=0;k<12;k++){const a=k*2.4,r=9+k%4*4;ellipse(x+Math.cos(a)*r,y-24+Math.sin(a)*r,10+k%3,12+k%4,k%3?'#365c29':'#537432');}});
     ctx.fillStyle='#c6c496';ctx.fillRect(h.tee.x-22,h.tee.y-12,44,25);for(const x of [-20,20]){ctx.fillStyle='#aa2636';ctx.fillRect(h.tee.x+x-3,h.tee.y-5,6,6);}
     ellipse(h.pin.x,h.pin.y,6,4,'#1b3c2c');line([[h.pin.x,h.pin.y],[h.pin.x,h.pin.y-57]],2,'#f7f1d9');ctx.fillStyle='#af2738';ctx.beginPath();ctx.moveTo(h.pin.x,h.pin.y-57);ctx.lineTo(h.pin.x+32,h.pin.y-48);ctx.lineTo(h.pin.x,h.pin.y-39);ctx.closePath();ctx.fill();ctx.fillStyle='#fff4dc';ctx.font='bold 11px Inter, sans-serif';ctx.fillText(holeIndex+1,h.pin.x+8,h.pin.y-46);
-    ctx.fillStyle='#ebead173';ctx.font='italic 21px Georgia, serif';ctx.textAlign='right';ctx.fillText('The Gold Rush Club',950,620);ctx.textAlign='left';
+    ctx.fillStyle='#ebead180';ctx.font='20px Anton, sans-serif';ctx.textAlign='right';ctx.fillText('GOLD RUSH CLUB',950,620);ctx.textAlign='left';
     players.forEach((player,i)=>{if(player.done||i===turn)return;ellipse(player.ball.x,player.ball.y,6,6,colors[i]);ctx.fillStyle='#fff';ctx.font='10px sans-serif';ctx.fillText(`P${i+1}`,player.ball.x+9,player.ball.y-5);});
     if(!busy){const t=target();ctx.save();ctx.setLineDash([7,9]);line([[p.ball.x,p.ball.y],[t.x,t.y]],2,'#fff4d9a0');ctx.restore();ctx.strokeStyle='#fff3d6';ctx.lineWidth=2;ctx.beginPath();ctx.arc(t.x,t.y,10,0,Math.PI*2);ctx.stroke();line([[t.x-15,t.y],[t.x+15,t.y]],1,'#fff3d6');line([[t.x,t.y-15],[t.x,t.y+15]],1,'#fff3d6');drawGolfer(p);}
     const ball=flying||p.ball;ellipse(ball.x+2,ball.y+4,6,3,'#1b392c70');ellipse(ball.x,ball.y-(ball.z||0),5+(ball.z||0)/45,5+(ball.z||0)/45,colors[turn]);

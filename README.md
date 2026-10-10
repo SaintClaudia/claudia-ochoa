@@ -108,8 +108,10 @@ per turn; finished players are skipped. A twelve-stroke pickup keeps rounds movi
 
 Preview at `http://localhost:8000/games/chaising-birdies/` using the static server
 below. The game uses its own CSS and JavaScript, self-hosted portfolio fonts,
-procedural canvas course art, and SVG character illustrations. It requires no
-external assets or services. Round state is held in memory and resets on reload.
+procedural canvas course art, and SVG character illustrations. The pitch-aligned
+arcade edition adds the self-hosted Anton font (license alongside it), blue HUD
+panels, and generated coastal title artwork in `fairway-title.webp`; its ImageGen
+prompt is retained in `artwork-prompt.txt`. It requires no external services. Round state is held in memory and resets on reload.
 Keep it unlinked until ready to announce.
 
 ## Agent interfaces
