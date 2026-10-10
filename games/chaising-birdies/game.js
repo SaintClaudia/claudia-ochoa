@@ -13,7 +13,7 @@
   ];
   const clubs = { driver: {range:300, loft:95}, iron:{range:185,loft:115}, wedge:{range:95,loft:90}, putter:{range:75,loft:0} };
   const colors = ['#fff8e4','#e7ba5e','#e48e92'];
-  let count = 1, selections = characters.map((_,i)=>({character:i,attire:'golf'}));
+  let count = 3, selections = characters.map((_,i)=>({character:i,attire:'golf'}));
   let players = [], holeIndex = 0, turn = 0, angle = 0, club = 'driver', power = 70, busy = false, flying = null, swingPose = null, drag = null, animation = null, sound = false, audio;
   const canvas = $('course'), ctx = canvas.getContext('2d');
   // On-course height ratios use the 49ers' listed heights; each pose sheet keeps its
