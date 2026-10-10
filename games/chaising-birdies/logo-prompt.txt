@@ -1,0 +1,8 @@
+Built-in image_gen edit of the user's supplied pitch artwork.
+Reference: Chasing Birdies_ Golf Gaming Collection.png
+Asset: chasing-birdies-logo.webp (transparent, WebP quality 95)
+
+Use case: background-extraction.
+Input image is the user's pitch reference and edit target.
+Extract ONLY the large upper-left CHASING BIRDIES logo with the small WITH BROCK PURDY subtitle directly beneath it. Preserve this exact logo's shape, layout, chunky angular condensed lettering with curved baseline, colors (CHASING very dark forest green, BIRDIES olive green, subtitle dark green), and red triangular flag on the tall pole integrated into the I in CHASING, with tiny hole at its base. The exact text is "CHASING" (C H A S I N G, no extra I), "BIRDIES", "WITH BROCK PURDY".
+Remove every other element: golf ball, grass, photo, cabinet, panels, labels, products, and cream paper background. Genuine transparent alpha background, tightly framed around the extracted logo and flag with a small clear margin. Clean sharp edges suitable for website header use. Keep the upper-left reference logo faithfully; do not invent a different logo or add decoration. Wide landscape layout.

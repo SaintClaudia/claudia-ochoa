@@ -97,7 +97,7 @@ at `/games/chaising-birdies/` is excluded from navigation, the sitemap, and agen
 discovery, and has a `noindex, nofollow` directive. An unlinked URL is still public
 when deployed.
 
-## Chaising Birdies
+## Chasing Birdies
 
 An independent, buildless arcade golf game at `games/chaising-birdies/index.html`.
 Choose 1–3 local players, select Purdy, McCaffrey, or Kittle for each player,
