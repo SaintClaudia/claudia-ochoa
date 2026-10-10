@@ -114,6 +114,26 @@
       source.onended=()=>{source.disconnect();gain.disconnect();};
     } catch { /* Audio is optional. */ }
   }
+  function startSound() {
+    if(!sound)return;
+    try {
+      const context=audioContext(),now=context.currentTime;
+      // A soft ascending major chord gives tee-off a bright, welcoming cue.
+      [523.25,659.25,783.99].forEach((frequency,i)=>{
+        const onset=now+i*.09,duration=i===2?.48:.36;
+        for(const [ratio,level] of [[1,.065],[2.01,.012]]) {
+          const tone=context.createOscillator(),gain=context.createGain();
+          tone.type='sine';tone.frequency.value=frequency*ratio;
+          gain.gain.setValueAtTime(0,onset);
+          gain.gain.linearRampToValueAtTime(level,onset+.008);
+          gain.gain.exponentialRampToValueAtTime(.0001,onset+duration);
+          tone.connect(gain);gain.connect(context.destination);
+          tone.start(onset);tone.stop(onset+duration+.02);
+          tone.onended=()=>{tone.disconnect();gain.disconnect();};
+        }
+      });
+    } catch { /* Audio is optional. */ }
+  }
   function beep(frequency,duration=.13) {
     if(!sound)return;
     try { const context=audioContext(),o=context.createOscillator(),g=context.createGain();o.frequency.value=frequency;g.gain.setValueAtTime(.045,context.currentTime);g.gain.exponentialRampToValueAtTime(.001,context.currentTime+duration);o.connect(g);g.connect(context.destination);o.start();o.stop(context.currentTime+duration);o.onended=()=>{o.disconnect();g.disconnect();}; } catch { /* Audio is optional. */ }
@@ -158,7 +178,7 @@
     draw();
   }
   function setupHole() {busy=false;flying=null;swingPose=null;players.forEach(p=>{p.ball={...holes[holeIndex].tee};p.strokes=0;p.done=false;});turn=0;$('hole-overlay').hidden=true;aimAtPin();$('message').textContent=`${characters[players[turn].character].short}, you’re up. Aim for the flag.`;updateUI();canvas.focus({preventScroll:true});}
-  $('start').addEventListener('click',()=>{players=selections.slice(0,count).map(s=>({...s,scores:[]}));holeIndex=0;$('setup').hidden=true;$('play').hidden=false;setupHole();window.scrollTo(0,0);});
+  $('start').addEventListener('click',()=>{startSound();players=selections.slice(0,count).map(s=>({...s,scores:[]}));holeIndex=0;$('setup').hidden=true;$('play').hidden=false;setupHole();window.scrollTo(0,0);});
   $('new-round').addEventListener('click',()=>{if(animation)cancelAnimationFrame(animation);animation=null;busy=false;flying=null;swingPose=null;$('play').hidden=true;$('setup').hidden=false;$('start').focus();});
   $('aim').addEventListener('input',()=>{angle=Number($('aim').value)*Math.PI/180;syncControls();draw();});
   $('power').addEventListener('input',()=>{power=Number($('power').value);syncControls();draw();});
