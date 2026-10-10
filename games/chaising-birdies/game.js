@@ -36,6 +36,7 @@
     img.src = `players/${c.artwork}-swing-v2.webp`;
     return img;
   });
+  window.addEventListener('resize',()=>{if(players.length&&!$('play').hidden)draw();});
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function el(tag, text, className) { const e=document.createElement(tag); if(text!==undefined)e.textContent=text; if(className)e.className=className; return e; }
   function portrait(character, attire) {
@@ -251,7 +252,11 @@
     // Keep the golfer upright while turning the stance toward the aim line.
     const tilt=Math.max(-.26,Math.min(.26,Math.atan2(Math.sin(direction),Math.abs(Math.cos(direction)))*.22));
     const frame=swingPose?swingPose.frame:0,artwork=swingArt[p.character];
-    ctx.save();ctx.translate(p.ball.x,p.ball.y);ctx.rotate(tilt*facing);ctx.scale(facing,1);
+    ctx.save();ctx.translate(p.ball.x,p.ball.y);
+    // Preserve the golfer's proportions when the desktop course uses a wider view.
+    const display=canvas.getBoundingClientRect();
+    ctx.scale(display.width&&display.height?(display.height/680)/(display.width/1000):1,1);
+    ctx.rotate(tilt*facing);ctx.scale(facing,1);
     const shadowSize=p.character===2?19:p.character===1?17:16;
     ellipse(-18,0,shadowSize,5,'#11271670');
     if(artwork.complete&&artwork.naturalWidth) {
