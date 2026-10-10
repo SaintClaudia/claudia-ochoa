@@ -27,3 +27,5 @@
 
 .player-portrait-sheet.kittle.uniform{left:-61%}
 .player-portrait-sheet.kittle.golf{left:-245%}
+
+#sound{width:44px;height:44px;padding:10px;display:grid;place-items:center;color:var(--green);flex-shrink:0}#sound svg{width:22px;height:22px}#sound .sound-enabled{display:none}#sound[aria-pressed="true"] .sound-enabled{display:inline}#sound[aria-pressed="true"] .sound-muted{display:none}#sound:hover{background:#0b21180a}#sound:focus-visible{outline:2px solid var(--green);outline-offset:3px}
