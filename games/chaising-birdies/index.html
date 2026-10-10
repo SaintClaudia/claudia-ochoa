@@ -7,7 +7,7 @@
   <meta name="description" content="Chasing Birdies: a Niners-inspired arcade golf game.">
   <title>Chasing Birdies · The faithful on the fairway</title>
   <link rel="icon" href="../../favicon.svg">
-  <link rel="stylesheet" href="game.css?v=15">
+  <link rel="stylesheet" href="game.css?v=16">
   <script src="game.js?v=12" defer></script>
 </head>
 <body>
@@ -16,8 +16,7 @@
   <main id="main">
     <section id="setup" class="setup">
       <div class="intro"><h1 class="sr-only">Chasing Birdies</h1><p class="lede">Same legends. A different kind of drive.<br>Take the Niners from the gridiron to the green.</p><div class="course-badge"><span aria-hidden="true">⛳</span><div><strong>THE GOLD RUSH CLUB</strong><small>3 holes · California coast · Arcade golf</small></div></div></div>
-      <div class="clubhouse"><div class="section-top"><h2>Select players</h2><span>01 / PLAY ROUND</span></div><fieldset class="count"><legend>How many players?</legend><div id="counts"><button type="button" data-count="1" aria-pressed="true">1</button><button type="button" data-count="2" aria-pressed="false">2</button><button type="button" data-count="3" aria-pressed="false">3</button></div><small>Pass-and-play on one device</small></fieldset><div id="roster"></div><button class="primary" id="start">TEE IT UP <span>▶</span></button><p class="setup-note">Aim. Choose your club. Pull back and let it fly.</p></div>
-      <div class="bottom-line"><span>RED & GOLD. TEE TO GREEN.</span><span>Purdy / McCaffrey / Kittle · Arcade edition</span></div>
+      <div class="clubhouse"><div class="section-top"><h2>Select players</h2><span>01 / PLAY ROUND</span></div><fieldset class="count"><legend>How many players?</legend><div id="counts"><button type="button" data-count="1" aria-pressed="true">1</button><button type="button" data-count="2" aria-pressed="false">2</button><button type="button" data-count="3" aria-pressed="false">3</button></div></fieldset><div id="roster"></div><button class="primary" id="start">TEE IT UP <span>▶</span></button><p class="setup-note">Aim. Choose your club. Pull back and let it fly.</p></div>
     </section>
     <section id="play" hidden>
       <div class="game-layout"><div class="course-wrap"><div class="course-hud"><span id="hole-meta"></span><span id="wind"></span></div><canvas id="course" width="1000" height="680" tabindex="0" aria-label="Golf course. Click or tap to aim. Use left and right arrows to adjust aim, and Space to swing."></canvas><div class="course-footer"><span id="lie">TEE BOX</span><span>GOLD RUSH CLUB <b>✦</b> EST. 2026</span></div><div id="hole-overlay" class="overlay" hidden><div><p class="eyebrow" id="overlay-kicker">HOLE COMPLETE</p><h2 id="overlay-title"></h2><div id="overlay-scores"></div><button class="primary" id="next-hole">NEXT HOLE ↗</button></div></div></div>
@@ -25,7 +24,7 @@
       <div class="game-heading"><div><p class="eyebrow">THE GOLD RUSH CLUB</p><h1 id="hole-title">Coastal kickoff</h1></div></div>
     </section>
   </main>
-  <footer>CHASING THE PIN. REPPING THE BAY.<span>Unofficial fan game. Not affiliated with the NFL or the San Francisco 49ers.</span></footer>
+  <footer><span>Unofficial fan game. Not affiliated with the NFL or the San Francisco 49ers.</span></footer>
   <noscript>This game needs JavaScript enabled to play.</noscript>
 </body>
 </html>

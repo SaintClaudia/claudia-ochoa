@@ -75,3 +75,5 @@
   .score-toggle{margin-top:8px}
   body:has(#play:not([hidden])) footer{padding-block:12px}
 }
+
+footer{justify-content:flex-end}body:has(#play:not([hidden])) footer{display:none}
