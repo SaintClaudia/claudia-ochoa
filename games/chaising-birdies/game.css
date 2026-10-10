@@ -28,6 +28,6 @@
 .player-portrait-sheet.kittle.uniform{left:-61%}
 .player-portrait-sheet.kittle.golf{left:-245%}
 
-#sound{width:44px;height:44px;padding:10px;display:grid;place-items:center;color:var(--cream);flex-shrink:0}#sound svg{width:22px;height:22px}#sound .sound-enabled{display:none}#sound[aria-pressed="true"] .sound-enabled{display:inline}#sound[aria-pressed="true"] .sound-muted{display:none}#sound:hover{background:#f4edda10}#sound:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+#sound{width:44px;height:44px;padding:8px;display:grid;place-items:center;color:var(--cream);flex-shrink:0}#sound svg{width:28px;height:28px}#sound .sound-enabled{display:none}#sound[aria-pressed="true"] .sound-enabled{display:inline}#sound[aria-pressed="true"] .sound-muted{display:none}#sound:hover{background:#f4edda10}#sound:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 
-.header-actions{display:flex;align-items:center;gap:6px;flex-shrink:0}#new-round{width:44px;height:44px;padding:10px;display:grid;place-items:center;color:var(--cream)}#new-round svg{width:22px;height:22px}#new-round:hover{background:#f4edda10}#new-round:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.header-actions{display:flex;align-items:center;gap:6px;flex-shrink:0}#new-round{width:44px;height:44px;padding:8px;display:grid;place-items:center;color:var(--cream)}#new-round svg{width:28px;height:28px}#new-round:hover{background:#f4edda10}#new-round:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
