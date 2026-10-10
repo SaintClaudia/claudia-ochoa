@@ -2,9 +2,9 @@
 (() => {
   const $ = id => document.getElementById(id);
   const characters = [
-    { name: 'Brock Purdy', number: '13', hair: '#553828', skin: '#e2ae88', short: 'Purdy' },
-    { name: 'Christian McCaffrey', number: '23', hair: '#b99b63', skin: '#e6b691', short: 'McCaffrey' },
-    { name: 'George Kittle', number: '85', hair: '#81552f', skin: '#dfad85', short: 'Kittle' }
+    { name: 'Brock Purdy', number: '13', hair: '#553828', skin: '#e2ae88', short: 'Purdy', artwork: 'purdy' },
+    { name: 'Christian McCaffrey', number: '23', hair: '#b99b63', skin: '#e6b691', short: 'McCaffrey', artwork: 'mccaffrey' },
+    { name: 'George Kittle', number: '85', hair: '#81552f', skin: '#dfad85', short: 'Kittle', artwork: 'kittle' }
   ];
   const holes = [
     { name: 'Coastal kickoff', par: 4, tee: {x:230,y:560}, pin: {x:690,y:160}, fairway: [[230,560],[330,420],[530,330],[610,210],[690,160]], sand: [[600,155,40,23],[770,230,44,28]], water: [[785,425,115,66]], wind: {x:5,y:-3}, trees: [[130,290],[180,190],[350,180],[450,530],[880,120],[890,560]] },
@@ -16,29 +16,21 @@
   let count = 1, selections = Array.from({length:4},(_,i)=>({character:i%3,attire:'golf'}));
   let players = [], holeIndex = 0, turn = 0, angle = 0, club = 'driver', power = 70, busy = false, flying = null, drag = null, animation = null, sound = false, audio;
   const canvas = $('course'), ctx = canvas.getContext('2d');
+  const playerArt = characters.map(c => {
+    const img = new Image();
+    img.addEventListener('load', () => { if (players.length) draw(); });
+    img.src = `players/${c.artwork}.webp`;
+    return img;
+  });
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function el(tag, text, className) { const e=document.createElement(tag); if(text!==undefined)e.textContent=text; if(className)e.className=className; return e; }
-  function svgNode(tag, attributes, parent) { const e=document.createElementNS('http://www.w3.org/2000/svg',tag); for(const [key,value] of Object.entries(attributes))e.setAttribute(key,value); parent.append(e); return e; }
   function portrait(character, attire) {
-    const c=characters[character], wrapper=el('div',undefined,'portrait');
-    const svg=svgNode('svg',{viewBox:'0 0 100 130',role:'img','aria-label':`${c.name} in ${attire==='golf'?'Niners golf attire':'football uniform'}`},wrapper);
-    svgNode('path',{d:'M12 130 V94 Q14 78 37 76 H63 Q88 79 90 94 V130',fill:attire==='golf'?'#f1e9d4':'#aa2636'},svg);
-    svgNode('path',{d:'M40 68 V82 L50 91 L60 82 V68',fill:c.skin},svg);
-    svgNode('ellipse',{cx:50,cy:46,rx:23,ry:29,fill:c.skin},svg);
-    svgNode('path',{d:character===2?'M25 66 V34 Q24 9 50 12 Q78 9 77 38 L79 77 L69 69 L68 35 Q45 32 30 41 L32 70 Z':'M27 42 V28 Q31 9 52 12 Q77 13 74 37 L68 33 Q50 24 30 39 Z',fill:c.hair},svg);
-    if(character===2)svgNode('path',{d:'M30 54 Q33 78 50 80 Q69 76 70 54 L61 62 Q50 68 39 62 Z',fill:c.hair},svg);
-    for(const x of [41,59])svgNode('circle',{cx:x,cy:46,r:2,fill:'#303827'},svg);
-    svgNode('path',{d:'M44 57 Q50 61 56 57',fill:'none',stroke:'#805441','stroke-width':2},svg);
-    if(attire==='golf') {
-      svgNode('path',{d:'M25 29 Q32 7 56 12 Q73 15 74 30 L25 30 M22 30 H81',fill:'#aa2636',stroke:'#aa2636','stroke-width':5},svg);
-      svgNode('path',{d:'M35 78 L43 96 L50 87 L57 96 L65 78',fill:'none',stroke:'#aa2636','stroke-width':3},svg);
-      const badge=svgNode('ellipse',{cx:69,cy:104,rx:9,ry:6,fill:'#aa2636',stroke:'#c7a363','stroke-width':1},svg);
-      badge.setAttribute('aria-hidden','true');
-      svgNode('text',{x:69,y:107,'text-anchor':'middle','font-size':7,'font-weight':900,fill:'#fff5dd'},svg).textContent='SF';
-    } else {
-      svgNode('path',{d:'M15 93 L32 100 M68 100 L85 93',stroke:'#f1e9d4','stroke-width':6},svg);
-      svgNode('text',{x:50,y:119,'text-anchor':'middle','font-size':28,'font-family':'sans-serif','font-weight':900,fill:'#fff5dd'},svg).textContent=c.number;
-    }
+    const c = characters[character], wrapper = el('div', undefined, 'portrait');
+    const img = el('img', undefined, `player-portrait-sheet ${c.artwork} ${attire}`);
+    img.src = `players/${c.artwork}.webp`;
+    img.alt = `${c.name} in ${attire === 'golf' ? 'Niners golf attire' : 'football uniform'}`;
+    img.decoding = 'async';
+    wrapper.append(img);
     return wrapper;
   }
   function renderRoster() {
@@ -148,6 +140,18 @@
   function ellipse(x,y,rx,ry,color){ctx.beginPath();ctx.ellipse(x,y,rx,ry,0,0,Math.PI*2);ctx.fillStyle=color;ctx.fill();}
   function line(points,width,color){ctx.beginPath();points.forEach(([x,y],i)=>i?ctx.lineTo(x,y):ctx.moveTo(x,y));ctx.lineWidth=width;ctx.lineCap='round';ctx.lineJoin='round';ctx.strokeStyle=color;ctx.stroke();}
   function drawGolfer(p) {
+    const artwork = playerArt[p.character];
+    if (artwork.complete && artwork.naturalWidth) {
+      const cellWidth = artwork.naturalWidth / 2;
+      const sourceX = p.attire === 'golf' ? cellWidth : 0;
+      const height = p.character === 2 ? 83 : p.character === 1 ? 74 : 78;
+      const width = height * cellWidth / artwork.naturalHeight;
+      const x = p.ball.x - 20, y = p.ball.y + 10;
+      ellipse(x, y, 15, 5, '#11271670');
+      ctx.drawImage(artwork, sourceX, 0, cellWidth, artwork.naturalHeight,
+        x - width / 2, y - height * .93, width, height);
+      return;
+    }
     const c=characters[p.character],x=p.ball.x-23,y=p.ball.y+10;ctx.save();ctx.translate(x,y);ellipse(1,8,16,6,'#153c3060');line([[-4,0],[-8,13]],4,'#e5d7b6');line([[5,0],[9,13]],4,'#e5d7b6');ctx.fillStyle=p.attire==='golf'?'#f1e9d4':'#af2437';ctx.fillRect(-9,-21,18,23);ellipse(0,-30,8,10,c.skin);ellipse(0,-37,9,4,p.attire==='golf'?'#ac2738':c.hair);line([[5,-13],[16,-4],[24,10]],2,'#d9d3bc');ctx.fillStyle=p.attire==='golf'?'#a62334':'#fff4da';ctx.font='bold 9px sans-serif';ctx.textAlign='center';ctx.fillText(p.attire==='golf'?'SF':c.number,0,-6);ctx.restore();
   }
   function draw() {
@@ -171,7 +175,8 @@
     ellipse(h.pin.x,h.pin.y,6,4,'#1b3c2c');line([[h.pin.x,h.pin.y],[h.pin.x,h.pin.y-57]],2,'#f7f1d9');ctx.fillStyle='#af2738';ctx.beginPath();ctx.moveTo(h.pin.x,h.pin.y-57);ctx.lineTo(h.pin.x+32,h.pin.y-48);ctx.lineTo(h.pin.x,h.pin.y-39);ctx.closePath();ctx.fill();ctx.fillStyle='#fff4dc';ctx.font='bold 11px Inter, sans-serif';ctx.fillText(holeIndex+1,h.pin.x+8,h.pin.y-46);
     ctx.fillStyle='#ebead180';ctx.font='20px Anton, sans-serif';ctx.textAlign='right';ctx.fillText('GOLD RUSH CLUB',950,620);ctx.textAlign='left';
     players.forEach((player,i)=>{if(player.done||i===turn)return;ellipse(player.ball.x,player.ball.y,6,6,colors[i]);ctx.fillStyle='#fff';ctx.font='10px sans-serif';ctx.fillText(`P${i+1}`,player.ball.x+9,player.ball.y-5);});
-    if(!busy){const t=target();ctx.save();ctx.setLineDash([7,9]);line([[p.ball.x,p.ball.y],[t.x,t.y]],2,'#fff4d9a0');ctx.restore();ctx.strokeStyle='#fff3d6';ctx.lineWidth=2;ctx.beginPath();ctx.arc(t.x,t.y,10,0,Math.PI*2);ctx.stroke();line([[t.x-15,t.y],[t.x+15,t.y]],1,'#fff3d6');line([[t.x,t.y-15],[t.x,t.y+15]],1,'#fff3d6');drawGolfer(p);}
+    if(!busy){const t=target();ctx.save();ctx.setLineDash([7,9]);line([[p.ball.x,p.ball.y],[t.x,t.y]],2,'#fff4d9a0');ctx.restore();ctx.strokeStyle='#fff3d6';ctx.lineWidth=2;ctx.beginPath();ctx.arc(t.x,t.y,10,0,Math.PI*2);ctx.stroke();line([[t.x-15,t.y],[t.x+15,t.y]],1,'#fff3d6');line([[t.x,t.y-15],[t.x,t.y+15]],1,'#fff3d6');}
+    if(!p.done)drawGolfer(p);
     const ball=flying||p.ball;ellipse(ball.x+2,ball.y+4,6,3,'#1b392c70');ellipse(ball.x,ball.y-(ball.z||0),5+(ball.z||0)/45,5+(ball.z||0)/45,colors[turn]);
   }
   renderRoster();

@@ -9,3 +9,21 @@
 @media(max-width:700px){.masthead{height:75px}.wordmark{font-size:17px}.brand-flag{height:32px}.masthead>span{font-size:7px;letter-spacing:1px;max-width:115px;text-align:center;line-height:1.8}.masthead button{font-size:8px;padding:8px}.setup{grid-template-columns:1fr;padding:20px 4vw 0}.intro{min-height:520px;border-right:5px solid #080c09;padding:28px 24px;background-position:61% center}.intro h1{font-size:76px}.title-sub{font-size:8px;letter-spacing:2px}.intro .eyebrow{font-size:8px}.lede{padding-top:125px;font-size:11px}.clubhouse{padding:23px;border-top:0}.section-top h2{font-size:27px}.bottom-line{font-size:7px;gap:20px;line-height:1.5}.game-layout{grid-template-columns:1fr}.game-heading h1{font-size:28px}#play{padding:22px 4vw}.controls{display:grid;grid-template-columns:1fr 1fr;gap:0 14px;padding:16px}.controls>fieldset,.controls>#swing,.controls>#message,.controls>details,.controls>#scorecard,.controls>#score-toggle{grid-column:1/-1}.controls>.slider-label,.controls>input{grid-column:1/-1}.shot-stats{margin:0;padding:12px 9px;gap:4px}.shot-stats small{font-size:7px;letter-spacing:.5px}.shot-stats strong{font-size:24px}.active-heading{gap:9px}.active-heading h2{font-size:21px}.active-heading .portrait{width:48px;min-width:48px;height:65px}.active-heading small{font-size:7px}.course-hud{font-size:8px;padding:8px}.course-hud span{padding:5px}.course-footer{font-size:7px;padding:12px 8px;letter-spacing:.5px}footer{flex-direction:column;gap:10px;line-height:1.6}.overlay{padding:16px}.overlay>div{padding:20px}.overlay h2{font-size:31px}.result-row{font-size:10px}}
 @media(max-width:360px){.intro h1{font-size:65px}.section-top h2{font-size:23px}.active-heading h2{font-size:18px}.shot-stats strong{font-size:22px}.attire button{font-size:8px}.roster-row select{font-size:21px}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+
+/* The same transparent costume sheets drive portraits and course characters. */
+.portrait{position:relative;flex-shrink:0}
+.portrait .player-portrait-sheet{position:absolute;width:400%;max-width:none;height:auto;top:-9%;object-fit:initial}
+.player-portrait-sheet.uniform{left:-50%}
+.player-portrait-sheet.golf{left:-250%}
+.roster-row{grid-template-columns:82px minmax(0,1fr)}
+.roster-row .portrait{width:82px;height:108px}
+@media(max-width:700px){.roster-row{grid-template-columns:78px minmax(0,1fr)}.roster-row .portrait{width:78px;height:103px}}
+
+.player-portrait-sheet.purdy.uniform{left:-66%}
+.player-portrait-sheet.purdy.golf{left:-239%}
+
+.player-portrait-sheet.mccaffrey.uniform{left:-73%;top:-3%}
+.player-portrait-sheet.mccaffrey.golf{left:-230%;top:-3%}
+
+.player-portrait-sheet.kittle.uniform{left:-61%}
+.player-portrait-sheet.kittle.golf{left:-245%}
