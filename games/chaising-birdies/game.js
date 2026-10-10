@@ -14,12 +14,19 @@
   const clubs = { driver: {range:300, loft:95}, iron:{range:185,loft:115}, wedge:{range:95,loft:90}, putter:{range:75,loft:0} };
   const colors = ['#fff8e4','#e7ba5e','#e48e92'];
   let count = 1, selections = characters.map((_,i)=>({character:i,attire:'golf'}));
-  let players = [], holeIndex = 0, turn = 0, angle = 0, club = 'driver', power = 70, busy = false, flying = null, drag = null, animation = null, sound = false, audio;
+  let players = [], holeIndex = 0, turn = 0, angle = 0, club = 'driver', power = 70, busy = false, flying = null, swingPose = null, drag = null, animation = null, sound = false, audio;
   const canvas = $('course'), ctx = canvas.getContext('2d');
-  const playerArt = characters.map(c => {
+  // Clubhead anchors measured on the generated 256 × 512 pose cells.
+  // Each outfit has address and impact anchors; this absorbs the natural weight shift.
+  const swingAnchors = [
+    {uniform:[[195,478],[188,479]],golf:[[196,461],[192,465]]},
+    {uniform:[[241,485],[228,489]],golf:[[241,478],[228,482]]},
+    {uniform:[[225,483],[195,486]],golf:[[225,479],[196,483]]}
+  ];
+  const swingArt = characters.map(c => {
     const img = new Image();
     img.addEventListener('load', () => { if (players.length) draw(); });
-    img.src = `players/${c.artwork}.webp`;
+    img.src = `players/${c.artwork}-swing.webp`;
     return img;
   });
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -93,9 +100,9 @@
     $('swing').disabled=busy;for(const input of [$('aim'),$('power'),...$('clubs').children])input.disabled=busy;
     draw();
   }
-  function setupHole() {busy=false;flying=null;players.forEach(p=>{p.ball={...holes[holeIndex].tee};p.strokes=0;p.done=false;});turn=0;$('hole-overlay').hidden=true;aimAtPin();$('message').textContent=`${characters[players[turn].character].short}, you’re up. Aim for the flag.`;updateUI();canvas.focus({preventScroll:true});}
+  function setupHole() {busy=false;flying=null;swingPose=null;players.forEach(p=>{p.ball={...holes[holeIndex].tee};p.strokes=0;p.done=false;});turn=0;$('hole-overlay').hidden=true;aimAtPin();$('message').textContent=`${characters[players[turn].character].short}, you’re up. Aim for the flag.`;updateUI();canvas.focus({preventScroll:true});}
   $('start').addEventListener('click',()=>{players=selections.slice(0,count).map(s=>({...s,scores:[]}));holeIndex=0;$('setup').hidden=true;$('play').hidden=false;setupHole();window.scrollTo(0,0);});
-  $('new-round').addEventListener('click',()=>{if(animation)cancelAnimationFrame(animation);animation=null;busy=false;flying=null;$('play').hidden=true;$('setup').hidden=false;$('start').focus();});
+  $('new-round').addEventListener('click',()=>{if(animation)cancelAnimationFrame(animation);animation=null;busy=false;flying=null;swingPose=null;$('play').hidden=true;$('setup').hidden=false;$('start').focus();});
   $('aim').addEventListener('input',()=>{angle=Number($('aim').value)*Math.PI/180;syncControls();draw();});
   $('power').addEventListener('input',()=>{power=Number($('power').value);syncControls();draw();});
   $('clubs').addEventListener('click',e=>{const b=e.target.closest('[data-club]');if(!b||busy)return;club=b.dataset.club;syncControls();draw();});
@@ -119,16 +126,38 @@
     }
     // A twelve-stroke pickup keeps multiplayer rounds moving.
     if(!p.done&&p.strokes>=12){p.done=true;p.scores[holeIndex]=p.strokes;message+=' Twelve-stroke limit: ball picked up.';}
-    busy=false;flying=null;
+    busy=false;flying=null;swingPose=null;
     if(players.every(player=>player.done)){$('message').textContent=message;finishHole();return;}
     do {turn=(turn+1)%players.length;}while(players[turn].done);
     aimAtPin();$('message').textContent=`${message} ${characters[players[turn].character].short} is up${players.length>1?` (Player ${turn+1})`:''}.`;updateUI();
   }
   function swing() {
     if(busy||!players.length||!$('hole-overlay').hidden)return;
-    busy=true;const origin={...players[turn].ball},destination=target(),loft=clubs[club].loft,start=performance.now(),duration=reducedMotion?100:950;
-    updateUI();beep(480,.06);
-    function frame(now){const t=Math.min(1,(now-start)/duration),ease=1-(1-t)**2;flying={x:origin.x+(destination.x-origin.x)*ease,y:origin.y+(destination.y-origin.y)*ease,z:Math.sin(Math.PI*t)*loft};draw();if(t<1)animation=requestAnimationFrame(frame);else {animation=null;resolveShot(destination,origin);}}
+    const origin={...players[turn].ball},destination=target(),loft=clubs[club].loft;
+    const start=performance.now(),windup=reducedMotion?0:640,flightDuration=reducedMotion?100:950;
+    const putting=club==='putter';
+    busy=true;swingPose={frame:0,angle,putting,progress:0};
+    $('message').textContent=`${characters[players[turn].character].short}: ${putting?'putting':'backswing'}…`;
+    updateUI();
+    let struck=false;
+    function frame(now) {
+      const elapsed=now-start;
+      if(elapsed<windup) {
+        const t=elapsed/windup;
+        // Address → takeaway → top → downswing. Ball stays on the ground until contact.
+        swingPose.frame=putting?0:t<.16?0:t<.46?1:t<.72?2:t<.91?1:3;
+        swingPose.progress=t;
+      } else {
+        if(!struck){struck=true;beep(480,.06);$('message').textContent=putting?'Rolling toward the pin…':'Ball in flight…';}
+        const t=Math.min(1,(elapsed-windup)/flightDuration),ease=1-(1-t)**2;
+        swingPose.frame=reducedMotion||putting?3:t<.12?3:t<.32?4:5;
+        swingPose.progress=1+t;
+        flying={x:origin.x+(destination.x-origin.x)*ease,y:origin.y+(destination.y-origin.y)*ease,z:Math.sin(Math.PI*t)*loft};
+      }
+      draw();
+      if(elapsed<windup+flightDuration)animation=requestAnimationFrame(frame);
+      else {animation=null;resolveShot(destination,origin);}
+    }
     animation=requestAnimationFrame(frame);
   }
   $('swing').addEventListener('click',swing);
@@ -140,19 +169,46 @@
   function ellipse(x,y,rx,ry,color){ctx.beginPath();ctx.ellipse(x,y,rx,ry,0,0,Math.PI*2);ctx.fillStyle=color;ctx.fill();}
   function line(points,width,color){ctx.beginPath();points.forEach(([x,y],i)=>i?ctx.lineTo(x,y):ctx.moveTo(x,y));ctx.lineWidth=width;ctx.lineCap='round';ctx.lineJoin='round';ctx.strokeStyle=color;ctx.stroke();}
   function drawGolfer(p) {
-    const artwork = playerArt[p.character];
-    if (artwork.complete && artwork.naturalWidth) {
-      const cellWidth = artwork.naturalWidth / 2;
-      const sourceX = p.attire === 'golf' ? cellWidth : 0;
-      const height = p.character === 2 ? 83 : p.character === 1 ? 74 : 78;
-      const width = height * cellWidth / artwork.naturalHeight;
-      const x = p.ball.x - 20, y = p.ball.y + 10;
-      ellipse(x, y, 15, 5, '#11271670');
-      ctx.drawImage(artwork, sourceX, 0, cellWidth, artwork.naturalHeight,
-        x - width / 2, y - height * .93, width, height);
-      return;
+    const direction=swingPose?swingPose.angle:angle;
+    const facing=Math.cos(direction)>=0?1:-1;
+    // Keep the golfer upright while turning the stance toward the aim line.
+    const tilt=Math.max(-.26,Math.min(.26,Math.atan2(Math.sin(direction),Math.abs(Math.cos(direction)))*.22));
+    const frame=swingPose?swingPose.frame:0,artwork=swingArt[p.character];
+    ctx.save();ctx.translate(p.ball.x,p.ball.y);ctx.rotate(tilt*facing);ctx.scale(facing,1);
+    ellipse(-18,0,17,5,'#11271670');
+    if(artwork.complete&&artwork.naturalWidth) {
+      const cellWidth=artwork.naturalWidth/6,cellHeight=artwork.naturalHeight/2;
+      const scale=(p.character===2?84:p.character===1?76:80)/(cellHeight*.8);
+      const row=p.attire==='golf'?1:0;
+      // Shared contact anchor keeps address and impact clubheads at the ball.
+      const anchor=swingAnchors[p.character][p.attire][frame>=3?1:0];
+      const contactX=cellWidth*anchor[0]/256,contactY=cellHeight*anchor[1]/512;
+      const puttRock=swingPose&&swingPose.putting&&!reducedMotion?Math.sin(swingPose.progress*Math.PI*2)*.035:0;
+      ctx.rotate(puttRock);
+      if(frame===5) {
+        // Trim a neighboring pose's club overhang from the finish cell.
+        const trim=p.character===1?[0,190,94,145]:[0,0,p.character===2?44:32,180];
+        ctx.beginPath();ctx.rect(-contactX*scale,-contactY*scale,cellWidth*scale,cellHeight*scale);
+        ctx.rect((cellWidth*trim[0]/256-contactX)*scale,(cellHeight*trim[1]/512-contactY)*scale,
+          cellWidth*trim[2]/256*scale,cellHeight*trim[3]/512*scale);ctx.clip('evenodd');
+      }
+      ctx.drawImage(artwork,frame*cellWidth,row*cellHeight,cellWidth,cellHeight,
+        -contactX*scale,-contactY*scale,cellWidth*scale,cellHeight*scale);
+    } else {
+      // Art-loading fallback uses the same grounded stance and animated club.
+      const c=characters[p.character],phase=swingPose?swingPose.progress:0;
+      const theta=phase<1?-Math.sin(phase*Math.PI)*2:Math.min(2.4,(phase-1)*7);
+      line([[-24,-22],[-30,-12],[-32,0]],5,'#cdb888');
+      line([[-20,-22],[-13,-12],[-12,0]],5,'#cdb888');
+      line([[-34,0],[-28,0]],4,'#fff4dc');line([[-15,0],[-9,0]],4,'#fff4dc');
+      line([[-22,-24],[-20,-43]],15,p.attire==='golf'?['#f1e9d4','#b12638','#173c30'][p.character]:'#af2437');
+      ellipse(-21,-55,7,9,c.skin);ellipse(-22,-62,8,3,c.hair);
+      const hand=[-11+Math.sin(theta)*7,-26-Math.abs(Math.sin(theta))*12];
+      line([[-27,-42],[-28,-29],hand],4,c.skin);line([[-14,-42],[-9,-33],hand],4,c.skin);
+      const head=[hand[0]+11*Math.cos(theta)+24*Math.sin(theta),hand[1]+26*Math.cos(theta)];
+      line([hand,head],1.5,'#d9d3bc');ellipse(head[0],head[1],4,2,'#37414a');
     }
-    const c=characters[p.character],x=p.ball.x-23,y=p.ball.y+10;ctx.save();ctx.translate(x,y);ellipse(1,8,16,6,'#153c3060');line([[-4,0],[-8,13]],4,'#e5d7b6');line([[5,0],[9,13]],4,'#e5d7b6');ctx.fillStyle=p.attire==='golf'?'#f1e9d4':'#af2437';ctx.fillRect(-9,-21,18,23);ellipse(0,-30,8,10,c.skin);ellipse(0,-37,9,4,p.attire==='golf'?'#ac2738':c.hair);line([[5,-13],[16,-4],[24,10]],2,'#d9d3bc');ctx.fillStyle=p.attire==='golf'?'#a62334':'#fff4da';ctx.font='bold 9px sans-serif';ctx.textAlign='center';ctx.fillText(p.attire==='golf'?'SF':c.number,0,-6);ctx.restore();
+    ctx.restore();
   }
   function draw() {
     if(!players.length)return;const h=holes[holeIndex],p=players[turn];
