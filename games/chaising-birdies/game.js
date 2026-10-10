@@ -59,7 +59,7 @@
   $('counts').addEventListener('click',e=>{const b=e.target.closest('[data-count]');if(!b)return;count=Number(b.dataset.count);for(const button of $('counts').children)button.setAttribute('aria-pressed',String(button===b));renderRoster();});
   const impactBuffers = new Map();
   const impactProfiles = {
-    driver: {duration:.19,noise:.55,decay:.011,body:[[240,.36,.018],[1750,.24,.015],[4300,.13,.028],[6700,.08,.009]]},
+    driver: {duration:.38,noise:.80,decay:.0045,body:[[240,.30,.012],[2100,.24,.008],[4900,.16,.012],[7200,.09,.005]]},
     iron: {duration:.13,noise:.62,decay:.007,body:[[360,.30,.012],[2600,.26,.010],[5100,.12,.015]]},
     wedge: {duration:.12,noise:.48,decay:.008,body:[[310,.38,.014],[2200,.18,.009],[4600,.09,.011]]},
     putter: {duration:.075,noise:.16,decay:.0025,body:[[460,.32,.006],[1250,.22,.004],[3100,.07,.003]]}
@@ -73,7 +73,7 @@
     if(impactBuffers.has(type))return impactBuffers.get(type);
     const profile=impactProfiles[type],rate=audio.sampleRate;
     const buffer=audio.createBuffer(1,Math.ceil(rate*profile.duration),rate),samples=buffer.getChannelData(0);
-    let seed=137+(Object.keys(impactProfiles).indexOf(type)+1)*997,low=0,peak=0;
+    let seed=137+(Object.keys(impactProfiles).indexOf(type)+1)*997,low=0,flightLow=0,peak=0;
     for(let i=0;i<samples.length;i++) {
       const t=i/rate,attack=1-Math.exp(-t/.00018);
       // A short broadband crack plus damped clubhead/ball resonances, rather than a note.
@@ -82,6 +82,13 @@
       let sample=(noise-low*.7)*profile.noise*Math.exp(-t/profile.decay);
       for(const [frequency,level,decay] of profile.body)
         sample+=Math.sin(2*Math.PI*frequency*t)*level*Math.exp(-t/decay);
+      if(type==='driver'&&t>.012) {
+        // A delayed, quiet air rush brightens briefly, then recedes with the ball.
+        const travel=t-.012,cutoff=1800+4500*(1-Math.exp(-travel/.035));
+        flightLow+=(1-Math.exp(-2*Math.PI*cutoff/rate))*(noise-flightLow);
+        const departure=(1-Math.exp(-travel/.012))*Math.exp(-travel/.055);
+        sample+=(noise-flightLow)*.14*departure;
+      }
       samples[i]=sample*attack;peak=Math.max(peak,Math.abs(samples[i]));
     }
     for(let i=0;i<samples.length;i++)samples[i]*=.82/Math.max(peak,.01);
