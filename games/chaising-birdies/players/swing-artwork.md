@@ -1,5 +1,7 @@
 # Swing artwork
 
+The game now uses the revised [body-proportion swing assets](body-proportions.md). This document preserves the original generation prompts.
+
 Generated with the built-in image_gen tool, using each original costume sheet as the character reference. Alpha preserved; converted to WebP at quality 88 for the game.
 
 Assets in this directory:

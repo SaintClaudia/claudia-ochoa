@@ -16,17 +16,24 @@
   let count = 1, selections = characters.map((_,i)=>({character:i,attire:'golf'}));
   let players = [], holeIndex = 0, turn = 0, angle = 0, club = 'driver', power = 70, busy = false, flying = null, swingPose = null, drag = null, animation = null, sound = false, audio;
   const canvas = $('course'), ctx = canvas.getContext('2d');
+  // On-course height ratios use the 49ers' listed heights; each pose sheet keeps its
+  // natural width so physique comes from the artwork, rather than stretching it.
+  const courseBuilds = [
+    {heightInches:73,bodyPixels:{uniform:414,golf:414}},
+    {heightInches:71,bodyPixels:{uniform:437,golf:426}},
+    {heightInches:76,bodyPixels:{uniform:427,golf:420}}
+  ];
   // Clubhead anchors measured on the generated 256 × 512 pose cells.
   // Each outfit has address and impact anchors; this absorbs the natural weight shift.
   const swingAnchors = [
-    {uniform:[[195,478],[188,479]],golf:[[196,461],[192,465]]},
-    {uniform:[[241,485],[228,489]],golf:[[241,478],[228,482]]},
-    {uniform:[[225,483],[195,486]],golf:[[225,479],[196,483]]}
+    {uniform:[[176,485],[190,487]],golf:[[184,469],[190,470]]},
+    {uniform:[[244,493],[244,498]],golf:[[243,488],[244,492]]},
+    {uniform:[[226,484],[195,487]],golf:[[229,482],[194,485]]}
   ];
   const swingArt = characters.map(c => {
     const img = new Image();
     img.addEventListener('load', () => { if (players.length) draw(); });
-    img.src = `players/${c.artwork}-swing.webp`;
+    img.src = `players/${c.artwork}-swing-v2.webp`;
     return img;
   });
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -225,10 +232,12 @@
     const tilt=Math.max(-.26,Math.min(.26,Math.atan2(Math.sin(direction),Math.abs(Math.cos(direction)))*.22));
     const frame=swingPose?swingPose.frame:0,artwork=swingArt[p.character];
     ctx.save();ctx.translate(p.ball.x,p.ball.y);ctx.rotate(tilt*facing);ctx.scale(facing,1);
-    ellipse(-18,0,17,5,'#11271670');
+    const shadowSize=p.character===2?19:p.character===1?17:16;
+    ellipse(-18,0,shadowSize,5,'#11271670');
     if(artwork.complete&&artwork.naturalWidth) {
       const cellWidth=artwork.naturalWidth/6,cellHeight=artwork.naturalHeight/2;
-      const scale=(p.character===2?84:p.character===1?76:80)/(cellHeight*.8);
+      const build=courseBuilds[p.character];
+      const scale=84*(build.heightInches/73)/(cellHeight*build.bodyPixels[p.attire]/512);
       const row=p.attire==='golf'?1:0;
       // Shared contact anchor keeps address and impact clubheads at the ball.
       const anchor=swingAnchors[p.character][p.attire][frame>=3?1:0];
@@ -237,7 +246,7 @@
       ctx.rotate(puttRock);
       if(frame===5) {
         // Trim a neighboring pose's club overhang from the finish cell.
-        const trim=p.character===1?[0,190,94,145]:[0,0,p.character===2?44:32,180];
+        const trim=p.character===1?[0,230,108,78]:[0,0,p.character===2?66:34,220];
         ctx.beginPath();ctx.rect(-contactX*scale,-contactY*scale,cellWidth*scale,cellHeight*scale);
         ctx.rect((cellWidth*trim[0]/256-contactX)*scale,(cellHeight*trim[1]/512-contactY)*scale,
           cellWidth*trim[2]/256*scale,cellHeight*trim[3]/512*scale);ctx.clip('evenodd');
