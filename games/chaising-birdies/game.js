@@ -72,8 +72,9 @@
       const head=el('div',undefined,'golfer-list-head');
       head.append(el('span','Choose your golfer'),el('span',`${characters.length} golfers`));
       list.append(head);
-      characters.forEach((c,j)=>{
-        const option=el('button',undefined,'golfer-option'); option.type='button';
+      const order=[s.character,...characters.map((_,j)=>j).filter(j=>j!==s.character).sort((a,b)=>characters[a].name.localeCompare(characters[b].name))];
+      order.forEach(j=>{
+        const c=characters[j], option=el('button',undefined,'golfer-option'); option.type='button';
         option.append(el('span',c.name));
         if(j===s.character){option.classList.add('selected');const check=el('span','✓');check.setAttribute('aria-hidden','true');option.append(check);}
         option.addEventListener('click',()=>{s.character=j;rosterOpen[i]=false;renderRoster();$('roster').children[i].querySelector('.golfer-toggle').focus();});
