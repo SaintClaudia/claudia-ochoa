@@ -39,6 +39,15 @@
   window.addEventListener('resize',()=>{if(players.length&&!$('play').hidden)draw();});
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function el(tag, text, className) { const e=document.createElement(tag); if(text!==undefined)e.textContent=text; if(className)e.className=className; return e; }
+  function chevronIcon() {
+    const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
+    svg.setAttribute('viewBox','0 0 24 24'); svg.setAttribute('aria-hidden','true'); svg.setAttribute('class','golfer-chevron');
+    const path=document.createElementNS('http://www.w3.org/2000/svg','path');
+    path.setAttribute('d','m6 9 6 6 6-6'); path.setAttribute('fill','none'); path.setAttribute('stroke','currentColor');
+    path.setAttribute('stroke-width','1.5'); path.setAttribute('stroke-linecap','round'); path.setAttribute('stroke-linejoin','round');
+    svg.append(path);
+    return svg;
+  }
   function portrait(character, attire) {
     const c = characters[character], wrapper = el('div', undefined, 'portrait');
     const img = el('img', undefined, `player-portrait-sheet ${c.artwork} ${attire}`);
@@ -61,7 +70,7 @@
       const toggle=el('button',undefined,'golfer-toggle'); toggle.type='button';
       toggle.setAttribute('aria-expanded',String(open)); toggle.setAttribute('aria-controls',listId);
       toggle.append(el('span',characters[s.character].name,'golfer-name'));
-      const chevron=el('span','▾','golfer-chevron'); chevron.setAttribute('aria-hidden','true'); toggle.append(chevron);
+      toggle.append(chevronIcon());
       toggle.addEventListener('click',()=>{rosterOpen[i]=!rosterOpen[i];renderRoster();$('roster').children[i].querySelector('.golfer-toggle').focus();});
       const list=el('div',undefined,'golfer-list'); list.id=listId; list.hidden=!open;
       const head=el('div',undefined,'golfer-list-head');
