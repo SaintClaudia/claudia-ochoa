@@ -51,21 +51,17 @@
   function renderRoster() {
     $('roster').replaceChildren();
     for(let i=0;i<count;i++) {
-      const s=selections[i], row=el('div',undefined,'roster-row'), content=el('div'), label=el('div',`PLAYER ${String(i+1).padStart(2,'0')}`,'roster-label');
-      const pick=el('div',undefined,'character-pick'); pick.setAttribute('role','group'); pick.setAttribute('aria-label',`Player ${i+1} character`);
-      characters.forEach((c,j)=>{
-        const chip=el('button',undefined,'character-chip'); chip.type='button'; chip.setAttribute('aria-pressed',String(j===s.character));
-        const mini=portrait(j,s.attire); mini.querySelector('img').alt='';
-        chip.append(mini,el('span',c.short,'chip-name'));
-        chip.addEventListener('click',()=>{s.character=j;renderRoster();$('roster').children[i].querySelector('.character-chip[aria-pressed="true"]').focus();});
-        pick.append(chip);
-      });
+      const s=selections[i], row=el('div',undefined,'roster-row'), content=el('div'), label=el('label',`PLAYER ${String(i+1).padStart(2,'0')}`,'roster-label');
+      label.htmlFor=`character-${i}`;
+      const select=el('select'); select.id=label.htmlFor;
+      characters.forEach((c,j)=>{const option=el('option',c.name);option.value=j;option.selected=j===s.character;select.append(option);});
+      select.addEventListener('change',()=>{s.character=Number(select.value);renderRoster();$(`character-${i}`).focus();});
       const attire=el('div',undefined,'attire'); attire.setAttribute('role','group');attire.setAttribute('aria-label',`Player ${i+1} outfit`);
       for(const [value,title] of [['golf','Niners golf attire'],['uniform','Game-day uniform']]) {
         const b=el('button',title);b.setAttribute('aria-pressed',String(s.attire===value));
         b.addEventListener('click',()=>{s.attire=value;renderRoster();$('roster').children[i].querySelector(`[aria-pressed="true"]`).focus();});attire.append(b);
       }
-      content.append(label,pick,attire);row.append(portrait(s.character,s.attire),content);$('roster').append(row);
+      content.append(label,select,attire);row.append(portrait(s.character,s.attire),content);$('roster').append(row);
     }
   }
   $('counts').addEventListener('click',e=>{const b=e.target.closest('[data-count]');if(!b)return;count=Number(b.dataset.count);for(const button of $('counts').children)button.setAttribute('aria-pressed',String(button===b));renderRoster();});
