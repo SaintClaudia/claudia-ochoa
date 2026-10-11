@@ -11,7 +11,7 @@
     { name: 'The golden gate', par: 3, tee: {x:240,y:545}, pin: {x:665,y:205}, fairway: [[240,545],[355,425],[530,330],[665,205]], sand: [[695,295,45,23],[580,160,35,23]], water: [[405,280,90,63]], wind: {x:-7,y:4}, trees: [[140,140],[185,280],[480,550],[850,430],[850,130]] },
     { name: 'The faithful finish', par: 5, tee: {x:165,y:560}, pin: {x:815,y:145}, fairway: [[165,560],[280,435],[490,435],[610,315],[710,205],[815,145]], sand: [[430,365,48,25],[745,140,35,24],[845,245,44,25]], water: [[615,520,140,60]], wind: {x:8,y:2}, trees: [[140,180],[340,180],[410,580],[890,380],[600,130]] }
   ];
-  const clubs = { driver: {range:300, loft:95}, iron:{range:185,loft:115}, wedge:{range:95,loft:90}, putter:{range:75,loft:0} };
+  const clubs = { driver:{loft:95}, iron:{loft:115}, wedge:{loft:90}, putter:{loft:0} };
   const colors = ['#fff8e4','#e7ba5e','#e48e92'];
   let count = 3, selections = characters.map((_,i)=>({character:i,attire:'golf'})), rosterOpen = selections.map(()=>false);
   let players = [], holeIndex = 0, turn = 0, angle = 0, club = 'driver', power = 70, busy = false, flying = null, ballMotion = null, swingPose = null, drag = null, animation = null, sound = false, audio;
@@ -64,6 +64,12 @@
     wrapper.append(img);
     return wrapper;
   }
+  function playerSummary(character) {
+    const profile=BirdiesPlayerSkills.profiles[characters[character].artwork];
+    const summary=el('p',`${profile.style} · ${profile.ranges.driver} yd drive`,'player-skills');
+    summary.title=profile.description;
+    return summary;
+  }
   function renderRoster() {
     $('roster').replaceChildren();
     for(let i=0;i<count;i++) {
@@ -93,7 +99,7 @@
         const b=el('button',title);b.setAttribute('aria-pressed',String(s.attire===value));
         b.addEventListener('click',()=>{s.attire=value;renderRoster();$('roster').children[i].querySelector(`[aria-pressed="true"]`).focus();});attire.append(b);
       }
-      content.append(label,pick,attire);row.append(portrait(s.character,s.attire),content);$('roster').append(row);
+      content.append(label,pick,playerSummary(s.character),attire);row.append(portrait(s.character,s.attire),content);$('roster').append(row);
     }
   }
   $('counts').addEventListener('click',e=>{const b=e.target.closest('[data-count]');if(!b)return;count=Number(b.dataset.count);for(const button of $('counts').children)button.setAttribute('aria-pressed',String(button===b));renderRoster();});
@@ -238,17 +244,15 @@
     if(distance(p,h.tee)<35)return 'Tee box';
     return h.fairway.slice(1).some((b,i)=>pathDistance(p,h.fairway[i],b)<66)?'Fairway':'Rough';
   }
-  function target() {
-    const p=players[turn],h=holes[holeIndex],lie=lieAt(p.ball);
-    const factor=lie==='Bunker'?(club==='wedge'?.9:.48):lie==='Rough'?.72:1;
-    const range=clubs[club].range*power/100*factor;
-    const windScale=club==='putter'?0:power/100;
-    return {x:p.ball.x+Math.cos(angle)*range+h.wind.x*windScale,y:p.ball.y+Math.sin(angle)*range+h.wind.y*windScale};
+  function shotOptions() {
+    const p=players[turn];
+    return {golfer:characters[p.character].artwork,club,power,angle,origin:p.ball,wind:holes[holeIndex].wind,lie:lieAt(p.ball)};
   }
+  function target() {return BirdiesPlayerSkills.target(shotOptions());}
   function aimAtPin() {const p=players[turn],h=holes[holeIndex];angle=Math.atan2(h.pin.y-p.ball.y,h.pin.x-p.ball.x);club=distance(p.ball,h.pin)<74?'putter':distance(p.ball,h.pin)<110?'wedge':distance(p.ball,h.pin)<220?'iron':'driver';power=70;syncControls();}
   function syncControls() {
     $('aim').value=Math.round(angle*180/Math.PI);$('aim-value').textContent=`${Math.round(angle*180/Math.PI)}°`;
-    $('power').value=power;$('power-value').textContent=`${power}%`;
+    $('power').value=power;$('power-value').textContent=`${power}% · ${Math.round(BirdiesPlayerSkills.shotRange(shotOptions()))} yd`;
     for(const b of $('clubs').children)b.setAttribute('aria-pressed',String(b.dataset.club===club));
   }
   function scoreLabel(strokes,par) {const delta=strokes-par;return delta<=-3?'Albatross':delta===-2?'Eagle':delta===-1?'Birdie':delta===0?'Par':delta===1?'Bogey':delta===2?'Double bogey':`+${delta}`;}
@@ -257,7 +261,7 @@
     players.forEach((p,i)=>{const row=el('tr');row.append(el('td',`${i+1}. ${characters[p.character].short}`));for(let j=0;j<3;j++)row.append(el('td',p.scores[j]??'–'));row.append(el('td',p.scores.reduce((a,b)=>a+b,0)));body.append(row);});table.append(body);return table;
   }
   function updateUI() {
-    const p=players[turn],h=holes[holeIndex],heading=el('div',undefined,'active-heading'),info=el('div');info.append(el('small',`PLAYER ${turn+1}`),el('h2',characters[p.character].name));heading.append(portrait(p.character,p.attire),info);$('active-player').replaceChildren(heading);
+    const p=players[turn],h=holes[holeIndex],heading=el('div',undefined,'active-heading'),info=el('div');info.append(el('small',`PLAYER ${turn+1}`),el('h2',characters[p.character].name),playerSummary(p.character));heading.append(portrait(p.character,p.attire),info);$('active-player').replaceChildren(heading);
     $('hole-meta').textContent=`HOLE ${String(holeIndex+1).padStart(2,'0')} / 03 · PAR ${h.par}`;
     $('wind').textContent=`WIND ${Math.round(Math.hypot(h.wind.x,h.wind.y))} MPH ${h.wind.x>0?(h.wind.y<0?'↗':'↘'):'↙'}`;
     $('distance').textContent=`${Math.round(distance(p.ball,h.pin))} yd`;$('stroke').textContent=p.done?p.strokes:p.strokes+1;$('lie').textContent=h.name.toUpperCase();$('scorecard').replaceChildren(scoreTable());

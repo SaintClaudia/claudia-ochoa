@@ -294,3 +294,14 @@ When adding new pages: use `<h2>` for section headings under the page `<h1>`, in
 - Case-study poll counts stored in Cloudflare KV through [`worker/`](worker/)
 - CSP and Permissions-Policy response headers added by [`worker-csp/`](worker-csp/)
 - Domain verified with Google Search Console
+
+### Chasing Birdies player balance
+
+Player traits are fictional arcade choices, not measured abilities of the real
+athletes. Purdy drives 285 yd at full power and has the least wind drift;
+McCaffrey drives 300 yd and retains more distance from rough and sand;
+Kittle drives 320 yd with stronger irons and greater wind drift. Wedge ranges
+are 95/98/100 yd; putting is identical, even from poor lies. No random miss
+is added: the aiming preview and actual shot use the same calculation in
+`player-skills.js`. Power shows the selected club's distance before wind.
+Run balance checks with `node --test games/chaising-birdies/player-skills.test.cjs`.
