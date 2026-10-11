@@ -100,8 +100,9 @@ when deployed.
 ## Chasing Birdies
 
 An independent, buildless arcade golf game at `games/chasing-birdies/index.html`.
-The site Worker permanently redirects the former misspelled game path, including
-asset and player-gallery URLs, to the corrected path.
+Compatibility pages redirect the former misspelled game and player-gallery URLs
+to the corrected path on GitHub Pages. The site Worker also includes a permanent
+redirect for all old paths, including assets, ready for its next deployment.
 The game has its own canonical URL, search description, Open Graph/Twitter
 sharing metadata, and factual `VideoGame` JSON-LD describing local play.
 Choose 1–3 local players, select Purdy, McCaffrey, or Kittle for each player,
