@@ -25,7 +25,7 @@
   <link rel="preload" as="image" href="fairway-title-mobile.webp?v=1" media="(max-width:700px)" fetchpriority="high">
   <link rel="preload" as="image" href="fairway-title-desktop.webp?v=1" media="(min-width:701px)" fetchpriority="high">
   <link rel="preload" as="font" href="anton-latin.woff2" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="game.css?v=51">
+  <link rel="stylesheet" href="game.css?v=52">
   <script src="opening.js?v=2"></script>
   <script src="ball-physics.js?v=5" defer></script>
   <script src="player-skills.js?v=3" defer></script>
@@ -81,7 +81,7 @@
   <header class="masthead"><a class="wordmark" href="./" aria-label="Chasing Birdies home"><img src="chasing-birdies-logo-small.webp" alt="Chasing Birdies with Brock Purdy" width="320" height="209"></a><span>THE FAITHFUL ON THE FAIRWAY</span><div class="header-actions"><button id="new-round" type="button" aria-label="Clubhouse" title="Return to clubhouse" hidden><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m3 12 9-6 9 6M5 11v10h14V11M10 21v-6h4v6M12 6V1"/><path d="M12 1h7l-2 2 2 2h-7Z" fill="currentColor" stroke="none"/></svg></button><button id="sound" type="button" aria-label="Sound" aria-pressed="false" title="Turn sound on"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><g class="sound-enabled"><path d="M15 8a6 6 0 0 1 0 8M18 5a10 10 0 0 1 0 14"/></g><g class="sound-muted"><path d="m16 9 5 6m0-6-5 6"/></g></svg></button></div></header>
   <main id="main">
     <section id="setup" class="setup">
-      <div class="intro"><h1 class="sr-only">Chasing Birdies</h1><p class="lede">Same legends. A different kind of drive.<br>Take the Niners from the gridiron to the green.</p><div class="course-badge"><span aria-hidden="true">⛳</span><div><strong>THE GOLD RUSH CLUB</strong><small>3 holes · California coast · Arcade golf</small></div></div></div>
+      <div class="intro"><h1 class="sr-only">Chasing Birdies</h1><picture class="intro-art" aria-hidden="true"><source media="(min-width:701px)" srcset="fairway-title-desktop.webp?v=1"><img src="fairway-title-mobile.webp?v=1" alt="" width="1280" height="720" fetchpriority="high"></picture><div class="intro-copy"><p class="lede">Same legends. A different kind of drive.<br>Take the Niners from the gridiron to the green.</p><div class="course-badge"><span aria-hidden="true">⛳</span><div><strong>THE GOLD RUSH CLUB</strong><small>3 holes · California coast · Arcade golf</small></div></div></div></div>
       <div class="clubhouse"><div class="section-top"><h2 id="clubhouse-title" tabindex="-1">Select players</h2></div><fieldset class="count"><legend>How many players?</legend><div id="counts"><button type="button" data-count="1" aria-pressed="false">1</button><button type="button" data-count="2" aria-pressed="false">2</button><button type="button" data-count="3" aria-pressed="true">3</button></div></fieldset><div id="roster"></div><button class="primary" id="start">TEE IT UP <span aria-hidden="true">›</span></button></div>
     </section>
     <section id="play" hidden>
