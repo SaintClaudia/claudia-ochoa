@@ -174,16 +174,7 @@ footer{justify-content:flex-end}body:has(#play:not([hidden])) footer{display:non
   .quick-swing{min-height:44px;margin:0 0 8px}
 }
 
-/* Confirm a mobile shot without leaving the course view. */
-.course-stage{position:relative}
-.course-swing{display:none}
 .overlay{z-index:2}
-@media(max-width:700px){
-  .course-swing{position:absolute;right:10px;bottom:10px;z-index:1;display:flex;align-items:center;gap:10px;min-height:48px;max-width:calc(100% - 20px);padding:10px 14px;border:1px solid #f7dc98;border-radius:4px;background:linear-gradient(#efce82,#d6ac57);color:var(--green);box-shadow:0 3px 0 #876b36,0 3px 12px #0007;touch-action:manipulation}
-  .course-swing strong{font:20px var(--display);text-transform:uppercase;letter-spacing:.5px}
-  .course-swing span{font:10px/1.4 monospace}
-  .course-swing:disabled{opacity:.6}
-}
 
 /* Completion is a result screen, with one clear next action. */
 #play.is-complete .controls{display:none}
@@ -208,3 +199,11 @@ footer{justify-content:flex-end}body:has(#play:not([hidden])) footer{display:non
   .result-score strong{font-size:32px}
   .overlay .primary{font-size:24px}
 }
+
+/* Shared range appearance keeps Aim and Power consistent across browsers. */
+.controls input[type=range]{appearance:none;-webkit-appearance:none;height:32px;background:transparent;padding:0;--range-fill:50%;--range-track:linear-gradient(to right,var(--gold) 0 var(--range-fill),#404340 var(--range-fill) 100%)}
+.controls input[type=range]::-webkit-slider-runnable-track{height:8px;border:1px solid #999b95;border-radius:99px;background:var(--range-track)}
+.controls input[type=range]::-moz-range-track{height:6px;border:1px solid #999b95;border-radius:99px;background:var(--range-track)}
+.controls input[type=range]::-webkit-slider-thumb{appearance:none;-webkit-appearance:none;width:18px;height:18px;border:0;border-radius:50%;background:var(--gold);margin-top:-6px}
+.controls input[type=range]::-moz-range-thumb{width:18px;height:18px;border:0;border-radius:50%;background:var(--gold)}
+.controls input[type=range]:focus-visible{outline:2px solid var(--cream);outline-offset:2px;border-radius:4px}

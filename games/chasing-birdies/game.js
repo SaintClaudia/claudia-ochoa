@@ -314,11 +314,9 @@
   function syncControls() {
     $('aim').value=Math.round(angle*180/Math.PI);$('aim-value').textContent=`${Math.round(angle*180/Math.PI)}°`;
     $('power').value=power;$('power-value').textContent=`${power}% · ${Math.round(BirdiesPlayerSkills.shotRange(shotOptions()))} yd`;
+    for(const slider of [$('aim'),$('power')])slider.style.setProperty('--range-fill',`${(Number(slider.value)-Number(slider.min))/(Number(slider.max)-Number(slider.min))*100}%`);
     const destination=target(),landing=lieAt(destination);
     $('target-preview').textContent=busy?'Shot in progress…':`Expected: ${Math.round(distance(players[turn].ball,destination))} yd · ${landing}`;
-    $('course-swing-label').textContent=`${BirdiesPlayerSkills.clubs[club].label} · ${power}%`;
-    $('course-swing').disabled=busy;
-    $('course-swing').setAttribute('aria-label',`Swing with ${BirdiesPlayerSkills.clubs[club].label} at ${power}% power`);
     $('target-preview').dataset.risk=String(!busy&&(landing==='Water'||landing==='Out of bounds'));
     for(const b of $('clubs').children) {
       b.setAttribute('aria-pressed',String(b.dataset.club===club));
@@ -427,7 +425,6 @@
     animation=requestAnimationFrame(frame);
   }
   $('swing').addEventListener('click',swing);
-  $('course-swing').addEventListener('click',swing);
   function point(e){const r=canvas.getBoundingClientRect();return {x:(e.clientX-r.left)*1000/r.width,y:(e.clientY-r.top)*680/r.height};}
   canvas.addEventListener('pointerdown',e=>{
     if(busy||!players.length||!e.isPrimary)return;
