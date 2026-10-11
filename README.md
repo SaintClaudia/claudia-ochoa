@@ -93,13 +93,15 @@ serves those files directly.
 ```
 
 Portfolio pages are linked from the site. The intentionally unlinked game prototype
-at `/games/chaising-birdies/` is excluded from navigation, the sitemap, and agent
+at `/games/chasing-birdies/` is excluded from navigation, the sitemap, and agent
 discovery, and has a `noindex, nofollow` directive. An unlinked URL is still public
 when deployed.
 
 ## Chasing Birdies
 
-An independent, buildless arcade golf game at `games/chaising-birdies/index.html`.
+An independent, buildless arcade golf game at `games/chasing-birdies/index.html`.
+The site Worker permanently redirects the former misspelled game path, including
+asset and player-gallery URLs, to the corrected path.
 The game has its own canonical URL, search description, Open Graph/Twitter
 sharing metadata, and factual `VideoGame` JSON-LD describing local play.
 Choose 1–3 local players, select Purdy, McCaffrey, or Kittle for each player,
@@ -120,13 +122,13 @@ Bumps do not add strokes to other players; a bumped ball entering the cup finish
 with its existing stroke count. A bumped ball sent into a hazard is restored to
 a safe resting position without a penalty. The deterministic motion module is
 `ball-physics.js`; run its collision checks with
-`node --test games/chaising-birdies/ball-physics.test.cjs`.
+`node --test games/chasing-birdies/ball-physics.test.cjs`.
 Ball collisions have timed impact clicks. The cup-drop sound uses a cleaned,
 user-confirmed recording, loaded only when sound is enabled. Hole and round
 completion have no victory ping. Driver, iron, and wedge shots use a trimmed recording from the
-supplied hit voice memo; the putter keeps its existing sound. Source and edit details are in `games/chaising-birdies/audio/README.md`.
+supplied hit voice memo; the putter keeps its existing sound. Source and edit details are in `games/chasing-birdies/audio/README.md`.
 
-Preview at `http://localhost:8000/games/chaising-birdies/` using the static server
+Preview at `http://localhost:8000/games/chasing-birdies/` using the static server
 below. The game uses its own CSS and JavaScript, self-hosted portfolio fonts,
 procedural canvas course art, and transparent player costume sheets. The pitch-aligned
 arcade edition adds the self-hosted Anton font (license alongside it), blue HUD
@@ -135,7 +137,7 @@ prompt is retained in `artwork-prompt.txt`. The Clubhouse loads responsive hero 
 a small logo, and pre-cropped portraits. Swing sheets load when a round starts,
 for selected golfers only. `anton-latin.woff2` is a subset of the licensed Anton
 source font. Rebuild these display assets after artwork changes with
-`python3 games/chaising-birdies/optimize_assets.py` (Pillow and fontTools with
+`python3 games/chasing-birdies/optimize_assets.py` (Pillow and fontTools with
 WOFF2 support), then update the hero cache versions in the HTML and CSS. Player sheets in `players/` cover
 uniform and golf variants for all three players, using official headshots as
 likeness references; generation prompts and source links live in `players/README.md`.
@@ -311,7 +313,7 @@ Kittle drives 320 yd with stronger irons and greater wind drift. Wedge ranges
 are 95/98/100 yd; putting is identical, even from poor lies. No random miss
 is added: the aiming preview and actual shot use the same calculation in
 `player-skills.js`. Power shows the selected club's distance before wind.
-Run balance checks with `node --test games/chaising-birdies/player-skills.test.cjs`.
+Run balance checks with `node --test games/chasing-birdies/player-skills.test.cjs`.
 
 The three holes use distinct coastal layouts: Coastal kickoff is a wide, open
 par 4; The golden gate is a narrower par 4 crossing the map beside cool lagoons;

@@ -298,6 +298,12 @@ export default {
     // Under `wrangler dev` there's no zone route to fall through to, so
     // proxy explicitly to the live site for local testing only.
     const url = new URL(request.url);
+    // Keep previously shared game links and asset URLs working after the rename.
+    const oldGamePath = "/games/chaising-birdies";
+    if (url.pathname === oldGamePath || url.pathname.startsWith(oldGamePath + "/")) {
+      url.pathname = "/games/chasing-birdies" + (url.pathname.slice(oldGamePath.length) || "/");
+      return Response.redirect(url.href, 301);
+    }
     if (url.pathname === "/api/portfolio-chat") {
       return handlePortfolioChat(request, env);
     }

@@ -1,6 +1,6 @@
 """Rebuild lightweight display assets from the original artwork and font.
 
-Run: python3 games/chaising-birdies/optimize_assets.py
+Run: python3 games/chasing-birdies/optimize_assets.py
 Requires Pillow and fontTools with WOFF2 support.
 """
 from pathlib import Path
