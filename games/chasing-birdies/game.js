@@ -359,7 +359,7 @@
     let title=holes[holeIndex].name;
     if(last){const totals=players.map(p=>p.scores.reduce((a,b)=>a+b,0)),best=Math.min(...totals),winners=players.filter((_,i)=>totals[i]===best);title=players.length===1?'That’s a round!':winners.length>1?'A tie at the top!':`${characters[winners[0].character].short} wins!`;}
     $('overlay-title').textContent=title;$('overlay-scores').replaceChildren();
-    players.forEach((p,i)=>{const row=el('div',undefined,'result-row');const result=el('div',undefined,'result-score');result.append(el('strong',last?`${p.scores.reduce((a,b)=>a+b,0)}`:scoreLabel(p.strokes,holes[holeIndex].par)),el('span',last?'total strokes':`${p.strokes} strokes · Par ${holes[holeIndex].par}`));row.append(el('span',`P${i+1} · ${characters[p.character].short}`),result);$('overlay-scores').append(row);});
+    players.forEach((p,i)=>{const row=el('div',undefined,'result-row');row.append(el('span',`P${i+1} · ${characters[p.character].short}`),el('b',last?`${p.scores.reduce((a,b)=>a+b,0)} strokes`:`${p.strokes} · ${scoreLabel(p.strokes,holes[holeIndex].par)}`));$('overlay-scores').append(row);});
     const chevron=el('span','›');chevron.setAttribute('aria-hidden','true');$('next-hole').replaceChildren(document.createTextNode(last?'PLAY AGAIN':'NEXT HOLE'),chevron);$('play').classList.add('is-complete');$('hole-overlay').hidden=false;$('next-hole').focus({preventScroll:true});keepCourseVisible();
   }
   $('next-hole').addEventListener('click',()=>{if(holeIndex===2){$('new-round').click();return;}holeIndex++;setupHole();});
