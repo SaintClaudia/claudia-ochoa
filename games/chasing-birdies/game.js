@@ -208,7 +208,7 @@
   function loadTerrainRecording(lie) {
     if(!terrainRecordingPromises.has(lie)) {
       const context=audioContext();
-      const promise=fetch(`audio/${terrainRecordings[lie]}.wav?v=${lie==='Bunker'?2:1}`)
+      const promise=fetch(`audio/${terrainRecordings[lie]}.wav?v=${lie==='Bunker'||lie==='Trees'?2:1}`)
         .then(response=>{if(!response.ok)throw new Error('Terrain audio unavailable');return response.arrayBuffer();})
         .then(data=>context.decodeAudioData(data))
         .then(buffer=>{terrainRecordingBuffers.set(lie,buffer);return buffer;}).catch(()=>null);

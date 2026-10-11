@@ -30,8 +30,8 @@ The clip loads and caches when sound is enabled and replaces the club impact sou
 
 The clip loads and caches when sound is enabled. It plays when a ball lands or rolls into a bunker, including a bumped ball. It does not repeat while rolling within sand or play for an airborne shot that clears the bunker. Landing back in sand after an airborne shot produces a new cue. Bunker distance adjustments remain unchanged.
 
-# Tree-impact sound
+# Shrubs / tree-impact recording
 
-`tree-impact.wav` is a synthesized 0.48-second mono 22.05 kHz PCM effect. Three damped wooden knocks lead into a short rustle of leaves, with peak normalization and a faded tail.
+`tree-impact.wav` isolates the rustle in the supplied `shrubs.m4a` voice memo, approximately 3.02–4.30 seconds into the recording. It uses mono 22.05 kHz PCM, DC offset removal, peak normalization without clipping, and short edge fades. The full voice memo is not bundled. This replaces the synthesized tree-impact effect.
 
 The clip loads and caches when sound is enabled. Tree contact cues are timed by the ball simulation using the tree footprints and a rounded canopy up to 60 loft units high. Low flying, landing, and rolling balls can trigger it, including bumped balls. Shots that clear the canopy are silent. The cue plays on entry rather than repeating while a ball stays inside a tree. Tree contact does not add a stroke penalty or change ball motion.
