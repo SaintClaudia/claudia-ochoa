@@ -111,7 +111,12 @@ below. The game uses its own CSS and JavaScript, self-hosted portfolio fonts,
 procedural canvas course art, and transparent player costume sheets. The pitch-aligned
 arcade edition adds the self-hosted Anton font (license alongside it), blue HUD
 panels, and generated coastal title artwork in `fairway-title.webp`; its ImageGen
-prompt is retained in `artwork-prompt.txt`. Player sheets in `players/` cover
+prompt is retained in `artwork-prompt.txt`. The Clubhouse loads responsive hero versions,
+a small logo, and pre-cropped portraits. Swing sheets load when a round starts,
+for selected golfers only. `anton-latin.woff2` is a subset of the licensed Anton
+source font. Rebuild these display assets after artwork changes with
+`python3 games/chaising-birdies/optimize_assets.py` (Pillow and fontTools with
+WOFF2 support), then update the hero cache versions in the HTML and CSS. Player sheets in `players/` cover
 uniform and golf variants for all three players, using official headshots as
 likeness references; generation prompts and source links live in `players/README.md`.
 The unlinked `players/index.html` comparison view displays all six looks. It requires

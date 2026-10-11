@@ -33,9 +33,14 @@
   const swingArt = characters.map(c => {
     const img = new Image();
     img.addEventListener('load', () => { if (players.length) draw(); });
-    img.src = `players/${c.artwork}-swing-v2.webp`;
     return img;
   });
+  function loadSwingArt() {
+    for (const p of players) {
+      const image = swingArt[p.character];
+      if (!image.hasAttribute('src')) image.src = `players/${characters[p.character].artwork}-swing-v2.webp`;
+    }
+  }
   window.addEventListener('resize',()=>{if(players.length&&!$('play').hidden)draw();});
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function el(tag, text, className) { const e=document.createElement(tag); if(text!==undefined)e.textContent=text; if(className)e.className=className; return e; }
@@ -50,8 +55,10 @@
   }
   function portrait(character, attire) {
     const c = characters[character], wrapper = el('div', undefined, 'portrait');
-    const img = el('img', undefined, `player-portrait-sheet ${c.artwork} ${attire}`);
-    img.src = `players/${c.artwork}.webp`;
+    const img = el('img', undefined, 'player-portrait');
+    img.src = `players/${c.artwork}-portrait-${attire}.webp`;
+    img.width = 164; img.height = 216;
+    img.loading = 'lazy';
     img.alt = `${c.name} in ${attire === 'golf' ? 'Niners golf attire' : 'football uniform'}`;
     img.decoding = 'async';
     wrapper.append(img);
@@ -204,18 +211,18 @@
     draw();
   }
   function setupHole() {busy=false;flying=null;swingPose=null;players.forEach(p=>{p.ball={...holes[holeIndex].tee};p.strokes=0;p.done=false;});turn=0;$('hole-overlay').hidden=true;aimAtPin();$('message').textContent=`${characters[players[turn].character].short}, you’re up. Aim for the flag.`;updateUI();canvas.focus({preventScroll:true});}
-  $('start').addEventListener('click',()=>{startSound();players=selections.slice(0,count).map(s=>({...s,scores:[]}));holeIndex=0;$('setup').hidden=true;$('play').hidden=false;$('new-round').hidden=false;setupHole();window.scrollTo(0,0);});
+  $('start').addEventListener('click',()=>{startSound();players=selections.slice(0,count).map(s=>({...s,scores:[]}));loadSwingArt();holeIndex=0;$('setup').hidden=true;$('play').hidden=false;$('new-round').hidden=false;setupHole();window.scrollTo(0,0);});
   $('new-round').addEventListener('click',()=>{if(animation)cancelAnimationFrame(animation);animation=null;busy=false;flying=null;swingPose=null;$('play').hidden=true;$('new-round').hidden=true;$('setup').hidden=false;$('start').focus();});
   $('aim').addEventListener('input',()=>{angle=Number($('aim').value)*Math.PI/180;syncControls();draw();});
   $('power').addEventListener('input',()=>{power=Number($('power').value);syncControls();draw();});
   $('clubs').addEventListener('click',e=>{const b=e.target.closest('[data-club]');if(!b||busy)return;club=b.dataset.club;syncControls();draw();});
   function finishHole() {
     busy=true;updateUI();const last=holeIndex===2;$('overlay-kicker').textContent=last?'ROUND COMPLETE':'HOLE COMPLETE';
-    let title=`${holes[holeIndex].name} ✓`;
+    let title=holes[holeIndex].name;
     if(last){const totals=players.map(p=>p.scores.reduce((a,b)=>a+b,0)),best=Math.min(...totals),winners=players.filter((_,i)=>totals[i]===best);title=players.length===1?'That’s a round!':winners.length>1?'A tie at the top!':`${characters[winners[0].character].short} wins!`;}
     $('overlay-title').textContent=title;$('overlay-scores').replaceChildren();
     players.forEach((p,i)=>{const row=el('div',undefined,'result-row');row.append(el('span',`P${i+1} · ${characters[p.character].short}`),el('b',last?`${p.scores.reduce((a,b)=>a+b,0)} strokes`:`${p.strokes} · ${scoreLabel(p.strokes,holes[holeIndex].par)}`));$('overlay-scores').append(row);});
-    $('next-hole').textContent=last?'PLAY AGAIN ↗':'NEXT HOLE ↗';$('hole-overlay').hidden=false;$('next-hole').focus();beep(880,.3);
+    const chevron=el('span','›');chevron.setAttribute('aria-hidden','true');$('next-hole').replaceChildren(document.createTextNode(last?'PLAY AGAIN':'NEXT HOLE'),chevron);$('hole-overlay').hidden=false;$('next-hole').focus();beep(880,.3);
   }
   $('next-hole').addEventListener('click',()=>{if(holeIndex===2){$('new-round').click();return;}holeIndex++;setupHole();});
   function resolveShot(destination,origin) {
@@ -337,7 +344,6 @@
     h.trees.forEach(([x,y])=>{ellipse(x+17,y+16,37,21,'#11271670');line([[x,y+10],[x,y-25]],6,'#695235');ellipse(x,y-20,28,31,'#1a3b20');for(let k=0;k<12;k++){const a=k*2.4,r=9+k%4*4;ellipse(x+Math.cos(a)*r,y-24+Math.sin(a)*r,10+k%3,12+k%4,k%3?'#365c29':'#537432');}});
     ctx.fillStyle='#c6c496';ctx.fillRect(h.tee.x-22,h.tee.y-12,44,25);for(const x of [-20,20]){ctx.fillStyle='#aa2636';ctx.fillRect(h.tee.x+x-3,h.tee.y-5,6,6);}
     ellipse(h.pin.x,h.pin.y,6,4,'#1b3c2c');line([[h.pin.x,h.pin.y],[h.pin.x,h.pin.y-57]],2,'#f7f1d9');ctx.fillStyle='#af2738';ctx.beginPath();ctx.moveTo(h.pin.x,h.pin.y-57);ctx.lineTo(h.pin.x+32,h.pin.y-48);ctx.lineTo(h.pin.x,h.pin.y-39);ctx.closePath();ctx.fill();ctx.fillStyle='#fff4dc';ctx.font='bold 11px Inter, sans-serif';ctx.fillText(holeIndex+1,h.pin.x+8,h.pin.y-46);
-    ctx.fillStyle='#ebead180';ctx.font='20px Anton, sans-serif';ctx.textAlign='right';ctx.fillText('GOLD RUSH CLUB',950,620);ctx.textAlign='left';
     players.forEach((player,i)=>{if(player.done||i===turn)return;ellipse(player.ball.x,player.ball.y,6,6,colors[i]);ctx.fillStyle='#fff';ctx.font='10px sans-serif';ctx.fillText(`P${i+1}`,player.ball.x+9,player.ball.y-5);});
     if(!busy){const t=target();ctx.save();ctx.setLineDash([7,9]);line([[p.ball.x,p.ball.y],[t.x,t.y]],2,'#fff4d9a0');ctx.restore();ctx.strokeStyle='#fff3d6';ctx.lineWidth=2;ctx.beginPath();ctx.arc(t.x,t.y,10,0,Math.PI*2);ctx.stroke();line([[t.x-15,t.y],[t.x+15,t.y]],1,'#fff3d6');line([[t.x,t.y-15],[t.x,t.y+15]],1,'#fff3d6');}
     if(!p.done)drawGolfer(p);
