@@ -115,7 +115,7 @@ footer{justify-content:flex-end}body:has(#play:not([hidden])) footer{display:non
   #counts button{width:44px;height:44px}
   .golfer-toggle{min-height:44px;padding-bottom:6px}
   .golfer-name{font-size:21px}
-  .attire button{min-height:44px;line-height:1.4;padding:8px}
+  .attire button{min-height:32px;font-size:10px;line-height:1.3;padding:6px 8px}
   .clubhouse .primary{min-height:52px}
   footer{padding:16px 16px max(20px,env(safe-area-inset-bottom));font-size:9px;letter-spacing:0}
 }
