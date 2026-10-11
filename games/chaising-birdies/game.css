@@ -71,3 +71,21 @@ footer{justify-content:flex-end}body:has(#play:not([hidden])) footer{display:non
 
 /* Disabled sliders recede behind shot playback and completion cards. */
 .controls input[type=range]:disabled{opacity:.18;cursor:default}
+
+/* A short game opening; the existing small logo is shared with the masthead. */
+.intro-playing{overflow:hidden}
+.intro-playing #game-shell{visibility:hidden}
+.intro-playing .opening-screen[hidden]{display:grid!important}
+.opening-screen{position:fixed;inset:0;z-index:100;background:var(--page);display:grid;place-items:center;padding:32px;opacity:1;transition:opacity .4s ease}
+.opening-screen.is-leaving{opacity:0;pointer-events:none}
+.opening-brand{text-align:center}
+.opening-logo{display:block;width:min(320px,66vw);height:auto;overflow:visible;animation:opening-arrive .65s cubic-bezier(.2,.7,.2,1) both}
+.opening-flag{transform-origin:206px 26px;animation:opening-wave .85s ease-in-out infinite alternate}
+.opening-credit{margin:27px 0 0;font:8px/1.8 Inter,sans-serif;letter-spacing:3px;color:#aab3a1;animation:opening-arrive .7s .25s both}
+.opening-credit span{display:block;font-size:10px;font-weight:700;color:var(--cream);letter-spacing:3.5px;margin-top:5px}
+.opening-skip{position:absolute;right:4vw;bottom:max(28px,env(safe-area-inset-bottom));display:flex;align-items:center;gap:13px;border:0;background:none;padding:12px;color:#aab3a1;font:9px Inter,sans-serif;text-transform:uppercase;letter-spacing:1.5px}
+.opening-skip span{font-size:19px;color:var(--gold)}
+#clubhouse-title:focus{outline:none}
+@keyframes opening-arrive{from{opacity:0;transform:translateY(12px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes opening-wave{from{transform:skewY(-5deg) scaleX(.94)}to{transform:skewY(5deg) scaleX(1.02)}}
+@media(prefers-reduced-motion:reduce){.opening-logo,.opening-flag,.opening-credit{animation:none}.opening-screen{transition:none}}

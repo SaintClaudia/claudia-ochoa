@@ -310,3 +310,9 @@ The three holes use distinct coastal layouts: Coastal kickoff is a wide, open
 par 4; The golden gate is a narrower par 4 crossing the map beside cool lagoons;
 The faithful finish is a longer, warmer-toned par 5 dogleg with bunkers at the
 turn. Fairway lie detection uses each hole's rendered fairway width.
+
+The opening screen uses the existing lightweight logo with a waving SVG flag
+and a creator credit, then reveals the clubhouse after 4 seconds. Skip intro
+and Escape enter immediately. Reduced motion and JavaScript-disabled browsers
+bypass the animation. It runs once per page load, never on returning to the
+clubhouse within a round. No audio or additional image assets load for it.

@@ -25,7 +25,8 @@
   <link rel="preload" as="image" href="fairway-title-mobile.webp?v=1" media="(max-width:700px)" fetchpriority="high">
   <link rel="preload" as="image" href="fairway-title-desktop.webp?v=1" media="(min-width:701px)" fetchpriority="high">
   <link rel="preload" as="font" href="anton-latin.woff2" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="game.css?v=50">
+  <link rel="stylesheet" href="game.css?v=51">
+  <script src="opening.js?v=2"></script>
   <script src="ball-physics.js?v=2" defer></script>
   <script src="player-skills.js?v=1" defer></script>
   <script src="game.js?v=40" defer></script>
@@ -63,12 +64,25 @@
   </script>
 </head>
 <body>
+  <section id="opening-screen" class="opening-screen" role="dialog" aria-modal="true" aria-labelledby="opening-title" hidden>
+    <div class="opening-brand">
+      <h2 id="opening-title" class="sr-only">Welcome to Chasing Birdies</h2>
+      <svg class="opening-logo" viewBox="0 0 320 209" aria-hidden="true">
+        <defs><clipPath id="opening-logo-cut"><path d="M0 0H320V209H0Z M204 10V43L242 26Z" clip-rule="evenodd"/></clipPath></defs>
+        <image href="chasing-birdies-logo-small.webp" width="320" height="209" clip-path="url(#opening-logo-cut)"/>
+        <g class="opening-flag"><path d="M206 14Q222 18 238 26Q224 30 206 40Z" fill="#c82f28"/><path d="M206 14Q222 18 238 26L222 24Q214 18 206 14Z" fill="#e64b37"/></g>
+      </svg>
+      <p class="opening-credit">A GAME BY <span>CLAUDIA OCHOA</span></p>
+    </div>
+    <button id="skip-opening" class="opening-skip" type="button">Skip intro <span aria-hidden="true">›</span></button>
+  </section>
+  <div id="game-shell">
   <a class="skip" href="#main">Skip to game</a>
   <header class="masthead"><a class="wordmark" href="./" aria-label="Chasing Birdies home"><img src="chasing-birdies-logo-small.webp" alt="Chasing Birdies with Brock Purdy" width="320" height="209"></a><span>THE FAITHFUL ON THE FAIRWAY</span><div class="header-actions"><button id="new-round" type="button" aria-label="Clubhouse" title="Return to clubhouse" hidden><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m3 12 9-6 9 6M5 11v10h14V11M10 21v-6h4v6M12 6V1"/><path d="M12 1h7l-2 2 2 2h-7Z" fill="currentColor" stroke="none"/></svg></button><button id="sound" type="button" aria-label="Sound" aria-pressed="false" title="Turn sound on"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><g class="sound-enabled"><path d="M15 8a6 6 0 0 1 0 8M18 5a10 10 0 0 1 0 14"/></g><g class="sound-muted"><path d="m16 9 5 6m0-6-5 6"/></g></svg></button></div></header>
   <main id="main">
     <section id="setup" class="setup">
       <div class="intro"><h1 class="sr-only">Chasing Birdies</h1><p class="lede">Same legends. A different kind of drive.<br>Take the Niners from the gridiron to the green.</p><div class="course-badge"><span aria-hidden="true">⛳</span><div><strong>THE GOLD RUSH CLUB</strong><small>3 holes · California coast · Arcade golf</small></div></div></div>
-      <div class="clubhouse"><div class="section-top"><h2>Select players</h2></div><fieldset class="count"><legend>How many players?</legend><div id="counts"><button type="button" data-count="1" aria-pressed="false">1</button><button type="button" data-count="2" aria-pressed="false">2</button><button type="button" data-count="3" aria-pressed="true">3</button></div></fieldset><div id="roster"></div><button class="primary" id="start">TEE IT UP <span aria-hidden="true">›</span></button></div>
+      <div class="clubhouse"><div class="section-top"><h2 id="clubhouse-title" tabindex="-1">Select players</h2></div><fieldset class="count"><legend>How many players?</legend><div id="counts"><button type="button" data-count="1" aria-pressed="false">1</button><button type="button" data-count="2" aria-pressed="false">2</button><button type="button" data-count="3" aria-pressed="true">3</button></div></fieldset><div id="roster"></div><button class="primary" id="start">TEE IT UP <span aria-hidden="true">›</span></button></div>
     </section>
     <section id="play" hidden>
       <div class="game-layout"><div class="course-wrap"><div class="course-hud"><span id="hole-meta"></span><span id="wind"></span></div><canvas id="course" width="1000" height="680" tabindex="0" aria-label="Golf course. Click or tap to aim. Use left and right arrows to adjust aim, and Space to swing."></canvas><div class="course-footer"><span id="lie">COASTAL KICKOFF</span><span>GOLD RUSH CLUB <b>✦</b> EST. 2026</span></div><div id="hole-overlay" class="overlay" hidden><div><p class="eyebrow" id="overlay-kicker">HOLE COMPLETE</p><h2 id="overlay-title"></h2><div id="overlay-scores"></div><button class="primary" id="next-hole">NEXT HOLE <span aria-hidden="true">›</span></button></div></div></div>
@@ -77,5 +91,6 @@
   </main>
   <footer><span>Unofficial fan game. Not affiliated with the NFL or the San Francisco 49ers.</span></footer>
   <noscript>This game needs JavaScript enabled to play.</noscript>
+  </div>
 </body>
 </html>
