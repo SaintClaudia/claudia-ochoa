@@ -186,7 +186,7 @@
   }
   const terrainRecordingPromises=new Map();
   const terrainRecordingBuffers=new Map();
-  const terrainRecordings={Water:'water-splash',Bunker:'bunker-land',BunkerHit:'bunker-hit'};
+  const terrainRecordings={Water:'water-splash',Bunker:'bunker-land',BunkerHit:'bunker-hit',Trees:'tree-impact'};
   function loadTerrainRecording(lie) {
     if(!terrainRecordingPromises.has(lie)) {
       const context=audioContext();
@@ -275,7 +275,7 @@
     if(!sound)return;
     try { const context=audioContext(),onset=context.currentTime+delay,o=context.createOscillator(),g=context.createGain();o.frequency.value=frequency;g.gain.setValueAtTime(.045,onset);g.gain.exponentialRampToValueAtTime(.001,onset+duration);o.connect(g);g.connect(context.destination);o.start(onset);o.stop(onset+duration);o.onended=()=>{o.disconnect();g.disconnect();}; } catch { /* Audio is optional. */ }
   }
-  $('sound').addEventListener('click',()=>{sound=!sound;$('sound').title=sound?'Turn sound off':'Turn sound on';$('sound').setAttribute('aria-pressed',String(sound));if(sound){loadCupRecording();loadDriverRecording();loadTerrainRecording('Water');loadTerrainRecording('Bunker');loadTerrainRecording('BunkerHit');impactSound('putter',60);}});
+  $('sound').addEventListener('click',()=>{sound=!sound;$('sound').title=sound?'Turn sound off':'Turn sound on';$('sound').setAttribute('aria-pressed',String(sound));if(sound){loadCupRecording();loadDriverRecording();loadTerrainRecording('Water');loadTerrainRecording('Bunker');loadTerrainRecording('BunkerHit');loadTerrainRecording('Trees');impactSound('putter',60);}});
   const distance=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
   function pathDistance(p,a,b) {const dx=b[0]-a[0],dy=b[1]-a[1],t=Math.max(0,Math.min(1,((p.x-a[0])*dx+(p.y-a[1])*dy)/(dx*dx+dy*dy)));return Math.hypot(p.x-a[0]-t*dx,p.y-a[1]-t*dy);}
   function inEllipse(p,e) {return ((p.x-e[0])/e[2])**2+((p.y-e[1])/e[3])**2<1;}
@@ -363,7 +363,7 @@
   function swing() {
     if(busy||!players.length||!$('hole-overlay').hidden)return;
     const origin={...players[turn].ball},destination=target(),loft=BirdiesPlayerSkills.shotLoft(shotOptions());
-    const motion=BirdiesBallPhysics.simulate({balls:players.map(p=>({position:p.ball,inPlay:!p.done&&p.strokes>0})),active:turn,origin,destination,loft,pin:holes[holeIndex].pin,lieAt});
+    const motion=BirdiesBallPhysics.simulate({balls:players.map(p=>({position:p.ball,inPlay:!p.done&&p.strokes>0})),active:turn,origin,destination,loft,pin:holes[holeIndex].pin,trees:holes[holeIndex].trees,lieAt});
     const start=performance.now(),windup=reducedMotion?0:640,flightDuration=950;
     const motionDuration=motion.frames.at(-1).time,playbackDuration=reducedMotion?100:motionDuration*1000;
     const putting=club==='putter';

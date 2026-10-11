@@ -4,6 +4,28 @@ const {simulate}=require('./ball-physics.js');
 const ball=(x,y=0,inPlay=true)=>({position:{x,y},inPlay});
 const run=(balls,extra={})=>simulate({balls,active:0,origin:balls[0].position,destination:{x:100,y:0},loft:0,lieAt:()=> 'Fairway',...extra});
 const gap=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
+test('entering trees cues once without adding a stroke hazard or changing the shot',()=>{
+ const r=run([ball(0)],{trees:[[50,0]]});
+ assert.equal(r.hazardEvents.filter(e=>e.lie==='Trees').length,1);
+ assert(r.hazardEvents[0].time>0&&r.hazardEvents[0].time<.95);
+ assert.deepEqual(r.hazards,[]);assert.deepEqual(r.positions[0],{x:100,y:0});
+});
+test('shots clearing the canopy and near misses are silent',()=>{
+ assert.deepEqual(run([ball(0)],{trees:[[50,0]],loft:135}).hazardEvents,[]);
+ assert.deepEqual(run([ball(0)],{trees:[[50,40]]}).hazardEvents,[]);
+});
+test('low airborne shots and landings in trees produce a contact cue',()=>{
+ assert(run([ball(0)],{trees:[[50,0]],loft:20}).hazardEvents.some(e=>e.lie==='Trees'));
+ const r=run([ball(0)],{trees:[[100,0]],loft:135});
+ assert.equal(r.hazardEvents.filter(e=>e.lie==='Trees').length,1);
+});
+test('a resting ball in trees is silent when putting out of them',()=>{
+ assert.deepEqual(run([ball(0)],{trees:[[0,0]]}).hazardEvents,[]);
+});
+test('a bumped ball entering trees produces a cue for that player',()=>{
+ const r=run([ball(0),ball(50)],{trees:[[100,0]]});
+ assert(r.hazardEvents.some(e=>e.lie==='Trees'&&e.player===1));
+});
 test('head-on impact transfers motion without adding shot range',()=>{
  const r=run([ball(0),ball(50)]);
  assert.deepEqual(r.bumped,[1]);assert(r.positions[0].x<50);assert(r.positions[1].x>50&&r.positions[1].x<101);assert(gap(...r.positions)>=12);

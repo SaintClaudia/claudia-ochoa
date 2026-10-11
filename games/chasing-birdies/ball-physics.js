@@ -3,9 +3,9 @@
   'use strict';
   const radius=6,diameter=radius*2,step=1/120;
   const length=v=>Math.hypot(v.x,v.y);
-  function contact(a,b,center) {
+  function contact(a,b,center,contactRadius=diameter) {
     const dx=b.x-a.x,dy=b.y-a.y,ox=a.x-center.x,oy=a.y-center.y;
-    const c=ox*ox+oy*oy-diameter*diameter;
+    const c=ox*ox+oy*oy-contactRadius*contactRadius;
     if(c<=0)return 0;
     const aa=dx*dx+dy*dy;
     if(!aa)return null;
@@ -14,16 +14,32 @@
     const t=(-bb-Math.sqrt(disc))/(2*aa);
     return t>=0&&t<=1?t:null;
   }
-  function simulate({balls,active,origin,destination,loft=0,duration=.95,pin,lieAt}) {
+  function simulate({balls,active,origin,destination,loft=0,duration=.95,pin,trees=[],lieAt}) {
     const positions=balls.map(b=>({...b.position})),velocities=balls.map(()=>({x:0,y:0}));
     const eligible=balls.map((b,i)=>i===active||b.inPlay);
     const groundLies=balls.map(b=>lieAt(b.position));
+    // Tree footprints include ball radius. Height uses the same units as shot loft.
+    const treePoint=(p,tree)=>({x:(p.x-tree[0])/34,y:(p.y-tree[1])/30});
+    const insideTree=(p,tree)=>length(treePoint(p,tree))<=1;
+    const touchingTrees=balls.map(b=>new Set(trees.flatMap((tree,j)=>insideTree(b.position,tree)?[j]:[])));
     const sunk=new Set(),hazards=new Map(),bumped=new Set(),frames=[],collisions=[],hazardEvents=[],lastContact=new Map();
     const delta={x:destination.x-origin.x,y:destination.y-origin.y};
     // Match the original shot's ease-out deceleration so a bump cannot add range.
     const rollingFriction=Math.max(20,2*length(delta)/(duration*duration));
     let free=true,z=0,simulationTime=0;
     function record(time) {frames.push({time,z,positions:positions.map(p=>({...p}))});}
+    function treeCues(i,previous,height) {
+      const current=positions[i];
+      trees.forEach((tree,j)=>{
+        const touching=touchingTrees[i];
+        if(height>60){touching.delete(j);return;}
+        // The crown narrows toward its top, so shots can clear its outer branches.
+        const crownRadius=Math.sqrt(Math.max(0,1-(height/60)**2));
+        const entry=contact(treePoint(previous,tree),treePoint(current,tree),{x:0,y:0},crownRadius);
+        if(entry!==null&&!touching.has(j))hazardEvents.push({time:simulationTime,player:i,lie:'Trees'});
+        if(length(treePoint(current,tree))<=crownRadius)touching.add(j);else touching.delete(j);
+      });
+    }
     function collide(i,j) {
       const a=positions[i],b=positions[j];
       let dx=b.x-a.x,dy=b.y-a.y,d=Math.hypot(dx,dy);
@@ -78,10 +94,12 @@
         }
         if(hit!==null) {
           positions[active]={x:previous.x+(next.x-previous.x)*fraction,y:previous.y+(next.y-previous.y)*fraction};
+          treeCues(active,previous,z);
           velocities[active]={x:delta.x*2*(1-t)/duration,y:delta.y*2*(1-t)/duration};
           free=false;z=0;collide(active,hit);
         } else {
           positions[active]=next;
+          treeCues(active,previous,z);
           if(z<=.01){settle(active);if(sunk.has(active)||hazards.has(active))free=false;}
           if(t===1)free=false;
         }
@@ -89,7 +107,9 @@
         z=0;
         for(let i=0;i<balls.length;i++) {
           if(!eligible[i]||sunk.has(i)||hazards.has(i))continue;
+          const previous={...positions[i]};
           positions[i].x+=velocities[i].x*step;positions[i].y+=velocities[i].y*step;
+          if(length(velocities[i])>.1)treeCues(i,previous,0);
         }
         // Iterate contacts so a three-ball chain transfers motion in one frame.
         for(let pass=0;pass<3;pass++)for(let i=0;i<balls.length;i++)for(let j=i+1;j<balls.length;j++){
