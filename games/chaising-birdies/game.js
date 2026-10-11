@@ -61,7 +61,7 @@
         const b=el('button',title);b.setAttribute('aria-pressed',String(s.attire===value));
         b.addEventListener('click',()=>{s.attire=value;renderRoster();$('roster').children[i].querySelector(`[aria-pressed="true"]`).focus();});attire.append(b);
       }
-      content.append(label,select,attire);row.append(portrait(s.character,s.attire),content);$('roster').append(row);
+      content.append(label,attire,select);row.append(portrait(s.character,s.attire),content);$('roster').append(row);
     }
   }
   $('counts').addEventListener('click',e=>{const b=e.target.closest('[data-count]');if(!b)return;count=Number(b.dataset.count);for(const button of $('counts').children)button.setAttribute('aria-pressed',String(button===b));renderRoster();});
