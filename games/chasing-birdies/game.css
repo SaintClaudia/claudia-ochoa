@@ -184,3 +184,27 @@ footer{justify-content:flex-end}body:has(#play:not([hidden])) footer{display:non
   .course-swing span{font:10px/1.4 monospace}
   .course-swing:disabled{opacity:.6}
 }
+
+/* Completion is a result screen, with one clear next action. */
+#play.is-complete .controls{display:none}
+#play.is-complete .game-layout{grid-template-columns:minmax(0,1fr);max-width:1000px;margin:auto}
+#play.is-complete .course-wrap{border-right:6px solid #050907}
+.overlay>div{max-width:480px;border-color:#b6c0aa40;border-top:3px solid var(--gold)}
+#overlay-kicker{font:clamp(32px,5vw,46px)/1.05 var(--display);letter-spacing:1px;color:var(--cream);margin:0 0 10px}
+#overlay-title{font:14px/1.4 monospace;color:#b6c0aa;letter-spacing:1px;margin:0 0 28px}
+.result-row{align-items:center;gap:12px;padding:16px 0;color:#c3cbbd;font-size:12px}
+.result-score{text-align:right}
+.result-score strong{display:block;font:36px/1.1 var(--display);color:var(--cream)}
+.result-score span{display:block;margin-top:5px;font:11px/1.4 monospace;color:#b6c0aa}
+.overlay .primary{margin-top:28px;min-height:56px}
+@media(max-width:700px){
+  #play.is-complete .course-wrap{background:radial-gradient(ellipse at top,#1e3929,var(--page) 75%)}
+  #play.is-complete .course-stage,#play.is-complete .course-hud,#play.is-complete .target-preview,#play.is-complete .course-footer{display:none}
+  #play.is-complete .overlay{position:relative;min-height:calc(100svh - 130px);padding:22px 14px;background:none;backdrop-filter:none}
+  .overlay>div{padding:24px 18px;box-shadow:0 12px 30px #0003}
+  #overlay-kicker{font-size:36px}
+  #overlay-title{font-size:12px;margin-bottom:24px}
+  .result-row{font-size:11px}
+  .result-score strong{font-size:32px}
+  .overlay .primary{font-size:24px}
+}
