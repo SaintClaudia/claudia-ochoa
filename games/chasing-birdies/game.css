@@ -173,3 +173,14 @@ footer{justify-content:flex-end}body:has(#play:not([hidden])) footer{display:non
   #player-traits .player-skills{margin:0}
   .quick-swing{min-height:44px;margin:0 0 8px}
 }
+
+/* Confirm a mobile shot without leaving the course view. */
+.course-stage{position:relative}
+.course-swing{display:none}
+.overlay{z-index:2}
+@media(max-width:700px){
+  .course-swing{position:absolute;right:10px;bottom:10px;z-index:1;display:flex;align-items:center;gap:10px;min-height:48px;max-width:calc(100% - 20px);padding:10px 14px;border:1px solid #f7dc98;border-radius:4px;background:linear-gradient(#efce82,#d6ac57);color:var(--green);box-shadow:0 3px 0 #876b36,0 3px 12px #0007;touch-action:manipulation}
+  .course-swing strong{font:20px var(--display);text-transform:uppercase;letter-spacing:.5px}
+  .course-swing span{font:10px/1.4 monospace}
+  .course-swing:disabled{opacity:.6}
+}

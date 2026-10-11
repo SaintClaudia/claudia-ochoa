@@ -118,7 +118,8 @@ Club and power suggestions use distance, lie, and head/tail wind; players can
 adjust both. Each club has its own wind response and flight height, with lower
 flight on softer shots. Green detection follows the drawn ellipse.
 Mobile rounds put club selection, aim and power sliders, and Swing directly
-beneath the course. The landing preview shows expected distance and surface,
+beneath the course. A mobile Swing button inside the course also shows the selected
+club and power, and is disabled during playback. The landing preview shows expected distance and surface,
 with water and out-of-bounds warnings. Dragging the target adjusts both aim and
 power with wind compensation; pulling back from the ball also adjusts the shot.
 Mobile gestures wait for Swing by default; swing on release can be enabled in
