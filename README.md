@@ -305,3 +305,8 @@ are 95/98/100 yd; putting is identical, even from poor lies. No random miss
 is added: the aiming preview and actual shot use the same calculation in
 `player-skills.js`. Power shows the selected club's distance before wind.
 Run balance checks with `node --test games/chaising-birdies/player-skills.test.cjs`.
+
+The three holes use distinct coastal layouts: Coastal kickoff is a wide, open
+par 4; The golden gate is a narrower par 4 crossing the map beside cool lagoons;
+The faithful finish is a longer, warmer-toned par 5 dogleg with bunkers at the
+turn. Fairway lie detection uses each hole's rendered fairway width.

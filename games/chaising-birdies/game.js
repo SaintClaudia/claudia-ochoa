@@ -7,9 +7,28 @@
     { name: 'George Kittle', number: '85', hair: '#81552f', skin: '#dfad85', short: 'Kittle', artwork: 'kittle' }
   ];
   const holes = [
-    { name: 'Coastal kickoff', par: 4, tee: {x:230,y:560}, pin: {x:690,y:160}, fairway: [[230,560],[330,420],[530,330],[610,210],[690,160]], sand: [[600,155,40,23],[770,230,44,28]], water: [[785,425,115,66]], wind: {x:5,y:-3}, trees: [[130,290],[180,190],[350,180],[450,530],[880,120],[890,560]] },
-    { name: 'The golden gate', par: 3, tee: {x:240,y:545}, pin: {x:665,y:205}, fairway: [[240,545],[355,425],[530,330],[665,205]], sand: [[695,295,45,23],[580,160,35,23]], water: [[405,280,90,63]], wind: {x:-7,y:4}, trees: [[140,140],[185,280],[480,550],[850,430],[850,130]] },
-    { name: 'The faithful finish', par: 5, tee: {x:165,y:560}, pin: {x:815,y:145}, fairway: [[165,560],[280,435],[490,435],[610,315],[710,205],[815,145]], sand: [[430,365,48,25],[745,140,35,24],[845,245,44,25]], water: [[615,520,140,60]], wind: {x:8,y:2}, trees: [[140,180],[340,180],[410,580],[890,380],[600,130]] }
+    {
+      name:'Coastal kickoff',par:4,tee:{x:230,y:560},pin:{x:690,y:160},
+      fairway:[[230,560],[330,420],[530,330],[610,210],[690,160]],fairwayWidth:132,
+      sand:[[600,155,40,23],[770,230,44,28]],water:[[785,425,115,66]],wind:{x:5,y:-3},
+      trees:[[130,290],[180,190],[350,180],[450,530],[880,120],[890,560]],
+      palette:{turf:['#315627','#426e30','#254a24'],fairway:'#85a84b',water:'#6aaba8',shallows:'#82bab3',sand:'#e5d7ad'}
+    },
+    {
+      name:'The golden gate',par:4,tee:{x:220,y:555},pin:{x:735,y:170},
+      fairway:[[220,555],[330,445],[495,350],[615,255],[735,170]],fairwayWidth:112,
+      sand:[[660,145,34,22],[795,225,32,20],[440,415,30,18]],water:[[380,235,105,65],[720,485,92,54]],wind:{x:-7,y:4},
+      trees:[[165,185],[175,375],[370,570],[545,525],[605,135],[650,390],[875,150],[865,350],[885,565]],
+      palette:{turf:['#294f36','#396447','#203e2d'],fairway:'#7da56c',water:'#478f98',shallows:'#69aab0',sand:'#ddd8b7'}
+    },
+    {
+      name:'The faithful finish',par:5,tee:{x:165,y:560},pin:{x:815,y:145},
+      fairway:[[165,560],[305,455],[510,440],[650,325],[735,220],[815,145]],fairwayWidth:124,
+      sand:[[455,355,48,25],[600,410,38,22],[745,140,35,24],[865,225,40,25]],
+      water:[[590,565,110,52]],wind:{x:8,y:2},
+      trees:[[140,180],[310,240],[395,565],[555,180],[880,390],[900,570]],
+      palette:{turf:['#4a592a','#60713a','#354927'],fairway:'#a2b55b',water:'#568f89',shallows:'#78aaa0',sand:'#ead3a1'}
+    }
   ];
   const clubs = { driver:{loft:95}, iron:{loft:115}, wedge:{loft:90}, putter:{loft:0} };
   const colors = ['#fff8e4','#e7ba5e','#e48e92'];
@@ -242,7 +261,7 @@
     if(h.sand.some(e=>inEllipse(p,e)))return 'Bunker';
     if(distance(p,h.pin)<74)return 'Green';
     if(distance(p,h.tee)<35)return 'Tee box';
-    return h.fairway.slice(1).some((b,i)=>pathDistance(p,h.fairway[i],b)<66)?'Fairway':'Rough';
+    return h.fairway.slice(1).some((b,i)=>pathDistance(p,h.fairway[i],b)<h.fairwayWidth/2)?'Fairway':'Rough';
   }
   function shotOptions() {
     const p=players[turn];
@@ -403,7 +422,7 @@
   function draw() {
     if(!players.length)return;const h=holes[holeIndex],p=players[turn];
     ctx.clearRect(0,0,1000,680);
-    const turf=ctx.createLinearGradient(0,0,1000,680);turf.addColorStop(0,'#315627');turf.addColorStop(.5,'#426e30');turf.addColorStop(1,'#254a24');ctx.fillStyle=turf;ctx.fillRect(0,0,1000,680);
+    const turf=ctx.createLinearGradient(0,0,1000,680);turf.addColorStop(0,h.palette.turf[0]);turf.addColorStop(.5,h.palette.turf[1]);turf.addColorStop(1,h.palette.turf[2]);ctx.fillStyle=turf;ctx.fillRect(0,0,1000,680);
     // Stable turf texture gives the playable map the pitch's arcade character.
     for(let i=0;i<1700;i++){const x=(i*137.31)%1000,y=(i*73.73)%680;ctx.fillStyle=i%2?'#8ea95520':'#143a2125';ctx.fillRect(x,y,2+i%3,1);}
     // Coastal water and a curving cliff edge frame the playing surface.
@@ -411,10 +430,10 @@
     line([[100,0],[110,90],[88,200],[65,340],[70,480],[85,680]],13,'#d2c6a0');
     ctx.strokeStyle='#d9eee844';ctx.lineWidth=2;for(let y=25;y<680;y+=45){ctx.beginPath();ctx.moveTo(0,y);ctx.quadraticCurveTo(35,y+15,48,y);ctx.stroke();}
     // Mown fairway, with subtle alternating turf bands.
-    line(h.fairway,148,'#294c21');line(h.fairway,132,'#85a84b');
-    ctx.save();ctx.beginPath();h.fairway.forEach(([x,y],i)=>i?ctx.lineTo(x,y):ctx.moveTo(x,y));ctx.lineWidth=128;ctx.strokeStyle='#b1c76c35';ctx.setLineDash([24,24]);ctx.stroke();ctx.restore();
-    h.water.forEach(([x,y,rx,ry])=>{ellipse(x,y,rx+7,ry+7,'#c1b68c');ellipse(x,y,rx,ry,'#6aaba8');ellipse(x-10,y-7,rx*.75,ry*.7,'#82bab3');ctx.strokeStyle='#d4e8d780';ctx.lineWidth=2;for(let i=-1;i<2;i++){ctx.beginPath();ctx.moveTo(x-35,y+i*14);ctx.quadraticCurveTo(x,y+8+i*14,x+35,y+i*14);ctx.stroke();}});
-    h.sand.forEach(([x,y,rx,ry])=>{ellipse(x,y+4,rx+5,ry+4,'#527d4c');ellipse(x,y,rx,ry,'#e5d7ad');ellipse(x-5,y-3,rx*.72,ry*.65,'#efe3bf');});
+    line(h.fairway,h.fairwayWidth+16,'#294c21');line(h.fairway,h.fairwayWidth,h.palette.fairway);
+    ctx.save();ctx.beginPath();h.fairway.forEach(([x,y],i)=>i?ctx.lineTo(x,y):ctx.moveTo(x,y));ctx.lineWidth=h.fairwayWidth-4;ctx.strokeStyle='#b1c76c35';ctx.setLineDash([24,24]);ctx.stroke();ctx.restore();
+    h.water.forEach(([x,y,rx,ry])=>{ellipse(x,y,rx+7,ry+7,'#c1b68c');ellipse(x,y,rx,ry,h.palette.water);ellipse(x-10,y-7,rx*.75,ry*.7,h.palette.shallows);ctx.strokeStyle='#d4e8d780';ctx.lineWidth=2;for(let i=-1;i<2;i++){ctx.beginPath();ctx.moveTo(x-35,y+i*14);ctx.quadraticCurveTo(x,y+8+i*14,x+35,y+i*14);ctx.stroke();}});
+    h.sand.forEach(([x,y,rx,ry])=>{ellipse(x,y+4,rx+5,ry+4,'#527d4c');ellipse(x,y,rx,ry,h.palette.sand);ellipse(x-5,y-3,rx*.72,ry*.65,'#efe3bf');});
     ellipse(h.pin.x,h.pin.y,82,63,'#568b52');ellipse(h.pin.x,h.pin.y,74,57,'#a5bf7e');ellipse(h.pin.x-9,h.pin.y-5,58,42,'#aec98b');
     h.trees.forEach(([x,y])=>{ellipse(x+17,y+16,37,21,'#11271670');line([[x,y+10],[x,y-25]],6,'#695235');ellipse(x,y-20,28,31,'#1a3b20');for(let k=0;k<12;k++){const a=k*2.4,r=9+k%4*4;ellipse(x+Math.cos(a)*r,y-24+Math.sin(a)*r,10+k%3,12+k%4,k%3?'#365c29':'#537432');}});
     ctx.fillStyle='#c6c496';ctx.fillRect(h.tee.x-22,h.tee.y-12,44,25);for(const x of [-20,20]){ctx.fillStyle='#aa2636';ctx.fillRect(h.tee.x+x-3,h.tee.y-5,6,6);}
