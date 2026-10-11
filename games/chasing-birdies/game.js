@@ -153,10 +153,16 @@
     putter: {duration:.075,noise:.16,decay:.0025,body:[[460,.32,.006],[1250,.22,.004],[3100,.07,.003]]}
   };
   function audioContext() {
-    audio ||= new (window.AudioContext||window.webkitAudioContext)();
-    if(audio.state==='suspended')audio.resume().catch(()=>{});
+    if(!audio) {
+      // Safari otherwise treats Web Audio as ambient sound and obeys Silent Mode.
+      try { if(navigator.audioSession)navigator.audioSession.type='playback'; } catch { /* Older browsers keep their default session. */ }
+      audio=new (window.AudioContext||window.webkitAudioContext)();
+    }
+    if(audio.state==='suspended'||audio.state==='interrupted')audio.resume().catch(()=>{});
     return audio;
   }
+  // Resume inside the gesture, before delayed animation/contact sounds play.
+  document.addEventListener('pointerdown',()=>{if(sound&&audio){try { audioContext(); } catch { /* Audio is optional. */ }}},{capture:true});
   function impactBuffer(type) {
     if(impactBuffers.has(type))return impactBuffers.get(type);
     const profile=impactProfiles[type],rate=audio.sampleRate;
@@ -382,6 +388,7 @@
   }
   function swing() {
     if(busy||!players.length||!$('hole-overlay').hidden)return;
+    if(sound){try { audioContext(); } catch { /* Audio is optional. */ }}
     drag=null;keepCourseVisible();
     const origin={...players[turn].ball},destination=target(),loft=BirdiesPlayerSkills.shotLoft(shotOptions());
     const motion=BirdiesBallPhysics.simulate({balls:players.map(p=>({position:p.ball,inPlay:!p.done&&p.strokes>0})),active:turn,origin,destination,loft,pin:holes[holeIndex].pin,trees:holes[holeIndex].trees,lieAt});
