@@ -107,6 +107,17 @@ and choose a football uniform or Niners golf attire. Three coastal holes feature
 club selection, aim and power controls, drag-to-swing, wind, rough, bunkers,
 water penalties, a scorecard, and round results. Each participant takes one shot
 per turn; finished players are skipped. A twelve-stroke pickup keeps rounds moving.
+Rolling shots and landings can bump resting balls, transferring motion and
+deflecting glancing hits. Balls waiting to tee off and holed balls are excluded.
+Bumps do not add strokes to other players; a bumped ball entering the cup finishes
+with its existing stroke count. A bumped ball sent into a hazard is restored to
+a safe resting position without a penalty. The deterministic motion module is
+`ball-physics.js`; run its collision checks with
+`node --test games/chaising-birdies/ball-physics.test.cjs`.
+Ball collisions have timed impact clicks. The cup-drop sound uses a cleaned,
+user-confirmed recording, loaded only when sound is enabled. Hole and round
+completion have no victory ping. Driver, iron, and wedge shots use a trimmed recording from the
+supplied hit voice memo; the putter keeps its existing sound. Source and edit details are in `games/chaising-birdies/audio/README.md`.
 
 Preview at `http://localhost:8000/games/chaising-birdies/` using the static server
 below. The game uses its own CSS and JavaScript, self-hosted portfolio fonts,

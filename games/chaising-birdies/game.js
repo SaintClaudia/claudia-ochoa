@@ -14,7 +14,7 @@
   const clubs = { driver: {range:300, loft:95}, iron:{range:185,loft:115}, wedge:{range:95,loft:90}, putter:{range:75,loft:0} };
   const colors = ['#fff8e4','#e7ba5e','#e48e92'];
   let count = 3, selections = characters.map((_,i)=>({character:i,attire:'golf'})), rosterOpen = selections.map(()=>false);
-  let players = [], holeIndex = 0, turn = 0, angle = 0, club = 'driver', power = 70, busy = false, flying = null, swingPose = null, drag = null, animation = null, sound = false, audio;
+  let players = [], holeIndex = 0, turn = 0, angle = 0, club = 'driver', power = 70, busy = false, flying = null, ballMotion = null, swingPose = null, drag = null, animation = null, sound = false, audio;
   const canvas = $('course'), ctx = canvas.getContext('2d');
   // On-course height ratios use the 49ers' listed heights; each pose sheet keeps its
   // natural width so physique comes from the artwork, rather than stretching it.
@@ -98,10 +98,22 @@
   }
   $('counts').addEventListener('click',e=>{const b=e.target.closest('[data-count]');if(!b)return;count=Number(b.dataset.count);for(const button of $('counts').children)button.setAttribute('aria-pressed',String(button===b));renderRoster();});
   const impactBuffers = new Map();
+  let driverRecording,driverRecordingPromise;
+  function loadDriverRecording() {
+    if(!driverRecordingPromise) {
+      const context=audioContext();
+      driverRecordingPromise=fetch('audio/driver-hit.wav?v=1')
+        .then(response=>{if(!response.ok)throw new Error('Driver audio unavailable');return response.arrayBuffer();})
+        .then(data=>context.decodeAudioData(data))
+        .then(buffer=>{driverRecording=buffer;return buffer;}).catch(()=>null);
+    }
+    return driverRecordingPromise;
+  }
   const impactProfiles = {
     driver: {duration:.38,noise:.80,decay:.0045,body:[[240,.30,.012],[2100,.24,.008],[4900,.16,.012],[7200,.09,.005]]},
     iron: {duration:.13,noise:.62,decay:.007,body:[[360,.30,.012],[2600,.26,.010],[5100,.12,.015]]},
     wedge: {duration:.12,noise:.48,decay:.008,body:[[310,.38,.014],[2200,.18,.009],[4600,.09,.011]]},
+    collision: {duration:.055,noise:.26,decay:.0025,body:[[1700,.24,.008],[3400,.10,.004],[740,.06,.007]]},
     putter: {duration:.075,noise:.16,decay:.0025,body:[[460,.32,.006],[1250,.22,.004],[3100,.07,.003]]}
   };
   function audioContext() {
@@ -138,11 +150,53 @@
     if(!sound)return;
     try {
       const context=audioContext(),source=context.createBufferSource(),gain=context.createGain();
-      source.buffer=impactBuffer(type);
+      source.buffer=['driver','iron','wedge'].includes(type)&&driverRecording?driverRecording:impactBuffer(type);
       // Putting is quieter; stronger full shots have a slightly brighter strike.
       const force=Math.max(0,Math.min(1,strength/100));
       source.playbackRate.value=.94+force*.10;
-      gain.gain.value=(type==='putter'?.19:.34)*(.45+force*.55);
+      gain.gain.value=(type==='collision'?.16:type==='putter'?.19:.34)*(.45+force*.55);
+      source.connect(gain);gain.connect(context.destination);source.start();
+      source.onended=()=>{source.disconnect();gain.disconnect();};
+    } catch { /* Audio is optional. */ }
+  }
+  let cupDropBuffer,recordedCupPromise;
+  function loadCupRecording() {
+    if(!recordedCupPromise) {
+      const context=audioContext();
+      recordedCupPromise=fetch('audio/cup-drop.wav?v=1')
+        .then(response=>{if(!response.ok)throw new Error('Cup audio unavailable');return response.arrayBuffer();})
+        .then(data=>context.decodeAudioData(data)).catch(()=>null);
+    }
+    return recordedCupPromise;
+  }
+  async function holeSound() {
+    if(!sound)return;
+    try {
+      const recording=await loadCupRecording();
+      if(!sound)return;
+      const context=audioContext();
+      if(!recording&&!cupDropBuffer) {
+        const rate=context.sampleRate;
+        cupDropBuffer=context.createBuffer(1,Math.ceil(rate*.32),rate);
+        const samples=cupDropBuffer.getChannelData(0);
+        // A subdued rim touch, deep hollow cup thud, then muffled irregular bounces.
+        const taps=[[0,.12,520,.008],[.045,.82,155,.050],[.103,.34,245,.028],[.168,.15,185,.022],[.229,.06,310,.015]];
+        let seed=1985,low=0,muffled=0;
+        for(let i=0;i<samples.length;i++) {
+          seed=(Math.imul(seed,1664525)+1013904223)>>>0;
+          const noise=seed/2147483648-1;low+=.18*(noise-low);
+          const t=i/rate;let sample=0;
+          for(const [onset,level,frequency,decay] of taps) {
+            const age=t-onset;if(age<0)continue;
+            const envelope=(1-Math.exp(-age/.0005))*Math.exp(-age/decay);
+            const body=Math.sin(2*Math.PI*frequency*age)+.22*Math.sin(2*Math.PI*frequency*2.31*age)*Math.exp(-age/.012);
+            sample+=level*envelope*(body*.30+low*.60+noise*.10);
+          }
+          muffled+=.14*(sample-muffled);samples[i]=muffled;
+        }
+      }
+      const source=context.createBufferSource(),gain=context.createGain();
+      source.buffer=recording||cupDropBuffer;gain.gain.value=recording?.22:.34;
       source.connect(gain);gain.connect(context.destination);source.start();
       source.onended=()=>{source.disconnect();gain.disconnect();};
     } catch { /* Audio is optional. */ }
@@ -167,11 +221,11 @@
       });
     } catch { /* Audio is optional. */ }
   }
-  function beep(frequency,duration=.13) {
+  function beep(frequency,duration=.13,delay=0) {
     if(!sound)return;
-    try { const context=audioContext(),o=context.createOscillator(),g=context.createGain();o.frequency.value=frequency;g.gain.setValueAtTime(.045,context.currentTime);g.gain.exponentialRampToValueAtTime(.001,context.currentTime+duration);o.connect(g);g.connect(context.destination);o.start();o.stop(context.currentTime+duration);o.onended=()=>{o.disconnect();g.disconnect();}; } catch { /* Audio is optional. */ }
+    try { const context=audioContext(),onset=context.currentTime+delay,o=context.createOscillator(),g=context.createGain();o.frequency.value=frequency;g.gain.setValueAtTime(.045,onset);g.gain.exponentialRampToValueAtTime(.001,onset+duration);o.connect(g);g.connect(context.destination);o.start(onset);o.stop(onset+duration);o.onended=()=>{o.disconnect();g.disconnect();}; } catch { /* Audio is optional. */ }
   }
-  $('sound').addEventListener('click',()=>{sound=!sound;$('sound').title=sound?'Turn sound off':'Turn sound on';$('sound').setAttribute('aria-pressed',String(sound));if(sound)impactSound('putter',60);});
+  $('sound').addEventListener('click',()=>{sound=!sound;$('sound').title=sound?'Turn sound off':'Turn sound on';$('sound').setAttribute('aria-pressed',String(sound));if(sound){loadCupRecording();loadDriverRecording();impactSound('putter',60);}});
   const distance=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
   function pathDistance(p,a,b) {const dx=b[0]-a[0],dy=b[1]-a[1],t=Math.max(0,Math.min(1,((p.x-a[0])*dx+(p.y-a[1])*dy)/(dx*dx+dy*dy)));return Math.hypot(p.x-a[0]-t*dx,p.y-a[1]-t*dy);}
   function inEllipse(p,e) {return ((p.x-e[0])/e[2])**2+((p.y-e[1])/e[3])**2<1;}
@@ -210,9 +264,9 @@
     $('swing').disabled=busy;for(const input of [$('aim'),$('power'),...$('clubs').children])input.disabled=busy;
     draw();
   }
-  function setupHole() {busy=false;flying=null;swingPose=null;players.forEach(p=>{p.ball={...holes[holeIndex].tee};p.strokes=0;p.done=false;});turn=0;$('hole-overlay').hidden=true;aimAtPin();$('message').textContent=`${characters[players[turn].character].short}, you’re up. Aim for the flag.`;updateUI();canvas.focus({preventScroll:true});}
+  function setupHole() {busy=false;flying=null;ballMotion=null;swingPose=null;players.forEach(p=>{p.ball={...holes[holeIndex].tee};p.strokes=0;p.done=false;});turn=0;$('hole-overlay').hidden=true;aimAtPin();$('message').textContent=`${characters[players[turn].character].short}, you’re up. Aim for the flag.`;updateUI();canvas.focus({preventScroll:true});}
   $('start').addEventListener('click',()=>{startSound();players=selections.slice(0,count).map(s=>({...s,scores:[]}));loadSwingArt();holeIndex=0;$('setup').hidden=true;$('play').hidden=false;$('new-round').hidden=false;setupHole();window.scrollTo(0,0);});
-  $('new-round').addEventListener('click',()=>{if(animation)cancelAnimationFrame(animation);animation=null;busy=false;flying=null;swingPose=null;$('play').hidden=true;$('new-round').hidden=true;$('setup').hidden=false;$('start').focus();});
+  $('new-round').addEventListener('click',()=>{if(animation)cancelAnimationFrame(animation);animation=null;busy=false;flying=null;ballMotion=null;swingPose=null;$('play').hidden=true;$('new-round').hidden=true;$('setup').hidden=false;$('start').focus();});
   $('aim').addEventListener('input',()=>{angle=Number($('aim').value)*Math.PI/180;syncControls();draw();});
   $('power').addEventListener('input',()=>{power=Number($('power').value);syncControls();draw();});
   $('clubs').addEventListener('click',e=>{const b=e.target.closest('[data-club]');if(!b||busy)return;club=b.dataset.club;syncControls();draw();});
@@ -222,33 +276,42 @@
     if(last){const totals=players.map(p=>p.scores.reduce((a,b)=>a+b,0)),best=Math.min(...totals),winners=players.filter((_,i)=>totals[i]===best);title=players.length===1?'That’s a round!':winners.length>1?'A tie at the top!':`${characters[winners[0].character].short} wins!`;}
     $('overlay-title').textContent=title;$('overlay-scores').replaceChildren();
     players.forEach((p,i)=>{const row=el('div',undefined,'result-row');row.append(el('span',`P${i+1} · ${characters[p.character].short}`),el('b',last?`${p.scores.reduce((a,b)=>a+b,0)} strokes`:`${p.strokes} · ${scoreLabel(p.strokes,holes[holeIndex].par)}`));$('overlay-scores').append(row);});
-    const chevron=el('span','›');chevron.setAttribute('aria-hidden','true');$('next-hole').replaceChildren(document.createTextNode(last?'PLAY AGAIN':'NEXT HOLE'),chevron);$('hole-overlay').hidden=false;$('next-hole').focus();beep(880,.3);
+    const chevron=el('span','›');chevron.setAttribute('aria-hidden','true');$('next-hole').replaceChildren(document.createTextNode(last?'PLAY AGAIN':'NEXT HOLE'),chevron);$('hole-overlay').hidden=false;$('next-hole').focus();
   }
   $('next-hole').addEventListener('click',()=>{if(holeIndex===2){$('new-round').click();return;}holeIndex++;setupHole();});
-  function resolveShot(destination,origin) {
-    const p=players[turn],h=holes[holeIndex];p.strokes++;let message='';const lie=lieAt(destination);
+  function resolveShot(destination,origin,motion) {
+    const p=players[turn],h=holes[holeIndex];p.strokes++;let message='',holed=false;const hazards=new Map(motion.hazards),lie=hazards.get(turn)||lieAt(destination);
+    players.forEach((player,i)=>{
+      if(i===turn||player.done||player.strokes===0)return;
+      player.ball={...motion.positions[i]};
+      if(motion.sunk.includes(i)){player.done=true;player.scores[holeIndex]=player.strokes;holed=true;}
+    });
     if(lie==='Water'||lie==='Out of bounds'){p.strokes++;p.ball=origin;message=`${lie}. One penalty stroke; back to your previous lie.`;beep(150);}
     else {
       p.ball=destination;
-      if(distance(destination,h.pin)<(club==='putter'?13:10)){p.ball={...h.pin};p.done=true;p.scores[holeIndex]=p.strokes;message=`${characters[p.character].short}: ${scoreLabel(p.strokes,h.par)}! ${p.strokes} strokes.`;beep(660,.3);}
+      if(distance(destination,h.pin)<(club==='putter'?13:10)){p.ball={...h.pin};p.done=true;p.scores[holeIndex]=p.strokes;message=`${characters[p.character].short}: ${scoreLabel(p.strokes,h.par)}! ${p.strokes} strokes.`;holed=true;}
       else {message=`${Math.round(distance(origin,destination))}-yard shot. ${lie}.`;}
     }
+    if(motion.bumped.length)message+=` Bumped ${motion.bumped.map(i=>characters[players[i].character].short).join(' and ')}'s ball${motion.bumped.length>1?'s':''}.`;
     // A twelve-stroke pickup keeps multiplayer rounds moving.
     if(!p.done&&p.strokes>=12){p.done=true;p.scores[holeIndex]=p.strokes;message+=' Twelve-stroke limit: ball picked up.';}
-    busy=false;flying=null;swingPose=null;
-    if(players.every(player=>player.done)){$('message').textContent=message;finishHole();return;}
+    busy=false;flying=null;ballMotion=null;swingPose=null;
+    if(players.every(player=>player.done)){$('message').textContent=message;if(holed)holeSound();finishHole();return;}
+    if(holed)holeSound();
     do {turn=(turn+1)%players.length;}while(players[turn].done);
     aimAtPin();$('message').textContent=`${message} ${characters[players[turn].character].short} is up${players.length>1?` (Player ${turn+1})`:''}.`;updateUI();
   }
   function swing() {
     if(busy||!players.length||!$('hole-overlay').hidden)return;
     const origin={...players[turn].ball},destination=target(),loft=clubs[club].loft;
-    const start=performance.now(),windup=reducedMotion?0:640,flightDuration=reducedMotion?100:950;
+    const motion=BirdiesBallPhysics.simulate({balls:players.map(p=>({position:p.ball,inPlay:!p.done&&p.strokes>0})),active:turn,origin,destination,loft,pin:holes[holeIndex].pin,lieAt});
+    const start=performance.now(),windup=reducedMotion?0:640,flightDuration=950;
+    const motionDuration=motion.frames.at(-1).time,playbackDuration=reducedMotion?100:motionDuration*1000;
     const putting=club==='putter';
     busy=true;swingPose={frame:0,angle,putting,progress:0};
     $('message').textContent=`${characters[players[turn].character].short}: ${putting?'putting':'backswing'}…`;
     updateUI();
-    let struck=false;
+    let struck=false,motionFrame=0,collisionEvent=0;
     function frame(now) {
       const elapsed=now-start;
       if(elapsed<windup) {
@@ -258,14 +321,22 @@
         swingPose.progress=t;
       } else {
         if(!struck){struck=true;impactSound(club,power);$('message').textContent=putting?'Rolling toward the pin…':'Ball in flight…';}
-        const t=Math.min(1,(elapsed-windup)/flightDuration),ease=1-(1-t)**2;
+        const t=Math.min(1,(elapsed-windup)/flightDuration);
         swingPose.frame=reducedMotion||putting?3:t<.12?3:t<.32?4:5;
         swingPose.progress=1+t;
-        flying={x:origin.x+(destination.x-origin.x)*ease,y:origin.y+(destination.y-origin.y)*ease,z:Math.sin(Math.PI*t)*loft};
+        const time=Math.min(motionDuration,(elapsed-windup)/playbackDuration*motionDuration);
+        while(collisionEvent<motion.collisions.length&&motion.collisions[collisionEvent].time<=time) {
+          const hit=motion.collisions[collisionEvent++];
+          impactSound('collision',Math.max(15,Math.min(100,hit.speed/2.5)));
+        }
+        while(motionFrame<motion.frames.length-1&&motion.frames[motionFrame+1].time<=time)motionFrame++;
+        const a=motion.frames[motionFrame],b=motion.frames[Math.min(motionFrame+1,motion.frames.length-1)],blend=b.time===a.time?0:(time-a.time)/(b.time-a.time);
+        ballMotion=a.positions.map((p,i)=>({x:p.x+(b.positions[i].x-p.x)*blend,y:p.y+(b.positions[i].y-p.y)*blend}));
+        flying={...ballMotion[turn],z:a.z+(b.z-a.z)*blend};
       }
       draw();
-      if(elapsed<windup+flightDuration)animation=requestAnimationFrame(frame);
-      else {animation=null;resolveShot(destination,origin);}
+      if(elapsed<windup+playbackDuration)animation=requestAnimationFrame(frame);
+      else {animation=null;resolveShot(motion.positions[turn],origin,motion);}
     }
     animation=requestAnimationFrame(frame);
   }
@@ -344,7 +415,7 @@
     h.trees.forEach(([x,y])=>{ellipse(x+17,y+16,37,21,'#11271670');line([[x,y+10],[x,y-25]],6,'#695235');ellipse(x,y-20,28,31,'#1a3b20');for(let k=0;k<12;k++){const a=k*2.4,r=9+k%4*4;ellipse(x+Math.cos(a)*r,y-24+Math.sin(a)*r,10+k%3,12+k%4,k%3?'#365c29':'#537432');}});
     ctx.fillStyle='#c6c496';ctx.fillRect(h.tee.x-22,h.tee.y-12,44,25);for(const x of [-20,20]){ctx.fillStyle='#aa2636';ctx.fillRect(h.tee.x+x-3,h.tee.y-5,6,6);}
     ellipse(h.pin.x,h.pin.y,6,4,'#1b3c2c');line([[h.pin.x,h.pin.y],[h.pin.x,h.pin.y-57]],2,'#f7f1d9');ctx.fillStyle='#af2738';ctx.beginPath();ctx.moveTo(h.pin.x,h.pin.y-57);ctx.lineTo(h.pin.x+32,h.pin.y-48);ctx.lineTo(h.pin.x,h.pin.y-39);ctx.closePath();ctx.fill();ctx.fillStyle='#fff4dc';ctx.font='bold 11px Inter, sans-serif';ctx.fillText(holeIndex+1,h.pin.x+8,h.pin.y-46);
-    players.forEach((player,i)=>{if(player.done||i===turn)return;ellipse(player.ball.x,player.ball.y,6,6,colors[i]);ctx.fillStyle='#fff';ctx.font='10px sans-serif';ctx.fillText(`P${i+1}`,player.ball.x+9,player.ball.y-5);});
+    players.forEach((player,i)=>{if(player.done||player.strokes===0||i===turn)return;const ball=ballMotion?ballMotion[i]:player.ball;ellipse(ball.x,ball.y,6,6,colors[i]);ctx.fillStyle='#fff';ctx.font='10px sans-serif';ctx.fillText(`P${i+1}`,ball.x+9,ball.y-5);});
     if(!busy){const t=target();ctx.save();ctx.setLineDash([7,9]);line([[p.ball.x,p.ball.y],[t.x,t.y]],2,'#fff4d9a0');ctx.restore();ctx.strokeStyle='#fff3d6';ctx.lineWidth=2;ctx.beginPath();ctx.arc(t.x,t.y,10,0,Math.PI*2);ctx.stroke();line([[t.x-15,t.y],[t.x+15,t.y]],1,'#fff3d6');line([[t.x,t.y-15],[t.x,t.y+15]],1,'#fff3d6');}
     if(!p.done)drawGolfer(p);
     const ball=flying||p.ball;ellipse(ball.x+2,ball.y+4,6,3,'#1b392c70');ellipse(ball.x,ball.y-(ball.z||0),5+(ball.z||0)/45,5+(ball.z||0)/45,colors[turn]);
