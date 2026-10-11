@@ -57,7 +57,7 @@
       characters.forEach((c,j)=>{const option=el('option',c.name);option.value=j;option.selected=j===s.character;select.append(option);});
       select.addEventListener('change',()=>{s.character=Number(select.value);renderRoster();$(`character-${i}`).focus();});
       const attire=el('div',undefined,'attire'); attire.setAttribute('role','group');attire.setAttribute('aria-label',`Player ${i+1} outfit`);
-      for(const [value,title] of [['uniform','Game-day uniform'],['golf','Niners golf attire']]) {
+      for(const [value,title] of [['golf','Niners golf attire'],['uniform','Game-day uniform']]) {
         const b=el('button',title);b.setAttribute('aria-pressed',String(s.attire===value));
         b.addEventListener('click',()=>{s.attire=value;renderRoster();$('roster').children[i].querySelector(`[aria-pressed="true"]`).focus();});attire.append(b);
       }
