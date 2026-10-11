@@ -107,6 +107,13 @@ and choose a football uniform or Niners golf attire. Three coastal holes feature
 club selection, aim and power controls, drag-to-swing, wind, rough, bunkers,
 water penalties, a scorecard, and round results. Each participant takes one shot
 per turn; finished players are skipped. A twelve-stroke pickup keeps rounds moving.
+Club buttons show maximum distance for the current golfer and lie. Full-power
+ranges are 285–320 yd for drivers, 165–180 yd for 7 irons, 80–85 yd for sand
+wedges, and 60 yd for putters on the green. Rough and sand reduce these ranges,
+with stronger reductions for drivers and putters. Wedges preserve bunker recovery.
+Club and power suggestions use distance, lie, and head/tail wind; players can
+adjust both. Each club has its own wind response and flight height, with lower
+flight on softer shots. Green detection follows the drawn ellipse.
 Rolling shots and landings can bump resting balls, transferring motion and
 deflecting glancing hits. Balls waiting to tee off and holed balls are excluded.
 Bumps do not add strokes to other players; a bumped ball entering the cup finishes

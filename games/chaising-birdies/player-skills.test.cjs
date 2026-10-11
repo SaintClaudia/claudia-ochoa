@@ -1,6 +1,6 @@
 const {test}=require('node:test');
 const assert=require('node:assert/strict');
-const {profiles,shotRange,target}=require('./player-skills.js');
+const {profiles,shotRange,shotLoft,recommendShot,target}=require('./player-skills.js');
 const golfers=Object.keys(profiles);
 const shot={club:'driver',power:100,lie:'Fairway',angle:0,origin:{x:0,y:0},wind:{x:0,y:10}};
 test('driving power and wind control trade off rather than one golfer winning both',()=>{
@@ -32,4 +32,36 @@ test('power scales predictably and cannot exceed the golfer maximum',()=>{
 test('target remains deterministic and does not mutate shot inputs',()=>{
  const options={...shot,golfer:'purdy'},before=structuredClone(options);
  assert.deepEqual(target(options),target(options));assert.deepEqual(options,before);
+});
+test('clubs retain distinct distances and bunker recovery favors the wedge',()=>{
+ for(const golfer of golfers){
+  const range=(club,lie='Fairway')=>shotRange({...shot,golfer,club,lie});
+  assert(range('driver')>range('iron')&&range('iron')>range('wedge')&&range('wedge')>range('putter'));
+  assert(range('wedge','Bunker')>range('iron','Bunker'));
+  assert(range('wedge','Bunker')>range('driver','Bunker'));
+  assert(range('putter','Bunker')<range('putter','Rough')&&range('putter','Rough')<range('putter','Fairway'));
+ }
+});
+test('club flight varies with club and power, with no loft for putts',()=>{
+ assert(shotLoft({club:'wedge',power:100})>shotLoft({club:'iron',power:100}));
+ assert(shotLoft({club:'iron',power:100})>shotLoft({club:'driver',power:100}));
+ assert(shotLoft({club:'wedge',power:10})<shotLoft({club:'wedge',power:100})/2);
+ assert.equal(shotLoft({club:'putter',power:100}),0);
+});
+test('clubs have distinct wind response while putting has none',()=>{
+ const drift=club=>target({...shot,golfer:'purdy',club}).y;
+ assert(drift('iron')>drift('driver')&&drift('driver')>drift('wedge'));
+ assert.equal(drift('putter'),0);
+});
+test('suggestions fit short putts, approaches, long drives, and sand recovery',()=>{
+ for(const golfer of golfers){
+  const recommend=(lie,d,wind={x:0,y:0})=>recommendShot({...shot,golfer,lie,pin:{x:d,y:0},wind});
+  assert.deepEqual(recommend('Green',12),{club:'putter',power:20});
+  assert.equal(recommend('Fairway',65).club,'wedge');
+  assert.equal(recommend('Fairway',150).club,'iron');
+  assert.deepEqual(recommend('Tee box',600),{club:'driver',power:100});
+  assert.equal(recommend('Bunker',25).club,'wedge');
+  assert.equal(recommend('Rough',12).club,'wedge');
+  assert(recommend('Fairway',150,{x:-10,y:0}).power>recommend('Fairway',150,{x:10,y:0}).power);
+ }
 });

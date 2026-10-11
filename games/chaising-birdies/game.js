@@ -30,7 +30,6 @@
       palette:{turf:['#4a592a','#60713a','#354927'],fairway:'#a2b55b',water:'#568f89',shallows:'#78aaa0',sand:'#ead3a1'}
     }
   ];
-  const clubs = { driver:{loft:95}, iron:{loft:115}, wedge:{loft:90}, putter:{loft:0} };
   const colors = ['#fff8e4','#e7ba5e','#e48e92'];
   let count = 3, selections = characters.map((_,i)=>({character:i,attire:'golf'})), rosterOpen = selections.map(()=>false);
   let players = [], holeIndex = 0, turn = 0, angle = 0, club = 'driver', power = 70, busy = false, flying = null, ballMotion = null, swingPose = null, drag = null, animation = null, sound = false, audio;
@@ -285,7 +284,7 @@
     if(p.x<45||p.x>955||p.y<50||p.y>635)return 'Out of bounds';
     if(h.water.some(e=>inEllipse(p,e)))return 'Water';
     if(h.sand.some(e=>inEllipse(p,e)))return 'Bunker';
-    if(distance(p,h.pin)<74)return 'Green';
+    if(inEllipse(p,[h.pin.x,h.pin.y,74,57]))return 'Green';
     if(distance(p,h.tee)<35)return 'Tee box';
     return h.fairway.slice(1).some((b,i)=>pathDistance(p,h.fairway[i],b)<h.fairwayWidth/2)?'Fairway':'Rough';
   }
@@ -294,11 +293,22 @@
     return {golfer:characters[p.character].artwork,club,power,angle,origin:p.ball,wind:holes[holeIndex].wind,lie:lieAt(p.ball)};
   }
   function target() {return BirdiesPlayerSkills.target(shotOptions());}
-  function aimAtPin() {const p=players[turn],h=holes[holeIndex];angle=Math.atan2(h.pin.y-p.ball.y,h.pin.x-p.ball.x);club=distance(p.ball,h.pin)<74?'putter':distance(p.ball,h.pin)<110?'wedge':distance(p.ball,h.pin)<220?'iron':'driver';power=70;syncControls();}
+  function aimAtPin() {
+    const p=players[turn],h=holes[holeIndex];
+    angle=Math.atan2(h.pin.y-p.ball.y,h.pin.x-p.ball.x);
+    const recommended=BirdiesPlayerSkills.recommendShot({...shotOptions(),pin:h.pin});
+    club=recommended.club;power=recommended.power;syncControls();
+  }
   function syncControls() {
     $('aim').value=Math.round(angle*180/Math.PI);$('aim-value').textContent=`${Math.round(angle*180/Math.PI)}°`;
     $('power').value=power;$('power-value').textContent=`${power}% · ${Math.round(BirdiesPlayerSkills.shotRange(shotOptions()))} yd`;
-    for(const b of $('clubs').children)b.setAttribute('aria-pressed',String(b.dataset.club===club));
+    for(const b of $('clubs').children) {
+      b.setAttribute('aria-pressed',String(b.dataset.club===club));
+      const type=b.dataset.club,range=Math.round(BirdiesPlayerSkills.shotRange({...shotOptions(),club:type,power:100}));
+      const label=type==='wedge'?'Wedge':BirdiesPlayerSkills.clubs[type].label;
+      b.querySelector('span').replaceChildren(document.createTextNode(label),el('br'),document.createTextNode(`${range} yd`));
+      b.title=`${BirdiesPlayerSkills.clubs[type].label}: up to ${range} yards from ${lieAt(players[turn].ball).toLowerCase()}`;
+    }
   }
   function scoreLabel(strokes,par) {const delta=strokes-par;return delta<=-3?'Albatross':delta===-2?'Eagle':delta===-1?'Birdie':delta===0?'Par':delta===1?'Bogey':delta===2?'Double bogey':`+${delta}`;}
   function scoreTable() {
@@ -352,7 +362,7 @@
   }
   function swing() {
     if(busy||!players.length||!$('hole-overlay').hidden)return;
-    const origin={...players[turn].ball},destination=target(),loft=clubs[club].loft;
+    const origin={...players[turn].ball},destination=target(),loft=BirdiesPlayerSkills.shotLoft(shotOptions());
     const motion=BirdiesBallPhysics.simulate({balls:players.map(p=>({position:p.ball,inPlay:!p.done&&p.strokes>0})),active:turn,origin,destination,loft,pin:holes[holeIndex].pin,lieAt});
     const start=performance.now(),windup=reducedMotion?0:640,flightDuration=950;
     const motionDuration=motion.frames.at(-1).time,playbackDuration=reducedMotion?100:motionDuration*1000;
