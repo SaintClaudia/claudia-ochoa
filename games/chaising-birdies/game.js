@@ -13,7 +13,7 @@
   ];
   const clubs = { driver: {range:300, loft:95}, iron:{range:185,loft:115}, wedge:{range:95,loft:90}, putter:{range:75,loft:0} };
   const colors = ['#fff8e4','#e7ba5e','#e48e92'];
-  let count = 3, selections = characters.map((_,i)=>({character:i,attire:'golf'}));
+  let count = 3, selections = characters.map((_,i)=>({character:i,attire:'golf'})), rosterOpen = selections.map(()=>false);
   let players = [], holeIndex = 0, turn = 0, angle = 0, club = 'driver', power = 70, busy = false, flying = null, swingPose = null, drag = null, animation = null, sound = false, audio;
   const canvas = $('course'), ctx = canvas.getContext('2d');
   // On-course height ratios use the 49ers' listed heights; each pose sheet keeps its
@@ -48,20 +48,41 @@
     wrapper.append(img);
     return wrapper;
   }
+  function takenBy(i,j) {
+    for(let o=0;o<count;o++) if(o!==i && selections[o].character===j) return o;
+    return -1;
+  }
   function renderRoster() {
     $('roster').replaceChildren();
     for(let i=0;i<count;i++) {
-      const s=selections[i], row=el('div',undefined,'roster-row'), content=el('div'), label=el('label',`PLAYER ${String(i+1).padStart(2,'0')}`,'roster-label');
-      label.htmlFor=`character-${i}`;
-      const select=el('select'); select.id=label.htmlFor;
-      characters.forEach((c,j)=>{const option=el('option',c.name);option.value=j;option.selected=j===s.character;select.append(option);});
-      select.addEventListener('change',()=>{s.character=Number(select.value);renderRoster();$(`character-${i}`).focus();});
+      const s=selections[i], row=el('div',undefined,'roster-row'), content=el('div'), label=el('div',`PLAYER ${String(i+1).padStart(2,'0')}`,'roster-label');
+      const open=rosterOpen[i], listId=`golfer-list-${i}`;
+      const pick=el('div',undefined,'golfer-pick');
+      const toggle=el('button',undefined,'golfer-toggle'); toggle.type='button';
+      toggle.setAttribute('aria-expanded',String(open)); toggle.setAttribute('aria-controls',listId);
+      toggle.append(el('span',characters[s.character].name,'golfer-name'));
+      const chevron=el('span','▾','golfer-chevron'); chevron.setAttribute('aria-hidden','true'); toggle.append(chevron);
+      toggle.addEventListener('click',()=>{rosterOpen[i]=!rosterOpen[i];renderRoster();$('roster').children[i].querySelector('.golfer-toggle').focus();});
+      const list=el('div',undefined,'golfer-list'); list.id=listId; list.hidden=!open;
+      const head=el('div',undefined,'golfer-list-head');
+      const available=characters.filter((c,j)=>j===s.character||takenBy(i,j)<0).length;
+      head.append(el('span','Choose your golfer'),el('span',`${available} available`));
+      list.append(head);
+      characters.forEach((c,j)=>{
+        const taken=takenBy(i,j), option=el('button',undefined,'golfer-option'); option.type='button';
+        option.append(el('span',c.name));
+        if(j===s.character){option.classList.add('selected');const check=el('span','✓');check.setAttribute('aria-hidden','true');option.append(check);}
+        else if(taken>=0){option.disabled=true;option.append(el('span',`P${taken+1}`,'taken-tag'));}
+        option.addEventListener('click',()=>{s.character=j;rosterOpen[i]=false;renderRoster();$('roster').children[i].querySelector('.golfer-toggle').focus();});
+        list.append(option);
+      });
+      pick.append(toggle,list);
       const attire=el('div',undefined,'attire'); attire.setAttribute('role','group');attire.setAttribute('aria-label',`Player ${i+1} outfit`);
       for(const [value,title] of [['golf','Niners golf attire'],['uniform','Game-day uniform']]) {
         const b=el('button',title);b.setAttribute('aria-pressed',String(s.attire===value));
         b.addEventListener('click',()=>{s.attire=value;renderRoster();$('roster').children[i].querySelector(`[aria-pressed="true"]`).focus();});attire.append(b);
       }
-      content.append(label,attire,select);row.append(portrait(s.character,s.attire),content);$('roster').append(row);
+      content.append(label,attire,pick);row.append(portrait(s.character,s.attire),content);$('roster').append(row);
     }
   }
   $('counts').addEventListener('click',e=>{const b=e.target.closest('[data-count]');if(!b)return;count=Number(b.dataset.count);for(const button of $('counts').children)button.setAttribute('aria-pressed',String(button===b));renderRoster();});
