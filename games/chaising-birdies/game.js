@@ -184,6 +184,29 @@
       source.onended=()=>{source.disconnect();gain.disconnect();};
     } catch { /* Audio is optional. */ }
   }
+  const terrainRecordingPromises=new Map();
+  const terrainRecordings={Water:'water-splash',Bunker:'bunker-land'};
+  function loadTerrainRecording(lie) {
+    if(!terrainRecordingPromises.has(lie)) {
+      const context=audioContext();
+      const promise=fetch(`audio/${terrainRecordings[lie]}.wav?v=1`)
+        .then(response=>{if(!response.ok)throw new Error('Terrain audio unavailable');return response.arrayBuffer();})
+        .then(data=>context.decodeAudioData(data)).catch(()=>null);
+      terrainRecordingPromises.set(lie,promise);
+    }
+    return terrainRecordingPromises.get(lie);
+  }
+  async function terrainSound(lie) {
+    if(!sound)return;
+    try {
+      const recording=await loadTerrainRecording(lie);
+      if(!sound||!recording)return;
+      const context=audioContext(),source=context.createBufferSource(),gain=context.createGain();
+      source.buffer=recording;gain.gain.value=.34;
+      source.connect(gain);gain.connect(context.destination);source.start();
+      source.onended=()=>{source.disconnect();gain.disconnect();};
+    } catch { /* Audio is optional. */ }
+  }
   let cupDropBuffer,recordedCupPromise;
   function loadCupRecording() {
     if(!recordedCupPromise) {
@@ -250,7 +273,7 @@
     if(!sound)return;
     try { const context=audioContext(),onset=context.currentTime+delay,o=context.createOscillator(),g=context.createGain();o.frequency.value=frequency;g.gain.setValueAtTime(.045,onset);g.gain.exponentialRampToValueAtTime(.001,onset+duration);o.connect(g);g.connect(context.destination);o.start(onset);o.stop(onset+duration);o.onended=()=>{o.disconnect();g.disconnect();}; } catch { /* Audio is optional. */ }
   }
-  $('sound').addEventListener('click',()=>{sound=!sound;$('sound').title=sound?'Turn sound off':'Turn sound on';$('sound').setAttribute('aria-pressed',String(sound));if(sound){loadCupRecording();loadDriverRecording();impactSound('putter',60);}});
+  $('sound').addEventListener('click',()=>{sound=!sound;$('sound').title=sound?'Turn sound off':'Turn sound on';$('sound').setAttribute('aria-pressed',String(sound));if(sound){loadCupRecording();loadDriverRecording();loadTerrainRecording('Water');loadTerrainRecording('Bunker');impactSound('putter',60);}});
   const distance=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
   function pathDistance(p,a,b) {const dx=b[0]-a[0],dy=b[1]-a[1],t=Math.max(0,Math.min(1,((p.x-a[0])*dx+(p.y-a[1])*dy)/(dx*dx+dy*dy)));return Math.hypot(p.x-a[0]-t*dx,p.y-a[1]-t*dy);}
   function inEllipse(p,e) {return ((p.x-e[0])/e[2])**2+((p.y-e[1])/e[3])**2<1;}
@@ -309,7 +332,7 @@
       player.ball={...motion.positions[i]};
       if(motion.sunk.includes(i)){player.done=true;player.scores[holeIndex]=player.strokes;holed=true;}
     });
-    if(lie==='Water'||lie==='Out of bounds'){p.strokes++;p.ball=origin;message=`${lie}. One penalty stroke; back to your previous lie.`;beep(150);}
+    if(lie==='Water'||lie==='Out of bounds'){p.strokes++;p.ball=origin;message=`${lie}. One penalty stroke; back to your previous lie.`;if(lie==='Out of bounds')beep(150);}
     else {
       p.ball=destination;
       if(distance(destination,h.pin)<(club==='putter'?13:10)){p.ball={...h.pin};p.done=true;p.scores[holeIndex]=p.strokes;message=`${characters[p.character].short}: ${scoreLabel(p.strokes,h.par)}! ${p.strokes} strokes.`;holed=true;}
@@ -334,7 +357,7 @@
     busy=true;swingPose={frame:0,angle,putting,progress:0};
     $('message').textContent=`${characters[players[turn].character].short}: ${putting?'putting':'backswing'}…`;
     updateUI();
-    let struck=false,motionFrame=0,collisionEvent=0;
+    let struck=false,motionFrame=0,collisionEvent=0,hazardEvent=0;
     function frame(now) {
       const elapsed=now-start;
       if(elapsed<windup) {
@@ -348,6 +371,10 @@
         swingPose.frame=reducedMotion||putting?3:t<.12?3:t<.32?4:5;
         swingPose.progress=1+t;
         const time=Math.min(motionDuration,(elapsed-windup)/playbackDuration*motionDuration);
+        while(hazardEvent<motion.hazardEvents.length&&motion.hazardEvents[hazardEvent].time<=time) {
+          const event=motion.hazardEvents[hazardEvent++];
+          if(terrainRecordings[event.lie])terrainSound(event.lie);
+        }
         while(collisionEvent<motion.collisions.length&&motion.collisions[collisionEvent].time<=time) {
           const hit=motion.collisions[collisionEvent++];
           impactSound('collision',Math.max(15,Math.min(100,hit.speed/2.5)));

@@ -36,13 +36,37 @@ test('rolling balls can enter the cup, including a ball bumped by another player
 test('an active ball crossing a ground hazard is flagged',()=>{
  const r=run([ball(0)],{lieAt:p=>p.x>40?'Water':'Fairway'});
  assert.deepEqual(r.hazards,[[0,'Water']]);assert.deepEqual(r.positions[0],{x:0,y:0});
+ assert.equal(r.hazardEvents.length,1);
+ assert.equal(r.hazardEvents[0].player,0);assert.equal(r.hazardEvents[0].lie,'Water');
+ assert(r.hazardEvents[0].time>0&&r.hazardEvents[0].time<.95);
 });
 test('a bumped ball sent into a hazard is restored without overlapping',()=>{
  const r=run([ball(0),ball(50)],{lieAt:p=>p.x>70?'Water':'Fairway'});
  assert(r.hazards.some(([i])=>i===1));assert(gap(...r.positions)>=11.99);
+ assert.equal(r.hazardEvents.filter(event=>event.player===1&&event.lie==='Water').length,1);
 });
 test('inputs remain unchanged for animation playback',()=>{
  const balls=[ball(0),ball(50)];run(balls);assert.deepEqual(balls,[ball(0),ball(50)]);
+});
+test('rolling into a bunker produces one cue without a stroke hazard',()=>{
+ const r=run([ball(0)],{lieAt:p=>p.x>40?'Bunker':'Fairway'});
+ assert.equal(r.hazardEvents.length,1);assert.equal(r.hazardEvents[0].lie,'Bunker');
+ assert(r.hazardEvents[0].time>0&&r.hazardEvents[0].time<.95);
+ assert.deepEqual(r.hazards,[]);assert.deepEqual(r.positions[0],{x:100,y:0});
+});
+test('airborne shots clear bunkers silently and cue when landing in sand',()=>{
+ const cleared=run([ball(0)],{loft:95,lieAt:p=>p.x>40&&p.x<70?'Bunker':'Fairway'});
+ assert.deepEqual(cleared.hazardEvents,[]);
+ const landed=run([ball(0)],{loft:95,lieAt:p=>p.x>80?'Bunker':'Fairway'});
+ assert.equal(landed.hazardEvents.length,1);assert.equal(landed.hazardEvents[0].lie,'Bunker');
+});
+test('rolling within sand is silent, while a new airborne landing cues again',()=>{
+ assert.deepEqual(run([ball(0)],{lieAt:()=> 'Bunker'}).hazardEvents,[]);
+ assert.equal(run([ball(0)],{loft:95,lieAt:()=> 'Bunker'}).hazardEvents.length,1);
+});
+test('a bumped ball entering a bunker produces one cue',()=>{
+ const r=run([ball(0),ball(50)],{lieAt:p=>p.x>70?'Bunker':'Fairway'});
+ assert.equal(r.hazardEvents.filter(event=>event.player===1&&event.lie==='Bunker').length,1);
 });
 
 test('collision cues identify the moment and force of each impact',()=>{

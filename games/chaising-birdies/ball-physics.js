@@ -17,7 +17,8 @@
   function simulate({balls,active,origin,destination,loft=0,duration=.95,pin,lieAt}) {
     const positions=balls.map(b=>({...b.position})),velocities=balls.map(()=>({x:0,y:0}));
     const eligible=balls.map((b,i)=>i===active||b.inPlay);
-    const sunk=new Set(),hazards=new Map(),bumped=new Set(),frames=[],collisions=[],lastContact=new Map();
+    const groundLies=balls.map(b=>lieAt(b.position));
+    const sunk=new Set(),hazards=new Map(),bumped=new Set(),frames=[],collisions=[],hazardEvents=[],lastContact=new Map();
     const delta={x:destination.x-origin.x,y:destination.y-origin.y};
     // Match the original shot's ease-out deceleration so a bump cannot add range.
     const rollingFriction=Math.max(20,2*length(delta)/(duration*duration));
@@ -47,7 +48,10 @@
     function settle(i) {
       if(!eligible[i]||sunk.has(i)||hazards.has(i))return;
       const p=positions[i],lie=lieAt(p);
+      if(lie==='Bunker'&&groundLies[i]!=='Bunker')hazardEvents.push({time:simulationTime,player:i,lie});
+      groundLies[i]=lie;
       if(lie==='Water'||lie==='Out of bounds'){
+        hazardEvents.push({time:simulationTime,player:i,lie});
         hazards.set(i,lie);velocities[i]={x:0,y:0};
         // A displaced player's ball returns to its safe spot without a penalty.
         positions[i]={...balls[i].position};return;
@@ -65,6 +69,7 @@
         const previous=positions[active];
         const next={x:origin.x+delta.x*ease,y:origin.y+delta.y*ease};
         z=Math.sin(Math.PI*t)*loft;
+        if(z>.01)groundLies[active]=null;
         let hit=null,fraction=Infinity;
         if(z<=diameter)for(let j=0;j<balls.length;j++) {
           if(j===active||!eligible[j])continue;
@@ -105,7 +110,7 @@
       if(eligible[i]&&eligible[j]&&!sunk.has(i)&&!sunk.has(j))collide(i,j);
     }
     record(frames.at(-1).time+step);
-    return {frames,positions,collisions,sunk:[...sunk],hazards:[...hazards],bumped:[...bumped].filter(i=>i!==active)};
+    return {frames,positions,collisions,hazardEvents,sunk:[...sunk],hazards:[...hazards],bumped:[...bumped].filter(i=>i!==active)};
   }
   const api={simulate,radius};
   if(typeof module!=='undefined'&&module.exports)module.exports=api;

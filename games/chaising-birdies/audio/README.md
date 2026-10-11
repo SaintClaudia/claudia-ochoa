@@ -11,3 +11,15 @@ The game fetches and decodes the clip when sound is enabled, and caches it for s
 `driver-hit.wav` isolates the second impact in the supplied `hit.m4a` voice memo, approximately 7.57–8.17 seconds into the recording. It uses mono 22.05 kHz PCM, gentle rumble/hiss filtering, edge fades, and peak normalization without clipping.
 
 The clip loads and caches when sound is enabled and plays for driver, iron, and wedge shots. Shot strength adjusts its volume and playback rate. Putter and ball-collision sounds retain their existing profiles. Each club’s synthesized strike remains available if the recording cannot load.
+
+# Water-splash recording
+
+`water-splash.wav` isolates the first splash in the supplied `water.m4a` voice memo, approximately 2.54–3.40 seconds into the recording. It uses mono 22.05 kHz PCM, removes the DC offset, normalizes the peak without clipping, and applies short edge fades. The full voice memo is not bundled.
+
+The clip loads and caches when sound is enabled. It plays once when a grounded ball enters water, including another player's ball bumped into water. Airborne shots that clear water and out-of-bounds shots do not trigger it. The water penalty and return to the previous lie are unchanged; the splash replaces the water penalty beep.
+
+# Bunker-landing recording
+
+`bunker-land.wav` isolates the impact in the supplied `bunker.m4a` voice memo, approximately 3.80–4.15 seconds into the recording. It uses mono 22.05 kHz PCM, DC offset removal, peak normalization, and short edge fades. The full voice memo is not bundled.
+
+The clip loads and caches when sound is enabled. It plays when a ball lands or rolls into a bunker, including a bumped ball. It does not repeat while rolling within sand or play for an airborne shot that clears the bunker. Landing back in sand after an airborne shot produces a new cue. Bunker distance adjustments remain unchanged.
