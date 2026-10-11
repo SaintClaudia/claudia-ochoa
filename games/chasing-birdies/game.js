@@ -337,7 +337,7 @@
     $('hole-meta').textContent=`HOLE ${String(holeIndex+1).padStart(2,'0')} / 03 · PAR ${h.par}`;
     $('wind').textContent=`WIND ${Math.round(Math.hypot(h.wind.x,h.wind.y))} MPH ${h.wind.x>0?(h.wind.y<0?'↗':'↘'):'↙'}`;
     $('distance').textContent=`${Math.round(distance(p.ball,h.pin))} yd`;$('stroke').textContent=p.done?p.strokes:p.strokes+1;$('lie').textContent=h.name.toUpperCase();$('scorecard').replaceChildren(scoreTable());
-    $('swing').disabled=busy;for(const input of [$('aim'),$('power'),$('aim-left'),$('aim-right'),$('aim-pin'),$('quick-swing'),...$('clubs').children])input.disabled=busy;
+    $('swing').disabled=busy;for(const input of [$('aim'),$('power'),$('quick-swing'),...$('clubs').children])input.disabled=busy;
     syncControls();
     draw();
   }
@@ -347,10 +347,6 @@
   $('aim').addEventListener('input',()=>{angle=Number($('aim').value)*Math.PI/180;syncControls();draw();});
   $('power').addEventListener('input',()=>{power=Number($('power').value);syncControls();draw();});
   $('clubs').addEventListener('click',e=>{const b=e.target.closest('[data-club]');if(!b||busy)return;club=b.dataset.club;syncControls();draw();});
-  function nudgeAim(delta) {if(busy||!players.length)return;angle=Math.atan2(Math.sin(angle+delta),Math.cos(angle+delta));syncControls();draw();}
-  $('aim-left').addEventListener('click',()=>nudgeAim(-Math.PI/180));
-  $('aim-right').addEventListener('click',()=>nudgeAim(Math.PI/180));
-  $('aim-pin').addEventListener('click',()=>{if(busy||!players.length)return;const p=players[turn],pin=holes[holeIndex].pin;angle=Math.atan2(pin.y-p.ball.y,pin.x-p.ball.x);syncControls();draw();});
   function finishHole() {
     busy=true;updateUI();const last=holeIndex===2;$('overlay-kicker').textContent=last?'ROUND COMPLETE':'HOLE COMPLETE';
     let title=holes[holeIndex].name;

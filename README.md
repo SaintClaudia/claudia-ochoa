@@ -117,12 +117,12 @@ with stronger reductions for drivers and putters. Wedges preserve bunker recover
 Club and power suggestions use distance, lie, and head/tail wind; players can
 adjust both. Each club has its own wind response and flight height, with lower
 flight on softer shots. Green detection follows the drawn ellipse.
-Mobile rounds put club selection, fine aim buttons, power, and Swing directly
+Mobile rounds put club selection, aim and power sliders, and Swing directly
 beneath the course. The landing preview shows expected distance and surface,
 with water and out-of-bounds warnings. Dragging the target adjusts both aim and
 power with wind compensation; pulling back from the ball also adjusts the shot.
 Mobile gestures wait for Swing by default; swing on release can be enabled in
-More aiming options. Player details and the scorecard expand below the controls,
+How to play. Player details and the scorecard expand below the controls,
 and shot transitions return the course to view. Desktop retains keyboard controls
 and defaults to swing on release for pull-back gestures.
 Rolling shots and landings can bump resting balls, transferring motion and
