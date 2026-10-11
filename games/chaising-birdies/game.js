@@ -171,11 +171,12 @@
     for(let i=0;i<samples.length;i++)samples[i]*=.82/Math.max(peak,.01);
     impactBuffers.set(type,buffer);return buffer;
   }
-  function impactSound(type,strength=70) {
+  function impactSound(type,strength=70,lie) {
     if(!sound)return;
     try {
       const context=audioContext(),source=context.createBufferSource(),gain=context.createGain();
-      source.buffer=['driver','iron','wedge'].includes(type)&&driverRecording?driverRecording:impactBuffer(type);
+      const bunkerHit=lie==='Bunker'&&terrainRecordingBuffers.get('BunkerHit');
+      source.buffer=bunkerHit||(['driver','iron','wedge'].includes(type)&&driverRecording?driverRecording:impactBuffer(type));
       // Putting is quieter; stronger full shots have a slightly brighter strike.
       const force=Math.max(0,Math.min(1,strength/100));
       source.playbackRate.value=.94+force*.10;
@@ -185,13 +186,15 @@
     } catch { /* Audio is optional. */ }
   }
   const terrainRecordingPromises=new Map();
-  const terrainRecordings={Water:'water-splash',Bunker:'bunker-land'};
+  const terrainRecordingBuffers=new Map();
+  const terrainRecordings={Water:'water-splash',Bunker:'bunker-land',BunkerHit:'bunker-hit'};
   function loadTerrainRecording(lie) {
     if(!terrainRecordingPromises.has(lie)) {
       const context=audioContext();
       const promise=fetch(`audio/${terrainRecordings[lie]}.wav?v=1`)
         .then(response=>{if(!response.ok)throw new Error('Terrain audio unavailable');return response.arrayBuffer();})
-        .then(data=>context.decodeAudioData(data)).catch(()=>null);
+        .then(data=>context.decodeAudioData(data))
+        .then(buffer=>{terrainRecordingBuffers.set(lie,buffer);return buffer;}).catch(()=>null);
       terrainRecordingPromises.set(lie,promise);
     }
     return terrainRecordingPromises.get(lie);
@@ -273,7 +276,7 @@
     if(!sound)return;
     try { const context=audioContext(),onset=context.currentTime+delay,o=context.createOscillator(),g=context.createGain();o.frequency.value=frequency;g.gain.setValueAtTime(.045,onset);g.gain.exponentialRampToValueAtTime(.001,onset+duration);o.connect(g);g.connect(context.destination);o.start(onset);o.stop(onset+duration);o.onended=()=>{o.disconnect();g.disconnect();}; } catch { /* Audio is optional. */ }
   }
-  $('sound').addEventListener('click',()=>{sound=!sound;$('sound').title=sound?'Turn sound off':'Turn sound on';$('sound').setAttribute('aria-pressed',String(sound));if(sound){loadCupRecording();loadDriverRecording();loadTerrainRecording('Water');loadTerrainRecording('Bunker');impactSound('putter',60);}});
+  $('sound').addEventListener('click',()=>{sound=!sound;$('sound').title=sound?'Turn sound off':'Turn sound on';$('sound').setAttribute('aria-pressed',String(sound));if(sound){loadCupRecording();loadDriverRecording();loadTerrainRecording('Water');loadTerrainRecording('Bunker');loadTerrainRecording('BunkerHit');impactSound('putter',60);}});
   const distance=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
   function pathDistance(p,a,b) {const dx=b[0]-a[0],dy=b[1]-a[1],t=Math.max(0,Math.min(1,((p.x-a[0])*dx+(p.y-a[1])*dy)/(dx*dx+dy*dy)));return Math.hypot(p.x-a[0]-t*dx,p.y-a[1]-t*dy);}
   function inEllipse(p,e) {return ((p.x-e[0])/e[2])**2+((p.y-e[1])/e[3])**2<1;}
@@ -366,7 +369,7 @@
         swingPose.frame=putting?0:t<.16?0:t<.46?1:t<.72?2:t<.91?1:3;
         swingPose.progress=t;
       } else {
-        if(!struck){struck=true;impactSound(club,power);$('message').textContent=putting?'Rolling toward the pin…':'Ball in flight…';}
+        if(!struck){struck=true;impactSound(club,power,lieAt(origin));$('message').textContent=putting?'Rolling toward the pin…':'Ball in flight…';}
         const t=Math.min(1,(elapsed-windup)/flightDuration);
         swingPose.frame=reducedMotion||putting?3:t<.12?3:t<.32?4:5;
         swingPose.progress=1+t;
