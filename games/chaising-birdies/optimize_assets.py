@@ -22,17 +22,17 @@ resized("chasing-birdies-logo-reverse.webp", "chasing-birdies-logo-small.webp", 
 resized("fairway-title.webp", "fairway-title-mobile.webp", 1280, quality=82)
 resized("fairway-title.webp", "fairway-title-desktop.webp", 1672, quality=82)
 
-# Match the previous sheet offsets at the 82 x 108 portrait size.
-# Crops retain the same heads and torsos, without downloading the full sheets.
-for player, offsets, top in [
-    ("purdy", {"uniform": 66, "golf": 239}, 9),
-    ("mccaffrey", {"uniform": 73, "golf": 230}, 3),
-    ("kittle", {"uniform": 61, "golf": 245}, 9),
+# Keep the full head or cap visible with space above it in every portrait.
+# A small transparent top margin also protects tight in-game portrait frames.
+for player, offsets in [
+    ("purdy", {"uniform": 66, "golf": 239}),
+    ("mccaffrey", {"uniform": 73, "golf": 230}),
+    ("kittle", {"uniform": 61, "golf": 245}),
 ]:
     with Image.open(ROOT / "players" / f"{player}.webp") as image:
         width = image.width / 4
         height = width * 108 / 82
-        y = height * top / 100
+        y = -12
         for attire, offset in offsets.items():
             x = width * offset / 100
             image.crop((round(x), round(y), round(x + width), round(y + height))).resize(

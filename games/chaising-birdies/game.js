@@ -56,7 +56,7 @@
   function portrait(character, attire) {
     const c = characters[character], wrapper = el('div', undefined, 'portrait');
     const img = el('img', undefined, 'player-portrait');
-    img.src = `players/${c.artwork}-portrait-${attire}.webp`;
+    img.src = `players/${c.artwork}-portrait-${attire}.webp?v=2`;
     img.width = 164; img.height = 216;
     img.loading = 'lazy';
     img.alt = `${c.name} in ${attire === 'golf' ? 'Niners golf attire' : 'football uniform'}`;

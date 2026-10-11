@@ -68,3 +68,6 @@ footer{justify-content:flex-end}body:has(#play:not([hidden])) footer{display:non
 
 .player-skills{font:10px/1.5 monospace;color:var(--gold);margin:0 0 9px;text-transform:none;letter-spacing:0}
 .active-heading .player-skills{font-size:9px;margin:5px 0 0}
+
+/* Disabled sliders recede behind shot playback and completion cards. */
+.controls input[type=range]:disabled{opacity:.18;cursor:default}
