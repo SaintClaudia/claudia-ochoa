@@ -209,7 +209,6 @@
   $('aim').addEventListener('input',()=>{angle=Number($('aim').value)*Math.PI/180;syncControls();draw();});
   $('power').addEventListener('input',()=>{power=Number($('power').value);syncControls();draw();});
   $('clubs').addEventListener('click',e=>{const b=e.target.closest('[data-club]');if(!b||busy)return;club=b.dataset.club;syncControls();draw();});
-  $('score-toggle').addEventListener('click',()=>{const open=$('scorecard').hidden;$('scorecard').hidden=!open;$('score-toggle').setAttribute('aria-expanded',String(open));$('score-toggle').textContent=open?'Hide scorecard −':'View scorecard +';});
   function finishHole() {
     busy=true;updateUI();const last=holeIndex===2;$('overlay-kicker').textContent=last?'ROUND COMPLETE':'HOLE COMPLETE';
     let title=`${holes[holeIndex].name} ✓`;
