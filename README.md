@@ -100,6 +100,8 @@ when deployed.
 ## Chasing Birdies
 
 An independent, buildless arcade golf game at `games/chaising-birdies/index.html`.
+The game has its own canonical URL, search description, Open Graph/Twitter
+sharing metadata, and factual `VideoGame` JSON-LD describing local play.
 Choose 1–3 local players, select Purdy, McCaffrey, or Kittle for each player,
 and choose a football uniform or Niners golf attire. Three coastal holes feature
 club selection, aim and power controls, drag-to-swing, wind, rough, bunkers,
