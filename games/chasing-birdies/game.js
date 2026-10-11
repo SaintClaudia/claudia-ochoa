@@ -61,6 +61,18 @@
   }
   window.addEventListener('resize',()=>{if(players.length&&!$('play').hidden)draw();});
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let mobileRoundLayout;
+  function updateRoundLayout() {
+    const mobile=window.matchMedia('(max-width:700px)').matches;
+    if(mobile===mobileRoundLayout)return;
+    if(mobileRoundLayout===undefined)$('quick-swing').checked=!mobile;
+    mobileRoundLayout=mobile;$('score-details').open=!mobile;
+    if(players.length&&!$('play').hidden)draw();
+  }
+  updateRoundLayout();window.addEventListener('resize',updateRoundLayout);
+  function keepCourseVisible() {
+    if(mobileRoundLayout)$('play').scrollIntoView({block:'start',behavior:'instant'});
+  }
   function el(tag, text, className) { const e=document.createElement(tag); if(text!==undefined)e.textContent=text; if(className)e.className=className; return e; }
   function chevronIcon() {
     const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
@@ -302,6 +314,9 @@
   function syncControls() {
     $('aim').value=Math.round(angle*180/Math.PI);$('aim-value').textContent=`${Math.round(angle*180/Math.PI)}°`;
     $('power').value=power;$('power-value').textContent=`${power}% · ${Math.round(BirdiesPlayerSkills.shotRange(shotOptions()))} yd`;
+    const destination=target(),landing=lieAt(destination);
+    $('target-preview').textContent=busy?'Shot in progress…':`Expected: ${Math.round(distance(players[turn].ball,destination))} yd · ${landing}`;
+    $('target-preview').dataset.risk=String(!busy&&(landing==='Water'||landing==='Out of bounds'));
     for(const b of $('clubs').children) {
       b.setAttribute('aria-pressed',String(b.dataset.club===club));
       const type=b.dataset.club,range=Math.round(BirdiesPlayerSkills.shotRange({...shotOptions(),club:type,power:100}));
@@ -317,18 +332,25 @@
   }
   function updateUI() {
     const p=players[turn],h=holes[holeIndex],heading=el('div',undefined,'active-heading'),info=el('div');info.append(el('small',`PLAYER ${turn+1}`),el('h2',characters[p.character].name),playerSummary(p.character));heading.append(portrait(p.character,p.attire),info);$('active-player').replaceChildren(heading);
+    info.querySelector('small').textContent=`PLAYER ${turn+1} · ${lieAt(p.ball)}`;
+    $('player-traits').replaceChildren(portrait(p.character,p.attire),playerSummary(p.character));
     $('hole-meta').textContent=`HOLE ${String(holeIndex+1).padStart(2,'0')} / 03 · PAR ${h.par}`;
     $('wind').textContent=`WIND ${Math.round(Math.hypot(h.wind.x,h.wind.y))} MPH ${h.wind.x>0?(h.wind.y<0?'↗':'↘'):'↙'}`;
     $('distance').textContent=`${Math.round(distance(p.ball,h.pin))} yd`;$('stroke').textContent=p.done?p.strokes:p.strokes+1;$('lie').textContent=h.name.toUpperCase();$('scorecard').replaceChildren(scoreTable());
-    $('swing').disabled=busy;for(const input of [$('aim'),$('power'),...$('clubs').children])input.disabled=busy;
+    $('swing').disabled=busy;for(const input of [$('aim'),$('power'),$('aim-left'),$('aim-right'),$('aim-pin'),$('quick-swing'),...$('clubs').children])input.disabled=busy;
+    syncControls();
     draw();
   }
-  function setupHole() {busy=false;flying=null;ballMotion=null;swingPose=null;players.forEach(p=>{p.ball={...holes[holeIndex].tee};p.strokes=0;p.done=false;});turn=0;$('hole-overlay').hidden=true;aimAtPin();$('message').textContent=`${characters[players[turn].character].short}, you’re up. Aim for the flag.`;updateUI();canvas.focus({preventScroll:true});}
-  $('start').addEventListener('click',()=>{startSound();players=selections.slice(0,count).map(s=>({...s,scores:[]}));loadSwingArt();holeIndex=0;$('setup').hidden=true;$('play').hidden=false;$('new-round').hidden=false;setupHole();window.scrollTo(0,0);});
+  function setupHole() {busy=false;flying=null;ballMotion=null;swingPose=null;players.forEach(p=>{p.ball={...holes[holeIndex].tee};p.strokes=0;p.done=false;});turn=0;$('hole-overlay').hidden=true;aimAtPin();$('message').textContent=`${characters[players[turn].character].short}, tap to aim or drag the target. Press Swing when ready.`;updateUI();canvas.focus({preventScroll:true});keepCourseVisible();}
+  $('start').addEventListener('click',()=>{startSound();players=selections.slice(0,count).map(s=>({...s,scores:[]}));loadSwingArt();holeIndex=0;$('setup').hidden=true;$('play').hidden=false;$('new-round').hidden=false;setupHole();window.scrollTo(0,0);keepCourseVisible();});
   $('new-round').addEventListener('click',()=>{if(animation)cancelAnimationFrame(animation);animation=null;busy=false;flying=null;ballMotion=null;swingPose=null;$('play').hidden=true;$('new-round').hidden=true;$('setup').hidden=false;$('start').focus();});
   $('aim').addEventListener('input',()=>{angle=Number($('aim').value)*Math.PI/180;syncControls();draw();});
   $('power').addEventListener('input',()=>{power=Number($('power').value);syncControls();draw();});
   $('clubs').addEventListener('click',e=>{const b=e.target.closest('[data-club]');if(!b||busy)return;club=b.dataset.club;syncControls();draw();});
+  function nudgeAim(delta) {if(busy||!players.length)return;angle=Math.atan2(Math.sin(angle+delta),Math.cos(angle+delta));syncControls();draw();}
+  $('aim-left').addEventListener('click',()=>nudgeAim(-Math.PI/180));
+  $('aim-right').addEventListener('click',()=>nudgeAim(Math.PI/180));
+  $('aim-pin').addEventListener('click',()=>{if(busy||!players.length)return;const p=players[turn],pin=holes[holeIndex].pin;angle=Math.atan2(pin.y-p.ball.y,pin.x-p.ball.x);syncControls();draw();});
   function finishHole() {
     busy=true;updateUI();const last=holeIndex===2;$('overlay-kicker').textContent=last?'ROUND COMPLETE':'HOLE COMPLETE';
     let title=holes[holeIndex].name;
@@ -359,9 +381,11 @@
     if(holed)holeSound();
     do {turn=(turn+1)%players.length;}while(players[turn].done);
     aimAtPin();$('message').textContent=`${message} ${characters[players[turn].character].short} is up${players.length>1?` (Player ${turn+1})`:''}.`;updateUI();
+    keepCourseVisible();
   }
   function swing() {
     if(busy||!players.length||!$('hole-overlay').hidden)return;
+    drag=null;keepCourseVisible();
     const origin={...players[turn].ball},destination=target(),loft=BirdiesPlayerSkills.shotLoft(shotOptions());
     const motion=BirdiesBallPhysics.simulate({balls:players.map(p=>({position:p.ball,inPlay:!p.done&&p.strokes>0})),active:turn,origin,destination,loft,pin:holes[holeIndex].pin,trees:holes[holeIndex].trees,lieAt});
     const start=performance.now(),windup=reducedMotion?0:640,flightDuration=950;
@@ -405,9 +429,30 @@
   }
   $('swing').addEventListener('click',swing);
   function point(e){const r=canvas.getBoundingClientRect();return {x:(e.clientX-r.left)*1000/r.width,y:(e.clientY-r.top)*680/r.height};}
-  canvas.addEventListener('pointerdown',e=>{if(busy)return;const pos=point(e);if(distance(pos,players[turn].ball)<35){drag=pos;canvas.setPointerCapture(e.pointerId);}else {angle=Math.atan2(pos.y-players[turn].ball.y,pos.x-players[turn].ball.x);syncControls();draw();}});
-  canvas.addEventListener('pointermove',e=>{if(!drag||busy)return;const pos=point(e);angle=Math.atan2(drag.y-pos.y,drag.x-pos.x);power=Math.min(100,Math.max(5,Math.round(distance(pos,drag)/1.5)));syncControls();draw();});
-  canvas.addEventListener('pointerup',e=>{if(!drag)return;const moved=distance(drag,point(e));drag=null;if(moved>8)swing();});canvas.addEventListener('pointercancel',()=>{drag=null;});
+  canvas.addEventListener('pointerdown',e=>{
+    if(busy||!players.length||!e.isPrimary)return;
+    const pos=point(e),ball=players[turn].ball,landing=target(),radius=22*1000/canvas.getBoundingClientRect().width;
+    const nearBall=distance(pos,ball)<radius,nearTarget=distance(pos,landing)<radius;
+    const mode=nearBall&&(!nearTarget||distance(pos,ball)<distance(pos,landing))?'pull':nearTarget?'target':'aim';
+    drag={mode,pointerId:e.pointerId,origin:pos,client:{x:e.clientX,y:e.clientY},moved:false};canvas.setPointerCapture(e.pointerId);
+    if(mode==='aim'){angle=Math.atan2(pos.y-ball.y,pos.x-ball.x);syncControls();draw();}
+  });
+  canvas.addEventListener('pointermove',e=>{
+    if(!drag||busy||!e.isPrimary||e.pointerId!==drag.pointerId)return;
+    if(Math.hypot(e.clientX-drag.client.x,e.clientY-drag.client.y)>6)drag.moved=true;
+    if(!drag.moved)return;
+    const pos=point(e),ball=players[turn].ball;
+    if(drag.mode==='pull'){
+      angle=Math.atan2(drag.origin.y-pos.y,drag.origin.x-pos.x);
+      power=Math.min(100,Math.max(5,Math.round(distance(pos,drag.origin)/1.5)));
+    }else if(drag.mode==='target'){
+      const aim=BirdiesPlayerSkills.aimShotAt(shotOptions(),pos);angle=aim.angle;power=aim.power;
+    }else angle=Math.atan2(pos.y-ball.y,pos.x-ball.x);
+    syncControls();draw();
+  });
+  canvas.addEventListener('pointerup',e=>{if(!drag||e.pointerId!==drag.pointerId)return;const shoot=drag.mode==='pull'&&drag.moved&&$('quick-swing').checked;drag=null;if(shoot)swing();});
+  canvas.addEventListener('pointercancel',e=>{if(drag&&e.pointerId===drag.pointerId)drag=null;});
+  canvas.addEventListener('lostpointercapture',e=>{if(drag&&e.pointerId===drag.pointerId)drag=null;});
   canvas.addEventListener('keydown',e=>{if(busy)return;if(e.key===' '){e.preventDefault();swing();}if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();angle+=(e.key==='ArrowLeft'?-.025:.025);angle=Math.atan2(Math.sin(angle),Math.cos(angle));syncControls();draw();}});
   function ellipse(x,y,rx,ry,color){ctx.beginPath();ctx.ellipse(x,y,rx,ry,0,0,Math.PI*2);ctx.fillStyle=color;ctx.fill();}
   function line(points,width,color){ctx.beginPath();points.forEach(([x,y],i)=>i?ctx.lineTo(x,y):ctx.moveTo(x,y));ctx.lineWidth=width;ctx.lineCap='round';ctx.lineJoin='round';ctx.strokeStyle=color;ctx.stroke();}
@@ -479,7 +524,13 @@
     ctx.fillStyle='#c6c496';ctx.fillRect(h.tee.x-22,h.tee.y-12,44,25);for(const x of [-20,20]){ctx.fillStyle='#aa2636';ctx.fillRect(h.tee.x+x-3,h.tee.y-5,6,6);}
     ellipse(h.pin.x,h.pin.y,6,4,'#1b3c2c');line([[h.pin.x,h.pin.y],[h.pin.x,h.pin.y-57]],2,'#f7f1d9');ctx.fillStyle='#af2738';ctx.beginPath();ctx.moveTo(h.pin.x,h.pin.y-57);ctx.lineTo(h.pin.x+32,h.pin.y-48);ctx.lineTo(h.pin.x,h.pin.y-39);ctx.closePath();ctx.fill();ctx.fillStyle='#fff4dc';ctx.font='bold 11px Inter, sans-serif';ctx.fillText(holeIndex+1,h.pin.x+8,h.pin.y-46);
     players.forEach((player,i)=>{if(player.done||player.strokes===0||i===turn)return;const ball=ballMotion?ballMotion[i]:player.ball;ellipse(ball.x,ball.y,6,6,colors[i]);ctx.fillStyle='#fff';ctx.font='10px sans-serif';ctx.fillText(`P${i+1}`,ball.x+9,ball.y-5);});
-    if(!busy){const t=target();ctx.save();ctx.setLineDash([7,9]);line([[p.ball.x,p.ball.y],[t.x,t.y]],2,'#fff4d9a0');ctx.restore();ctx.strokeStyle='#fff3d6';ctx.lineWidth=2;ctx.beginPath();ctx.arc(t.x,t.y,10,0,Math.PI*2);ctx.stroke();line([[t.x-15,t.y],[t.x+15,t.y]],1,'#fff3d6');line([[t.x,t.y-15],[t.x,t.y+15]],1,'#fff3d6');}
+    if(!busy){
+      const t=target(),marker=mobileRoundLayout?24:10,cross=mobileRoundLayout?34:15;
+      ctx.save();ctx.setLineDash([7,9]);line([[p.ball.x,p.ball.y],[t.x,t.y]],2,'#fff4d9a0');ctx.restore();
+      if(mobileRoundLayout)ellipse(t.x,t.y,40,40,'#fff4d91f');
+      ctx.strokeStyle='#fff3d6';ctx.lineWidth=mobileRoundLayout?3:2;ctx.beginPath();ctx.arc(t.x,t.y,marker,0,Math.PI*2);ctx.stroke();
+      line([[t.x-cross,t.y],[t.x+cross,t.y]],2,'#fff3d6');line([[t.x,t.y-cross],[t.x,t.y+cross]],2,'#fff3d6');
+    }
     if(!p.done)drawGolfer(p);
     const ball=flying||p.ball;ellipse(ball.x+2,ball.y+4,6,3,'#1b392c70');ellipse(ball.x,ball.y-(ball.z||0),5+(ball.z||0)/45,5+(ball.z||0)/45,colors[turn]);
   }

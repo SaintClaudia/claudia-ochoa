@@ -49,7 +49,16 @@
     const range=shotRange(options),drift=windScale(options);
     return {x:origin.x+Math.cos(angle)*range+wind.x*drift,y:origin.y+Math.sin(angle)*range+wind.y*drift};
   }
-  const api={profiles,clubs,shotRange,shotLoft,recommendShot,target};
+  function aimShotAt(options,point) {
+    const dx=point.x-options.origin.x,dy=point.y-options.origin.y;
+    const full={...options,power:100},range=shotRange(full),drift=windScale(full);
+    const wx=options.wind.x*drift,wy=options.wind.y*drift,dot=dx*wx+dy*wy;
+    const a=range*range-wx*wx-wy*wy;
+    const fraction=a>0?(Math.sqrt(dot*dot+a*(dx*dx+dy*dy))-dot)/a:Math.hypot(dx,dy)/range;
+    const power=Math.max(5,Math.min(100,Math.round(fraction*100)));
+    return {power,angle:Math.atan2(dy-wy*power/100,dx-wx*power/100)};
+  }
+  const api={profiles,clubs,shotRange,shotLoft,recommendShot,target,aimShotAt};
   if(typeof module==='object'&&module.exports)module.exports=api;
   else root.BirdiesPlayerSkills=api;
 })(typeof window==='object'?window:globalThis);

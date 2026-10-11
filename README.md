@@ -107,7 +107,7 @@ The game has its own canonical URL, search description, Open Graph/Twitter
 sharing metadata, and factual `VideoGame` JSON-LD describing local play.
 Choose 1–3 local players, select Purdy, McCaffrey, or Kittle for each player,
 and choose a football uniform or Niners golf attire. Three coastal holes feature
-club selection, aim and power controls, drag-to-swing, wind, rough, bunkers,
+club selection, aim and power controls, tap/drag aiming, wind, rough, bunkers,
 water penalties, a scorecard, and round results. Each participant takes one shot
 per turn; finished players are skipped. A twelve-stroke pickup keeps rounds moving.
 Club buttons show maximum distance for the current golfer and lie. Full-power
@@ -117,6 +117,14 @@ with stronger reductions for drivers and putters. Wedges preserve bunker recover
 Club and power suggestions use distance, lie, and head/tail wind; players can
 adjust both. Each club has its own wind response and flight height, with lower
 flight on softer shots. Green detection follows the drawn ellipse.
+Mobile rounds put club selection, fine aim buttons, power, and Swing directly
+beneath the course. The landing preview shows expected distance and surface,
+with water and out-of-bounds warnings. Dragging the target adjusts both aim and
+power with wind compensation; pulling back from the ball also adjusts the shot.
+Mobile gestures wait for Swing by default; swing on release can be enabled in
+More aiming options. Player details and the scorecard expand below the controls,
+and shot transitions return the course to view. Desktop retains keyboard controls
+and defaults to swing on release for pull-back gestures.
 Rolling shots and landings can bump resting balls, transferring motion and
 deflecting glancing hits. Balls waiting to tee off and holed balls are excluded.
 Bumps do not add strokes to other players; a bumped ball entering the cup finishes

@@ -126,3 +126,59 @@ footer{justify-content:flex-end}body:has(#play:not([hidden])) footer{display:non
   .intro-copy,.clubhouse{padding:14px}
   .golfer-name{font-size:19px}
 }
+
+/* Round controls keep the next shot close to the course. */
+.target-preview{display:flex;justify-content:center;align-items:center;min-height:28px;padding:6px 10px;background:#101c15;color:var(--gold);font:10px/1.4 monospace;text-align:center}
+.target-preview[data-risk="true"]{color:#ffb8a5;background:#2b1713}
+.aim-fine{display:flex;gap:8px;margin:12px 0}
+.aim-fine button{min-height:44px;border:1px solid #667461;background:#0b130e;padding:8px 12px;font-size:11px}
+.aim-fine button:nth-child(2){flex:1}
+.aim-options .slider-label{margin-top:12px}
+.quick-swing{display:flex;align-items:center;gap:8px;margin:12px 0 0;font-size:10px;line-height:1.5}
+.quick-swing input{width:18px;height:18px;accent-color:var(--gold);flex-shrink:0}
+.player-details{display:none}
+.score-details #scorecard{margin:0}
+@media(min-width:701px){
+  .score-details{border:0}
+  .score-details>summary{display:none}
+  .aim-fine{margin:10px 0}
+}
+@media(max-width:700px){
+  body:has(#play:not([hidden])) .masthead{height:56px}
+  body:has(#play:not([hidden])) .wordmark img{width:76px;max-height:48px}
+  body:has(#play:not([hidden])) .masthead>span{display:none}
+  #play{padding:6px 10px 12px;scroll-margin-top:6px}
+  .course-hud{padding:5px 6px;letter-spacing:.4px}
+  .course-hud span{padding:4px}
+  .course-footer{display:none}
+  .target-preview{min-height:26px;font-size:10px;padding:5px 8px}
+  .controls{padding:10px;gap:0 10px}
+  .active-heading .portrait,.active-heading .player-skills{display:none}
+  .active-heading h2{font-size:18px;margin:3px 0}
+  .active-heading small{font-size:8px}
+  .shot-stats{padding:4px 6px;border:0}
+  .shot-stats strong{font-size:20px;margin-top:2px}
+  .controls>fieldset{margin:9px 0 7px}
+  .controls legend{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);margin:0}
+  .clubs button{min-height:52px;padding:5px 0;font-size:18px}
+  .clubs button span{font-size:9px;margin-top:2px;line-height:1.25}
+  .aim-fine{grid-column:1/-1;margin:0 0 8px;gap:8px}
+  .aim-fine button{padding:6px 10px}
+  .controls>.slider-label{margin:0 0 3px;font-size:9px}
+  .controls>input[type=range]{height:26px;margin:0 0 6px}
+  .controls>.primary{min-height:48px;padding:10px 14px;margin-top:0}
+  #message{margin:10px 0 4px;font-size:10px;line-height:1.4;min-height:0}
+  .controls>details{grid-column:1/-1;padding:0;border:0;border-top:1px solid var(--line)}
+  .controls>details>summary{min-height:44px;display:flex;align-items:center;justify-content:space-between;font-size:11px}
+  .controls>details>summary:after{content:'+';color:var(--gold);font-size:18px}
+  .controls>details[open]>summary:after{content:'−'}
+  .controls>.aim-options{order:1}
+  .controls>.player-details{display:block;order:2}
+  .controls>.score-details{order:3}
+  .controls>details:not([class]){order:4}
+  #player-traits{display:flex;align-items:center;gap:12px;padding-bottom:12px}
+  #player-traits .portrait{width:48px;height:65px}
+  #player-traits .player-skills{margin:0}
+  .quick-swing{min-height:44px;margin:0 0 8px}
+  .controls .aim-options input[type=range]{height:30px}
+}

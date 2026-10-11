@@ -1,6 +1,6 @@
 const {test}=require('node:test');
 const assert=require('node:assert/strict');
-const {profiles,shotRange,shotLoft,recommendShot,target}=require('./player-skills.js');
+const {profiles,shotRange,shotLoft,recommendShot,target,aimShotAt}=require('./player-skills.js');
 const golfers=Object.keys(profiles);
 const shot={club:'driver',power:100,lie:'Fairway',angle:0,origin:{x:0,y:0},wind:{x:0,y:10}};
 test('driving power and wind control trade off rather than one golfer winning both',()=>{
@@ -64,4 +64,20 @@ test('suggestions fit short putts, approaches, long drives, and sand recovery',(
   assert.equal(recommend('Rough',12).club,'wedge');
   assert(recommend('Fairway',150,{x:-10,y:0}).power>recommend('Fairway',150,{x:10,y:0}).power);
  }
+});
+test('dragging a reachable target accounts for wind and current lie',()=>{
+ for(const golfer of golfers)for(const club of ['driver','iron','wedge','putter'])for(const lie of ['Fairway','Rough','Bunker','Green']){
+  const options={...shot,golfer,club,lie,power:60,angle:.7,wind:{x:8,y:-4}};
+  const point=target(options),aim=aimShotAt(options,point);
+  assert.equal(aim.power,60);
+  const actual=target({...options,...aim});
+  assert(Math.hypot(actual.x-point.x,actual.y-point.y)<.001);
+ }
+});
+test('drag target power is bounded and inputs remain unchanged',()=>{
+ const options={...shot,golfer:'purdy'},before=structuredClone(options);
+ for(const point of [{x:0,y:0},{x:10000,y:-10000},{x:-50,y:30}]){
+  const aim=aimShotAt(options,point);assert(aim.power>=5&&aim.power<=100);assert(Number.isFinite(aim.angle));
+ }
+ assert.deepEqual(options,before);
 });
