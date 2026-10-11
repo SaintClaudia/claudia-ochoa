@@ -57,10 +57,6 @@
     wrapper.append(img);
     return wrapper;
   }
-  function takenBy(i,j) {
-    for(let o=0;o<count;o++) if(o!==i && selections[o].character===j) return o;
-    return -1;
-  }
   function renderRoster() {
     $('roster').replaceChildren();
     for(let i=0;i<count;i++) {
@@ -74,14 +70,12 @@
       toggle.addEventListener('click',()=>{rosterOpen[i]=!rosterOpen[i];renderRoster();$('roster').children[i].querySelector('.golfer-toggle').focus();});
       const list=el('div',undefined,'golfer-list'); list.id=listId; list.hidden=!open;
       const head=el('div',undefined,'golfer-list-head');
-      const available=characters.filter((c,j)=>j===s.character||takenBy(i,j)<0).length;
-      head.append(el('span','Choose your golfer'),el('span',`${available} available`));
+      head.append(el('span','Choose your golfer'),el('span',`${characters.length} golfers`));
       list.append(head);
       characters.forEach((c,j)=>{
-        const taken=takenBy(i,j), option=el('button',undefined,'golfer-option'); option.type='button';
+        const option=el('button',undefined,'golfer-option'); option.type='button';
         option.append(el('span',c.name));
         if(j===s.character){option.classList.add('selected');const check=el('span','✓');check.setAttribute('aria-hidden','true');option.append(check);}
-        else if(taken>=0){option.disabled=true;option.append(el('span',`P${taken+1}`,'taken-tag'));}
         option.addEventListener('click',()=>{s.character=j;rosterOpen[i]=false;renderRoster();$('roster').children[i].querySelector('.golfer-toggle').focus();});
         list.append(option);
       });
