@@ -24,9 +24,9 @@ The clip loads and caches when sound is enabled. It plays once when a grounded b
 
 The clip loads and caches when sound is enabled and replaces the club impact sound for shots originating in a bunker. Shot strength adjusts volume and playback rate. The existing club sound remains available if the recording cannot load.
 
-# Bunker-landing sound
+# Bunker-landing recording
 
-`bunker-land.wav` is a separately synthesized 0.30-second mono 22.05 kHz PCM effect: a low, damped thud with a short, muffled granular sand sound and faded tail. It contains no part of the supplied bunker-shot recording.
+`bunker-land.wav` isolates the sand landing in the supplied `sand.m4a` voice memo, approximately 4.90–5.40 seconds into the recording. It uses mono 22.05 kHz PCM, DC offset removal, peak normalization without clipping, and short edge fades. The full voice memo is not bundled. This replaces the synthesized landing effect; `bunker-hit.wav` remains the separate sound for hitting out of sand.
 
 The clip loads and caches when sound is enabled. It plays when a ball lands or rolls into a bunker, including a bumped ball. It does not repeat while rolling within sand or play for an airborne shot that clears the bunker. Landing back in sand after an airborne shot produces a new cue. Bunker distance adjustments remain unchanged.
 
