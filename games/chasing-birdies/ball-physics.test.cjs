@@ -12,7 +12,9 @@ test('entering trees cues once without adding a stroke hazard or changing the sh
 });
 test('shots clearing the canopy and near misses are silent',()=>{
  assert.deepEqual(run([ball(0)],{trees:[[50,0]],loft:135}).hazardEvents,[]);
- assert.deepEqual(run([ball(0)],{trees:[[50,40]]}).hazardEvents,[]);
+ // Foliage is centered 20 units above the anchor; both paths miss its outer edge.
+ assert.deepEqual(run([ball(0)],{trees:[[50,60]]}).hazardEvents,[]);
+ assert.deepEqual(run([ball(0)],{trees:[[50,-20]]}).hazardEvents,[]);
 });
 test('low airborne shots and landings in trees produce a contact cue',()=>{
  assert(run([ball(0)],{trees:[[50,0]],loft:20}).hazardEvents.some(e=>e.lie==='Trees'));
@@ -21,6 +23,11 @@ test('low airborne shots and landings in trees produce a contact cue',()=>{
 });
 test('a resting ball in trees is silent when putting out of them',()=>{
  assert.deepEqual(run([ball(0)],{trees:[[0,0]]}).hazardEvents,[]);
+});
+test('landing on the visible upper shrub foliage triggers the contact sound',()=>{
+ const r=run([ball(230,560)],{destination:{x:450,y:497},trees:[[450,530]],loft:85});
+ assert.equal(r.hazardEvents.filter(e=>e.lie==='Trees').length,1);
+ assert.deepEqual(r.positions[0],{x:450,y:497});
 });
 test('a bumped ball entering trees produces a cue for that player',()=>{
  const r=run([ball(0),ball(50)],{trees:[[100,0]]});
@@ -101,3 +108,30 @@ test('collision cues identify the moment and force of each impact',()=>{
  const chain=run([ball(0),ball(50),ball(65)]);
  assert(chain.collisions.length>=2);
 });
+
+// Read the actual course and lie classifier so coverage follows every hole's scenery.
+const courseSource=require('node:fs').readFileSync(require('node:path').join(__dirname,'game.js'),'utf8');
+const course=require('node:vm').runInNewContext(
+ courseSource.slice(courseSource.indexOf('  const holes = ['),courseSource.indexOf('  const colors ='))+
+ 'let holeIndex=0;'+
+ courseSource.slice(courseSource.indexOf('  const distance='),courseSource.indexOf('  function shotOptions()'))+
+ '({holes,lieFor:(index,p)=>{holeIndex=index;return lieAt(p);}})');
+for(const [index,hole] of course.holes.entries()) {
+ test(`all ${hole.trees.length} shrubs on ${hole.name} cue on visible foliage landings`,()=>{
+  for(const [x,y] of hole.trees) {
+   const origin={x:x-100,y:y-33},destination={x,y:y-33};
+   const r=simulate({balls:[{position:origin,inPlay:true}],active:0,origin,destination,loft:85,trees:hole.trees,lieAt:p=>course.lieFor(index,p)});
+   assert(r.hazardEvents.some(e=>e.lie==='Trees'),`Missing shrub cue at ${x},${y}`);
+  }
+ });
+ test(`all ${hole.sand.length} bunkers on ${hole.name} cue for landings and rolling entry`,()=>{
+  for(const [x,y,rx] of hole.sand) {
+   const origin={x:x-rx-15,y},destination={x,y};
+   assert.equal(course.lieFor(index,destination),'Bunker');
+   for(const loft of [0,85,135]) {
+    const r=simulate({balls:[{position:origin,inPlay:true}],active:0,origin,destination,loft,trees:hole.trees,lieAt:p=>course.lieFor(index,p)});
+    assert.equal(r.hazardEvents.filter(e=>e.lie==='Bunker').length,1,`Missing/duplicate bunker cue at ${x},${y}, loft ${loft}`);
+   }
+  }
+ });
+}

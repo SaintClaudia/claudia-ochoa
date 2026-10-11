@@ -188,11 +188,12 @@
     for(let i=0;i<samples.length;i++)samples[i]*=.82/Math.max(peak,.01);
     impactBuffers.set(type,buffer);return buffer;
   }
-  function impactSound(type,strength=70,lie) {
+  async function impactSound(type,strength=70,lie) {
     if(!sound)return;
     try {
+      const bunkerHit=lie==='Bunker'?await loadTerrainRecording('BunkerHit'):null;
+      if(!sound)return;
       const context=audioContext(),source=context.createBufferSource(),gain=context.createGain();
-      const bunkerHit=lie==='Bunker'&&terrainRecordingBuffers.get('BunkerHit');
       source.buffer=bunkerHit||(['driver','iron','wedge'].includes(type)&&driverRecording?driverRecording:impactBuffer(type));
       // Putting is quieter; stronger full shots have a slightly brighter strike.
       const force=Math.max(0,Math.min(1,strength/100));
@@ -208,10 +209,10 @@
   function loadTerrainRecording(lie) {
     if(!terrainRecordingPromises.has(lie)) {
       const context=audioContext();
-      const promise=fetch(`audio/${terrainRecordings[lie]}.wav?v=${lie==='Bunker'||lie==='Trees'?2:1}`)
+      const promise=fetch(`audio/${terrainRecordings[lie]}.wav?v=${lie==='Trees'?6:lie==='Bunker'?2:1}`)
         .then(response=>{if(!response.ok)throw new Error('Terrain audio unavailable');return response.arrayBuffer();})
         .then(data=>context.decodeAudioData(data))
-        .then(buffer=>{terrainRecordingBuffers.set(lie,buffer);return buffer;}).catch(()=>null);
+        .then(buffer=>{terrainRecordingBuffers.set(lie,buffer);return buffer;}).catch(()=>{terrainRecordingPromises.delete(lie);return null;});
       terrainRecordingPromises.set(lie,promise);
     }
     return terrainRecordingPromises.get(lie);

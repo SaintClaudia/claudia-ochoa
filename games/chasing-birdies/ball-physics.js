@@ -18,8 +18,9 @@
     const positions=balls.map(b=>({...b.position})),velocities=balls.map(()=>({x:0,y:0}));
     const eligible=balls.map((b,i)=>i===active||b.inPlay);
     const groundLies=balls.map(b=>lieAt(b.position));
-    // Tree footprints include ball radius. Height uses the same units as shot loft.
-    const treePoint=(p,tree)=>({x:(p.x-tree[0])/34,y:(p.y-tree[1])/30});
+    // Match the visible foliage, drawn 20 units above the tree anchor, including ball radius.
+    // Height uses the same units as shot loft.
+    const treePoint=(p,tree)=>({x:(p.x-tree[0])/34,y:(p.y-(tree[1]-20))/37});
     const insideTree=(p,tree)=>length(treePoint(p,tree))<=1;
     const touchingTrees=balls.map(b=>new Set(trees.flatMap((tree,j)=>insideTree(b.position,tree)?[j]:[])));
     const sunk=new Set(),hazards=new Map(),bumped=new Set(),frames=[],collisions=[],hazardEvents=[],lastContact=new Map();

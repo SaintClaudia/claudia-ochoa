@@ -22,7 +22,7 @@ The clip loads and caches when sound is enabled. It plays once when a grounded b
 
 `bunker-hit.wav` isolates the club striking the ball from sand in the supplied `bunker.m4a` voice memo, approximately 3.80–4.15 seconds into the recording. It uses mono 22.05 kHz PCM, DC offset removal, peak normalization, and short edge fades. The full voice memo is not bundled.
 
-The clip loads and caches when sound is enabled and replaces the club impact sound for shots originating in a bunker. Shot strength adjusts volume and playback rate. The existing club sound remains available if the recording cannot load.
+The clip loads and caches when sound is enabled and replaces the club impact sound for shots originating in any bunker, with every club. A cold first shot waits for the recording rather than using a regular club strike while it is still loading. Shot strength adjusts volume and playback rate. The existing club sound remains available if the recording cannot load; failed terrain audio requests can retry on subsequent contacts.
 
 # Bunker-landing recording
 
@@ -32,6 +32,8 @@ The clip loads and caches when sound is enabled. It plays when a ball lands or r
 
 # Shrubs / tree-impact recording
 
-`tree-impact.wav` isolates the rustle in the supplied `shrubs.m4a` voice memo, approximately 3.02–4.30 seconds into the recording. It uses mono 22.05 kHz PCM, DC offset removal, peak normalization without clipping, and short edge fades. The full voice memo is not bundled. This replaces the synthesized tree-impact effect.
+`tree-impact.wav` isolates the first strong impact in the supplied `Shrubs 2.m4a` voice memo, approximately 2.59–2.85 seconds into the recording. It uses mono 22.05 kHz PCM, DC offset removal, two 450 Hz Butterworth high-pass stages to reduce the low thud, peak normalization to 24000/32768, an 8 ms onset fade, and a 75 ms tail fade. The full voice memo is not bundled. This 0.26-second cue replaces the previous shrubs recording; the tail is cut before the secondary bump heard in the longer edit.
 
-The clip loads and caches when sound is enabled. Tree contact cues are timed by the ball simulation using the tree footprints and a rounded canopy up to 60 loft units high. Low flying, landing, and rolling balls can trigger it, including bumped balls. Shots that clear the canopy are silent. The cue plays on entry rather than repeating while a ball stays inside a tree. Tree contact does not add a stroke penalty or change ball motion.
+The main impact burst is additionally attenuated to 4% amplitude between 105–180 ms into the clip, with 20 ms cosine ramps around it. The remaining rustle is not renormalized, so the impact is not amplified again.
+
+The clip loads and caches when sound is enabled. Tree contact cues are timed by the ball simulation using a foliage footprint centered 20 units above the tree anchor to match the drawing, and a rounded canopy up to 60 loft units high. Low flying, landing, and rolling balls can trigger it, including bumped balls. Shots that clear the canopy are silent. The cue plays on entry rather than repeating while a ball stays inside a tree. Tree contact does not add a stroke penalty or change ball motion.
