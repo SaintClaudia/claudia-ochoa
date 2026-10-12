@@ -26,4 +26,23 @@
     const path = new URL(link.href).pathname.replace(/index\.html$/, '') || '/';
     if (path === currentPath) link.setAttribute('aria-current', 'page');
   });
+  // Standard pages tuck the header away while reading down and bring it back on any scroll up.
+  const header = document.querySelector('.site-header');
+  if (header && document.body.classList.contains('portfolio-standard-page')) {
+    let lastY = window.scrollY;
+    let scheduled = false;
+    const update = () => {
+      scheduled = false;
+      const y = Math.max(0, window.scrollY);
+      const delta = y - lastY;
+      if (Math.abs(delta) < 6) return;
+      const hide = delta > 0 && y > header.offsetHeight && !header.contains(document.activeElement);
+      header.classList.toggle('is-hidden', hide);
+      lastY = y;
+    };
+    window.addEventListener('scroll', () => {
+      if (!scheduled) { scheduled = true; requestAnimationFrame(update); }
+    }, { passive: true });
+    header.addEventListener('focusin', () => header.classList.remove('is-hidden'));
+  }
 })();
