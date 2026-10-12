@@ -30,3 +30,4 @@ html.menu-is-open{overflow:hidden}
 @media(max-width:800px){.work-page .site-header{transition:transform .35s cubic-bezier(.2,.7,.2,1),background-color .25s}.work-page .site-header.is-scrolled{background:#0a0b0bd9;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}.work-page .site-header.is-hidden{transform:translateY(-100%)}}
 @media(prefers-reduced-motion:reduce){.work-page .site-header{transition:none}}
 .site-menu.is-pointer-opened .site-menu-close:focus-visible,.site-menu-toggle.is-pointer-focus:focus-visible{outline:none}
+@media(max-width:800px){.site-menu{width:100%;border-left:0;box-shadow:none;padding:88px calc(clamp(24px,4vw,80px) - 12px) 32px}}
