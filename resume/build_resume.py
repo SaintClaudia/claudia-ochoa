@@ -49,7 +49,7 @@ class ResumeDoc(BaseDocTemplate):
             rightMargin=20,
             topMargin=18,
             bottomMargin=36,
-            title='Claudia Ochoa - AI Experience, Product Design, and Brand Strategy Leader',
+            title='Claudia Ochoa - Creative and Product Design Leader',
             author='Claudia Ochoa',
             subject='Resume',
         )
@@ -158,7 +158,7 @@ def role(title, company, dates, intro, items, trailing_space=10):
 
 story = [
     P('Claudia Ochoa', name_style),
-    P('AI EXPERIENCE | PRODUCT DESIGN | BRAND STRATEGY', title_style),
+    P('CREATIVE DIRECTION | PRODUCT DESIGN | BRAND STRATEGY', title_style),
     P(
         '<link href="https://claudiaochoa.co" color="#F4F4F4">claudiaochoa.co</link>'
         ' | <link href="https://www.linkedin.com/in/claudiajochoa/" color="#F4F4F4">linkedin.com/in/claudiajochoa</link>',
@@ -166,7 +166,7 @@ story = [
     ),
     *section('Leadership Profile'),
     P(
-        'AI experience and product design leader with 20+ years of experience connecting emerging technology, '
+        'Creative and product design leader with 20+ years of experience connecting emerging technology, '
         'business strategy, brand, and human-centered design. Sets product direction, turns ambiguous problems into '
         'clear experiences, and aligns leaders, designers, product managers, and engineers through delivery. Work spans '
         'enterprise platforms, consumer e-commerce, design systems, and responsible AI.',

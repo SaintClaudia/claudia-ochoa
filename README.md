@@ -1,6 +1,6 @@
 # claudiaochoa.co
 
-Personal portfolio of Claudia Ochoa — AI Experience and Product Design Leader blending emerging technology, business strategy, and human-centered design.
+Personal portfolio of Claudia Ochoa — Creative and Product Design Leader blending emerging technology, business strategy, and human-centered design.
 
 ## Live site
 
