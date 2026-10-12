@@ -3,12 +3,15 @@
   const menuToggle = document.querySelector('.site-menu-toggle');
   const menuClose = document.querySelector('.site-menu-close');
   if (menu && menuToggle && menuClose) {
-    menuToggle.addEventListener('click', () => {
+    menuToggle.addEventListener('click', event => {
+      // A tap or click opens without the keyboard focus ring; the ring returns as soon as a key is pressed.
+      menu.classList.toggle('is-pointer-opened', event.detail > 0);
       menu.showModal();
       menuToggle.setAttribute('aria-expanded', 'true');
       document.documentElement.classList.add('menu-is-open');
       menuClose.focus();
     });
+    menu.addEventListener('keydown', () => menu.classList.remove('is-pointer-opened'));
     const closeMenu = () => menu.close();
     menuClose.addEventListener('click', closeMenu);
     menu.addEventListener('click', event => {
@@ -18,8 +21,12 @@
     menu.addEventListener('close', () => {
       menuToggle.setAttribute('aria-expanded', 'false');
       document.documentElement.classList.remove('menu-is-open');
+      menuToggle.classList.toggle('is-pointer-focus', menu.classList.contains('is-pointer-opened'));
       menuToggle.focus();
     });
+    const clearPointerFocus = () => menuToggle.classList.remove('is-pointer-focus');
+    menuToggle.addEventListener('keydown', clearPointerFocus);
+    menuToggle.addEventListener('blur', clearPointerFocus);
   }
   const currentPath = location.pathname.replace(/index\.html$/, '') || '/';
   menu?.querySelectorAll('nav > a[href]:not(.nav-menu-profile)').forEach(link => {
