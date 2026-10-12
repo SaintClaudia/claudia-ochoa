@@ -33,9 +33,9 @@
     const path = new URL(link.href).pathname.replace(/index\.html$/, '') || '/';
     if (path === currentPath) link.setAttribute('aria-current', 'page');
   });
-  // Standard, About, and phone-width Work pages tuck the header away while reading down and bring it back on any scroll up.
+  // Standard, About, Contact, and phone-width Work pages tuck the header away while reading down and bring it back on any scroll up.
   const header = document.querySelector('.site-header');
-  if (header && document.body.matches('.portfolio-standard-page, .about-page, .work-page')) {
+  if (header && document.body.matches('.portfolio-standard-page, .about-page, .contact-page, .work-page')) {
     let lastY = window.scrollY;
     let scheduled = false;
     const update = () => {
