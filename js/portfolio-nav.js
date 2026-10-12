@@ -26,9 +26,9 @@
     const path = new URL(link.href).pathname.replace(/index\.html$/, '') || '/';
     if (path === currentPath) link.setAttribute('aria-current', 'page');
   });
-  // Standard pages tuck the header away while reading down and bring it back on any scroll up.
+  // Standard and About pages tuck the header away while reading down and bring it back on any scroll up.
   const header = document.querySelector('.site-header');
-  if (header && document.body.classList.contains('portfolio-standard-page')) {
+  if (header && document.body.matches('.portfolio-standard-page, .about-page')) {
     let lastY = window.scrollY;
     let scheduled = false;
     const update = () => {
