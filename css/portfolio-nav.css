@@ -12,16 +12,12 @@ body.portfolio-standard-page{padding-top:104px}
 .nav-menu-icon-arrow{opacity:0;transform:translateX(-2px);transition:opacity .15s ease,transform .15s ease}
 .site-menu-toggle:is(:hover,:focus-visible) .nav-menu-icon-divider,.site-menu-close:is(:hover,:focus-visible) .nav-menu-icon-divider{opacity:0}
 .site-menu-toggle:is(:hover,:focus-visible) .nav-menu-icon-arrow-closed,.site-menu-close:is(:hover,:focus-visible) .nav-menu-icon-arrow-open{opacity:1;transform:none}
-.site-menu{position:fixed;inset:0 0 0 auto;margin:0;width:min(320px,84vw);height:100dvh;max-height:100dvh;max-width:100%;padding:96px 28px 28px;background:rgba(21,21,23,.94);color:#f5f5f1;border:0;border-left:1px solid #ffffff14;box-shadow:-20px 0 70px #0004;backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);overflow-y:auto;overscroll-behavior:contain;font-family:Inter,Arial,sans-serif}
+.site-menu{position:fixed;inset:0 0 0 auto;margin:0;width:min(320px,84vw);height:100dvh;max-height:100dvh;max-width:100%;padding:96px 28px 28px;background:#0a0b0bf0;color:#f5f5f1;border:0;border-left:1px solid #ffffff14;box-shadow:-20px 0 70px #0004;backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);overflow-y:auto;overscroll-behavior:contain;font-family:Inter,Arial,sans-serif}
 .site-menu::backdrop{background:#0007}
 .site-menu-close{position:absolute;top:30px;right:clamp(24px,4vw,80px)}
 .site-menu nav{display:flex;flex-direction:column;gap:4px}
 .site-menu nav a{display:flex;align-items:center;gap:12px;padding:6px 12px;border-radius:10px;font-family:Inter,Arial,sans-serif;font-size:15px;font-weight:500;line-height:1.5;letter-spacing:normal;color:#d4d4d8;text-decoration:none;transition:background .15s,color .15s}
 .site-menu nav a:hover,.site-menu nav a:focus-visible{background:#ffffff1a;color:#f2f2f4}
-.site-menu nav a.nav-menu-profile{gap:14px;margin:-12px 0 12px;padding:0 10px 18px;border-bottom:1px solid #ffffff14;border-radius:0;font-size:16px;font-weight:600;color:#f2f2f4}
-.site-menu nav a.nav-menu-profile:hover,.site-menu nav a.nav-menu-profile:focus-visible{background:transparent}
-.nav-menu-avatar{width:42px;height:42px;flex:0 0 42px;overflow:hidden;border:1px solid #ffffff14;border-radius:50%}
-.nav-menu-avatar img{width:100%;height:100%;object-fit:cover;display:block}
 .nav-menu-panel-label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#9b9ba3;padding:16px 12px 4px;margin-top:8px}
 .site-menu nav a.sub{padding-left:12px;font-size:14px;font-weight:400;color:#9b9ba3}
 .site-menu nav a.sub:before{content:'';width:6px;height:6px;border:1.3px solid #9b9ba3;border-radius:50%;flex:0 0 auto;transition:background .15s,border-color .15s}

@@ -29,7 +29,7 @@
     menuToggle.addEventListener('blur', clearPointerFocus);
   }
   const currentPath = location.pathname.replace(/index\.html$/, '') || '/';
-  menu?.querySelectorAll('nav > a[href]:not(.nav-menu-profile)').forEach(link => {
+  menu?.querySelectorAll('nav > a[href]').forEach(link => {
     const path = new URL(link.href).pathname.replace(/index\.html$/, '') || '/';
     if (path === currentPath) link.setAttribute('aria-current', 'page');
   });
