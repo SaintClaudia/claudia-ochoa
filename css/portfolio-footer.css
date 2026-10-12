@@ -1,0 +1,14 @@
+.portfolio-footer{padding:64px clamp(24px,4vw,80px) 32px;background:#0a0b0b;color:#aeb2b0;font-family:Inter,Arial,sans-serif;font-size:13px}
+.portfolio-footer-inner{max-width:1440px;margin:0 auto;border-top:1px solid #ffffff1a;padding-top:40px}
+.portfolio-footer-top{display:flex;justify-content:space-between;align-items:flex-start;gap:32px}
+.portfolio-footer-brand{display:grid;gap:12px}
+.portfolio-footer-wordmark{font-family:Inter,Arial,sans-serif;font-style:normal;font-weight:550;font-size:22px;letter-spacing:-.8px;color:#f5f5f1;text-decoration:none;line-height:1.2}
+.portfolio-footer-wordmark span{color:#d7c8a5}
+.portfolio-footer-brand p{margin:0;font-size:13px;font-weight:400;line-height:1.6;color:#9b9ba3}
+.portfolio-footer-nav{display:flex;gap:32px;padding-top:4px}
+.portfolio-footer-nav a{font-family:Inter,Arial,sans-serif;font-size:14px;line-height:1.5;font-weight:400;color:#b8bcba;text-decoration:none;transition:color .2s}
+.portfolio-footer-nav a:hover{color:#fff}
+.portfolio-footer a:focus-visible{outline:2px solid #fff;outline-offset:6px}
+.portfolio-footer-copyright{margin:48px 0 0;color:#777e7b;font-size:12px;font-weight:400;line-height:1.5}
+@media(max-width:600px){.portfolio-footer{padding-top:48px}.portfolio-footer-inner{padding-top:32px}.portfolio-footer-top{flex-direction:column;gap:28px}.portfolio-footer-wordmark{font-size:20px}.portfolio-footer-nav{gap:28px;padding:0}.portfolio-footer-copyright{margin-top:36px}}
+@media(prefers-reduced-motion:reduce){.portfolio-footer-nav a{transition:none}}
