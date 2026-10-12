@@ -33,7 +33,6 @@ serves those files directly.
 ├── _head-basics.html                 # Shared charset, viewport, favicon, and Apple touch-icon tags
 ├── _portfolio-fonts.html             # Shared preloads for the self-hosted portfolio fonts
 ├── _case-study-topbar.html           # Shared topbar template for the six case studies
-├── _case-study-footer.html           # Shared footer for the six case studies
 ├── _lovesac-nav.html                 # Shared navigation for the Lovesac prototype pages
 ├── _lovesac-footer.html              # Shared footer for three Lovesac prototype pages
 ├── build.py                          # Stamps shared HTML partials into their pages
@@ -219,7 +218,6 @@ pages by `build.py`:
 - `_contact-overlay.html` — contact form used by `index.html`, `about.html`, and `404.html`
 - `_case-study-topbar.html` — topbar used by all six case studies; its active
   series item and page tag are generated from the metadata in `build.py`
-- `_case-study-footer.html` — footer used by all six case studies
 - `_lovesac-nav.html` — navigation used by all four Lovesac prototype pages
 - `_lovesac-footer.html` — footer used by the Sactionals, What to Expect, and
   Customer Support prototype pages; the redesign homepage keeps its intentional

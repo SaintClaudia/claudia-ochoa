@@ -11,7 +11,6 @@ Markers used in HTML files:
     <!-- FOOTER:START --> ... <!-- FOOTER:END -->
     <!-- PORTFOLIO-NAV:START --> ... <!-- PORTFOLIO-NAV:END -->
     <!-- CONTACT-OVERLAY:START --> ... <!-- CONTACT-OVERLAY:END -->
-    <!-- CASE-STUDY-FOOTER:START --> ... <!-- CASE-STUDY-FOOTER:END -->
     <!-- LOVESAC-NAV:START --> ... <!-- LOVESAC-NAV:END -->
     <!-- LOVESAC-FOOTER:START --> ... <!-- LOVESAC-FOOTER:END -->
     <!-- LOVESAC-STORE-DROP:START --> ... <!-- LOVESAC-STORE-DROP:END -->
@@ -47,7 +46,6 @@ partials = [
     ('_portfolio-nav.html',     '<!-- PORTFOLIO-NAV:START -->',     '<!-- PORTFOLIO-NAV:END -->'),
     ('_portfolio-nav-assets.html', '<!-- PORTFOLIO-NAV-ASSETS:START -->', '<!-- PORTFOLIO-NAV-ASSETS:END -->'),
     ('_contact-overlay.html',   '<!-- CONTACT-OVERLAY:START -->',   '<!-- CONTACT-OVERLAY:END -->'),
-    ('_case-study-footer.html', '<!-- CASE-STUDY-FOOTER:START -->', '<!-- CASE-STUDY-FOOTER:END -->'),
     ('_lovesac-nav.html',       '<!-- LOVESAC-NAV:START -->',       '<!-- LOVESAC-NAV:END -->'),
     ('_lovesac-footer.html',    '<!-- LOVESAC-FOOTER:START -->',    '<!-- LOVESAC-FOOTER:END -->'),
     ('_lovesac-store-drop.html', '<!-- LOVESAC-STORE-DROP:START -->', '<!-- LOVESAC-STORE-DROP:END -->'),
