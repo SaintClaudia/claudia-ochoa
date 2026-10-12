@@ -76,3 +76,7 @@
 @media(max-width:800px){.genai-device{right:29%;top:20%;width:25%;perspective:1000px;--frame-radius:12px;--frame-padding:4px;--device-float:10px}.genai-device .commerce-screen>img{opacity:1}}
 .story-genai .layered-art{z-index:2;pointer-events:none}.genai-device{z-index:1}
 @media(max-width:800px){}
+.lets-talk{min-height:62svh;display:flex;align-items:flex-end;padding:160px var(--gutter) 0;background:var(--ink)}.lets-talk-inner{width:100%;max-width:1440px;margin:0 auto}.lets-talk h2{max-width:8.6em;text-wrap:balance;font-size:clamp(40px,4.4vw,80px);font-weight:450;line-height:1.04;letter-spacing:-.055em;margin:0 0 32px;color:var(--paper)}.lets-talk h2 span{color:#ffffff73}
+@media(max-width:800px){.lets-talk{min-height:auto;padding:120px var(--gutter) 0}.lets-talk h2{font-size:clamp(36px,9vw,56px);margin-bottom:22px}}
+.work-page .portfolio-footer-inner{border-top:0;padding-top:30px}@media(max-width:600px){.work-page .portfolio-footer-inner{padding-top:14px}}
+.work-page .portfolio-footer-wordmark{display:none}
