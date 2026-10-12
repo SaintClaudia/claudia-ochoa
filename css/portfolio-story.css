@@ -80,3 +80,5 @@
 @media(max-width:800px){.lets-talk{min-height:auto;padding:120px var(--gutter) 0}.lets-talk h2{font-size:clamp(36px,9vw,56px);margin-bottom:22px}}
 .editorial.contact-layout{max-width:none;padding-block:120px;align-content:center;align-items:center}
 @media(max-width:800px){.editorial.contact-layout{padding-block:140px 80px;align-content:start}}
+.about-page .editorial{max-width:none}.about-page .about-copy p{max-width:650px}.about-page .about-grid{grid-template-columns:minmax(0,500px) 1fr}
+@media(max-width:800px){.about-page .about-grid{grid-template-columns:1fr}}
