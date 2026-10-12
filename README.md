@@ -6,6 +6,12 @@ Personal portfolio of Claudia Ochoa — AI Experience and Product Design Leader 
 
 [claudiaochoa.co](https://claudiaochoa.co)
 
+## Portfolio redesign
+
+Work is the homepage, with full-screen project stories and independent device motion. About and Contact are separate pages. The three pages share `css/portfolio-story.css` and `js/portfolio-story.js`; the menu lists Walmart, Lovesac, and Home Depot case studies. `/work/` redirects to `/`. Existing case-study and blog URLs remain available. Contact uses the existing Web3Forms integration.
+
+Edit the production pages and shared story assets directly. `redesign/` is an ignored local review snapshot. The new pages preserve canonical/social metadata, structured data, analytics, and reduced-motion support. Homepage WebMCP remains available.
+
 ## Stack
 
 Plain HTML, CSS, and vanilla JS. No frameworks or package dependencies. A small
@@ -16,8 +22,8 @@ serves those files directly.
 
 ```
 /
-├── index.html                        # Homepage — fixed-viewport intro hero, links out to /work/
-├── work/index.html                   # Work index — featured work grid and the live "Ask the work" agent
+├── index.html                        # Work homepage — full-screen project storytelling
+├── work/index.html                   # Redirect to the Work homepage
 ├── about.html                        # About Claudia — identity, background, and featured work
 ├── 404.html                          # Custom error page
 ├── _footer.html                      # Shared footer partial (single source of truth)
@@ -201,9 +207,7 @@ syntax checks on every push and pull request.
 ## Updating the nav or footer
 
 `index.html`, `about.html`, and `404.html` share the same simple navigation and contact overlay,
-stamped from `_portfolio-nav.html` and `_contact-overlay.html`. The homepage
-hides the shared wordmark with page-specific CSS because linking home from the
-homepage is redundant. The six case studies use a separate `.topbar` component
+stamped from `_portfolio-nav.html` and `_contact-overlay.html`. The story homepage, About, and Contact use their own shared story navigation. The six case studies use a separate `.topbar` component
 (back link, series nav, tag), generated from `_case-study-topbar.html` and the
 per-page metadata in `build.py`.
 

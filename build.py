@@ -43,7 +43,6 @@ partials = [
     ('_analytics.html',         '<!-- ANALYTICS:START -->',         '<!-- ANALYTICS:END -->'),
     ('_head-basics.html',       '<!-- HEAD-BASICS:START -->',       '<!-- HEAD-BASICS:END -->'),
     ('_portfolio-fonts.html',   '<!-- PORTFOLIO-FONTS:START -->',   '<!-- PORTFOLIO-FONTS:END -->'),
-    ('_home-fonts.html',        '<!-- HOME-FONTS:START -->',        '<!-- HOME-FONTS:END -->'),
     ('_footer.html',            '<!-- FOOTER:START -->',            '<!-- FOOTER:END -->'),
     ('_portfolio-nav.html',     '<!-- PORTFOLIO-NAV:START -->',     '<!-- PORTFOLIO-NAV:END -->'),
     ('_portfolio-nav-menu.html', '<!-- PORTFOLIO-NAV-MENU:START -->', '<!-- PORTFOLIO-NAV-MENU:END -->'),
@@ -69,15 +68,7 @@ files = [
 total_updated = 0
 total_stale = 0
 
-embedded_assets = [
-    (
-        'css/case-study.css',
-        '<!-- HOME-SHARED-CSS:START -->',
-        '<!-- HOME-SHARED-CSS:END -->',
-        '<style>\n',
-        '\n</style>',
-    ),
-]
+embedded_assets = []
 
 
 

@@ -3,3 +3,6 @@ worker/node_modules
 worker/.wrangler
 worker-csp/node_modules
 worker-csp/.wrangler
+
+# Local redesign review files; production pages and assets live at their canonical paths.
+redesign/
