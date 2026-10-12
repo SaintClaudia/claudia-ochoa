@@ -1,0 +1,83 @@
+/* Editorial case-study layout: full-bleed hero, split label/body sections, sticky walkthrough. */
+.case-story-page{--muted:#ffffff8c;--line:#ffffff1a;--accent:#d6ae63}
+.cs-hero{position:relative;height:100svh;min-height:560px;overflow:hidden;background:#0d0b09}
+.cs-hero-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(calc(1.06 + var(--hero-progress,0) * .08));will-change:transform}
+.cs-hero:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#0a0b0b 4%,#0a0b0bb3 30%,#0a0b0b00 62%)}
+.cs-hero-copy{position:absolute;z-index:1;left:var(--gutter);right:var(--gutter);bottom:clamp(32px,6svh,72px)}
+.cs-crumb{margin:0 0 12px;font-size:clamp(16px,1.4vw,22px);color:var(--muted)}
+.cs-crumb a:hover{color:var(--paper)}
+.cs-hero h1{margin:0;font-size:clamp(72px,14vw,240px);font-weight:500;line-height:.86;letter-spacing:-.06em}
+
+.cs-statement{padding:clamp(96px,14vh,160px) var(--gutter) 0}
+.cs-lede{max-width:22em;margin:0;font-size:clamp(30px,3.6vw,64px);font-weight:450;line-height:1.08;letter-spacing:-.04em;text-wrap:pretty}
+.cs-lede span{color:#ffffff73}
+.cs-down{display:inline-block;margin:40px 0 64px;font-size:22px}
+.cs-media{margin:0;overflow:hidden;border-radius:clamp(12px,1.4vw,20px);background:#101210}
+.cs-media img{display:block;width:100%;height:auto}
+
+.cs-split{display:grid;grid-template-columns:1fr 1fr;gap:32px clamp(32px,6vw,120px);padding:clamp(120px,18vh,200px) var(--gutter) 0}
+.cs-label{margin:0;font-size:13px;font-weight:650;letter-spacing:.12em;text-transform:uppercase}
+.cs-split-body h2{max-width:16em;margin:0 0 48px;font-size:clamp(30px,2.8vw,48px);font-weight:500;line-height:1.1;letter-spacing:-.035em}
+.cs-split-body p{max-width:36em;margin:0 0 20px;font-size:clamp(17px,1.25vw,21px);line-height:1.6;color:var(--muted)}
+
+.cs-objectives{padding:clamp(120px,18vh,200px) var(--gutter) 0}
+.cs-objectives h2{margin-bottom:56px}
+.cs-objectives ol{margin:0;padding:0;list-style:none}
+.cs-objectives li{display:grid;grid-template-columns:1fr 1fr;gap:32px clamp(32px,6vw,120px);padding:40px 0 64px;border-top:1px solid var(--line)}
+.cs-objectives li span{font-size:clamp(17px,1.4vw,22px);color:var(--muted);font-variant-numeric:tabular-nums}
+.cs-objectives li p{max-width:16em;margin:0;font-size:clamp(28px,2.8vw,48px);font-weight:450;line-height:1.12;letter-spacing:-.035em;color:#ffffffa6}
+
+.cs-walkthrough{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(32px,6vw,120px);padding:clamp(120px,18vh,200px) var(--gutter) 0}
+.cs-walk-stage{position:sticky;top:0;height:100svh;display:grid;place-items:center}
+.cs-walk-stage img{grid-area:1/1;max-width:100%;max-height:72svh;width:auto;height:auto;border-radius:18px;box-shadow:0 40px 80px #0008;opacity:0;transform:translateY(24px) scale(.98);transition:opacity .6s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.cs-walk-stage img.is-active{opacity:1;transform:none}
+.cs-step{min-height:100svh;display:flex;flex-direction:column;justify-content:center}
+.cs-step-media{display:none}
+.cs-step-num{margin:0 0 20px;font-size:18px;font-weight:600;color:var(--muted);font-variant-numeric:tabular-nums}
+.cs-step h3{margin:0 0 32px;font-size:clamp(36px,3.6vw,64px);font-weight:700;line-height:.98;letter-spacing:-.03em;text-transform:uppercase}
+.cs-step p:last-child{max-width:24em;margin:0;font-size:clamp(17px,1.25vw,21px);line-height:1.55;color:var(--muted)}
+
+.cs-pair{display:grid;grid-template-columns:1fr 1.5fr;gap:clamp(16px,2vw,32px);align-items:stretch;padding:clamp(64px,10vh,120px) var(--gutter) 0}
+.cs-pair .cs-media{display:grid;place-items:center;padding:clamp(16px,3vw,48px)}
+.cs-pair .cs-media img{border-radius:10px}
+.cs-states{position:relative;min-height:clamp(260px,32vw,520px);border-radius:clamp(12px,1.4vw,20px);background:#101210;overflow:hidden}
+.cs-states span{position:absolute;inset:0;display:grid;place-items:center;font-size:clamp(34px,4vw,72px);font-weight:500;letter-spacing:-.04em;color:#ffffff59;opacity:0;animation:cs-state 9s infinite}
+.cs-states span:nth-child(2){animation-delay:3s}
+.cs-states span:nth-child(3){animation-delay:6s;color:var(--accent)}
+@keyframes cs-state{0%,4%{opacity:0;transform:translateY(12px)}10%,30%{opacity:1;transform:none}36%,100%{opacity:0;transform:translateY(-12px)}}
+
+.cs-swatches{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;margin:40px 0 0;padding:0;list-style:none}
+.cs-swatches li{display:grid;gap:4px;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.cs-swatches li:before{content:"";aspect-ratio:4/3;margin-bottom:10px;border-radius:12px;background:var(--swatch);box-shadow:inset 0 0 0 1px var(--line)}
+.cs-swatches span{font-size:15px;color:var(--paper)}
+
+.cs-principles{padding-bottom:0}
+.cs-stats{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,1.6vw,24px);margin:clamp(48px,8vh,96px) 0 0;padding:0;list-style:none}
+.cs-stats li{display:flex;flex-direction:column;justify-content:space-between;gap:48px;min-height:clamp(240px,24vw,380px);padding:clamp(24px,2.6vw,40px);border-radius:clamp(12px,1.4vw,20px);background:#101210}
+.cs-stats strong{font-size:clamp(72px,9vw,150px);font-weight:500;line-height:.9;letter-spacing:-.06em}
+.cs-stats span{max-width:16em;font-size:clamp(15px,1.15vw,19px);line-height:1.5;color:var(--muted)}
+
+.case-story-page .lets-talk{margin-top:clamp(96px,14vh,160px)}
+
+.cs-js .cs-reveal{opacity:0;transform:translateY(32px);transition:opacity .9s ease,transform 1s cubic-bezier(.2,.7,.2,1)}
+.cs-js .cs-reveal.is-in{opacity:1;transform:none}
+
+@media(max-width:800px){
+  .cs-hero-media{object-position:22% 50%}
+  .cs-split,.cs-objectives li,.cs-walkthrough,.cs-pair{grid-template-columns:1fr}
+  .cs-split{gap:24px}
+  .cs-split-body h2{margin-bottom:28px}
+  .cs-objectives li{gap:12px;padding:28px 0 40px}
+  .cs-walk-stage{display:none}
+  .cs-step{min-height:0;padding:56px 0 0}
+  .cs-step-media{display:block;max-width:100%;max-height:60svh;width:auto;height:auto;margin:0 auto 32px;border-radius:14px}
+  .cs-stats{grid-template-columns:1fr}
+  .cs-stats li{min-height:0}
+}
+@media(prefers-reduced-motion:reduce){
+  .cs-hero-media{transform:none}
+  .cs-reveal,.cs-walk-stage img{transition:none}
+  .cs-js .cs-reveal{opacity:1;transform:none}
+  .cs-states span{animation:none;position:static;opacity:1;font-size:clamp(28px,3vw,48px)}
+  .cs-states{display:grid;align-content:center;gap:8px;padding:32px}
+}
