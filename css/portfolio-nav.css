@@ -31,3 +31,5 @@ body.portfolio-standard-page{padding-top:104px}
 html.menu-is-open{overflow:hidden}
 @media(max-width:800px){body.portfolio-standard-page{padding-top:92px}.site-header{padding:24px clamp(24px,4vw,80px)}.site-header .signature{font-size:18px}.site-menu-close{top:24px}}
 @media(prefers-reduced-motion:reduce){.site-header,.nav-menu-icon-divider,.nav-menu-icon-arrow,.site-menu nav a,.site-menu nav a.sub:before{transition:none}}
+@media(max-width:800px){.work-page .site-header{transition:transform .35s cubic-bezier(.2,.7,.2,1),background-color .25s}.work-page .site-header.is-scrolled{background:#0a0b0bd9;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}.work-page .site-header.is-hidden{transform:translateY(-100%)}}
+@media(prefers-reduced-motion:reduce){.work-page .site-header{transition:none}}

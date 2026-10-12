@@ -12,7 +12,7 @@
       const rect = story.getBoundingClientRect();
       story.classList.toggle('is-visible', rect.bottom > 0 && rect.top < height);
       if (rect.bottom < 0 || rect.top > height) return;
-      const travel = Math.max(1, rect.height - height);
+      const travel = Math.max(height * .5, rect.height - height);
       const progress = clamp(-rect.top / travel, 0, 1);
       story.style.setProperty('--image-y', reduced.matches ? '0px' : `${progress * -50}px`);
       story.style.setProperty('--image-scale', reduced.matches ? '1' : `${1.04 + progress * .06}`);

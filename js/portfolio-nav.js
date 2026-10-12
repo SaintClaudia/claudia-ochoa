@@ -26,14 +26,15 @@
     const path = new URL(link.href).pathname.replace(/index\.html$/, '') || '/';
     if (path === currentPath) link.setAttribute('aria-current', 'page');
   });
-  // Standard and About pages tuck the header away while reading down and bring it back on any scroll up.
+  // Standard, About, and phone-width Work pages tuck the header away while reading down and bring it back on any scroll up.
   const header = document.querySelector('.site-header');
-  if (header && document.body.matches('.portfolio-standard-page, .about-page')) {
+  if (header && document.body.matches('.portfolio-standard-page, .about-page, .work-page')) {
     let lastY = window.scrollY;
     let scheduled = false;
     const update = () => {
       scheduled = false;
       const y = Math.max(0, window.scrollY);
+      header.classList.toggle('is-scrolled', y > 8);
       const delta = y - lastY;
       if (Math.abs(delta) < 6) return;
       const hide = delta > 0 && y > header.offsetHeight && !header.contains(document.activeElement);
