@@ -10,7 +10,6 @@ Run this whenever you change a shared partial, then commit and push.
 Markers used in HTML files:
     <!-- FOOTER:START --> ... <!-- FOOTER:END -->
     <!-- PORTFOLIO-NAV:START --> ... <!-- PORTFOLIO-NAV:END -->
-    <!-- PORTFOLIO-NAV-MENU:START --> ... <!-- PORTFOLIO-NAV-MENU:END -->
     <!-- CONTACT-OVERLAY:START --> ... <!-- CONTACT-OVERLAY:END -->
     <!-- CASE-STUDY-FOOTER:START --> ... <!-- CASE-STUDY-FOOTER:END -->
     <!-- LOVESAC-NAV:START --> ... <!-- LOVESAC-NAV:END -->
@@ -46,7 +45,7 @@ partials = [
     ('_portfolio-fonts.html',   '<!-- PORTFOLIO-FONTS:START -->',   '<!-- PORTFOLIO-FONTS:END -->'),
     ('_footer.html',            '<!-- FOOTER:START -->',            '<!-- FOOTER:END -->'),
     ('_portfolio-nav.html',     '<!-- PORTFOLIO-NAV:START -->',     '<!-- PORTFOLIO-NAV:END -->'),
-    ('_portfolio-nav-menu.html', '<!-- PORTFOLIO-NAV-MENU:START -->', '<!-- PORTFOLIO-NAV-MENU:END -->'),
+    ('_portfolio-nav-assets.html', '<!-- PORTFOLIO-NAV-ASSETS:START -->', '<!-- PORTFOLIO-NAV-ASSETS:END -->'),
     ('_contact-overlay.html',   '<!-- CONTACT-OVERLAY:START -->',   '<!-- CONTACT-OVERLAY:END -->'),
     ('_case-study-footer.html', '<!-- CASE-STUDY-FOOTER:START -->', '<!-- CASE-STUDY-FOOTER:END -->'),
     ('_lovesac-nav.html',       '<!-- LOVESAC-NAV:START -->',       '<!-- LOVESAC-NAV:END -->'),

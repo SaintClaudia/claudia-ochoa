@@ -8,7 +8,7 @@ Personal portfolio of Claudia Ochoa — AI Experience and Product Design Leader 
 
 ## Portfolio redesign
 
-Work is the homepage, with full-screen project stories and independent device motion. About and Contact are separate pages. The three pages share `css/portfolio-story.css` and `js/portfolio-story.js`; the menu lists Walmart, Lovesac, and Home Depot case studies. `/work/` redirects to `/`. Existing case-study and blog URLs remain available. Contact uses the existing Web3Forms integration.
+Work is the homepage, with full-screen project stories and independent device motion. About and Contact are separate pages. The three pages share `css/portfolio-story.css` and `js/portfolio-story.js`; all portfolio pages share `_portfolio-nav.html`, `css/portfolio-nav.css`, and `js/portfolio-nav.js`; the menu lists Walmart, Lovesac, and Home Depot case studies. `/work/` redirects to `/`. Existing case-study and blog URLs remain available. Contact uses the existing Web3Forms integration.
 
 Edit the production pages and shared story assets directly. `redesign/` is an ignored local review snapshot. The new pages preserve canonical/social metadata, structured data, analytics, and reduced-motion support. Homepage WebMCP remains available.
 
@@ -27,7 +27,7 @@ serves those files directly.
 ├── about.html                        # About Claudia — identity, background, and featured work
 ├── 404.html                          # Custom error page
 ├── _footer.html                      # Shared footer partial (single source of truth)
-├── _portfolio-nav.html               # Shared navigation for the homepage and 404 page
+├── _portfolio-nav.html               # Shared header and menu for all portfolio pages
 ├── _contact-overlay.html             # Shared contact form for the homepage and 404 page
 ├── _analytics.html                   # Shared Google Analytics bootstrap for every rendered page
 ├── _head-basics.html                 # Shared charset, viewport, favicon, and Apple touch-icon tags
@@ -206,10 +206,7 @@ syntax checks on every push and pull request.
 
 ## Updating the nav or footer
 
-`index.html`, `about.html`, and `404.html` share the same simple navigation and contact overlay,
-stamped from `_portfolio-nav.html` and `_contact-overlay.html`. The story homepage, About, and Contact use their own shared story navigation. The six case studies use a separate `.topbar` component
-(back link, series nav, tag), generated from `_case-study-topbar.html` and the
-per-page metadata in `build.py`.
+All 19 portfolio pages use `_portfolio-nav.html` for the header and menu. `_portfolio-nav-assets.html` supplies the single navigation stylesheet and script. Edit these shared sources and run `python3 build.py`; do not edit generated navigation blocks in individual pages. The shared script handles the current-page state, opening, closing, Escape, and focus recovery.
 
 Shared markup is maintained in partial files and stamped into the applicable
 pages by `build.py`:
@@ -217,7 +214,8 @@ pages by `build.py`:
 - `_footer.html` — portfolio footer used by `about.html`, `404.html`, and `work/index.html`
 - `_analytics.html` — Google Analytics bootstrap used by every rendered page
 - `_head-basics.html` — charset, viewport, favicon, and Apple touch-icon tags used by every rendered page
-- `_portfolio-nav.html` — navigation used by `index.html`, `about.html`, and `404.html`
+- `_portfolio-nav.html` — header and menu used across all portfolio pages
+- `_portfolio-nav-assets.html` — shared header/menu stylesheet and behavior
 - `_contact-overlay.html` — contact form used by `index.html`, `about.html`, and `404.html`
 - `_case-study-topbar.html` — topbar used by all six case studies; its active
   series item and page tag are generated from the metadata in `build.py`
