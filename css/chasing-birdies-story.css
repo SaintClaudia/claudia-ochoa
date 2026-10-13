@@ -189,3 +189,6 @@
 @media(max-width:1000px) and (min-width:651px){.cb-locked-team{font-size:12px}}
 /* Keep the six-stat card within the customizer's height on desktop. */
 @media(min-width:1001px){.cb-select-player{padding-top:28px;padding-bottom:24px}.cb-select-logo{margin-bottom:20px}.cb-setup-steps{margin-bottom:16px}.cb-locked-player{padding:18px}.cb-locked-head{gap:10px}.cb-locked-head img{width:50px;height:64px}.cb-player-stats{gap:8px;margin:18px 0 6px}.cb-player-stats div{row-gap:6px}.cb-player-trait{margin-top:12px;padding-top:12px}}
+
+/* Use the corrected left-hand glove only during the takeaway pose. */
+.cb-swing-golfer.has-takeaway-glove .cb-swing-sprite{background-image:url('/images/chasing-birdies-takeaway-glove.png?v=2')}

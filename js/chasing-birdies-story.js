@@ -152,6 +152,7 @@
       golfer.style.setProperty('--right-foot-y', `${contacts[3] * 100}%`);
       golfer.classList.toggle('has-raised-heel', frame === 5);
       golfer.classList.toggle('has-club-extension', frame === 4);
+      golfer.classList.toggle('has-takeaway-glove', frame === 1);
     }
     // The course eases in a touch around the green as the shot develops.
     const zoom = reduced.matches ? 1 : 1.035 - .005 * p;
