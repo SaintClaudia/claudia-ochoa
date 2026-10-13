@@ -278,6 +278,6 @@
 .askread-demo-film{padding-top:4cqw}
 /* The answer copy fades in place; no vertical drift. */
 .askread-demo-answer,.askread-demo-response{transform:none}
-/* Match the Library tablet inset without stacking padding inside the SVG content. */
-.askread-screen-scroll{margin-top:4cqw;height:calc(100% - 4cqw)}
-.askread-initial-briefing{padding-top:0}
+/* Keep the viewport flush with the screen. The 4cqw resting inset scrolls with the content; 61.44px is its equivalent in the 1179px-wide SVG pane. */
+.askread-screen-scroll{margin-top:0;height:100%}
+.askread-initial-briefing{padding-top:61.44px}
