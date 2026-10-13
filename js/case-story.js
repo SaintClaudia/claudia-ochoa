@@ -167,9 +167,21 @@
     qb.classList.toggle('is-league', eased > .55);
   };
 
+  // The Library gently reveals the earliest week as its tablet passes through the page.
+  const library = document.querySelector('.cs-library-tablet');
+  const libraryPane = library?.querySelector('.ar-library-content');
+  const updateLibrary = () => {
+    if (!libraryPane) return;
+    const rect = library.getBoundingClientRect();
+    const view = window.innerHeight;
+    const progress = Math.min(1, Math.max(0, (view * .7 - rect.top) / (view * .6)));
+    const eased = Math.min(1, Math.max(0, (progress - .15) / .65));
+    libraryPane.scrollTop = eased * (libraryPane.scrollHeight - libraryPane.clientHeight);
+  };
+
   // Keep the walkthrough screen and QB tablet in step with scrolling.
   let scheduled = false;
-  const update = () => { scheduled = false; updateStage(); updateQb(); };
+  const update = () => { scheduled = false; updateStage(); updateQb(); updateLibrary(); };
   window.addEventListener('scroll', () => {
     if (!scheduled) { scheduled = true; requestAnimationFrame(update); }
   }, { passive: true });

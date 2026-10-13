@@ -274,10 +274,10 @@
 .askread-screen-viewport{height:calc(100cqw * 1668 / 2420 - 5.85cqw)}
 .askread-sidebar{padding-top:5.859375cqw}
 .askread-initial-briefing{padding-top:132px}
-.askread-demo-answer{padding-top:8.56cqw}.askread-demo-response{top:13.86cqw}
-.askread-demo-film{padding-top:8.26cqw}
+.askread-demo-answer{padding-top:4cqw}.askread-demo-response{top:9.3cqw}
+.askread-demo-film{padding-top:4cqw}
 /* The answer copy fades in place; no vertical drift. */
 .askread-demo-answer,.askread-demo-response{transform:none}
-/* Scrolling content clips ~20px below the screen's top edge; the resting layout is unchanged. */
-.askread-screen-scroll{margin-top:2.5cqw;height:calc(100% - 2.5cqw)}
-.askread-initial-briefing{padding-top:94px}
+/* Match the Library tablet inset without stacking padding inside the SVG content. */
+.askread-screen-scroll{margin-top:4cqw;height:calc(100% - 4cqw)}
+.askread-initial-briefing{padding-top:0}
