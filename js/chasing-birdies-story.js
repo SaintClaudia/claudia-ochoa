@@ -86,7 +86,7 @@
   // Artwork coordinates: the base of the pin on the green.
   const art = {w:1376, h:768, pin:[.68, .56]};
   // Embroidered-glove strip: six equal cells; contact coordinates follow the artwork.
-  const cell = {w:2171 / 6, h:724, pad:60, baseline:614, club:[205, 640]};
+  const cell = {w:2171 / 6, h:724, pad:60, baseline:614, addressBall:[238, 625]};
   // Scroll progress at which each pose begins: address, takeaway, top, impact, follow-through, finish.
   const frames = [0, .1, .2, .33, .38, .46];
   const launch = .36, land = .68, settle = .8;
@@ -114,7 +114,8 @@
     const gx = (W <= 650 ? 0 : W * .12) - cell.pad * unit, gy = H * .93 - cell.baseline * unit;
     golfer.style.cssText = `width:${gw}px;height:${gh}px;transform:translate(${gx}px,${gy}px)`;
     const r = Math.max(4, 5.5 * unit);
-    const tee = [gx + cell.club[0] * unit + r, gy + cell.club[1] * unit - r];
+    // Address: the ball rests ahead of the clubface, toward the target, clear of its sole.
+    const tee = [gx + cell.addressBall[0] * unit, gy + cell.addressBall[1] * unit];
     // A wedge climbs steeply and drops in just short of the pin, then hops up to it.
     const landing = [pin[0] - cw * .03, pin[1] + ch * .015];
     const curve = [tee, [lerp(tee[0], landing[0], .2), tee[1] - H * .85], [lerp(landing[0], tee[0], .08), landing[1] - H * .5], landing];
