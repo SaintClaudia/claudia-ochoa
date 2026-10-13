@@ -127,21 +127,28 @@
 .cb-swing-stage{position:sticky;top:0;height:100svh;overflow:hidden;background:#0d1913}
 .cb-swing-course{position:absolute;left:0;top:0;max-width:none;transform-origin:0 0}
 .cb-swing-shade{position:absolute;inset:0;background:linear-gradient(180deg,var(--ink) 0,#0000 22%,#0000 70%,#0006 100%)}
-.cb-swing-hud{position:absolute;top:clamp(84px,12svh,120px);left:var(--gutter);display:flex;gap:8px;margin:0;font-size:12px;opacity:0;transform:translateY(-8px);transition:opacity .5s,transform .5s}
+.cb-swing-hud{position:absolute;top:clamp(84px,12svh,120px);left:var(--gutter);z-index:2;display:flex;gap:8px;margin:0;font-size:12px;opacity:0;transform:translateY(-8px);transition:opacity .5s,transform .5s}
 .cb-swing-hud div{padding:10px 14px;border-radius:10px;background:#08120ec7;border:1px solid #ffffff1a;backdrop-filter:blur(8px)}
 .cb-swing-hud dt{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#d6ae63;margin-bottom:5px}
 .cb-swing-hud dd{margin:0;font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
 .cb-swing.is-live .cb-swing-hud{opacity:1;transform:none}
-.cb-swing-flight{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.cb-swing-flight path{fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-dasharray:1 1;stroke-dashoffset:1;opacity:.55}
 .cb-swing-golfer{position:absolute;left:0;top:0}
-.cb-swing-sprite{position:absolute;inset:0;background:url('/games/chasing-birdies/players/purdy-swing-v2.webp') 0 100%/600% 200% no-repeat}
-.cb-swing-shadow{position:absolute;left:4%;right:20%;bottom:5.5%;height:6%;border-radius:50%;background:radial-gradient(closest-side,#000a,#0000)}
-.cb-swing-ball{position:absolute;left:0;top:0;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,#dcdcd4 60%,#a9aaa0);box-shadow:0 1px 3px #0006;will-change:transform}
-.cb-swing-result{position:absolute;left:0;top:0;margin:0;padding:10px 16px;border-radius:999px;background:#e4bf66;color:#11170f;font-size:13px;font-weight:650;white-space:nowrap;opacity:0;translate:-50% -100%;transform:translateY(8px);transition:opacity .4s,transform .4s}
+.cb-swing-sprite{position:absolute;inset:0;background:url('/images/chasing-birdies-swing-purdy.webp?v=2') 0 0/600% 100% no-repeat}
+.cb-swing-shadow{position:absolute;left:19%;right:30%;bottom:5.5%;height:6%;border-radius:50%;background:radial-gradient(closest-side,#000a,#0000)}
+/* Arcade shot tracer: a hot core over a soft glow, fading toward the tee. */
+.cb-swing-flight{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.cb-swing-flight path{fill:none;stroke:url(#cb-tracer);stroke-linecap:round}
+.cb-swing-glow{stroke-width:14;opacity:.55;filter:url(#cb-tracer-glow)}
+.cb-swing-tracer{stroke-width:4}
+.cb-swing-flash{fill:none;stroke:#fff;stroke-width:3}
+.cb-swing-ripple{fill:none;stroke:#fff;stroke-width:2}
+.cb-swing-ball,.cb-swing-ball-shadow{position:absolute;left:0;top:0;border-radius:50%;will-change:transform}
+.cb-swing-ball{background:radial-gradient(circle at 35% 30%,#fff 35%,#e6e6de 65%,#b4b5ab);box-shadow:0 0 0 1px #0002,0 0 14px 3px #fff9,0 0 28px 8px #ffd27a55}
+.cb-swing-ball-shadow{background:radial-gradient(closest-side,#000b,#0000);transform-origin:50% 50%}
+.cb-swing-result{position:absolute;left:0;top:0;z-index:2;margin:0;padding:10px 16px;border-radius:999px;background:#e4bf66;color:#11170f;font-size:13px;font-weight:650;white-space:nowrap;opacity:0;translate:-50% -100%;transform:translateY(8px);transition:opacity .4s,transform .4s}
 .cb-swing-result span{margin-right:8px;font-weight:400}
 .cb-swing.is-landed .cb-swing-result{opacity:1;transform:none}
 .cb-swing-hint{position:absolute;bottom:clamp(20px,4svh,40px);left:50%;translate:-50%;margin:0;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#fffc;transition:opacity .4s}
 .cb-swing.is-swinging .cb-swing-hint{opacity:0}
-@media(max-width:650px){.cb-swing{height:300svh}.cb-swing-hud{left:16px;right:16px;gap:6px;font-size:11px}.cb-swing-hud div{flex:1;padding:8px 9px}.cb-swing-hud div:first-child{flex:1.6}.cb-swing-hud dt{letter-spacing:.1em;white-space:nowrap}}
+@media(max-width:650px){.cb-swing{height:300svh}.cb-swing-hud{left:16px;right:16px;gap:6px;font-size:11px}.cb-swing-hud div{flex:1;padding:8px 9px}.cb-swing-hud div:first-child{flex:1.6}.cb-swing-hud dt{letter-spacing:.1em;white-space:nowrap}.cb-swing-glow{stroke-width:10}.cb-swing-tracer{stroke-width:3}}
 @media(prefers-reduced-motion:reduce){.cb-swing{height:100svh}.cb-swing-hud,.cb-swing-result{transition:none}}

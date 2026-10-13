@@ -74,8 +74,8 @@
 <link rel="stylesheet" href="/css/portfolio-nav.css?v=12">
 <script defer src="/js/portfolio-nav.js?v=11"></script>
 <!-- PORTFOLIO-NAV-ASSETS:END -->
-<link rel="stylesheet" href="/css/chasing-birdies-story.css?v=7">
-<script defer src="/js/chasing-birdies-story.js?v=6"></script>
+<link rel="stylesheet" href="/css/chasing-birdies-story.css?v=10">
+<script defer src="/js/chasing-birdies-story.js?v=9"></script>
 <link rel="stylesheet" href="/css/birdies-screens.css?v=5">
 <script defer src="/js/birdies-screens.js?v=4"></script>
 </head>
@@ -121,8 +121,18 @@
       <div><dt>Wind</dt><dd>8 mph</dd></div>
       <div><dt>Carry</dt><dd data-swing-carry>0 yds</dd></div>
     </dl>
-    <svg class="cb-swing-flight" aria-hidden="true"><path pathLength="1"/></svg>
     <div class="cb-swing-golfer" role="img" aria-label="Brock Purdy swings a pitching wedge and lands the ball on the green"><span class="cb-swing-shadow"></span><span class="cb-swing-sprite"></span></div>
+    <svg class="cb-swing-flight" aria-hidden="true">
+      <defs>
+        <linearGradient id="cb-tracer" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ff4d2e" stop-opacity="0"/><stop offset=".45" stop-color="#ff4d2e" stop-opacity=".9"/><stop offset="1" stop-color="#ffd27a"/></linearGradient>
+        <filter id="cb-tracer-glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="5"/></filter>
+      </defs>
+      <ellipse class="cb-swing-ripple"/>
+      <path class="cb-swing-glow"/>
+      <path class="cb-swing-tracer"/>
+      <circle class="cb-swing-flash"/>
+    </svg>
+    <span class="cb-swing-ball-shadow" aria-hidden="true"></span>
     <span class="cb-swing-ball" aria-hidden="true"></span>
     <p class="cb-swing-result" aria-hidden="true"><span>106 yds</span>On the green</p>
     <p class="cb-swing-hint" aria-hidden="true">Scroll to swing</p>
