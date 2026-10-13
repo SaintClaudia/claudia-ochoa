@@ -36,10 +36,10 @@
 .cb-ui-phone-intro h3{margin:0 0 2.5cqw;font:700 11.2cqw/1.02 Georgia,serif;letter-spacing:-.045em}
 .cb-ui-phone-intro>p:last-of-type{margin:0 0 4.5cqw;font-size:3.5cqw;line-height:1.45;max-width:20em;color:#d8ddd0}
 .cb-ui-phone-intro .cb-ui-play{font-size:4cqw;border-radius:3cqw;padding:3.6cqw 5cqw}.cb-ui-phone-intro .cb-ui-play span{font-size:6cqw}
-.cb-ui-options{position:absolute;left:7cqw;right:7cqw;top:61%;display:grid;gap:2.8cqw}
-.cb-ui-option{position:relative;overflow:hidden;display:flex;align-items:center;gap:3.6cqw;height:18cqw;border:0;border-radius:3cqw;background:linear-gradient(110deg,#172820,#0c1814);padding-right:4cqw}
-.cb-ui-option .cb-ui-photo{position:relative;inset:auto;flex:0 0 31%;width:31%;height:100%;z-index:0}
-.cb-ui-option>span{display:grid;gap:1cqw;min-width:0;flex:1}.cb-ui-option strong{font-size:4.7cqw;font-weight:650;line-height:1.2;color:#f6f3e9}.cb-ui-option small{font-size:3.35cqw;line-height:1.35;color:#c0cabe}.cb-ui-option>b{font-size:6cqw;font-weight:400}
+.cb-ui-options{position:absolute;left:7cqw;right:7cqw;top:60%;display:grid;gap:2.6cqw}
+.cb-ui-option{position:relative;overflow:hidden;display:flex;align-items:center;gap:3.4cqw;height:19.5cqw;border:1px solid #ffffff1f;border-radius:3cqw;background:linear-gradient(110deg,#1d2021f0,#0c0e0ff2);box-shadow:0 1cqw 3cqw #0006;padding-right:4cqw}
+.cb-ui-option .cb-ui-photo{position:relative;inset:auto;flex:0 0 27%;width:27%;height:100%;z-index:0}
+.cb-ui-option>span{display:grid;gap:1cqw;min-width:0;flex:1}.cb-ui-option strong{font-size:5.2cqw;font-weight:600;line-height:1.2;color:#f6f3e9}.cb-ui-option small{font-size:3.4cqw;line-height:1.35;color:#c8cbc6;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.cb-ui-option>b{font-size:7.5cqw;font-weight:300;color:#ecebe4}
 .cb-ui-bottom{position:absolute;inset:auto 4cqw 2cqw;display:flex;justify-content:space-around;align-items:center;padding:2cqw 0 0;border-top:1px solid #ffffff1a}
 .cb-ui-bottom>span,.cb-ui-bottom>a,.cb-ui-bottom>button{display:grid;justify-items:center;gap:1.2cqw;color:#a6b2a2;font-size:2.5cqw;border:0;background:transparent;padding:0}
 .cb-ui-bottom svg{width:6cqw;height:6cqw;fill:none;stroke:currentColor;stroke-width:1.5}.cb-ui-bottom .is-selected{color:#dbbb69}.cb-ui-bottom .is-selected svg{fill:currentColor}
@@ -54,7 +54,7 @@
 .birdies-stage .commerce-phone .cb-ui-phone{border-radius:calc(var(--frame-radius) - var(--frame-padding))}
 .birdies-stage .commerce-desktop .commerce-screen{filter:none}
 .cb-world [data-birdies-screen]{border-radius:12px;overflow:hidden;box-shadow:0 20px 60px #0007}
-.cb-phone [data-birdies-screen],.cb-tablet [data-birdies-screen]{border-radius:inherit;overflow:hidden}
+.cb-device-screen [data-birdies-screen]{border-radius:inherit;overflow:hidden}
 @media(prefers-reduced-motion:reduce){.cb-ui-course{transition:none}.cb-ui-course:hover{transform:none}}
 
 /* Use the supplied brand artwork, keeping its colors and transparent edges intact. */

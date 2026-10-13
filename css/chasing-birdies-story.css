@@ -25,10 +25,23 @@
 .cb-players figcaption{display:grid;gap:6px;margin:16px 0 0;font-size:clamp(11px,1.1vw,17px)}
 .cb-players figcaption span{color:var(--accent);font-size:11px}
 .cb-roster-note{margin:32px 0 0;font-size:14px;color:var(--muted)}
-.cb-phone{width:min(32svh,300px);margin:auto;padding:10px;border:1px solid #7b8376;border-radius:40px;background:linear-gradient(120deg,#303c32,#080b09 55%,#394535);box-shadow:0 30px 80px #0007}
-.cb-phone img{display:block;width:100%;height:auto;border-radius:30px}
-.cb-tablet{padding:10px;border-radius:24px;background:linear-gradient(110deg,#465148,#080b09 55%,#303a32);border:1px solid #737e6f;box-shadow:0 30px 80px #0007;transform:perspective(1100px) rotateY(-8deg) rotateZ(-2deg)}
-.cb-tablet img{display:block;width:100%;height:auto;border-radius:16px}
+/* The walkthrough uses Ask Read's phone frame (.cb-device, styled in case-story.css). */
+.cb-device{margin:auto}
+.cb-device-screen [data-birdies-screen],.cb-device-screen .cb-ui-phone{height:100%}
+.cb-device-screen .cb-ui-phone{aspect-ratio:auto;border-radius:0}
+.cb-device-screen .cb-ui-notch{display:none}
+/* Step 02: the hole card, laid out for the phone. */
+.cb-round{display:flex;flex-direction:column;height:100%;box-sizing:border-box;padding:13cqw 6cqw 7cqw}
+.cb-round .cb-ui-shade{background:linear-gradient(180deg,#07100d59 0%,#07100dd9 38%,#07100d 70%)}
+.cb-round-head .cb-ui-eyebrow{font-size:3cqw;letter-spacing:.15em;margin:0 0 2cqw}
+.cb-round-head h4{margin:0 0 1.5cqw;font:700 12cqw/1 Georgia,serif;letter-spacing:-.04em}
+.cb-round-head>p:last-child{margin:0;font-size:3.8cqw;color:#d8ddd0}
+.cb-ui .cb-round-map{flex:1;min-height:0;height:auto;margin:6cqw 0 4cqw;border:1px solid #ffffff22;border-radius:4cqw}
+.cb-round-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2cqw;margin:0 0 4cqw}
+.cb-round-stats div{padding:2.6cqw;border:1px solid #ffffff1a;border-radius:2.6cqw;background:#08120ecc}
+.cb-round-stats dt{font-size:2.3cqw;letter-spacing:.12em;text-transform:uppercase;color:#dbbb69;margin-bottom:1.2cqw}
+.cb-round-stats dd{margin:0;font-size:3.2cqw;font-weight:600;line-height:1.25}
+.cb-round .cb-ui-play{font-size:4cqw;border-radius:3cqw;padding:3.6cqw 5cqw}.cb-round .cb-ui-play span{font-size:6cqw}
 .cb-step h3{font-weight:450;text-transform:none;letter-spacing:-.05em;line-height:1.02}
 .cb-brand{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:40px;margin:clamp(100px,16vh,180px) var(--gutter) 0;padding:clamp(40px,6vw,96px);border-radius:20px;background:radial-gradient(ellipse at 25% 40%,#2b4636,#10201a 70%)}
 .cb-brand img{display:block;width:100%;max-width:340px;margin:auto}
@@ -38,17 +51,11 @@
  .cs-birdies-hero .story-copy{position:relative;top:auto;bottom:auto;width:auto;transform:none}
  .cs-birdies-hero .birdies-stage{inset:0;margin:auto;width:min(89%,150cqh);height:auto;translate:none}
  .cs-birdies-hero .project-art{min-height:clamp(240px,46svh,420px)}
- .cb-walkthrough{gap:0}
- .cb-walk-stage{top:60px;height:44svh;min-height:260px;z-index:3;background:#080b09;border-bottom:1px solid var(--line)}
- .cb-walk-steps{position:relative}
- .cb-step{min-height:60svh;padding:48px 0;box-sizing:border-box;justify-content:center}
- .cb-phone{width:min(17svh,180px);padding:6px;border-radius:24px}.cb-phone img{border-radius:18px}
- .cb-tablet{max-width:380px;margin:auto;box-sizing:border-box;transform:none}
  .cb-roster{max-width:350px;margin:auto;padding:16px 0}.cb-kicker{margin-bottom:10px}.cb-roster h3{font-size:24px;margin-bottom:16px}
  .cb-players{gap:10px}.cb-players figure{padding:10px 6px}.cb-players img{width:auto;height:14svh;max-height:150px}.cb-players figcaption{margin-top:8px;gap:3px}.cb-roster-note{display:none}
  .cb-brand{grid-template-columns:1fr;text-align:center;gap:32px}.cb-brand img{max-width:260px}
 }
-@media(prefers-reduced-motion:reduce){.cb-scene{transform:none;transition:none}.cb-tablet{transform:none}}
+@media(prefers-reduced-motion:reduce){.cb-scene{transform:none;transition:none}}
 /* Player first: native controls and matched wardrobe character art. */
 .cb-player-section{margin:100px var(--gutter) 0}
 .cb-player-heading{max-width:760px;margin-bottom:48px}
