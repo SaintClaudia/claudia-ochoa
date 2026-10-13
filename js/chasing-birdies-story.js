@@ -140,7 +140,7 @@
     while (next < frames.length - 1 && p >= frames[next + 1]) next++;
     if (next !== frame) { frame = next; sprite.style.backgroundPositionX = `${frame * 20}%`; }
     // The course eases in a touch around the green as the shot develops.
-    const zoom = reduced.matches ? 1 : 1.015 - .01 * p;
+    const zoom = reduced.matches ? 1 : 1.035 - .005 * p;
     course.style.transform = `translate(${pin[0]}px,${pin[1]}px) scale(${zoom}) translate(${left - pin[0]}px,${top - pin[1]}px)`;
 
     const t = clamp((p - launch) / (land - launch));
