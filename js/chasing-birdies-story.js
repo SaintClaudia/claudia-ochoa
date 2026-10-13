@@ -86,7 +86,7 @@
   // Artwork coordinates: the base of the pin on the green.
   const art = {w:1376, h:768, pin:[.68, .56]};
   // Adidas footwear strip: six 362 × 724 cells. Preserve the original on-screen figure size.
-  const cell = {w:362, h:724, pad:60, baseline:558, club:[233, 570]};
+  const cell = {w:362, h:724, pad:60, baseline:588, club:[208, 604]};
   // Scroll progress at which each pose begins: address, takeaway, top, impact, follow-through, finish.
   const frames = [0, .1, .2, .33, .38, .46];
   const launch = .36, land = .68, settle = .8;
@@ -110,7 +110,7 @@
     course.style.width = `${cw}px`;
     course.style.height = `${ch}px`;
     const pin = [left + art.pin[0] * cw, top + art.pin[1] * ch];
-    const gh = Math.min(H * .72, W <= 650 ? W * .95 : W * 1.15) * 724 / 480, gw = gh * cell.w / cell.h, unit = gh / cell.h;
+    const gh = Math.min(H * .72, W <= 650 ? W * .95 : W * 1.15) * 724 / 520, gw = gh * cell.w / cell.h, unit = gh / cell.h;
     const gx = (W <= 650 ? 0 : W * .12) - cell.pad * unit, gy = H * .93 - cell.baseline * unit;
     golfer.style.cssText = `width:${gw}px;height:${gh}px;transform:translate(${gx}px,${gy}px)`;
     const r = Math.max(4, 5.5 * unit);
@@ -143,12 +143,16 @@
       frame = next;
       sprite.style.backgroundPositionX = `${frame * 20}%`;
       // Contact stays under the planted soles; the raised trailing heel has a smaller shadow.
-      const contacts = [[.27,.755,.762,.756],[.29,.79,.763,.759],[.32,.795,.762,.759],[.285,.77,.763,.756],[.3,.80,.763,.762],[.28,.78,.767,.763]][frame];
+      const contacts = [[.177,.68,.807,.8],[.268,.80,.805,.8],[.295,.80,.807,.8],[.323,.81,.807,.8],[.273,.79,.807,.803],[.41,.83,.807,.805]][frame];
       golfer.style.setProperty('--left-foot-x', `${contacts[0] * 100}%`);
       golfer.style.setProperty('--right-foot-x', `${contacts[1] * 100}%`);
       golfer.style.setProperty('--left-foot-y', `${contacts[2] * 100}%`);
       golfer.style.setProperty('--right-foot-y', `${contacts[3] * 100}%`);
       golfer.classList.toggle('has-raised-heel', frame === 5);
+      const glove = [[187,384,-10],[87,279,50],[93,162,30],[261,373,-15],[307,289,40],[199,168,45]][frame];
+      golfer.style.setProperty('--glove-x', `${glove[0] / cell.w * 100}%`);
+      golfer.style.setProperty('--glove-y', `${glove[1] / cell.h * 100}%`);
+      golfer.style.setProperty('--glove-angle', `${glove[2]}deg`);
     }
     // The course eases in a touch around the green as the shot develops.
     const zoom = reduced.matches ? 1 : 1.035 - .005 * p;
