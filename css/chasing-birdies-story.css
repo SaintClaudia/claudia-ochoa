@@ -160,7 +160,7 @@
 @keyframes cb-course-breathe{0%,100%{translate:-5px 1px}50%{translate:5px -2px}}
 @media(prefers-reduced-motion:reduce){.cb-swing-environment{animation:none}.cb-swing-water{display:none}}
 /* Native overview panel echoes the course selection screen. */
-.cb-swing-overview{position:absolute;top:clamp(90px,12svh,120px);right:var(--gutter);z-index:2;width:clamp(175px,17vw,250px);box-sizing:border-box;padding:18px;border:1px solid #ffffff12;border-radius:12px;background:#08120ee8;backdrop-filter:blur(8px);color:#f3f3ed}
+.cb-swing-overview{position:absolute;top:clamp(90px,12svh,120px);right:var(--gutter);z-index:2;width:clamp(175px,17vw,250px);box-sizing:border-box;padding:18px;border:1px solid #ffffff0b;border-radius:12px;background:radial-gradient(ellipse at center,#08120ed6 45%,#08120eb8 100%);backdrop-filter:blur(3px);color:#f3f3ed}
 .cb-swing-overview-label{font-size:9px;letter-spacing:.14em;color:#d6ae63;margin:0 0 10px}
 .cb-swing-overview h3{margin:0 0 8px;font-size:20px;font-weight:650;letter-spacing:-.025em;line-height:1.15}
 .cb-swing-overview-distance{font-size:13px;color:#c3cbbf;margin:0 0 10px}
