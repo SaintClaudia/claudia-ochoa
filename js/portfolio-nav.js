@@ -33,9 +33,9 @@
     const path = new URL(link.href).pathname.replace(/index\.html$/, '') || '/';
     if (path === currentPath) link.setAttribute('aria-current', 'page');
   });
-  // Standard, About, Contact, case-story, and phone-width Work pages tuck the header away while reading down and bring it back on a deliberate scroll up.
+  // One scroll controller for every page using the shared portfolio header.
   const header = document.querySelector('.site-header');
-  if (header && document.body.matches('.portfolio-standard-page, .about-page, .contact-page, .work-page, .case-story-page')) {
+  if (header) {
     let lastY = Math.max(0, window.scrollY);
     let direction = 0;
     let directionStartY = lastY;
@@ -45,8 +45,7 @@
       const y = Math.max(0, window.scrollY);
       // Keep the top of the hero transparent; scrolling down never introduces a bar.
       header.classList.toggle('is-scrolled', y > header.offsetHeight);
-      const naturalScroll = document.body.classList.contains('case-story-page')
-        && y <= header.offsetHeight && !header.contains(document.activeElement);
+      const naturalScroll = y <= header.offsetHeight && !header.contains(document.activeElement);
       header.classList.toggle('is-natural-scroll', naturalScroll);
       if (naturalScroll) {
         // At the top, follow the page one pixel for every pixel scrolled.
@@ -81,6 +80,7 @@
     window.addEventListener('scroll', () => {
       if (!scheduled) { scheduled = true; requestAnimationFrame(update); }
     }, { passive: true });
+    window.addEventListener('resize', update);
     header.addEventListener('focusin', () => header.classList.remove('is-hidden', 'is-natural-scroll'));
     update();
   }

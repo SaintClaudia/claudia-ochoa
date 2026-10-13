@@ -1,8 +1,9 @@
 /* Shared portfolio header and navigation drawer. */
 body.portfolio-standard-page{padding-top:104px}
-:is(.portfolio-standard-page,.about-page,.contact-page) .site-header{background:#0a0b0bd9;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);transition:transform .35s cubic-bezier(.2,.7,.2,1)}
-:is(.portfolio-standard-page,.about-page,.contact-page) .site-header.is-hidden{transform:translateY(-100%)}
-.site-header{position:fixed;inset:0 0 auto;z-index:20;padding:30px clamp(24px,4vw,80px);display:flex;justify-content:space-between;align-items:center;background:linear-gradient(#0005,transparent);pointer-events:none;font-family:Inter,Arial,sans-serif;color:#f5f5f1}
+.site-header{position:fixed;inset:0 0 auto;z-index:20;padding:30px clamp(24px,4vw,80px);display:flex;justify-content:space-between;align-items:center;background:transparent;transition:transform .35s cubic-bezier(.2,.7,.2,1),background-color .25s;pointer-events:none;font-family:Inter,Arial,sans-serif;color:#f5f5f1}
+.site-header.is-scrolled{background:#0a0b0bd9;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.site-header.is-hidden{transform:translateY(-100%)}
+.site-header.is-natural-scroll{transform:translateY(var(--header-scroll-y,0px));transition:none}
 .site-header a{pointer-events:auto;text-decoration:none}
 .site-header .signature{font-family:Inter,Arial,sans-serif;font-size:22px;line-height:1.2;font-weight:550;letter-spacing:-.8px;color:#f5f5f1}
 .signature-dot{color:#d7c8a5}
@@ -27,12 +28,5 @@ body.portfolio-standard-page{padding-top:104px}
 html.menu-is-open{overflow:hidden}
 @media(max-width:800px){body.portfolio-standard-page{padding-top:92px}.site-header{padding:24px clamp(24px,4vw,80px)}.site-header .signature{font-size:18px}.site-menu-close{top:24px}}
 @media(prefers-reduced-motion:reduce){.site-header,.nav-menu-icon-divider,.nav-menu-icon-arrow,.site-menu nav a,.site-menu nav a.sub:before{transition:none}}
-@media(max-width:800px){.work-page .site-header{transition:transform .35s cubic-bezier(.2,.7,.2,1),background-color .25s}.work-page .site-header.is-scrolled{background:#0a0b0bd9;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}.work-page .site-header.is-hidden{transform:translateY(-100%)}}
-@media(prefers-reduced-motion:reduce){.work-page .site-header{transition:none}}
 .site-menu.is-pointer-opened .site-menu-close:focus-visible,.site-menu-toggle.is-pointer-focus:focus-visible{outline:none}
 @media(max-width:800px){.site-menu{width:100%;border-left:0;box-shadow:none;padding:88px calc(clamp(24px,4vw,80px) - 12px) 32px}}
-.case-story-page .site-header{background:transparent;transition:transform .35s cubic-bezier(.2,.7,.2,1),background-color .25s}.case-story-page .site-header.is-scrolled{background:#0a0b0bd9;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}.case-story-page .site-header.is-hidden{transform:translateY(-100%)}
-@media(prefers-reduced-motion:reduce){.case-story-page .site-header{transition:none}}
-
-/* Case-study headers leave the hero with the page, without a threshold animation. */
-.case-story-page .site-header.is-natural-scroll{transform:translateY(var(--header-scroll-y,0px));transition:none}

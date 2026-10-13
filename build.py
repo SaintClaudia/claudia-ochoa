@@ -38,6 +38,7 @@ args = parser.parse_args()
 BASE = os.path.dirname(os.path.abspath(__file__))
 
 partials = [
+    ('_birdies-screens.html', '<!-- BIRDIES-SCREENS:START -->', '<!-- BIRDIES-SCREENS:END -->'),
     ('_analytics.html',         '<!-- ANALYTICS:START -->',         '<!-- ANALYTICS:END -->'),
     ('_head-basics.html',       '<!-- HEAD-BASICS:START -->',       '<!-- HEAD-BASICS:END -->'),
     ('_portfolio-footer-styles.html', '<!-- PORTFOLIO-FOOTER-STYLES:START -->', '<!-- PORTFOLIO-FOOTER-STYLES:END -->'),
