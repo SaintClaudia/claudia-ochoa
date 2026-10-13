@@ -159,3 +159,10 @@
 .cb-swing.is-swinging .cb-swing-hint{opacity:0}
 @media(max-width:650px){.cb-swing{height:300svh}.cb-swing-hud{left:16px;right:16px;gap:6px;font-size:11px}.cb-swing-hud div{flex:1;padding:8px 9px}.cb-swing-hud div:first-child{flex:1.6}.cb-swing-hud dt{letter-spacing:.1em;white-space:nowrap}.cb-swing-glow{stroke-width:10}.cb-swing-tracer{stroke-width:3}}
 @media(prefers-reduced-motion:reduce){.cb-swing{height:100svh}.cb-swing-hud,.cb-swing-result{transition:none}}
+/* Ambient course pass: stable framing with a little life in the water. */
+.cb-swing-environment{position:absolute;left:0;top:0;transform-origin:0 0;animation:cb-course-breathe 24s ease-in-out infinite;animation-play-state:paused}
+.cb-swing-environment .cb-swing-course{width:100%;height:100%;display:block}
+.cb-swing-water{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.72}
+.cb-swing-stage.has-ambient-motion .cb-swing-environment{animation-play-state:running}
+@keyframes cb-course-breathe{0%,100%{translate:0 0}50%{translate:1.5px -.8px}}
+@media(prefers-reduced-motion:reduce){.cb-swing-environment{animation:none}.cb-swing-water{display:none}}

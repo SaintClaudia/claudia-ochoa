@@ -74,8 +74,8 @@
 <link rel="stylesheet" href="/css/portfolio-nav.css?v=12">
 <script defer src="/js/portfolio-nav.js?v=11"></script>
 <!-- PORTFOLIO-NAV-ASSETS:END -->
-<link rel="stylesheet" href="/css/chasing-birdies-story.css?v=12">
-<script defer src="/js/chasing-birdies-story.js?v=9"></script>
+<link rel="stylesheet" href="/css/chasing-birdies-story.css?v=13">
+<script defer src="/js/chasing-birdies-story.js?v=10"></script>
 <link rel="stylesheet" href="/css/birdies-screens.css?v=8">
 <script defer src="/js/birdies-screens.js?v=4"></script>
 </head>
@@ -111,9 +111,30 @@
   <p class="cs-lede cs-reveal">Sunday’s favorites.<br>A different kind of drive.<br><span>Same competitive spirit.</span></p>
   <a class="cs-down" href="#overview" aria-label="Skip to overview">↓</a>
 </section>
-<section class="cb-swing" aria-label="Swing prototype">
+<section id="birdies-swing" class="cb-swing" aria-label="Swing prototype">
   <div class="cb-swing-stage">
-    <img class="cb-swing-course" src="/images/chasing-birdies-swing-course.webp" alt="" width="1376" height="768" decoding="async">
+    <div class="cb-swing-environment" aria-hidden="true">
+      <img class="cb-swing-course" src="/images/chasing-birdies-swing-course.webp" alt="" width="1376" height="768" decoding="async">
+      <svg class="cb-swing-water" viewBox="0 0 1376 768" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <clipPath id="cb-swing-water-mask">
+            <path d="M918 239H1376V326L1260 333 1190 323 1124 330 1050 307 1000 319 905 302 856 282Z"/>
+            <path d="M355 363 419 359 519 364 595 376 630 390 603 409 549 429 457 436 365 452 292 444 274 425 303 391Z"/>
+          </clipPath>
+          <filter id="cb-swing-water-flow" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
+            <feTurbulence type="fractalNoise" baseFrequency=".018 .085" numOctaves="2" seed="8" result="waterNoise"/>
+            <feOffset in="waterNoise" dx="0" dy="0" result="waterFlow">
+              <animate attributeName="dx" values="-5;5;-5" dur="18s" repeatCount="indefinite"/>
+              <animate attributeName="dy" values="0;2;0" dur="11s" repeatCount="indefinite"/>
+            </feOffset>
+            <feDisplacementMap in="SourceGraphic" in2="waterFlow" scale="3" xChannelSelector="R" yChannelSelector="G"/>
+          </filter>
+        </defs>
+        <g clip-path="url(#cb-swing-water-mask)">
+          <image href="/images/chasing-birdies-swing-course.webp" width="1376" height="768" filter="url(#cb-swing-water-flow)"/>
+        </g>
+      </svg>
+    </div>
     <div class="cb-swing-shade"></div>
     <dl class="cb-swing-hud" aria-hidden="true">
       <div><dt>Hole 7 · Par 3</dt><dd>106 yds</dd></div>

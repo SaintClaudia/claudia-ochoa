@@ -78,7 +78,7 @@
   const root = document.querySelector('.cb-swing');
   if (!root) return;
   const $ = selector => root.querySelector(selector);
-  const stage = $('.cb-swing-stage'), course = $('.cb-swing-course'), golfer = $('.cb-swing-golfer'), sprite = $('.cb-swing-sprite');
+  const stage = $('.cb-swing-stage'), course = $('.cb-swing-environment'), golfer = $('.cb-swing-golfer'), sprite = $('.cb-swing-sprite');
   const ball = $('.cb-swing-ball'), shadow = $('.cb-swing-ball-shadow'), result = $('.cb-swing-result'), carry = $('[data-swing-carry]');
   const tracer = $('.cb-swing-tracer'), glow = $('.cb-swing-glow'), gradient = root.querySelector('#cb-tracer');
   const flash = $('.cb-swing-flash'), ripple = $('.cb-swing-ripple');
@@ -140,7 +140,7 @@
     while (next < frames.length - 1 && p >= frames[next + 1]) next++;
     if (next !== frame) { frame = next; sprite.style.backgroundPositionX = `${frame * 20}%`; }
     // The course eases in a touch around the green as the shot develops.
-    const zoom = 1.04 - .04 * p;
+    const zoom = reduced.matches ? 1 : 1.015 - .01 * p;
     course.style.transform = `translate(${pin[0]}px,${pin[1]}px) scale(${zoom}) translate(${left - pin[0]}px,${top - pin[1]}px)`;
 
     const t = clamp((p - launch) / (land - launch));
@@ -188,4 +188,26 @@
   addEventListener('resize', () => { layout = null; schedule(); }, {passive:true});
   reduced.addEventListener('change', schedule);
   update();
+})();
+
+// Ambient motion only runs while the course is visible.
+(() => {
+  const stage = document.querySelector('.cb-swing-stage');
+  const water = stage?.querySelector('.cb-swing-water');
+  if (!water) return;
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  let visible = false;
+  function sync() {
+    const running = visible && !document.hidden && !reduced.matches;
+    stage.classList.toggle('has-ambient-motion', running);
+    if (running) water.unpauseAnimations();
+    else water.pauseAnimations();
+  }
+  new IntersectionObserver(entries => {
+    visible = entries[0].isIntersecting;
+    sync();
+  }, {threshold:0}).observe(stage);
+  reduced.addEventListener('change', sync);
+  document.addEventListener('visibilitychange', sync);
+  sync();
 })();
