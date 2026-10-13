@@ -85,8 +85,8 @@
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   // Artwork coordinates: the base of the pin on the green.
   const art = {w:1376, h:768, pin:[.68, .56]};
-  // Adidas footwear strip: six 362 × 724 cells. Preserve the original on-screen figure size.
-  const cell = {w:362, h:724, pad:60, baseline:588, club:[208, 604]};
+  // Embroidered-glove strip: six equal cells; contact coordinates follow the artwork.
+  const cell = {w:2171 / 6, h:724, pad:60, baseline:614, club:[205, 640]};
   // Scroll progress at which each pose begins: address, takeaway, top, impact, follow-through, finish.
   const frames = [0, .1, .2, .33, .38, .46];
   const launch = .36, land = .68, settle = .8;
@@ -110,7 +110,7 @@
     course.style.width = `${cw}px`;
     course.style.height = `${ch}px`;
     const pin = [left + art.pin[0] * cw, top + art.pin[1] * ch];
-    const gh = Math.min(H * .72, W <= 650 ? W * .95 : W * 1.15) * 724 / 520, gw = gh * cell.w / cell.h, unit = gh / cell.h;
+    const gh = Math.min(H * .72, W <= 650 ? W * .95 : W * 1.15) * 724 / 580, gw = gh * cell.w / cell.h, unit = gh / cell.h;
     const gx = (W <= 650 ? 0 : W * .12) - cell.pad * unit, gy = H * .93 - cell.baseline * unit;
     golfer.style.cssText = `width:${gw}px;height:${gh}px;transform:translate(${gx}px,${gy}px)`;
     const r = Math.max(4, 5.5 * unit);
@@ -143,16 +143,12 @@
       frame = next;
       sprite.style.backgroundPositionX = `${frame * 20}%`;
       // Contact stays under the planted soles; the raised trailing heel has a smaller shadow.
-      const contacts = [[.177,.68,.807,.8],[.268,.80,.805,.8],[.295,.80,.807,.8],[.323,.81,.807,.8],[.273,.79,.807,.803],[.41,.83,.807,.805]][frame];
+      const contacts = [[.149,.733,.844,.841],[.169,.80,.844,.841],[.257,.88,.836,.844],[.296,.895,.847,.841],[.202,.802,.846,.836],[.50,.87,.858,.843]][frame];
       golfer.style.setProperty('--left-foot-x', `${contacts[0] * 100}%`);
       golfer.style.setProperty('--right-foot-x', `${contacts[1] * 100}%`);
       golfer.style.setProperty('--left-foot-y', `${contacts[2] * 100}%`);
       golfer.style.setProperty('--right-foot-y', `${contacts[3] * 100}%`);
       golfer.classList.toggle('has-raised-heel', frame === 5);
-      const glove = [[186,386,-10],[83,281,50],[82,154,30],[261,376,-15],[310,267,40],[183,170,45]][frame];
-      golfer.style.setProperty('--glove-x', `${glove[0] / cell.w * 100}%`);
-      golfer.style.setProperty('--glove-y', `${glove[1] / cell.h * 100}%`);
-      golfer.style.setProperty('--glove-angle', `${glove[2]}deg`);
     }
     // The course eases in a touch around the green as the shot develops.
     const zoom = reduced.matches ? 1 : 1.035 - .005 * p;
