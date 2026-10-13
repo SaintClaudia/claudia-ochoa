@@ -25,23 +25,6 @@
 .cb-players figcaption{display:grid;gap:6px;margin:16px 0 0;font-size:clamp(11px,1.1vw,17px)}
 .cb-players figcaption span{color:var(--accent);font-size:11px}
 .cb-roster-note{margin:32px 0 0;font-size:14px;color:var(--muted)}
-/* The walkthrough uses Ask Read's phone frame (.cb-device, styled in case-story.css). */
-.cb-device{margin:auto}
-.cb-device-screen [data-birdies-screen],.cb-device-screen .cb-ui-phone{height:100%}
-.cb-device-screen .cb-ui-phone{aspect-ratio:auto;border-radius:0}
-.cb-device-screen .cb-ui-notch{display:none}
-/* Step 02: the hole card, laid out for the phone. */
-.cb-round{display:flex;flex-direction:column;height:100%;box-sizing:border-box;padding:13cqw 6cqw 7cqw}
-.cb-round .cb-ui-shade{background:linear-gradient(180deg,#07100d59 0%,#07100dd9 38%,#07100d 70%)}
-.cb-round-head .cb-ui-eyebrow{font-size:3cqw;letter-spacing:.15em;margin:0 0 2cqw}
-.cb-round-head h4{margin:0 0 1.5cqw;font:700 12cqw/1 Georgia,serif;letter-spacing:-.04em}
-.cb-round-head>p:last-child{margin:0;font-size:3.8cqw;color:#d8ddd0}
-.cb-ui .cb-round-map{flex:1;min-height:0;height:auto;margin:6cqw 0 4cqw;border:1px solid #ffffff22;border-radius:4cqw}
-.cb-round-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2cqw;margin:0 0 4cqw}
-.cb-round-stats div{padding:2.6cqw;border:1px solid #ffffff1a;border-radius:2.6cqw;background:#08120ecc}
-.cb-round-stats dt{font-size:2.3cqw;letter-spacing:.12em;text-transform:uppercase;color:#dbbb69;margin-bottom:1.2cqw}
-.cb-round-stats dd{margin:0;font-size:3.2cqw;font-weight:600;line-height:1.25}
-.cb-round .cb-ui-play{--cta-size:4cqw;--cta-radius:3cqw;--cta-pad:3.6cqw 5cqw}
 .cb-step h3{font-weight:450;text-transform:none;letter-spacing:-.05em;line-height:1.02}
 .cb-brand{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:40px;margin:clamp(100px,16vh,180px) var(--gutter) 0;padding:clamp(40px,6vw,96px);border-radius:20px;background:radial-gradient(ellipse at 25% 40%,#2b4636,#10201a 70%)}
 .cb-brand img{display:block;width:100%;max-width:340px;margin:auto}
@@ -255,6 +238,36 @@
 
 /* The finish keeps the bare trailing hand outside the gloved lead hand. */
 .cb-swing-golfer.has-raised-heel .cb-swing-sprite{background-image:url('/images/chasing-birdies-finish-closed-grip.png')}
-
-/* Preserve the same lead-hand glove through follow-through. */
-.cb-swing-golfer.has-club-extension .cb-swing-sprite{background-image:url('/images/chasing-birdies-followthrough-grip.png')}
+/* Walkthrough screens: a 16:9 console display, no device frame. */
+.cb-walkthrough{grid-template-columns:1.6fr 1fr}
+.cb-console{width:100%;aspect-ratio:16/9;container-type:inline-size;overflow:hidden;border-radius:clamp(10px,1.1vw,18px);background:#08120e;box-shadow:0 0 0 1px #ffffff14,0 30px 80px #000b}
+.cb-console>.cb-ui{height:100%;border-radius:0}
+.cb-console .cb-ui-eyebrow{font-size:max(1.2cqw,7px)}
+/* 01 / The players: select screen. */
+.cb-lineup{height:100%}
+.cb-lineup .cb-ui-scenery{filter:blur(3px) saturate(.9)}
+.cb-lineup .cb-ui-shade{background:radial-gradient(ellipse 30% 55% at 47% 55%,#d6ae6330,transparent 70%),linear-gradient(90deg,#07100df2 0%,#07100da6 28%,#07100d33 50%,#07100dcc 76%,#07100df2 100%),linear-gradient(0deg,#07100de6,#07100d00 30%)}
+.cb-lineup-head{position:absolute;left:4cqw;top:4cqw}
+.cb-lineup-head .cb-ui-eyebrow{letter-spacing:.15em;margin:0 0 1cqw}
+.cb-lineup-head h4{margin:0;font:700 4.2cqw/1 Georgia,serif;letter-spacing:-.04em}
+.cb-ui .cb-lineup-hero{position:absolute;left:30%;bottom:0;width:auto;height:94%;max-width:none;filter:drop-shadow(0 2cqw 3cqw #000c)}
+.cb-lineup-card{position:absolute;right:4cqw;top:4cqw;width:26cqw;box-sizing:border-box;display:grid;gap:.5cqw;padding:2cqw;border:1px solid #d6ae6359;border-radius:1.4cqw;background:#08120ed9;backdrop-filter:blur(6px)}
+.cb-lineup-card>small{font-size:1.1cqw;letter-spacing:.14em;color:#dbbb69;font-weight:600}
+.cb-lineup-card>strong{font-size:2.5cqw;font-weight:650;letter-spacing:-.03em}
+.cb-lineup-team{font-size:1.2cqw;color:#e4bf66;font-weight:600}
+.cb-lineup-badge{position:absolute;right:2cqw;top:2cqw;display:grid;justify-items:center;padding:.8cqw 1cqw;border-radius:.9cqw;background:#e4bf66;color:#11170f;line-height:1}
+.cb-lineup-badge strong{font-size:2.4cqw}.cb-lineup-badge span{font-size:.8cqw;font-weight:700;letter-spacing:.1em;margin-top:.3cqw}
+.cb-lineup-stats{display:grid;gap:1cqw;margin:1.4cqw 0 0;padding-top:1.4cqw;border-top:1px solid #ffffff17}
+.cb-lineup-stats div{display:grid;grid-template-columns:1fr auto;row-gap:.5cqw;font-size:1.15cqw}
+.cb-lineup-stats dt{color:#c9d1c6}.cb-lineup-stats dd{margin:0;font-weight:650}
+.cb-lineup-stats div:after{content:"";grid-column:1/-1;height:.35cqw;border-radius:1cqw;background:linear-gradient(90deg,#e4bf66 calc(var(--v)*1%),#ffffff1c 0)}
+.cb-lineup-trait{margin:1cqw 0 0;font-size:1.15cqw;font-weight:600}.cb-lineup-trait:before{content:"Signature trait";display:block;font-size:.85cqw;letter-spacing:.12em;text-transform:uppercase;color:#dbbb69;font-weight:600;margin-bottom:.4cqw}
+.cb-lineup-rail{position:absolute;left:4cqw;bottom:4cqw;display:grid;grid-template-columns:repeat(4,6.4cqw);gap:1cqw;list-style:none;margin:0;padding:0}
+.cb-lineup-rail li{display:grid;justify-items:center;align-content:end;gap:.5cqw;padding:.6cqw 0 .8cqw;border:1px solid #ffffff22;border-radius:1cqw;background:linear-gradient(180deg,#24392d,#0d1a13);overflow:hidden}
+.cb-lineup-rail li.is-selected{border-color:#e4bf66;box-shadow:inset 0 0 0 1px #e4bf66,0 0 2cqw #e4bf6633}
+.cb-ui .cb-lineup-rail img{width:100%;height:auto;aspect-ratio:164/216;object-fit:contain}
+.cb-lineup-rail span{font-size:1cqw;font-weight:600}
+.cb-lineup-rail .cb-lineup-more{align-content:center;border-style:dashed;background:#ffffff08;color:#c4cdbf}
+.cb-lineup-more b{font-size:3cqw;font-weight:300;line-height:1}
+.cb-lineup .cb-ui-play{position:absolute;right:4cqw;bottom:4cqw;width:26cqw;box-sizing:border-box;--cta-size:1.6cqw;--cta-radius:1.2cqw;--cta-pad:1.3cqw 1.8cqw}
+@media(max-width:800px){.cb-walkthrough{grid-template-columns:1fr}}

@@ -153,8 +153,8 @@
 
 /* Walkthrough phone: one live screen that moves through the app as the steps scroll by. Sized in cqw of the screen. */
 /* Frame matches the homepage devices (graphite body, light rim); the screen follows the iPhone 17 at 402×874pt. */
-.ar-phone,.cb-device{--pw:min(calc(78svh / 2.1),420px);position:relative;box-sizing:border-box;width:var(--pw);padding:calc(var(--pw) * .033);border-radius:calc(var(--pw) * .104);background:linear-gradient(110deg,#30373c,#080c10 55%,#1b2228);box-shadow:inset 0 0 0 1px #70777c,0 50px 90px #000a}
-.ar-screen,.cb-device-screen{position:relative;aspect-ratio:402/874;overflow:hidden;border-radius:calc(var(--pw) * .071);background:#070908;container-type:inline-size;font-family:AskReadOutfit,Arial,sans-serif;color:#f3f3ed}
+.ar-phone{--pw:min(calc(78svh / 2.1),420px);position:relative;box-sizing:border-box;width:var(--pw);padding:calc(var(--pw) * .033);border-radius:calc(var(--pw) * .104);background:linear-gradient(110deg,#30373c,#080c10 55%,#1b2228);box-shadow:inset 0 0 0 1px #70777c,0 50px 90px #000a}
+.ar-screen{position:relative;aspect-ratio:402/874;overflow:hidden;border-radius:calc(var(--pw) * .071);background:#070908;container-type:inline-size;font-family:AskReadOutfit,Arial,sans-serif;color:#f3f3ed}
 
 
 
@@ -223,7 +223,7 @@
 @media(max-width:800px){
   .cs-walkthrough{gap:0;padding-top:clamp(96px,14vh,140px)}
   .cs-walk-stage{display:grid;z-index:2;box-sizing:border-box;height:64svh;padding:12px 0 18px;background:linear-gradient(var(--ink) 88%,transparent)}
-  .ar-phone,.cb-device{--pw:calc((64svh - 30px) / 2.1)}
+  .ar-phone{--pw:calc((64svh - 30px) / 2.1)}
   .cs-step{min-height:58svh;justify-content:flex-start;padding:24px 0 0}
 }
 @media(prefers-reduced-motion:reduce){.ar-scroll-content,.ar-film,.ar-chat,.ar-player img,.ar-progress i,.ar-finding,.ar-pill{transition:none}.ar-tap{display:none}}

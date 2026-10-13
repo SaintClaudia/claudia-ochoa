@@ -55,7 +55,6 @@
 .birdies-stage .commerce-phone .cb-ui-phone{border-radius:calc(var(--frame-radius) - var(--frame-padding))}
 .birdies-stage .commerce-desktop .commerce-screen{filter:none}
 .cb-world [data-birdies-screen]{border-radius:12px;overflow:hidden;box-shadow:0 20px 60px #0007}
-.cb-device-screen [data-birdies-screen]{border-radius:inherit;overflow:hidden}
 @media(prefers-reduced-motion:reduce){.cb-ui-course{transition:none}.cb-ui-course:hover{transform:none}}
 
 /* Use the supplied brand artwork, keeping its colors and transparent edges intact. */
