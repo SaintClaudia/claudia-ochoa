@@ -32,7 +32,7 @@
     answer: phone.querySelector('.ar-answer-text'),
   };
   const question = 'Did their pressure get home after halftime?';
-  const answer = 'Washington kept blitzing in the second half, but Winston threw all three of his touchdowns after halftime. Start with this throw, then compare the other two.';
+  const answer = 'Washington kept blitzing in the second half, but the pressure didn’t get home, and Winston threw all three of his touchdowns after halftime. Start with this throw, then compare the other two.';
   const offsetIn = (el, root) => { let y = 0; for (let n = el; n && n !== root; n = n.offsetParent) y += n.offsetTop; return y; };
   const scrollTo = el => {
     if (!el) { phoneParts.scroll.style.transform = ''; return; }

@@ -38,3 +38,14 @@ The homepage now replaces the illustrative underneath-window and light-box claim
 ## Film review step
 
 The scripted sequence ends with a cursor opening Tracy's clip in the Ask Read film review layout. The "playing" state is the official preview image with a slow zoom and a moving progress bar. No video is embedded or streamed, and no durations, quarters or downs are shown, because none were verified.
+
+## Case study walkthrough: Pressure finding (verified October 13, 2026)
+
+Every Pressure claim in the case study's phone walkthrough comes from these sources:
+
+- Yahoo Sports / SB Nation, "Washington Commanders Whiteboard: Notes and observations from Week 5" (John Portis, October 12, 2026), https://sports.yahoo.com/articles/washington-commanders-whiteboard-notes-observations-220000493.html: "The team did continue to blitz at times in the second half, but the pressure didn't get home and Jameis burned the secondary in Cover 0." Also: Winston was 7-of-16 for 72 yards and 0 TDs in the first half, and 13-for-17 for 141 yards and 2 TDs in the fourth quarter.
+- ESPN box score, https://www.espn.com/nfl/boxscore/_/gameId/401872988: Winston was sacked twice for 21 yards; Washington had 7 QB hits.
+- ESPN team defense, https://www.espn.com/nfl/team/stats/_/name/wsh/table/defense: 9 sacks in five games.
+- All three Winston touchdowns came after halftime: see "Verified briefing content" above.
+
+The three Pressure clips are Winston's three touchdown throws: Nabers for 17 yards, Likely for 17 yards and Likely for 3 yards. No claim is made about the coverage or blitz on any single play.
