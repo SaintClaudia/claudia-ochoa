@@ -10,6 +10,7 @@ For structured access, connect an MCP client to [the public portfolio MCP endpoi
 
 ## AI Leadership
 
+- [Ask Read](https://claudiaochoa.co/work/ask-read.html): A football film-study product that uses computer vision to turn a week of opponent film into a short, evidence-backed briefing for the quarterback.
 - [Walmart GenAI Candidate Experience](https://claudiaochoa.co/work/walmart-genai.html): A human-centered GenAI hiring experience designed end-to-end in 24 hours; the concept earned leadership support and positioned Claudia as Creative Director for the initiative.
 - [Development Beyond the Score](https://claudiaochoa.co/work/lovesac-case-study-5.html): An AI-readiness and development case study covering agentic task completion, evaluation, accessibility, security, guardrails, and human recovery.
 
