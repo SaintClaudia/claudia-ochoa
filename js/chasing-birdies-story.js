@@ -79,7 +79,7 @@
   if (!root) return;
   const $ = selector => root.querySelector(selector);
   const stage = $('.cb-swing-stage'), course = $('.cb-swing-environment'), golfer = $('.cb-swing-golfer'), sprite = $('.cb-swing-sprite');
-  const ball = $('.cb-swing-ball'), shadow = $('.cb-swing-ball-shadow'), result = $('.cb-swing-result'), carry = $('[data-swing-carry]');
+  const ball = $('.cb-swing-ball'), shadow = $('.cb-swing-ball-shadow'), result = $('.cb-swing-result');
   const tracer = $('.cb-swing-tracer'), glow = $('.cb-swing-glow'), gradient = root.querySelector('#cb-tracer');
   const flash = $('.cb-swing-flash'), ripple = $('.cb-swing-ripple');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
@@ -178,7 +178,6 @@
     ripple.setAttribute('rx', r * (1 + 7 * splash)); ripple.setAttribute('ry', r * (1 + 7 * splash) * .32);
     ripple.style.opacity = String(p >= land && splash < 1 ? .8 * (1 - splash) : 0);
 
-    carry.textContent = `${Math.round(106 * t)} yds`;
     root.classList.toggle('is-live', p > .02);
     root.classList.toggle('is-swinging', p > .04);
     root.classList.toggle('is-landed', roll >= 1);

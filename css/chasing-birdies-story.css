@@ -134,11 +134,6 @@
 .cb-swing-stage{position:sticky;top:0;height:100svh;overflow:hidden;background:#0d1913}
 .cb-swing-course{position:absolute;left:0;top:0;max-width:none;transform-origin:0 0}
 .cb-swing-shade{position:absolute;inset:0;background:linear-gradient(180deg,var(--ink) 0,#0000 22%,#0000 70%,#0006 100%)}
-.cb-swing-hud{position:absolute;top:clamp(84px,12svh,120px);left:var(--gutter);z-index:2;display:flex;gap:8px;margin:0;font-size:12px;opacity:0;transform:translateY(-8px);transition:opacity .5s,transform .5s}
-.cb-swing-hud div{padding:10px 14px;border-radius:10px;background:#08120ec7;border:1px solid #ffffff1a;backdrop-filter:blur(8px)}
-.cb-swing-hud dt{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#d6ae63;margin-bottom:5px}
-.cb-swing-hud dd{margin:0;font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
-.cb-swing.is-live .cb-swing-hud{opacity:1;transform:none}
 .cb-swing-golfer{position:absolute;left:0;top:0}
 .cb-swing-sprite{position:absolute;inset:0;background:url('/images/chasing-birdies-swing-purdy.webp?v=2') 0 0/600% 100% no-repeat}
 .cb-swing-shadow{position:absolute;left:19%;right:30%;bottom:5.5%;height:6%;border-radius:50%;background:radial-gradient(closest-side,#000a,#0000)}
@@ -155,8 +150,8 @@
 .cb-swing-result{position:absolute;left:0;top:0;z-index:2;margin:0;padding:10px 16px;border-radius:999px;background:#e4bf66;color:#11170f;font-size:13px;font-weight:650;white-space:nowrap;opacity:0;translate:-50% -100%;transform:translateY(8px);transition:opacity .4s,transform .4s}
 .cb-swing-result span{margin-right:8px;font-weight:400}
 .cb-swing.is-landed .cb-swing-result{opacity:1;transform:none}
-@media(max-width:650px){.cb-swing{height:300svh}.cb-swing-hud{left:16px;right:16px;gap:6px;font-size:11px}.cb-swing-hud div{flex:1;padding:8px 9px}.cb-swing-hud div:first-child{flex:1.6}.cb-swing-hud dt{letter-spacing:.1em;white-space:nowrap}.cb-swing-glow{stroke-width:10}.cb-swing-tracer{stroke-width:3}}
-@media(prefers-reduced-motion:reduce){.cb-swing{height:100svh}.cb-swing-hud,.cb-swing-result{transition:none}}
+@media(max-width:650px){.cb-swing{height:300svh}.cb-swing-glow{stroke-width:10}.cb-swing-tracer{stroke-width:3}}
+@media(prefers-reduced-motion:reduce){.cb-swing{height:100svh}.cb-swing-result{transition:none}}
 /* Ambient course pass: stable framing with a little life in the water. */
 .cb-swing-environment{position:absolute;left:0;top:0;transform-origin:0 0;animation:cb-course-breathe 14s ease-in-out infinite;animation-play-state:paused}
 .cb-swing-environment .cb-swing-course{width:100%;height:100%;display:block}
@@ -164,3 +159,12 @@
 .cb-swing-stage.has-ambient-motion .cb-swing-environment{animation-play-state:running}
 @keyframes cb-course-breathe{0%,100%{translate:-5px 1px}50%{translate:5px -2px}}
 @media(prefers-reduced-motion:reduce){.cb-swing-environment{animation:none}.cb-swing-water{display:none}}
+/* Native overview panel echoes the course selection screen. */
+.cb-swing-overview{position:absolute;top:clamp(90px,12svh,120px);right:var(--gutter);z-index:2;width:clamp(175px,17vw,250px);box-sizing:border-box;padding:18px;border:1px solid #ffffff12;border-radius:12px;background:#08120ee8;backdrop-filter:blur(8px);color:#f3f3ed}
+.cb-swing-overview-label{font-size:9px;letter-spacing:.14em;color:#d6ae63;margin:0 0 10px}
+.cb-swing-overview h3{margin:0 0 8px;font-size:20px;font-weight:650;letter-spacing:-.025em;line-height:1.15}
+.cb-swing-overview-distance{font-size:13px;color:#c3cbbf;margin:0 0 10px}
+.cb-swing-overview-wind{display:flex;align-items:center;gap:7px;margin:0 0 15px;font-size:11px}
+.cb-swing-overview-wind svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round}
+.cb-swing-overview>img{display:block;width:100%;height:auto;aspect-ratio:2/3;object-fit:cover;border-radius:7px}
+@media(max-width:650px){.cb-swing-overview{top:86px;right:16px;width:120px;padding:10px;border-radius:9px}.cb-swing-overview-label{font-size:7px;letter-spacing:.08em;margin-bottom:7px}.cb-swing-overview h3{font-size:14px}.cb-swing-overview-distance{font-size:10px;margin-bottom:6px}.cb-swing-overview-wind{font-size:9px;gap:5px;margin-bottom:9px}.cb-swing-overview-wind svg{width:15px;height:15px}}
