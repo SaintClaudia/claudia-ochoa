@@ -135,8 +135,14 @@
 .cb-swing-course{position:absolute;left:0;top:0;max-width:none;transform-origin:0 0}
 .cb-swing-shade{position:absolute;inset:0;background:linear-gradient(180deg,var(--ink) 0,#0000 22%,#0000 70%,#0006 100%)}
 .cb-swing-golfer{position:absolute;left:0;top:0}
-.cb-swing-sprite{position:absolute;inset:0;background:url('/images/chasing-birdies-swing-purdy.webp?v=2') 0 0/600% 100% no-repeat}
-.cb-swing-shadow{position:absolute;left:19%;right:30%;bottom:5.5%;height:6%;border-radius:50%;background:radial-gradient(closest-side,#000a,#0000)}
+.cb-swing-sprite{position:absolute;inset:0;background:url('/images/chasing-birdies-swing-purdy-adidas.png') 0 0/600% 100% no-repeat}
+ .cb-swing-shadow{position:absolute;inset:0;z-index:0}
+.cb-swing-shadow::before,.cb-swing-shadow::after{content:"";position:absolute;width:13%;height:1.2%;border-radius:50%;background:radial-gradient(ellipse,#000b 0%,#0007 35%,#0000 75%);translate:-50% 0}
+.cb-swing-shadow::before{left:var(--left-foot-x,27%);top:var(--left-foot-y,75.5%)}
+.cb-swing-shadow::after{left:var(--right-foot-x,75.5%);top:var(--right-foot-y,75.5%)}
+.cb-swing-cast-shadow{position:absolute;z-index:0;left:14%;top:74.5%;width:69%;height:4%;border-radius:50%;background:radial-gradient(ellipse,#0005,#0002 45%,#0000 72%);transform:rotate(-7deg);transform-origin:75% 50%}
+.cb-swing-sprite{z-index:1}
+.cb-swing-golfer.has-raised-heel .cb-swing-shadow::before{width:7%;opacity:.65}
 /* Arcade shot tracer: a hot core over a soft glow, fading toward the tee. */
 .cb-swing-flight{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
 .cb-swing-flight path{fill:none;stroke:url(#cb-tracer);stroke-linecap:round}
