@@ -82,6 +82,7 @@
   const ball = $('.cb-swing-ball'), shadow = $('.cb-swing-ball-shadow'), result = $('.cb-swing-result');
   const tracer = $('.cb-swing-tracer'), glow = $('.cb-swing-glow'), gradient = root.querySelector('#cb-tracer');
   const flash = $('.cb-swing-flash'), ripple = $('.cb-swing-ripple');
+  const overview = $('.cb-swing-overview'), mapBall = $('.cb-swing-map-ball'), mapDistance = $('.cb-swing-pin-distance');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   // Artwork coordinates: the base of the pin on the green.
   const art = {w:1376, h:768, pin:[.68, .56]};
@@ -150,6 +151,7 @@
       golfer.style.setProperty('--left-foot-y', `${contacts[2] * 100}%`);
       golfer.style.setProperty('--right-foot-y', `${contacts[3] * 100}%`);
       golfer.classList.toggle('has-raised-heel', frame === 5);
+      golfer.classList.toggle('has-club-extension', frame === 4);
     }
     // The course eases in a touch around the green as the shot develops.
     const zoom = reduced.matches ? 1 : 1.035 - .005 * p;
@@ -165,7 +167,7 @@
       size = 1 - .62 * t;
     } else {
       const eased = 1 - (1 - roll) ** 2;
-      ground = mix(landing, pin, eased);
+      ground = mix(landing, [pin[0] - ch * .005, pin[1] + ch * .007], eased);
       point = [ground[0], ground[1] - Math.abs(Math.sin(roll * Math.PI * 2)) * (1 - roll) * ch * .025];
       size = .38 - .03 * roll;
     }
@@ -191,6 +193,16 @@
     ripple.setAttribute('rx', r * (1 + 7 * splash)); ripple.setAttribute('ry', r * (1 + 7 * splash) * .32);
     ripple.style.opacity = String(p >= land && splash < 1 ? .8 * (1 - splash) : 0);
 
+    const closeUp = p >= launch;
+    overview.classList.toggle('is-green-view', closeUp);
+    overview.querySelector('.cb-swing-overview-label').textContent = closeUp ? 'GREEN VIEW' : 'COURSE OVERVIEW';
+    const easedRoll = 1 - (1 - roll) ** 2;
+    const feet = t < 1 ? 18 + (1 - t) * 300 : 18 - 12 * easedRoll;
+    overview.querySelector('.cb-swing-overview-distance').textContent = !closeUp ? '106 yards' : feet > 30 ? `${Math.round(feet / 3)} yards to the pin` : `${Math.round(feet)} ft to the pin`;
+    $('.cb-swing-green-map').setAttribute('viewBox', `${lerp(520,600,t)} ${lerp(290,340,t)} ${lerp(370,220,t)} ${lerp(555,330,t)}`);
+    const mapPoint = t < 1 ? mix([555,805],[665,480],t) : mix([665,480],[706,450],easedRoll);
+    mapBall.setAttribute('cx',mapPoint[0]); mapBall.setAttribute('cy',mapPoint[1]);
+    mapDistance.setAttribute('d', `M${mapPoint}L717 431`);
     root.classList.toggle('is-live', p > .02);
     root.classList.toggle('is-swinging', p > .04);
     root.classList.toggle('is-landed', roll >= 1);

@@ -175,3 +175,17 @@
 .cb-swing-overview>img{display:block;width:100%;height:auto;aspect-ratio:2/3;object-fit:cover;border-radius:7px}
 @media(max-width:650px){.cb-swing-overview{top:86px;right:16px;width:120px;padding:10px;border-radius:9px}.cb-swing-overview-label{font-size:7px;letter-spacing:.08em;margin-bottom:7px}.cb-swing-overview h3{font-size:14px}.cb-swing-overview-distance{font-size:10px;margin-bottom:6px}.cb-swing-overview-wind{font-size:9px;gap:5px;margin-bottom:9px}.cb-swing-overview-wind svg{width:15px;height:15px}}
 
+
+/* The inset follows the shot from the course overview into the green. */
+.cb-swing-map{position:relative;aspect-ratio:2/3;border-radius:7px;overflow:hidden;background:#233820}
+.cb-swing-full-map,.cb-swing-green-map{position:absolute;inset:0;width:100%;height:100%;display:block;transition:opacity .45s ease}
+.cb-swing-full-map{object-fit:cover}.cb-swing-green-map{opacity:0}
+.cb-swing-overview.is-green-view .cb-swing-full-map{opacity:0}.cb-swing-overview.is-green-view .cb-swing-green-map{opacity:1}
+.cb-swing-overview-distance{font-variant-numeric:tabular-nums}
+.cb-swing-club-extension{position:absolute;inset:0;width:100%;height:100%;overflow:visible;z-index:2;display:none;pointer-events:none}
+.cb-swing-golfer.has-club-extension .cb-swing-club-extension{display:block}
+@media(prefers-reduced-motion:reduce){.cb-swing-full-map,.cb-swing-green-map{transition:none}}
+.cb-locked-team{display:block;font-size:13px;font-weight:600;color:#e4bf66;margin-top:5px}
+@media(max-width:1000px) and (min-width:651px){.cb-locked-team{font-size:12px}}
+/* Keep the six-stat card within the customizer's height on desktop. */
+@media(min-width:1001px){.cb-select-player{padding-top:28px;padding-bottom:24px}.cb-select-logo{margin-bottom:20px}.cb-setup-steps{margin-bottom:16px}.cb-locked-player{padding:18px}.cb-locked-head{gap:10px}.cb-locked-head img{width:50px;height:64px}.cb-player-stats{gap:8px;margin:18px 0 6px}.cb-player-stats div{row-gap:6px}.cb-player-trait{margin-top:12px;padding-top:12px}}
