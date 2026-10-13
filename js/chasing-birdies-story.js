@@ -38,9 +38,9 @@
   const choices = [...root.querySelectorAll('[data-choice]')];
   const captions = [...document.querySelectorAll('.cb-journey-caption li')];
   const states = [
+    {look:'game', choices:['scarlet','helmet'], label:'Brock Purdy · Game-day wear'},
     {look:'golf', choices:['ivory'], label:'Brock Purdy · Golf attire'},
-    {look:'black-glove', choices:['black','glove'], label:'Brock Purdy · 49ers polo + 13 glove'},
-    {look:'game', choices:['scarlet','helmet'], label:'Brock Purdy · Game-day wear'}
+    {look:'black-glove', choices:['black','glove'], label:'Brock Purdy · 49ers polo + 13 glove'}
   ];
   let active = -1;
   let pending = false;

@@ -14,8 +14,9 @@
 .cb-ui-feature h3{margin:0 0 1cqw;font:700 6.4cqw/.98 Georgia,serif;letter-spacing:-.035em}
 .cb-ui-yardage{margin:0 0 2.5cqw;font:2.1cqw/1.4 Georgia,serif}
 .cb-ui-description{margin:0 0 2.4cqw;max-width:18em;font-size:1.5cqw;line-height:1.5;color:#e1e3d9}
-.cb-ui-play{display:flex;justify-content:space-between;align-items:center;gap:2cqw;border:1px solid #f4d58580;border-radius:1.5cqw;padding:1.25cqw 2cqw;background:linear-gradient(115deg,#e8c36d,#f3d58a);font-size:1.7cqw;font-weight:650;color:#0c1710!important;box-shadow:0 .8cqw 2cqw #0003}
-.cb-ui-play span{font-size:2.4cqw;line-height:.7;font-weight:400}
+/* Shared gold CTA. Size each instance with --cta-size, --cta-pad and --cta-radius; color, weight and arrow stay consistent. */
+.cb-ui-play{display:flex;justify-content:space-between;align-items:center;gap:1.2em;border:1px solid #f4d58580;border-radius:var(--cta-radius,1.5cqw);padding:var(--cta-pad,1.25cqw 2cqw);background:linear-gradient(115deg,#e8c36d,#f3d58a);font-size:var(--cta-size,1.7cqw);font-weight:650;color:#0c1710!important;text-decoration:none;box-shadow:0 .47em 1.18em #0003}
+.cb-ui-play span{font-size:1.45em;line-height:.7;font-weight:400}
 .cb-ui-hole{position:absolute;right:3cqw;top:19%;width:19%;padding:1.5cqw;border:1px solid #ffffff22;border-radius:1.5cqw;background:#08120ee0;backdrop-filter:blur(10px)}
 .cb-ui-hole>strong{font-size:1.7cqw;font-weight:700;text-transform:uppercase}.cb-ui-hole>p{margin:.7cqw 0;font-size:1.2cqw;color:#d0d8ce}.cb-ui-hole .cb-ui-wind{display:flex;align-items:center;gap:.65cqw;font-size:1.15cqw;letter-spacing:.04em;margin:1cqw 0 1.3cqw}
 .cb-ui-hole .cb-ui-hole-map{width:100%;height:auto;border-radius:.7cqw;aspect-ratio:192/272}
@@ -35,7 +36,7 @@
 .cb-ui-phone-intro .cb-ui-eyebrow{font-size:3cqw;letter-spacing:.15em;margin-bottom:2cqw}
 .cb-ui-phone-intro h3{margin:0 0 2.5cqw;font:700 11.2cqw/1.02 Georgia,serif;letter-spacing:-.045em}
 .cb-ui-phone-intro>p:last-of-type{margin:0 0 4.5cqw;font-size:3.5cqw;line-height:1.45;max-width:20em;color:#d8ddd0}
-.cb-ui-phone-intro .cb-ui-play{font-size:4cqw;border-radius:3cqw;padding:3.6cqw 5cqw}.cb-ui-phone-intro .cb-ui-play span{font-size:6cqw}
+.cb-ui-phone-intro .cb-ui-play{--cta-size:4cqw;--cta-radius:3cqw;--cta-pad:3.6cqw 5cqw}
 .cb-ui-options{position:absolute;left:7cqw;right:7cqw;top:60%;display:grid;gap:2.6cqw}
 .cb-ui-option{position:relative;overflow:hidden;display:flex;align-items:center;gap:3.4cqw;height:19.5cqw;border:1px solid #ffffff1f;border-radius:3cqw;background:linear-gradient(110deg,#1d2021f0,#0c0e0ff2);box-shadow:0 1cqw 3cqw #0006;padding-right:4cqw}
 .cb-ui-option .cb-ui-photo{position:relative;inset:auto;flex:0 0 27%;width:27%;height:100%;z-index:0}

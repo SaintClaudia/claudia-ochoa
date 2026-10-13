@@ -41,7 +41,7 @@
 .cb-round-stats div{padding:2.6cqw;border:1px solid #ffffff1a;border-radius:2.6cqw;background:#08120ecc}
 .cb-round-stats dt{font-size:2.3cqw;letter-spacing:.12em;text-transform:uppercase;color:#dbbb69;margin-bottom:1.2cqw}
 .cb-round-stats dd{margin:0;font-size:3.2cqw;font-weight:600;line-height:1.25}
-.cb-round .cb-ui-play{font-size:4cqw;border-radius:3cqw;padding:3.6cqw 5cqw}.cb-round .cb-ui-play span{font-size:6cqw}
+.cb-round .cb-ui-play{--cta-size:4cqw;--cta-radius:3cqw;--cta-pad:3.6cqw 5cqw}
 .cb-step h3{font-weight:450;text-transform:none;letter-spacing:-.05em;line-height:1.02}
 .cb-brand{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:40px;margin:clamp(100px,16vh,180px) var(--gutter) 0;padding:clamp(40px,6vw,96px);border-radius:20px;background:radial-gradient(ellipse at 25% 40%,#2b4636,#10201a 70%)}
 .cb-brand img{display:block;width:100%;max-width:340px;margin:auto}
@@ -86,10 +86,10 @@
 .cb-outfit-preview{width:66px;height:78px;overflow:hidden;border-radius:5px;background:#2b392d;flex-shrink:0}.cb-outfit-preview img{width:100%;height:190px;object-fit:cover;object-position:top;transform:scale(1.4);transform-origin:center 25%}
 .cb-outfit-options button>span:nth-child(2){font-size:15px;font-weight:600}.cb-outfit-options small{display:block;font-weight:400;font-size:11px;color:#b6bfb3;margin-top:6px}.cb-outfit-options i{margin-left:auto;color:#e4bf66;font-style:normal;opacity:0}.cb-outfit-options [aria-pressed=true] i{opacity:1}
 .cb-outfit-status{font-size:12px;color:#bfc8be;min-height:32px;margin:18px 0}
-.cb-choose-course{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:17px 20px;border-radius:8px;background:#e4bf66;color:#11170f;text-decoration:none;font-size:14px;font-weight:650}
+.cb-choose-course{--cta-size:14px;--cta-pad:17px 20px;--cta-radius:8px}
 .cb-customizer button:focus-visible,.cb-choose-course:focus-visible{outline:2px solid #fff;outline-offset:4px}
 @media(max-width:1000px){.cb-customizer{grid-template-columns:23% 42% 35%;min-height:560px}.cb-character{height:560px}.cb-select-player{padding:24px 0 24px 20px}.cb-wardrobe{padding:40px 20px 24px 10px}.cb-player-options .cb-player-card{gap:7px;padding:7px}.cb-player-options span{font-size:12px}.cb-select-logo{margin-bottom:32px}.cb-outfit-preview{width:48px}.cb-outfit-options button{gap:8px}.cb-outfit-options button>span:nth-child(2){font-size:13px}}
-@media(max-width:650px){.cb-player-section{margin-top:72px}.cb-player-heading{margin-bottom:28px}.cb-customizer{grid-template-columns:1fr 1fr;min-height:0;border-radius:12px}.cb-select-player{grid-column:1/-1;padding:22px 16px 0}.cb-select-logo{width:116px;margin-bottom:18px}.cb-select-label{font-size:9px;margin-bottom:12px}.cb-player-options{grid-template-columns:repeat(3,1fr);gap:7px}.cb-player-options .cb-player-card{display:grid;justify-items:center;text-align:center;gap:8px}.cb-player-options span{font-size:10px}.cb-player-options img{width:32px;height:42px}.cb-player-options small{display:none}.cb-character{height:360px}.cb-character-name{bottom:14px}.cb-character-name span{display:none}.cb-character-name strong{font-size:20px}.cb-wardrobe{padding:28px 14px 20px 0}.cb-wardrobe h3{font-size:25px;margin-bottom:12px}.cb-wardrobe-copy{font-size:11px;margin-bottom:16px}.cb-outfit-preview{width:36px;height:54px}.cb-outfit-options button>span:nth-child(2){font-size:11px}.cb-outfit-options small{font-size:9px}.cb-outfit-options button{gap:6px;padding:5px}.cb-outfit-options i{font-size:10px}.cb-outfit-status{font-size:10px;margin:12px 0}.cb-choose-course{padding:12px 10px;font-size:11px}.cb-outfit-options{gap:8px}}
+@media(max-width:650px){.cb-player-section{margin-top:72px}.cb-player-heading{margin-bottom:28px}.cb-customizer{grid-template-columns:1fr 1fr;min-height:0;border-radius:12px}.cb-select-player{grid-column:1/-1;padding:22px 16px 0}.cb-select-logo{width:116px;margin-bottom:18px}.cb-select-label{font-size:9px;margin-bottom:12px}.cb-player-options{grid-template-columns:repeat(3,1fr);gap:7px}.cb-player-options .cb-player-card{display:grid;justify-items:center;text-align:center;gap:8px}.cb-player-options span{font-size:10px}.cb-player-options img{width:32px;height:42px}.cb-player-options small{display:none}.cb-character{height:360px}.cb-character-name{bottom:14px}.cb-character-name span{display:none}.cb-character-name strong{font-size:20px}.cb-wardrobe{padding:28px 14px 20px 0}.cb-wardrobe h3{font-size:25px;margin-bottom:12px}.cb-wardrobe-copy{font-size:11px;margin-bottom:16px}.cb-outfit-preview{width:36px;height:54px}.cb-outfit-options button>span:nth-child(2){font-size:11px}.cb-outfit-options small{font-size:9px}.cb-outfit-options button{gap:6px;padding:5px}.cb-outfit-options i{font-size:10px}.cb-outfit-status{font-size:10px;margin:12px 0}.cb-choose-course{--cta-pad:12px 10px;--cta-size:11px}.cb-outfit-options{gap:8px}}
 @media(prefers-reduced-motion:reduce){.cb-character-look{transition:none;transform:none}}
 .cb-player-landscape{position:absolute;inset:0;width:100%;height:100%;z-index:-2;filter:blur(2px);opacity:.7}
 .cb-customizer:before{background:linear-gradient(90deg,#08120eee,#13261a40 45%,#08120edc);filter:none;opacity:1}
@@ -106,7 +106,7 @@
 .cb-game-gear img{display:block;height:330px;width:100%;object-fit:contain}.cb-game-gear p{font-size:13px;line-height:1.6;color:#b6c0b2}.cb-gear-panel[hidden],.cb-game-gear[hidden]{display:none}
 .cb-outfit-status{font-size:11px;min-height:28px;margin:16px 0 10px}
 @media(max-width:1000px) and (min-width:651px){.cb-customizer{grid-template-columns:23% 36% 41%}.cb-wardrobe{padding:24px 18px 24px 12px}.cb-character{height:740px}}
-@media(max-width:650px){.cb-customizer{grid-template-columns:1fr;min-height:0}.cb-select-player{grid-column:auto}.cb-character{height:420px;align-self:auto}.cb-character-name{bottom:16px}.cb-wardrobe{padding:16px 20px 24px}.cb-wardrobe h3{font-size:30px}.cb-wardrobe h3 br{display:none}.cb-wardrobe-copy{font-size:13px}.cb-wardrobe-tabs button{font-size:14px;padding:9px 0}.cb-gear-grid svg{height:98px}.cb-gear-grid button>span{font-size:12px}.cb-gear-grid small{font-size:10px}.cb-choose-course{font-size:13px;padding:16px}.cb-outfit-status{font-size:11px}.cb-game-gear img{height:220px}}
+@media(max-width:650px){.cb-customizer{grid-template-columns:1fr;min-height:0}.cb-select-player{grid-column:auto}.cb-character{height:420px;align-self:auto}.cb-character-name{bottom:16px}.cb-wardrobe{padding:16px 20px 24px}.cb-wardrobe h3{font-size:30px}.cb-wardrobe h3 br{display:none}.cb-wardrobe-copy{font-size:13px}.cb-wardrobe-tabs button{font-size:14px;padding:9px 0}.cb-gear-grid svg{height:98px}.cb-gear-grid button>span{font-size:12px}.cb-gear-grid small{font-size:10px}.cb-choose-course{--cta-size:13px;--cta-pad:16px}.cb-outfit-status{font-size:11px}.cb-game-gear img{height:220px}}
 .cb-gear-grid svg,.cb-gear-base svg{overflow:hidden}
 /* V1: a scroll-led wardrobe presentation, with every collection visible. */
 .cb-customizer{grid-template-columns:22% 37% 41%;min-height:780px}.cb-character{height:780px}
@@ -175,7 +175,53 @@
 .cb-swing-overview>img{display:block;width:100%;height:auto;aspect-ratio:2/3;object-fit:cover;border-radius:7px}
 @media(max-width:650px){.cb-swing-overview{top:86px;right:16px;width:120px;padding:10px;border-radius:9px}.cb-swing-overview-label{font-size:7px;letter-spacing:.08em;margin-bottom:7px}.cb-swing-overview h3{font-size:14px}.cb-swing-overview-distance{font-size:10px;margin-bottom:6px}.cb-swing-overview-wind{font-size:9px;gap:5px;margin-bottom:9px}.cb-swing-overview-wind svg{width:15px;height:15px}}
 
-
+/* Left rail: Purdy was picked on a previous screen, so it shows setup progress and his stats. */
+.cb-select-logo{margin-bottom:28px}
+.cb-setup-steps{display:flex;gap:6px;list-style:none;margin:0 0 22px;padding:0}
+.cb-setup-steps li{flex:1;padding:7px 0 0;border-top:2px solid #ffffff26;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#8f9a8c}
+.cb-setup-steps span{display:block;font-size:9px;margin-bottom:3px;color:inherit}
+.cb-setup-steps .is-done{border-color:#d6ae6399;color:#d6ae63}
+.cb-setup-steps .is-current{border-color:#e4bf66;color:#fff}
+.cb-locked-player{position:relative;padding:14px;border:1px solid #d6ae6366;border-radius:10px;background:#0a140cc4}
+.cb-locked-head{display:flex;gap:12px;align-items:center;padding-right:44px}
+.cb-locked-head img{width:46px;height:60px;object-fit:contain;background:#263d2e;border-radius:6px;flex-shrink:0}
+.cb-locked-head .cb-select-label{font-size:9px;margin:0 0 5px}
+.cb-locked-head strong{display:block;font-size:16px;letter-spacing:-.02em}
+.cb-locked-head small{display:block;font-size:11px;color:#b6c0b2;margin-top:3px}
+.cb-locked-overall{position:absolute;top:14px;right:14px;display:grid;justify-items:center;padding:6px 8px;border-radius:6px;background:#e4bf66;color:#11170f;line-height:1}
+.cb-locked-overall strong{font-size:18px}.cb-locked-overall span{font-size:8px;letter-spacing:.1em;font-weight:700;margin-top:2px}
+.cb-player-stats{display:grid;gap:9px;margin:16px 0 0}
+.cb-player-stats div{display:grid;grid-template-columns:1fr auto;row-gap:4px;font-size:11px}
+.cb-player-stats dt{color:#c9d1c6}.cb-player-stats dd{margin:0;font-weight:650;font-variant-numeric:tabular-nums}
+.cb-player-stats div:after{content:"";grid-column:1/-1;height:4px;border-radius:2px;background:linear-gradient(90deg,#e4bf66 calc(var(--v)*1%),#ffffff1c 0)}
+.cb-player-ranges{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:16px 0 0;padding-top:12px;border-top:1px solid #ffffff17}
+.cb-player-ranges dt{font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:#8f9a8c;margin-bottom:3px}.cb-player-ranges dd{margin:0;font-size:12px;font-weight:600}
+.cb-player-trait{margin:12px 0 0;font-size:11px;line-height:1.5;color:#b6c0b2}
+@media(max-width:1000px) and (min-width:651px){.cb-locked-player{padding:10px}.cb-locked-head{flex-direction:column;align-items:flex-start;padding-right:0}.cb-player-ranges{grid-template-columns:1fr}}
+@media(max-width:650px){.cb-select-player{padding:20px 16px 0}.cb-select-logo{margin-bottom:16px}}
+/* The stats card fills the left rail's height, with larger type for readability. */
+.cb-select-player{display:flex;flex-direction:column;padding-bottom:32px}
+.cb-setup-steps li{font-size:12px}.cb-setup-steps span{font-size:11px}
+.cb-locked-player{flex:1;display:flex;flex-direction:column;padding:20px}
+.cb-locked-head{gap:14px;padding-right:60px}
+.cb-locked-head img{width:58px;height:76px}
+.cb-locked-head .cb-select-label{font-size:10px;margin-bottom:6px}
+.cb-locked-head strong{font-size:20px}.cb-locked-head small{font-size:13px;margin-top:5px}
+.cb-locked-overall{top:20px;right:20px;padding:8px 10px}.cb-locked-overall strong{font-size:24px}.cb-locked-overall span{font-size:9px}
+.cb-player-stats{flex:1;align-content:space-evenly;gap:18px;margin:24px 0 8px}
+.cb-player-stats div{font-size:14px;row-gap:8px}
+.cb-player-stats div:after{height:6px;border-radius:3px}
+.cb-player-ranges{gap:10px;margin-top:20px;padding-top:18px}
+.cb-player-ranges dt{font-size:10px;margin-bottom:6px}.cb-player-ranges dd{font-size:16px}
+.cb-player-trait{margin-top:18px;font-size:13px}
+@media(max-width:1000px) and (min-width:651px){.cb-locked-player{padding:14px}.cb-locked-head{padding-right:0}.cb-player-stats div{font-size:12px}}
+@media(max-width:650px){.cb-player-stats{gap:14px}}
+.cb-locked-head{display:grid;grid-template-columns:auto;gap:14px;padding-right:0}.cb-locked-head>div{min-width:0}
+.cb-player-trait span{display:block;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#d6ae63;margin-bottom:5px}
+.cb-player-trait strong{display:block;font-size:15px;color:#fff;margin-bottom:4px}
+.cb-player-stats{gap:12px}
+.cb-player-trait{margin-top:16px;padding-top:16px;border-top:1px solid #ffffff17}
+@media(max-width:1000px) and (min-width:651px){.cb-select-logo{margin-bottom:18px}.cb-setup-steps{margin-bottom:14px}.cb-locked-head img{width:46px;height:60px}.cb-locked-head strong{font-size:17px}.cb-player-stats{gap:6px;margin:14px 0 4px}.cb-player-stats div{row-gap:5px}.cb-player-trait{font-size:11px;margin-top:10px;padding-top:10px}.cb-player-trait strong{font-size:13px}}
 /* The inset follows the shot from the course overview into the green. */
 .cb-swing-map{position:relative;aspect-ratio:2/3;border-radius:7px;overflow:hidden;background:#233820}
 .cb-swing-full-map,.cb-swing-green-map{position:absolute;inset:0;width:100%;height:100%;display:block;transition:opacity .45s ease}
@@ -189,6 +235,23 @@
 @media(max-width:1000px) and (min-width:651px){.cb-locked-team{font-size:12px}}
 /* Keep the six-stat card within the customizer's height on desktop. */
 @media(min-width:1001px){.cb-select-player{padding-top:28px;padding-bottom:24px}.cb-select-logo{margin-bottom:20px}.cb-setup-steps{margin-bottom:16px}.cb-locked-player{padding:18px}.cb-locked-head{gap:10px}.cb-locked-head img{width:50px;height:64px}.cb-player-stats{gap:8px;margin:18px 0 6px}.cb-player-stats div{row-gap:6px}.cb-player-trait{margin-top:12px;padding-top:12px}}
+/* Selection ring sits above the thumbnail so the artwork can't cover its top edge. */
+.cb-look-row li.is-selected{box-shadow:none}
+.cb-look-row li::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px #e4bf66;opacity:0;pointer-events:none;transition:opacity .4s}
+.cb-look-row li.is-selected::after{opacity:1}
+@media(prefers-reduced-motion:reduce){.cb-look-row li::after{transition:none}}
 
 /* Use the corrected left-hand glove only during the takeaway pose. */
 .cb-swing-golfer.has-takeaway-glove .cb-swing-sprite{background-image:url('/images/chasing-birdies-takeaway-glove.png?v=2')}
+/* Promo banner: golden-hour turkey on the green behind the logo and tagline. */
+.cb-brand{position:relative;isolation:isolate;overflow:hidden;grid-template-columns:23% 28% minmax(0,1fr);gap:0;aspect-ratio:3.2;padding:0 5%;background:#0d1a10}
+.cb-brand::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#0b140dbf 0%,#0b140d66 22%,#0b140d00 38%,#0b140d00 58%,#0b140d40 100%)}
+.cb-brand .cb-brand-bg{position:absolute;z-index:-2;top:0;left:12%;width:auto;max-width:none;height:100%;margin:0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 9%);mask-image:linear-gradient(90deg,transparent,#000 9%)}
+.cb-brand .cb-brand-logo{grid-column:1;width:100%;max-width:none;margin:0;filter:drop-shadow(0 6px 24px #0009)}
+.cb-brand p{grid-column:3;justify-self:end;font-size:clamp(18px,2.7vw,46px);font-weight:500;letter-spacing:-.035em;text-shadow:0 2px 18px #000b}
+.cb-brand p span{color:#8fb456}
+@media(max-width:1100px) and (min-width:801px){.cb-brand{grid-template-columns:23% 22% minmax(0,1fr);aspect-ratio:2.8}.cb-brand p{font-size:2.5vw}}
+@media(max-width:800px){.cb-brand{--photo:clamp(220px,46vw,320px);grid-template-columns:1fr;justify-items:center;text-align:center;aspect-ratio:auto;gap:20px;padding:calc(var(--photo) + 4px) 20px 36px}.cb-brand .cb-brand-bg{left:0;width:100%;height:var(--photo);object-fit:cover;object-position:18% 50%;-webkit-mask-image:linear-gradient(180deg,#000 70%,transparent);mask-image:linear-gradient(180deg,#000 70%,transparent)}.cb-brand::after{display:none}.cb-brand .cb-brand-logo,.cb-brand p{grid-column:1}.cb-brand .cb-brand-logo{width:200px}.cb-brand p{justify-self:center;font-size:24px}}
+
+/* The finish keeps the bare trailing hand outside the gloved lead hand. */
+.cb-swing-golfer.has-raised-heel .cb-swing-sprite{background-image:url('/images/chasing-birdies-finish-glove.png')}
