@@ -151,7 +151,7 @@
 .cb-swing-flash{fill:none;stroke:#fff;stroke-width:3}
 .cb-swing-ripple{fill:none;stroke:#fff;stroke-width:2}
 .cb-swing-ball,.cb-swing-ball-shadow{position:absolute;left:0;top:0;border-radius:50%;will-change:transform}
-.cb-swing-ball{background:radial-gradient(circle at 35% 30%,#fff 25%,#efefe8 60%,#c8c9c0 100%);box-shadow:0 0 0 .5px #0002,0 1px 1px #0003}
+.cb-swing-ball{background-image:radial-gradient(circle at 68% 24%,#ffffff90 0%,#ffffff00 40%,#34412f55 100%),radial-gradient(circle at 50% 55%,#65715a50 0% 12%,#ffffff60 18%,#ffffff00 32%),radial-gradient(circle at 65% 28%,#fcfcf5 18%,#e8e9dd 65%,#b5bca9 100%);background-size:100% 100%,25% 25%,100% 100%;box-shadow:inset -.5px -1px 1px #52604d45,0 .5px 1px #0004}
 .cb-swing-ball-shadow{background:radial-gradient(closest-side,#000b,#0000);transform-origin:50% 50%}
 .cb-swing-result{position:absolute;left:0;top:0;z-index:2;margin:0;padding:10px 16px;border-radius:999px;background:#e4bf66;color:#11170f;font-size:13px;font-weight:650;white-space:nowrap;opacity:0;translate:-50% -100%;transform:translateY(8px);transition:opacity .4s,transform .4s}
 .cb-swing-result span{margin-right:8px;font-weight:400}

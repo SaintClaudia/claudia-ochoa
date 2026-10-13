@@ -170,7 +170,8 @@
       size = .38 - .03 * roll;
     }
     place(ball, point, r * 2, r * 2, size);
-    place(shadow, ground, r * 3, r * 1.2, size);
+    // The contact shadow sits at the base of the sphere, offset away from the sunlight.
+    place(shadow, [ground[0] - r * .25 * size, ground[1] + r * .8 * size], r * 3, r * 1.2, size);
     shadow.style.opacity = String(t > 0 && t < 1 ? .25 + .3 * Math.abs(t - .5) : .55);
 
     // Tracer: drawn to the ball in flight, then left hanging before it fades.
