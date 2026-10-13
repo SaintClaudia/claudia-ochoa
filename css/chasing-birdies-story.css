@@ -1,0 +1,49 @@
+/* Chasing Birdies shares the editorial case-study system with Ask Read. */
+.cs-birdies-hero{height:100svh;min-height:720px}
+.cs-birdies-hero .story-panel{position:relative}
+.cs-birdies-hero .story-copy{top:auto;bottom:100px;transform:none;width:70%}
+.cs-birdies-hero h1{margin:0 0 24px}
+.cs-birdies-hero .project-summary{max-width:34em}
+.cs-birdies-hero .birdies-stage{left:42%;right:auto;top:10%;width:54%;height:65%}
+.cs-birdies-hero .story-shade{background:linear-gradient(0deg,#080b09 3%,#080b09cc 26%,transparent 70%)}
+.cs-birdies-hero .cs-crumb{font-size:14px;margin-bottom:22px}
+.cb-world{padding:clamp(12px,3vw,48px);background:radial-gradient(ellipse at 60% 40%,#2b4636,#0d1913 75%)}
+.cb-world img{border-radius:12px;box-shadow:0 20px 60px #0007}
+.cb-walk-stage{isolation:isolate}
+.cb-walk-stage::before{content:"";position:absolute;inset:14% 0;z-index:-1;background:radial-gradient(ellipse,#2b46364d,transparent 70%)}
+.cb-scene{grid-area:1/1;max-width:100%;width:100%;opacity:0;visibility:hidden;transform:translateY(24px);transition:opacity .6s,transform .8s,visibility .6s}
+.cb-scene.is-active{opacity:1;visibility:visible;transform:none}
+.cb-roster{padding:clamp(20px,3vw,48px) 0;text-align:center}
+.cb-kicker{font-size:10px;letter-spacing:.16em;color:var(--accent);margin:0 0 20px}
+.cb-roster h3{font-size:clamp(24px,2.8vw,44px);font-weight:450;letter-spacing:-.04em;margin:0 0 36px}
+.cb-players{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.cb-players figure{margin:0;padding:20px 8px;border-radius:100px 100px 12px 12px;background:linear-gradient(#2b463680,#10201a);border:1px solid #ffffff12}
+.cb-players img{display:block;max-width:100%;height:auto;margin:auto}
+.cb-players figcaption{display:grid;gap:6px;margin:16px 0 0;font-size:clamp(11px,1.1vw,17px)}
+.cb-players figcaption span{color:var(--accent);font-size:11px}
+.cb-roster-note{margin:32px 0 0;font-size:14px;color:var(--muted)}
+.cb-phone{width:min(32svh,300px);margin:auto;padding:10px;border:1px solid #7b8376;border-radius:40px;background:linear-gradient(120deg,#303c32,#080b09 55%,#394535);box-shadow:0 30px 80px #0007}
+.cb-phone img{display:block;width:100%;height:auto;border-radius:30px}
+.cb-tablet{padding:10px;border-radius:24px;background:linear-gradient(110deg,#465148,#080b09 55%,#303a32);border:1px solid #737e6f;box-shadow:0 30px 80px #0007;transform:perspective(1100px) rotateY(-8deg) rotateZ(-2deg)}
+.cb-tablet img{display:block;width:100%;height:auto;border-radius:16px}
+.cb-step h3{font-weight:450;text-transform:none;letter-spacing:-.05em;line-height:1.02}
+.cb-brand{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:40px;margin:clamp(100px,16vh,180px) var(--gutter) 0;padding:clamp(40px,6vw,96px);border-radius:20px;background:radial-gradient(ellipse at 25% 40%,#2b4636,#10201a 70%)}
+.cb-brand img{display:block;width:100%;max-width:340px;margin:auto}
+.cb-brand p{font-size:clamp(28px,3.4vw,56px);font-weight:450;line-height:1.08;letter-spacing:-.04em;margin:0}
+@media(max-width:800px){
+ .cs-birdies-hero{height:auto;min-height:0}
+ .cs-birdies-hero .story-copy{position:relative;top:auto;bottom:auto;width:auto;transform:none}
+ .cs-birdies-hero .birdies-stage{inset:0;margin:auto;width:min(92%,150cqh);height:80%}
+ .cs-birdies-hero .project-art{min-height:clamp(240px,46svh,420px)}
+ .cs-birdies-hero .cs-crumb{font-size:12px}
+ .cb-walkthrough{gap:0}
+ .cb-walk-stage{top:60px;height:44svh;min-height:260px;z-index:3;background:#080b09;border-bottom:1px solid var(--line)}
+ .cb-walk-steps{position:relative}
+ .cb-step{min-height:60svh;padding:48px 0;box-sizing:border-box;justify-content:center}
+ .cb-phone{width:min(17svh,180px);padding:6px;border-radius:24px}.cb-phone img{border-radius:18px}
+ .cb-tablet{max-width:380px;margin:auto;box-sizing:border-box;transform:none}
+ .cb-roster{max-width:350px;margin:auto;padding:16px 0}.cb-kicker{margin-bottom:10px}.cb-roster h3{font-size:24px;margin-bottom:16px}
+ .cb-players{gap:10px}.cb-players figure{padding:10px 6px}.cb-players img{width:auto;height:14svh;max-height:150px}.cb-players figcaption{margin-top:8px;gap:3px}.cb-roster-note{display:none}
+ .cb-brand{grid-template-columns:1fr;text-align:center;gap:32px}.cb-brand img{max-width:260px}
+}
+@media(prefers-reduced-motion:reduce){.cb-scene{transform:none;transition:none}.cb-tablet{transform:none}}

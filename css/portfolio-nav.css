@@ -33,3 +33,6 @@ html.menu-is-open{overflow:hidden}
 @media(max-width:800px){.site-menu{width:100%;border-left:0;box-shadow:none;padding:88px calc(clamp(24px,4vw,80px) - 12px) 32px}}
 .case-story-page .site-header{background:transparent;transition:transform .35s cubic-bezier(.2,.7,.2,1),background-color .25s}.case-story-page .site-header.is-scrolled{background:#0a0b0bd9;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}.case-story-page .site-header.is-hidden{transform:translateY(-100%)}
 @media(prefers-reduced-motion:reduce){.case-story-page .site-header{transition:none}}
+
+/* Case-study headers leave the hero with the page, without a threshold animation. */
+.case-story-page .site-header.is-natural-scroll{transform:translateY(var(--header-scroll-y,0px));transition:none}
