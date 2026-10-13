@@ -149,7 +149,7 @@
       golfer.style.setProperty('--left-foot-y', `${contacts[2] * 100}%`);
       golfer.style.setProperty('--right-foot-y', `${contacts[3] * 100}%`);
       golfer.classList.toggle('has-raised-heel', frame === 5);
-      const glove = [[187,384,-10],[87,279,50],[93,162,30],[261,373,-15],[307,289,40],[199,168,45]][frame];
+      const glove = [[186,386,-10],[83,281,50],[82,154,30],[261,376,-15],[310,267,40],[183,170,45]][frame];
       golfer.style.setProperty('--glove-x', `${glove[0] / cell.w * 100}%`);
       golfer.style.setProperty('--glove-y', `${glove[1] / cell.h * 100}%`);
       golfer.style.setProperty('--glove-angle', `${glove[2]}deg`);

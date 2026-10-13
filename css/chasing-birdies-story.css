@@ -176,5 +176,5 @@
 @media(max-width:650px){.cb-swing-overview{top:86px;right:16px;width:120px;padding:10px;border-radius:9px}.cb-swing-overview-label{font-size:7px;letter-spacing:.08em;margin-bottom:7px}.cb-swing-overview h3{font-size:14px}.cb-swing-overview-distance{font-size:10px;margin-bottom:6px}.cb-swing-overview-wind{font-size:9px;gap:5px;margin-bottom:9px}.cb-swing-overview-wind svg{width:15px;height:15px}}
 
 /* Use the supplied identity pixels on the glove closure, rather than a font approximation. */
-.cb-swing-glove-mark{position:absolute;left:var(--glove-x,51.66%);top:var(--glove-y,53.04%);width:4.6%;aspect-ratio:110/103;z-index:2;translate:-50% -50%;transform:rotate(var(--glove-angle,-10deg));border-radius:2px;background:#f3f2eb;pointer-events:none}
-.cb-swing-glove-mark>svg{display:block;width:100%;height:100%;mix-blend-mode:multiply;overflow:hidden}
+.cb-swing-glove-mark{position:absolute;left:var(--glove-x,51.66%);top:var(--glove-y,53.04%);width:3.6%;aspect-ratio:110/103;z-index:2;translate:-50% -50%;transform:rotate(var(--glove-angle,-10deg));border-radius:50%;background:radial-gradient(ellipse,#f3f2eb 62%,#f3f2eb00 82%);pointer-events:none}
+.cb-swing-glove-mark>svg{display:block;width:100%;height:100%;opacity:.95;overflow:hidden}
