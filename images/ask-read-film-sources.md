@@ -41,14 +41,14 @@ The scripted sequence ends with a cursor opening Tracy's clip in the Ask Read fi
 
 ## Screen accuracy review — October 14, 2026
 
-Scope: the Ask Read case study's hero briefing, response, film viewer, QB Intelligence, phone walkthrough (Opportunity, Pressure, film and chat), Library, and evidence-state example. Matching homepage demo copy was updated because it shares the animation script.
+Scope: the Ask Read case study's hero briefing, response, film viewer, QB Intelligence, phone walkthrough (Opportunity, Pressure, film and chat), Library, and evidence-state explainer. Matching homepage demo copy was updated because it shares the animation script.
 
 ### Dates and sample size
 
 - Snapshot: October 14, 2026, using results through Week 5.
 - Scouting sample: Washington's home game against New York on October 11, 2026.
 - Upcoming matchup: Washington at San Francisco, October 19, 2026, 5:15 p.m. PT, Levi's Stadium. Verified against the [49ers game center](https://www.49ers.com/game-day/2026/reg-week6/commanders-at-49ers/) and [ticket schedule](https://www.49ers.com/tickets/single-game).
-- All real-game findings now say **Observed · 1 game**, using the neutral Observed treatment. Emerging and Established remain only in the explicitly illustrative evidence-state example, which demonstrates the intended product rules rather than Washington results.
+- All real-game findings now say **Observed · 1 game**, using the neutral Observed treatment. Emerging and Established appear in the educational evidence-state guide, which defines the product rules rather than presenting Washington results.
 - Removed category counts that could imply multiple findings where only one finding is displayed. Key-point counts and clip counts remain separate.
 
 ### Opportunity, response and film
@@ -75,3 +75,7 @@ The three Pressure previews remain the three passing touchdowns allowed after ha
 The [49ers' official schedule](https://www.49ers.com/schedule/) confirms the five opponents and their dates. Week 1 is shown as September 10 in Melbourne (the U.S. schedule date), rather than an ordinary away venue. Seattle is away; Denver, Arizona and Miami are home games.
 
 The Library is an illustrative archive UI, not a claim that actual briefings were produced or saved for these weeks. The page now visibly identifies the work as a dated product concept and the animations as demonstrations of the intended experience. No live AI inference, streamed film, multi-game Washington tendency, or implemented archive is represented as verified functionality.
+
+## Evidence-state presentation update — October 14, 2026
+
+Replaced the rotating illustrative slot-receiver card with three definitions visible together: Observed (one game), Emerging (repetition across games), Established (consistency across games with contradictory plays reviewed). Removed the example game and clip counts so readers can learn the states without interpreting a fictional scouting result.
