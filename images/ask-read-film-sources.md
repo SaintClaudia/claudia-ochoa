@@ -37,15 +37,41 @@ The homepage now replaces the illustrative underneath-window and light-box claim
 
 ## Film review step
 
-The scripted sequence ends with a cursor opening Tracy's clip in the Ask Read film review layout. The "playing" state is the official preview image with a slow zoom and a moving progress bar. No video is embedded or streamed, and no durations, quarters or downs are shown, because none were verified.
+The scripted sequence ends with a cursor opening Tracy's clip in the Ask Read film review layout. The "playing" state is the official preview image with a slow zoom and a moving progress bar. No video is embedded or streamed. The viewer omits durations, quarters and downs because those details were not verified for each individual clip.
 
-## Case study walkthrough: Pressure finding (verified October 13, 2026)
+## Screen accuracy review — October 14, 2026
 
-Every Pressure claim in the case study's phone walkthrough comes from these sources:
+Scope: the Ask Read case study's hero briefing, response, film viewer, QB Intelligence, phone walkthrough (Opportunity, Pressure, film and chat), Library, and evidence-state example. Matching homepage demo copy was updated because it shares the animation script.
 
-- Yahoo Sports / SB Nation, "Washington Commanders Whiteboard: Notes and observations from Week 5" (John Portis, October 12, 2026), https://sports.yahoo.com/articles/washington-commanders-whiteboard-notes-observations-220000493.html: "The team did continue to blitz at times in the second half, but the pressure didn't get home and Jameis burned the secondary in Cover 0." Also: Winston was 7-of-16 for 72 yards and 0 TDs in the first half, and 13-for-17 for 141 yards and 2 TDs in the fourth quarter.
-- ESPN box score, https://www.espn.com/nfl/boxscore/_/gameId/401872988: Winston was sacked twice for 21 yards; Washington had 7 QB hits.
-- ESPN team defense, https://www.espn.com/nfl/team/stats/_/name/wsh/table/defense: 9 sacks in five games.
-- All three Winston touchdowns came after halftime: see "Verified briefing content" above.
+### Dates and sample size
 
-The three Pressure clips are Winston's three touchdown throws: Nabers for 17 yards, Likely for 17 yards and Likely for 3 yards. No claim is made about the coverage or blitz on any single play.
+- Snapshot: October 14, 2026, using results through Week 5.
+- Scouting sample: Washington's home game against New York on October 11, 2026.
+- Upcoming matchup: Washington at San Francisco, October 19, 2026, 5:15 p.m. PT, Levi's Stadium. Verified against the [49ers game center](https://www.49ers.com/game-day/2026/reg-week6/commanders-at-49ers/) and [ticket schedule](https://www.49ers.com/tickets/single-game).
+- All real-game findings now say **Observed · 1 game**, using the neutral Observed treatment. Emerging and Established remain only in the explicitly illustrative evidence-state example, which demonstrates the intended product rules rather than Washington results.
+- Removed category counts that could imply multiple findings where only one finding is displayed. Key-point counts and clip counts remain separate.
+
+### Opportunity, response and film
+
+The [Giants' official recap](https://www.giants.com/news/notes-stats-giants-vs-commanders-recap) reconfirms Nabers' 11 catches for 121 yards and one touchdown, Likely's 11 for 94 and two touchdowns, and all three passing touchdowns occurring in the second half. Combined totals are derived: 22 catches, 215 yards and three touchdowns allowed by Washington to those two players.
+
+The original official clip pages above support the 21-yard catch-and-run and two 17-yard scoring throws in the response. The film context now asks the viewer to review Washington's pursuit, tackling, rush or coverage. It does not assert a coverage assignment, missed tackle, blitz, or causal explanation established by a poster image.
+
+### Pressure and phone chat
+
+The [Commanders' official Stats & Snaps](https://www.commanders.com/news/commanders-giants-stats-snaps-week-5-2026), published October 12, identifies sacks by K'Lavon Chaisson and Daron Payne, both in the second quarter. The game had two Washington sacks. The revised finding and scripted answer use that timing rather than claiming Washington's blitz rarely got home after halftime.
+
+The three Pressure previews remain the three passing touchdowns allowed after halftime. They are plays to review alongside the sack finding; they are not evidence of a measured pressure rate or proof of blitzing on an individual play. Removed the unverified seven-QB-hit detail from the screen. Season sacks are labeled as separate season context.
+
+### QB Intelligence
+
+- [49ers team statistics](https://www.49ers.com/team/stats/) and [Purdy's official profile and recent games](https://www.49ers.com/team/players-roster/brock-purdy/) confirm the displayed season totals and five game ratings. The chart retains the official profile's Week 2 value of 149.0.
+- [NFL passing touchdowns](https://www.nfl.com/stats/player-stats/category/passing/2026/reg/all/passingtouchdowns/desc) reconfirms the displayed touchdown leaderboard. [NFL passer ratings](https://www.nfl.com/stats/player-stats/category/passing/2026/reg/all/passingpasserrating/desc) reconfirms the displayed qualified-passer ordering; low-attempt players are excluded from that panel.
+- [Washington's official team statistics](https://www.commanders.com/team/stats/) confirm nine defensive sacks and three defensive interceptions. The site's SACKS pair lists ten sacks taken and nine by the defense; these must not be reversed.
+- [Washington's schedule](https://www.commanders.com/schedule/) confirms its 1–3–1 record. Points allowed through five games sum to 149 (24 + 37 + 31 + 30 + 27); 149 / 5 = 29.8 points allowed per game. This is a team scoring average, not a claim that all points were charged to the defense.
+
+### Library and concept status
+
+The [49ers' official schedule](https://www.49ers.com/schedule/) confirms the five opponents and their dates. Week 1 is shown as September 10 in Melbourne (the U.S. schedule date), rather than an ordinary away venue. Seattle is away; Denver, Arizona and Miami are home games.
+
+The Library is an illustrative archive UI, not a claim that actual briefings were produced or saved for these weeks. The page now visibly identifies the work as a dated product concept and the animations as demonstrations of the intended experience. No live AI inference, streamed film, multi-game Washington tendency, or implemented archive is represented as verified functionality.

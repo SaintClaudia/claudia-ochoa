@@ -31,8 +31,8 @@
     typed: phone.querySelector('.ar-typed'),
     answer: phone.querySelector('.ar-answer-text'),
   };
-  const question = 'Did their pressure get home after halftime?';
-  const answer = 'Washington kept blitzing in the second half, but the pressure didn’t get home, and Winston threw all three of his touchdowns after halftime. Start with this throw, then compare the other two.';
+  const question = 'Did Washington record a sack after halftime?';
+  const answer = 'No. Both Washington sacks came in the second quarter on Oct 11. It allowed all three passing touchdowns after halftime. Review these scoring plays for the rush and coverage; they do not establish a pressure rate.';
   const offsetIn = (el, root) => { let y = 0; for (let n = el; n && n !== root; n = n.offsetParent) y += n.offsetTop; return y; };
   const scrollTo = el => {
     if (!el) { phoneParts.scroll.style.transform = ''; return; }

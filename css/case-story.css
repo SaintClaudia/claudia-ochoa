@@ -13,6 +13,7 @@
 .cs-statement{padding:clamp(96px,14vh,160px) var(--gutter) 0}
 .cs-lede{max-width:22em;margin:0;font-size:clamp(30px,3.6vw,64px);font-weight:450;line-height:1.08;letter-spacing:-.04em;text-wrap:pretty}
 .cs-lede span{color:#ffffff73}
+.cs-demo-note{max-width:62em;margin:24px 0 0;font-size:14px;line-height:1.6;color:var(--muted)}
 .cs-down{display:inline-block;margin:40px 0 64px;font-size:22px}
 .cs-media{margin:0;overflow:hidden;border-radius:clamp(12px,1.4vw,20px);background:#101210}
 .cs-media img{display:block;width:100%;height:auto}
@@ -176,7 +177,7 @@
 .ar-finding h5{margin:2cqw 0 0;font-size:6cqw;font-weight:500;line-height:1.15;letter-spacing:-.015em}
 .ar-keys{display:grid;justify-items:center;flex-shrink:0;padding:2cqw 2.6cqw;border:1px solid #d6ae63;border-radius:3cqw}.ar-keys strong{font-size:7cqw;font-weight:500;line-height:1;color:#d6ae63}.ar-keys span{font-size:2.1cqw;text-align:center;line-height:1.2;margin-top:1cqw}
 .ar-body{margin:4cqw 0;font-size:3.7cqw;line-height:1.5;color:#bfc4b9}
-.ar-evidence{display:flex;gap:2cqw;margin-bottom:4.5cqw}.ar-evidence span{display:flex;align-items:center;gap:1.6cqw;padding:2.2cqw 3.4cqw;border:1px solid #ffffff16;border-radius:9cqw;background:#121512;font-size:2.8cqw;font-weight:500}.ar-evidence .is-emerging{background:#1d3a46;border-color:#1d3a46}.ar-evidence svg{width:4cqw;height:4cqw}
+.ar-evidence{display:flex;gap:2cqw;margin-bottom:4.5cqw}.ar-evidence span{display:flex;align-items:center;gap:1.6cqw;padding:2.2cqw 3.4cqw;border:1px solid #ffffff16;border-radius:9cqw;background:#121512;font-size:2.8cqw;font-weight:500}.ar-evidence .is-observed{background:#1a1d1a;border-color:#ffffff18;color:#c9cdc3}.ar-evidence svg{width:4cqw;height:4cqw}
 .ar-clips{display:grid;grid-template-columns:repeat(3,1fr);gap:2cqw}
 .ar-clip{position:relative;overflow:hidden;aspect-ratio:1/1.05;border:1px solid #ffffff22;border-radius:2.6cqw;transition:scale .15s,border-color .3s,box-shadow .3s}
 .ar-clip img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}

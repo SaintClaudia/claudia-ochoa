@@ -229,6 +229,7 @@
 .project-art .askread-stage .askread-team-logo{width:96px;height:auto;flex-shrink:0}
 .askread-briefing-evidence>span{display:flex;align-items:center;gap:12px;padding:14px 26px 14px 20px;font-weight:500;letter-spacing:.03em;color:#eef0ea;background:#121512;border-color:#ffffff14}
 .askread-briefing-evidence>span.is-emerging{background:#1d3a46;border-color:#1d3a46}
+.askread-briefing-evidence>span.is-observed{background:#1a1d1a;border-color:#ffffff18;color:#c9cdc3}
 .project-art .askread-stage .askread-briefing-evidence svg{width:26px;height:26px;flex-shrink:0}
 /* Ask Read film review: the viewer clicks the first clip and it opens as designed in the product. */
 .askread-real-clip{transition:border-color .25s,box-shadow .25s,scale .2s}.askread-real-play{transition:background .25s,border-color .25s,color .25s}

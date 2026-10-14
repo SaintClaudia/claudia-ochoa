@@ -55,8 +55,7 @@
     sizeBriefing();
     document.fonts?.ready.then(sizeBriefing);
     window.addEventListener('resize', sizeBriefing);
-    const question = 'Where did New York find yards?';
-    const response = 'Tracy gained 21 yards on a catch-and-run. Nabers and Likely each caught a 17-yard touchdown. Compare these three plays with the broader game review.';
+    const response = 'Washington allowed a 21-yard catch-and-run and two 17-yard touchdown passes on Oct 11. Review its response on these plays; one game does not establish a defensive tendency.';
     const viewport = askRead.querySelector('.askread-screen-viewport');
     const cursor = askRead.querySelector('.askread-demo-cursor');
     const firstClip = askRead.querySelector('.askread-demo-response .askread-real-clip');
