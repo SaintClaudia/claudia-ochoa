@@ -48,7 +48,7 @@ Scope: the Ask Read case study's hero briefing, response, film viewer, QB Intell
 - Snapshot: October 14, 2026, using results through Week 5.
 - Scouting sample: Washington's home game against New York on October 11, 2026.
 - Upcoming matchup: Washington at San Francisco, October 19, 2026, 5:15 p.m. PT, Levi's Stadium. Verified against the [49ers game center](https://www.49ers.com/game-day/2026/reg-week6/commanders-at-49ers/) and [ticket schedule](https://www.49ers.com/tickets/single-game).
-- All real-game findings now say **Observed · 1 game**, using the neutral Observed treatment. Emerging and Established appear in the educational evidence-state guide, which defines the product rules rather than presenting Washington results.
+- All real-game findings now say **Observed**, using the eye icon and neutral Observed treatment. The state itself denotes a one-game observation. Emerging and Established appear in the educational evidence-state guide, which defines the product rules rather than presenting Washington results.
 - Removed category counts that could imply multiple findings where only one finding is displayed. Key-point counts and clip counts remain separate.
 
 ### Opportunity, response and film
