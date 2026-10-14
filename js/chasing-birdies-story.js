@@ -211,6 +211,8 @@
   function schedule() { if (!pending) { pending = true; requestAnimationFrame(update); } }
   addEventListener('scroll', schedule, {passive:true});
   addEventListener('resize', () => { layout = null; schedule(); }, {passive:true});
+  // Safari can run this before the stage has its 100svh height; re-measure whenever the stage resizes.
+  new ResizeObserver(() => { layout = null; schedule(); }).observe(stage);
   reduced.addEventListener('change', schedule);
   update();
 })();
