@@ -304,5 +304,5 @@
 /* Players only: no console frame, scenery, heading, status or CTA. Six players, 3×2 (2×3 on phones). */
 .cb-walkthrough .cb-console,.cb-console>.cb-lineup{background:none;box-shadow:none}
 .cb-roster-grid{inset:0;grid-template-columns:repeat(3,minmax(0,1fr))}
-@media(max-width:650px){.cb-roster-grid{inset:0;grid-template-rows:repeat(3,minmax(0,1fr))}.cb-walkthrough .cb-console{aspect-ratio:100/120}}
+@media(max-width:650px){.cb-roster-grid{inset:0;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(3,minmax(0,1fr))}.cb-walkthrough .cb-console{aspect-ratio:100/120}}
 .cb-roster-card,.cb-roster-portrait,.cb-roster-name{border:0;border-radius:0;background:none;box-shadow:none}
