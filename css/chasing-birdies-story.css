@@ -300,3 +300,9 @@
 .cb-roster-selected{position:absolute;right:.65cqw;top:.65cqw;z-index:1;display:grid;place-items:center;width:1.8cqw;height:1.8cqw;border-radius:50%;background:#e4bf66;color:#142019;font-size:1.2cqw;font-weight:700}
 .cb-roster-status{position:absolute;left:4cqw;bottom:4cqw;margin:0;font-size:1.4cqw;font-weight:650;line-height:1.5}.cb-roster-status span{display:block;color:#d6ae63;font-size:1cqw;font-weight:400}
 @media(max-width:650px){.cb-walkthrough .cb-console{aspect-ratio:100/138;min-height:0}.cb-lineup .cb-lineup-head{top:5cqw;left:5cqw}.cb-lineup-head .cb-ui-eyebrow{font-size:2.2cqw}.cb-lineup-head h4{font-size:5.5cqw}.cb-roster-grid{inset:19cqw 5cqw 15cqw;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(4,minmax(0,1fr));gap:2cqw}.cb-roster-name{padding:1cqw 1.5cqw 1.4cqw}.cb-roster-name strong{font-size:2.6cqw}.cb-roster-name small{font-size:2cqw;margin-top:.6cqw}.cb-roster-card{border-radius:2cqw}.cb-roster-selected{right:1.3cqw;top:1.3cqw;width:3.4cqw;height:3.4cqw;font-size:2.2cqw}.cb-roster-status{left:5cqw;bottom:5cqw;font-size:2.7cqw}.cb-roster-status span{font-size:2.1cqw}.cb-lineup .cb-ui-play{right:5cqw;bottom:5cqw;width:32cqw;--cta-size:2.8cqw;--cta-pad:2.5cqw 3cqw;--cta-radius:2cqw}.cb-walkthrough .cb-walk-stage{height:auto;min-height:64svh;position:relative;padding:0}}
+
+/* Players only: no console frame, scenery, heading, status or CTA. Six players, 3×2 (2×3 on phones). */
+.cb-walkthrough .cb-console,.cb-console>.cb-lineup{background:none;box-shadow:none}
+.cb-roster-grid{inset:0;grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:650px){.cb-roster-grid{inset:0;grid-template-rows:repeat(3,minmax(0,1fr))}.cb-walkthrough .cb-console{aspect-ratio:100/120}}
+.cb-roster-card,.cb-roster-portrait,.cb-roster-name{border:0;border-radius:0;background:none;box-shadow:none}
