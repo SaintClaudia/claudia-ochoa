@@ -51,7 +51,7 @@
     const stage = root.closest('.cb-player-stage').getBoundingClientRect();
     const progress = Math.max(0, Math.min(1, innerWidth <= 650
       ? (innerHeight * .65 - rect.top) / (rect.height + innerHeight * .15)
-      : (20 - stage.top) / (innerHeight * .65)));
+      : (20 - stage.top) / Math.max(1, stage.height - rect.height)));
     const phase = reduced ? 0 : progress < .32 ? 0 : progress < .63 ? 1 : 2;
     if (phase === active) return;
     active = phase;
@@ -84,7 +84,6 @@
   const flash = $('.cb-swing-flash'), ripple = $('.cb-swing-ripple');
   const overview = $('.cb-swing-overview'), mapBall = $('.cb-swing-map-ball'), mapDistance = $('.cb-swing-pin-distance');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-  const rigReview = new URLSearchParams(location.search).get('swing') === 'rig';
   // Artwork coordinates: the base of the pin on the green.
   const art = {w:1376, h:768, pin:[.68, .56]};
   // Embroidered-glove strip: six equal cells; contact coordinates follow the artwork.
@@ -115,8 +114,7 @@
     const gh = Math.min(H * .72, W <= 650 ? W * .95 : W * 1.15) * 724 / 580, gw = gh * cell.w / cell.h, unit = gh / cell.h;
     const gx = (W <= 650 ? 0 : W * .12) - cell.pad * unit, gy = H * .93 - cell.baseline * unit;
     golfer.style.cssText = `width:${gw}px;height:${gh}px;transform:translate(${gx}px,${gy}px)`;
-    const rigScale = Math.min(H * .82 / 2.5, W * .26);
-    const r = rigReview ? .021335 * rigScale : Math.max(4, 5.5 * unit);
+    const r = Math.max(4, 5.5 * unit);
     // Address: the ball rests ahead of the clubface, toward the target, clear of its sole.
     const tee = [gx + cell.addressBall[0] * unit, gy + cell.addressBall[1] * unit];
     // A wedge climbs steeply and drops in just short of the pin, then hops up to it.
@@ -209,14 +207,12 @@
     root.classList.toggle('is-live', p > .02);
     root.classList.toggle('is-swinging', p > .04);
     root.classList.toggle('is-landed', roll >= 1);
-    if (rigReview) root.dispatchEvent(new CustomEvent('birdies:rig-progress', {detail:{progress:p, tee, launch}}));
   }
   function schedule() { if (!pending) { pending = true; requestAnimationFrame(update); } }
   addEventListener('scroll', schedule, {passive:true});
   addEventListener('resize', () => { layout = null; schedule(); }, {passive:true});
   reduced.addEventListener('change', schedule);
   update();
-  if (rigReview) import('./birdies-swing-rig-scene.mjs').then(() => schedule());
 })();
 
 // Ambient motion only runs while the course is visible.
@@ -224,6 +220,10 @@
   const stage = document.querySelector('.cb-swing-stage');
   const water = stage?.querySelector('.cb-swing-water');
   if (!water) return;
+  // Safari's masked displacement filters can paint over the entire sticky scene.
+  // Keep the clipped water and animated ripples, but skip image distortion there.
+  const webKit = /AppleWebKit/.test(navigator.userAgent) && !/(Chrome|Chromium|Edg|OPR|SamsungBrowser)/.test(navigator.userAgent);
+  if (webKit) water.querySelectorAll('image[filter]').forEach(image => image.remove());
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   let visible = false;
   function sync() {

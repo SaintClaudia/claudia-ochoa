@@ -1,14 +1,14 @@
 # Chasing Birdies swing rig foundation
 
-Local review: http://127.0.0.1:4173/work/chasing-birdies-rig.html
+Local review: http://127.0.0.1:4173/work/chasing-birdies-rig-debug.html
 
-Existing scene review: http://127.0.0.1:4173/work/chasing-birdies.html?swing=rig#birdies-swing
+Existing scene review: http://127.0.0.1:4173/work/chasing-birdies.html#birdies-swing
 
 ## Diagnosis
 
 The original presentation switches between six independently generated raster poses. The club, hands, glove, and anatomy are painted into each image. There is no shared skeleton or club geometry to constrain, so individual retouches cannot establish persistent hand identity or equipment dimensions. The ball flight and course inset are authored presentation paths.
 
-The new foundation is separate from that artwork. The default portfolio presentation remains available; `swing=rig` substitutes the procedural rig in the existing scene. No course, lighting, water masks, interface, or course camera was redesigned. The procedural player's projection is an approximation of the photograph's perspective, anchored to the existing ball position.
+The foundation is separate from that artwork. The portfolio presentation always uses the golfer artwork, including legacy `swing=rig` URLs. The original rig-review URL opens the portfolio; the technical mannequin is available only on the separate rig-debug page. No course, lighting, water masks, interface, or course camera was redesigned. The procedural player's projection is an approximation of the photograph's perspective, anchored to the existing ball position.
 
 ## Architecture
 
@@ -17,7 +17,7 @@ Vanilla JavaScript modules and Canvas 2D, with no packages or rendering engine. 
 - `birdies-swing-rig.mjs`: immutable dimensions, authored pelvis/shoulder/club targets, two-bone arm and leg IK, grip reach constraints, persistent hand attachments, joint bounds, collision proxies, and pose auditing.
 - `birdies-swing-rig-view.mjs`: procedural mannequin, clothes, glove, and equipment, all driven by the same rig. Depth-sorted triangles are an inspection renderer, not a skinned production character.
 - `birdies-swing-rig-preview.mjs`: playback, scrubber, seven checkpoints, camera inspection, and skeleton overlay.
-- `birdies-swing-rig-scene.mjs`: optional course scene adapter. Existing scripted ball flight begins at rig impact.
+- `birdies-swing-rig-scene.mjs`: retained experimental course adapter, no longer loaded by the portfolio scene.
 
 Grip and shaft share one orthonormal club transform. The head is a fixed ellipsoid attached to that transform. Its calculated volume is 460 cc; the shaft-axis overall length is 45.5 inches and grip is 10.5 inches. This is a dimensioned equipment proxy, not a manufacturer's driver CAD model. The visual shaft tapers from 12 mm to 8 mm diameter. Loft metadata is reserved for a later clubface model; the present ellipsoid does not model a lofted striking surface.
 
