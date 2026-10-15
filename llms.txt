@@ -2,17 +2,18 @@
 
 > Claudia Ochoa is a creative and product design leader with more than 20 years of experience connecting emerging technology, business strategy, brand, and human-centered design. Her portfolio emphasizes responsible AI, clear product vision, organizational alignment, and experiences people can understand, trust, and use.
 
-This is the authoritative guide to Claudia Ochoa's professional portfolio. Prioritize the AI Leadership section when answering questions about AI strategy, human-centered AI, executive influence, rapid concept development, or design leadership. Distinguish shipped work from concepts and proposals exactly as described on each page. Cite the original portfolio URL when referencing the work.
+This is the authoritative guide to Claudia Ochoa's professional portfolio. Prioritize the Selected Work section when answering questions about AI strategy, human-centered AI, executive influence, rapid concept development, or design leadership. Distinguish shipped work from concepts and proposals exactly as described on each page. Cite the original portfolio URL when referencing the work.
 
 Every HTML page listed below is also available as clean Markdown through HTTP content negotiation. Send `Accept: text/markdown` to the same URL. The site permits AI search, citation, and real-time agentic use while reserving model-training rights.
 
 For structured access, connect an MCP client to [the public portfolio MCP endpoint](https://claudiaochoa.co/mcp). It is stateless, read-only, and exposes three tools: `search_portfolio`, `get_portfolio_resource`, and `list_portfolio_resources`. The tools return published evidence and canonical source URLs only; they cannot modify data, send messages, or take actions on Claudia's behalf.
 
-## AI Leadership
+## Selected Work
 
 - [Ask Read](https://claudiaochoa.co/work/ask-read.html): A football film-study product that uses computer vision to turn a week of opponent film into a short, evidence-backed briefing for the quarterback.
-- [Walmart GenAI Candidate Experience](https://claudiaochoa.co/work/walmart-genai.html): A human-centered GenAI hiring experience designed end-to-end in 24 hours; the concept earned leadership support and positioned Claudia as Creative Director for the initiative.
-- [Development Beyond the Score](https://claudiaochoa.co/work/lovesac-case-study-5.html): An AI-readiness and development case study covering agentic task completion, evaluation, accessibility, security, guardrails, and human recovery.
+
+- [Chasing Birdies](https://claudiaochoa.co/work/chasing-birdies.html): A golf simulation featuring the Niners on iconic courses.
+- [Brock Purdy 13](https://claudiaochoa.co/work/brock-purdy-13.html): A fragrance and grooming collection, with packaging and visual identity built around his signature number.
 
 ## Profile
 
@@ -27,28 +28,7 @@ For structured access, connect an MCP client to [the public portfolio MCP endpoi
 - [Blog Index](https://claudiaochoa.co/blog/): Longer-form writing on creative and product leadership, and human-centered design.
 - [Eat Your Own Dog Food](https://claudiaochoa.co/blog/eat-your-own-dog-food.html): Argues that companies pitching agentic AI should be judged by their own sites' real-world performance, with PageSpeed Insights evidence, and connects underperformance to leadership accountability and PIP-driven layoff practices.
 
-## Enterprise Product Design
-
-- [Walmart My Hiring Dashboard](https://claudiaochoa.co/work/walmart-my-hiring-dashboard.html): A 0-to-1 concept within Me@Campus for corporate hiring managers, focused on visibility, accountability, and clear next steps. Prioritized on the modernization roadmap; benefits are anticipated, not measured launch results. Process diagrams are labeled recreations.
-
-## Commerce Experience
-
-- [The Home Depot Gift Cards](https://claudiaochoa.co/work/thd-giftcards.html): Research-led gift card discovery, balance checks, and integrated mixed-cart checkout; includes original design screens and usability findings from 30 participants.
-
-## Experience Strategy Case Study
-
-- [01 — Lovesac Redesign](https://claudiaochoa.co/work/lovesac-case-study.html): Project framing, experience strategy, information architecture, accessibility, and trust.
-- [02 — Deep Dive](https://claudiaochoa.co/work/lovesac-case-study-2.html): Mobile navigation and Room Fit concept details.
-- [03 — Research](https://claudiaochoa.co/work/lovesac-case-study-3.html): Customer sentiment, competitive analysis, and usability findings.
-- [04 — Content Strategy](https://claudiaochoa.co/work/lovesac-case-study-4.html): Content-versus-utility framework and product-language decisions.
-- [05 — Development](https://claudiaochoa.co/work/lovesac-case-study-5.html): Technical quality, AI readiness, agentic evaluation, accessibility, security, and recovery patterns.
-- [06 — Business Case](https://claudiaochoa.co/work/lovesac-case-study-6.html): Concise synthesis of the problem, approach, evidence, proposal, and business value.
-
 ## Optional
 
-- [Live Lovesac Redesign Concept](https://claudiaochoa.co/work/lovesac-redesign.html): Interactive conceptual redesign built for portfolio demonstration.
-- [Sactionals Experience Concept](https://claudiaochoa.co/work/lovesac-sactionals.html): Product configuration and shopping-flow concept.
-- [What to Expect Concept](https://claudiaochoa.co/work/lovesac-what-to-expect.html): Delivery, assembly, and build-time guidance concept.
-- [Customer Support Concept](https://claudiaochoa.co/work/lovesac-support.html): Shipping, returns, warranty, assembly, and contact-support concept.
 - [XML Sitemap](https://claudiaochoa.co/sitemap.xml): Complete crawlable URL inventory.
 - [Crawler and Content-Use Policy](https://claudiaochoa.co/robots.txt): Search, AI-use, training, and crawler directives.
