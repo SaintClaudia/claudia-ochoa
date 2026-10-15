@@ -6,14 +6,12 @@
 .cs-fragrance-hero .story-copy{top:auto;bottom:clamp(40px,7svh,84px);transform:none;width:min(60%,950px)}
 .cs-fragrance-hero h1{font-size:clamp(56px,7.8vw,132px);max-width:8em;margin:0;line-height:.98}
 .cs-fragrance-hero .story-shade{background:linear-gradient(90deg,#14100d70,transparent 65%),linear-gradient(0deg,#14100dce,transparent 55%)}
-.pf-pair{display:grid;grid-template-columns:1fr 1fr;align-items:start;gap:clamp(16px,2vw,32px);padding:clamp(64px,10vh,120px) var(--gutter) 0}
-.pf-pair figure{position:relative;display:grid;place-items:center;aspect-ratio:1/1.08;margin:0;padding:clamp(36px,5vw,80px);overflow:hidden;border-radius:clamp(12px,1.4vw,20px)}
-.pf-mark-panel{background:#3a2a20 url(/images/purdy-13-mark-pattern.svg) 0 0/33.333% auto repeat}
-.pf-bottle-panel{background:radial-gradient(ellipse at 50% 40%,#75604a,#3c2b20 55%,#1b1510)}
-.pf-pair .pf-bottle-panel{margin-top:clamp(80px,12vw,200px)}
-.pf-bottle-panel img{width:auto;height:100%;max-width:82%;max-height:540px;object-fit:contain;filter:drop-shadow(14px 24px 20px #0008)}
 .pf-photo{margin:clamp(64px,10vh,120px) var(--gutter) 0;overflow:hidden;border-radius:clamp(12px,1.4vw,20px)}
 .pf-photo img{display:block;width:100%;height:auto}
+.pf-photo-bleed{margin-left:0;margin-right:0;border-radius:0}
+.pf-split-media{align-items:center}
+.pf-split-photo{margin:0;overflow:hidden;border-radius:clamp(12px,1.4vw,20px)}
+.pf-split-photo img{display:block;width:100%;height:auto}
 .pf-more-list{grid-template-columns:repeat(2,minmax(0,1fr))}
 @media(max-width:800px){
   .cs-fragrance-hero{height:auto;min-height:0}
@@ -21,9 +19,5 @@
   .cs-fragrance-hero .story-copy{width:auto;bottom:auto;margin-top:auto}
   .cs-fragrance-hero h1{font-size:clamp(52px,13vw,82px);max-width:7em}
   .cs-fragrance-hero .story-shade{background:linear-gradient(0deg,#17120e,transparent 65%)}
-  .pf-pair{grid-template-columns:1fr}
-  .pf-pair figure{aspect-ratio:1/1.08}
-  .pf-pair .pf-bottle-panel{margin-top:0}
-  .pf-bottle-panel img{max-height:400px}
   .pf-more-list{grid-template-columns:1fr}
 }
