@@ -79,3 +79,7 @@ The Library is an illustrative archive UI, not a claim that actual briefings wer
 ## Evidence-state presentation update — October 14, 2026
 
 Replaced the rotating illustrative slot-receiver card with three definitions visible together: Observed (one game), Emerging (repetition across games), Established (consistency across games with contradictory plays reviewed). Removed the example game and clip counts so readers can learn the states without interpreting a fictional scouting result.
+
+## Presentation consistency update — October 14, 2026
+
+Removed snapshot-date callouts from briefing, QB Intelligence and Library subtitles. The page-level concept note and these source notes preserve the review date; matchup and film dates retain their contextual role. Question bubbles now use the neutral Surface color (#171917) on tablet and phone.
