@@ -281,5 +281,6 @@
 @media(prefers-reduced-motion:reduce){.cs-more-bg{transition:none}.cs-more-card:hover .cs-more-bg{scale:1}}
 @media(max-width:480px){.cs-pair .cs-evidence{padding:12px}.cs-ev-card{padding:20px 18px}.cs-ev-label{letter-spacing:.1em}.cs-ev-stats dt{letter-spacing:.08em}.cs-ev-pill{font-size:13px}}
 
-.cs-more-purdy{--scrim:23 18 14}
-.cs-more-purdy .cs-more-bg{object-position:72% 50%}
+.cs-more-purdy{--scrim:23 18 14;background:#17120e}
+.cs-more-purdy .cs-more-bg{height:58%;object-position:78% 50%}
+.cs-more-purdy::before{background:linear-gradient(180deg,transparent 0%,transparent 40%,rgb(var(--scrim) / .15) 49%,rgb(var(--scrim) / .92) 60%,rgb(var(--scrim)) 68%)}
