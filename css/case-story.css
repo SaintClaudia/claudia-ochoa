@@ -41,10 +41,10 @@
 .cs-pair .cs-media{display:grid;place-items:center;padding:clamp(16px,3vw,48px)}
 .cs-pair .cs-media img{border-radius:10px}
 .cs-states{position:relative;min-height:clamp(260px,32vw,520px);border-radius:clamp(12px,1.4vw,20px);background:#101210;overflow:hidden}
-.cs-states span{position:absolute;inset:0;display:grid;place-items:center;font-size:clamp(34px,4vw,72px);font-weight:500;letter-spacing:-.04em;color:#ffffff59;opacity:0;animation:cs-state 9s infinite}
-.cs-states span:nth-child(2){animation-delay:3s;color:#3f7d93}
-.cs-states span:nth-child(3){animation-delay:6s;color:var(--accent)}
-@keyframes cs-state{0%,4%{opacity:0;transform:translateY(12px)}10%,30%{opacity:1;transform:none}36%,100%{opacity:0;transform:translateY(-12px)}}
+.cs-states span{position:absolute;inset:0;display:grid;place-items:center;font-size:clamp(34px,4vw,72px);font-weight:500;letter-spacing:-.04em;color:#ffffff59;opacity:0;animation:cs-state 18s infinite}
+.cs-states span:nth-child(2){animation-delay:6s;color:#3f7d93}
+.cs-states span:nth-child(3){animation-delay:12s;color:var(--accent)}
+@keyframes cs-state{0%{opacity:0;transform:translateY(12px)}2%,31%{opacity:1;transform:none}33.333%,100%{opacity:0;transform:translateY(-12px)}}
 
 .cs-swatches{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;margin:40px 0 0;padding:0;list-style:none}
 .cs-swatches li{display:grid;gap:4px;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
@@ -246,15 +246,15 @@
 @media(prefers-reduced-motion:reduce){.ar-guided span{transition:none}}
 .ar-back{display:inline-flex;align-items:center;gap:1.8cqw}.ar-back i{font-style:normal;font-size:5.6cqw;line-height:1;translate:0 -.3cqw}
 
-/* Evidence states: a finding card whose state changes in step with the Observed / Emerging / Established words (same 9s cycle). */
+/* Evidence states: a finding card whose state changes in step with the Observed / Emerging / Established words (same 18s cycle). */
 .cs-pair .cs-evidence{display:grid;place-items:center;padding:clamp(20px,3.4vw,56px)}
 .cs-ev-card{box-sizing:border-box;width:min(100%,560px);min-width:0;padding:clamp(20px,2.4vw,36px);border:1px solid #ffffff14;border-radius:16px;background:#080a09;font-family:AskReadOutfit,Arial,sans-serif;color:#f3f3ed;box-shadow:0 30px 70px #0007}
 .cs-ev-label{margin:0;font-size:12px;letter-spacing:.14em;color:#d6ae63}.cs-ev-label span{color:#929b89}
 .cs-ev-state h3{margin:12px 0 24px;font-size:clamp(22px,1.9vw,30px);font-weight:500;line-height:1.2;letter-spacing:-.02em}
 .cs-ev-states{display:grid}
-.cs-ev-state{grid-area:1/1;opacity:0;animation:cs-ev-state 9s infinite}
-.cs-ev-emerging{animation-delay:3s}.cs-ev-established{animation-delay:6s}
-@keyframes cs-ev-state{0%,4%{opacity:0}10%,30%{opacity:1}36%,100%{opacity:0}}
+.cs-ev-state{grid-area:1/1;opacity:0;animation:cs-ev-state 18s infinite}
+.cs-ev-emerging{animation-delay:6s}.cs-ev-established{animation-delay:12s}
+@keyframes cs-ev-state{0%{opacity:0}2%,31%{opacity:1}33.333%,100%{opacity:0}}
 .cs-ev-pill{display:inline-flex;align-items:center;gap:10px;padding:11px 18px 11px 14px;border:1px solid #ffffff1c;border-radius:100px;font-size:14px;font-weight:500;letter-spacing:.04em}
 .cs-ev-pill svg{width:20px;height:20px}
 .cs-ev-observed .cs-ev-pill{background:#1a1d1a;color:#c9cdc3}
