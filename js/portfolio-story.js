@@ -69,10 +69,10 @@
     }
     function placeCursor(time) {
       // Glide from the lower right of the answer to the first clip's play button.
-      const tip = cursor.offsetWidth * .21;
+      const radius = cursor.offsetWidth * .5;
       const clip = offsetWithin(firstClip);
-      const endX = clip.x + firstClip.offsetWidth * .5 - tip;
-      const endY = clip.y + firstClip.offsetHeight * .43 - tip * .5;
+      const endX = clip.x + firstClip.offsetWidth * .5 - radius;
+      const endY = clip.y + firstClip.offsetHeight * .43 - radius;
       const startX = viewport.offsetWidth * .86;
       const startY = viewport.offsetHeight * .9;
       const progress = clamp((time - 21900) / 1150, 0, 1);
