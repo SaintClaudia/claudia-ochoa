@@ -83,3 +83,7 @@ Replaced the rotating illustrative slot-receiver card with three definitions vis
 ## Presentation consistency update — October 14, 2026
 
 Removed snapshot-date callouts from briefing, QB Intelligence and Library subtitles. The page-level concept note and these source notes preserve the review date; matchup and film dates retain their contextual role. Question bubbles now use the neutral Surface color (#171917) on tablet and phone.
+
+## Evidence layout restored — October 14, 2026
+
+Restored the two-panel presentation at the user’s request: rotating state names beside the illustrative finding card. The example again demonstrates Observed, Emerging and Established; real Washington findings remain Observed with the eye icon.

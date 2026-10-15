@@ -246,18 +246,29 @@
 @media(prefers-reduced-motion:reduce){.ar-guided span{transition:none}}
 .ar-back{display:inline-flex;align-items:center;gap:1.8cqw}.ar-back i{font-style:normal;font-size:5.6cqw;line-height:1;translate:0 -.3cqw}
 
-/* Explain all three evidence states together, without a timed product demonstration. */
-.cs-evidence-guide{padding:clamp(96px,14vh,160px) var(--gutter) 0}
-.cs-evidence-guide h2{margin:24px 0 16px;font-size:clamp(30px,2.8vw,48px);font-weight:500;line-height:1.1;letter-spacing:-.035em}
-.cs-evidence-intro{margin:0;color:var(--muted);font-size:clamp(17px,1.25vw,21px);line-height:1.6}
-.cs-evidence-definitions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(24px,4vw,64px);margin:48px 0 0}
-.cs-evidence-definitions>div{padding-top:24px;border-top:1px solid var(--line);--state-color:#a9afa3}
-.cs-evidence-definitions .cs-evidence-emerging{--state-color:#70a6ba}
-.cs-evidence-definitions .cs-evidence-established{--state-color:var(--accent)}
-.cs-evidence-definitions dt{display:flex;align-items:center;gap:12px;font-size:clamp(24px,2.2vw,36px);font-weight:500;line-height:1.2;letter-spacing:-.025em}
-.cs-evidence-definitions dt::before{content:"";width:10px;height:10px;flex-shrink:0;border-radius:50%;background:var(--state-color)}
-.cs-evidence-definitions dd{max-width:26em;margin:16px 0 0;color:var(--muted);font-size:clamp(17px,1.25vw,21px);line-height:1.6}
-@media(max-width:800px){.cs-evidence-definitions{grid-template-columns:1fr;gap:28px;margin-top:32px}.cs-evidence-definitions>div{padding-top:20px}.cs-evidence-definitions dd{margin-top:10px}}
+/* Evidence states: a finding card whose state changes in step with the Observed / Emerging / Established words (same 9s cycle). */
+.cs-pair .cs-evidence{display:grid;place-items:center;padding:clamp(20px,3.4vw,56px)}
+.cs-ev-card{box-sizing:border-box;width:min(100%,560px);min-width:0;padding:clamp(20px,2.4vw,36px);border:1px solid #ffffff14;border-radius:16px;background:#080a09;font-family:AskReadOutfit,Arial,sans-serif;color:#f3f3ed;box-shadow:0 30px 70px #0007}
+.cs-ev-label{margin:0;font-size:12px;letter-spacing:.14em;color:#d6ae63}.cs-ev-label span{color:#929b89}
+.cs-ev-head h3{margin:12px 0 24px;font-size:clamp(22px,1.9vw,30px);font-weight:500;line-height:1.2;letter-spacing:-.02em}
+.cs-ev-states{display:grid}
+.cs-ev-state{grid-area:1/1;opacity:0;animation:cs-ev-state 9s infinite}
+.cs-ev-emerging{animation-delay:3s}.cs-ev-established{animation-delay:6s}
+@keyframes cs-ev-state{0%,4%{opacity:0}10%,30%{opacity:1}36%,100%{opacity:0}}
+.cs-ev-pill{display:inline-flex;align-items:center;gap:10px;padding:11px 18px 11px 14px;border:1px solid #ffffff1c;border-radius:100px;font-size:14px;font-weight:500;letter-spacing:.04em}
+.cs-ev-pill svg{width:20px;height:20px}
+.cs-ev-observed .cs-ev-pill{background:#1a1d1a;color:#c9cdc3}
+.cs-ev-emerging .cs-ev-pill{background:#1d3a46;border-color:#1d3a46;color:#eef0ea}
+.cs-ev-established .cs-ev-pill{background:#d6ae63;border-color:#d6ae63;color:#080a09}
+.cs-ev-line{min-height:3.2em;margin:18px 0;font-size:clamp(15px,1.1vw,17px);line-height:1.6;color:#bfc4b9}
+.cs-ev-meter{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:20px}
+.cs-ev-meter i{height:6px;border-radius:6px;background:#ffffff14}
+.cs-ev-meter i.on{background:#6f766b}.cs-ev-emerging .cs-ev-meter i.on{background:#3f7d93}.cs-ev-established .cs-ev-meter i.on{background:#d6ae63}
+/* Stats sit in one row and wrap Counterevidence to its own line when the card is narrow. */
+.cs-ev-stats{display:flex;flex-wrap:wrap;gap:14px 28px;margin:0;padding-top:18px;border-top:1px solid #ffffff12}
+.cs-ev-stats dt{margin-bottom:6px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#7f877a}
+.cs-ev-stats dd{margin:0;font-size:15px;color:#e8eae3}.cs-ev-established .cs-ev-stats div:last-child dd{color:#d6ae63}
+@media(prefers-reduced-motion:reduce){.cs-ev-state{animation:none}.cs-ev-established{opacity:1}}
 /* Full-bleed project imagery under a scrim in each card's own color, deepest where the copy sits. */
 .cs-more-card{position:relative;isolation:isolate;overflow:hidden;justify-content:flex-end}
 .cs-more-bg{position:absolute;z-index:-2;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 20%;transition:scale .8s cubic-bezier(.2,.7,.2,1)}
@@ -268,3 +279,4 @@
 .cs-more-card .project-eyebrow{margin-top:auto}
 .cs-more-card h3{margin-top:18px}
 @media(prefers-reduced-motion:reduce){.cs-more-bg{transition:none}.cs-more-card:hover .cs-more-bg{scale:1}}
+@media(max-width:480px){.cs-pair .cs-evidence{padding:12px}.cs-ev-card{padding:20px 18px}.cs-ev-label{letter-spacing:.1em}.cs-ev-stats dt{letter-spacing:.08em}.cs-ev-pill{font-size:13px}}
