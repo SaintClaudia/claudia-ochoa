@@ -10,8 +10,6 @@ The current view uses Shallow cross as its headline, a collapsed global navigati
 
 Preview locally with `python3 -m http.server 4173 --bind 127.0.0.1`, then open `http://127.0.0.1:4173/work/ask-read.html#plays-prototype`.
 
-## Pending favicon work
+## Favicon — done locally (not yet committed or deployed)
 
-The user switched context: the supplied gold bridge-in-circle mark is for **claudiaochoa.co across the entire portfolio**, replacing the heart favicon, not just Ask Read. Preserve the actual icon and make its background transparent, including internal openings. The user wants an unbounded mark that reads clearly in browser tabs.
-
-The original reference is preserved at `images/bridge-favicon-reference.png`. No production favicon assets or favicon links have been changed. An initial generated background extraction was unsuitable because it altered the mark; do not use it as the final icon. Resume this work after the break and validate transparency and small-size legibility before replacing favicon assets.
+The gold bridge-in-circle mark replaced the heart site-wide. The background was removed by unmixing the gold from the dark field (shape and internal openings preserved; outside-the-ring tile corners dropped). Small sizes (16/32/48 and the SVG's embedded 64px image) get a slight alpha boost so the thin cables stay visible in tabs; 192px is unaltered. `apple-touch-icon.png` sits on the original near-black field because iOS fills transparency with black. All favicon links bumped to `?v=8` and the touch icon to `?v=7`. Source reference: `images/bridge-favicon-reference.png`.

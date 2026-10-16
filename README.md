@@ -36,9 +36,9 @@ serves those files directly.
 ├── _lovesac-nav.html                 # Shared navigation for the Lovesac prototype pages
 ├── _lovesac-footer.html              # Shared footer for three Lovesac prototype pages
 ├── build.py                          # Stamps shared HTML partials into their pages
-├── favicon.svg                       # Heart favicon (SVG)
-├── favicon-192.png                   # Heart favicon (PNG, for Google Search)
-├── favicon-32.png                    # Heart favicon (PNG, browser tab fallback)
+├── favicon.svg                       # Golden Gate bridge favicon (SVG)
+├── favicon-192.png                   # Golden Gate bridge favicon (PNG, for Google Search)
+├── favicon-32.png                    # Golden Gate bridge favicon (PNG, browser tab fallback)
 ├── sitemap.xml                       # All pages for search engine discovery
 ├── robots.txt                        # Crawl directives
 ├── llms.txt                          # Curated AI/agent guide to authoritative portfolio content
