@@ -71,15 +71,10 @@
     return true;
   };
   const scenes = {
-    // Read down the whole briefing: the finding, its film, why it matters and what else was found.
+    // Scroll the briefing up to its categories and hold there, so the next step can tap Pressure without scrolling back up.
     1: async id => {
       await wait(900); if (id !== run) return;
       scrollTo(phone.querySelector('.ar-pills'));
-      // On phones the briefing holds with the categories at the top, so the next step can tap Pressure without scrolling back up.
-      if (window.innerWidth <= 800) return;
-      await wait(2000); if (id !== run) return;
-      scrollTo(phone.querySelector('.ar-finding[data-cat="opportunity"] .ar-why-box')); await wait(2200); if (id !== run) return;
-      scrollTo(phone.querySelector('.ar-finding[data-cat="opportunity"] .ar-also'));
     },
     2: async id => {
       // Back up to the categories before switching, if the briefing has scrolled past them.
