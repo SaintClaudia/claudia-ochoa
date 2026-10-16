@@ -1,0 +1,58 @@
+/* Shared compact pill component for the Ask Read case study.
+   Device contexts supply type size; geometry scales from that single value. */
+.askread-case-study{
+  --askread-pill-font-size:16px;
+  --askread-pill-height:2.5em;
+  --askread-pill-padding-y:.5em;
+  --askread-pill-padding-x:.9em;
+  --askread-pill-gap:.6em;
+  --askread-pill-icon-size:1.25em;
+  --askread-pill-count-size:1.5em;
+}
+.askread-case-study .cs-qb-tabs{--askread-pill-font-size:1.05cqw}
+.askread-case-study .ar-screen{--askread-pill-font-size:var(--ar-type-meta)}
+.askread-case-study .ar-guided{--askread-pill-font-size:var(--ar-type-ui)}
+.askread-case-study .cs-evidence{--askread-pill-font-size:14px}
+.askread-case-study .arp{--askread-pill-font-size:13px}
+
+.askread-case-study :is(.askread-category-tabs>span,.askread-briefing-evidence>span,.ar-pill,.ar-evidence>span,.cs-ev-pill,.ar-guided>span){
+  box-sizing:border-box;
+  display:inline-flex;
+  align-items:center;
+  flex-shrink:0;
+  min-height:var(--askread-pill-height);
+  padding:var(--askread-pill-padding-y) var(--askread-pill-padding-x);
+  gap:var(--askread-pill-gap);
+  border-width:1px;
+  border-style:solid;
+  border-radius:100px;
+  font-size:var(--askread-pill-font-size);
+  line-height:1.2;
+  letter-spacing:.02em;
+}
+.askread-case-study :is(.askread-stage,.ar-screen,.arp,.cs-ev-card) :is(.askread-briefing-evidence>span,.ar-evidence>span,.cs-ev-pill) svg{
+  width:var(--askread-pill-icon-size);
+  height:var(--askread-pill-icon-size);
+  flex-shrink:0;
+}
+.askread-case-study :is(.askread-category-tabs>span,.ar-pill)>b{
+  display:grid;
+  place-items:center;
+  flex-shrink:0;
+  width:var(--askread-pill-count-size);
+  height:var(--askread-pill-count-size);
+  border-radius:50%;
+  font-size:inherit;
+  font-weight:500;
+  line-height:1;
+  font-variant-numeric:tabular-nums;
+}
+/* State colors remain independent of geometry. */
+.askread-case-study .askread-category-tabs>span{border-color:var(--askread-tab-border);color:var(--askread-tab-text)}
+.askread-case-study .ar-pill{border-color:var(--askread-tab-border);color:var(--askread-tab-text)}
+.askread-case-study .ar-pill b{background:transparent;color:inherit}
+.askread-case-study .ar-pill.is-active{background:var(--askread-accent);border-color:var(--askread-accent);color:#080a09}
+.askread-case-study .ar-pill.is-active b{background:#080a09;color:#fff}
+.askread-case-study .askread-category-tabs>span.is-active,
+.askread-case-study .cs-qb:not(.is-league) .cs-qb-tab-perf,
+.askread-case-study .cs-qb.is-league .cs-qb-tab-league{border-color:var(--askread-accent);color:#080a09}

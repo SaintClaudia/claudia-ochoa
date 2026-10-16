@@ -1,0 +1,118 @@
+/* One presentation size and device geometry across the Ask Read case study. */
+.askread-case-study{--askread-device-width:min(1320px,calc(100vw - 2 * var(--gutter)));--askread-device-ratio:2420 / 1668}
+/* Preserve the original hero placement, crop, fade, and title positioning. */
+.askread-case-study .cs-askread-hero .askread-stage{width:var(--askread-device-width)}
+.askread-case-study :is(.cs-qb,.cs-library-tablet,.cs-plays-tablet){box-sizing:border-box;width:var(--askread-device-width);max-width:none;padding:0;margin:clamp(48px,7vh,80px) auto 0;background:none;border-radius:0;overflow:visible}
+.askread-case-study .askread-tablet{width:100%}
+.askread-case-study .askread-tablet-body{box-sizing:border-box;padding:9px;border-radius:18px;background:#151819;box-shadow:0 0 0 1px #888d8955,0 40px 80px #0009;transform:none;animation:none}
+.askread-case-study .askread-display{aspect-ratio:var(--askread-device-ratio);border-radius:10px}
+.cs-plays-tablet .askread-tablet{position:relative;inset:auto}
+.cs-plays-tablet .arp{width:100%;height:100%;max-width:none;margin:0;border:0;border-radius:0;box-shadow:none;overflow:hidden;scroll-margin-top:32px}
+.cs-plays-tablet .arp-shell{height:100%;min-height:0}
+.cs-plays-tablet .arp-workspace{height:100%;min-height:0;overflow:clip}
+.cs-plays-tablet .arp-navigation{min-height:0;overflow:clip}
+.cs-plays-tablet .arp-presentation-note{margin-bottom:24px}
+@media(max-width:800px){
+  .askread-case-study{--askread-device-width:calc(100vw - 24px)}
+  .askread-case-study :is(.cs-qb,.cs-library-tablet,.cs-plays-tablet){margin-top:36px}
+  .askread-case-study .cs-askread-hero .askread-stage{width:var(--askread-device-width)}
+  .askread-case-study .askread-tablet-body{padding:5px;border-radius:12px}
+  .askread-case-study .askread-display{border-radius:7px}
+}
+
+/* Shared product proportions; each device retains its own responsive type scale. */
+.askread-case-study{--askread-tab-border:#ffffff20;--askread-tab-text:#c3c8ba}
+.askread-case-study .cs-qb-tabs>span{gap:0}
+.askread-case-study .ar-library-content h3{font-size:2.6cqw;line-height:1.15}
+.askread-case-study .ar-library-sub{font-size:1.6cqw}
+/* Preserve comfortable mobile tab proportions; let the category rail scroll. */
+.askread-case-study .ar-pills{gap:1.6cqw;margin-bottom:5cqw;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+
+.askread-case-study .ar-pills::-webkit-scrollbar{display:none}
+
+/* Mobile type hierarchy, proportional to the 402pt reference screen. */
+.askread-case-study .ar-screen{--ar-type-caption:3cqw;--ar-type-meta:3.2cqw;--ar-type-ui:3.5cqw;--ar-type-body:4cqw}
+.askread-case-study .ar-screen .ar-label{--askread-label-size:var(--ar-type-caption);--askread-label-tracking:.12em}
+.askread-case-study .ar-body,.askread-case-study .ar-why,.askread-case-study .ar-why-box,.askread-case-study .ar-answer-text{font-size:var(--ar-type-body);line-height:1.5}
+.askread-case-study .ar-matchup>div{font-size:var(--ar-type-caption);line-height:1.4}
+.askread-case-study .ar-keys span{font-size:var(--ar-type-caption);line-height:1.25}
+.askread-case-study .ar-clip-cap{font-size:var(--ar-type-meta);line-height:1.25}
+.askread-case-study .ar-clip-cap small{font-size:var(--ar-type-caption);line-height:1.3}
+.askread-case-study .ar-source,.askread-case-study .ar-film-row small,.askread-case-study .ar-related small{font-size:var(--ar-type-meta);line-height:1.45}
+.askread-case-study .ar-film-row span,.askread-case-study .ar-context span{font-size:var(--ar-type-ui);line-height:1.4}
+.askread-case-study .ar-context small{font-size:var(--ar-type-caption);line-height:1.3}
+.askread-case-study .ar-composer{font-size:var(--ar-type-body)}
+
+@media(min-width:801px){.askread-case-study .cs-askread-hero .askread-stage{top:calc(58svh + 24px)}}
+
+/* Account identity: avatar, name, and a secondary profile/settings label. */
+.askread-case-study .askread-account-details{flex-direction:column;align-items:flex-start;justify-content:center;gap:.25cqw;min-width:0}
+.askread-case-study .askread-account-details small{font-size:1cqw;font-weight:400;line-height:1.3;color:#939a90;white-space:nowrap}
+.askread-case-study .arp-nav-account small{font-size:12px;line-height:1.3;font-weight:400}
+
+/* Account and composer share the same inset from the tablet screen's bottom. */
+.askread-case-study .askread-display{--askread-footer-inset:1cqw}
+.askread-case-study .askread-account{bottom:var(--askread-footer-inset)}
+.askread-case-study .askread-screen-bottom .askread-demo-input{top:auto;bottom:var(--askread-footer-inset);height:4.75cqw}
+
+/* One sidebar account treatment across static and interactive tablet views. */
+.askread-case-study .askread-display{--askread-avatar-size:2.8cqw;--askread-avatar-type:1.4cqw;--askread-account-divider:#ffffff12}
+.askread-case-study .askread-account-avatar,.askread-case-study .arp-avatar{width:var(--askread-avatar-size);height:var(--askread-avatar-size);display:grid;place-items:center;padding:0;font-size:var(--askread-avatar-type);font-weight:400;line-height:1;text-align:center;letter-spacing:0;background:#202321;color:#f0f0ea}
+.askread-case-study .askread-screen-bottom::before{border-top:1px solid var(--askread-account-divider)}
+.askread-case-study .arp-navigation{padding-bottom:0}
+.askread-case-study .arp-nav-account{min-height:4.85cqw;padding:1.15cqw 0 0;margin-bottom:var(--askread-footer-inset);gap:1cqw}
+.askread-case-study .arp.is-nav-open .arp-nav-account{padding-left:0}
+.askread-case-study .arp-nav-account::before{content:"";position:absolute;top:0;left:-12px;right:-12px;border-top:1px solid var(--askread-account-divider)}
+.askread-case-study .arp-nav-account small{margin-top:.25cqw;font-size:1cqw}
+.askread-case-study .arp-nav-item svg{width:2cqw;height:2cqw}
+@media(max-width:650px){.askread-case-study .arp-nav-account::before{left:-5px;right:-5px}}
+
+/* Account text follows the sidebar navigation scale. */
+.askread-case-study .askread-account-details strong,.askread-case-study .arp-nav-account strong{font-size:1.55cqw;font-weight:400;line-height:1.2}
+.askread-case-study .askread-account-details small,.askread-case-study .arp-nav-account small{font-size:1cqw;line-height:1.3}
+.askread-case-study .arp-nav-account .arp-nav-label{min-width:0}
+
+/* Plays uses the same full-workspace composer placement as the other tablets. */
+.cs-plays-tablet .arp-workspace{display:flex;flex-direction:column}
+.cs-plays-tablet .arp-heading,.cs-plays-tablet .arp-search-area{flex-shrink:0}
+.cs-plays-tablet .arp-layout{flex:1;min-height:0;overflow:clip}
+.cs-plays-tablet .arp-message:empty{display:none}
+.cs-plays-tablet .arp-composer-dock{flex-shrink:0;padding:.5cqw 2.4cqw var(--askread-footer-inset);background:#090b0a}
+.cs-plays-tablet .arp-composer-dock .arp-conversation-composer{margin:0;padding:0;border:0}
+.cs-plays-tablet .arp-composer-dock .arp-composer-bar{min-height:4.75cqw;padding:0 1.4cqw;gap:1.5cqw}
+.cs-plays-tablet .arp-composer-dock textarea{min-height:0;padding:.6cqw 0;font-size:1.7cqw;line-height:1.4}
+.cs-plays-tablet .arp-composer-dock .arp-composer-icon{width:2.8cqw;height:2.8cqw;padding:.35cqw}
+.cs-plays-tablet .arp-composer-dock .arp-composer-icon svg{width:2.1cqw;height:2.1cqw}
+.cs-plays-disclaimer{width:var(--askread-device-width);margin:18px auto 0;font-size:12px;line-height:1.6;color:var(--muted)}
+
+/* Let spacing carry the Plays hierarchy instead of repeated divider rules. */
+.cs-plays-tablet .arp-layout,.cs-plays-tablet .arp-playbook-footer,.cs-plays-tablet .arp-concept-reference,.cs-plays-tablet .arp-other-plays{border-top:0}
+.cs-plays-tablet .arp-playbook-toolbar{border-bottom:0}
+.cs-plays-tablet .arp-playbook-workspace>.arp-player-context{border-color:#ffffff0d}
+
+/* Static controls preserve text selection and copying in the portfolio preview. */
+.cs-plays-tablet .arp[data-static-preview]{user-select:text}
+.cs-plays-tablet .arp[data-static-preview] button:disabled{opacity:1;cursor:default}
+.cs-plays-tablet .arp[data-static-preview] [data-select-player]{pointer-events:none}
+
+/* Give the field a little breathing room below the coaching-cues control. */
+.cs-plays-tablet .arp-playbook-canvas{margin-top:12px}
+
+/* The Ask animation keeps the same neutral composer border in every state. */
+.askread-case-study .ar-composer,.askread-case-study .ar-phone[data-composer="typing"] .ar-composer{border-color:#ffffff24}
+
+/* Keep the familiar mic-to-send pattern with the neutral product treatment. */
+.askread-case-study .ar-send,.askread-case-study .arp .arp-composer-send{background:#202420;color:#aab0a4}
+
+/* Align formation copy with the main Plays content edge. */
+.cs-plays-tablet .arp-playbook-toolbar{padding-left:0}
+.cs-plays-tablet .arp-board-controls{padding-left:0}
+
+/* Keep the hero's categories compact inside the larger device frame. */
+.askread-case-study .cs-askread-hero .askread-category-tabs{gap:14px;margin:28px 0 36px}
+.askread-case-study .cs-askread-hero .askread-briefing-evidence{gap:14px}
+
+/* Center Library chevrons against the full row, with a little more presence. */
+.askread-case-study .ar-library-week{position:relative;padding-right:7cqw}
+.askread-case-study .ar-library-arrow{position:absolute;right:2cqw;top:50%;transform:translateY(-50%);display:grid;place-items:center;width:3cqw;height:3cqw;line-height:1}
+.askread-case-study .cs-library-tablet .ar-library-arrow svg{display:block;width:2cqw;height:2cqw}
