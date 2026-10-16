@@ -21,7 +21,6 @@
 }
 
 /* Shared product proportions; each device retains its own responsive type scale. */
-.askread-case-study{--askread-tab-border:#ffffff20;--askread-tab-text:#c3c8ba}
 .askread-case-study .cs-qb-tabs>span{gap:0}
 .askread-case-study .ar-library-content h3{font-size:2.6cqw;line-height:1.15}
 .askread-case-study .ar-library-sub{font-size:1.6cqw}
@@ -109,8 +108,6 @@
 .cs-plays-tablet .arp-board-controls{padding-left:0}
 
 /* Keep the hero's categories compact inside the larger device frame. */
-.askread-case-study .cs-askread-hero .askread-category-tabs{gap:14px;margin:28px 0 36px}
-.askread-case-study .cs-askread-hero .askread-briefing-evidence{gap:14px}
 
 /* Center Library chevrons against the full row, with a little more presence. */
 .askread-case-study .ar-library-week{position:relative;padding-right:7cqw}
