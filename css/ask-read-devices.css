@@ -52,7 +52,6 @@
 /* Account and composer share the same inset from the tablet screen's bottom. */
 .askread-case-study .askread-display{--askread-footer-inset:1cqw}
 .askread-case-study .askread-account{bottom:var(--askread-footer-inset)}
-.askread-case-study .askread-screen-bottom .askread-demo-input{top:auto;bottom:var(--askread-footer-inset);height:4.75cqw}
 
 /* One sidebar account treatment across static and interactive tablet views. */
 .askread-case-study .askread-display{--askread-avatar-size:2.8cqw;--askread-avatar-type:1.4cqw;--askread-account-divider:#ffffff12}
@@ -78,10 +77,8 @@
 .cs-plays-tablet .arp-message:empty{display:none}
 .cs-plays-tablet .arp-composer-dock{flex-shrink:0;padding:.5cqw 2.4cqw var(--askread-footer-inset);background:#090b0a}
 .cs-plays-tablet .arp-composer-dock .arp-conversation-composer{margin:0;padding:0;border:0}
-.cs-plays-tablet .arp-composer-dock .arp-composer-bar{min-height:4.75cqw;padding:0 1.4cqw;gap:1.5cqw}
-.cs-plays-tablet .arp-composer-dock textarea{min-height:0;padding:.6cqw 0;font-size:1.7cqw;line-height:1.4}
-.cs-plays-tablet .arp-composer-dock .arp-composer-icon{width:2.8cqw;height:2.8cqw;padding:.35cqw}
-.cs-plays-tablet .arp-composer-dock .arp-composer-icon svg{width:2.1cqw;height:2.1cqw}
+.cs-plays-tablet .arp-composer-dock textarea{min-height:0;padding:.6cqw 0;line-height:1.4}
+.cs-plays-tablet .arp-composer-dock .arp-composer-icon{padding:.35cqw}
 .cs-plays-disclaimer{width:var(--askread-device-width);margin:18px auto 0;font-size:12px;line-height:1.6;color:var(--muted)}
 
 /* Let spacing carry the Plays hierarchy instead of repeated divider rules. */

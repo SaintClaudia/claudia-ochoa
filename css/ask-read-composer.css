@@ -1,0 +1,36 @@
+/* Tablet composer: scale down for small previews, cap growth in larger devices. */
+.askread-pill-system .askread-display{
+  --askread-composer-height:min(4cqw,48px);
+  --askread-composer-type:min(1.45cqw,17px);
+  --askread-composer-icon:min(1.8cqw,21px);
+  --askread-composer-control:min(2.8cqw,34px);
+  --askread-composer-gap:min(1.2cqw,14px);
+  --askread-composer-inset:min(1.4cqw,17px);
+}
+.askread-pill-system .askread-demo-input,
+.askread-pill-system .arp-composer-dock .arp-composer-bar{
+  min-height:var(--askread-composer-height);
+  height:var(--askread-composer-height);
+  gap:var(--askread-composer-gap);
+  padding:0 var(--askread-composer-inset);
+  font-size:var(--askread-composer-type);
+  line-height:1.4;
+}
+.askread-pill-system .askread-demo-input{top:auto;bottom:var(--askread-footer-inset,1cqw)}
+.askread-pill-system .askread-demo-plus{font-size:min(2.4cqw,28px)}
+.askread-pill-system .askread-demo-mic,
+.askread-pill-system .askread-voice-button,
+.askread-pill-system .arp-composer-dock .arp-composer-icon{
+  width:var(--askread-composer-control);
+  height:var(--askread-composer-control);
+  flex:0 0 var(--askread-composer-control);
+}
+.askread-pill-system .askread-stage .askread-demo-mic svg,
+.askread-pill-system .arp-composer-dock .arp-composer-icon svg{
+  width:var(--askread-composer-icon);
+  height:var(--askread-composer-icon);
+}
+.askread-pill-system .arp-composer-dock textarea{font-size:var(--askread-composer-type)}
+.askread-pill-system .askread-voice-button{padding:min(.65cqw,8px)}
+.askread-pill-system .askread-voice-wave{height:var(--askread-composer-control)}
+.askread-pill-system .askread-voice-wave i{max-height:min(2.2cqw,26px)}

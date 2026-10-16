@@ -32,9 +32,9 @@
   const notes = saved.notes && typeof saved.notes === 'object' ? saved.notes : {};
   let active = plays[0], currentTab = 'design', outcome = 'struggle', mode = 'blank', search = '';
   const playStates = {
-    draft: {icon:'<path d="M13 5H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8M16 3l5 5M10 14l3-1 8-8-3-3-8 8z"/>', label:'Draft', description:'A play being documented and prepared. No outcomes recorded yet.'},
-    review: {icon:'<path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="2.8"/>', label:'Suggested', description:'A concept to explore for this week’s matchup. The quarterback and coaching staff retain the decision.'},
-    untested: {icon:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/>', label:'Untested', description:'An adjusted version awaiting practice results. Its effectiveness has not been established.'}
+    draft: {icon:[['path',{d:'M13 5H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8M16 3l5 5M10 14l3-1 8-8-3-3-8 8z'}]], label:'Draft', description:'A play being documented and prepared. No outcomes recorded yet.'},
+    review: {icon:[['path',{d:'M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z'}],['circle',{cx:12,cy:12,r:2.8}]], label:'Suggested', description:'A concept to explore for this week’s matchup. The quarterback and coaching staff retain the decision.'},
+    untested: {icon:[['circle',{cx:12,cy:12,r:9}],['path',{d:'M12 7v5l3 3'}]], label:'Untested', description:'An adjusted version awaiting practice results. Its effectiveness has not been established.'}
   };
   const stateOf = play => play.sample ? 'review' : play.derived ? 'untested' : 'draft';
   const attachments = new Map();
@@ -44,6 +44,13 @@
     catch (_) { say('Browser storage is unavailable. Your work is available for this session.'); return false; }
   }
   function el(tag, text, className) { const node=document.createElement(tag); if(text) node.textContent=text; if(className) node.className=className; return node; }
+  // Build SVG nodes directly so Plays works under the site's Trusted Types policy.
+  function svgNode(tag, attributes={}, children=[]) {
+    const node=document.createElementNS('http://www.w3.org/2000/svg',tag);
+    Object.entries(attributes).forEach(([name,value])=>node.setAttribute(name,String(value)));
+    node.append(...children);
+    return node;
+  }
   // Concept context: https://westcoastfootball.substack.com/p/49ers-film-room-play-action-sequencing-part-3
   // Diagram assignments below are illustrative, not a reproduced team installation.
   function field() {
@@ -134,34 +141,66 @@
       conversationContext={player:selected,phase,assignment:assignmentText.textContent,read:readText.textContent};
       const lines=Array.from({length:6},(_,i)=>{
         const y=250+i*60, number=50-i*5;
-        return `<path d="M40 ${y}H680" class="arp-yard-line"/>${number%10===0?`<text x="65" y="${y-8}" class="arp-yard-number">${number}</text><text x="655" y="${y-8}" text-anchor="end" class="arp-yard-number">${number}</text>`:""}`;
-      }).join('');
+        const nodes=[svgNode('path',{d:`M40 ${y}H680`,class:'arp-yard-line'})];
+        if(number%10===0) nodes.push(
+          svgNode('text',{x:65,y:y-8,class:'arp-yard-number'},[String(number)]),
+          svgNode('text',{x:655,y:y-8,'text-anchor':'end',class:'arp-yard-number'},[String(number)])
+        );
+        return nodes;
+      }).flat();
       const hashes=Array.from({length:28},(_,i)=>{
         const y=226+i*12;
-        return `<path d="M40 ${y}h8M672 ${y}h8M319 ${y}h8M393 ${y}h8"/>`;
-      }).join('');
+        return svgNode('path',{d:`M40 ${y}h8M672 ${y}h8M319 ${y}h8M393 ${y}h8`});
+      });
       const assignments={X:'M110 430V238',Y:'M452 430L438 394H185',RB:'M360 530Q395 486 490 480',F:'M360 490L460 452',Z:'M610 466V298L540 238',QB:'M360 457L385 480L350 475'};
       routeLegend.textContent=post?'— Planned routes':assignments[selected]?'– – Assignment preview':'';
       const relevant=showCues?(selected==='QB'&&post?['ML','MR']:detail.cues):[];
       const cueAreas=relevant.map(id=>{
         const [, ,x,y]=defense.find(([key])=>key===id);
-        return `<circle data-read-cue="${id}" cx="${x}" cy="${y}" r="21" class="arp-read-cue"/>`;
-      }).join('');
+        return svgNode('circle',{'data-read-cue':id,cx:x,cy:y,r:21,class:'arp-read-cue'});
+      });
       const routePaths=(post||assignments[selected])?Object.entries(assignments).filter(([id])=>post||id===selected).sort(([a],[b])=>Number(a===selected)-Number(b===selected)).map(([id,path])=>{
         const emphasized=id===selected, primary=id==='Y';
         const gold=emphasized||(!assignments[selected]&&primary);
-        return `<path data-route="${id}" data-route-role="${emphasized?'selected':'supporting'}" d="${path}" ${!post||['QB','RB','F'].includes(id)?'stroke-dasharray="5 4"':''} fill="none" stroke="${gold?'#d6ae63':'#c9cdc3'}" stroke-width="${emphasized?3.8:primary?2.5:2.3}" stroke-linecap="round" stroke-linejoin="round" opacity="${emphasized?1:primary?.9:.8}" marker-end="url(#arp-route-${gold?'gold':'bone'})"/>`;
-      }).join(''):'';
-      const defenders=defense.map(([id,label,x,y])=>`<g class="arp-defender arp-selectable-player${selected==='D-'+id?' is-selected':''}" data-player="defense" role="button" tabindex="0" aria-label="Examine ${id} defender" aria-pressed="${selected==='D-'+id}" data-select-player="D-${id}" transform="translate(${x} ${y})"><circle r="20" class="arp-player-hit"/><path d="M-7-7 7 7M7-7-7 7"/><text y="-15" text-anchor="middle">${label}</text></g>`).join('');
+        const attributes={'data-route':id,'data-route-role':emphasized?'selected':'supporting',d:path,fill:'none',stroke:gold?'#d6ae63':'#c9cdc3','stroke-width':emphasized?3.8:primary?2.5:2.3,'stroke-linecap':'round','stroke-linejoin':'round',opacity:emphasized?1:primary?.9:.8,'marker-end':`url(#arp-route-${gold?'gold':'bone'})`};
+        if(!post||['QB','RB','F'].includes(id)) attributes['stroke-dasharray']='5 4';
+        return svgNode('path',attributes);
+      }):[];
+      const defenders=defense.map(([id,label,x,y])=>svgNode('g',{
+        class:`arp-defender arp-selectable-player${selected==='D-'+id?' is-selected':''}`,
+        'data-player':'defense',role:'button',tabindex:0,'aria-label':`Examine ${id} defender`,
+        'aria-pressed':selected==='D-'+id,'data-select-player':`D-${id}`,transform:`translate(${x} ${y})`
+      },[svgNode('circle',{r:20,class:'arp-player-hit'}),svgNode('path',{d:'M-7-7 7 7M7-7-7 7'}),svgNode('text',{y:-15,'text-anchor':'middle'},[label])]));
       const offenders=offense.map(([label,x,y,alignment],index)=>{
         const line=index<5;
-        const hit=line?'<rect x="-13" y="-19" width="26" height="38" class="arp-player-hit"/>':'<circle r="20" class="arp-player-hit"/>';
-        const marker=label==='C'?'<rect x="-10" y="-10" width="20" height="20" rx="2" class="arp-player-marker"/>':`<circle r="${line?10:12}" class="arp-player-marker"/>`;
-        return `<g class="arp-offender arp-selectable-player${line?' arp-lineman':''}${selected===label?' is-selected':''}" data-player="offense" data-alignment="${alignment}" role="button" tabindex="0" aria-label="Select ${label} assignment, ${alignment} the line" aria-pressed="${selected===label}" data-select-player="${label}" transform="translate(${x} ${y})">${hit}${marker}<text y="3.5" text-anchor="middle">${label}</text></g>`;
-      }).join('');
-      const blocks=post?offense.slice(0,5).map(([,x])=>`<path d="M${x} 418v-10m-6 0h12"/>`).join(''):'';
-      canvas.innerHTML=`<svg class="arp-field arp-football-field" viewBox="20 218 690 332" tabindex="-1" role="group" aria-label="Interactive illustrative Zorro Shallow ${post?'post-snap plan':'pre-snap alignment'}, eleven offensive and eleven defensive players"><defs><marker id="arp-route-gold" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#d6ae63"/></marker><marker id="arp-route-bone" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#c9cdc3"/></marker></defs><rect x="40" y="218" width="640" height="332" fill="#111a15" stroke="#ffffff40"/><g>${lines}</g><g class="arp-hash-marks">${hashes}</g><path d="M40 430H680" class="arp-scrimmage"/><rect x="44" y="412" width="42" height="14" rx="3" fill="#adc1c9"/><text x="65" y="422" text-anchor="middle" class="arp-los-text">LOS</text><path d="M696 532v-32m-5 5 5-5 5 5" fill="none" stroke="#aab0aa"/><g>${cueAreas}</g><g>${routePaths}</g><g class="arp-blocks">${blocks}</g><g class="arp-defense">${defenders}</g><g>${offenders}</g></svg>`;
-      const fieldSvg=canvas.querySelector('svg');
+        const hit=line?svgNode('rect',{x:-13,y:-19,width:26,height:38,class:'arp-player-hit'}):svgNode('circle',{r:20,class:'arp-player-hit'});
+        const marker=label==='C'?svgNode('rect',{x:-10,y:-10,width:20,height:20,rx:2,class:'arp-player-marker'}):svgNode('circle',{r:line?10:12,class:'arp-player-marker'});
+        return svgNode('g',{
+          class:`arp-offender arp-selectable-player${line?' arp-lineman':''}${selected===label?' is-selected':''}`,
+          'data-player':'offense','data-alignment':alignment,role:'button',tabindex:0,
+          'aria-label':`Select ${label} assignment, ${alignment} the line`,'aria-pressed':selected===label,
+          'data-select-player':label,transform:`translate(${x} ${y})`
+        },[hit,marker,svgNode('text',{y:3.5,'text-anchor':'middle'},[label])]);
+      });
+      const blocks=post?offense.slice(0,5).map(([,x])=>svgNode('path',{d:`M${x} 418v-10m-6 0h12` })):[];
+      const markers=[['gold','#d6ae63'],['bone','#c9cdc3']].map(([name,color])=>svgNode('marker',{
+        id:`arp-route-${name}`,viewBox:'0 0 10 10',refX:8,refY:5,markerWidth:5,markerHeight:5,orient:'auto'
+      },[svgNode('path',{d:'M0 0 10 5 0 10Z',fill:color})]));
+      const fieldSvg=svgNode('svg',{
+        class:'arp-field arp-football-field',viewBox:'20 218 690 332',tabindex:-1,role:'group',
+        'aria-label':`Interactive illustrative Zorro Shallow ${post?'post-snap plan':'pre-snap alignment'}, eleven offensive and eleven defensive players`
+      },[
+        svgNode('defs',{},markers),
+        svgNode('rect',{x:40,y:218,width:640,height:332,fill:'#111a15',stroke:'#ffffff40'}),
+        svgNode('g',{},lines),svgNode('g',{class:'arp-hash-marks'},hashes),
+        svgNode('path',{d:'M40 430H680',class:'arp-scrimmage'}),
+        svgNode('rect',{x:44,y:412,width:42,height:14,rx:3,fill:'#adc1c9'}),
+        svgNode('text',{x:65,y:422,'text-anchor':'middle',class:'arp-los-text'},['LOS']),
+        svgNode('path',{d:'M696 532v-32m-5 5 5-5 5 5',fill:'none',stroke:'#aab0aa'}),
+        svgNode('g',{},cueAreas),svgNode('g',{},routePaths),svgNode('g',{class:'arp-blocks'},blocks),
+        svgNode('g',{class:'arp-defense'},defenders),svgNode('g',{},offenders)
+      ]);
+      canvas.replaceChildren(fieldSvg);
       fieldSvg.addEventListener('click',event=>{if(!event.target.closest('[data-select-player]')){selected='all';draw();}});
       fieldSvg.addEventListener('keydown',event=>{if(event.key==='Escape'){event.stopPropagation();selected='all';draw();canvas.querySelector('svg').focus({preventScroll:true});}});
       canvas.querySelectorAll('[data-select-player]').forEach(player=>{
@@ -195,7 +234,7 @@
     const stateId=stateOf(active), state=playStates[stateId];
     const statusIcon=document.createElementNS('http://www.w3.org/2000/svg','svg');
     Object.entries({viewBox:'0 0 24 24',fill:'none',stroke:'currentColor','stroke-width':'1.7','stroke-linecap':'round','stroke-linejoin':'round','aria-hidden':'true'}).forEach(([name,value])=>statusIcon.setAttribute(name,value));
-    statusIcon.innerHTML=state.icon;
+    statusIcon.append(...state.icon.map(([tag,attributes])=>svgNode(tag,attributes)));
     $('status').replaceChildren(statusIcon,el('span',state.label));
     $('status').dataset.state=stateId;
     $('status').title=state.description;
