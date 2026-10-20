@@ -1,5 +1,10 @@
 # Worn signature polo artwork
 
+The final black-polo sequence was subsequently restored to the original
+`images/birdies-purdy-black-signature-glove.png` (SF chest badge and signature 13
+glove), together with its original matching option. The black signature-polo
+revision below is retained as an unused historical artifact.
+
 Updated the two polo looks in the customization scroll sequence using built-in imagegen and `images/purdy-mark-signature-red.webp` as the logo reference. Originals remain unchanged. Saved as transparent 1024 × 1536 WebP images at quality 95 without resizing:
 
 - `images/birdies-purdy-ivory-signature-polo.webp`

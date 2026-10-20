@@ -40,7 +40,7 @@
   const states = [
     {look:'game', choices:['scarlet','helmet'], label:'Brock Purdy · Game-day wear'},
     {look:'golf', choices:['ivory'], label:'Brock Purdy · Golf attire'},
-    {look:'black-glove', choices:['black','glove'], label:'Brock Purdy · Signature 13 polo + glove'}
+    {look:'black-glove', choices:['black','glove'], label:'Brock Purdy · 49ers polo + 13 glove'}
   ];
   let active = -1;
   let pending = false;

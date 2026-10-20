@@ -1,5 +1,10 @@
 # Signature 13 golf garments
 
+The black polo option was subsequently restored to its original SF design from
+`birdies-wardrobe-v1.png` at the user's request. Only the ivory polo, sage polo
+and quarter zip consume this signature-logo atlas now. Updating a mark must not
+change the identity of an existing clothing option.
+
 Asset: `images/birdies-wardrobe-signature-polos.webp` (1254 × 1254).
 Only the first-row four cells are used by the customization panel.
 Generated with built-in imagegen on October 20, 2026, then exported to WebP
