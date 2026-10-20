@@ -1,0 +1,20 @@
+# Reference-guided arm proportions
+
+Updated McCaffrey and Kittle with built-in imagegen using the user's McCaffrey photo as a body-proportion reference. McCaffrey uses the supplied photo for identity and build; Kittle retains his own face, hair, beard, smile and tattoo, with the reference used only for general anatomy. The intended result is a stronger upper arm and visibly narrower, smoothly tapering forearm with less exaggerated elbow definition.
+
+Production assets:
+
+- `images/birdies-mccaffrey-approachable-card.webp`
+- `images/birdies-kittle-approachable-card.webp`
+
+Exported at the existing 520 × 488 card size, with top-aligned crop and alpha preserved, WebP quality 94. Originals and first-pass variants remain available.
+
+## mccaffrey final prompt
+
+Create a replacement photographic roster portrait of Christian McCaffrey #23, head to upper thighs, front-facing, relaxed arms hanging loosely, isolated on transparent alpha. Image 1 is the user's real McCaffrey photo: PRIMARY reference for the person's actual body and face. Image 2 is only for the RED 23 three-stripe jersey, gold pants, portrait crop and isolated presentation; DO NOT copy the enlarged arms from image 2. IMPORTANT PRIMARY ANATOMY REQUIREMENT: forearms must be CLEARLY SMALLER and SLIMMER than the upper arms. Narrow forearms with a smooth straight taper toward wrist, wrists modest, smooth ordinary elbows, no bulbous brachioradialis lump. At the largest forearm point the arm's visible width should be only about TWO THIRDS of the upper bicep width; reduce the old forearm bulk substantially. No circular inflated elbow muscles, no carved muscle channels, no rope veins, no exaggerated vascularity. Natural skin with subtle hair and low-contrast diffuse light, gently athletic arms at rest. The wearer is physically fit but approachable and human, not intimidating, flexing, or superhero-like. Use a soft relaxed expression, recognizable same player's face, same hair and beard, accurate same jersey number and THREE WHITE SLEEVE STRIPES, gold trousers and white wrist tape; retain tattoo on Kittle. Sleeves and jersey slightly relaxed with realistic cloth folds. Do not copy shirtless state, track or hands-on-hips pose of the real photo. No backdrop/halo/shadow. Same near-square portrait proportions as old card, head at top and waist near bottom. The replacement should visibly read as a real candid athlete with leaner natural lower arms.
+
+## kittle final prompt
+
+Create a replacement photographic roster portrait of George Kittle #85, head to upper thighs, front-facing, relaxed arms hanging loosely, isolated on transparent alpha. Image 1 provides George Kittle's face, smile, long hair, beard, tattoo and RED 85 uniform ONLY. Do NOT copy its arm shape. Image 2 is a general real-athlete anatomy guide only, not identity. IMPORTANT PRIMARY ANATOMY REQUIREMENT: forearms must be CLEARLY SMALLER and SLIMMER than the upper arms. Narrow forearms with a smooth straight taper toward wrist, wrists modest, smooth ordinary elbows, no bulbous brachioradialis lump. At the largest forearm point the arm's visible width should be only about TWO THIRDS of the upper bicep width; reduce the old forearm bulk substantially. No circular inflated elbow muscles, no carved muscle channels, no rope veins, no exaggerated vascularity. Natural skin with subtle hair and low-contrast diffuse light, gently athletic arms at rest. The wearer is physically fit but approachable and human, not intimidating, flexing, or superhero-like. Use a soft relaxed expression, recognizable same player's face, same hair and beard, accurate same jersey number and THREE WHITE SLEEVE STRIPES, gold trousers and white wrist tape; retain tattoo on Kittle. Sleeves and jersey slightly relaxed with realistic cloth folds. Do not copy shirtless state, track or hands-on-hips pose of the real photo. No backdrop/halo/shadow. Same near-square portrait proportions as old card, head at top and waist near bottom. The replacement should visibly read as a real candid athlete with leaner natural lower arms.
+
+
