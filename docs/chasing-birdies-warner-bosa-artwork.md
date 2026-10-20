@@ -1,0 +1,18 @@
+# Warner and Bosa arm refinement
+
+Built-in imagegen edits extend the approachable arm treatment to Fred Warner and Nick Bosa. Their existing portraits are the identity and uniform references; the approved Kittle portrait is the realism/presentation guide. Softened muscle separation and vascularity, smoother elbows and more natural forearm taper, with Bosa retaining a broader build.
+
+Saved at 520 × 488, WebP quality 94, original alpha retained:
+
+- `images/birdies-warner-approachable-card.webp`
+- `images/birdies-bosa-approachable-card.webp`
+
+## warner prompt
+
+Use case: identity-preserve / precise-object-edit. Create a replacement photographic roster portrait of Fred Warner #54, same curly hair and beard. Image 1 is the edit target and identity/uniform reference. Image 2 is the approved Kittle portrait for anatomy realism and presentation ONLY; do NOT copy his identity, hair, beard, tattoo, number or face. Match that approachable natural athletic style. Keep Warner's relatively lean linebacker build. Clearly correct BOTH arms: forearms must be visibly slimmer than the upper arms, around two-thirds of the upper bicep's visible width, smoothly tapering to normal narrow wrists. Reduce old forearm bulk about 25–30%, especially bulges at the elbow. NO round inflated biceps or forearm lumps, no hard knotted elbows, no deep carved grooves, no rope veins or extreme vascularity, no glossy bodybuilding highlights. Athletic upper arms with soft natural contours and ordinary skin texture under diffuse photographic light. Relaxed arms hanging loosely at sides, shoulders at rest, friendly calm confident expression, recognizable EXACT same player's face, hair, skin tone and age. Preserve red/gold football uniform, EXACT same jersey number and THREE white sleeve stripes. Jersey fits naturally, not shrinkwrapped. Keep portrait framing HEAD TO HIP as image1 with same head position and scale; do not show more leg or make subject smaller. Fully transparent isolated cutout, clean edges, NO backdrop, halo, vignette, colored fringe or shadow. Maintain same near-square composition.
+
+## bosa prompt
+
+Use case: identity-preserve / precise-object-edit. Create a replacement photographic roster portrait of Nick Bosa #97, same short brown hair and stubble. Image 1 is the edit target and identity/uniform reference. Image 2 is the approved Kittle portrait for anatomy realism and presentation ONLY; do NOT copy his identity, hair, beard, tattoo, number or face. Match that approachable natural athletic style. Keep Bosa naturally broader and heavier than Warner, but remove the exaggerated carved bodybuilding anatomy. Clearly correct BOTH arms: forearms must be visibly slimmer than the upper arms, around two-thirds of the upper bicep's visible width, smoothly tapering to normal narrow wrists. Reduce old forearm bulk about 25–30%, especially bulges at the elbow. NO round inflated biceps or forearm lumps, no hard knotted elbows, no deep carved grooves, no rope veins or extreme vascularity, no glossy bodybuilding highlights. Athletic upper arms with soft natural contours and ordinary skin texture under diffuse photographic light. Relaxed arms hanging loosely at sides, shoulders at rest, friendly calm confident expression, recognizable EXACT same player's face, hair, skin tone and age. Preserve red/gold football uniform, EXACT same jersey number and THREE white sleeve stripes. Jersey fits naturally, not shrinkwrapped. Keep portrait framing HEAD TO HIP as image1 with same head position and scale; do not show more leg or make subject smaller. Fully transparent isolated cutout, clean edges, NO backdrop, halo, vignette, colored fringe or shadow. Maintain same near-square composition.
+
+
