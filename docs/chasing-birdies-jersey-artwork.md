@@ -1,5 +1,17 @@
 # Customization jersey correction
 
+The alternate slot now uses `images/birdies-wardrobe-faithful-alternate.webp`,
+edited with built-in imagegen from the three-stripe atlas and the user's supplied
+black/red/gold Purdy jersey screenshot. Scarlet and white continue to use the
+previous atlas. The new atlas retains the same dimensions and crop coordinates
+and is exported to WebP at quality 95 without resizing.
+
+## Alternate reference prompt
+
+Use case: precise-object-edit. Image 1 is the EDIT TARGET: square 1254x1254 wardrobe sprite atlas. Image 2 is a DESIGN REFERENCE for the black alternate football jersey only. Change ONLY the black jersey in row 2 column 3 of image 1 (cell x627..940, y315..626). Match the FRONT jersey shown on right of reference image 2: charcoal black fabric, exactly THREE SCARLET RED horizontal stripes on each sleeve (NO WHITE stripes); large red number '13' in the distinctive ornate western/saloon serif numeral style shown in reference with thick metallic gold outline/drop shadow; small gold cursive 'Faithful' script centered above chest numerals; matching red and gold shoulder '13' numerals; NFL shield at base of black V collar. Reproduce reference numeral shapes closely, including the curved ornamental 3. Keep the target atlas jersey front-facing, empty/armless garment product rendering, same scale and position, same lighting and dark green background, entirely inside its current cell. Do NOT add a back view, person, arms, extra jersey, or screenshot UI. Preserve every other cell including the scarlet and white jerseys with their THREE sleeve stripes unchanged. Preserve exact square atlas layout, object positions, crop coordinates, 1254x1254 composition. Only replace black jersey design. No white numerals or white sleeve bands on black jersey.
+
+## Previous three-stripe correction
+
 The customization thumbnails use `images/birdies-wardrobe-three-stripe-jerseys.webp`.
 The 1254 × 1254 atlas retains the existing crop coordinates. Only its second-row
 jersey cells are consumed by the page. The original atlas is retained.
