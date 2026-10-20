@@ -92,6 +92,21 @@
   const frames = [0, .1, .2, .33, .38, .46];
   const launch = .36, land = .68, settle = .8;
   let layout, frame = -1, pending = false;
+  // Keep decoded sheets alive before swapping a CSS background. Loading a
+  // corrected pose for the first time during scroll can leave the golfer blank.
+  const sheets = [
+    '/images/chasing-birdies-swing-embroidered-glove.png',
+    '/images/chasing-birdies-takeaway-glove.png?v=2',
+    '/images/chasing-birdies-followthrough-grip.png',
+    '/images/chasing-birdies-finish-brock-likeness.png'
+  ].map(src => {
+    const image = new Image();
+    image.src = src;
+    const sheet = {image, ready:false};
+    image.decode().then(() => { sheet.ready = true; schedule(); }).catch(() => {});
+    return sheet;
+  });
+  const poseSheets = [0, 1, 0, 0, 2, 3];
   const clamp = (v, lo = 0, hi = 1) => Math.min(hi, Math.max(lo, v));
   const lerp = (a, b, t) => a + (b - a) * t;
   const mix = (a, b, t) => [lerp(a[0], b[0], t), lerp(a[1], b[1], t)];
@@ -141,8 +156,10 @@
     const p = reduced.matches ? 1 : clamp(-rect.top / Math.max(1, rect.height - innerHeight));
     let next = 0;
     while (next < frames.length - 1 && p >= frames[next + 1]) next++;
-    if (next !== frame) {
+    const sheet = sheets[poseSheets[next]];
+    if (next !== frame && sheet.ready) {
       frame = next;
+      sprite.style.backgroundImage = `url("${sheet.image.src}")`;
       sprite.style.backgroundPositionX = `${frame * 20}%`;
       // Contact stays under the planted soles; the raised trailing heel has a smaller shadow.
       const contacts = [[.149,.733,.844,.841],[.169,.80,.844,.841],[.257,.88,.836,.844],[.296,.895,.847,.841],[.202,.802,.846,.836],[.50,.87,.858,.843]][frame];

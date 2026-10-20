@@ -227,8 +227,6 @@
 .cb-look-row li.is-selected::after{opacity:1}
 @media(prefers-reduced-motion:reduce){.cb-look-row li::after{transition:none}}
 
-/* Use the corrected left-hand glove only during the takeaway pose. */
-.cb-swing-golfer.has-takeaway-glove .cb-swing-sprite{background-image:url('/images/chasing-birdies-takeaway-glove.png?v=2')}
 /* Promo banner: golden-hour turkey on the green behind the logo and tagline. */
 .cb-brand{position:relative;isolation:isolate;overflow:hidden;grid-template-columns:23% 28% minmax(0,1fr);gap:0;aspect-ratio:3.2;padding:0 5%;background:#0d1a10}
 .cb-brand::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#0b140dbf 0%,#0b140d66 22%,#0b140d00 38%,#0b140d00 58%,#0b140d40 100%)}
@@ -239,8 +237,6 @@
 @media(max-width:1100px) and (min-width:801px){.cb-brand{grid-template-columns:23% 22% minmax(0,1fr);aspect-ratio:2.8}.cb-brand p{font-size:2.5vw}}
 @media(max-width:800px){.cb-brand{--photo:clamp(220px,46vw,320px);grid-template-columns:1fr;justify-items:center;text-align:center;aspect-ratio:auto;gap:20px;padding:calc(var(--photo) + 4px) 20px 36px}.cb-brand .cb-brand-bg{left:0;width:100%;height:var(--photo);object-fit:cover;object-position:18% 50%;-webkit-mask-image:linear-gradient(180deg,#000 70%,transparent);mask-image:linear-gradient(180deg,#000 70%,transparent)}.cb-brand::after{display:none}.cb-brand .cb-brand-logo,.cb-brand p{grid-column:1}.cb-brand .cb-brand-logo{width:200px}.cb-brand p{justify-self:center;font-size:24px}}
 
-/* The finish keeps the bare trailing hand outside the gloved lead hand. */
-.cb-swing-golfer.has-raised-heel .cb-swing-sprite{background-image:url('/images/chasing-birdies-finish-brock-likeness.png')}
 /* Walkthrough screens: a 16:9 console display, no device frame. */
 .cb-walkthrough{grid-template-columns:1.6fr 1fr}
 .cb-console{width:100%;aspect-ratio:16/9;container-type:inline-size;overflow:hidden;border-radius:clamp(10px,1.1vw,18px);background:#08120e;box-shadow:0 0 0 1px #ffffff14,0 30px 80px #000b}
@@ -275,8 +271,6 @@
 .cb-lineup .cb-ui-play{position:absolute;right:4cqw;bottom:4cqw;width:26cqw;box-sizing:border-box;--cta-size:1.6cqw;--cta-radius:1.2cqw;--cta-pad:1.3cqw 1.8cqw}
 @media(max-width:800px){.cb-walkthrough{grid-template-columns:1fr}}
 
-/* Restore the lead-hand glove refinement lost during the walkthrough edits. */
-.cb-swing-golfer.has-club-extension .cb-swing-sprite{background-image:url('/images/chasing-birdies-followthrough-grip.png')}
 /* The previous pose's clubhead overhangs into the finish cell. Clip only that
    empty upper-left corner, matching the playable game's existing trim. */
 .cb-swing-golfer.has-raised-heel .cb-swing-sprite{background-position-x:98.5% !important;clip-path:polygon(14% 0,100% 0,100% 100%,0 100%,0 24%,5% 24%,5% 18%,14% 18%)}
