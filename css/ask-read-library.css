@@ -19,4 +19,12 @@
 .ar-library-arrow{font-size:2.4cqw;color:#a9afa3}
 @media(max-width:800px){.cs-library-tablet{width:100%;margin:36px 0 0;padding:24px 12px}.cs-library-tablet .askread-tablet-body{padding:5px;border-radius:12px}}
 
-.ar-library-content{scrollbar-width:none}
+.ar-library-content{overflow-y:auto;overscroll-behavior-y:contain;scrollbar-width:none}
+.ar-library-header{position:sticky;top:0;z-index:1;padding:0 0 1.5cqw;background:#080a09}
+.ar-library-periods{display:inline-flex;gap:.4cqw;margin-top:2cqw;padding:.4cqw;border:1px solid #ffffff20;border-radius:1cqw;background:#101310}
+.ar-library-periods button{padding:.8cqw 1.8cqw;border:0;border-radius:.65cqw;background:transparent;color:#a9afa3;font:inherit;font-size:1.4cqw;line-height:1.4;cursor:pointer}
+.ar-library-periods button[aria-pressed="true"]{background:#d6ae6326;color:#e8c994;box-shadow:inset 0 0 0 1px #d6ae634d}
+.ar-library-periods button:hover{color:#f3f3ed}
+.ar-library-periods button:focus-visible{outline:2px solid #e8c994;outline-offset:2px}
+.ar-library-panel[hidden]{display:none}
+.ar-library-panel .ar-library-season{margin-top:1.5cqw}

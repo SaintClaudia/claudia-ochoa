@@ -168,12 +168,28 @@
   // The Library gently reveals the earliest week as its tablet passes through the page.
   const library = document.querySelector('.cs-library-tablet');
   const libraryPane = library?.querySelector('.ar-library-content');
+  let libraryInteracted = false;
+  ['wheel', 'touchstart'].forEach(event => {
+    libraryPane?.addEventListener(event, () => { libraryInteracted = true; }, { passive: true });
+  });
+  library?.querySelectorAll('[data-library-period]').forEach(button => {
+    button.addEventListener('click', () => {
+      libraryInteracted = true;
+      library.querySelectorAll('[data-library-period]').forEach(option => {
+        const selected = option === button;
+        option.setAttribute('aria-pressed', String(selected));
+        document.getElementById(option.getAttribute('aria-controls')).hidden = !selected;
+      });
+      libraryPane.scrollTop = 0;
+    });
+  });
   const updateLibrary = () => {
-    if (!libraryPane) return;
+    if (!libraryPane || libraryInteracted || reduced.matches) return;
     const rect = library.getBoundingClientRect();
     const view = window.innerHeight;
     const progress = Math.min(1, Math.max(0, (view * .7 - rect.top) / (view * .6)));
-    const eased = Math.min(1, Math.max(0, (progress - .15) / .65));
+    // Keep the heading and season switch in view longer before revealing older weeks.
+    const eased = Math.min(1, Math.max(0, (progress - .4) / .6));
     libraryPane.scrollTop = eased * (libraryPane.scrollHeight - libraryPane.clientHeight);
   };
 
