@@ -13,6 +13,11 @@
 .work-intro-quality{display:grid;grid-template-columns:1fr 1.3fr;align-items:center;gap:40px;padding:28px 0 32px;border-top:1px solid #ffffff20}
 .work-intro-quality h2{margin:0 0 8px;font-size:15px;line-height:1.4;font-weight:450;letter-spacing:-.02em}
 .work-intro-quality-heading p{margin:0;font-size:11px;line-height:1.5;color:#a5aba7}
+.work-intro-quality-source{margin:0 0 12px;text-align:right;font-size:11px;line-height:1.5;color:#a5aba7}
+.work-intro-pagespeed{display:inline-block}
+.work-intro-pagespeed span{white-space:nowrap}
+.work-intro-pagespeed svg{width:11px;height:11px;margin-left:3px;vertical-align:-1px}
+.work-intro-pagespeed:hover{color:var(--paper);text-decoration:underline;text-underline-offset:3px}
 .work-intro-scores{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin:0}
 .work-intro-scores>div{display:flex;flex-direction:column-reverse;align-items:flex-start;gap:8px}
 .work-intro-scores dt{font-size:11px;line-height:1.5;color:#a5aba7}
