@@ -48,9 +48,15 @@
     const initialBriefing = askRead.querySelector('.askread-initial-briefing');
     function sizeBriefing() {
       if (!initialBriefing) return;
-      const height = Math.ceil(initialBriefing.scrollHeight);
-      initialBriefing.closest('foreignObject').setAttribute('height', height);
-      briefing.querySelector('svg').setAttribute('viewBox', `357 90 1179 ${height}`);
+      if (initialBriefing.classList.contains('askread-html-briefing')) {
+        // Scale ordinary HTML in layout, keeping clips inside the scrolling pane.
+        // Safari can misplace positioned media inside an SVG foreignObject.
+        initialBriefing.style.zoom = briefing.clientWidth / 1179;
+      } else {
+        const height = Math.ceil(initialBriefing.scrollHeight);
+        initialBriefing.closest('foreignObject').setAttribute('height', height);
+        briefing.querySelector('svg').setAttribute('viewBox', `357 90 1179 ${height}`);
+      }
     }
     sizeBriefing();
     document.fonts?.ready.then(sizeBriefing);
@@ -92,6 +98,10 @@
       if (askRead.dataset.demoPhase !== phase) {
         askRead.dataset.demoPhase = phase;
       }
+      // Introduce follow-up prompts after the briefing settles, like the phone walkthrough.
+      const guided = reduced.matches || (time >= 8500 && time < 16000);
+      const guidedState = guided ? 'true' : 'false';
+      if (askRead.dataset.guided !== guidedState) askRead.dataset.guided = guidedState;
       let step = '';
       if (time >= 21900 && time < 23050) step = 'move';
       else if (time >= 23050 && time < 23600) step = 'hover';

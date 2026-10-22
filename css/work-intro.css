@@ -1,0 +1,97 @@
+/* Opening context for the Work page. Keep the first frame lightweight and still. */
+.work-intro{position:relative;isolation:isolate;display:flex;flex-direction:column;justify-content:flex-end;min-height:100svh;padding:clamp(160px,22svh,250px) var(--gutter) 0;background:#080909;overflow:hidden}
+.work-intro::before{content:"";position:absolute;z-index:-1;inset:0;pointer-events:none;background:radial-gradient(ellipse at 86% 36%,#1c262333,transparent 58%)}
+.work-intro-copy{width:100%;max-width:1200px;margin:0 0 clamp(64px,10svh,120px)}
+.work-intro-eyebrow{margin:0 0 32px;font-size:11px;line-height:1.5;letter-spacing:.1em;text-transform:uppercase;color:#a5aba7}
+.work-intro h1{max-width:1120px;margin:0;font-size:clamp(38px,4.15vw,72px);font-weight:450;line-height:1.12;letter-spacing:-.052em;text-wrap:pretty;color:#f5f5f1}
+.work-intro h1 span{color:#959b97}
+.work-intro-details{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;max-width:1100px;margin-top:32px}
+.work-intro-details p{max-width:490px;margin:0;font-size:15px;line-height:1.7;color:#a5aba7}
+.work-intro-github{display:inline-flex;align-items:center;gap:22px;flex-shrink:0;padding:8px 0;border-bottom:1px solid #5a625d;font-size:14px;line-height:1.5;transition:border-color .2s,color .2s}
+.work-intro-github svg{width:14px;height:14px;flex-shrink:0}.work-intro-github:hover{color:#d7c8a5;border-color:#d7c8a5}
+.work-intro-bottom{width:100%;margin-top:auto}
+.work-intro-quality{display:grid;grid-template-columns:1fr 1.3fr;align-items:center;gap:40px;padding:28px 0 32px;border-top:1px solid #ffffff20}
+.work-intro-quality h2{margin:0 0 8px;font-size:15px;line-height:1.4;font-weight:450;letter-spacing:-.02em}
+.work-intro-quality-heading p{margin:0;font-size:11px;line-height:1.5;color:#a5aba7}
+.work-intro-scores{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin:0}
+.work-intro-scores>div{display:flex;flex-direction:column-reverse;align-items:flex-start;gap:8px}
+.work-intro-scores dt{font-size:11px;line-height:1.5;color:#a5aba7}
+.work-intro-scores dd{margin:0;font-size:32px;line-height:1;font-weight:450;letter-spacing:-.04em;color:#b9c8b9;font-variant-numeric:tabular-nums}
+.work-intro-next{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:24px 0 28px;border-top:1px solid #ffffff20}
+.work-intro-next>span:first-child{display:flex;align-items:center;gap:28px}
+.work-intro-status{display:flex;align-items:center;gap:9px;font-size:11px;line-height:1.5;color:#d7c8a5}
+.work-intro-status::before{content:"";width:5px;height:5px;background:currentColor;border-radius:50%;flex-shrink:0}
+.work-intro-next-copy{font-size:12px;line-height:1.5;color:#a5aba7}
+.work-intro-arrow{font-size:24px;line-height:1;transition:transform .2s}
+.work-intro-next:hover .work-intro-arrow{transform:translateY(4px)}
+@media(min-width:1600px){.work-intro-copy{max-width:1320px}.work-intro h1{max-width:1220px}}
+@media(max-width:800px){.work-intro{padding-top:160px}.work-intro-copy{margin-bottom:64px}.work-intro-eyebrow{font-size:10px;margin-bottom:26px}.work-intro h1{font-size:clamp(36px,6.4vw,52px);line-height:1.13}.work-intro-details{display:block;margin-top:26px}.work-intro-details p{font-size:14px;max-width:440px}.work-intro-github{margin-top:20px;font-size:13px}.work-intro-quality{grid-template-columns:1fr;gap:24px;padding:24px 0 28px}.work-intro-scores{gap:12px}.work-intro-scores dd{font-size:29px}.work-intro-scores dt{font-size:10px}.work-intro-next>span:first-child{display:grid;gap:6px}.work-intro-next{padding:22px 0 24px}}
+@media(prefers-reduced-motion:reduce){.work-intro-github,.work-intro-arrow{transition:none}.work-intro-next:hover .work-intro-arrow{transform:none}}
+
+/* One shared result where device scores match; performance keeps both values. */
+.work-intro-copy{margin-bottom:clamp(48px,7svh,84px)}
+.work-intro-quality{display:block}
+.work-intro-quality-heading{display:flex;align-items:baseline;justify-content:space-between;gap:12px 24px;flex-wrap:wrap}
+.work-intro-quality h2{margin:0}
+.work-intro-scores{grid-template-columns:1.3fr repeat(4,1fr);gap:24px;margin-top:28px}
+.work-intro-scores>div{flex-direction:column;gap:14px;padding-left:24px;border-left:1px solid #ffffff20}
+.work-intro-scores>div:first-child{padding-left:0;border-left:0}
+.work-intro-scores dt{font-size:12px;color:#d6dbd7}
+.work-intro-scores dd{display:flex;flex-direction:column;gap:10px;font-size:38px;color:#b9d4bb}
+.work-intro-scores strong{font-size:inherit;line-height:1;font-weight:450;letter-spacing:-.04em}
+.work-intro-scores small{display:block;font-size:10px;line-height:1.5;font-weight:400;letter-spacing:0;color:#a5aba7}
+.work-intro-performance dd{flex-direction:row;gap:24px}
+.work-intro-performance dd>span{display:flex;flex-direction:column;gap:10px}
+.work-intro-score-total{font-size:22px;color:#8eaa91;letter-spacing:-.03em}
+@media(max-width:1000px) and (min-width:801px){.work-intro-scores{gap:16px}.work-intro-scores>div{padding-left:16px}.work-intro-performance dd{gap:16px}.work-intro-scores dd{font-size:32px}}
+@media(max-width:800px){.work-intro-quality-heading{display:block}.work-intro-quality-heading p{margin-top:8px}.work-intro-scores{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 20px;margin-top:28px}.work-intro-scores>div{padding-left:0;border-left:0;gap:12px}.work-intro-scores>div:last-child{grid-column:1/-1}.work-intro-scores dd{font-size:32px}.work-intro-performance dd{gap:24px}.work-intro-copy{margin-bottom:48px}}
+
+/* Keep the results supporting the introduction; let the project transition lead. */
+.work-intro-quality{display:grid;grid-template-columns:minmax(160px,.75fr) minmax(0,3fr);gap:32px;padding:20px 0}
+.work-intro-quality h2{font-size:12px;line-height:1.5;color:#a5aba7;max-width:150px}
+.work-intro-scores{margin-top:0;gap:20px}
+.work-intro-scores>div{gap:8px;padding-left:20px}
+.work-intro-scores dt{font-size:10px;color:#a5aba7}
+.work-intro-scores dd{font-size:25px;gap:6px;color:#b9c8b9}
+.work-intro-scores small{font-size:9px}
+.work-intro-performance dd{gap:16px}.work-intro-performance dd>span{gap:6px}
+.work-intro-score-total{font-size:16px}
+.work-intro-next{padding:36px 0 40px;gap:32px}
+.work-intro-next>span:first-child{display:grid;gap:12px}
+.work-intro-status{font-size:clamp(26px,2.5vw,40px);line-height:1.15;letter-spacing:-.04em;color:#f5f5f1;gap:16px}
+.work-intro-status::before{width:7px;height:7px;color:#d7c8a5}
+.work-intro-next-copy{font-size:15px;line-height:1.5;margin-left:23px}
+.work-intro-arrow{font-size:32px;color:#d7c8a5}
+@media(max-width:1100px){.work-intro-quality{grid-template-columns:1fr;gap:16px}.work-intro-quality h2{max-width:none}.work-intro-scores{gap:16px}}
+@media(max-width:800px){.work-intro-quality{padding:20px 0;gap:18px}.work-intro-scores{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px 12px}.work-intro-scores>div{padding-left:0;gap:8px}.work-intro-scores>div:last-child{grid-column:auto}.work-intro-scores dd{font-size:24px}.work-intro-scores dt{font-size:10px}.work-intro-performance dd{gap:10px}.work-intro-scores small{font-size:8px}.work-intro-next{padding:32px 0 36px;gap:16px}.work-intro-status{font-size:27px;gap:12px;max-width:270px}.work-intro-status::before{width:6px;height:6px}.work-intro-next-copy{font-size:13px;margin-left:18px;max-width:230px}.work-intro-arrow{font-size:28px}}
+
+/* Match the development label to the supporting quality heading. */
+.work-intro-status{font-size:12px;line-height:1.5;letter-spacing:0;gap:9px}
+.work-intro-status::before{width:5px;height:5px}
+.work-intro-next-copy{font-size:12px;margin-left:14px}
+@media(max-width:800px){.work-intro-status{font-size:12px;gap:9px}.work-intro-status::before{width:5px;height:5px}.work-intro-next-copy{font-size:12px;margin-left:14px}}
+
+/* Keep the heading beside the scores at its original type size. */
+.work-intro-quality h2{font-size:15px;color:var(--paper)}
+
+/* Restore the original compact transition into the projects. */
+.work-intro-next{padding:24px 0 28px;gap:24px}
+.work-intro-next>span:first-child{display:flex;align-items:center;gap:28px}
+.work-intro-status{font-size:11px;line-height:1.5;letter-spacing:0;color:#d7c8a5;gap:9px;max-width:none}
+.work-intro-status::before{width:5px;height:5px}
+.work-intro-next-copy{font-size:12px;line-height:1.5;color:#a5aba7;margin-left:0;max-width:none}
+.work-intro-arrow{font-size:24px;color:var(--paper)}
+@media(max-width:800px){.work-intro-next{padding:22px 0 24px}.work-intro-next>span:first-child{display:grid;gap:6px}}
+
+/* Preserve the score row's position with the compact transition typography. */
+.work-intro-next{min-height:124px;padding:36px 0 40px}
+@media(max-width:800px){.work-intro-next{min-height:116px;padding:32px 0 36px}}
+
+/* Use body-copy sizing for the project transition. */
+.work-intro-status,.work-intro-next-copy{font-size:15px;line-height:1.7}
+@media(max-width:800px){.work-intro-status,.work-intro-next-copy{font-size:14px}}
+
+/* A gentle vertical cue to continue into the work. */
+@keyframes work-intro-arrow-bob{0%,100%{translate:0 0}50%{translate:0 6px}}
+.work-intro-arrow{animation:work-intro-arrow-bob 2s ease-in-out infinite}
+@media(prefers-reduced-motion:reduce){.work-intro-arrow{animation:none}}
