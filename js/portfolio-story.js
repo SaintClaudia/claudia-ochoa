@@ -1,6 +1,37 @@
 (() => {
   const stories = [...document.querySelectorAll('.story')];
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+  // A short, one-time count-up when the quality scores enter view.
+  const scoreRow = document.querySelector('.work-intro-scores');
+  const scores = [...document.querySelectorAll('[data-quality-score]')];
+  if (scoreRow && scores.length && !reduced.matches && 'IntersectionObserver' in window) {
+    let scoreFrame = 0;
+    const finishScores = () => scores.forEach(score => { score.textContent = '100'; });
+    scores.forEach(score => {
+      score.setAttribute('aria-label', '100');
+      score.textContent = '94';
+    });
+    const scoreObserver = new IntersectionObserver(entries => {
+      if (!entries.some(entry => entry.isIntersecting)) return;
+      scoreObserver.disconnect();
+      let started;
+      const tickScores = now => {
+        if (started === undefined) started = now;
+        const progress = Math.min((now - started) / 1200, 1);
+        const value = Math.round(94 + 6 * (1 - Math.pow(1 - progress, 2)));
+        scores.forEach(score => { score.textContent = String(value); });
+        if (progress < 1) scoreFrame = requestAnimationFrame(tickScores);
+      };
+      scoreFrame = requestAnimationFrame(tickScores);
+    }, { threshold: 0.25 });
+    scoreObserver.observe(scoreRow);
+    reduced.addEventListener('change', () => {
+      if (!reduced.matches) return;
+      scoreObserver.disconnect();
+      cancelAnimationFrame(scoreFrame);
+      finishScores();
+    });
+  }
   const layers = new Map(stories.map(story => [story, [...story.querySelectorAll('[data-depth]')]]));
   const cue = document.querySelector('.scroll-cue');
   let scheduled = false;

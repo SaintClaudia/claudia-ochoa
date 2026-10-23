@@ -22,6 +22,7 @@
 .work-intro-scores>div{display:flex;flex-direction:column-reverse;align-items:flex-start;gap:8px}
 .work-intro-scores dt{font-size:11px;line-height:1.5;color:#a5aba7}
 .work-intro-scores dd{margin:0;font-size:32px;line-height:1;font-weight:450;letter-spacing:-.04em;color:#b9c8b9;font-variant-numeric:tabular-nums}
+.work-intro-scores [data-quality-score]{display:inline-block;min-width:3ch}
 .work-intro-next{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:24px 0 28px;border-top:1px solid #ffffff20}
 .work-intro-next>span:first-child{display:flex;align-items:center;gap:28px}
 .work-intro-status{display:flex;align-items:center;gap:9px;font-size:11px;line-height:1.5;color:#d7c8a5}
