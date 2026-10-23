@@ -9,7 +9,7 @@
     const finishScores = () => scores.forEach(score => { score.textContent = '100'; });
     scores.forEach(score => {
       score.setAttribute('aria-label', '100');
-      score.textContent = '94';
+      score.textContent = '50';
     });
     const scoreObserver = new IntersectionObserver(entries => {
       if (!entries.some(entry => entry.isIntersecting)) return;
@@ -18,7 +18,7 @@
       const tickScores = now => {
         if (started === undefined) started = now;
         const progress = Math.min((now - started) / 1200, 1);
-        const value = Math.round(94 + 6 * (1 - Math.pow(1 - progress, 2)));
+        const value = Math.round(50 + 50 * (1 - Math.pow(1 - progress, 2)));
         scores.forEach(score => { score.textContent = String(value); });
         if (progress < 1) scoreFrame = requestAnimationFrame(tickScores);
       };
