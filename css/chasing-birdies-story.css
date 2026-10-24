@@ -300,3 +300,17 @@
 .cb-roster-grid{inset:0;grid-template-columns:repeat(3,minmax(0,1fr))}
 @media(max-width:650px){.cb-roster-grid{inset:0;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(3,minmax(0,1fr))}.cb-walkthrough .cb-console{aspect-ratio:100/120}}
 .cb-roster-card,.cb-roster-portrait,.cb-roster-name{border:0;border-radius:0;background:none;box-shadow:none}
+
+/* Keep the changing player visible while the mobile wardrobe scrolls. */
+.cb-outfit-demo{display:contents}
+.cb-preview-caption{display:none}
+@media(max-width:650px){
+  .cb-customizer{overflow:clip}
+  .cb-outfit-demo{display:block;position:relative;min-width:0}
+  .cb-outfit-demo .cb-character{position:sticky;top:84px;z-index:4;height:clamp(180px,34svh,280px);margin:16px 16px 0;border:1px solid #ffffff20;border-radius:12px;background:radial-gradient(ellipse at 50% 25%,#2b4636,#0c1912 85%);box-shadow:0 12px 24px #0006}
+  .cb-outfit-demo .cb-character-look{inset:8px 0 auto;height:calc(100% - 54px);transform:none}
+  .cb-preview-caption{position:absolute;inset:auto 8px 8px;display:grid;gap:4px;margin:0;text-align:center;font-size:10px;line-height:1.4;color:#bfc8be}
+  .cb-preview-caption strong{font-size:12px;font-weight:500;color:#e4bf66}
+  .cb-outfit-demo .cb-wardrobe{padding-top:24px}
+}
+@media(max-width:650px) and (prefers-reduced-motion:reduce){.cb-preview-caption span{display:none}}

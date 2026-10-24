@@ -37,6 +37,8 @@
   const looks = [...root.querySelectorAll('[data-look]')];
   const choices = [...root.querySelectorAll('[data-choice]')];
   const captions = [...document.querySelectorAll('.cb-journey-caption li')];
+  const wardrobe = root.querySelector('.cb-wardrobe');
+  const previewCaption = root.querySelector('.cb-preview-caption strong');
   const states = [
     {look:'game', choices:['scarlet','helmet'], label:'Brock Purdy · Game-day wear'},
     {look:'golf', choices:['ivory'], label:'Brock Purdy · Golf attire'},
@@ -49,8 +51,9 @@
     const rect = root.getBoundingClientRect();
     const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
     const stage = root.closest('.cb-player-stage').getBoundingClientRect();
+    const wardrobeRect = wardrobe.getBoundingClientRect();
     const progress = Math.max(0, Math.min(1, innerWidth <= 650
-      ? (innerHeight * .65 - rect.top) / (rect.height + innerHeight * .15)
+      ? (innerHeight * .75 - wardrobeRect.top) / Math.max(1, wardrobeRect.height - innerHeight * .25)
       : (20 - stage.top) / Math.max(1, stage.height - rect.height)));
     const phase = reduced ? 0 : progress < .32 ? 0 : progress < .63 ? 1 : 2;
     if (phase === active) return;
@@ -65,6 +68,7 @@
     choices.forEach(item => item.classList.toggle('is-selected', state.choices.includes(item.dataset.choice)));
     captions.forEach(item => item.classList.toggle('is-active', Number(item.dataset.phase) === phase));
     root.querySelector('.cb-outfit-status').textContent = state.label;
+    if (previewCaption) previewCaption.textContent = state.label;
     root.querySelector('.cb-character').setAttribute('aria-label', state.label);
   }
   function schedule() { if (!pending) { pending = true; requestAnimationFrame(update); } }
