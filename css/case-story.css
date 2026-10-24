@@ -65,6 +65,9 @@
 @media(max-width:800px){
   .cs-split,.cs-objectives li,.cs-walkthrough,.cs-pair{grid-template-columns:1fr}
   .cs-split{gap:24px}
+  .cs-swatches{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 20px}
+  .cs-swatches li{min-width:0}
+  .cs-swatches li::before{width:100%;min-width:0}
   .cs-split-body h2{margin-bottom:28px}
   .cs-objectives li{gap:12px;padding:28px 0 40px}
   .cs-step{min-height:0;padding:56px 0 0}

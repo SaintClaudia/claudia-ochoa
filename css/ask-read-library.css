@@ -5,7 +5,7 @@
 .cs-library-tablet .askread-stage{position:relative;inset:auto;top:auto;right:auto;width:100%;translate:none;aspect-ratio:auto}
 .cs-library-tablet .askread-tablet{position:relative;left:auto;top:auto;width:100%}
 .cs-library-tablet .askread-tablet-body{transform:none;animation:none;box-shadow:0 0 0 1px #888d8955,0 40px 80px #0009}
-.ar-library-content{width:76.76%;flex-shrink:0;padding:4cqw 4.5cqw 2cqw;background:#080a09;color:#f3f3ed;font-family:AskReadOutfit,Arial,sans-serif;overflow:hidden}
+.ar-library-content{width:76.76%;flex-shrink:0;padding:0 4.5cqw 2cqw;background:#080a09;color:#f3f3ed;font-family:AskReadOutfit,Arial,sans-serif;overflow:hidden}
 .ar-library-eyebrow{--askread-label-size:1cqw;margin:0 0 1cqw}
 .ar-library-content h3{margin:0 0 1cqw;font-size:3.3cqw;font-weight:500;line-height:1.1;letter-spacing:-.025em}
 .ar-library-sub{margin:0;color:#a9afa3;font-size:1.7cqw}
@@ -20,7 +20,8 @@
 @media(max-width:800px){.cs-library-tablet{width:100%;margin:36px 0 0;padding:24px 12px}.cs-library-tablet .askread-tablet-body{padding:5px;border-radius:12px}}
 
 .ar-library-content{overflow-y:auto;overscroll-behavior-y:contain;scrollbar-width:none}
-.ar-library-header{position:sticky;top:0;z-index:1;padding:0 0 1.5cqw;background:#080a09}
+/* Keep the top inset inside the opaque sticky header so rows cannot scroll above it. */
+.ar-library-header{position:sticky;top:0;z-index:1;padding:4cqw 0 1.5cqw;background:#080a09}
 .ar-library-periods{display:inline-flex;gap:.4cqw;margin-top:2cqw;padding:.4cqw;border:1px solid #ffffff20;border-radius:1cqw;background:#101310}
 .ar-library-periods button{padding:.8cqw 1.8cqw;border:0;border-radius:.65cqw;background:transparent;color:#a9afa3;font:inherit;font-size:1.4cqw;line-height:1.4;cursor:pointer}
 .ar-library-periods button[aria-pressed="true"]{background:#d6ae6326;color:#e8c994;box-shadow:inset 0 0 0 1px #d6ae634d}
