@@ -457,6 +457,19 @@
   $('search').addEventListener('keydown',event=>{if(event.key==='Escape')searchPanel(false);});
   render();
   if(root.hasAttribute('data-static-preview')) {
+    // The portfolio shows a tablet screen, even when the surrounding page is narrow.
+    const display = root.closest('.askread-display');
+    if (display) {
+      const fitPreview = () => {
+        const scale = display.clientWidth / 1320;
+        if (!scale) return;
+        root.style.setProperty('--arp-preview-scale', String(scale));
+        root.style.setProperty('--arp-preview-height', `${display.clientHeight / scale}px`);
+        root.setAttribute('data-preview-scaled', '');
+      };
+      fitPreview();
+      new ResizeObserver(fitPreview).observe(display);
+    }
     // Disable product interactions without making the screen's copy inert.
     root.querySelectorAll('button,input,textarea').forEach(control=>{control.disabled=true;});
     root.querySelectorAll('a').forEach(link=>{link.removeAttribute('href');link.removeAttribute('tabindex');});

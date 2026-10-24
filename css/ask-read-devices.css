@@ -93,6 +93,16 @@
 .cs-plays-tablet .arp[data-static-preview] button:disabled{opacity:1;cursor:default}
 .cs-plays-tablet .arp[data-static-preview] [data-select-player]{pointer-events:none}
 
+/* Scale the complete tablet canvas, including pixel-based product typography. */
+.cs-plays-tablet .arp[data-preview-scaled]{position:absolute;top:0;left:0;width:1320px;height:var(--arp-preview-height);transform:scale(var(--arp-preview-scale));transform-origin:top left}
+.cs-plays-tablet .arp[data-static-preview] .arp-shell{grid-template-columns:72px minmax(0,1fr)}
+.cs-plays-tablet .arp[data-static-preview] .arp-navigation{padding:16px 12px}
+.cs-plays-tablet .arp[data-static-preview] .arp-nav-item{width:46px;min-height:46px;padding:11px}
+.cs-plays-tablet .arp[data-static-preview] .arp-nav-head{margin-bottom:22px}
+.cs-plays-tablet .arp[data-static-preview] .arp-heading{padding:30px 30px 34px}
+.cs-plays-tablet .arp[data-static-preview] .arp-heading h3{font-size:32px}
+.cs-plays-tablet .arp[data-static-preview] .arp-detail{padding:0 26px 26px}
+
 /* Give the field a little breathing room below the coaching-cues control. */
 .cs-plays-tablet .arp-playbook-canvas{margin-top:12px}
 

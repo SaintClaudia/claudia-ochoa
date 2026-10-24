@@ -286,4 +286,4 @@
 
 .cs-more-purdy{--scrim:23 18 14;background:#17120e}
 .cs-more-purdy .cs-more-bg{height:58%;object-position:78% 50%}
-.cs-more-purdy::before{background:linear-gradient(180deg,transparent 0%,transparent 40%,rgb(var(--scrim) / .15) 49%,rgb(var(--scrim) / .92) 60%,rgb(var(--scrim)) 68%)}
+.cs-more-purdy::before{background:linear-gradient(180deg,transparent 0%,rgb(var(--scrim) / .25) 20%,rgb(var(--scrim) / .9) 34%,rgb(var(--scrim) / .98) 44%,rgb(var(--scrim)) 56%)}
