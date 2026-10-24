@@ -3,6 +3,8 @@
 /* Preserve the original hero placement, crop, fade, and title positioning. */
 .askread-case-study .cs-askread-hero .askread-stage{width:var(--askread-device-width)}
 .askread-case-study :is(.cs-qb,.cs-library-tablet,.cs-plays-tablet){box-sizing:border-box;width:var(--askread-device-width);max-width:none;padding:0;margin:clamp(48px,7vh,80px) auto 0;background:none;border-radius:0;overflow:visible}
+/* Center the wider tablet within the statement's existing text gutters. */
+.askread-case-study .cs-statement .cs-qb{margin-inline:calc((100% - var(--askread-device-width)) / 2)}
 .askread-case-study .askread-tablet{width:100%}
 .askread-case-study .askread-tablet-body{box-sizing:border-box;padding:9px;border-radius:18px;background:#151819;box-shadow:0 0 0 1px #888d8955,0 40px 80px #0009;transform:none;animation:none}
 .askread-case-study .askread-display{aspect-ratio:var(--askread-device-ratio);border-radius:10px}
