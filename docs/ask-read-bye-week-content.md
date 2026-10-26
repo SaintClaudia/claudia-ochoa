@@ -59,3 +59,7 @@ Verification:
 - [NFL Record & Fact Book, career passer-rating qualification](https://operations.nfl.com/media/hfjn4oid/2024-record-fact-book-incl-supplemental.pdf): 1,500 attempts.
 
 User instruction: implement locally for review; do not commit, push, or deploy this milestone update.
+
+## Equal-length League cards — later October 25 refresh
+
+Passing touchdowns now shows five players, matching the five passer-rating rows. The live NFL tables refreshed during this check: Cousins 16 TD, Purdy and Burrow 15, Goff and Lawrence 14. The five displayed rows retain tied ranks (T-2 and T-4); Stafford also has 14 and falls outside the five-player display. Goff’s rating refreshed to 112.5; Brock remains third among qualified passers at 110.1. The season headline and accessible description now say tied second in touchdowns. Sources are the canonical NFL tables already linked above.
