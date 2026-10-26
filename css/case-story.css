@@ -96,6 +96,17 @@
 .cs-qb-header h2{margin:.8cqw 0 .5cqw;font-size:2.6cqw;font-weight:500;letter-spacing:-.025em;line-height:1.15}
 .cs-qb-sub{margin:0;font-size:1.6cqw;color:#a9afa3}
 .cs-qb-record{display:grid;justify-items:end;gap:.4cqw;text-align:right;margin-top:1.85cqw}.cs-qb-record strong{font-size:3.2cqw;font-weight:500;line-height:1;color:#d6ae63}.cs-qb-record span{font-size:.95cqw;letter-spacing:.08em;color:#929b89}
+/* A career milestone sits apart from the current-season performance and League tables. */
+.cs-qb-milestone{display:flex;align-items:center;justify-content:space-between;gap:2.4cqw;margin-top:1.9cqw;padding:1.8cqw 2cqw;border:1px solid #d6ae6345;border-left:3px solid #d6ae63;border-radius:.8cqw;background:linear-gradient(110deg,#d6ae6312,transparent 78%)}
+.cs-qb-milestone-copy{min-width:0;max-width:49cqw}
+.cs-qb-milestone .cs-qb-label{--askread-label-color:#d6ae63;--askread-label-size:.95cqw}
+.cs-qb-milestone h3{margin:.7cqw 0 .65cqw;font-size:3cqw;line-height:1.12;font-weight:500;letter-spacing:-.035em;color:#f3f3ed}
+.cs-qb-milestone-copy>p:not(.cs-qb-label){margin:0;font-size:1.3cqw;line-height:1.5;color:#c9cdc3}
+.cs-qb-milestone-copy>small{display:block;margin-top:.8cqw;font-size:.85cqw;line-height:1.5;color:#929b89}
+.cs-qb-milestone-stat{display:grid;justify-items:end;gap:.45cqw;flex-shrink:0;text-align:right}
+.cs-qb-milestone-stat strong{font-size:4.3cqw;font-weight:500;letter-spacing:-.045em;line-height:1;color:#d6ae63;font-variant-numeric:tabular-nums}
+.cs-qb-milestone-stat span{font-size:1.1cqw;color:#e1d4b9}
+.cs-qb-milestone-stat small{font-size:.85cqw;color:#929b89}
 .askread-category-tabs.cs-qb-tabs{gap:1cqw;margin:2cqw 0 2cqw}.cs-qb-tabs>span{padding:.9cqw 1.6cqw;font-size:1.05cqw;gap:0}
 .cs-qb-tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.2cqw;margin-bottom:1.6cqw}
 .cs-qb-tile{display:grid;gap:.5cqw;padding:1.4cqw 1.5cqw;border:1px solid #ffffff16;border-radius:1cqw;background:#101310}

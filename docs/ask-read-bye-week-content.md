@@ -48,3 +48,14 @@ The user requested a new play as well as new context. Boot Flood Right replaces 
 General concept reference: [Play-action boot right, Seven Point Lead](https://www.sevenpointlead.com/systems/i-formation/plays/play-action-boot-right). The diagram is an original illustration, not a copied team playbook.
 
 Final copy review: removed the added Illustrative labels from the Plays screen and restored the original caption, “For demonstration purposes only. Not an official 49ers game plan.” Boot Flood Right and its updated diagram remain.
+
+## Career milestone — local review only
+
+Added a restrained gold-accent milestone highlight inside the existing QB Intelligence tablet, between its header and current-season tabs. Copy: A HISTORIC MILESTONE / No. 1 in NFL history. Featured statistic: 104.8, explicitly labeled Career passer rating and dated October 25, 2026. Regular-season scope and the 1,500-career-attempt qualification are stated. No animation or interaction changes were added. Existing 2026 League entries are preserved; the section label now explicitly says 2026 League.
+
+Verification:
+- [Official 49ers Week 6 game notes, page 3](https://media.49ers.1rmg.com/wp-content/uploads/2026/10/19233316/San-Francisco-49ers-vs.-Washington-Commanders-Game-Notes-Transcripts.pdf): after the October 19 game, Purdy had 1,524 career attempts and a 105.6 career rating, ranked first in NFL history among players with at least 1,500 attempts. This verifies the achievement and date, not the latest rating.
+- [NFL.com career totals](https://www.nfl.com/players/brock-purdy/stats/): through the October 25 Atlanta game, 1,564 attempts and 104.8 career rating. This is the current number displayed, rather than the 105.6 milestone-night value.
+- [NFL Record & Fact Book, career passer-rating qualification](https://operations.nfl.com/media/hfjn4oid/2024-record-fact-book-incl-supplemental.pdf): 1,500 attempts.
+
+User instruction: implement locally for review; do not commit, push, or deploy this milestone update.
