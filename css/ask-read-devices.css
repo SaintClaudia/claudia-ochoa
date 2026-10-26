@@ -99,7 +99,8 @@
 .cs-plays-tablet .arp[data-static-preview] .arp-navigation{padding:16px 12px}
 .cs-plays-tablet .arp[data-static-preview] .arp-nav-item{width:46px;min-height:46px;padding:11px}
 .cs-plays-tablet .arp[data-static-preview] .arp-nav-head{margin-bottom:22px}
-.cs-plays-tablet .arp[data-static-preview] .arp-heading{padding:30px 30px 34px}
+.cs-plays-tablet .arp[data-static-preview] .arp-heading{padding:30px 26px 34px;flex-direction:row;align-items:center;justify-content:space-between;text-align:left}
+.cs-plays-tablet .arp[data-static-preview] .arp-heading>div{min-width:0}
 .cs-plays-tablet .arp[data-static-preview] .arp-heading h3{font-size:32px}
 .cs-plays-tablet .arp[data-static-preview] .arp-detail{padding:0 26px 26px}
 
