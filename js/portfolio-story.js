@@ -70,7 +70,7 @@
     });
     render();
   }
-  // This scripted portfolio sequence references official Giants clips; it makes no analysis API calls.
+  // This scripted portfolio sequence references official Rams clips; it makes no analysis API calls.
   const askRead = document.querySelector('.story-askread');
   if (askRead) {
     const prompt = askRead.querySelector('.askread-demo-prompt');
@@ -92,7 +92,7 @@
     sizeBriefing();
     document.fonts?.ready.then(sizeBriefing);
     window.addEventListener('resize', sizeBriefing);
-    const response = 'Washington allowed a 21-yard catch-and-run and two 17-yard touchdown passes on Oct 11. Review its response on these plays; one game does not establish a defensive tendency.';
+    const response = 'Las Vegas lost 21–35 on Oct 25. The Raiders allowed touchdowns on four consecutive first-half drives and trailed 6–28 at halftime. An early look at their defense. More to come after Raiders at Jets on Nov 1.';
     const viewport = askRead.querySelector('.askread-screen-viewport');
     const cursor = askRead.querySelector('.askread-demo-cursor');
     const firstClip = askRead.querySelector('.askread-demo-response .askread-real-clip');

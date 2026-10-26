@@ -20,7 +20,7 @@
     body.scrollTop=body.scrollHeight;
   }
   const seeds = [
-    { id:'cross', name:'Zorro Shallow', origin:'', intent:'Explore underneath movement created by run action paired with a shallow crossing route.', assignments:'Illustrative 21 personnel: Y shallow, outside depth routes, and backfield run action. Confirm all assignments with the team.', notes:'Illustrative concept; no opponent-film findings or practice outcomes attached.', sample:true },
+    { id:'boot-flood-right', name:'Boot Flood Right', origin:'', intent:'Explore three receiving levels to the right after a run fake to the left, with the quarterback changing the launch point ahead of the Las Vegas matchup.', assignments:'21 personnel: Z clears vertically, Y breaks to the right at intermediate depth, F releases to the right flat, and the quarterback boots right after a left-side run fake. Confirm protection and assignments with the team.', notes:'For team review; no practice outcomes attached.', sample:true },
     { id:'sail', name:'Flood right', origin:'Ask Read draft · Team review needed', intent:'Explore three receiving levels on the right side. Test whether the spacing gives the quarterback a clear read.', assignments:'Outside receiver: clear vertically. Slot: intermediate out. RB: release to the flat. Confirm the full assignment and protection plan with the team.', notes:'Idea for practice. No results recorded yet.' },
     { id:'zone', name:'Inside run', origin:'Team playbook', intent:'Create an interior running lane and document where the runner’s read and the blocking need to improve.', assignments:'Team to confirm the front, blocking rules, ball-carrier read, and adjustments before installing.', notes:'Add the team’s diagram and coaching points.' }
   ];
@@ -33,7 +33,7 @@
   let active = plays[0], currentTab = 'design', outcome = 'struggle', mode = 'blank', search = '';
   const playStates = {
     draft: {icon:[['path',{d:'M13 5H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8M16 3l5 5M10 14l3-1 8-8-3-3-8 8z'}]], label:'Draft', description:'A play being documented and prepared. No outcomes recorded yet.'},
-    review: {icon:[['path',{d:'M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z'}],['circle',{cx:12,cy:12,r:2.8}]], label:'Suggested', description:'A concept to explore for this week’s matchup. The quarterback and coaching staff retain the decision.'},
+    review: {icon:[['path',{d:'M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z'}],['circle',{cx:12,cy:12,r:2.8}]], label:'For team review', description:'A concept for bye-week preparation against Las Vegas. The quarterback and coaching staff retain the decision.'},
     untested: {icon:[['circle',{cx:12,cy:12,r:9}],['path',{d:'M12 7v5l3 3'}]], label:'Untested', description:'An adjusted version awaiting practice results. Its effectiveness has not been established.'}
   };
   const stateOf = play => play.sample ? 'review' : play.derived ? 'untested' : 'draft';
@@ -51,18 +51,18 @@
     node.append(...children);
     return node;
   }
-  // Concept context: https://westcoastfootball.substack.com/p/49ers-film-room-play-action-sequencing-part-3
+  // Concept context: https://www.sevenpointlead.com/systems/i-formation/plays/play-action-boot-right
   // Diagram assignments below are illustrative, not a reproduced team installation.
   function field() {
     const workspace=el('div',null,'arp-playbook-workspace');
     const board=el('div',null,'arp-playbook');
     const toolbar=el('div',null,'arp-playbook-toolbar');
     const formation=el('div',null,'arp-playbook-formation');
-    formation.append(el('strong','21 personnel · I formation, Y right'),el('span','Illustrative alignment · Two-high defensive shell'));
+    formation.append(el('strong','21 personnel · I formation, Y right'),el('span','Two-high defensive shell'));
     const phases=el('div',null,'arp-playbook-phases');phases.setAttribute('role','group');phases.setAttribute('aria-label','Diagram perspective');
     toolbar.append(formation,phases);
     const controls=el('div',null,'arp-board-controls');
-    const cueButton=el('button','Coaching cues');cueButton.type='button';cueButton.title='What to observe in this illustrative look; not a film finding';
+    const cueButton=el('button','Coaching cues');cueButton.type='button';cueButton.title='What to observe in this defensive look; not a film finding';
     controls.append(cueButton);
     const canvas=el('div',null,'arp-playbook-canvas');
     const footer=el('div',null,'arp-playbook-footer');
@@ -82,7 +82,7 @@
     assignment.append(assignmentLabel,assignmentText);read.append(readLabel,readText);contextBody.append(assignment,read);
     const contextScroll=el('div',null,'arp-context-scroll');
     const recommendation=el('div',null,'arp-recommendation-context');
-    const rationale=[['WHY THIS PLAY','Play-action paired with a shallow crossing route can challenge underneath defenders while creating opportunities behind their initial movement.'],['WHAT TO WATCH','Linebacker reactions to run action and the positioning of defenders responsible for the crossing route.'],['QB CONSIDERATIONS','Evaluate defensive reactions, maintain timing through the play-action movement, and identify available throwing windows.']];
+    const rationale=[['WHY THIS PLAY','Explore three receiving levels to the right after a run fake to the left, with the quarterback changing the launch point ahead of the Las Vegas matchup.'],['WHAT TO WATCH','Review the Raiders’ edge containment and how the corner, safety, and underneath defender distribute the deep, intermediate, and flat routes.'],['NEXT CHECKPOINT','Revisit this concept after Las Vegas faces the Jets on November 1.']];
     rationale.forEach(([label,text])=>{const section=el('div');section.append(el('p',label,'arp-eyebrow'),el('p',text));recommendation.append(section);});
     contextScroll.append(contextHead,contextBody,recommendation);
     const railChat=el('div',null,'arp-rail-chat');
@@ -97,12 +97,12 @@
     const offense=[['LT',304,430,'on'],['LG',332,430,'on'],['C',360,430,'on'],['RG',388,430,'on'],['RT',416,430,'on'],['X',110,430,'on'],['F',360,490,'off'],['Y',452,430,'on'],['Z',610,466,'off'],['QB',360,457,'off'],['RB',360,530,'off']];
     const defense=[['EL','E',290,405],['TL','T',336,405],['TR','T',386,405],['ER','E',435,405],['ML','LB',325,352],['MR','LB',425,352],['N','LB',225,364],['CL','CB',110,352],['CR','CB',610,364],['SL','S',240,250],['SR','S',490,250]];
     const details={
-      QB:{name:'QB · Play-action',assignment:'Carry out the run fake to the right, then reset for the shallow crossing window.',read:'Track linebacker movement and the defender carrying the crosser. Timing and progression remain subject to the team’s installed rules.',cues:['ML','MR']},
-      X:{name:'X · Depth route',assignment:'Illustrative vertical release to occupy the left-side coverage.',read:'Evaluate the corner’s leverage and safety depth relative to the crossing window.',cues:['CL','SL']},
-      Y:{name:'Y · Shallow cross',assignment:'Release from the attached alignment and cross right to left underneath the linebackers.',read:'Locate the defender carrying or passing off the crossing route; maintain timing through traffic.',cues:['ML','MR']},
-      RB:{name:'RB · Run action',assignment:'Show a wide-zone track to the right through the mesh. The path illustrates the fake.',read:'The fake and subsequent protection responsibility must follow the team’s installation.',cues:['ER','MR']},
-      F:{name:'F · Fullback',assignment:'Show flow toward the right edge with the run action. The path represents an illustrative blocking track.',read:'Account for edge leverage within the team’s protection rules.',cues:['ER']},
-      Z:{name:'Z · Depth route',assignment:'Illustrative vertical release with an inside break to provide depth behind the shallow route.',read:'Track corner and safety distribution without assuming an available throwing window.',cues:['CR','SR']}
+      QB:{name:'QB · Boot right',assignment:'Show the run fake to the left, then gain depth and move right to a new launch point.',read:'Locate the right edge defender and evaluate the deep, intermediate, and flat options. Confirm protection, progression, and timing with the coaching staff.',cues:['ER','MR','CR']},
+      X:{name:'X · Backside clear',assignment:'Release vertically on the left to provide backside depth while the flood develops to the right.',read:'Track the backside corner and safety without assuming they follow the run action.',cues:['CL','SL']},
+      Y:{name:'Y · Intermediate out',assignment:'Release upfield from the attached alignment, then break right beneath Z’s vertical route and above F’s flat route.',read:'Track the underneath defender’s depth and the outside coverage. Keep the three route levels distinct; timing follows the team’s installation.',cues:['MR','CR','SR']},
+      RB:{name:'RB · Run fake left',assignment:'Show the run track to the left through the mesh while the quarterback boots in the opposite direction.',read:'The path represents the fake. Confirm subsequent protection and release responsibilities with the coaching staff.',cues:['EL','ML']},
+      F:{name:'F · Flat release',assignment:'Release to the right flat as the low option, staying underneath Y’s intermediate out.',read:'Track the flat defender and keep separation from Y. Confirm the release and edge-protection responsibilities with the team.',cues:['ER','MR','CR']},
+      Z:{name:'Z · Vertical clear',assignment:'Release vertically on the right to provide the deep level above Y and F.',read:'Track the right corner and safety. The clear route does not guarantee space underneath.',cues:['CR','SR']}
     };
     const phaseButtons=['pre','post'].map(value=>{
       const button=el('button',value==='pre'?'Pre-snap':'Post-snap plan');button.type='button';
@@ -116,11 +116,11 @@
         const defender=defense.find(([id])=>id===selected.slice(2));
         const label=defender[1], side=defender[2]<360?'left':'right';
         return {name:`${label} · ${label==='N'?'Nickel defender':label==='S'?'Safety':label==='CB'?'Cornerback':label==='LB'?'Linebacker':'Defensive front'}`,
-          assignment:label==='S'?`The ${side} safety is aligned in a two-high starting shell. Track depth and rotation after the snap.`:label==='N'?'The nickel defender is aligned over F. Check inside/outside leverage and whether the defender carries or passes off the release.':label==='LB'?`The ${side} underneath linebacker is relevant to the shallow crossing window. Observe depth and movement when the routes develop.`:label==='CB'?`The ${side} corner’s leverage shapes the outside receiver’s release. Alignment is a starting observation; confirm the reaction after the snap.`:'Check the front and communicate the team’s protection rules. The diagram shows alignment, without assigning a confirmed rush.',
-          read:'This is a illustrative defensive look. Selecting a defender identifies a read question; it does not predict the defender’s movement or confirm coverage.',cues:[defender[0]]};
+          assignment:label==='S'?`The ${side} safety is aligned in a two-high starting shell. Track depth and rotation after the snap.`:label==='N'?'The nickel defender is aligned over F. Check inside/outside leverage and whether the defender carries or passes off the release.':label==='LB'?`The ${side} underneath linebacker is relevant to the intermediate and flat windows. Observe depth and movement when the routes develop.`:label==='CB'?`The ${side} corner’s leverage shapes the outside receiver’s release. Alignment is a starting observation; confirm the reaction after the snap.`:'Check the front and communicate the team’s protection rules. The diagram shows alignment, without assigning a confirmed rush.',
+          read:'Selecting a defender identifies a read question; confirm the response after the snap.',cues:[defender[0]]};
       }
       if(details[selected])return details[selected];
-      if(selected==='all')return {name:'Zorro Shallow · Whole play',assignment:'Run action to the right paired with Y’s shallow crossing route to the left.',read:'Representative routes and movement only. Explore the defensive response with the team before considering a call.',cues:phase==='pre'?['SL','SR','N']:['ML','MR']};
+      if(selected==='all')return {name:'Boot Flood Right · Whole play',assignment:'Fake left, boot right, and explore Z deep, Y at intermediate depth, and F in the flat.',read:'Representative routes and movement only. Explore the defensive response with the team before considering a call.',cues:phase==='pre'?['SR','CR','ER']:['ER','MR','CR']};
       return {name:`${selected} · ${selected==='C'?'Center':'Offensive line'}`,assignment:selected==='C'?'Identify the front and communicate the protection with the quarterback. Execute the team’s snap and protection rules.':'Maintain the assigned protection. Confirm the front, leverage, and help responsibilities with the team.',read:'The offensive line remains part of the whole play. Blocking marks indicate pass protection, without specifying an installed protection scheme.',cues:['EL','TL','TR','ER']};
     }
     function draw() {
@@ -129,7 +129,7 @@
       phaseButtons.forEach((button,index)=>button.setAttribute('aria-pressed',String((index===1)===post)));
       clearSelection.hidden=selected==='all';
       cueButton.setAttribute('aria-pressed',String(showCues));
-      comparison.textContent='Run action + Y shallow';
+      comparison.textContent='Fake left · Boot right · Three levels';
       contextTitle.textContent=detail.name;
       contextHead.hidden=selected==='all';contextBody.hidden=selected==='all';
       assignmentLabel.textContent=selected==='QB'?(post?'Working progression':'Before the snap'):selected.startsWith('D-')?'Alignment & leverage':'Assignment';
@@ -152,9 +152,9 @@
         const y=226+i*12;
         return svgNode('path',{d:`M40 ${y}h8M672 ${y}h8M319 ${y}h8M393 ${y}h8`});
       });
-      const assignments={X:'M110 430V238',Y:'M452 430L438 394H185',RB:'M360 530Q395 486 490 480',F:'M360 490L460 452',Z:'M610 466V298L540 238',QB:'M360 457L385 480L350 475'};
+      const assignments={X:'M110 430V238',Y:'M452 430V310H580',RB:'M360 530Q315 486 250 480',F:'M360 490Q440 475 520 420H650',Z:'M610 466V238',QB:'M360 457L335 480Q430 515 560 465'};
       routeLegend.textContent=post?'— Planned routes':assignments[selected]?'– – Assignment preview':'';
-      const relevant=showCues?(selected==='QB'&&post?['ML','MR']:detail.cues):[];
+      const relevant=showCues?(selected==='QB'&&post?['ER','MR','CR']:detail.cues):[];
       const cueAreas=relevant.map(id=>{
         const [, ,x,y]=defense.find(([key])=>key===id);
         return svgNode('circle',{'data-read-cue':id,cx:x,cy:y,r:21,class:'arp-read-cue'});
@@ -163,7 +163,7 @@
         const emphasized=id===selected, primary=id==='Y';
         const gold=emphasized||(!assignments[selected]&&primary);
         const attributes={'data-route':id,'data-route-role':emphasized?'selected':'supporting',d:path,fill:'none',stroke:gold?'#d6ae63':'#c9cdc3','stroke-width':emphasized?3.8:primary?2.5:2.3,'stroke-linecap':'round','stroke-linejoin':'round',opacity:emphasized?1:primary?.9:.8,'marker-end':`url(#arp-route-${gold?'gold':'bone'})`};
-        if(!post||['QB','RB','F'].includes(id)) attributes['stroke-dasharray']='5 4';
+        if(!post||['QB','RB'].includes(id)) attributes['stroke-dasharray']='5 4';
         return svgNode('path',attributes);
       }):[];
       const defenders=defense.map(([id,label,x,y])=>svgNode('g',{
@@ -188,7 +188,7 @@
       },[svgNode('path',{d:'M0 0 10 5 0 10Z',fill:color})]));
       const fieldSvg=svgNode('svg',{
         class:'arp-field arp-football-field',viewBox:'20 218 690 332',tabindex:-1,role:'group',
-        'aria-label':`Interactive illustrative Zorro Shallow ${post?'post-snap plan':'pre-snap alignment'}, eleven offensive and eleven defensive players`
+        'aria-label':`Boot Flood Right ${post?'post-snap plan':'pre-snap alignment'}, eleven offensive and eleven defensive players`
       },[
         svgNode('defs',{},markers),
         svgNode('rect',{x:40,y:218,width:640,height:332,fill:'#111a15',stroke:'#ffffff40'}),
@@ -214,7 +214,7 @@
     const matches=plays.filter(play => play.name.toLowerCase().includes(search));
     $('list').replaceChildren(...matches.map(play => {
       const button=el('button',null,'arp-play'); button.type='button'; button.setAttribute('aria-pressed',String(play.id===active.id));
-      button.append(el('strong',play.name),el('span',play.sample?'Suggested · Illustrative concept':play.derived?'Adjustment · Untested':'Draft · Not yet tested'));
+      button.append(el('strong',play.name),el('span',play.sample?'For team review':play.derived?'Adjustment · Untested':'Draft · Not yet tested'));
       button.addEventListener('click',()=>{ closeConversation(false);  active=play; render(); say(''); }); return button;
     }));
     if(!matches.length) $('list').append(el('p','No plays match your search.','arp-empty'));
@@ -227,7 +227,7 @@
     parkConversationElements();
     if(conversationPlay&&conversationPlay.id!==active.id){chatLog.replaceChildren();chatSuggestions.replaceChildren();}
     list(); $('name').textContent=active.name;
-    $('subtitle').textContent="Evidence-informed concepts for this week's matchup.";
+    $('subtitle').textContent="Bye-week review · Preparing for Las Vegas.";
     $('conversation-back-label').textContent=active.name;
     $('conversation-back').setAttribute('aria-label',`Return to ${active.name}`); $('origin').textContent=active.origin === 'Team playbook' ? '' : active.origin;
     $('origin').hidden=!$('origin').textContent;
@@ -241,7 +241,7 @@
     $('status').setAttribute('aria-label',`${state.label}: ${state.description}`);
     $('intent').textContent=active.intent || 'Define what this play should accomplish.';
     $('assignments').textContent=active.assignments || 'Document assignments and confirm them with the team.';
-    $('next').textContent=active.sample?'Review the practice outcomes, then choose an adjustment to test.':'Confirm assignments, run it in practice, and attach the results for review.';
+    $('next').textContent=active.sample?'Revisit this concept after Las Vegas faces the Jets on November 1.':'Confirm assignments, run it in practice, and attach the results for review.';
     const attachment=attachments.get(active.id); const diagram=$('diagram'); diagram.replaceChildren();
     root.querySelector('.arp-intent').hidden=!attachment&&(!!active.sample||!!active.derived);
     if(attachment) {
@@ -262,7 +262,7 @@
       conversationContext=playContext;
       $('conversation-context').textContent=playContext?`${conversationPlay.name} · ${playContext.player} · ${playContext.phase==='pre'?'Pre-snap':'Post-snap plan'}`:`Working with ${conversationPlay.name}`;
       $('conversation-log').replaceChildren();
-      suggestions(playContext?['Why didn’t the spacing develop?',`What should I observe for ${playContext.player}?`,'Help me improve this play']:['Help me improve this play','Explore a new play','What should we test next?']);
+      suggestions(playContext?['Walk me through the flood read.',`What should I observe for ${playContext.player}?`,'What would we need to see before considering this against Las Vegas?']:['What should I watch in the Raiders’ next game?','Walk me through the flood read.','What would we need to see before considering this against Las Vegas?']);
       $('conversation-input').value='';
     }
     $('detail').hidden=true;
@@ -330,15 +330,19 @@
       return;
     }
     const context=conversationContext;
-    if(/watch|defen|lineback|coverage|read/i.test(text)) {
-      response('Watch linebacker reactions to run action and how the defense carries or exchanges Y’s shallow route. Confirm the coverage response after the snap; the alignment alone does not establish a window.');
+    if(/need to see|before considering/i.test(text)) {
+      response('Review Las Vegas’ edge containment, safety depth, and distribution of the intermediate and flat routes. Compare those responses in the Jets game on November 1. The coaching staff would still need to confirm protection, rollout timing, and personnel before considering this concept.');
+    } else if(/flood read/i.test(text)) {
+      response('Fake left and boot right while locating the edge defender. Z provides the deep level, Y the intermediate out, and F the flat option. Evaluate their spacing and the defenders’ responses; the coaching staff sets the actual progression and protection. This diagram does not establish the Raiders’ coverage.');
+    } else if(/watch|defen|lineback|coverage|read/i.test(text)) {
+      response('Against the Jets on November 1, watch whether Las Vegas contains a moving quarterback and how the defense distributes routes at different depths to one side. Compare complete plays before considering Boot Flood Right with the coaching staff.');
     } else if(/assign|player|route|timing|protect/i.test(text)&&context) {
-      response(`${context.assignment} ${context.read} These assignments are illustrative, not verified team terminology.`);
+      response(`${context.assignment} ${context.read} Confirm assignments and terminology with the coaching staff.`);
     } else {
-      response('Zorro Shallow pairs run action with a shallow crossing route to explore underneath movement and potential space behind it. Evaluate the defensive reaction and timing with the coaching staff. This scripted preview has no verified opponent-film findings.');
+      response('Boot Flood Right is a concept to revisit during the bye ahead of Las Vegas. Explore the boot-side containment, three route levels, and timing with the coaching staff, then revisit the idea after the Raiders face the Jets on November 1.');
     }
     if(!$('conversation-preview')) {
-      const note=el('p','Illustrative preview · Scripted responses','arp-caption');note.id='arp-conversation-preview';chatLog.append(note);
+      const note=el('p','Scripted responses','arp-caption');note.id='arp-conversation-preview';chatLog.append(note);
     }
     scrollConversation();
   }

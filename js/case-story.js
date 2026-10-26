@@ -31,8 +31,8 @@
     typed: phone.querySelector('.ar-typed'),
     answer: phone.querySelector('.ar-answer-text'),
   };
-  const question = 'Did Washington record a sack after halftime?';
-  const answer = 'No. Both Washington sacks came in the second quarter on Oct 11. It allowed all three passing touchdowns after halftime. Review these scoring plays for the rush and coverage; they do not establish a pressure rate.';
+  const question = 'What does this play tell us about pressure?';
+  const answer = 'Las Vegas allowed this 5-yard touchdown to Allen on Oct 25, one of three passing touchdowns the Raiders conceded before halftime. Review their rush and coverage; the result alone does not establish a pressure rate. More to come after Raiders at Jets on Nov 1.';
   const offsetIn = (el, root) => { let y = 0; for (let n = el; n && n !== root; n = n.offsetParent) y += n.offsetTop; return y; };
   const scrollTo = el => {
     if (!el) { phoneParts.scroll.style.transform = ''; return; }
