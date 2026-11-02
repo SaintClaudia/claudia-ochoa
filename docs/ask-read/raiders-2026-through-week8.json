@@ -1,0 +1,493 @@
+{
+  "season": 2026,
+  "opponent": "Las Vegas Raiders",
+  "cutoff": "2026-11-01",
+  "verified": "2026-11-02",
+  "scope": "Eight completed regular-season games. Published box scores, quarterback game logs, team totals, transactions and inactives; not a full All-22 film review.",
+  "games": [
+    {
+      "week": 1,
+      "date": "2026-09-13",
+      "opponent": "Miami",
+      "points_allowed": 13,
+      "first_half_points_allowed": 6,
+      "rush_yards_allowed": 74,
+      "rush_attempts": 18,
+      "gross_pass_yards_allowed": 220,
+      "pass_td_allowed": 0,
+      "interceptions": 1,
+      "sacks": 5,
+      "opponent_net_yards": 259,
+      "longest_reception_allowed": 30,
+      "te_receiving_td_allowed": 0,
+      "defensive_inactives": [
+        "Darrell Luter Jr.",
+        "Dalton Johnson",
+        "Cody Lindenberg",
+        "JJ Pegues"
+      ],
+      "sources": {
+        "box_score": "https://www.raiders.com/game-day/2026/reg-week1/dolphins-at-raiders/box-score",
+        "qb_log": "https://www.miamidolphins.com/team/players-roster/malik-willis/logs/",
+        "inactives": "https://www.raiders.com/news/las-vegas-raiders-week-1-inactives-vs-miami-dolphins-091326"
+      }
+    },
+    {
+      "week": 2,
+      "date": "2026-09-20",
+      "opponent": "LA Chargers",
+      "points_allowed": 14,
+      "first_half_points_allowed": 7,
+      "rush_yards_allowed": 127,
+      "rush_attempts": 32,
+      "gross_pass_yards_allowed": 192,
+      "pass_td_allowed": 1,
+      "interceptions": 2,
+      "sacks": 3,
+      "opponent_net_yards": 310,
+      "longest_reception_allowed": 53,
+      "te_receiving_td_allowed": 1,
+      "defensive_inactives": [
+        "Darien Porter",
+        "Tristin McCollum",
+        "Dalton Johnson",
+        "JJ Pegues"
+      ],
+      "sources": {
+        "box_score": "https://www.raiders.com/game-day/2026/reg-week2/raiders-at-chargers/box-score",
+        "qb_log": "https://www.chargers.com/team/players-roster/justin-herbert/logs/",
+        "inactives": "https://www.raiders.com/news/las-vegas-raiders-week-2-inactives-vs-los-angeles-chargers-092026"
+      }
+    },
+    {
+      "week": 3,
+      "date": "2026-09-27",
+      "opponent": "New Orleans",
+      "points_allowed": 27,
+      "first_half_points_allowed": 13,
+      "rush_yards_allowed": 148,
+      "rush_attempts": 28,
+      "gross_pass_yards_allowed": 255,
+      "pass_td_allowed": 4,
+      "interceptions": 1,
+      "sacks": 2,
+      "opponent_net_yards": 381,
+      "longest_reception_allowed": 22,
+      "te_receiving_td_allowed": 4,
+      "defensive_inactives": [
+        "Darrell Luter Jr.",
+        "Treydan Stukes",
+        "Dalton Johnson",
+        "JJ Pegues"
+      ],
+      "sources": {
+        "box_score": "https://www.raiders.com/game-day/2026/reg-week3/raiders-at-saints/box-score",
+        "qb_log": "https://www.nfl.com/players/tyler-shough/stats/logs/2026/",
+        "inactives": "https://www.raiders.com/news/las-vegas-raiders-week-3-inactives-vs-new-orleans-saints-092726"
+      }
+    },
+    {
+      "week": 4,
+      "date": "2026-10-04",
+      "opponent": "Kansas City",
+      "points_allowed": 30,
+      "first_half_points_allowed": 10,
+      "rush_yards_allowed": 189,
+      "rush_attempts": 26,
+      "gross_pass_yards_allowed": 225,
+      "pass_td_allowed": 2,
+      "interceptions": 0,
+      "sacks": 2,
+      "opponent_net_yards": 399,
+      "longest_reception_allowed": 55,
+      "te_receiving_td_allowed": 0,
+      "defensive_inactives": [
+        "Darrell Luter Jr.",
+        "Tristin McCollum",
+        "Jonah Laulu"
+      ],
+      "sources": {
+        "box_score": "https://www.raiders.com/game-day/2026/reg-week4/chiefs-at-raiders/box-score",
+        "qb_log": "https://www.chiefs.com/team/players-roster/patrick-mahomes/logs/",
+        "inactives": "https://www.raiders.com/news/las-vegas-raiders-week-4-inactives-vs-kansas-city-chiefs-100426"
+      }
+    },
+    {
+      "week": 5,
+      "date": "2026-10-11",
+      "opponent": "New England",
+      "points_allowed": 45,
+      "first_half_points_allowed": 21,
+      "rush_yards_allowed": 165,
+      "rush_attempts": 31,
+      "gross_pass_yards_allowed": 374,
+      "pass_td_allowed": 4,
+      "interceptions": 0,
+      "sacks": 1,
+      "opponent_net_yards": 536,
+      "longest_reception_allowed": 49,
+      "te_receiving_td_allowed": 1,
+      "defensive_inactives": [
+        "Tristin McCollum",
+        "Dalton Johnson",
+        "JJ Pegues"
+      ],
+      "sources": {
+        "box_score": "https://www.raiders.com/game-day/2026/reg-week5/raiders-at-patriots/box-score",
+        "qb_log": "https://www.nfl.com/players/drake-maye/stats/logs/2026/",
+        "inactives": "https://www.raiders.com/news/las-vegas-raiders-week-5-inactives-vs-new-england-patriots-101126"
+      }
+    },
+    {
+      "week": 6,
+      "date": "2026-10-18",
+      "opponent": "Buffalo",
+      "points_allowed": 33,
+      "first_half_points_allowed": 13,
+      "rush_yards_allowed": 103,
+      "rush_attempts": 29,
+      "gross_pass_yards_allowed": 255,
+      "pass_td_allowed": 2,
+      "interceptions": 0,
+      "sacks": 2,
+      "opponent_net_yards": 345,
+      "longest_reception_allowed": 37,
+      "te_receiving_td_allowed": 0,
+      "defensive_inactives": [
+        "Tristin McCollum",
+        "Dalton Johnson",
+        "Cian Slone",
+        "Tonka Hemingway"
+      ],
+      "sources": {
+        "box_score": "https://www.raiders.com/game-day/2026/reg-week6/bills-at-raiders/box-score",
+        "qb_log": "https://www.nfl.com/players/josh-allen/stats/logs/2026/",
+        "inactives": "https://www.raiders.com/news/las-vegas-raiders-week-6-inactives-vs-buffalo-bills-101826"
+      }
+    },
+    {
+      "week": 7,
+      "date": "2026-10-25",
+      "opponent": "LA Rams",
+      "points_allowed": 35,
+      "first_half_points_allowed": 28,
+      "rush_yards_allowed": 199,
+      "rush_attempts": 38,
+      "gross_pass_yards_allowed": 195,
+      "pass_td_allowed": 3,
+      "interceptions": 1,
+      "sacks": 1,
+      "opponent_net_yards": 386,
+      "longest_reception_allowed": 15,
+      "te_receiving_td_allowed": 2,
+      "defensive_inactives": [
+        "Tristin McCollum",
+        "Dalton Johnson",
+        "Cian Slone",
+        "Jonah Laulu",
+        "Thomas Booker IV"
+      ],
+      "sources": {
+        "box_score": "https://www.raiders.com/game-day/2026/reg-week7/rams-at-raiders/box-score",
+        "qb_log": "https://www.nfl.com/players/matthew-stafford/stats/logs/2026/",
+        "inactives": "https://www.raiders.com/news/las-vegas-raiders-week-7-inactives-vs-los-angeles-rams"
+      }
+    },
+    {
+      "week": 8,
+      "date": "2026-11-01",
+      "opponent": "NY Jets",
+      "points_allowed": 33,
+      "first_half_points_allowed": 23,
+      "rush_yards_allowed": 166,
+      "rush_attempts": 27,
+      "gross_pass_yards_allowed": 290,
+      "pass_td_allowed": 2,
+      "interceptions": 1,
+      "sacks": 2,
+      "opponent_net_yards": 439,
+      "longest_reception_allowed": 47,
+      "te_receiving_td_allowed": 0,
+      "defensive_inactives": [
+        "Tristin McCollum",
+        "Dalton Johnson",
+        "JJ Pegues"
+      ],
+      "sources": {
+        "box_score": "https://www.raiders.com/game-day/2026/reg-week8/raiders-at-jets/box-score",
+        "qb_log": "https://www.nfl.com/players/geno-smith/stats/logs/2026/",
+        "inactives": "https://www.raiders.com/news/las-vegas-raiders-week-8-inactives-vs-new-york-jets"
+      }
+    }
+  ],
+  "findings": [
+    {
+      "id": "O1",
+      "category": "Opportunity",
+      "title": "First-half scoring has risen.",
+      "state": "Emerging",
+      "summary": "85 first-half points allowed in Weeks 5–8, compared with 36 in Weeks 1–4. The Rams and Jets accounted for 51 in the latest two games.",
+      "counterevidence": "Buffalo scored 13 before halftime in Week 6. The Jets scored only three more points after their sixth scoring possession. This is a scoring trend, not a diagnosed defensive adjustment.",
+      "review": "Compare opening drives and scoring situations across the season; identify the defensive response on the plays.",
+      "weeks": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "sources": [
+        "https://www.raiders.com/game-day/2026/reg-week1/dolphins-at-raiders/box-score",
+        "https://www.raiders.com/game-day/2026/reg-week2/raiders-at-chargers/box-score",
+        "https://www.raiders.com/game-day/2026/reg-week3/raiders-at-saints/box-score",
+        "https://www.raiders.com/game-day/2026/reg-week4/chiefs-at-raiders/box-score",
+        "https://www.raiders.com/game-day/2026/reg-week5/raiders-at-patriots/box-score",
+        "https://www.raiders.com/game-day/2026/reg-week6/bills-at-raiders/box-score",
+        "https://www.raiders.com/game-day/2026/reg-week7/rams-at-raiders/box-score",
+        "https://www.raiders.com/game-day/2026/reg-week8/raiders-at-jets/box-score"
+      ]
+    },
+    {
+      "id": "O2",
+      "category": "Opportunity",
+      "title": "Seven straight 100-yard rushing games.",
+      "state": "Emerging",
+      "summary": "Opponents reached 100 rushing yards in every game from Weeks 2–8. Across eight games: 1,171 yards on 229 carries, or 5.1 yards per carry.",
+      "counterevidence": "Miami managed 74 yards on 18 carries in Week 1. Team rushing totals include quarterback runs and kneel-downs; volume and game state vary.",
+      "review": "Compare successful and unsuccessful runs before assigning a run-fit weakness or selecting a concept.",
+      "weeks": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "sources": [
+        "https://www.raiders.com/game-day/2026/reg-week1/dolphins-at-raiders/box-score",
+        "https://www.raiders.com/game-day/2026/reg-week2/raiders-at-chargers/box-score",
+        "https://www.raiders.com/game-day/2026/reg-week3/raiders-at-saints/box-score",
+        "https://www.raiders.com/game-day/2026/reg-week4/chiefs-at-raiders/box-score",
+        "https://www.raiders.com/game-day/2026/reg-week5/raiders-at-patriots/box-score",
+        "https://www.raiders.com/game-day/2026/reg-week6/bills-at-raiders/box-score",
+        "https://www.raiders.com/game-day/2026/reg-week7/rams-at-raiders/box-score",
+        "https://www.raiders.com/game-day/2026/reg-week8/raiders-at-jets/box-score"
+      ]
+    },
+    {
+      "id": "O3",
+      "category": "Opportunity",
+      "title": "Third down: 40 conversions on 96 attempts.",
+      "state": "Observed",
+      "summary": "The published season total is a 41.7% conversion rate allowed through eight games.",
+      "counterevidence": "A season total does not separate short yardage, third-and-long, or opponent strength. No league rank or distance-specific weakness is claimed.",
+      "review": "Break down the distances and play outcomes before turning this into a situational recommendation.",
+      "weeks": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "sources": [
+        "https://www.raiders.com/team/stats/2026/reg",
+        "https://www.nfl.com/stats/team-stats/defense/downs/2026/reg/all"
+      ]
+    },
+    {
+      "id": "P1",
+      "category": "Pressure",
+      "title": "No more than two sacks in each of the last six games.",
+      "state": "Emerging",
+      "summary": "Sacks by week: 5, 3, 2, 2, 1, 2, 1, 2. The opening two games supplied eight of the season’s 18 sacks; the latest six supplied ten.",
+      "counterevidence": "Las Vegas still recorded at least one sack in every game. Sacks are not total pressures, and a sack count does not identify blitz frequency.",
+      "review": "Review the rush on both sacks and successful pass plays; do not infer a clean pocket from a low sack total.",
+      "weeks": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "sources": [
+        "https://www.miamidolphins.com/team/players-roster/malik-willis/logs/",
+        "https://www.chargers.com/team/players-roster/justin-herbert/logs/",
+        "https://www.nfl.com/players/tyler-shough/stats/logs/2026/",
+        "https://www.chiefs.com/team/players-roster/patrick-mahomes/logs/",
+        "https://www.nfl.com/players/drake-maye/stats/logs/2026/",
+        "https://www.nfl.com/players/josh-allen/stats/logs/2026/",
+        "https://www.nfl.com/players/matthew-stafford/stats/logs/2026/",
+        "https://www.nfl.com/players/geno-smith/stats/logs/2026/"
+      ]
+    },
+    {
+      "id": "P2",
+      "category": "Pressure",
+      "title": "Sack production comes from multiple rushers.",
+      "state": "Observed",
+      "summary": "The Raiders list Maxx Crosby, Malcolm Koonce, and Kwity Paye with three season sacks each. Protection review must account for more than one rusher.",
+      "counterevidence": "Those player totals do not establish current snap shares, alignments, win rates, or pressure frequency. Some player logs are stale; no team-total share is calculated.",
+      "review": "Confirm this week’s active front, then match the rushers to their actual film assignments.",
+      "weeks": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "sources": [
+        "https://www.raiders.com/team/stats/2026/reg",
+        "https://www.raiders.com/team/players-roster/malcolm-koonce/",
+        "https://www.raiders.com/team/players-roster/kwity-paye/",
+        "https://www.nfl.com/players/maxx-crosby/stats/logs/2026/"
+      ]
+    },
+    {
+      "id": "C1",
+      "category": "Coverage",
+      "title": "Tight ends caught eight of the 18 passing touchdowns allowed.",
+      "state": "Emerging",
+      "summary": "Tight end TDs: Gadsden, Week 2 (1); Johnson and Fant, Week 3 (4 combined); Henry, Week 5 (1); Allen, Week 7 (2). That spans four games.",
+      "counterevidence": "No tight end receiving TD was recorded in Weeks 1, 4, 6, or 8. Scoring totals do not identify the responsible defender or coverage call.",
+      "review": "Compare tight end scoring plays with the games where Las Vegas kept them out of the end zone.",
+      "weeks": [
+        2,
+        3,
+        5,
+        7
+      ],
+      "sources": [
+        "https://www.raiders.com/game-day/2026/reg-week1/dolphins-at-raiders/box-score",
+        "https://www.raiders.com/game-day/2026/reg-week2/raiders-at-chargers/box-score",
+        "https://www.raiders.com/game-day/2026/reg-week3/raiders-at-saints/box-score",
+        "https://www.raiders.com/game-day/2026/reg-week4/chiefs-at-raiders/box-score",
+        "https://www.raiders.com/game-day/2026/reg-week5/raiders-at-patriots/box-score",
+        "https://www.raiders.com/game-day/2026/reg-week6/bills-at-raiders/box-score",
+        "https://www.raiders.com/game-day/2026/reg-week7/rams-at-raiders/box-score",
+        "https://www.raiders.com/game-day/2026/reg-week8/raiders-at-jets/box-score"
+      ]
+    },
+    {
+      "id": "C2",
+      "category": "Coverage",
+      "title": "A 30-yard catch in six of eight games.",
+      "state": "Emerging",
+      "summary": "At least one opposing receiver had a catch of 30 or more yards in Weeks 1, 2, 4, 5, 6, and 8. Mitchell’s 47-yard catch is the latest example.",
+      "counterevidence": "The longest catches in Weeks 3 and 7 were 22 and 15 yards. A long reception may include yards after the catch; this is not an air-yards or coverage-depth claim.",
+      "review": "Separate the throw, catch point, and yards after catch before diagnosing the source of the gain.",
+      "weeks": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        8
+      ],
+      "sources": [
+        "https://www.raiders.com/game-day/2026/reg-week1/dolphins-at-raiders/box-score",
+        "https://www.raiders.com/game-day/2026/reg-week2/raiders-at-chargers/box-score",
+        "https://www.raiders.com/game-day/2026/reg-week3/raiders-at-saints/box-score",
+        "https://www.raiders.com/game-day/2026/reg-week4/chiefs-at-raiders/box-score",
+        "https://www.raiders.com/game-day/2026/reg-week5/raiders-at-patriots/box-score",
+        "https://www.raiders.com/game-day/2026/reg-week6/bills-at-raiders/box-score",
+        "https://www.raiders.com/game-day/2026/reg-week7/rams-at-raiders/box-score",
+        "https://www.raiders.com/game-day/2026/reg-week8/raiders-at-jets/box-score"
+      ]
+    },
+    {
+      "id": "C3",
+      "category": "Coverage",
+      "title": "Interceptions in five of eight games.",
+      "state": "Observed",
+      "summary": "Six interceptions: one against Miami, two against the Chargers, and one each against New Orleans, the Rams, and the Jets.",
+      "counterevidence": "No interceptions against Kansas City, New England, or Buffalo. Turnover outcomes do not establish a coverage disguise or predict the next game.",
+      "review": "Include the Raiders’ successful defensive plays in the matchup review, including Chinn’s game-ending interception against the Jets.",
+      "weeks": [
+        1,
+        2,
+        3,
+        7,
+        8
+      ],
+      "sources": [
+        "https://www.raiders.com/game-day/2026/reg-week1/dolphins-at-raiders/box-score",
+        "https://www.raiders.com/game-day/2026/reg-week2/raiders-at-chargers/box-score",
+        "https://www.raiders.com/game-day/2026/reg-week3/raiders-at-saints/box-score",
+        "https://www.raiders.com/game-day/2026/reg-week4/chiefs-at-raiders/box-score",
+        "https://www.raiders.com/game-day/2026/reg-week5/raiders-at-patriots/box-score",
+        "https://www.raiders.com/game-day/2026/reg-week6/bills-at-raiders/box-score",
+        "https://www.raiders.com/game-day/2026/reg-week7/rams-at-raiders/box-score",
+        "https://www.raiders.com/game-day/2026/reg-week8/raiders-at-jets/box-score"
+      ]
+    },
+    {
+      "id": "N1",
+      "category": "Personnel",
+      "title": "The defensive front changed in late October.",
+      "state": "Observed",
+      "summary": "Laulu was waived October 27; Patrick Johnson went to injured reserve October 31. Tim Keenan III and Cian Slone were elevated for Weeks 7 and 8.",
+      "counterevidence": "Elevation is not proof of playing time: Slone was inactive in Week 7. Practice-squad elevations do not guarantee Week 9 availability.",
+      "review": "Recheck transactions and the Week 9 active list before applying older front-personnel observations.",
+      "weeks": [
+        7,
+        8
+      ],
+      "sources": [
+        "https://www.raiders.com/team/transactions/2026",
+        "https://www.raiders.com/news/las-vegas-raiders-week-7-inactives-vs-los-angeles-rams",
+        "https://www.raiders.com/news/las-vegas-raiders-week-8-inactives-vs-new-york-jets"
+      ]
+    },
+    {
+      "id": "N2",
+      "category": "Personnel",
+      "title": "Secondary availability differs across the season.",
+      "state": "Observed",
+      "summary": "Porter was inactive in Week 2; Stukes in Week 3; Luter in Weeks 1, 3, and 4. McCollum and Dalton Johnson were inactive in the latest two games.",
+      "counterevidence": "An inactive list does not establish the replacement’s snaps or assignment. Historical availability is not a Week 9 injury designation.",
+      "review": "Check who was on the field behind each finding, then confirm the secondary available for San Francisco.",
+      "weeks": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "sources": [
+        "https://www.raiders.com/news/las-vegas-raiders-week-1-inactives-vs-miami-dolphins-091326",
+        "https://www.raiders.com/news/las-vegas-raiders-week-2-inactives-vs-los-angeles-chargers-092026",
+        "https://www.raiders.com/news/las-vegas-raiders-week-3-inactives-vs-new-orleans-saints-092726",
+        "https://www.raiders.com/news/las-vegas-raiders-week-4-inactives-vs-kansas-city-chiefs-100426",
+        "https://www.raiders.com/news/las-vegas-raiders-week-5-inactives-vs-new-england-patriots-101126",
+        "https://www.raiders.com/news/las-vegas-raiders-week-6-inactives-vs-buffalo-bills-101826",
+        "https://www.raiders.com/news/las-vegas-raiders-week-7-inactives-vs-los-angeles-rams",
+        "https://www.raiders.com/news/las-vegas-raiders-week-8-inactives-vs-new-york-jets"
+      ]
+    }
+  ],
+  "counts": {
+    "Opportunity": 3,
+    "Pressure": 2,
+    "Coverage": 3,
+    "Personnel": 2
+  },
+  "caveats": [
+    "Evidence states describe recurring recorded outcomes, not a validated schematic cause. No finding is labeled Established without a complete film review.",
+    "Jets recap completion totals conflict with its box score and NFL game log. Completion-based opponent rates are excluded.",
+    "Some individual defensive player totals and logs do not reconcile with the team sack sum. Player sacks are reported as listed; no proportional share is calculated."
+  ]
+}

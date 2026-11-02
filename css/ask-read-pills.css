@@ -50,6 +50,7 @@
   font-variant-numeric:tabular-nums;
 }
 /* State colors remain independent of geometry. */
+.askread-pill-system .ar-evidence>span.is-emerging{background:#1d3a46;border-color:#1d3a46;color:#eef0ea}
 .askread-pill-system .askread-category-tabs>span{border-color:var(--askread-tab-border);color:var(--askread-tab-text)}
 .askread-pill-system .ar-pill{border-color:var(--askread-tab-border);color:var(--askread-tab-text)}
 .askread-pill-system .ar-pill b{background:transparent;color:inherit}

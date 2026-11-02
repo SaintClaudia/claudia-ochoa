@@ -70,7 +70,7 @@
     });
     render();
   }
-  // This scripted portfolio sequence references official Rams clips; it makes no analysis API calls.
+  // Scripted portfolio sequence; source-backed season findings accompany the latest clip examples.
   const askRead = document.querySelector('.story-askread');
   if (askRead) {
     const prompt = askRead.querySelector('.askread-demo-prompt');
@@ -92,7 +92,7 @@
     sizeBriefing();
     document.fonts?.ready.then(sizeBriefing);
     window.addEventListener('resize', sizeBriefing);
-    const response = 'Las Vegas lost 21–35 on Oct 25. The Raiders allowed touchdowns on four consecutive first-half drives and trailed 6–28 at halftime. An early look at their defense. More to come after Raiders at Jets on Nov 1.';
+    const response = 'Across eight games, Las Vegas allowed 85 first-half points in Weeks 5–8 versus 36 in Weeks 1–4. The latest two games supplied 51. Opponents also reached 100 rushing yards in seven straight games. Compare the early scoring with later stops; recurring outcomes do not establish a shared defensive cause.';
     const viewport = askRead.querySelector('.askread-screen-viewport');
     const cursor = askRead.querySelector('.askread-demo-cursor');
     const firstClip = askRead.querySelector('.askread-demo-response .askread-real-clip');
@@ -120,6 +120,23 @@
     let elapsed = 0;
     let previous = 0;
     let frame = 0;
+    const seasonEvidence = askRead.querySelector('.askread-season-evidence');
+    seasonEvidence?.addEventListener('toggle', () => {
+      if (seasonEvidence.open) {
+        // Hold the existing briefing while the reader inspects its sources.
+        if (frame) cancelAnimationFrame(frame);
+        frame = 0;
+        previous = 0;
+        askRead.dataset.seasonReview = 'true';
+        askRead.dataset.demoPhase = 'idle';
+        askRead.dataset.demoStep = '';
+        askRead.dataset.guided = 'false';
+      } else {
+        delete askRead.dataset.seasonReview;
+        elapsed = 0;
+        startDemo();
+      }
+    });
     function setDemo(time) {
       let phase = 'idle';
       if (time >= 11000 && time < 15000) phase = 'listening';
@@ -162,6 +179,7 @@
     }
     function startDemo() {
       if (frame) cancelAnimationFrame(frame);
+      if (seasonEvidence?.open) { frame = 0; return; }
       previous = 0;
       setDemo(0);
       if (!reduced.matches) frame = requestAnimationFrame(tick);

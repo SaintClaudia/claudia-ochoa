@@ -20,7 +20,7 @@
     body.scrollTop=body.scrollHeight;
   }
   const seeds = [
-    { id:'boot-flood-right', name:'Boot Flood Right', origin:'', intent:'Explore three receiving levels to the right after a run fake to the left, with the quarterback changing the launch point ahead of the Las Vegas matchup.', assignments:'21 personnel: Z clears vertically, Y breaks to the right at intermediate depth, F releases to the right flat, and the quarterback boots right after a left-side run fake. Confirm protection and assignments with the team.', notes:'For team review; no practice outcomes attached.', sample:true },
+    { id:'wide-zone', name:'Wide Zone', origin:'', intent:'Stretch the front horizontally and give the runner a leverage-based cut behind the zone blocking.', assignments:'21 personnel: the line and Y work the zone track, F leads toward the play side, and the receivers sustain perimeter blocks. QB opens for the handoff; RB presses the edge before choosing the cut. Set direction and blocking rules from the defensive front.', notes:'Review front movement, edge leverage, backside pursuit, and available personnel.', sample:true },
     { id:'sail', name:'Flood right', origin:'Ask Read draft · Team review needed', intent:'Explore three receiving levels on the right side. Test whether the spacing gives the quarterback a clear read.', assignments:'Outside receiver: clear vertically. Slot: intermediate out. RB: release to the flat. Confirm the full assignment and protection plan with the team.', notes:'Idea for practice. No results recorded yet.' },
     { id:'zone', name:'Inside run', origin:'Team playbook', intent:'Create an interior running lane and document where the runner’s read and the blocking need to improve.', assignments:'Team to confirm the front, blocking rules, ball-carrier read, and adjustments before installing.', notes:'Add the team’s diagram and coaching points.' }
   ];
@@ -33,7 +33,7 @@
   let active = plays[0], currentTab = 'design', outcome = 'struggle', mode = 'blank', search = '';
   const playStates = {
     draft: {icon:[['path',{d:'M13 5H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8M16 3l5 5M10 14l3-1 8-8-3-3-8 8z'}]], label:'Draft', description:'A play being documented and prepared. No outcomes recorded yet.'},
-    review: {icon:[['path',{d:'M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z'}],['circle',{cx:12,cy:12,r:2.8}]], label:'For team review', description:'A concept for bye-week preparation against Las Vegas. The quarterback and coaching staff retain the decision.'},
+    review: {icon:[['path',{d:'M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z'}],['circle',{cx:12,cy:12,r:2.8}]], label:'For team review', description:'Matchup preparation for Las Vegas. Review blocking, run direction, and available personnel with the coaching staff.'},
     untested: {icon:[['circle',{cx:12,cy:12,r:9}],['path',{d:'M12 7v5l3 3'}]], label:'Untested', description:'An adjusted version awaiting practice results. Its effectiveness has not been established.'}
   };
   const stateOf = play => play.sample ? 'review' : play.derived ? 'untested' : 'draft';
@@ -51,7 +51,7 @@
     node.append(...children);
     return node;
   }
-  // Concept context: https://www.sevenpointlead.com/systems/i-formation/plays/play-action-boot-right
+  // Matchup sources and limits: docs/ask-read/wide-zone-recommendation-2026-11-02.md
   // Diagram assignments below are illustrative, not a reproduced team installation.
   function field() {
     const workspace=el('div',null,'arp-playbook-workspace');
@@ -82,7 +82,7 @@
     assignment.append(assignmentLabel,assignmentText);read.append(readLabel,readText);contextBody.append(assignment,read);
     const contextScroll=el('div',null,'arp-context-scroll');
     const recommendation=el('div',null,'arp-recommendation-context');
-    const rationale=[['WHY THIS PLAY','Explore three receiving levels to the right after a run fake to the left, with the quarterback changing the launch point ahead of the Las Vegas matchup.'],['WHAT TO WATCH','Review the Raiders’ edge containment and how the corner, safety, and underneath defender distribute the deep, intermediate, and flat routes.'],['NEXT CHECKPOINT','Revisit this concept after Las Vegas faces the Jets on November 1.']];
+    const rationale=[['WHY THIS PLAY','Stretch the front and let the runner choose the cut. Keep Juszczyk and Kittle central as San Francisco’s receiving group changes.'],['MATCHUP CONTEXT','Las Vegas has allowed 5.1 yards per carry; the Jets added 166 rushing yards. McCaffrey averages 4.6 and Black 4.1. Confirm McCaffrey’s availability after his hamstring strain.'],['WHAT TO REVIEW','Compare edge leverage, front movement, and backside pursuit on successful runs and stops. Set direction and blocking from the front; confirm McCaffrey’s availability and the receivers’ blocking assignments.']];
     rationale.forEach(([label,text])=>{const section=el('div');section.append(el('p',label,'arp-eyebrow'),el('p',text));recommendation.append(section);});
     contextScroll.append(contextHead,contextBody,recommendation);
     const railChat=el('div',null,'arp-rail-chat');
@@ -97,12 +97,12 @@
     const offense=[['LT',304,430,'on'],['LG',332,430,'on'],['C',360,430,'on'],['RG',388,430,'on'],['RT',416,430,'on'],['X',110,430,'on'],['F',360,490,'off'],['Y',452,430,'on'],['Z',610,466,'off'],['QB',360,457,'off'],['RB',360,530,'off']];
     const defense=[['EL','E',290,405],['TL','T',336,405],['TR','T',386,405],['ER','E',435,405],['ML','LB',325,352],['MR','LB',425,352],['N','LB',225,364],['CL','CB',110,352],['CR','CB',610,364],['SL','S',240,250],['SR','S',490,250]];
     const details={
-      QB:{name:'QB · Boot right',assignment:'Show the run fake to the left, then gain depth and move right to a new launch point.',read:'Locate the right edge defender and evaluate the deep, intermediate, and flat options. Confirm protection, progression, and timing with the coaching staff.',cues:['ER','MR','CR']},
-      X:{name:'X · Backside clear',assignment:'Release vertically on the left to provide backside depth while the flood develops to the right.',read:'Track the backside corner and safety without assuming they follow the run action.',cues:['CL','SL']},
-      Y:{name:'Y · Intermediate out',assignment:'Release upfield from the attached alignment, then break right beneath Z’s vertical route and above F’s flat route.',read:'Track the underneath defender’s depth and the outside coverage. Keep the three route levels distinct; timing follows the team’s installation.',cues:['MR','CR','SR']},
-      RB:{name:'RB · Run fake left',assignment:'Show the run track to the left through the mesh while the quarterback boots in the opposite direction.',read:'The path represents the fake. Confirm subsequent protection and release responsibilities with the coaching staff.',cues:['EL','ML']},
-      F:{name:'F · Flat release',assignment:'Release to the right flat as the low option, staying underneath Y’s intermediate out.',read:'Track the flat defender and keep separation from Y. Confirm the release and edge-protection responsibilities with the team.',cues:['ER','MR','CR']},
-      Z:{name:'Z · Vertical clear',assignment:'Release vertically on the right to provide the deep level above Y and F.',read:'Track the right corner and safety. The clear route does not guarantee space underneath.',cues:['CR','SR']}
+      QB:{name:'QB · Open and hand off',assignment:'Open toward the run track, complete the mesh with RB, and carry out the action away from the handoff.',read:'Confirm the front, run direction, and any adjustment before the snap. The quarterback is handing off on this concept.',cues:['TL','TR','ER']},
+      X:{name:'X · Backside perimeter block',assignment:'Maintain leverage on the backside corner and sustain the block within the team’s rules.',read:'Track pursuit from the backside; do not assume the corner is removed from the run fit.',cues:['CL','SL']},
+      Y:{name:'Y · Play-side zone block',assignment:'Work with the tackle to secure the edge using the team’s zone rules.',read:'Evaluate the end’s leverage and whether the edge is secured or the runner needs to cut inside.',cues:['ER','MR']},
+      RB:{name:'RB · Press and cut',assignment:'Take the handoff and press the wide-zone track. Choose the cut from the leverage of the blocks rather than a fixed opening.',read:'Read the play-side edge and adjacent down lineman; account for backside pursuit. Match the aiming point and footwork to the team’s installation.',cues:['ER','TR','MR']},
+      F:{name:'F · Lead to the play side',assignment:'Lead toward the play side and fit the assigned second-level defender under the team’s blocking rules.',read:'Track the linebacker’s flow and coordinate the fit with Y and the tackle.',cues:['ER','MR']},
+      Z:{name:'Z · Play-side perimeter block',assignment:'Engage the play-side corner with the leverage required by the run track.',read:'Sustain the perimeter block without assuming the runner stays outside. Locate safety support.',cues:['CR','SR']}
     };
     const phaseButtons=['pre','post'].map(value=>{
       const button=el('button',value==='pre'?'Pre-snap':'Post-snap plan');button.type='button';
@@ -115,13 +115,13 @@
       if(isDefense) {
         const defender=defense.find(([id])=>id===selected.slice(2));
         const label=defender[1], side=defender[2]<360?'left':'right';
-        return {name:`${label} · ${label==='N'?'Nickel defender':label==='S'?'Safety':label==='CB'?'Cornerback':label==='LB'?'Linebacker':'Defensive front'}`,
-          assignment:label==='S'?`The ${side} safety is aligned in a two-high starting shell. Track depth and rotation after the snap.`:label==='N'?'The nickel defender is aligned over F. Check inside/outside leverage and whether the defender carries or passes off the release.':label==='LB'?`The ${side} underneath linebacker is relevant to the intermediate and flat windows. Observe depth and movement when the routes develop.`:label==='CB'?`The ${side} corner’s leverage shapes the outside receiver’s release. Alignment is a starting observation; confirm the reaction after the snap.`:'Check the front and communicate the team’s protection rules. The diagram shows alignment, without assigning a confirmed rush.',
+        return {name:`${label} · ${label==='N'?'Outside linebacker':label==='S'?'Safety':label==='CB'?'Cornerback':label==='LB'?'Linebacker':'Defensive front'}`,
+          assignment:label==='S'?`The ${side} safety is aligned in a two-high starting shell. Track depth and rotation after the snap.`:label==='N'?'The outside linebacker is aligned to the backside. Track pursuit and responsibility for the cutback.':label==='LB'?`The ${side} linebacker is relevant to the run fit. Observe flow, gap entry, and the response to the lead blocker.`:label==='CB'?`The ${side} corner’s leverage shapes the perimeter block. Track how the corner supports the run after the snap.`:'Identify front alignment and communicate the zone-blocking rules. Track penetration and lateral movement after the snap.',
           read:'Selecting a defender identifies a read question; confirm the response after the snap.',cues:[defender[0]]};
       }
       if(details[selected])return details[selected];
-      if(selected==='all')return {name:'Boot Flood Right · Whole play',assignment:'Fake left, boot right, and explore Z deep, Y at intermediate depth, and F in the flat.',read:'Representative routes and movement only. Explore the defensive response with the team before considering a call.',cues:phase==='pre'?['SR','CR','ER']:['ER','MR','CR']};
-      return {name:`${selected} · ${selected==='C'?'Center':'Offensive line'}`,assignment:selected==='C'?'Identify the front and communicate the protection with the quarterback. Execute the team’s snap and protection rules.':'Maintain the assigned protection. Confirm the front, leverage, and help responsibilities with the team.',read:'The offensive line remains part of the whole play. Blocking marks indicate pass protection, without specifying an installed protection scheme.',cues:['EL','TL','TR','ER']};
+      if(selected==='all')return {name:'Wide Zone · Whole play',assignment:'Hand off to RB, stretch the front, and lead F toward the play side. The runner chooses the cut from the blocks.',read:'The board shows a right-side track. Choose the actual direction from front alignment, blocking matchups, and personnel.',cues:['ER','TR','MR']};
+      return {name:`${selected} · ${selected==='C'?'Center':'Offensive line'}`,assignment:selected==='C'?'Identify the front and communicate combination blocks. Execute the snap and the team’s zone step.':'Step on the zone track and work the assigned defender or combination block. Confirm leverage and second-level responsibilities.',read:'Coordinate lateral movement and combinations without leaving penetration lanes. Set exact blocking rules from the defensive front.',cues:['EL','TL','TR','ER']};
     }
     function draw() {
       const post=phase==='post';
@@ -129,10 +129,10 @@
       phaseButtons.forEach((button,index)=>button.setAttribute('aria-pressed',String((index===1)===post)));
       clearSelection.hidden=selected==='all';
       cueButton.setAttribute('aria-pressed',String(showCues));
-      comparison.textContent='Fake left · Boot right · Three levels';
+      comparison.textContent='Right-side track · Read leverage · Choose the cut';
       contextTitle.textContent=detail.name;
       contextHead.hidden=selected==='all';contextBody.hidden=selected==='all';
-      assignmentLabel.textContent=selected==='QB'?(post?'Working progression':'Before the snap'):selected.startsWith('D-')?'Alignment & leverage':'Assignment';
+      assignmentLabel.textContent=selected==='QB'?(post?'Handoff & action':'Before the snap'):selected.startsWith('D-')?'Alignment & leverage':'Assignment';
       readLabel.textContent='How it connects';
       assignmentText.textContent=detail.assignment;
       contextScroll.scrollTop=0;
@@ -152,18 +152,18 @@
         const y=226+i*12;
         return svgNode('path',{d:`M40 ${y}h8M672 ${y}h8M319 ${y}h8M393 ${y}h8`});
       });
-      const assignments={X:'M110 430V238',Y:'M452 430V310H580',RB:'M360 530Q315 486 250 480',F:'M360 490Q440 475 520 420H650',Z:'M610 466V238',QB:'M360 457L335 480Q430 515 560 465'};
-      routeLegend.textContent=post?'— Planned routes':assignments[selected]?'– – Assignment preview':'';
-      const relevant=showCues?(selected==='QB'&&post?['ER','MR','CR']:detail.cues):[];
+      const assignments={RB:'M360 530Q420 510 505 440L520 395Q510 365 480 345',F:'M360 490Q420 465 480 410L490 375',QB:'M360 457L374 490L405 495'};
+      routeLegend.textContent=post?'— Run track · – – QB action':assignments[selected]?'– – Assignment preview':'';
+      const relevant=showCues?(detail.cues):[];
       const cueAreas=relevant.map(id=>{
         const [, ,x,y]=defense.find(([key])=>key===id);
         return svgNode('circle',{'data-read-cue':id,cx:x,cy:y,r:21,class:'arp-read-cue'});
       });
       const routePaths=(post||assignments[selected])?Object.entries(assignments).filter(([id])=>post||id===selected).sort(([a],[b])=>Number(a===selected)-Number(b===selected)).map(([id,path])=>{
-        const emphasized=id===selected, primary=id==='Y';
+        const emphasized=id===selected, primary=id==='RB';
         const gold=emphasized||(!assignments[selected]&&primary);
         const attributes={'data-route':id,'data-route-role':emphasized?'selected':'supporting',d:path,fill:'none',stroke:gold?'#d6ae63':'#c9cdc3','stroke-width':emphasized?3.8:primary?2.5:2.3,'stroke-linecap':'round','stroke-linejoin':'round',opacity:emphasized?1:primary?.9:.8,'marker-end':`url(#arp-route-${gold?'gold':'bone'})`};
-        if(!post||['QB','RB'].includes(id)) attributes['stroke-dasharray']='5 4';
+        if(!post||id==='QB') attributes['stroke-dasharray']='5 4';
         return svgNode('path',attributes);
       }):[];
       const defenders=defense.map(([id,label,x,y])=>svgNode('g',{
@@ -182,13 +182,13 @@
           'data-select-player':label,transform:`translate(${x} ${y})`
         },[hit,marker,svgNode('text',{y:3.5,'text-anchor':'middle'},[label])]);
       });
-      const blocks=post?offense.slice(0,5).map(([,x])=>svgNode('path',{d:`M${x} 418v-10m-6 0h12` })):[];
+      const blocks=post?[[304,418,326,404],[332,418,354,404],[360,418,382,404],[388,418,410,404],[416,418,438,399],[452,418,474,399],[110,418,120,390],[610,454,610,393]].map(([x,y,tx,ty])=>svgNode('path',{d:`M${x} ${y}L${tx} ${ty}m-5-4 10 8` })):[];
       const markers=[['gold','#d6ae63'],['bone','#c9cdc3']].map(([name,color])=>svgNode('marker',{
         id:`arp-route-${name}`,viewBox:'0 0 10 10',refX:8,refY:5,markerWidth:5,markerHeight:5,orient:'auto'
       },[svgNode('path',{d:'M0 0 10 5 0 10Z',fill:color})]));
       const fieldSvg=svgNode('svg',{
         class:'arp-field arp-football-field',viewBox:'20 218 690 332',tabindex:-1,role:'group',
-        'aria-label':`Boot Flood Right ${post?'post-snap plan':'pre-snap alignment'}, eleven offensive and eleven defensive players`
+        'aria-label':`Wide Zone ${post?'post-snap plan':'pre-snap alignment'}, eleven offensive and eleven defensive players`
       },[
         svgNode('defs',{},markers),
         svgNode('rect',{x:40,y:218,width:640,height:332,fill:'#111a15',stroke:'#ffffff40'}),
@@ -227,7 +227,7 @@
     parkConversationElements();
     if(conversationPlay&&conversationPlay.id!==active.id){chatLog.replaceChildren();chatSuggestions.replaceChildren();}
     list(); $('name').textContent=active.name;
-    $('subtitle').textContent="Bye-week review · Preparing for Las Vegas.";
+    $('subtitle').textContent="Week 9 · Las Vegas Raiders";
     $('conversation-back-label').textContent=active.name;
     $('conversation-back').setAttribute('aria-label',`Return to ${active.name}`); $('origin').textContent=active.origin === 'Team playbook' ? '' : active.origin;
     $('origin').hidden=!$('origin').textContent;
@@ -241,7 +241,7 @@
     $('status').setAttribute('aria-label',`${state.label}: ${state.description}`);
     $('intent').textContent=active.intent || 'Define what this play should accomplish.';
     $('assignments').textContent=active.assignments || 'Document assignments and confirm them with the team.';
-    $('next').textContent=active.sample?'Revisit this concept after Las Vegas faces the Jets on November 1.':'Confirm assignments, run it in practice, and attach the results for review.';
+    $('next').textContent=active.sample?'Compare runs and stops against the Jets, Rams, and Bills. Confirm run direction, blocking rules, and available personnel.':'Confirm assignments, run it in practice, and attach the results for review.';
     const attachment=attachments.get(active.id); const diagram=$('diagram'); diagram.replaceChildren();
     root.querySelector('.arp-intent').hidden=!attachment&&(!!active.sample||!!active.derived);
     if(attachment) {
@@ -262,7 +262,7 @@
       conversationContext=playContext;
       $('conversation-context').textContent=playContext?`${conversationPlay.name} · ${playContext.player} · ${playContext.phase==='pre'?'Pre-snap':'Post-snap plan'}`:`Working with ${conversationPlay.name}`;
       $('conversation-log').replaceChildren();
-      suggestions(playContext?['Walk me through the flood read.',`What should I observe for ${playContext.player}?`,'What would we need to see before considering this against Las Vegas?']:['What should I watch in the Raiders’ next game?','Walk me through the flood read.','What would we need to see before considering this against Las Vegas?']);
+      suggestions(playContext?['Walk me through the runner’s read.',`What should I observe for ${playContext.player}?`,'What would we need to see before considering this against Las Vegas?']:['What changed after the Jets game?','Walk me through the runner’s read.','What would we need to see before considering this against Las Vegas?']);
       $('conversation-input').value='';
     }
     $('detail').hidden=true;
@@ -330,19 +330,18 @@
       return;
     }
     const context=conversationContext;
-    if(/need to see|before considering/i.test(text)) {
-      response('Review Las Vegas’ edge containment, safety depth, and distribution of the intermediate and flat routes. Compare those responses in the Jets game on November 1. The coaching staff would still need to confirm protection, rollout timing, and personnel before considering this concept.');
-    } else if(/flood read/i.test(text)) {
-      response('Fake left and boot right while locating the edge defender. Z provides the deep level, Y the intermediate out, and F the flat option. Evaluate their spacing and the defenders’ responses; the coaching staff sets the actual progression and protection. This diagram does not establish the Raiders’ coverage.');
+    if(/jets|latest game|what changed/i.test(text)) {
+      response('The Jets rushed for 166 yards against Las Vegas, extending the run of 100-yard rushing games to seven. The Raiders also recorded two sacks. Compare the run tracks and blocking on those gains with the plays Las Vegas stopped. Use the Rams and Bills film for additional context.');
+    } else if(/need to see|before considering/i.test(text)) {
+      response('Compare edge leverage, front movement, linebacker flow, and backside pursuit in the Jets, Rams, and Bills games. Include successful runs and stops. Confirm run direction, blocking rules, and available personnel.');
+    } else if(/zone read|runner|cut/i.test(text)) {
+      response('Press the wide-zone track and choose the cut from the leverage of the play-side blocks. Account for backside pursuit. The board shows a right-side example; the front and blocking matchups determine the actual direction.');
     } else if(/watch|defen|lineback|coverage|read/i.test(text)) {
-      response('Against the Jets on November 1, watch whether Las Vegas contains a moving quarterback and how the defense distributes routes at different depths to one side. Compare complete plays before considering Boot Flood Right with the coaching staff.');
+      response('Start with the play-side edge and adjacent down lineman, then track linebacker flow and backside pursuit. Compare gains with stops before choosing direction or assigning the lead blocker.');
     } else if(/assign|player|route|timing|protect/i.test(text)&&context) {
       response(`${context.assignment} ${context.read} Confirm assignments and terminology with the coaching staff.`);
     } else {
-      response('Boot Flood Right is a concept to revisit during the bye ahead of Las Vegas. Explore the boot-side containment, three route levels, and timing with the coaching staff, then revisit the idea after the Raiders face the Jets on November 1.');
-    }
-    if(!$('conversation-preview')) {
-      const note=el('p','Scripted responses','arp-caption');note.id='arp-conversation-preview';chatLog.append(note);
+      response('Las Vegas has allowed 1,171 rushing yards at 5.1 yards per carry. The Jets added 166 in the latest game. That supports prioritizing the run for review. Confirm the front, blocking matchups, and McCaffrey’s availability before setting the personnel and direction.');
     }
     scrollConversation();
   }

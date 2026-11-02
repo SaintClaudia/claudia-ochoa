@@ -31,8 +31,8 @@
     typed: phone.querySelector('.ar-typed'),
     answer: phone.querySelector('.ar-answer-text'),
   };
-  const question = 'What does this play tell us about pressure?';
-  const answer = 'Las Vegas allowed this 5-yard touchdown to Allen on Oct 25, one of three passing touchdowns the Raiders conceded before halftime. Review their rush and coverage; the result alone does not establish a pressure rate. More to come after Raiders at Jets on Nov 1.';
+  const question = 'What should I take from this sack?';
+  const answer = 'Crosby finished with a 10-yard sack. Las Vegas has 18 sacks this season, ten in the last six games. Compare his path with Hemingway’s and Paye’s, then revisit the plays where protection held.';
   const offsetIn = (el, root) => { let y = 0; for (let n = el; n && n !== root; n = n.offsetParent) y += n.offsetTop; return y; };
   const scrollTo = el => {
     if (!el) { phoneParts.scroll.style.transform = ''; return; }

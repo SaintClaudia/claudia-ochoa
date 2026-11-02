@@ -87,3 +87,15 @@ Removed snapshot-date callouts from briefing, QB Intelligence and Library subtit
 ## Evidence layout restored — October 14, 2026
 
 Restored the two-panel presentation at the user’s request: rotating state names beside the illustrative finding card. The example again demonstrates Observed, Emerging and Established; real Washington findings remain Observed with the eye icon.
+
+
+## Mobile season briefing refresh — November 2, 2026
+
+The mobile walkthrough now matches the season audit: Opportunity 3, Pressure 2, Coverage 3, Personnel 2. Opportunity uses the tablet’s two Jets first-half passing TD examples and Davis Allen’s Rams comparison. Pressure, film and chat use actual sack previews rather than scoring plays labeled as pressure evidence.
+
+Official sack sources and Open Graph poster assets:
+- [Maxx Crosby, 10-yard sack of Geno Smith, Nov 1](https://www.raiders.com/video/maxx-crosby-sack-geno-smith-nfl-jets-2026-season): `raiders/vmrwo5eiijn1wrnsxm2q`, local `ask-read-raiders-crosby-jets-sack.webp` (1280 × 853). This is the clip page’s official preview photograph, not a claimed frame of the sack itself.
+- [Tonka Hemingway, 8-yard sack of Matthew Stafford, Oct 25](https://www.raiders.com/video/tonka-hemingway-sack-matt-stafford-nfl-week-7-2026-season): `raiders/emme7tkiqg1ixjsujbnz`, local `ask-read-raiders-hemingway-rams-sack.webp` (1280 × 720).
+- [Kwity Paye, 8-yard sack of Josh Allen, Oct 18](https://www.raiders.com/video/kwity-paye-sacks-josh-allen-nfl-week-6-bills-2026-season): `raiders/jdobm3bgdgdcsfzrp4ya`, local `ask-read-raiders-paye-bills-sack.webp` (1280 × 720).
+
+The featured film and chat context both reference Crosby’s Jets sack. The response uses the audited 18 season sacks and ten in the latest six games, and directs comparison with the other sack examples and plays where protection held. No pressure rate or blitz assignment is inferred. Existing animation sequence and timing are retained. The play posters remain static portfolio previews. Surrounding page copy and desktop screens are unchanged.
