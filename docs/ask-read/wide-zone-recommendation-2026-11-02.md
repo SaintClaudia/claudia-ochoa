@@ -1,5 +1,7 @@
 # Plays recommendation — November 2, 2026
 
+> Superseded by [the November 3 Lead Left review](lead-left-recommendation-2026-11-03.md). Retained as historical research; it is not the current recommendation.
+
 Wide Zone replaces Boot Flood Right as the featured concept. Boot Flood Right stays in related plays. This is a matchup inference from verified production, established scheme background, and current personnel reports. It is not a charted finding that Las Vegas is specifically vulnerable to outside zone or to a particular direction.
 
 ## Supporting evidence

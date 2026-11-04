@@ -20,7 +20,7 @@
     body.scrollTop=body.scrollHeight;
   }
   const seeds = [
-    { id:'wide-zone', name:'Wide Zone', origin:'', intent:'Stretch the front horizontally and give the runner a leverage-based cut behind the zone blocking.', assignments:'21 personnel: the line and Y work the zone track, F leads toward the play side, and the receivers sustain perimeter blocks. QB opens for the handoff; RB presses the edge before choosing the cut. Set direction and blocking rules from the defensive front.', notes:'Review front movement, edge leverage, backside pursuit, and available personnel.', sample:true },
+    { id:'lead-left', name:'Lead Left', origin:'', intent:'Create an inside lane behind the fullback’s left-side lead. First choice for 1st-and-10 at SF35, tied in Q1, when the blocking can account for the actual front.', assignments:'21 personnel: pistol-depth QB, deep RB, F offset left and Y attached left. F leads toward the inside entry; RB follows the leverage of the blocks. The diagram illustrates the observed mechanism, not SF’s private blocking rules.', notes:'Emerging opportunity. Include the run stops; a two-high shell alone does not justify the call. Personnel is assessed by role using public information through November 3.', sample:true },
     { id:'sail', name:'Flood right', origin:'Ask Read draft · Team review needed', intent:'Explore three receiving levels on the right side. Test whether the spacing gives the quarterback a clear read.', assignments:'Outside receiver: clear vertically. Slot: intermediate out. RB: release to the flat. Confirm the full assignment and protection plan with the team.', notes:'Idea for practice. No results recorded yet.' },
     { id:'zone', name:'Inside run', origin:'Team playbook', intent:'Create an interior running lane and document where the runner’s read and the blocking need to improve.', assignments:'Team to confirm the front, blocking rules, ball-carrier read, and adjustments before installing.', notes:'Add the team’s diagram and coaching points.' }
   ];
@@ -33,7 +33,7 @@
   let active = plays[0], currentTab = 'design', outcome = 'struggle', mode = 'blank', search = '';
   const playStates = {
     draft: {icon:[['path',{d:'M13 5H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8M16 3l5 5M10 14l3-1 8-8-3-3-8 8z'}]], label:'Draft', description:'A play being documented and prepared. No outcomes recorded yet.'},
-    review: {icon:[['path',{d:'M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z'}],['circle',{cx:12,cy:12,r:2.8}]], label:'For team review', description:'Matchup preparation for Las Vegas. Review blocking, run direction, and available personnel with the coaching staff.'},
+    review: {icon:[['path',{d:'M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z'}],['circle',{cx:12,cy:12,r:2.8}]], label:'Emerging opportunity', description:'Conditional first choice for 1st-and-10 at SF35, tied Q1. SF execution and related Raiders evidence support the matchup; superiority over the pocket-pass alternative is not established.'},
     untested: {icon:[['circle',{cx:12,cy:12,r:9}],['path',{d:'M12 7v5l3 3'}]], label:'Untested', description:'An adjusted version awaiting practice results. Its effectiveness has not been established.'}
   };
   const stateOf = play => play.sample ? 'review' : play.derived ? 'untested' : 'draft';
@@ -51,14 +51,14 @@
     node.append(...children);
     return node;
   }
-  // Matchup sources and limits: docs/ask-read/wide-zone-recommendation-2026-11-02.md
+  // Matchup sources and limits: docs/ask-read/lead-left-recommendation-2026-11-03.md
   // Diagram assignments below are illustrative, not a reproduced team installation.
   function field() {
     const workspace=el('div',null,'arp-playbook-workspace');
     const board=el('div',null,'arp-playbook');
     const toolbar=el('div',null,'arp-playbook-toolbar');
     const formation=el('div',null,'arp-playbook-formation');
-    formation.append(el('strong','21 personnel · I formation, Y right'),el('span','Two-high defensive shell'));
+    formation.append(el('strong','21 personnel · Pistol, Y left'),el('span','Four-down example · Research through Nov 3'));
     const phases=el('div',null,'arp-playbook-phases');phases.setAttribute('role','group');phases.setAttribute('aria-label','Diagram perspective');
     toolbar.append(formation,phases);
     const controls=el('div',null,'arp-board-controls');
@@ -82,7 +82,11 @@
     assignment.append(assignmentLabel,assignmentText);read.append(readLabel,readText);contextBody.append(assignment,read);
     const contextScroll=el('div',null,'arp-context-scroll');
     const recommendation=el('div',null,'arp-recommendation-context');
-    const rationale=[['WHY THIS PLAY','Stretch the front and let the runner choose the cut. Keep Juszczyk and Kittle central as San Francisco’s receiving group changes.'],['MATCHUP CONTEXT','Las Vegas has allowed 5.1 yards per carry; the Jets added 166 rushing yards. McCaffrey averages 4.6 and Black 4.1. Confirm McCaffrey’s availability after his hamstring strain.'],['WHAT TO REVIEW','Compare edge leverage, front movement, and backside pursuit on successful runs and stops. Set direction and blocking from the front; confirm McCaffrey’s availability and the receivers’ blocking assignments.']];
+    const rationale=[
+      ['WHY THIS PLAY','Lead action has opened an inside lane for SF. Related Raiders run evidence supports this call when blocking accounts for the front.'],
+      ['FILM BASIS','SF–WAS, Q1 13:22: lead left gained 8. Jets comparison runs: −1, 5 and 4. Pocket dropback remains close.'],
+      ['WHEN TO CHANGE','A closed entry or unaccounted fitter favors pocket dropback. Downhill commitment can favor protected play-action. Two-high alone is insufficient.']
+    ];
     rationale.forEach(([label,text])=>{const section=el('div');section.append(el('p',label,'arp-eyebrow'),el('p',text));recommendation.append(section);});
     contextScroll.append(contextHead,contextBody,recommendation);
     const railChat=el('div',null,'arp-rail-chat');
@@ -94,15 +98,15 @@
     contextScroll.append(railChat);
     workspace.append(boardColumn,context);
     let phase='post', selected='all', showCues=true;
-    const offense=[['LT',304,430,'on'],['LG',332,430,'on'],['C',360,430,'on'],['RG',388,430,'on'],['RT',416,430,'on'],['X',110,430,'on'],['F',360,490,'off'],['Y',452,430,'on'],['Z',610,466,'off'],['QB',360,457,'off'],['RB',360,530,'off']];
-    const defense=[['EL','E',290,405],['TL','T',336,405],['TR','T',386,405],['ER','E',435,405],['ML','LB',325,352],['MR','LB',425,352],['N','LB',225,364],['CL','CB',110,352],['CR','CB',610,364],['SL','S',240,250],['SR','S',490,250]];
+    const offense=[['LT',304,430,'on'],['LG',332,430,'on'],['C',360,430,'on'],['RG',388,430,'on'],['RT',416,430,'on'],['X',110,430,'on'],['F',316,486,'off'],['Y',268,430,'on'],['Z',610,466,'off'],['QB',360,474,'off'],['RB',360,530,'off']];
+    const defense=[['EL','E',278,405],['TL','T',336,405],['TR','T',386,405],['ER','E',435,405],['ML','LB',325,352],['MR','LB',425,352],['N','DB',190,364],['CL','CB',110,352],['CR','CB',610,364],['SL','S',240,250],['SR','S',490,250]];
     const details={
-      QB:{name:'QB · Open and hand off',assignment:'Open toward the run track, complete the mesh with RB, and carry out the action away from the handoff.',read:'Confirm the front, run direction, and any adjustment before the snap. The quarterback is handing off on this concept.',cues:['TL','TR','ER']},
-      X:{name:'X · Backside perimeter block',assignment:'Maintain leverage on the backside corner and sustain the block within the team’s rules.',read:'Track pursuit from the backside; do not assume the corner is removed from the run fit.',cues:['CL','SL']},
-      Y:{name:'Y · Play-side zone block',assignment:'Work with the tackle to secure the edge using the team’s zone rules.',read:'Evaluate the end’s leverage and whether the edge is secured or the runner needs to cut inside.',cues:['ER','MR']},
-      RB:{name:'RB · Press and cut',assignment:'Take the handoff and press the wide-zone track. Choose the cut from the leverage of the blocks rather than a fixed opening.',read:'Read the play-side edge and adjacent down lineman; account for backside pursuit. Match the aiming point and footwork to the team’s installation.',cues:['ER','TR','MR']},
-      F:{name:'F · Lead to the play side',assignment:'Lead toward the play side and fit the assigned second-level defender under the team’s blocking rules.',read:'Track the linebacker’s flow and coordinate the fit with Y and the tackle.',cues:['ER','MR']},
-      Z:{name:'Z · Play-side perimeter block',assignment:'Engage the play-side corner with the leverage required by the run track.',read:'Sustain the perimeter block without assuming the runner stays outside. Locate safety support.',cues:['CR','SR']}
+      QB:{name:'QB · Hand off left',assignment:'Complete the handoff from pistol depth and carry out the installed action.',read:'Account for the front and any extra run fitter. Use the installed check if the blocking matchup no longer supports the entry; two-high alone is insufficient.',cues:['EL','TL','ML','SL']},
+      X:{name:'X · Play-side perimeter',assignment:'Carry out the installed perimeter block on the left side.',read:'Track corner and safety support without assuming the runner will reach the edge.',cues:['CL','N','SL']},
+      Y:{name:'Y · Secure the left-side entry',assignment:'Engage on the left side so the runner can enter inside the block, as seen in the SF example.',read:'Watch the edge squeeze and coordinate with the tackle and lead blocker. Exact combination rules are not established by the reviewed frames.',cues:['EL','ML']},
+      RB:{name:'RB · Follow the left-side lead',assignment:'Take the handoff and follow F toward the entry inside Y’s engagement. Read the leverage and space created by the blocks.',read:'Do not assume an open lane from the safety shell. Interior penetration or a squeezed entry can defeat the run; the path shown is illustrative.',cues:['EL','TL','ML']},
+      F:{name:'F · Lead left',assignment:'Lead from the left offset toward the inside entry and engage the defender assigned by the installed rules.',read:'Coordinate with Y and the line. Track the second-level fit and any extra defender arriving in the lane.',cues:['EL','ML','SL']},
+      Z:{name:'Z · Backside perimeter',assignment:'Carry out the installed backside blocking responsibility.',read:'Account for pursuit and safety support; do not assume the backside defender is removed from the play.',cues:['CR','SR']}
     };
     const phaseButtons=['pre','post'].map(value=>{
       const button=el('button',value==='pre'?'Pre-snap':'Post-snap plan');button.type='button';
@@ -115,13 +119,13 @@
       if(isDefense) {
         const defender=defense.find(([id])=>id===selected.slice(2));
         const label=defender[1], side=defender[2]<360?'left':'right';
-        return {name:`${label} · ${label==='N'?'Outside linebacker':label==='S'?'Safety':label==='CB'?'Cornerback':label==='LB'?'Linebacker':'Defensive front'}`,
-          assignment:label==='S'?`The ${side} safety is aligned in a two-high starting shell. Track depth and rotation after the snap.`:label==='N'?'The outside linebacker is aligned to the backside. Track pursuit and responsibility for the cutback.':label==='LB'?`The ${side} linebacker is relevant to the run fit. Observe flow, gap entry, and the response to the lead blocker.`:label==='CB'?`The ${side} corner’s leverage shapes the perimeter block. Track how the corner supports the run after the snap.`:'Identify front alignment and communicate the zone-blocking rules. Track penetration and lateral movement after the snap.',
+        return {name:`${label} · ${label==='DB'?'Nickel defender':label==='S'?'Safety':label==='CB'?'Cornerback':label==='LB'?'Linebacker':'Defensive front'}`,
+          assignment:label==='S'?`The ${side} safety is aligned in a two-high starting shell. Track depth and rotation after the snap.`:label==='DB'?'The nickel defender starts outside the interior front in this example. Track whether that defender becomes an extra unaccounted run fitter.':label==='LB'?`The ${side} linebacker is relevant to the run fit. Observe flow, gap entry, and the response to the lead blocker.`:label==='CB'?`The ${side} corner’s leverage shapes the perimeter block. Track how the corner supports the run after the snap.`:'Identify front alignment and apply the installed blocking rules. Track penetration and compression of the left-side entry.',
           read:'Selecting a defender identifies a read question; confirm the response after the snap.',cues:[defender[0]]};
       }
       if(details[selected])return details[selected];
-      if(selected==='all')return {name:'Wide Zone · Whole play',assignment:'Hand off to RB, stretch the front, and lead F toward the play side. The runner chooses the cut from the blocks.',read:'The board shows a right-side track. Choose the actual direction from front alignment, blocking matchups, and personnel.',cues:['ER','TR','MR']};
-      return {name:`${selected} · ${selected==='C'?'Center':'Offensive line'}`,assignment:selected==='C'?'Identify the front and communicate combination blocks. Execute the snap and the team’s zone step.':'Step on the zone track and work the assigned defender or combination block. Confirm leverage and second-level responsibilities.',read:'Coordinate lateral movement and combinations without leaving penetration lanes. Set exact blocking rules from the defensive front.',cues:['EL','TL','TR','ER']};
+      if(selected==='all')return {name:'Lead Left · Whole play',assignment:'Hand off left from pistol depth. F leads toward the inside entry, with Y attached left. RB follows the leverage of the blocks.',read:'First choice only when the lead and line can account for the front. An extra unaccounted fitter or a squeezed entry removes the run preference.',cues:['EL','TL','ML']};
+      return {name:`${selected} · ${selected==='C'?'Center':'Offensive line'}`,assignment:selected==='C'?'Identify the front, execute the snap and apply the installed combination rules.':'Secure the assigned defender or combination and coordinate the second-level fit under the installed rules.',read:'Preserve the left-side entry without allowing penetration. The reviewed film does not certify iso, duo or zone rules; the schematic does not assign private team responsibilities.',cues:['EL','TL','TR','ER']};
     }
     function draw() {
       const post=phase==='post';
@@ -129,7 +133,7 @@
       phaseButtons.forEach((button,index)=>button.setAttribute('aria-pressed',String((index===1)===post)));
       clearSelection.hidden=selected==='all';
       cueButton.setAttribute('aria-pressed',String(showCues));
-      comparison.textContent='Right-side track · Read leverage · Choose the cut';
+      comparison.textContent='Illustrative lead path · Blocking matchup matters';
       contextTitle.textContent=detail.name;
       contextHead.hidden=selected==='all';contextBody.hidden=selected==='all';
       assignmentLabel.textContent=selected==='QB'?(post?'Handoff & action':'Before the snap'):selected.startsWith('D-')?'Alignment & leverage':'Assignment';
@@ -152,7 +156,7 @@
         const y=226+i*12;
         return svgNode('path',{d:`M40 ${y}h8M672 ${y}h8M319 ${y}h8M393 ${y}h8`});
       });
-      const assignments={RB:'M360 530Q420 510 505 440L520 395Q510 365 480 345',F:'M360 490Q420 465 480 410L490 375',QB:'M360 457L374 490L405 495'};
+      const assignments={RB:'M360 530Q354 505 329 482Q300 459 302 420L310 382',F:'M316 486Q300 456 304 418L325 370',QB:'M360 474L347 497L375 506'};
       routeLegend.textContent=post?'— Run track · – – QB action':assignments[selected]?'– – Assignment preview':'';
       const relevant=showCues?(detail.cues):[];
       const cueAreas=relevant.map(id=>{
@@ -182,13 +186,13 @@
           'data-select-player':label,transform:`translate(${x} ${y})`
         },[hit,marker,svgNode('text',{y:3.5,'text-anchor':'middle'},[label])]);
       });
-      const blocks=post?[[304,418,326,404],[332,418,354,404],[360,418,382,404],[388,418,410,404],[416,418,438,399],[452,418,474,399],[110,418,120,390],[610,454,610,393]].map(([x,y,tx,ty])=>svgNode('path',{d:`M${x} ${y}L${tx} ${ty}m-5-4 10 8` })):[];
+      const blocks=post?[[304,418,314,399],[332,418,336,397],[360,418,350,398],[388,418,386,397],[416,418,435,399],[268,418,278,397],[110,418,110,390],[610,454,610,393]].map(([x,y,tx,ty])=>svgNode('path',{d:`M${x} ${y}L${tx} ${ty}m-5-4 10 8` })):[];
       const markers=[['gold','#d6ae63'],['bone','#c9cdc3']].map(([name,color])=>svgNode('marker',{
         id:`arp-route-${name}`,viewBox:'0 0 10 10',refX:8,refY:5,markerWidth:5,markerHeight:5,orient:'auto'
       },[svgNode('path',{d:'M0 0 10 5 0 10Z',fill:color})]));
       const fieldSvg=svgNode('svg',{
         class:'arp-field arp-football-field',viewBox:'20 218 690 332',tabindex:-1,role:'group',
-        'aria-label':`Wide Zone ${post?'post-snap plan':'pre-snap alignment'}, eleven offensive and eleven defensive players`
+        'aria-label':`Lead Left ${post?'post-snap plan':'pre-snap alignment'}, eleven offensive and eleven defensive players`
       },[
         svgNode('defs',{},markers),
         svgNode('rect',{x:40,y:218,width:640,height:332,fill:'#111a15',stroke:'#ffffff40'}),
@@ -214,7 +218,7 @@
     const matches=plays.filter(play => play.name.toLowerCase().includes(search));
     $('list').replaceChildren(...matches.map(play => {
       const button=el('button',null,'arp-play'); button.type='button'; button.setAttribute('aria-pressed',String(play.id===active.id));
-      button.append(el('strong',play.name),el('span',play.sample?'For team review':play.derived?'Adjustment · Untested':'Draft · Not yet tested'));
+      button.append(el('strong',play.name),el('span',play.sample?'Emerging opportunity':play.derived?'Adjustment · Untested':'Draft · Not yet tested'));
       button.addEventListener('click',()=>{ closeConversation(false);  active=play; render(); say(''); }); return button;
     }));
     if(!matches.length) $('list').append(el('p','No plays match your search.','arp-empty'));
@@ -227,7 +231,7 @@
     parkConversationElements();
     if(conversationPlay&&conversationPlay.id!==active.id){chatLog.replaceChildren();chatSuggestions.replaceChildren();}
     list(); $('name').textContent=active.name;
-    $('subtitle').textContent="Week 9 · Las Vegas Raiders";
+    $('subtitle').textContent=active.sample?'Week 9 · Las Vegas · 1st & 10 · SF35 · Tied Q1':'Week 9 · Las Vegas Raiders';
     $('conversation-back-label').textContent=active.name;
     $('conversation-back').setAttribute('aria-label',`Return to ${active.name}`); $('origin').textContent=active.origin === 'Team playbook' ? '' : active.origin;
     $('origin').hidden=!$('origin').textContent;
@@ -241,7 +245,7 @@
     $('status').setAttribute('aria-label',`${state.label}: ${state.description}`);
     $('intent').textContent=active.intent || 'Define what this play should accomplish.';
     $('assignments').textContent=active.assignments || 'Document assignments and confirm them with the team.';
-    $('next').textContent=active.sample?'Compare runs and stops against the Jets, Rams, and Bills. Confirm run direction, blocking rules, and available personnel.':'Confirm assignments, run it in practice, and attach the results for review.';
+    $('next').textContent=active.sample?'Apply the front and role checks. Pocket dropback stays close; protected play-action moves up when defenders commit downhill. Public personnel snapshot: November 3.':'Confirm assignments, run it in practice, and attach the results for review.';
     const attachment=attachments.get(active.id); const diagram=$('diagram'); diagram.replaceChildren();
     root.querySelector('.arp-intent').hidden=!attachment&&(!!active.sample||!!active.derived);
     if(attachment) {
@@ -262,7 +266,7 @@
       conversationContext=playContext;
       $('conversation-context').textContent=playContext?`${conversationPlay.name} · ${playContext.player} · ${playContext.phase==='pre'?'Pre-snap':'Post-snap plan'}`:`Working with ${conversationPlay.name}`;
       $('conversation-log').replaceChildren();
-      suggestions(playContext?['Walk me through the runner’s read.',`What should I observe for ${playContext.player}?`,'What would we need to see before considering this against Las Vegas?']:['What changed after the Jets game?','Walk me through the runner’s read.','What would we need to see before considering this against Las Vegas?']);
+      suggestions(playContext?['Walk me through the lead action.',`What should I observe for ${playContext.player}?`,'Show the supporting film.']:['Show the supporting film.','Compare the alternatives.','Walk me through the lead action.']);
       $('conversation-input').value='';
     }
     $('detail').hidden=true;
@@ -330,18 +334,30 @@
       return;
     }
     const context=conversationContext;
-    if(/jets|latest game|what changed/i.test(text)) {
-      response('The Jets rushed for 166 yards against Las Vegas, extending the run of 100-yard rushing games to seven. The Raiders also recorded two sacks. Compare the run tracks and blocking on those gains with the plays Las Vegas stopped. Use the Rams and Bills film for additional context.');
-    } else if(/need to see|before considering/i.test(text)) {
-      response('Compare edge leverage, front movement, linebacker flow, and backside pursuit in the Jets, Rams, and Bills games. Include successful runs and stops. Confirm run direction, blocking rules, and available personnel.');
-    } else if(/zone read|runner|cut/i.test(text)) {
-      response('Press the wide-zone track and choose the cut from the leverage of the play-side blocks. Account for backside pursuit. The board shows a right-side example; the front and blocking matchups determine the actual direction.');
-    } else if(/watch|defen|lineback|coverage|read/i.test(text)) {
-      response('Start with the play-side edge and adjacent down lineman, then track linebacker flow and backside pursuit. Compare gains with stops before choosing direction or assigning the lead blocker.');
-    } else if(/assign|player|route|timing|protect/i.test(text)&&context) {
-      response(`${context.assignment} ${context.read} Confirm assignments and terminology with the coaching staff.`);
+    if(!active.sample) {
+      response('This play has no saved matchup review yet. The November 3 recommendation applies to Lead Left in the stated situation; it does not validate a custom draft.');
+    } else if(/why|rank|best|first/i.test(text)) {
+      response('Lead Left is the conditional first choice for 1st-and-10 at SF35, tied in Q1, when the lead and line can account for the front. SF has shown the lead mechanism, and related early-down runs have gained ground against Las Vegas. The pocket pass remains close: our review does not establish a clear effectiveness margin.');
+    } else if(/safety|rotat|two.high|extra fitter/i.test(text)) {
+      response('Two-high alone is not a keep signal: the Jets lost a yard on a run with safeties initially deep. If rotation adds an unaccounted fitter or squeezes the entry, the run loses its preference. Use the installed alternative only when its protection and route answer fit; rotation does not automatically open the crossing route.');
+    } else if(/pressure|blitz|rush|hot/i.test(text)) {
+      response('Separate an actual added rusher from a crowded line that drops defenders. The review includes four-man rushes with linebackers underneath, so do not force an assumed hot throw into a dropping defender. Account for the actual pressure in the installed protection; no specific SF hot rule is claimed.');
+    } else if(/never|new play|novel|experimental|categor|validat/i.test(text)) {
+      response('The lead action is familiar SF execution. The Las Vegas matchup is an emerging opportunity; no exact candidate has reached validated advantage. A protected play-action counter from the same 21-personnel look is experimental until that combination is tested. This review cannot establish that SF has never used it.');
+    } else if(/personnel|injur|available|availability|backup|replacement|buck|mccaffrey|black/i.test(text)) {
+      response('Use public information through November 3 and assess the required roles: runner, lead blocker, attached tight end and line. A replacement is not automatically a downgrade. If an essential job is unsupported, rerank the alternatives. Buckner’s defensive-line acquisition does not directly change this fixed Purdy offensive decision.');
+    } else if(/alternative|compar|play.action|counter|dropback/i.test(text)) {
+      response('Pocket dropback with underneath releases ranks second and can move first when the run fit is unfavorable and protection supports the pass. Protected play-action with a TE cross ranks third and can move first against supported downhill commitment. These are conditional alternatives; there is no measured superiority or success probability.');
+    } else if(/evidence|film|source|jets|latest game|what changed|stop|loss|need to see/i.test(text)) {
+      const answer=response('SF’s lead-left anchor is Washington Q1 13:22: 8 yards on second-and-six. The added Jets possession includes runs of −1, 5 and 4. All eight official results are retained, with matched partial film notes for four snaps. The loss challenges an automatic two-high run call; different action prevents treating it as an exact failure of SF’s lead left.');
+      const source=el('a','Official Jets–Raiders gamebook ↗');
+      source.href='https://static.www.nfl.com/image/upload/v1793617587/gamecenter/ab1661ac-4feb-11f1-abca-2c54536568a9.pdf';source.target='_blank';source.rel='noopener';answer.append(source);
+    } else if(/runner|lead action|cut/i.test(text)) {
+      response('Take the handoff and follow the fullback’s left-side lead toward the entry inside the attached tight end’s engagement. Read the space created by those blocks. Interior penetration, a squeezed lane or an extra unaccounted fitter can defeat the run. The path is illustrative, not a certified SF assignment sheet.');
+    } else if(/assign|player|route|timing|protect|observe/i.test(text)&&context) {
+      response(`${context.assignment} ${context.read}`);
     } else {
-      response('Las Vegas has allowed 1,171 rushing yards at 5.1 yards per carry. The Jets added 166 in the latest game. That supports prioritizing the run for review. Confirm the front, blocking matchups, and McCaffrey’s availability before setting the personnel and direction.');
+      response('This recommendation is an emerging opportunity for 1st-and-10 at SF35, tied in Q1. I can explain the supporting film, run stops, alternatives, safety rotation, pressure or personnel scenarios from the November 3 review.');
     }
     scrollConversation();
   }
