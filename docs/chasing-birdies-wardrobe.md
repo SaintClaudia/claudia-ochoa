@@ -38,3 +38,7 @@ existing `images/birdies-glove-13.webp` catalog reference: smooth white leather,
 simple wrist fastening, and the scarlet mark on the back of the hand. These were
 localized edits of the approved cutouts. The football uniform, its athletic
 numbering, and the black polo’s 49ers logo are unchanged.
+
+The glove mark was subsequently reduced to approximately 75% of its previous
+width and height, both on the worn glove and in its catalog thumbnail. Polo
+branding and football numbering were preserved.
