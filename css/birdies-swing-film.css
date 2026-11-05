@@ -17,8 +17,10 @@
 .cb-film-overview h3{margin:0 0 8px;font-size:clamp(16px,1.45vw,21px);font-weight:500;letter-spacing:-.025em}
 .cb-film-course-details{margin:0 0 14px;color:#c3cbbf;font-size:11px;line-height:1.6}
 .cb-film-course-details span{white-space:nowrap}
-.cb-film-overview img{display:block;width:100%;height:auto;aspect-ratio:2/3;object-fit:cover;border-radius:6px}
-@media(max-width:1000px){.cb-film-overview{padding:13px}.cb-film-overview img{aspect-ratio:1/1;object-position:center 30%}}
+.cb-film-map{display:block;width:100%;height:auto;aspect-ratio:2/3;overflow:hidden;border-radius:6px}
+.cb-film-overview.is-landed .cb-film-distance{color:#e4bf66}
+.cb-film-distance{font-variant-numeric:tabular-nums}
+@media(min-width:701px) and (max-width:1000px){.cb-film-overview{padding:13px}.cb-film-map{max-height:180px}}
 @media(max-width:700px){
  .cb-film-stage{aspect-ratio:auto}
  .cb-film-video{height:auto;aspect-ratio:16/9}
@@ -26,9 +28,9 @@
  .cb-film-controls{position:static;gap:14px;padding:14px var(--gutter)}
  .cb-film-toggle{padding:9px 12px;font-size:11px}
  .cb-film-caption{font-size:11px}.cb-film-caption span{font-size:9px}
- .cb-film-overview{position:static;display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:18px;width:auto;margin:0;padding:20px var(--gutter);border:0;border-radius:0;background:#0d1913}
- .cb-film-overview-label{grid-column:1;margin-bottom:5px;font-size:8px}
- .cb-film-overview h3{grid-column:1;margin:0;font-size:17px}
- .cb-film-course-details{grid-column:2;grid-row:1/3;margin:0;text-align:right;font-size:11px}
- .cb-film-overview img{display:none}
+ .cb-film-overview{position:static;display:grid;grid-template-columns:minmax(0,1fr) 112px;grid-template-rows:auto auto 1fr;align-items:start;column-gap:18px;width:auto;margin:0;padding:20px var(--gutter);border:0;border-radius:0;background:#0d1913}
+ .cb-film-overview-label{grid-column:1;margin-bottom:8px;font-size:8px}
+ .cb-film-overview h3{grid-column:1;margin:0 0 12px;font-size:17px}
+ .cb-film-course-details{grid-column:1;grid-row:3;margin:0;font-size:11px}
+ .cb-film-map{grid-column:2;grid-row:1/4}
 }

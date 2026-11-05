@@ -76,9 +76,9 @@
 <!-- PORTFOLIO-NAV-ASSETS:END -->
 <link rel="stylesheet" href="/css/chasing-birdies-story.css?v=55">
 <link rel="stylesheet" href="/css/birdies-roster.css?v=1">
-<link rel="stylesheet" href="/css/birdies-swing-film.css?v=1">
+<link rel="stylesheet" href="/css/birdies-swing-film.css?v=2">
 <script defer src="/js/chasing-birdies-story.js?v=32"></script>
-<script defer src="/js/birdies-swing-film.js?v=1"></script>
+<script defer src="/js/birdies-swing-film.js?v=2"></script>
 <link rel="stylesheet" href="/css/birdies-screens.css?v=10">
 <script defer src="/js/birdies-screens.js?v=4"></script>
 </head>
@@ -121,8 +121,15 @@
   <aside class="cb-film-overview" aria-label="Coastal par 3 course overview">
     <p class="cb-film-overview-label">COURSE OVERVIEW</p>
     <h3>Coastal par 3</h3>
-    <p class="cb-film-course-details"><span>106 yards</span> · <span>8 MPH</span></p>
-    <img src="/images/birdies-coastal-par3-aerial.png" width="1024" height="1536" alt="Overhead view of the coastal hole" loading="lazy" decoding="async">
+    <p class="cb-film-course-details"><span class="cb-film-distance">106 yards</span> · <span>8 MPH</span></p>
+    <svg class="cb-film-map" viewBox="0 0 1024 1536" role="img" aria-label="Overhead view of the coastal hole">
+      <image href="/images/birdies-coastal-par3-aerial.png" width="1024" height="1536"/>
+      <g class="cb-film-shot-marker" opacity="0">
+        <path class="cb-film-pin-distance" fill="none" stroke="#f3f3ed" stroke-width="1.2" stroke-dasharray="4 4" opacity=".75"/>
+        <circle cx="717" cy="431" r="3" fill="#152318" stroke="#e4bf66" stroke-width="1.5"/>
+        <circle class="cb-film-map-ball" cx="706" cy="450" r="4" fill="#fff" stroke="#354d30" stroke-width="1.2"/>
+      </g>
+    </svg>
   </aside>
 </section>
 <section class="cs-split" id="overview" aria-labelledby="overview-title">

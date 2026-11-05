@@ -18,7 +18,8 @@ swapping with one continuous generated shot of Brock Purdy on the coastal tee.
   Task: `edd9a042-ad32-4195-82e8-71f37d350dce`.
 - This is generated concept footage, not a recording of Brock Purdy or a
   reconstruction of a measured swing. Course distance and wind are concept UI.
-  The old scripted landing marker and ball-flight result are not overlaid on it.
+  The course inset preserves the original illustrative six-foot finish; its
+  marker and distance are concept UI, not measurements taken from the video.
 
 Official likeness and proportion references:
 
@@ -35,7 +36,12 @@ offscreen or in a hidden tab, keeps a deliberate user pause, and holds the finis
 until Replay is selected. Reduced-motion visitors see the poster and can
 deliberately start playback. Native video controls provide the no-JavaScript
 fallback. On phones, controls and course details sit below the complete video
-frame. Desktop retains the course-overview inset.
+frame. Desktop retains the course-overview inset, while phones show a compact
+map beside the course details below the video. The inset uses the video's clock
+to zoom into the green after contact (2.45 seconds), follow the landing (4.65
+seconds), and hold the six-foot result (5.8 seconds). Pause freezes both views;
+replay resets both. Reduced-motion playback changes to the close-up without a
+zoom animation and reveals the settled marker at landing.
 
 ## Review
 
