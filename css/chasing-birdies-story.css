@@ -168,6 +168,7 @@
 .cb-locked-player{position:relative;padding:14px;border:1px solid #d6ae6366;border-radius:10px;background:#0a140cc4}
 .cb-locked-head{display:flex;gap:12px;align-items:center;padding-right:44px}
 .cb-locked-head img{width:46px;height:60px;object-fit:contain;background:#263d2e;border-radius:6px;flex-shrink:0}
+.cb-locked-portrait{display:block;width:50px;height:64px;background:#263d2e;border-radius:6px;overflow:hidden}
 .cb-locked-head .cb-select-label{font-size:9px;margin:0 0 5px}
 .cb-locked-head strong{display:block;font-size:16px;letter-spacing:-.02em}
 .cb-locked-head small{display:block;font-size:11px;color:#b6c0b2;margin-top:3px}
