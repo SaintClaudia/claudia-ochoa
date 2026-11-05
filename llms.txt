@@ -12,7 +12,7 @@ For structured access, connect an MCP client to [the public portfolio MCP endpoi
 
 - [Ask Read](https://claudiaochoa.co/work/ask-read.html): A football film-study product that uses computer vision to turn a week of opponent film into a short, evidence-backed briefing for the quarterback.
 
-- [Chasing Birdies](https://claudiaochoa.co/work/chasing-birdies.html): A golf simulation featuring the Niners on iconic courses.
+- [Chasing Birdies](https://claudiaochoa.co/work/chasing-birdies.html): A golf simulation concept led by Brock Purdy, with a 16-player roster of football stars and legends on iconic courses.
 - [Brock Purdy 13](https://claudiaochoa.co/work/brock-purdy-13.html): A fragrance and grooming collection, with packaging and visual identity built around his signature number.
 
 ## Profile

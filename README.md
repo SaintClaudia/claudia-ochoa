@@ -104,6 +104,15 @@ when deployed.
 
 ## Chasing Birdies
 
+The portfolio story at `work/chasing-birdies.html` presents Chasing Birdies with
+Brock Purdy as its lead and a 16-player concept roster spanning teams and eras.
+The roster uses four staggered desktop columns, three on tablet, and two on phones;
+its gentle scroll motion respects reduced-motion preferences. Golf portraits carry
+current-team or last-played-for logos, while the separate customization sequence
+retains football uniforms. Artwork provenance and team assignments are recorded in
+`images/birdies-roster-artwork.md`. This concept roster is separate from the existing
+three-character playable prototype described below.
+
 An independent, buildless arcade golf game at `games/chasing-birdies/index.html`.
 Compatibility pages redirect the former misspelled game and player-gallery URLs
 to the corrected path on GitHub Pages. The site Worker also includes a permanent
