@@ -29,3 +29,12 @@ geometric or facial retouching was applied during export.
 Official identity reference: https://www.49ers.com/team/players-roster/brock-purdy/
 
 These are generated concept assets. Reference photos are not published assets.
+
+## Brand mark correction
+
+The ivory polo and worn golf glove use the supplied Brock Purdy 13 signature
+mark from “Brock Purdy 13 Branding Moodboard.png.” The glove follows the
+existing `images/birdies-glove-13.webp` catalog reference: smooth white leather,
+simple wrist fastening, and the scarlet mark on the back of the hand. These were
+localized edits of the approved cutouts. The football uniform, its athletic
+numbering, and the black polo’s 49ers logo are unchanged.
