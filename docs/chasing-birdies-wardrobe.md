@@ -42,3 +42,7 @@ numbering, and the black polo’s 49ers logo are unchanged.
 The glove mark was subsequently reduced to approximately 75% of its previous
 width and height, both on the worn glove and in its catalog thumbnail. Polo
 branding and football numbering were preserved.
+
+The catalog glove thumbnail was then restored byte-for-byte to its original
+white 13 glove cutout at the owner’s request. The smaller signature mark on
+Brock’s worn glove and all three character images remain unchanged.
