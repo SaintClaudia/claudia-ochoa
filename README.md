@@ -104,6 +104,12 @@ when deployed.
 
 ## Chasing Birdies
 
+The portfolio swing section uses a 6.8-second, locally hosted H.264 concept film
+with a reference-based Brock Purdy likeness. It plays once when visible, pauses
+offscreen, offers pause/replay controls, and stays still for reduced-motion
+visitors until they choose to play. Native controls remain available without
+JavaScript. See `docs/chasing-birdies-swing-film.md` for provenance and review.
+
 The portfolio story at `work/chasing-birdies.html` presents Chasing Birdies with
 Brock Purdy as its lead and a 16-player concept roster spanning teams and eras.
 The roster uses four staggered desktop columns, three on tablet, and two on phones;
