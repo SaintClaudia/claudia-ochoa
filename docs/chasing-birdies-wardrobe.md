@@ -46,3 +46,10 @@ branding and football numbering were preserved.
 The catalog glove thumbnail was then restored byte-for-byte to its original
 white 13 glove cutout at the owner’s request. The smaller signature mark on
 Brock’s worn glove and all three character images remain unchanged.
+
+## Portrait transition
+
+Outfit changes swap the complete portraits directly. The former simultaneous
+opacity fade and eight-pixel vertical slide doubled facial details and changed
+their apparent lighting during the transition. Selection highlights retain
+their subtle animation; portrait assets, framing, and scroll timing are unchanged.
