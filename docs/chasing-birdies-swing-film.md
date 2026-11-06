@@ -7,7 +7,7 @@ swapping with one continuous generated shot of Brock Purdy on the coastal tee.
 ## Assets and provenance
 
 - `media/birdies-swing-film.mp4`: 1920 × 1080 H.264, silent, 6.79 seconds, about
-  4.2 MB, fast-start MP4. The source render was trimmed from 1.3 seconds through
+  3.8 MB, fast-start MP4. The source render was trimmed from 1.3 seconds through
   8.1 seconds and encoded with libx264 CRF 20; two-pixel side padding preserves
   the source proportions. No motion interpolation or synthetic intermediate
   frames were added during export.
@@ -55,3 +55,20 @@ ball-flight accuracy.
 ## Video prompt
 
 One continuous locked-camera shot of Brock Purdy performing exactly one realistic right-handed pitching-wedge golf swing, starting from this exact reference frame. Preserve his recognizable face, short brown hair, natural athletic build, black 49ers golf polo, tan trousers and white shoes throughout. The additional headshot is a facial-identity reference only; keep the golf clothing and coastal scene from the starting frame. For the first 1.5 seconds he settles quietly at address, eyes on the ball. He makes a controlled backswing with connected shoulder and hip rotation, then a faster downswing and crisp contact with the white ball. Both hands stay on one consistent club grip: white glove on his LEFT hand above his bare RIGHT hand, wrists moving naturally together. The wedge keeps one straight shaft and the same small metal head. His weight transfers to his lead left leg, his trail right heel lifts naturally, and he rotates into a balanced finish, watching the shot toward the green. Hold that finish for the remaining seconds with subtle breathing. His face and physique remain the same person during every phase. Preserve the course layout, ocean, pond, green and flag. Gentle ocean and flag motion. Realistic daylight, fabric and skin, high-quality sports-game cinematic. Fixed camera and constant lens; one full-body shot with the complete club swing inside frame. No cuts or camera orbit, no text or interface, no extra people, no repeated swings.
+
+## Signature glove correction
+
+The white glove now carries the existing `images/purdy-13-mark.svg` signature
+mark in scarlet. The mark is fixed to the leather with its top toward the wrist,
+so it is upright at address and inverted in the raised-hand finish.
+
+The final correction uses the original film with local video compositing.
+Tracked affine transforms follow the visible glove during address and finish;
+the mark respects finger/shoulder occlusion and the source motion blur. The
+old emblem is removed only within its tracked glove patch. The fast, occluded
+portion of the swing retains its original footage. The poster is regenerated
+from the corrected first frame.
+
+The delivery remains 163 frames at 24 fps, 1920 × 1080, silent, 6.791667 seconds,
+with fast-start H.264 (libx264 CRF 18). No frame is added, removed, or retimed.
+The existing synchronized course close-up and six-foot result are unchanged.
