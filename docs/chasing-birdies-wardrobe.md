@@ -11,7 +11,8 @@ athletic proportions, and soft daylight matching the newer swing presentation.
 - `images/birdies-purdy-cohesive-ivory.webp`: ivory signature 13 polo, matching
   trousers and shoes, both hands bare.
 - `images/birdies-purdy-cohesive-game-day.webp`: scarlet number 13 uniform,
-  gold pants, white cleats, and a helmet held in the right hand.
+  gold pants, white Adidas cleats with black three stripes and red studs,
+  and a helmet held in the right hand.
 
 All assets are 1024 × 1536 with transparency. The small player portrait crops
 the black-polo master through an SVG viewBox, so it shares the same face without
@@ -53,3 +54,8 @@ Outfit changes swap the complete portraits directly. The former simultaneous
 opacity fade and eight-pixel vertical slide doubled facial details and changed
 their apparent lighting during the transition. Selection highlights retain
 their subtle animation; portrait assets, framing, and scroll timing are unchanged.
+
+The game-day cleats were restored to the earlier Adidas design with a localized
+footwear edit of the current cutout. The current likeness, red socks, uniform
+numbering and clothing marks are retained; golf looks and the swing film are
+unchanged.
