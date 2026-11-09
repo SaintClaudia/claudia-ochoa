@@ -117,6 +117,7 @@
       const lift = Math.sin(progress * Math.PI) * viewport.offsetHeight * .04;
       cursor.style.transform = `translate(${startX + (endX - startX) * eased}px, ${startY + (endY - startY) * eased - lift}px)`;
     }
+    let deviceVisible = false;
     let elapsed = 0;
     let previous = 0;
     let frame = 0;
@@ -172,7 +173,7 @@
     function tick(now) {
       frame = 0;
       if (reduced.matches) { setDemo(0); previous = 0; return; }
-      if (!document.hidden && askRead.classList.contains('is-visible')) elapsed += previous ? Math.min(now - previous, 100) : 0;
+      if (!document.hidden && deviceVisible) elapsed += previous ? Math.min(now - previous, 100) : 0;
       previous = now;
       setDemo(elapsed % loopLength);
       frame = requestAnimationFrame(tick);
@@ -181,8 +182,22 @@
       if (frame) cancelAnimationFrame(frame);
       if (seasonEvidence?.open) { frame = 0; return; }
       previous = 0;
+      elapsed = 0;
+      frame = 0;
       setDemo(0);
-      if (!reduced.matches) frame = requestAnimationFrame(tick);
+      if (!reduced.matches && deviceVisible) frame = requestAnimationFrame(tick);
+    }
+    // The introduction can be visible long before the device. Start only when
+    // a meaningful part of the screen is visible, and reset when it leaves.
+    const device = askRead.querySelector('.askread-tablet');
+    if (device && 'IntersectionObserver' in window) {
+      const deviceObserver = new IntersectionObserver(([entry]) => {
+        const visible = entry.isIntersecting && entry.intersectionRatio >= .25;
+        if (visible === deviceVisible) return;
+        deviceVisible = visible;
+        startDemo();
+      }, { threshold: [0, .25] });
+      deviceObserver.observe(device);
     }
     startDemo();
     reduced.addEventListener('change', startDemo);

@@ -30,3 +30,26 @@ html.menu-is-open{overflow:hidden}
 @media(prefers-reduced-motion:reduce){.site-header,.nav-menu-icon-divider,.nav-menu-icon-arrow,.site-menu nav a,.site-menu nav a.sub:before{transition:none}}
 .site-menu.is-pointer-opened .site-menu-close:focus-visible,.site-menu-toggle.is-pointer-focus:focus-visible{outline:none}
 @media(max-width:800px){.site-menu{width:100%;border-left:0;box-shadow:none;padding:88px calc(clamp(24px,4vw,80px) - 12px) 32px}}
+
+/* Full-screen navigation: oversized destinations beside the project index. */
+.site-menu{inset:0;width:100%;max-width:none;height:100dvh;max-height:none;margin:0;padding:30px clamp(24px,5.6vw,100px) 32px;background:#0a0b0b;border:0;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;color:#f5f5f1}
+.site-menu[open]{display:flex;flex-direction:column;animation:menu-enter .28s ease-out}
+.site-menu::backdrop{background:#0a0b0b}
+
+.menu-layout{display:grid;grid-template-columns:1.15fr 1fr;align-items:center;gap:10vw;flex:1;padding-block:72px}
+.site-menu .menu-primary{gap:8px}
+.site-menu .menu-primary a{width:fit-content;padding:0;border-radius:0;font-size:clamp(64px,8.5vw,140px);line-height:1.08;font-weight:400;letter-spacing:-.065em;color:#f5f5f1;transition:color .2s,transform .2s}
+.site-menu .menu-primary a:is(:hover,:focus-visible){background:none;color:#d7c8a5;transform:translateX(8px)}
+.site-menu .menu-primary a[aria-current]::after{content:'';width:8px;height:8px;margin-left:12px;border-radius:50%;background:#d7c8a5}
+.site-menu .menu-projects{gap:0}
+.menu-label{margin:0 0 24px;font-size:13px;font-weight:400;letter-spacing:0;color:#929795}
+.site-menu .menu-projects a{display:grid;grid-template-columns:20px 1fr 24px;gap:16px;padding:24px 0;border-top:1px solid #ffffff26;border-radius:0;font-size:clamp(20px,2.1vw,32px);font-weight:400;line-height:1.2;letter-spacing:-.035em;color:#f5f5f1;transition:color .2s}
+.site-menu .menu-projects a:last-child{border-bottom:1px solid #ffffff26}
+.site-menu .menu-projects a:is(:hover,:focus-visible){background:none;color:#d7c8a5}
+.menu-project-number{font-size:11px;letter-spacing:0;color:#929795;align-self:start;padding-top:5px}
+.menu-projects small{display:block;margin-top:9px;color:#929795;font-size:13px;line-height:1.4;letter-spacing:0}
+.menu-project-arrow{font-size:20px;justify-self:end}
+.menu-footer{padding-top:24px;border-top:1px solid #ffffff26;font-size:14px;letter-spacing:-.02em;color:#929795}
+@keyframes menu-enter{from{opacity:0;translate:0 -12px}to{opacity:1;translate:0 0}}
+@media(max-width:800px){.site-menu{padding:24px clamp(24px,5.6vw,100px) 28px}.menu-layout{grid-template-columns:1fr;gap:44px;padding-block:40px;align-content:center}.site-menu .menu-primary a{font-size:clamp(52px,11vw,84px)}.site-menu .menu-projects a{padding:17px 0;font-size:22px}.menu-label{margin-bottom:18px}.menu-footer{font-size:13px}}
+@media(prefers-reduced-motion:reduce){.site-menu[open]{animation:none}.site-menu .menu-primary a,.site-menu .menu-projects a{transition:none}.site-menu .menu-primary a:is(:hover,:focus-visible){transform:none}}

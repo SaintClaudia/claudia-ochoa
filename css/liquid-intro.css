@@ -1,0 +1,115 @@
+/* The homepage study: one continuous wordmark, driven by native page scroll. */
+.work-page .site-header{justify-content:flex-end;transform:none!important;background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none}
+.work-page .site-header .signature{display:none}
+.work-page .site-menu-toggle{color:var(--ink)}
+.work-page.intro-passed .site-menu-toggle{color:var(--paper)}
+.work-page .site-menu-toggle:focus-visible{outline-color:currentColor}
+.liquid-intro{position:relative;z-index:2;height:auto;margin-bottom:calc(-1 * clamp(24px,5vw,80px));background:transparent;color:var(--ink)}
+.liquid-intro-stage{position:relative;height:100svh;min-height:540px;overflow:hidden;background:#fff;border-radius:0;clip-path:inset(0 round 0 0 var(--intro-radius,0px) var(--intro-radius,0px));isolation:isolate}
+.liquid-intro-copy{position:absolute;z-index:2;left:5.6vw;top:20svh}
+.liquid-intro h1{margin:0;font-size:clamp(58px,7.8vw,120px);font-weight:400;line-height:.94;letter-spacing:-.075em}
+.liquid-intro-copy p{margin:clamp(28px,4svh,54px) 0 0;font-size:clamp(19px,2.35vw,34px);line-height:1.28;letter-spacing:-.035em;font-weight:400}
+.liquid-explore{display:inline-flex;align-items:center;gap:22px;margin-top:clamp(28px,5svh,70px);font-size:11px;font-weight:500;letter-spacing:.24em;text-transform:uppercase}
+.liquid-explore:focus-visible{outline-color:var(--ink)}
+.liquid-wordmark-window{position:absolute;inset:auto 0 0;height:34svh;overflow:hidden;pointer-events:none}
+.liquid-wordmark{position:absolute;left:-2vw;top:0;width:max(237.74vw,307.08svh);height:auto;aspect-ratio:4200/493;background:var(--ink);mask:url('/images/claudia-ochoa-liquid-wordmark.svg?v=2') center/100% 100% no-repeat;-webkit-mask:url('/images/claudia-ochoa-liquid-wordmark.svg?v=2') center/100% 100% no-repeat;will-change:transform}
+@media(min-aspect-ratio:17/10){.liquid-intro-copy{top:16svh}.liquid-intro h1{font-size:clamp(58px,10svh,108px)}.liquid-intro-copy p{font-size:clamp(18px,2.8svh,28px)}.liquid-explore{margin-top:3svh}}
+@media(max-width:800px){.liquid-intro-copy{top:22svh}.liquid-intro h1{font-size:10.4vw}.liquid-intro-copy p{font-size:3.15vw;margin-top:4.5svh}.liquid-explore{font-size:clamp(9px,1.4vw,13px);margin-top:6svh}}
+@media(max-width:520px){.liquid-intro h1{font-size:12vw}.liquid-intro-copy p{font-size:clamp(16px,3.7vw,20px)}.liquid-explore{margin-top:5svh}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.liquid-intro{height:auto;margin-bottom:0}.liquid-wordmark{width:100%;left:0;bottom:0;transform:none!important;will-change:auto}}
+/* Reserve the bottom third; crop the artwork without distorting its proportions. */
+@media(min-width:801px){.liquid-intro-copy{top:15svh}.liquid-intro h1{font-size:min(7.8vw,10svh)}.liquid-intro-copy p{font-size:min(2.35vw,2.5svh);margin-top:3svh}.liquid-explore{margin-top:3svh}}
+@media(prefers-reduced-motion:reduce){.liquid-wordmark{top:auto;height:auto;aspect-ratio:4200/493;bottom:0}}
+
+/* Original homepage arrow and its gentle two-second bob. */
+.liquid-explore .work-intro-arrow{display:inline-block;font-size:24px;line-height:1;letter-spacing:0;color:var(--ink);transition:transform .2s;animation:work-intro-arrow-bob 2s ease-in-out infinite}
+.liquid-explore:hover .work-intro-arrow{transform:translateY(4px)}
+@keyframes work-intro-arrow-bob{0%,100%{translate:0 0}50%{translate:0 6px}}
+@media(prefers-reduced-motion:reduce){.liquid-explore .work-intro-arrow{animation:none;transition:none}.liquid-explore:hover .work-intro-arrow{transform:none}}
+
+/* Keep the introduction in Inter with a quieter scroll cue. */
+.liquid-intro{font-family:Inter,Arial,sans-serif}
+.liquid-intro h1{letter-spacing:-.055em}
+.liquid-intro-copy p{letter-spacing:-.02em}
+.liquid-explore{font-family:inherit;font-size:15px;font-weight:400;letter-spacing:0;text-transform:none;gap:16px}
+.liquid-explore .work-intro-arrow{font-family:Inter,Arial,sans-serif}
+@media(max-width:520px){.liquid-explore{font-size:14px}}
+
+/* Ask Read emerges onto the same ink used by the CLAUDIA wordmark. */
+.work-page .story-askread .story-panel{background:var(--ink)}
+.work-page .story-askread .story-panel::before,.work-page .story-askread .story-panel::after{content:none;animation:none}
+.work-page .story-askread .story-shade{background:none}
+
+/* A quiet, centered introduction precedes the Ask Read product screen. */
+.work-page .story-askread{height:auto;min-height:0}
+.work-page .story-askread .story-panel{position:relative;display:flex;flex-direction:column;height:auto;min-height:100svh;padding:clamp(150px,22svh,260px) var(--gutter) 40px;overflow:hidden}
+.work-page .story-askread .story-copy{position:relative;inset:auto;width:100%;max-width:1000px;margin:0 auto clamp(80px,12svh,150px);text-align:center;transform:none;opacity:1;will-change:auto}
+.work-page .story-askread .project-eyebrow{justify-content:center;margin-bottom:28px}
+.work-page .story-askread .story-copy>h2{font-size:clamp(48px,7.5vw,112px);line-height:1.05;margin-bottom:28px}
+.work-page .story-askread .project-summary{max-width:580px;margin:0 auto;font-size:clamp(16px,1.4vw,20px);line-height:1.65}
+.work-page .story-askread .project-art{position:relative;inset:auto;flex:none;width:min(100%,1120px);min-height:0;margin:0 auto;container-type:normal;transform:none}
+.work-page .story-askread .askread-stage{position:relative;inset:auto;width:100%;height:auto;margin:0;translate:none;aspect-ratio:auto}
+.work-page .story-askread .story-shade{display:none}
+.work-page .story-askread .project-footer{position:relative;inset:auto;width:100%;margin-top:120px;gap:24px}
+@media(max-width:800px){.work-page .story-askread .story-panel{padding-top:150px}.work-page .story-askread .story-copy{margin-bottom:70px}.work-page .story-askread .project-eyebrow{font-size:11px;gap:12px}.work-page .story-askread .project-summary{max-width:440px}.work-page .story-askread .project-footer{margin-top:80px}}
+
+.work-page .story-askread .story-copy>.case-link{margin-top:30px}
+
+/* Clip the composed panel once so white cannot bleed through the black lettering at rounded edges. */
+
+/* The black briefing lifts away to reveal a quiet field of green. */
+.work-page .story-askread{z-index:1;background:#071716;margin-bottom:calc(-1 * clamp(24px,5vw,80px))}
+.work-page .story-askread .story-panel{padding-bottom:clamp(80px,8vw,140px);clip-path:inset(0 round 0 0 var(--project-radius,0px) var(--project-radius,0px));isolation:isolate}
+.work-page .story-birdies{height:auto;min-height:0;background:#071716}
+.work-page .story-birdies .story-panel{position:relative;display:flex;flex-direction:column;height:auto;min-height:100svh;padding:clamp(150px,22svh,260px) var(--gutter) 48px;background:#071716;overflow:hidden}
+.work-page .story-birdies .story-shade{display:none}
+.work-page .story-birdies .story-copy{position:relative;inset:auto;width:100%;max-width:1100px;margin:0 auto clamp(24px,4svh,48px);text-align:center;transform:none;opacity:1;will-change:auto}
+.work-page .story-birdies .project-eyebrow{justify-content:center;margin-bottom:28px}
+.work-page .story-birdies .story-copy>h2{font-size:clamp(48px,7vw,104px);line-height:1.05;margin-bottom:28px}
+.work-page .story-birdies .project-summary{max-width:600px;margin:0 auto;font-size:clamp(16px,1.4vw,20px);line-height:1.65}
+.work-page .story-birdies .story-copy>.case-link{margin-top:30px}
+.work-page .story-birdies .project-art{position:relative;inset:auto;flex:none;width:min(100%,1120px);aspect-ratio:1.4;min-height:0;margin:0 auto;container-type:normal;transform:none;will-change:auto}
+.work-page .story-birdies .birdies-stage{position:absolute;inset:0;width:100%;height:100%;margin:0}
+.work-page .birdies-stage .commerce-desktop{width:82%;right:1%;top:12%}
+.work-page .birdies-stage .commerce-phone{width:26%;left:2%;top:8%}
+.work-page .story-birdies .art-layer{transform:none!important;will-change:auto}
+.work-page .story-birdies .project-footer{position:relative;inset:auto;width:100%;margin-top:100px;gap:24px}
+@media(max-width:800px){.work-page .story-birdies .story-panel{padding-top:150px}.work-page .story-birdies .story-copy{margin-bottom:24px}.work-page .story-birdies .project-eyebrow{font-size:11px;gap:12px}.work-page .story-birdies .project-footer{margin-top:64px}.work-page .story-birdies .project-summary{max-width:440px}}
+
+/* Continue the reveal through the heading and devices as the page scrolls. */
+.work-page .story-birdies .story-copy{transform:translate3d(0,var(--birdies-copy-y,0px),0);will-change:transform}
+.work-page .story-birdies .birdies-stage{transform:translate3d(var(--birdies-art-x,0px),0,0) scale(var(--birdies-art-scale,1));transform-origin:50% 50%;will-change:transform}
+@media(prefers-reduced-motion:reduce){.work-page .story-birdies .story-copy,.work-page .story-birdies .birdies-stage{transform:none;will-change:auto}}
+
+/* Pale grass green headline against the deep green background. */
+.work-page .story-birdies .story-copy>h2{color:#BEC794}
+
+/* Neutral graphite hardware: the screen and depth share the same rotation. */
+.work-page .birdies-stage .commerce-desktop{--frame-radius:clamp(12px,1.65vw,23px);--frame-padding:clamp(5px,.65vw,9px);--commerce-angle:0deg;--commerce-tilt:0deg;--commerce-roll:0deg;--device-float:9px}
+.work-page .birdies-stage .commerce-phone{--frame-radius:clamp(15px,2.2vw,31px);--frame-padding:clamp(4px,.55vw,7px);--commerce-angle:16deg;--commerce-tilt:6deg;--commerce-roll:-8deg;--device-float:14px}
+.work-page .birdies-stage .commerce-body{filter:none;transform-style:preserve-3d}
+.work-page .birdies-stage .commerce-screen{filter:none;background:linear-gradient(125deg,#4e5555 0%,#24292a 12%,#101414 48%,#242929 85%,#414747);box-shadow:inset 0 0 0 1px #bfc9c044,inset 0 2px 2px #ffffff18;overflow:visible;transform:translateZ(1px)}
+.work-page .birdies-stage .commerce-screen [data-birdies-screen]{position:relative;overflow:hidden;border-radius:calc(var(--frame-radius) - var(--frame-padding));background:#080d0b;box-shadow:0 0 0 1px #000,inset 0 0 0 1px #ffffff0a}
+.work-page .birdies-stage .commerce-screen::after{content:"";position:absolute;inset:var(--frame-padding);z-index:5;pointer-events:none;border-radius:calc(var(--frame-radius) - var(--frame-padding));background:linear-gradient(125deg,#ffffff0c,transparent 36%,transparent 72%,#ffffff03);box-shadow:inset 0 1px 0 #ffffff20;transform:translateZ(.2px)}
+.work-page .birdies-stage :is(.birdies-chassis,.phone-chassis){position:absolute;inset:0;transform-style:preserve-3d;pointer-events:none}
+.work-page .birdies-stage :is(.birdies-chassis,.phone-chassis)>span{position:absolute;inset:0;border-radius:var(--frame-radius);background:linear-gradient(120deg,#777f7d,#303737 16%,#151b1b 45%,#404746 88%,#707876);border:1px solid #58605c;transform:translateZ(calc(var(--slice) * -.6px))}
+.work-page .birdies-stage :is(.birdies-chassis,.phone-chassis)>span:last-child{background:#1a201e;border-color:#303835;box-shadow:2px 3px 4px #0007,10px 18px 24px #0005,24px 40px 60px #0004}
+.work-page .birdies-stage .commerce-phone .phone-chassis>span{transform:translateZ(calc(var(--slice) * -.5px))}
+.work-page .birdies-stage .commerce-phone .cb-ui-phone{border-radius:0}
+@media(max-width:800px){.work-page .birdies-stage :is(.birdies-chassis,.phone-chassis)>span{transform:translateZ(calc(var(--slice) * -.3px))}.work-page .birdies-stage .commerce-phone .phone-chassis>span{transform:translateZ(calc(var(--slice) * -.25px))}}
+
+/* Preserve the original device sizes; give the phone more room to the left. */
+.work-page .birdies-stage .commerce-phone{left:-8%}
+@media(max-width:800px){.work-page .birdies-stage .commerce-phone{left:-3%}}
+
+/* Lift the device group without changing its size or horizontal spacing. */
+.work-page .story-birdies .birdies-stage{top:-36px;bottom:auto}
+@media(max-width:800px){.work-page .story-birdies .birdies-stage{top:-20px}}
+
+/* Match Ask Read's credit spacing, accounting for the empty space below the tablet. */
+.work-page .story-birdies{--birdies-art-width:min(calc(100vw - var(--gutter) * 2),1120px)}
+.work-page .story-birdies .project-footer{margin-top:calc(120px - 36px - var(--birdies-art-width) * .059127)}
+@media(max-width:800px){.work-page .story-birdies .project-footer{margin-top:calc(80px - 20px - var(--birdies-art-width) * .059127)}}
+
+/* Keep the fragrance description balanced without a one-word final line. */
+.work-page .story-purdy .project-summary{max-width:490px;text-wrap:pretty}
