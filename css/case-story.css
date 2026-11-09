@@ -298,3 +298,8 @@
 .cs-more-purdy{--scrim:23 18 14;background:#17120e}
 .cs-more-purdy .cs-more-bg{height:58%;object-position:78% 50%}
 .cs-more-purdy::before{background:linear-gradient(180deg,transparent 32%,rgb(var(--scrim) / .15) 42%,rgb(var(--scrim) / .75) 51%,rgb(var(--scrim)) 58%),linear-gradient(90deg,rgb(var(--scrim) / .4),rgb(var(--scrim) / .15) 40%,transparent 65%)}
+
+/* Match the Work page's flat ink backdrop for Ask Read. */
+.askread-case-study{background:#0a0b0b}
+.askread-case-study .story-askread .story-panel{background:#0a0b0b}
+.askread-case-study .story-askread .story-panel::before,.askread-case-study .story-askread .story-panel::after,.askread-case-study .cs-qb .project-art::before{content:none;animation:none}

@@ -1,6 +1,6 @@
 /* Shared portfolio header and navigation drawer. */
 body.portfolio-standard-page{padding-top:104px}
-.site-header{position:fixed;inset:0 0 auto;z-index:20;padding:30px clamp(24px,4vw,80px);display:flex;justify-content:space-between;align-items:center;background:transparent;transition:transform .35s cubic-bezier(.2,.7,.2,1),background-color .25s;pointer-events:none;font-family:Inter,Arial,sans-serif;color:#f5f5f1}
+.site-header{position:fixed;inset:0 0 auto;z-index:20;padding:30px clamp(24px,4vw,80px);display:flex;justify-content:flex-end;align-items:center;background:transparent;transition:transform .35s cubic-bezier(.2,.7,.2,1),background-color .25s;pointer-events:none;font-family:Inter,Arial,sans-serif;color:#f5f5f1}
 .site-header.is-scrolled{background:#0a0b0bd9;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
 .site-header.is-hidden{transform:translateY(-100%)}
 .site-header.is-natural-scroll{transform:translateY(var(--header-scroll-y,0px));transition:none}
