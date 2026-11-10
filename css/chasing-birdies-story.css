@@ -108,7 +108,7 @@
 @media(max-width:1000px) and (min-width:651px){.cb-customizer{grid-template-columns:20% 32% 48%}.cb-wardrobe{padding:24px 16px 24px 4px}.cb-player-options .cb-player-card{display:grid;justify-items:center;text-align:center}.cb-look-row{gap:6px}.cb-item-name{font-size:9px}.cb-item-name small{font-size:8px}.cb-wardrobe h3{font-size:28px}}
 @media(max-width:650px){.cb-customizer{grid-template-columns:1fr;min-height:0}.cb-character{height:420px}.cb-wardrobe{padding:16px 16px 24px}.cb-wardrobe h3{font-size:30px}.cb-look-row{gap:6px}.cb-item-name{font-size:9px}.cb-item-name small{font-size:8px}.cb-accessory-row{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.cb-accessory-row .cb-wardrobe-thumb{aspect-ratio:1.25}.cb-choice-check{width:17px;height:17px;font-size:11px;right:4px;top:4px}.cb-journey-caption{gap:12px}.cb-journey-caption span{font-size:13px}.cb-journey-caption li{font-size:10px}}
 @media(prefers-reduced-motion:reduce){.cb-look-row li,.cb-choice-check{transition:none}}
-.cb-player-stage{position:relative;padding-bottom:70svh}.cb-player-stage .cb-customizer{position:sticky;top:20px}
+.cb-player-stage{position:relative;padding-bottom:70svh}.cb-player-stage .cb-customizer{position:sticky;top:var(--customizer-pin-top,20px)}
 .cb-wardrobe-thumb{height:clamp(72px,6vw,110px);aspect-ratio:auto;background:none;overflow:hidden}.cb-accessory-row .cb-wardrobe-thumb{height:78px}
 @media(max-width:650px){.cb-player-stage{padding-bottom:0}.cb-player-stage .cb-customizer{position:relative;top:auto}.cb-wardrobe-thumb{height:78px}.cb-accessory-row .cb-wardrobe-thumb{height:90px}}
 .cb-player-stage{padding-bottom:0}.cb-player-stage::after{content:"";display:block;height:140svh}
@@ -316,3 +316,7 @@
   .cb-outfit-demo .cb-wardrobe{padding-top:24px}
 }
 @media(max-width:650px) and (prefers-reduced-motion:reduce){.cb-preview-caption span{display:none}}
+
+/* Continue the Work page's flat deep-green backdrop. */
+.birdies-story-page{--ink:#071716;background:var(--ink)}
+.birdies-story-page .cs-birdies-hero .story-panel{background:var(--ink)}

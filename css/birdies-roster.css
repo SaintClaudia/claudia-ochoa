@@ -6,11 +6,11 @@
 .cb-roster-player:nth-child(4n+3){--roster-offset:25px}
 .cb-roster-player:nth-child(4n){--roster-offset:105px;--roster-drift:calc(var(--roster-progress,0) * -22px)}
 .cb-roster-player figure{margin:0}
-.cb-roster-art{width:100%;aspect-ratio:3/4;background-image:url('/images/birdies-roster-golf-teams.jpg');background-size:400% 400%;background-repeat:no-repeat;background-color:#15261c;border-radius:3px}
+.cb-roster-art{width:100%;aspect-ratio:3/4;background-image:url('/images/birdies-roster-nature.png');background-size:400% 400%;background-repeat:no-repeat;background-color:#15261c;border-radius:clamp(12px,1.2vw,20px)}
 .cb-roster-player-name{display:block;margin-top:11px;color:var(--paper);font-size:clamp(12px,.93vw,16px);line-height:1.3;font-weight:500;letter-spacing:-.015em}
 .cb-roster-player-team{display:block;margin-top:5px;color:#a4aaa4;font-size:clamp(11px,.74vw,13px);line-height:1.45;font-weight:400}
 .cb-roster-host .cb-roster-player-team{color:#d6ae63}
-.cb-roster-story{position:sticky;top:clamp(110px,23vh,230px);padding-top:5px}
+.cb-roster-story{position:sticky;top:clamp(150px,34svh,360px);padding-top:5px}
 .cb-roster-story .cs-label{margin:0 0 24px}
 .cb-roster-story h2{margin:0 0 32px;font-size:clamp(34px,3.5vw,64px);font-weight:500;line-height:1.06;letter-spacing:-.045em}
 .cb-roster-story>p:not(.cs-label){margin:0 0 22px;font-size:clamp(16px,1.3vw,22px);line-height:1.6;color:#a4aaa4}
@@ -34,3 +34,27 @@
  .cb-roster-story h2{font-size:39px}
 }
 @media(prefers-reduced-motion:reduce){.cb-roster-player{transform:translateY(var(--roster-offset))}}
+
+/* Names sit inside the portrait on a soft, transparent-to-ink fade. */
+.cb-roster-player figure{position:relative;isolation:isolate;overflow:hidden;border-radius:clamp(12px,1.2vw,20px)}
+.cb-roster-art{border-radius:0}
+.cb-roster-player figcaption{position:absolute;inset:auto 0 0;z-index:1;padding:clamp(40px,5vw,76px) clamp(12px,1.2vw,22px) clamp(14px,1.5vw,24px);background:linear-gradient(180deg,transparent 0%,#07171670 36%,#071716e8 100%)}
+.cb-roster-player-name{margin-top:0;font-size:clamp(14px,1.15vw,21px);font-weight:550;line-height:1.2;color:#f5f5f1;text-shadow:0 1px 8px #0004}
+.cb-roster-player-team{margin-top:5px;font-size:clamp(11px,.85vw,15px);line-height:1.35;color:#e2e7df}
+.cb-roster-host .cb-roster-player-team{color:#e2e7df}
+
+/* Each column travels together; alternating speeds bring the roster to life. */
+@media(min-width:761px){
+ .cb-roster-player:nth-child(4n+1),.cb-roster-player:nth-child(4n+3){--roster-drift:calc(var(--roster-progress,0) * 220px)}
+ .cb-roster-player:nth-child(4n+2),.cb-roster-player:nth-child(4n){--roster-drift:calc(var(--roster-progress,0) * -220px)}
+ .cb-roster-section{padding-bottom:260px}
+}
+@media(min-width:491px) and (max-width:760px){
+ .cb-roster-player:nth-child(3n+1),.cb-roster-player:nth-child(3n){--roster-drift:calc(var(--roster-progress,0) * 80px)}
+ .cb-roster-player:nth-child(3n+2){--roster-drift:calc(var(--roster-progress,0) * -80px)}
+}
+@media(max-width:490px){
+ .cb-roster-player:nth-child(odd){--roster-drift:calc(var(--roster-progress,0) * 70px)}
+ .cb-roster-player:nth-child(even){--roster-drift:calc(var(--roster-progress,0) * -70px)}
+}
+@media(prefers-reduced-motion:no-preference){.cb-roster-player{will-change:transform}}

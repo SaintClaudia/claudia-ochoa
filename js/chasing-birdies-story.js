@@ -2,12 +2,11 @@
   const roster = document.querySelector('.cb-roster-section');
   if (!roster) return;
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-  const mobile = matchMedia('(max-width: 760px)');
   let visible = false;
   let pending = false;
   function update() {
     pending = false;
-    if (reduced.matches || mobile.matches) {
+    if (reduced.matches) {
       roster.style.removeProperty('--roster-progress');
       return;
     }
@@ -27,7 +26,6 @@
   addEventListener('scroll', schedule, { passive: true });
   addEventListener('resize', schedule, { passive: true });
   reduced.addEventListener('change', update);
-  mobile.addEventListener('change', update);
   update();
 })();
 
@@ -49,13 +47,18 @@
   let pending = false;
   function update() {
     pending = false;
+    const pinTop = Math.max(20, (innerHeight - root.offsetHeight) / 2);
+    const pinValue = `${pinTop}px`;
+    if (root.style.getPropertyValue('--customizer-pin-top') !== pinValue) {
+      root.style.setProperty('--customizer-pin-top', pinValue);
+    }
     const rect = root.getBoundingClientRect();
     const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
     const stage = root.closest('.cb-player-stage').getBoundingClientRect();
     const wardrobeRect = wardrobe.getBoundingClientRect();
     const progress = Math.max(0, Math.min(1, innerWidth <= 650
       ? (innerHeight * .75 - wardrobeRect.top) / Math.max(1, wardrobeRect.height - innerHeight * .25)
-      : (20 - stage.top) / Math.max(1, stage.height - rect.height)));
+      : (pinTop - stage.top) / Math.max(1, stage.height - rect.height)));
     const phase = reduced ? 0 : progress < .32 ? 0 : progress < .63 ? 1 : 2;
     if (phase === active) return;
     active = phase;
@@ -75,5 +78,6 @@
   function schedule() { if (!pending) { pending = true; requestAnimationFrame(update); } }
   addEventListener('scroll', schedule, {passive:true});
   addEventListener('resize', schedule, {passive:true});
+  new ResizeObserver(schedule).observe(root);
   update();
 })();
