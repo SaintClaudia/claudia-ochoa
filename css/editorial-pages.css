@@ -14,7 +14,11 @@
 .contact-page .contact-layout h1{font-size:var(--editorial-heading);margin:0 0 36px}
 .contact-page .contact-layout .editorial-body{max-width:29ch;margin:0}
 .contact-page .text-link{font-size:16px;line-height:1.5;border-color:var(--editorial-rule);margin-top:36px}
-.contact-page .text-link:hover{border-color:currentColor}
+/* Shared editorial link underline fills from left to right. */
+.editorial-page .text-link{position:relative}
+.editorial-page .text-link::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .3s ease}
+.editorial-page .text-link:is(:hover,:focus-visible)::after{transform:scaleX(1)}
+@media(prefers-reduced-motion:reduce){.editorial-page .text-link::after{transition:none}}
 .contact-page .contact-form{padding:0;gap:32px}
 .contact-page .contact-form label{color:var(--editorial-muted);font-size:14px;gap:8px}
 .contact-page .contact-form :is(input,textarea){color:var(--editorial-ink);font-size:var(--site-body-size);line-height:var(--site-body-leading);border-color:var(--editorial-rule);background:transparent}
