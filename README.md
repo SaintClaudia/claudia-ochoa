@@ -373,3 +373,12 @@ style block directly. Other pages retain external stylesheets. The introductory
 SVG wordmark is preloaded at high priority. Below-fold film thumbnails use
 responsive WebP sizes; the homepage fragrance image uses a WebP derivative.
 Original artwork remains available for project pages and social sharing.
+
+## About page
+
+`about.html` uses Claudia's supplied “Curiosity, shaped by experience” draft with
+the master navigation, shared footer, and standard Contact CTA. Its scoped layout
+lives in `css/about-story.css`; `js/about-story.js` animates the favicon-inspired
+sculpture continuously while visible, honoring the device's reduced-motion setting.
+There is no visible pause control. The original embedded portrait matches the
+existing headshot asset, which is reused without duplicating its image data.
