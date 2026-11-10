@@ -22,14 +22,14 @@
     #claudia-about-design .bio-grid::before {
       content:""; position:absolute; inset-block:0;
       inset-inline:calc(-1 * var(--page-gutter)); z-index:-1;
-      background-color:#fcfbfa;
-      background-image:radial-gradient(circle, rgb(24 21 18 / .19) .48px, transparent .82px);
-      background-size:3.5px 3.5px;
+      background-color:var(--editorial-dot-color);
+      background-image:var(--editorial-dot-image);
+      background-size:var(--editorial-dot-size);
     }
     #claudia-about-design .bio {
       background:var(--paper);
       padding:clamp(20px,3.6cqw,44px);
-      box-shadow:0 1px 1px rgb(24 21 18 / .04), 0 8px 24px rgb(24 21 18 / .045);
+      box-shadow:var(--editorial-shadow);
     }
     #claudia-about-design .portrait {
       display:block; width:100%; height:auto; aspect-ratio:1;
