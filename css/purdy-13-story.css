@@ -21,3 +21,19 @@
   .cs-fragrance-hero .story-shade{background:linear-gradient(0deg,#17120e,transparent 65%)}
   .pf-more-list{grid-template-columns:1fr}
 }
+
+/* Light warm stone contrasts cleanly with the photographic hero. */
+.fragrance-story-page{--ink:#e5d9c9;--paper:#30271f;--muted:#695a4b;--line:#30271f30;--accent:#80663f;background:var(--ink);color:var(--paper);color-scheme:light}
+.fragrance-story-page .cs-fragrance-hero{--paper:#f5eee4;--muted:#f5eee4b3;color:var(--paper)}
+.fragrance-story-page .cs-fragrance-hero .story-panel{background:#30271f}
+.fragrance-story-page .cs-fragrance-hero .story-shade{background:linear-gradient(90deg,#21170e55,transparent 65%)}
+.fragrance-story-page .cs-lede span{color:var(--muted)}
+.fragrance-story-page .cs-objectives li p{color:var(--paper)}
+.fragrance-story-page .site-header{mix-blend-mode:difference}
+.fragrance-story-page .site-menu-toggle{color:#fff}
+.fragrance-story-page .site-menu{color-scheme:dark}
+.fragrance-story-page .cs-more-card{--paper:#f5f5f1;--muted:#ffffffb3;color:#f5f5f1}
+.fragrance-story-page .portfolio-footer{background:var(--ink);color:var(--muted)}
+.fragrance-story-page .portfolio-footer :is(p,a){color:var(--muted)}
+.fragrance-story-page .portfolio-footer a:hover{color:var(--paper)}
+.fragrance-story-page a:focus-visible{outline-color:#80663f}
