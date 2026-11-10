@@ -46,7 +46,7 @@
 .work-page .story-askread .story-copy{position:relative;inset:auto;width:100%;max-width:1000px;margin:0 auto clamp(80px,12svh,150px);text-align:center;transform:none;opacity:1;will-change:auto}
 .work-page .story-askread .project-eyebrow{justify-content:center;margin-bottom:28px}
 .work-page .story-askread .story-copy>h2{font-size:clamp(48px,7.5vw,112px);line-height:1.05;margin-bottom:28px}
-.work-page .story-askread .project-summary{max-width:580px;margin:0 auto;font-size:clamp(16px,1.4vw,20px);line-height:1.65}
+.work-page .story-askread .project-summary{max-width:580px;margin:0 auto}
 .work-page .story-askread .project-art{position:relative;inset:auto;flex:none;width:min(100%,1120px);min-height:0;margin:0 auto;container-type:normal;transform:none}
 .work-page .story-askread .askread-stage{position:relative;inset:auto;width:100%;height:auto;margin:0;translate:none;aspect-ratio:auto}
 .work-page .story-askread .story-shade{display:none}
@@ -66,7 +66,7 @@
 .work-page .story-birdies .story-copy{position:relative;inset:auto;width:100%;max-width:1100px;margin:0 auto clamp(24px,4svh,48px);text-align:center;transform:none;opacity:1;will-change:auto}
 .work-page .story-birdies .project-eyebrow{justify-content:center;margin-bottom:28px}
 .work-page .story-birdies .story-copy>h2{font-size:clamp(48px,7vw,104px);line-height:1.05;margin-bottom:28px}
-.work-page .story-birdies .project-summary{max-width:600px;margin:0 auto;font-size:clamp(16px,1.4vw,20px);line-height:1.65}
+.work-page .story-birdies .project-summary{max-width:600px;margin:0 auto}
 .work-page .story-birdies .story-copy>.case-link{margin-top:30px}
 .work-page .story-birdies .project-art{position:relative;inset:auto;flex:none;width:min(100%,1120px);aspect-ratio:1.4;min-height:0;margin:0 auto;container-type:normal;transform:none;will-change:auto}
 .work-page .story-birdies .birdies-stage{position:absolute;inset:0;width:100%;height:100%;margin:0}

@@ -382,3 +382,7 @@ lives in `css/about-story.css`; `js/about-story.js` animates the favicon-inspire
 sculpture continuously while visible, honoring the device's reduced-motion setting.
 There is no visible pause control. The original embedded portrait matches the
 existing headshot asset, which is reused without duplicating its image data.
+
+### Shared editorial typography
+
+`css/portfolio-story.css` owns the `--site-body-size`, `--site-body-leading`, `--site-lead-size`, and `--site-lead-leading` tokens. About biography copy, homepage project summaries, and Contact copy consume this scale; use these tokens instead of page-specific body sizes. About inherits the site font. Run `python3 build.py` after changing shared CSS to refresh the homepage’s generated inline styles.

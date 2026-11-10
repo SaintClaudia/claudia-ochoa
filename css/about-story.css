@@ -2,7 +2,6 @@
       --ink:#0b0c0b; --paper:#fff; --secondary:#454744; --rule:#dcdeda;
       --page-gutter:clamp(24px,5.4vw,68px);
       color:var(--ink); background:var(--paper);
-      font-family:Inter,Arial,Helvetica,sans-serif;
       padding:var(--page-gutter);
       container-type:inline-size;
     }
@@ -36,8 +35,8 @@
       display:block; width:100%; height:auto; aspect-ratio:1;
       object-fit:cover; justify-self:center;
     }
-    #claudia-about-design .bio p {font-size:clamp(15px,1.9cqw,18px); color:var(--secondary); line-height:1.61; margin:0 0 18px;}
-    #claudia-about-design .bio .intro {font-size:clamp(22px,3.35cqw,36px); font-weight:400; line-height:1.18; letter-spacing:-.045em; color:var(--ink); margin:0 0 24px;}
+    #claudia-about-design .bio p {font-size:var(--site-body-size); color:var(--secondary); line-height:var(--site-body-leading); margin:0 0 18px;}
+    #claudia-about-design .bio .intro {font-size:var(--site-lead-size); font-weight:400; line-height:var(--site-lead-leading); letter-spacing:normal; color:var(--ink); margin:0 0 24px;}
     @container (max-width:480px) {
       #claudia-about-design .hero {grid-template-columns:minmax(0,1fr) minmax(84px,.44fr); align-items:center; gap:10px; padding:40px 0 38px;}
       #claudia-about-design h1 {font-size:clamp(33px,9.4cqw,46px);}
