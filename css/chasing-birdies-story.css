@@ -320,3 +320,6 @@
 /* Continue the Work page's flat deep-green backdrop. */
 .birdies-story-page{--ink:#071716;background:var(--ink)}
 .birdies-story-page .cs-birdies-hero .story-panel{background:var(--ink)}
+
+/* Echo the Work page accent in the opening statement. */
+.birdies-story-page{--case-accent:#bec794}

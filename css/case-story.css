@@ -303,3 +303,7 @@
 .askread-case-study{background:#0a0b0b}
 .askread-case-study .story-askread .story-panel{background:#0a0b0b}
 .askread-case-study .story-askread .story-panel::before,.askread-case-study .story-askread .story-panel::after,.askread-case-study .cs-qb .project-art::before{content:none;animation:none}
+
+/* Optional project accent: opening statement and editorial labels only. */
+.case-story-page.has-project-accent .cs-statement .cs-lede,
+.case-story-page.has-project-accent .cs-label:not(.cs-more .cs-label){color:var(--case-accent)}
