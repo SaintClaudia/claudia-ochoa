@@ -1,6 +1,6 @@
 #claudia-about-design {
-      --ink:#0b0c0b; --paper:#fff; --secondary:#454744; --rule:#dcdeda;
-      --page-gutter:clamp(24px,5.4vw,68px);
+      --ink:var(--editorial-ink); --paper:#fff; --secondary:var(--editorial-muted); --rule:var(--editorial-rule);
+      --page-gutter:var(--editorial-gutter);
       color:var(--ink); background:var(--paper);
       padding:var(--page-gutter);
       container-type:inline-size;
@@ -45,11 +45,6 @@
     }
 
 
-/* Shared navigation remains legible on the draft's white canvas. */
-body.about-page{background:#fff}
-.about-page .site-header{mix-blend-mode:difference}
-.about-page .site-menu-toggle{color:#fff}
-.about-page .site-menu-toggle:focus-visible{outline-color:currentColor}
 #claudia-about-design{padding-top:100px;padding-bottom:0;color-scheme:light}
 #claudia-about-design .portrait{position:static;max-width:none;border-radius:0}
 #claudia-about-design .bio p:last-child{margin-bottom:0}

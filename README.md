@@ -386,3 +386,5 @@ existing headshot asset, which is reused without duplicating its image data.
 ### Shared editorial typography
 
 `css/portfolio-story.css` owns the `--site-body-size`, `--site-body-leading`, `--site-lead-size`, and `--site-lead-leading` tokens. About biography copy, homepage project summaries, and Contact copy consume this scale; use these tokens instead of page-specific body sizes. About inherits the site font. Run `python3 build.py` after changing shared CSS to refresh the homepage’s generated inline styles.
+
+`css/editorial-pages.css` supplies the shared light surface, colors, gutters, focus styles, and navigation treatment for About and Contact. Contact uses the standard “Let’s talk.” heading, shared body scale and pill button, with the existing Web3Forms delivery and LinkedIn link.

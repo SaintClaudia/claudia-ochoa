@@ -1,0 +1,25 @@
+/* Shared light editorial surface for About and Contact. */
+.editorial-page{--editorial-ink:#0b0c0b;--editorial-muted:#454744;--editorial-rule:#dcdeda;--editorial-gutter:clamp(24px,5.4vw,68px);--editorial-heading:clamp(42px,7.6vw,92px);background:#fff;color:var(--editorial-ink);color-scheme:light}
+.editorial-page .site-header{mix-blend-mode:difference}
+.editorial-page .site-menu-toggle{color:#fff}
+.editorial-page .site-menu-toggle:focus-visible{outline-color:currentColor}
+.editorial-page main :is(a,button,input,textarea):focus-visible{outline-color:currentColor}
+.editorial-page .editorial-title{font-size:var(--editorial-heading);font-weight:400;line-height:.99;letter-spacing:-.065em}
+.editorial-page .editorial-title span{display:block}
+.editorial-page .editorial-body{font-size:var(--site-body-size);line-height:var(--site-body-leading);color:var(--editorial-muted)}
+.editorial-page .editorial-action{color:var(--editorial-ink);border-color:var(--editorial-rule);background:transparent}
+.editorial-page .editorial-action:hover{border-color:var(--editorial-ink);background:#f3f3f1}
+/* Contact layout uses the shared type scale, button and page navigation. */
+.contact-page .contact-layout{padding:clamp(160px,18vw,240px) var(--editorial-gutter) 100px;min-height:90svh;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(48px,8vw,140px);align-items:start}
+.contact-page .contact-layout h1{font-size:var(--editorial-heading);margin:0 0 36px}
+.contact-page .contact-layout .editorial-body{max-width:29ch;margin:0}
+.contact-page .text-link{font-size:16px;line-height:1.5;border-color:var(--editorial-rule);margin-top:36px}
+.contact-page .text-link:hover{border-color:currentColor}
+.contact-page .contact-form{padding:0;gap:32px}
+.contact-page .contact-form label{color:var(--editorial-muted);font-size:14px;gap:8px}
+.contact-page .contact-form :is(input,textarea){color:var(--editorial-ink);font-size:var(--site-body-size);line-height:var(--site-body-leading);border-color:var(--editorial-rule);background:transparent}
+.contact-page .contact-form textarea{min-height:140px}
+.contact-page .contact-form .case-link{font-size:16px;padding:16px 24px}
+.contact-page .contact-form button:disabled{opacity:.65;cursor:wait}
+.contact-page .form-status{margin:0;color:var(--editorial-muted);font-size:14px;line-height:1.65;min-height:1.65em}
+@media(max-width:800px){.contact-page .contact-layout{grid-template-columns:1fr;padding-top:150px;padding-bottom:64px;gap:56px}.contact-page .contact-layout .editorial-body{max-width:36ch}}
