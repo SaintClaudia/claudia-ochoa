@@ -307,3 +307,9 @@
 /* Optional project accent: opening statement and editorial labels only. */
 .case-story-page.has-project-accent .cs-statement .cs-lede,
 .case-story-page.has-project-accent .cs-label:not(.cs-more .cs-label){color:var(--case-accent)}
+
+/* Ask Read related cards use the same flat black as the project page. */
+.cs-more-card.cs-more-askread{--scrim:10 11 11;background:#0a0b0b}
+
+/* Use the full card width while retaining the shared headline size. */
+.cs-more-card.cs-more-purdy h3{max-width:none}
