@@ -26,3 +26,6 @@
 
 .editorial-dots{background-color:var(--editorial-dot-color);background-image:var(--editorial-dot-image);background-size:var(--editorial-dot-size)}
 .contact-page .contact-form{background:#fff;padding:clamp(24px,3.6vw,44px);box-shadow:var(--editorial-shadow)}
+
+/* Underlined fields keep a visible focus state without a surrounding box. */
+.editorial-page .contact-form :is(input,textarea):focus{outline:none;border-bottom-color:var(--editorial-ink);box-shadow:0 1px 0 var(--editorial-ink)}
