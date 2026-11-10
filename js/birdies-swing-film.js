@@ -13,6 +13,7 @@
   const map = root.querySelector('.cb-film-map');
   const marker = root.querySelector('.cb-film-shot-marker');
   const mapBall = root.querySelector('.cb-film-map-ball');
+  const landingBall = root.querySelector('.cb-film-landing-ball');
   const mapDistance = root.querySelector('.cb-film-pin-distance');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   let visible = false;
@@ -33,6 +34,11 @@
     const flight = clamp((time - contact) / (landing - contact));
     const roll = clamp((time - landing) / (settled - landing));
     const easedRoll = 1 - (1 - roll) ** 2;
+    if (landingBall) {
+      landingBall.style.opacity = time >= landing ? '1' : '0';
+      landingBall.style.left = `${66.9 + easedRoll}%`;
+      landingBall.style.top = `${54.85 + .45 * easedRoll - (reduced.matches ? 0 : .2 * Math.sin(Math.min(1, roll * 3) * Math.PI) * (1 - roll))}%`;
+    }
     const zoom = reduced.matches ? Number(closeUp) : flight * flight * (3 - 2 * flight);
     map.setAttribute('viewBox', [lerp(0,600,zoom), lerp(0,340,zoom), lerp(1024,220,zoom), lerp(1536,330,zoom)].join(' '));
     const arrived = time >= (reduced.matches ? landing : settled);

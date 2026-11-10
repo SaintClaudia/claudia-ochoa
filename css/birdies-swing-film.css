@@ -34,3 +34,7 @@
  .cb-film-course-details{grid-column:1;grid-row:3;margin:0;font-size:11px}
  .cb-film-map{grid-column:2;grid-row:1/4}
 }
+
+/* Ball stays aligned with the footage, including above mobile controls. */
+.cb-film-ball-layer{position:absolute;inset:0 0 auto;aspect-ratio:16/9;pointer-events:none}
+.cb-film-landing-ball{position:absolute;left:67.9%;top:55.3%;width:.16%;aspect-ratio:1;border-radius:50%;background:#f6f3e8;box-shadow:.6px 1px 1px #12200b99;transform:translate(-50%,-50%);opacity:0}
