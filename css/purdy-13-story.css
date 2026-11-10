@@ -3,8 +3,8 @@
 .cs-fragrance-hero{height:100svh;min-height:620px}
 .cs-fragrance-hero .story-panel{position:relative}
 .cs-fragrance-hero .project-art{transform:none;will-change:auto}
-.cs-fragrance-hero .story-copy{top:auto;bottom:clamp(40px,7svh,84px);transform:none;width:min(60%,950px)}
-.cs-fragrance-hero h1{font-size:clamp(56px,7.8vw,132px);max-width:8em;margin:0;line-height:.98}
+.cs-fragrance-hero .story-copy{top:auto;bottom:clamp(32px,6svh,72px);transform:none;width:min(60%,950px)}
+.cs-fragrance-hero h1{font-size:clamp(48px,6.2vw,116px);max-width:8em;margin:0;line-height:.99}
 .cs-fragrance-hero .story-shade{background:linear-gradient(90deg,#14100d70,transparent 65%),linear-gradient(0deg,#14100dce,transparent 55%)}
 .pf-photo{margin:clamp(64px,10vh,120px) var(--gutter) 0;overflow:hidden;border-radius:clamp(12px,1.4vw,20px)}
 .pf-photo img{display:block;width:100%;height:auto}
