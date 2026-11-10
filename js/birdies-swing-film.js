@@ -44,15 +44,15 @@
     const arrived = time >= (reduced.matches ? landing : settled);
     const phase = arrived ? 'settled' : time >= landing ? 'rolling' : closeUp ? 'flight' : 'tee';
     const showBall = closeUp && (!reduced.matches || time >= landing);
-    const point = arrived ? [706,450] : time < landing
-      ? [lerp(250,665,flight), lerp(1200,480,flight)]
-      : [lerp(665,706,easedRoll), lerp(480,450,easedRoll)];
+    const point = arrived ? [690,434] : time < landing
+      ? [lerp(250,670,flight), lerp(1200,431,flight)]
+      : [lerp(670,690,easedRoll), lerp(431,434,easedRoll)];
     marker.setAttribute('opacity', showBall ? '1' : '0');
     mapBall.setAttribute('cx', point[0]);
     mapBall.setAttribute('cy', point[1]);
     // Keep the ball legible as the map moves from the full hole to the green.
-    mapBall.setAttribute('r', lerp(12,4,zoom));
-    mapDistance.setAttribute('d', time >= landing ? `M${point}L717 431` : '');
+    mapBall.setAttribute('r', lerp(6,1.8,zoom));
+    mapDistance.setAttribute('d', '');
     const feet = arrived ? 6 : Math.round(18 - 12 * easedRoll);
     distance.textContent = time >= landing ? `${feet} ft to the pin` : '106 yards';
     if (phase !== mapPhase) {

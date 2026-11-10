@@ -33,10 +33,7 @@
       askPanel.style.setProperty('--project-radius', `${exitRadius * reveal}px`);
     }
     if (birdies && birdiesArt) {
-      const top = birdies.getBoundingClientRect().top;
-      const copyTravel = clamp((innerHeight - top) / (innerHeight * 1.4));
       const artTravel = clamp((innerHeight - birdiesArt.getBoundingClientRect().top) / innerHeight);
-      birdies.style.setProperty('--birdies-copy-y', `${reduced.matches ? 0 : 70 - copyTravel * 120}px`);
       birdies.style.setProperty('--birdies-art-x', `${reduced.matches ? 0 : (1 - artTravel) * 65}px`);
       birdies.style.setProperty('--birdies-art-scale', reduced.matches ? '1' : `${.95 + artTravel * .05}`);
     }

@@ -76,8 +76,8 @@
 .work-page .story-birdies .project-footer{position:relative;inset:auto;width:100%;margin-top:100px;gap:24px}
 @media(max-width:800px){.work-page .story-birdies .story-panel{padding-top:150px}.work-page .story-birdies .story-copy{margin-bottom:24px}.work-page .story-birdies .project-eyebrow{font-size:11px;gap:12px}.work-page .story-birdies .project-footer{margin-top:64px}.work-page .story-birdies .project-summary{max-width:440px}}
 
-/* Continue the reveal through the heading and devices as the page scrolls. */
-.work-page .story-birdies .story-copy{transform:translate3d(0,var(--birdies-copy-y,0px),0);will-change:transform}
+/* Continue the device reveal while copy stays in the normal page flow. */
+.work-page .story-birdies .story-copy{transform:none;will-change:auto}
 .work-page .story-birdies .birdies-stage{transform:translate3d(var(--birdies-art-x,0px),0,0) scale(var(--birdies-art-scale,1));transform-origin:50% 50%;will-change:transform}
 @media(prefers-reduced-motion:reduce){.work-page .story-birdies .story-copy,.work-page .story-birdies .birdies-stage{transform:none;will-change:auto}}
 
