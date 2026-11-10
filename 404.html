@@ -70,39 +70,50 @@
       text-align: center;
       padding: 80px 24px;
     }
-    .error-code {
-      font-family: 'Fraunces', serif;
-      font-size: clamp(6rem, 20vw, 14rem);
-      font-weight: 300;
-      line-height: 1;
-      color: var(--text-bright);
-      opacity: 0.08;
-      letter-spacing: -0.04em;
-      margin-bottom: -24px;
+    .error-page .error-code {
+      font-family: 'Inter', Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.5;
+      color: var(--ink-soft);
+      letter-spacing: 0.08em;
+      margin: 0 0 24px;
     }
     .error-page h1 {
-      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-family: 'Inter', Arial, sans-serif;
+      font-size: clamp(2.5rem, 5.5vw, 5.5rem);
+      font-weight: 450;
+      line-height: 1.07;
+      letter-spacing: -0.06em;
       margin-bottom: 16px;
     }
     .error-page p {
       font-size: 1rem;
+      line-height: 1.7;
       color: var(--ink-soft);
       max-width: 40ch;
       margin: 0 auto 40px;
     }
     .error-home {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
       font-family: 'Inter', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.5;
       color: var(--text-bright);
-      border-bottom: 1px solid var(--text-bright);
-      padding-bottom: 2px;
-      transition: opacity 0.3s ease;
+      text-decoration: none;
+      border: 1px solid #ffffff4d;
+      border-radius: 100px;
+      padding: 16px 23px;
+      background: #ffffff08;
+      transition: background .25s, border-color .25s;
     }
-    .error-home:hover { opacity: 0.5; }
+    .error-home:hover { background: #ffffff18; border-color: #ffffffa0; }
+    .error-home:focus-visible { outline: 2px solid var(--text-bright); outline-offset: 7px; }
+    @media (prefers-reduced-motion: reduce) {
+      .error-home { transition: none; }
+    }
   </style>
 <!-- PORTFOLIO-FOOTER-STYLES:START -->
 <link rel="stylesheet" href="/css/portfolio-footer.css?v=4">
