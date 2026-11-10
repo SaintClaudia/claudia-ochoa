@@ -67,7 +67,14 @@ files = [
 total_updated = 0
 total_stale = 0
 
-embedded_assets = []
+# Inline the homepage styles in their existing cascade order. Shared source files
+# remain authoritative; other pages continue to use cacheable stylesheets.
+embedded_assets = [
+    (("css/portfolio-story.css", "css/ask-read-pills.css", "css/ask-read-composer.css",
+      "css/portfolio-footer.css", "css/portfolio-nav.css", "css/birdies-screens.css",
+      "css/liquid-intro.css"),
+     "<!-- HOME-STYLES:START -->", "<!-- HOME-STYLES:END -->", "<style>\n", "\n</style>"),
+]
 
 
 
@@ -126,11 +133,14 @@ for partial_file, START, END in partials:
         total_updated += updated
 
 for asset_file, START, END, prefix, suffix in embedded_assets:
-    asset_path = os.path.join(BASE, asset_file)
-    if not os.path.exists(asset_path):
-        raise FileNotFoundError(f'Required embedded asset not found: {asset_file}')
-
-    embedded_content = prefix + open(asset_path).read().strip() + suffix
+    asset_files = asset_file if isinstance(asset_file, tuple) else (asset_file,)
+    asset_contents = []
+    for source_file in asset_files:
+        asset_path = os.path.join(BASE, source_file)
+        if not os.path.exists(asset_path):
+            raise FileNotFoundError(f'Required embedded asset not found: {source_file}')
+        asset_contents.append(open(asset_path).read().strip())
+    embedded_content = prefix + "\n".join(asset_contents) + suffix
     print(f'\n--- embedded {asset_file} ---')
     updated = 0
     used = 0

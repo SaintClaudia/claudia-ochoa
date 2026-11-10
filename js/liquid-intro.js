@@ -12,28 +12,28 @@
   const clamp = n => Math.min(1, Math.max(0, n));
   function update() {
     scheduled = false;
+    // Read geometry before changing styles to avoid forced layout between writes.
     const bounds = scene.getBoundingClientRect();
-    // Let the longer name continue beyond the reveal; no need to finish it.
-    // Vertical motion comes directly from normal document scrolling.
-    const runway = Math.max(1, stage.offsetHeight);
-    const progress = clamp(-bounds.top / runway);
-    // Keep moving at a steady pace until the entire introduction leaves view.
-    const travel = progress;
-    const distance = Math.max(stage.clientWidth * .9, stage.offsetHeight * .95);
-    wordmark.style.transform = `translate3d(${-distance * (reduced.matches ? 0 : travel)}px,0,0)`;
-    const radius = Math.min(80, Math.max(24, stage.clientWidth * .05));
-    const rounding = reduced.matches ? 1 : clamp(-bounds.top / (stage.offsetHeight * .2));
+    const height = stage.offsetHeight;
+    const width = stage.clientWidth;
+    const viewportHeight = innerHeight;
+    const askBottom = askRead?.getBoundingClientRect().bottom;
+    const askWidth = askPanel?.clientWidth;
+    const birdiesTop = birdiesArt?.getBoundingClientRect().top;
+    const progress = clamp(-bounds.top / Math.max(1, height));
+    const distance = Math.max(width * .9, height * .95);
+    const radius = Math.min(80, Math.max(24, width * .05));
+    const rounding = reduced.matches ? 1 : clamp(-bounds.top / (height * .2));
+    wordmark.style.transform = `translate3d(${-distance * (reduced.matches ? 0 : progress)}px,0,0)`;
     stage.style.setProperty('--intro-radius', `${radius * rounding}px`);
     document.body.classList.toggle('intro-passed', bounds.bottom < 75);
     if (askPanel) {
-      const bottom = askRead.getBoundingClientRect().bottom;
-      // Keep rounding throughout the exit instead of finishing in its first quarter.
-      const reveal = reduced.matches ? 1 : clamp((innerHeight - bottom) / innerHeight);
-      const exitRadius = Math.min(askPanel.clientWidth * .5, innerHeight * .55);
+      const reveal = reduced.matches ? 1 : clamp((viewportHeight - askBottom) / viewportHeight);
+      const exitRadius = Math.min(askWidth * .5, viewportHeight * .55);
       askPanel.style.setProperty('--project-radius', `${exitRadius * reveal}px`);
     }
     if (birdies && birdiesArt) {
-      const artTravel = clamp((innerHeight - birdiesArt.getBoundingClientRect().top) / innerHeight);
+      const artTravel = clamp((viewportHeight - birdiesTop) / viewportHeight);
       birdies.style.setProperty('--birdies-art-x', `${reduced.matches ? 0 : (1 - artTravel) * 65}px`);
       birdies.style.setProperty('--birdies-art-scale', reduced.matches ? '1' : `${.95 + artTravel * .05}`);
     }

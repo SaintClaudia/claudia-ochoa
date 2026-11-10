@@ -363,3 +363,13 @@ assets to preserve existing links. Do not block them in robots.txt: crawlers nee
 to read their noindex directives. Current AI resources live in
 `worker-csp/src/portfolio-knowledge.js`; changes to that file require a separate
 Worker deployment in addition to the static GitHub Pages deployment.
+
+## Homepage loading
+
+The homepage embeds its stylesheet sources in cascade order using the
+`HOME-STYLES` region in `build.py`, avoiding render-blocking CSS requests.
+Edit the shared CSS sources, then run `python3 build.py`; never edit the stamped
+style block directly. Other pages retain external stylesheets. The introductory
+SVG wordmark is preloaded at high priority. Below-fold film thumbnails use
+responsive WebP sizes; the homepage fragrance image uses a WebP derivative.
+Original artwork remains available for project pages and social sharing.
