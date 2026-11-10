@@ -18,17 +18,13 @@ For structured access, connect an MCP client to [the public portfolio MCP endpoi
 ## Profile
 
 - [Portfolio Home](https://claudiaochoa.co/): Personal introduction and entry point to the portfolio.
-- [Work](https://claudiaochoa.co/work/): Selected AI and product-design leadership work; redirects to the immersive Work homepage.
 - [About Claudia Ochoa](https://claudiaochoa.co/about.html): Leadership perspective, career background, capabilities, and education.
 - [Résumé](https://claudiaochoa.co/output/pdf/Claudia_Ochoa_Resume.pdf): Two-page professional résumé focused on creative and product design leadership.
 - [LinkedIn](https://www.linkedin.com/in/claudiajochoa/): Professional profile and career history.
 
-## Blog
-
-- [Blog Index](https://claudiaochoa.co/blog/): Longer-form writing on creative and product leadership, and human-centered design.
-- [Eat Your Own Dog Food](https://claudiaochoa.co/blog/eat-your-own-dog-food.html): Argues that companies pitching agentic AI should be judged by their own sites' real-world performance, with PageSpeed Insights evidence, and connects underperformance to leadership accountability and PIP-driven layoff practices.
+Archived blog posts and earlier Walmart, Home Depot, and Lovesac work remain available at their original URLs for historical reference. They are not current portfolio recommendations.
 
 ## Optional
 
-- [XML Sitemap](https://claudiaochoa.co/sitemap.xml): Complete crawlable URL inventory.
+- [XML Sitemap](https://claudiaochoa.co/sitemap.xml): Current indexable portfolio pages.
 - [Crawler and Content-Use Policy](https://claudiaochoa.co/robots.txt): Search, AI-use, training, and crawler directives.

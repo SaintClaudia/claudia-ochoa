@@ -47,15 +47,15 @@ test("rejects cross-origin browser requests", async () => {
 test("falls back to cited retrieval if the model is unavailable", async () => {
   const originalConsoleError = console.error;
   console.error = () => {};
-  const response = await handlePortfolioChat(request({ query: "agentic evaluation" }), {
+  const response = await handlePortfolioChat(request({ query: "football computer vision film study" }), {
     AI: { run: async () => { throw new Error("transient"); } },
   }).finally(() => {
     console.error = originalConsoleError;
   });
   const payload = await response.json();
   assert.equal(response.status, 200);
-  assert.match(payload.answer, /AI-readiness/);
-  assert.equal(payload.sources[0].id, "agentic-readiness");
+  assert.match(payload.answer, /football intelligence concept/);
+  assert.equal(payload.sources[0].id, "ask-read");
 });
 
 test("retries malformed model output before returning it to an employer", async () => {
@@ -66,12 +66,12 @@ test("retries malformed model output before returning it to an employer", async 
         calls += 1;
         return calls === 1
           ? { response: "\" (s, \" (s, \" (s" }
-          : { response: "Claudia's Walmart work suggests she can move quickly: she developed the end-to-end GenAI experience concept in 24 hours." };
+          : { response: "Claudia's Ask Read concept connects opponent film with weekly preparation." };
       },
     },
   });
   const payload = await response.json();
   assert.equal(calls, 2);
-  assert.match(payload.answer, /24 hours/);
+  assert.match(payload.answer, /weekly preparation/);
   assert.doesNotMatch(payload.answer, /\" \(s/);
 });

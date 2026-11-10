@@ -1,38 +1,25 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import {
-  getPortfolioResource,
-  listPortfolioResources,
-  searchPortfolio,
-} from "../src/portfolio-knowledge.js";
+import { getPortfolioResource, listPortfolioResources, searchPortfolio } from "../src/portfolio-knowledge.js";
 
-test("prioritizes the Walmart evidence for enterprise GenAI leadership", () => {
-  const [result] = searchPortfolio("enterprise GenAI leadership and Creative Director");
-  assert.equal(result.id, "walmart-genai");
-  assert.match(result.url, /^https:\/\/claudiaochoa\.co\//);
+test("finds each current project by its subject", () => {
+  assert.equal(searchPortfolio("football computer vision film study")[0].id, "ask-read");
+  assert.equal(searchPortfolio("golf simulation game design")[0].id, "chasing-birdies");
+  assert.equal(searchPortfolio("fragrance grooming packaging")[0].id, "brock-purdy-13");
 });
 
-test("prioritizes the operating-model evidence for agentic guardrails", () => {
-  const [result] = searchPortfolio("agentic guardrails evaluation and human escalation");
-  assert.equal(result.id, "agentic-readiness");
+test("archived work is excluded from agent discovery and direct retrieval", () => {
+  const current = new Set(["profile", "resume", "ask-read", "chasing-birdies", "brock-purdy-13"]);
+  assert.deepEqual(new Set(listPortfolioResources().map(({id}) => id)), current);
+  for (const id of ["walmart-genai", "agentic-readiness", "lovesac-business-case", "lovesac-redesign", "lovesac-research", "lovesac-content"]) {
+    assert.equal(getPortfolioResource(id), null);
+  }
+  assert.ok(searchPortfolio("Walmart Lovesac Home Depot").every(({id}) => current.has(id)));
 });
 
-test("maps employer language to the strongest published evidence", () => {
-  assert.equal(searchPortfolio("How does Claudia lead responsible AI work?")[0].id, "agentic-readiness");
-  const executiveResults = searchPortfolio("What evidence shows executive influence?");
-  assert.equal(executiveResults[0].id, "walmart-genai");
-  assert.deepEqual(executiveResults.map((result) => result.id), ["walmart-genai"]);
-  assert.equal(searchPortfolio("How does she connect AI to business value?")[0].id, "lovesac-business-case");
-  assert.deepEqual(
-    searchPortfolio("Is Claudia good to work with?").slice(0, 2).map((result) => result.id),
-    ["walmart-genai", "profile"],
-  );
-});
-
-test("lists and retrieves only the curated public resources", () => {
-  const aiResources = listPortfolioResources("ai-leadership");
-  assert.ok(aiResources.length >= 2);
-  assert.ok(aiResources.every((resource) => resource.category === "ai-leadership"));
+test("retrieves current evidence without implying concept launch outcomes", () => {
   assert.equal(getPortfolioResource("resume")?.category, "profile");
   assert.equal(getPortfolioResource("private-record"), null);
+  assert.deepEqual(listPortfolioResources("ai-leadership").map(({id}) => id), ["ask-read"]);
+  for (const id of ["ask-read", "chasing-birdies", "brock-purdy-13"]) assert.match(getPortfolioResource(id).details, /concept/);
 });

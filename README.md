@@ -8,7 +8,7 @@ Personal portfolio of Claudia Ochoa — Creative and Product Design Leader blend
 
 ## Portfolio redesign
 
-Work is the homepage, with full-screen project stories and independent device motion. About and Contact are separate pages. The three pages share `css/portfolio-story.css` and `js/portfolio-story.js`; all portfolio pages share `_portfolio-nav.html`, `css/portfolio-nav.css`, and `js/portfolio-nav.js`; the menu lists Walmart, Lovesac, and Home Depot case studies. `/work/` redirects to `/`. Existing case-study and blog URLs remain available. Contact uses the existing Web3Forms integration.
+Work is the homepage, with full-screen project stories and independent device motion. About and Contact are separate pages. The three pages share `css/portfolio-story.css` and `js/portfolio-story.js`; all portfolio pages share `_portfolio-nav.html`, `css/portfolio-nav.css`, and `js/portfolio-nav.js`; the menu lists Ask Read, Chasing Birdies, and Brock Purdy 13. `/work/` redirects to `/`. Earlier Walmart, Home Depot, and Lovesac pages, prototypes, and the blog are archived at their original URLs. Archive pages carry `noindex, follow`, are excluded from the sitemap and curated AI sources, and preserve their original content and design. Blog audit reports are also excluded from indexing. The blog template is archived; do not use it for new active content without explicitly restoring it. Contact uses the existing Web3Forms integration.
 
 Edit the production pages and shared story assets directly. `redesign/` is an ignored local review snapshot. The new pages preserve canonical/social metadata, structured data, analytics, and reduced-motion support. Homepage WebMCP remains available.
 
@@ -28,7 +28,7 @@ serves those files directly.
 ├── 404.html                          # Custom error page
 ├── _footer.html                      # Shared footer partial (single source of truth)
 ├── _portfolio-nav.html               # Shared header and menu for all portfolio pages
-├── _contact-overlay.html             # Shared contact form for the homepage and 404 page
+├── _contact-overlay.html             # Legacy contact form for archived pages
 ├── _analytics.html                   # Shared Google Analytics bootstrap for every rendered page
 ├── _head-basics.html                 # Shared charset, viewport, favicon, and Apple touch-icon tags
 ├── _portfolio-fonts.html             # Shared preloads for the self-hosted portfolio fonts
@@ -36,10 +36,10 @@ serves those files directly.
 ├── _lovesac-nav.html                 # Shared navigation for the Lovesac prototype pages
 ├── _lovesac-footer.html              # Shared footer for three Lovesac prototype pages
 ├── build.py                          # Stamps shared HTML partials into their pages
-├── favicon.svg                       # Golden Gate bridge favicon (SVG)
-├── favicon-192.png                   # Golden Gate bridge favicon (PNG, for Google Search)
-├── favicon-32.png                    # Golden Gate bridge favicon (PNG, browser tab fallback)
-├── sitemap.xml                       # All pages for search engine discovery
+├── favicon.svg                       # Organic mark favicon (SVG)
+├── favicon-192.png                   # Organic mark favicon (PNG, for Google Search)
+├── favicon-32.png                    # Organic mark favicon (PNG, browser tab fallback)
+├── sitemap.xml                       # Current indexable portfolio pages
 ├── robots.txt                        # Crawl directives
 ├── llms.txt                          # Curated AI/agent guide to authoritative portfolio content
 ├── BACKLOG.md                        # Deferred work outside the active agentic-readiness stream
@@ -50,10 +50,7 @@ serves those files directly.
 ├── worker-csp/                       # Cloudflare Worker that adds CSP and Permissions-Policy headers
 ├── fonts/                            # Self-hosted portfolio fonts and license
 ├── css/
-│   ├── case-study.css                # The whole design system — colors, type, nav, hero, buttons, footer,
-│                                      # contact overlay — for index.html, about.html, 404.html, and all 6 case studies.
-│                                      # Not used by the Lovesac redesign prototype pages (a deliberately
-│                                      # separate system).
+│   ├── case-study.css                # Preserved design system for archived case studies and blog pages
 │   └── lovesac-prototype.css          # Shared foundation for the Lovesac Redesign, Support, and What to Expect
 │                                      # prototype pages — tokens, nav, drawers, common sections, and footer
 ├── js/
@@ -220,17 +217,17 @@ syntax checks on every push and pull request.
 
 ## Updating the nav or footer
 
-All 19 portfolio pages use `_portfolio-nav.html` for the header and menu. `_portfolio-nav-assets.html` supplies the single navigation stylesheet and script. Edit these shared sources and run `python3 build.py`; do not edit generated navigation blocks in individual pages. The shared script handles the current-page state, opening, closing, Escape, and focus recovery.
+Portfolio pages use `_portfolio-nav.html` for the header and menu. `_portfolio-nav-assets.html` supplies the single navigation stylesheet and script. Edit these shared sources and run `python3 build.py`; do not edit generated navigation blocks in individual pages. The shared script handles the current-page state, opening, closing, Escape, and focus recovery.
 
 Shared markup is maintained in partial files and stamped into the applicable
 pages by `build.py`:
 
-- `_footer.html` — portfolio footer used by `about.html`, `404.html`, and `work/index.html`
+- `_footer.html` — shared portfolio footer stamped into current and archived portfolio pages
 - `_analytics.html` — Google Analytics bootstrap used by every rendered page
 - `_head-basics.html` — charset, viewport, favicon, and Apple touch-icon tags used by every rendered page
 - `_portfolio-nav.html` — header and menu used across all portfolio pages
 - `_portfolio-nav-assets.html` — shared header/menu stylesheet and behavior
-- `_contact-overlay.html` — contact form used by `index.html`, `about.html`, and `404.html`
+- `_contact-overlay.html` — legacy contact form retained on archived pages
 - `_case-study-topbar.html` — topbar used by all six case studies; its active
   series item and page tag are generated from the metadata in `build.py`
 - `_lovesac-nav.html` — navigation used by all four Lovesac prototype pages
@@ -249,7 +246,7 @@ Run `python3 build.py --check` for a read-only validation. It exits with an
 error if a generated region is stale or if markers are missing, duplicated,
 reversed, or unmatched.
 
-## Adding a blog post
+## Historical blog workflow (archive)
 
 1. Copy `blog/_template.html` to `blog/<slug>.html` (lowercase, hyphenated, no dates in the slug)
 2. Use the shared `/css/blog.css` components and the template’s numbered section layout. Keep listing titles as plain `<h2>` headings; the image and “Read the post” button link to the article. Use `image-full` on a lead image or card image to preserve a full 3:2 composition.
@@ -272,13 +269,14 @@ reversed, or unmatched.
 
 ## Editing shared styles
 
-`css/case-study.css` is the entire design system for `index.html`, `about.html`, `404.html`,
-`work/index.html`, and all 6 case studies — colors, typography, nav/topbar, hero, section-head,
-context-strip, buttons, footer, contact overlay, password gate, and citation
-patterns, all linked once instead of copy-pasted per page. Edit it for anything
-that should change everywhere; edit a page's own `<style>` block only for content
-specific to that page (the homepage's fixed-viewport hero and glow, the work
-index's work-grid card, a case study's narrative sections, charts, demos). This
+`css/portfolio-story.css` provides the current portfolio foundation; `css/case-story.css`
+extends it for the three featured projects. The 404 page uses the current foundation,
+with its existing centered error layout. `css/portfolio-nav.css` and
+`css/portfolio-footer.css` supply the shared navigation and footer.
+
+`css/case-study.css` preserves the earlier design system for archived case studies
+and blog pages. `css/archive.css` adds a small archive notice without restyling
+historical content. This
 file is unrelated to the Lovesac redesign prototype
 pages (`lovesac-redesign.html`, `lovesac-sactionals.html`, `lovesac-what-to-expect.html`,
 `lovesac-support.html`), which mock the real Lovesac site's own look and are a
@@ -350,3 +348,18 @@ and a creator credit, then reveals the clubhouse after 4 seconds. Skip intro
 and Escape enter immediately. Reduced motion and JavaScript-disabled browsers
 bypass the animation. It runs once per page load, never on returning to the
 clubhouse within a round. No audio or additional image assets load for it.
+
+## Sharing and archive maintenance
+
+`images/og-card.png` is Claudia's supplied “Ideas, made visible” artwork, copied
+unchanged from the 1731 × 909 PNG. The homepage and archived blog index use the
+versioned `og-card.png?v=3` URL. Current project pages keep their own artwork with
+explicit Open Graph dimensions, image descriptions, and Twitter metadata.
+About and Contact have separate metadata and are maintained independently.
+
+Archived URL families: `/blog/` (including reports), `/work/lovesac-*.html`,
+`/work/walmart-*.html`, and `/work/thd-giftcards.html`. Keep these files and their
+assets to preserve existing links. Do not block them in robots.txt: crawlers need
+to read their noindex directives. Current AI resources live in
+`worker-csp/src/portfolio-knowledge.js`; changes to that file require a separate
+Worker deployment in addition to the static GitHub Pages deployment.
