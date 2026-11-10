@@ -32,7 +32,7 @@
     answer: phone.querySelector('.ar-answer-text'),
   };
   const question = 'What should I take from this sack?';
-  const answer = 'Crosby finished with a 10-yard sack. Las Vegas has 18 sacks this season, ten in the last six games. Compare his path with Hemingway’s and Paye’s, then revisit the plays where protection held.';
+  const answer = 'Caleb Downs brought down Daniel Jones for a 10-yard loss. Dallas finished with two sacks against Indianapolis. Compare this rush with the Arizona examples, then revisit plays where protection held. A sack count alone does not establish pressure frequency.';
   const offsetIn = (el, root) => { let y = 0; for (let n = el; n && n !== root; n = n.offsetParent) y += n.offsetTop; return y; };
   const scrollTo = el => {
     if (!el) { phoneParts.scroll.style.transform = ''; return; }

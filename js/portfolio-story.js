@@ -92,7 +92,7 @@
     sizeBriefing();
     document.fonts?.ready.then(sizeBriefing);
     window.addEventListener('resize', sizeBriefing);
-    const response = 'Across eight games, Las Vegas allowed 85 first-half points in Weeks 5–8 versus 36 in Weeks 1–4. The latest two games supplied 51. Opponents also reached 100 rushing yards in seven straight games. Compare the early scoring with later stops; recurring outcomes do not establish a shared defensive cause.';
+    const response = 'Indianapolis found a 55-yard touchdown through Ashton Dulin and a 36-yard run through Seth McGowan. Dallas also held Jonathan Taylor to 46 rushing yards and allowed only three third-down conversions. Compare the explosive plays with the stops before treating either as a recurring pattern.';
     const viewport = askRead.querySelector('.askread-screen-viewport');
     const cursor = askRead.querySelector('.askread-demo-cursor');
     const firstClip = askRead.querySelector('.askread-demo-response .askread-real-clip');

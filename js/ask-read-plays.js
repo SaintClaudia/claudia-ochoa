@@ -20,7 +20,7 @@
     body.scrollTop=body.scrollHeight;
   }
   const seeds = [
-    { id:'lead-left', name:'Lead Left', origin:'', intent:'Create an inside lane behind the fullback’s left-side lead. First choice for 1st-and-10 at SF35, tied in Q1, when the blocking can account for the actual front.', assignments:'21 personnel: pistol-depth QB, deep RB, F offset left and Y attached left. F leads toward the inside entry; RB follows the leverage of the blocks. The diagram illustrates the observed mechanism, not SF’s private blocking rules.', notes:'Emerging opportunity. Include the run stops; a two-high shell alone does not justify the call. Personnel is assessed by role using public information through November 3.', sample:true },
+    { id:'lead-left', name:'Lead Left', origin:'', intent:'Create an inside lane behind the fullback’s left-side lead. Concept for review on 1st-and-10 at SF35, tied in Q1, when the blocking can account for the actual front.', assignments:'21 personnel: pistol-depth QB, deep RB, F offset left and Y attached left. F leads toward the inside entry; RB follows the leverage of the blocks. The diagram illustrates the observed mechanism, not SF’s private blocking rules.', notes:'For team review. Include the run stops; a two-high shell alone does not justify the call. Personnel is assessed by role using public information through November 9.', sample:true },
     { id:'sail', name:'Flood right', origin:'Ask Read draft · Team review needed', intent:'Explore three receiving levels on the right side. Test whether the spacing gives the quarterback a clear read.', assignments:'Outside receiver: clear vertically. Slot: intermediate out. RB: release to the flat. Confirm the full assignment and protection plan with the team.', notes:'Idea for practice. No results recorded yet.' },
     { id:'zone', name:'Inside run', origin:'Team playbook', intent:'Create an interior running lane and document where the runner’s read and the blocking need to improve.', assignments:'Team to confirm the front, blocking rules, ball-carrier read, and adjustments before installing.', notes:'Add the team’s diagram and coaching points.' }
   ];
@@ -33,7 +33,7 @@
   let active = plays[0], currentTab = 'design', outcome = 'struggle', mode = 'blank', search = '';
   const playStates = {
     draft: {icon:[['path',{d:'M13 5H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8M16 3l5 5M10 14l3-1 8-8-3-3-8 8z'}]], label:'Draft', description:'A play being documented and prepared. No outcomes recorded yet.'},
-    review: {icon:[['path',{d:'M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z'}],['circle',{cx:12,cy:12,r:2.8}]], label:'Emerging opportunity', description:'Conditional first choice for 1st-and-10 at SF35, tied Q1. SF execution and related Raiders evidence support the matchup; superiority over the pocket-pass alternative is not established.'},
+    review: {icon:[['path',{d:'M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z'}],['circle',{cx:12,cy:12,r:2.8}]], label:'For team review', description:'Illustrative concept for 1st-and-10 at SF35, tied Q1. Dallas film and current personnel must be reviewed before ranking this call.'},
     untested: {icon:[['circle',{cx:12,cy:12,r:9}],['path',{d:'M12 7v5l3 3'}]], label:'Untested', description:'An adjusted version awaiting practice results. Its effectiveness has not been established.'}
   };
   const stateOf = play => play.sample ? 'review' : play.derived ? 'untested' : 'draft';
@@ -58,7 +58,7 @@
     const board=el('div',null,'arp-playbook');
     const toolbar=el('div',null,'arp-playbook-toolbar');
     const formation=el('div',null,'arp-playbook-formation');
-    formation.append(el('strong','21 personnel · Pistol, Y left'),el('span','Four-down example · Research through Nov 3'));
+    formation.append(el('strong','21 personnel · Pistol, Y left'),el('span','Four-down example · Research through Nov 9'));
     const phases=el('div',null,'arp-playbook-phases');phases.setAttribute('role','group');phases.setAttribute('aria-label','Diagram perspective');
     toolbar.append(formation,phases);
     const controls=el('div',null,'arp-board-controls');
@@ -83,8 +83,8 @@
     const contextScroll=el('div',null,'arp-context-scroll');
     const recommendation=el('div',null,'arp-recommendation-context');
     const rationale=[
-      ['WHY THIS PLAY','Lead action has opened an inside lane for SF. Related Raiders run evidence supports this call when blocking accounts for the front.'],
-      ['FILM BASIS','SF–WAS, Q1 13:22: lead left gained 8. Jets comparison runs: −1, 5 and 4. Pocket dropback remains close.'],
+      ['WHY THIS PLAY','Explore lead action against Dallas. Confirm the front, entry and blocking fit on film before ranking the call.'],
+      ['FILM BASIS','Dallas–Indianapolis, Nov 8: Taylor had 46 rushing yards; McGowan broke a 36-yard run. Compare gains with stops.'],
       ['WHEN TO CHANGE','A closed entry or unaccounted fitter favors pocket dropback. Downhill commitment can favor protected play-action. Two-high alone is insufficient.']
     ];
     rationale.forEach(([label,text])=>{const section=el('div');section.append(el('p',label,'arp-eyebrow'),el('p',text));recommendation.append(section);});
@@ -218,7 +218,7 @@
     const matches=plays.filter(play => play.name.toLowerCase().includes(search));
     $('list').replaceChildren(...matches.map(play => {
       const button=el('button',null,'arp-play'); button.type='button'; button.setAttribute('aria-pressed',String(play.id===active.id));
-      button.append(el('strong',play.name),el('span',play.sample?'Emerging opportunity':play.derived?'Adjustment · Untested':'Draft · Not yet tested'));
+      button.append(el('strong',play.name),el('span',play.sample?'For team review':play.derived?'Adjustment · Untested':'Draft · Not yet tested'));
       button.addEventListener('click',()=>{ closeConversation(false);  active=play; render(); say(''); }); return button;
     }));
     if(!matches.length) $('list').append(el('p','No plays match your search.','arp-empty'));
@@ -231,7 +231,7 @@
     parkConversationElements();
     if(conversationPlay&&conversationPlay.id!==active.id){chatLog.replaceChildren();chatSuggestions.replaceChildren();}
     list(); $('name').textContent=active.name;
-    $('subtitle').textContent=active.sample?'Week 9 · Las Vegas · 1st & 10 · SF35 · Tied Q1':'Week 9 · Las Vegas Raiders';
+    $('subtitle').textContent=active.sample?'Week 10 · Dallas · 1st & 10 · SF35 · Tied Q1':'Week 10 · Dallas Cowboys';
     $('conversation-back-label').textContent=active.name;
     $('conversation-back').setAttribute('aria-label',`Return to ${active.name}`); $('origin').textContent=active.origin === 'Team playbook' ? '' : active.origin;
     $('origin').hidden=!$('origin').textContent;
@@ -245,7 +245,7 @@
     $('status').setAttribute('aria-label',`${state.label}: ${state.description}`);
     $('intent').textContent=active.intent || 'Define what this play should accomplish.';
     $('assignments').textContent=active.assignments || 'Document assignments and confirm them with the team.';
-    $('next').textContent=active.sample?'Apply the front and role checks. Pocket dropback stays close; protected play-action moves up when defenders commit downhill. Public personnel snapshot: November 3.':'Confirm assignments, run it in practice, and attach the results for review.';
+    $('next').textContent=active.sample?'Apply the front and role checks. Pocket dropback stays close; protected play-action moves up when defenders commit downhill. Public personnel snapshot: November 9.':'Confirm assignments, run it in practice, and attach the results for review.';
     const attachment=attachments.get(active.id); const diagram=$('diagram'); diagram.replaceChildren();
     root.querySelector('.arp-intent').hidden=!attachment&&(!!active.sample||!!active.derived);
     if(attachment) {
@@ -335,29 +335,29 @@
     }
     const context=conversationContext;
     if(!active.sample) {
-      response('This play has no saved matchup review yet. The November 3 recommendation applies to Lead Left in the stated situation; it does not validate a custom draft.');
+      response('This play has no saved matchup review yet. The November 9 recommendation applies to Lead Left in the stated situation; it does not validate a custom draft.');
     } else if(/why|rank|best|first/i.test(text)) {
-      response('Lead Left is the conditional first choice for 1st-and-10 at SF35, tied in Q1, when the lead and line can account for the front. SF has shown the lead mechanism, and related early-down runs have gained ground against Las Vegas. The pocket pass remains close: our review does not establish a clear effectiveness margin.');
+      response('Lead Left is a concept for team review against Dallas. Indianapolis produced a 36-yard run, but Taylor finished with 46 rushing yards. These results do not establish a preferred call; inspect the front and blocking fit before comparing alternatives.');
     } else if(/safety|rotat|two.high|extra fitter/i.test(text)) {
-      response('Two-high alone is not a keep signal: the Jets lost a yard on a run with safeties initially deep. If rotation adds an unaccounted fitter or squeezes the entry, the run loses its preference. Use the installed alternative only when its protection and route answer fit; rotation does not automatically open the crossing route.');
+      response('Two-high alone is not a keep signal. Confirm the actual rotation and run fit on Dallas film. If an extra fitter squeezes the entry, revisit the installed alternative and its protection.');
     } else if(/pressure|blitz|rush|hot/i.test(text)) {
-      response('Separate an actual added rusher from a crowded line that drops defenders. The review includes four-man rushes with linebackers underneath, so do not force an assumed hot throw into a dropping defender. Account for the actual pressure in the installed protection; no specific SF hot rule is claimed.');
+      response('Caleb Downs recorded a 10-yard sack against Indianapolis. Dallas had two sacks in that game. Review the actual rush and protection on each snap; the sack total alone does not establish pressure frequency.');
     } else if(/never|new play|novel|experimental|categor|validat/i.test(text)) {
-      response('The lead action is familiar SF execution. The Las Vegas matchup is an emerging opportunity; no exact candidate has reached validated advantage. A protected play-action counter from the same 21-personnel look is experimental until that combination is tested. This review cannot establish that SF has never used it.');
+      response('This is an illustrative lead-run concept. Its effectiveness against Dallas has not been validated. Test alternatives against the actual front and personnel before ranking them.');
     } else if(/personnel|injur|available|availability|backup|replacement|buck|mccaffrey|black/i.test(text)) {
-      response('Use public information through November 3 and assess the required roles: runner, lead blocker, attached tight end and line. A replacement is not automatically a downgrade. If an essential job is unsupported, rerank the alternatives. Buckner’s defensive-line acquisition does not directly change this fixed Purdy offensive decision.');
+      response('Confirm current availability and assess the runner, lead blocker, attached tight end and line. The latest gamebook records who participated against Indianapolis; it is not the upcoming active roster.');
     } else if(/alternative|compar|play.action|counter|dropback/i.test(text)) {
-      response('Pocket dropback with underneath releases ranks second and can move first when the run fit is unfavorable and protection supports the pass. Protected play-action with a TE cross ranks third and can move first against supported downhill commitment. These are conditional alternatives; there is no measured superiority or success probability.');
+      response('Compare pocket dropback and protected play-action with the lead run. Their order depends on the observed fit, protection and coverage. No measured Dallas-specific superiority is claimed.');
     } else if(/evidence|film|source|jets|latest game|what changed|stop|loss|need to see/i.test(text)) {
-      const answer=response('SF’s lead-left anchor is Washington Q1 13:22: 8 yards on second-and-six. The added Jets possession includes runs of −1, 5 and 4. All eight official results are retained, with matched partial film notes for four snaps. The loss challenges an automatic two-high run call; different action prevents treating it as an exact failure of SF’s lead left.');
-      const source=el('a','Official Jets–Raiders gamebook ↗');
-      source.href='https://static.www.nfl.com/image/upload/v1793617587/gamecenter/ab1661ac-4feb-11f1-abca-2c54536568a9.pdf';source.target='_blank';source.rel='noopener';answer.append(source);
+      const answer=response('Against Indianapolis on Nov 8, Dallas allowed 105 rushing yards on 23 carries, including McGowan’s 36-yard run. Taylor had 46 yards. Review both gains and stops before inferring a repeatable opportunity.');
+      const source=el('a','Official Colts–Cowboys gamebook ↗');
+      source.href='https://static.www.nfl.com/image/upload/v1794173939/gamecenter/ab38123a-4feb-11f1-abca-2c54536568a9.pdf';source.target='_blank';source.rel='noopener';answer.append(source);
     } else if(/runner|lead action|cut/i.test(text)) {
       response('Take the handoff and follow the fullback’s left-side lead toward the entry inside the attached tight end’s engagement. Read the space created by those blocks. Interior penetration, a squeezed lane or an extra unaccounted fitter can defeat the run. The path is illustrative, not a certified SF assignment sheet.');
     } else if(/assign|player|route|timing|protect|observe/i.test(text)&&context) {
       response(`${context.assignment} ${context.read}`);
     } else {
-      response('This recommendation is an emerging opportunity for 1st-and-10 at SF35, tied in Q1. I can explain the supporting film, run stops, alternatives, safety rotation, pressure or personnel scenarios from the November 3 review.');
+      response('This concept is ready for team review against Dallas in Week 10. I can explain the diagram, latest-game observations and checks needed before ranking the alternatives.');
     }
     scrollConversation();
   }
