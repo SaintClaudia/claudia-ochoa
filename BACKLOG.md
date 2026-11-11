@@ -2,3 +2,12 @@
 
 - [x] [Spike] Audit remaining references to the retired `--clay-deep` and `--espresso` CSS variable names and rename them properly. Completed September 8, 2026: renamed the case-study.css palette to functional names (`--cream`→`--bg`, `--sand`→`--bg-alt`, `--espresso`→`--text-bright`, `--paper`→`--surface`) and removed the duplicate `--clay`/`--clay-deep`/`--invert-ink` aliases in favor of `--ink-soft`/`--text-bright`/`--bg` directly, across case-study.css and every page that loads it. The lovesac-prototype.css system (its own real `--clay`/`--canvas` palette, used only by lovesac-redesign.html and lovesac-support.html) was left untouched.
 - [x] Optimize the interactive Lovesac redesign's performance after the agentic-readiness workstream. Completed September 4, 2026: responsive AVIF/WebP hero delivery and deferred menu/below-fold backgrounds improved local Lighthouse 13.4.1 from a repeated 78–83 mobile range to 99 mobile, with desktop at 100.
+
+## Current redesign follow-up
+
+- [ ] Complete a manual VoiceOver and keyboard pass on Home, About, Contact,
+  Ask Read, Chasing Birdies, and Brock Purdy 13. Check continuous reading,
+  heading/link navigation, skip-link focus, menu open/close and focus return,
+  and form labels/status announcements. Investigate any repeated “empty”
+  announcements with the browser focused. November 10 homepage verification
+  covered the live Chrome/macOS accessibility tree, not spoken audio.

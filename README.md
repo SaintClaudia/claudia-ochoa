@@ -246,26 +246,31 @@ Run `python3 build.py --check` for a read-only validation. It exits with an
 error if a generated region is stale or if markers are missing, duplicated,
 reversed, or unmatched.
 
-## Historical blog workflow (archive)
+## Archived content maintenance
 
-1. Copy `blog/_template.html` to `blog/<slug>.html` (lowercase, hyphenated, no dates in the slug)
-2. Use the shared `/css/blog.css` components and the template’s numbered section layout. Keep listing titles as plain `<h2>` headings; the image and “Read the post” button link to the article. Use `image-full` on a lead image or card image to preserve a full 3:2 composition.
-3. Fill in every `REPLACE:` marker — title, dates, description, OG/Twitter tags, canonical URL, byline, and body copy
-4. Add a card for the post to `blog/index.html`, newest first, above the "Add new posts above this line" comment (and remove the "first post is on its way" empty state the first time)
-5. Add the new URL to `sitemap.xml`
-6. Run `python3 build.py`, then `python3 build.py --check`
-7. Push
+The blog and earlier case studies are historical references. Preserve their URLs,
+archive notices, and `noindex, follow` directives. Do not use the archived blog
+or case-study templates for new active portfolio pages, or add archived URLs to
+the sitemap, unless explicitly restoring that content.
 
+## Adding a featured project
 
-## Adding a case study
-
-1. Copy an existing file from `work/` and rename it
-2. Update the title, meta description, Open Graph tags, and canonical URL in `<head>`
-3. Update content and cover image reference
-4. Add the cover image to `images/`
-5. Add a card to `work/index.html`
-6. Add the URL to `sitemap.xml`
-7. Push
+1. Use a current project page (`work/ask-read.html`, `work/chasing-birdies.html`,
+   or `work/brock-purdy-13.html`) as the structural reference.
+2. Update content, artwork, title, description, canonical URL, social metadata,
+   and any structured data to accurately describe the new project.
+3. Add the homepage story in `index.html` and the navigation entry in
+   `_portfolio-nav.html`; update project numbering as needed. `work/index.html`
+   is a redirect, not a project listing.
+4. Give headings and links meaningful project names for screen-reader navigation.
+   Keep decorative mock interfaces out of the reading order and keyboard focus.
+5. Update `sitemap.xml`, `llms.txt`, and the curated resources in
+   `worker-csp/src/portfolio-knowledge.js` when featuring the project for discovery.
+6. Run `python3 build.py`, `python3 build.py --check`, and relevant checks for
+   changed scripts or Worker resources. Review desktop, mobile, keyboard, and
+   screen-reader behavior before publishing.
+7. Commit and push the static changes. Changes to Worker resources also require
+   the separate Worker test and deployment workflow in `worker-csp/README.md`.
 
 ## Editing shared styles
 
@@ -285,30 +290,41 @@ live in `css/lovesac-prototype.css`; their inline style blocks contain page-spec
 
 ## SEO
 
-Every page has:
-- Unique `<meta name="description">` tag
-- Open Graph tags (`og:title`, `og:description`, `og:url`, `og:type`, `og:image`)
-- Twitter Card tags for link preview on X/Twitter and iMessage
-- `<link rel="canonical">` to prevent duplicate content issues
-- PNG favicons at 192×192 and 32×32 for Google Search and browser tabs
+Current portfolio pages carry canonical URLs, descriptions, Open Graph/Twitter
+sharing metadata, and shared favicons. The homepage includes `Person` JSON-LD.
+Archived pages retain their historical metadata alongside `noindex, follow`.
 
-The homepage has JSON-LD `Person` schema. The Walmart GenAI and featured Lovesac case studies additionally use `CreativeWork` schema with an `author` reference to the Person. The AI leadership case is prioritized in `sitemap.xml` at 0.9; meaningful content updates should keep each page's `lastmod` current.
-
-`sitemap.xml` lists all pages and is referenced in `robots.txt`. The sitemap is submitted to Google Search Console at `https://claudiaochoa.co/sitemap.xml`. Bump a page's `lastmod` (and `priority`, if it's a piece you want surfaced) whenever its content changes materially — stale dates and generic priorities give search engines less reason to recrawl or rank it.
+`sitemap.xml` lists the six current portfolio routes: Home, About, Contact,
+Ask Read, Chasing Birdies, and Brock Purdy 13. It excludes archived work, the blog,
+and the unlinked game prototype. `robots.txt` references the sitemap. Keep each
+page's `lastmod` accurate when making meaningful content changes.
 
 ## Accessibility
 
-Targets **WCAG 2.1 AA**. Implemented across all pages:
+WCAG 2.1 AA is the target, not a claim of a completed site-wide conformance audit.
+Automated scores support review; the actual keyboard and listening experience
+remains the acceptance standard.
 
-- **Skip link** — visually hidden "Skip to main content" link is the first focusable element on every page; appears on keyboard focus
-- **Focus indicators** — `:focus-visible` styles on all interactive elements (nav icons, buttons, links, form inputs)
-- **Reduced motion** — `@media (prefers-reduced-motion: reduce)` disables all transitions and animations for users with that OS setting enabled
-- **Heading hierarchy** — all pages follow a clean h1 → h2 structure; no skipped levels
-- **Image alt text** — all images have descriptive alt text
-- **ARIA labels** — nav icon buttons and interactive controls have `aria-label` attributes
-- **Semantic landmarks** — `<main id="main-content">` on every page
+- Preserve the skip link, semantic main landmark, heading hierarchy, visible
+  focus indicators, and reduced-motion behavior. Current portfolio pages use
+  `id="main"`; older archived pages may use different landmark IDs.
+- Give informative images useful alternatives and decorative images empty alt
+  text. Do not narrate decorative device internals as independent page content.
+- Name icon-only controls and make project links understandable out of context.
+- The homepage introduces Claudia Ochoa in its h1, includes each project name in
+  its h2 and concept link, and exposes the Ask Read mockup as one concise image
+  description. The mockup internals are `aria-hidden` and `inert`; decorative
+  project counters and the duplicate wordmark are hidden from screen readers.
+  `.sr-only` in `css/portfolio-story.css` supplies the additional spoken context.
+- The homepage skip-link and selected-work targets have `tabindex="-1"` so they
+  can receive focus without adding extra Tab stops.
 
-When adding new pages: use `<h2>` for section headings under the page `<h1>`, include `alt` on all images, and add `aria-label` to icon-only buttons.
+Verified November 10, 2026: generated markup checks and the refreshed live
+homepage's macOS accessibility tree in Chrome confirmed descriptive project
+headings/links and exclusion of mock-dashboard internals. Actual VoiceOver audio
+and a complete keyboard/listening pass across all six current routes remain
+outstanding. See `BACKLOG.md`. Do not equate this structural check with a completed
+VoiceOver test or extend it to archived pages.
 
 ## Performance
 
@@ -388,3 +404,21 @@ existing headshot asset, which is reused without duplicating its image data.
 `css/portfolio-story.css` owns the `--site-body-size`, `--site-body-leading`, `--site-lead-size`, and `--site-lead-leading` tokens. About biography copy, homepage project summaries, and Contact copy consume this scale; use these tokens instead of page-specific body sizes. About inherits the site font. Run `python3 build.py` after changing shared CSS to refresh the homepage’s generated inline styles.
 
 `css/editorial-pages.css` supplies the shared light surface, colors, gutters, focus styles, and navigation treatment for About and Contact. Contact uses the “Good work starts with a conversation.” heading, shared body scale and pill button, with the existing Web3Forms delivery and LinkedIn link.
+
+### Redesign cleanup status — November 10, 2026
+
+The shipped cleanup includes archive/discovery separation, refreshed sharing
+artwork, homepage loading and Safari wordmark fixes, the About redesign, shared
+editorial typography, Contact styling and focus refinements, CTA contrast, link
+underline motion, and descriptive homepage screen-reader names. The homepage
+wordmark is a directly rendered SVG; preserve that first-paint behavior.
+
+About and Contact share the dot texture and editorial tokens in
+`css/editorial-pages.css`. Contact fields use an underline focus treatment, its
+form sits on a white surface with a subtle shadow, and editorial links animate
+their underline left to right while respecting reduced-motion preferences.
+
+Local `tmp/` review artifacts are untracked and are not part of the deployment.
+Do not commit or delete them as part of routine site updates. Remaining experience
+verification is tracked in `BACKLOG.md`; this status is not a blanket audit of
+all archived pages or assets.
