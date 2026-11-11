@@ -56,16 +56,3 @@ html.menu-is-open{overflow:hidden}
 @media(prefers-reduced-motion:reduce){.site-menu[open]{animation:none}.site-menu .menu-primary a,.site-menu .menu-projects a{transition:none}.site-menu .menu-primary a:is(:hover,:focus-visible){transform:none}}
 
 .site-menu .menu-project-arrow svg{display:block;width:14px;height:14px;color:inherit}
-
-/* Optional browser narration; no audio starts on page load. */
-.site-listen-toggle{width:auto;min-width:64px;margin-right:16px;font:500 14px/1.2 Inter,Arial,sans-serif}
-.site-listen-toggle:focus-visible{outline-color:currentColor}
-.page-narrator{position:fixed;z-index:50;right:24px;bottom:24px;width:min(340px,calc(100vw - 48px));box-sizing:border-box;padding:20px;border:1px solid #777;border-radius:16px;background:#f5f5f1;color:#171918;box-shadow:0 8px 40px #0003;font:14px/1.5 Inter,Arial,sans-serif}
-.page-narrator[hidden]{display:none}
-.narrator-heading{display:flex;align-items:center;justify-content:space-between;gap:12px}
-.page-narrator p{margin:12px 0}
-.page-narrator label{display:block;margin-bottom:4px}
-.page-narrator button,.page-narrator select{font:inherit;min-height:44px;border:1px solid #666;border-radius:6px;color:#171918;background:#fff;padding:8px 12px}
-.page-narrator select{display:block;width:100%;margin-bottom:12px}
-.page-narrator button{cursor:pointer}
-.page-narrator :focus-visible{outline:3px solid #1a5bc4;outline-offset:3px}

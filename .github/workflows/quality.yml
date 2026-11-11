@@ -24,7 +24,5 @@ jobs:
           for file in js/*.js worker/src/*.js worker-csp/src/*.js; do
             node --check "$file"
           done
-      - name: Check narration lifecycle
-        run: node --test tests/portfolio-listen.test.cjs
       - name: Check whitespace
         run: git diff --check
