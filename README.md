@@ -319,6 +319,18 @@ remains the acceptance standard.
 - The homepage skip-link and selected-work targets have `tabindex="-1"` so they
   can receive focus without adding extra Tab stops.
 
+The six current portfolio pages offer an optional **Listen** control. It opens a
+voice picker and Play/Pause/Stop controls; audio never starts automatically.
+`js/portfolio-listen.js` reads selected editorial headings and paragraphs from
+the page, excluding decorative previews, navigation, and forms. Keep its content
+selectors aligned with future layout changes. The preferred voices follow the
+Lovesac narrator, with a device-default fallback; available voices vary by
+browser and operating system. This does not change VoiceOver or replace semantic
+accessibility. Narration uses short chunks; resuming may repeat the current word
+(or chunk when a voice supplies no word boundaries). Leaving the page stops it.
+Run `node --test tests/portfolio-listen.test.cjs` for playback lifecycle checks.
+Actual voice quality and continuous listening still need human review.
+
 Reviewed November 10, 2026: all six active pages were inspected through Chrome's
 macOS accessibility tree and keyboard input. Main and overview jump targets now
 accept focus; main landmarks have an explicit name. The Ask Read title precedes
