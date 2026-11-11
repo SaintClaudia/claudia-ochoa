@@ -5,9 +5,11 @@
 
 ## Current redesign follow-up
 
-- [ ] Complete a manual VoiceOver and keyboard pass on Home, About, Contact,
-  Ask Read, Chasing Birdies, and Brock Purdy 13. Check continuous reading,
-  heading/link navigation, skip-link focus, menu open/close and focus return,
-  and form labels/status announcements. Investigate any repeated “empty”
-  announcements with the browser focused. November 10 homepage verification
-  covered the live Chrome/macOS accessibility tree, not spoken audio.
+- [x] Review the six active pages' macOS/Chrome accessibility structure and
+  keyboard behavior; fix reading-order, mockup focus, jump-target naming,
+  heading, link-name, and Contact response-focus issues. See
+  [the review record](docs/accessibility-review-2026-11-10.md) for checks and limits.
+- [ ] Complete the audible VoiceOver pass on all six pages: continuous reading,
+  heading/link rotor navigation, live status announcements, and any repeated
+  “empty” announcements. The available connection exposes accessibility content
+  and keyboard focus but does not reliably expose VoiceOver speech or its overlay.

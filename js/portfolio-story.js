@@ -208,6 +208,7 @@
     if (!form.reportValidity()) return;
     const status = form.querySelector('.form-status');
     const button = form.querySelector('button');
+    const restoreSubmitFocus = document.activeElement === button;
     button.disabled = true;
     status.textContent = 'Sending…';
     try {
@@ -217,6 +218,13 @@
       status.textContent = 'Thank you. Your message has been sent.';
       form.reset();
     } catch { status.textContent = 'Your message could not be sent. Please try again, or connect on LinkedIn.'; }
-    finally { button.disabled = false; }
+    finally {
+      button.disabled = false;
+      // Disabling a focused submit button moves focus to the document. Restore
+      // it after the response, unless the visitor has moved to another control.
+      if (restoreSubmitFocus && document.activeElement === document.body) {
+        button.focus({ preventScroll: true });
+      }
+    }
   });
 })();

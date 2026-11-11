@@ -58,3 +58,6 @@
  .cb-roster-player:nth-child(even){--roster-drift:calc(var(--roster-progress,0) * -70px)}
 }
 @media(prefers-reduced-motion:no-preference){.cb-roster-player{will-change:transform}}
+
+/* Read the introduction before the roster while preserving the desktop composition. */
+@media(min-width:761px){.cb-roster-story{grid-column:2;grid-row:1}.cb-roster-wall{grid-column:1;grid-row:1}}

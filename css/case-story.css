@@ -313,3 +313,6 @@
 
 /* Use the full card width while retaining the shared headline size. */
 .cs-more-card.cs-more-purdy h3{max-width:none}
+
+/* Keep the hero title first in reading order and below the artwork on phones. */
+@media(max-width:800px){.cs-askread-hero .story-copy{order:1}}

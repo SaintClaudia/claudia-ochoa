@@ -319,12 +319,19 @@ remains the acceptance standard.
 - The homepage skip-link and selected-work targets have `tabindex="-1"` so they
   can receive focus without adding extra Tab stops.
 
-Verified November 10, 2026: generated markup checks and the refreshed live
-homepage's macOS accessibility tree in Chrome confirmed descriptive project
-headings/links and exclusion of mock-dashboard internals. Actual VoiceOver audio
-and a complete keyboard/listening pass across all six current routes remain
-outstanding. See `BACKLOG.md`. Do not equate this structural check with a completed
-VoiceOver test or extend it to archived pages.
+Reviewed November 10, 2026: all six active pages were inspected through Chrome's
+macOS accessibility tree and keyboard input. Main and overview jump targets now
+accept focus; main landmarks have an explicit name. The Ask Read title precedes
+its preview, decorative mockups cannot receive focus, and evidence/Library
+controls remain usable. Related-project links have concise names; the Birdies
+roster follows its introduction in reading order. Contact restores submit focus
+after responses without taking focus from another control.
+
+A localhost-only Contact test verified failure/success messages and focus recovery
+without sending a real message. Actual VoiceOver speech, continuous reading, and
+rotor behavior remain unverified. See
+[the review record](docs/accessibility-review-2026-11-10.md) and `BACKLOG.md` for
+scope and remaining checks. Do not extend these results to archived pages.
 
 ## Performance
 

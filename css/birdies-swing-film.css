@@ -14,7 +14,7 @@
 .cb-film-caption span{display:block;color:#d9ded4;font-size:10px}
 .cb-film-overview{position:absolute;top:clamp(28px,4vw,70px);right:var(--gutter);width:clamp(150px,14vw,210px);padding:18px;border:1px solid #ffffff14;border-radius:12px;background:#08120edb;backdrop-filter:blur(6px);color:#f3f3ed}
 .cb-film-overview-label{margin:0 0 10px;color:#d6ae63;font-size:9px;letter-spacing:.12em}
-.cb-film-overview h3{margin:0 0 8px;font-size:clamp(16px,1.45vw,21px);font-weight:500;letter-spacing:-.025em}
+.cb-film-overview h2{margin:0 0 8px;font-size:clamp(16px,1.45vw,21px);font-weight:500;letter-spacing:-.025em}
 .cb-film-course-details{margin:0 0 14px;color:#c3cbbf;font-size:11px;line-height:1.6}
 .cb-film-course-details span{white-space:nowrap}
 .cb-film-map{display:block;width:100%;height:auto;aspect-ratio:2/3;overflow:hidden;border-radius:6px}
@@ -30,7 +30,7 @@
  .cb-film-caption{font-size:11px}.cb-film-caption span{font-size:9px}
  .cb-film-overview{position:static;display:grid;grid-template-columns:minmax(0,1fr) 112px;grid-template-rows:auto auto 1fr;align-items:start;column-gap:18px;width:auto;margin:0;padding:20px var(--gutter);border:0;border-radius:0;background:#0d1913}
  .cb-film-overview-label{grid-column:1;margin-bottom:8px;font-size:8px}
- .cb-film-overview h3{grid-column:1;margin:0 0 12px;font-size:17px}
+ .cb-film-overview h2{grid-column:1;margin:0 0 12px;font-size:17px}
  .cb-film-course-details{grid-column:1;grid-row:3;margin:0;font-size:11px}
  .cb-film-map{grid-column:2;grid-row:1/4}
 }
@@ -41,7 +41,7 @@
 
 /* Match the in-device hole card's type, wind symbol and solid surface. */
 .cb-film-overview{background:#0a1815;border-radius:clamp(16px,1.7vw,26px);backdrop-filter:none}
-.cb-film-overview h3{text-transform:uppercase;font-weight:650;letter-spacing:0}
+.cb-film-overview h2{text-transform:uppercase;font-weight:650;letter-spacing:0}
 .cb-film-course-details{margin-bottom:10px}
 .cb-film-wind{display:flex;align-items:center;gap:9px;margin:0 0 16px;color:#c3cbbf;font-size:clamp(12px,1vw,16px)}
 .cb-film-wind svg{width:24px;height:24px;flex:none}
