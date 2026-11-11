@@ -9,7 +9,11 @@
   keyboard behavior; fix reading-order, mockup focus, jump-target naming,
   heading, link-name, and Contact response-focus issues. See
   [the review record](docs/accessibility-review-2026-11-10.md) for checks and limits.
-- [ ] Complete the audible VoiceOver pass on all six pages: continuous reading,
-  heading/link rotor navigation, live status announcements, and any repeated
-  “empty” announcements. The available connection exposes accessibility content
-  and keyboard focus but does not reliably expose VoiceOver speech or its overlay.
+- [x] Complete the audible VoiceOver pass on all six current pages. Claudia
+  confirmed verification complete on November 11, 2026, following the requested
+  continuous-reading, heading/link navigation, control naming, visual-description,
+  and keyboard/feedback review. This is user-confirmed listening verification;
+  the automated connection did not capture VoiceOver speech.
+
+No unresolved current-redesign follow-up items are recorded as of November 11,
+2026. Archived pages remain outside the six-page review scope.

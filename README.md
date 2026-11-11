@@ -328,10 +328,12 @@ roster follows its introduction in reading order. Contact restores submit focus
 after responses without taking focus from another control.
 
 A localhost-only Contact test verified failure/success messages and focus recovery
-without sending a real message. Actual VoiceOver speech, continuous reading, and
-rotor behavior remain unverified. See
-[the review record](docs/accessibility-review-2026-11-10.md) and `BACKLOG.md` for
-scope and remaining checks. Do not extend these results to archived pages.
+without sending a real message. On November 11, 2026, Claudia confirmed the
+VoiceOver walkthrough of all six current pages was verified. This closes the
+listening follow-up through user confirmation, not automated speech capture. See
+[the initial review record](docs/accessibility-review-2026-11-10.md) for the
+November 10 checks and tool limitations, and `BACKLOG.md` for the completed
+follow-up. Do not extend these results to archived pages.
 
 ## Performance
 
@@ -426,6 +428,7 @@ form sits on a white surface with a subtle shadow, and editorial links animate
 their underline left to right while respecting reduced-motion preferences.
 
 Local `tmp/` review artifacts are untracked and are not part of the deployment.
-Do not commit or delete them as part of routine site updates. Remaining experience
-verification is tracked in `BACKLOG.md`; this status is not a blanket audit of
-all archived pages or assets.
+Do not commit or delete them as part of routine site updates. As of November 11,
+2026, the current redesign follow-up in `BACKLOG.md` is complete, including
+Claudia’s confirmation of VoiceOver verification. No other unresolved redesign
+items are recorded; this status is not a blanket audit of archived pages or assets.
