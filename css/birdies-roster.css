@@ -39,7 +39,7 @@
 .cb-roster-player figure{position:relative;isolation:isolate;overflow:hidden;border-radius:clamp(12px,1.2vw,20px)}
 .cb-roster-art{border-radius:0}
 .cb-roster-player figcaption{position:absolute;inset:auto 0 0;z-index:1;padding:clamp(40px,5vw,76px) clamp(12px,1.2vw,22px) clamp(14px,1.5vw,24px);background:linear-gradient(180deg,transparent 0%,#07171670 36%,#071716e8 100%)}
-.cb-roster-player-name{margin-top:0;font-size:clamp(14px,1.15vw,21px);font-weight:550;line-height:1.2;color:#f5f5f1;text-shadow:0 1px 8px #0004}
+.cb-roster-player-name{margin-top:0;font-size:clamp(14px,1.15vw,21px);font-weight:550;line-height:1.2;color:var(--site-text);text-shadow:0 1px 8px #0004}
 .cb-roster-player-team{margin-top:5px;font-size:clamp(11px,.85vw,15px);line-height:1.35;color:#e2e7df}
 .cb-roster-host .cb-roster-player-team{color:#e2e7df}
 

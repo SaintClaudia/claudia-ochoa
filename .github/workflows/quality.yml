@@ -17,6 +17,8 @@ jobs:
           python-version: '3.x'
       - name: Verify generated HTML
         run: python3 build.py --check
+      - name: Check design system and active-page assets
+        run: python3 eval/design-system-check.py
       - name: Check Python syntax
         run: python3 -m py_compile build.py
       - name: Check JavaScript syntax

@@ -1,5 +1,5 @@
 #claudia-about-design {
-      --ink:var(--editorial-ink); --paper:#fff; --secondary:var(--editorial-muted); --rule:var(--editorial-rule);
+      --ink:var(--editorial-ink); --paper:var(--site-light-background); --secondary:var(--editorial-muted); --rule:var(--editorial-rule);
       --page-gutter:var(--editorial-gutter);
       color:var(--ink); background:var(--paper);
       padding:var(--page-gutter);

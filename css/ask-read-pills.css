@@ -54,11 +54,11 @@
 .askread-pill-system .askread-category-tabs>span{border-color:var(--askread-tab-border);color:var(--askread-tab-text)}
 .askread-pill-system .ar-pill{border-color:var(--askread-tab-border);color:var(--askread-tab-text)}
 .askread-pill-system .ar-pill b{background:transparent;color:inherit}
-.askread-pill-system .ar-pill.is-active{background:var(--askread-accent);border-color:var(--askread-accent);color:#080a09}
-.askread-pill-system .ar-pill.is-active b{background:#080a09;color:#fff}
+.askread-pill-system .ar-pill.is-active{background:var(--askread-accent);border-color:var(--askread-accent);color:var(--askread-background)}
+.askread-pill-system .ar-pill.is-active b{background:var(--askread-background);color:#fff}
 .askread-pill-system .askread-category-tabs>span.is-active,
 .askread-pill-system .cs-qb:not(.is-league) .cs-qb-tab-perf,
-.askread-pill-system .cs-qb.is-league .cs-qb-tab-league{border-color:var(--askread-accent);color:#080a09}
+.askread-pill-system .cs-qb.is-league .cs-qb-tab-league{border-color:var(--askread-accent);color:var(--askread-background)}
 
 /* Both hero previews use the same compact category and evidence spacing. */
 :is(.askread-pill-system.story-askread,.askread-pill-system .cs-askread-hero) .askread-category-tabs{gap:14px;margin:28px 0 36px}

@@ -23,6 +23,8 @@ Markers used in HTML files:
 """
 
 import argparse
+import hashlib
+import re
 import glob
 import os
 import sys
@@ -67,10 +69,23 @@ files = [
 total_updated = 0
 total_stale = 0
 
+
+def version_stylesheets(content):
+    """Use content hashes so every page requests the same current stylesheet."""
+    def replace(match):
+        asset = match.group(1)
+        path = os.path.join(BASE, asset.lstrip('/'))
+        if not os.path.isfile(path):
+            raise FileNotFoundError(f'Referenced stylesheet not found: {asset}')
+        with open(path, 'rb') as source:
+            version = hashlib.sha256(source.read()).hexdigest()[:12]
+        return f'href="{asset}?v={version}"'
+    return re.sub(r'href="(/css/[^"?]+\.css)(?:\?v=[^"&]*)?"', replace, content)
+
 # Inline the homepage styles in their existing cascade order. Shared source files
 # remain authoritative; other pages continue to use cacheable stylesheets.
 embedded_assets = [
-    (("css/portfolio-story.css", "css/ask-read-pills.css", "css/ask-read-composer.css",
+    (("css/portfolio-foundation.css", "css/portfolio-story.css", "css/ask-read-pills.css", "css/ask-read-composer.css",
       "css/portfolio-footer.css", "css/portfolio-nav.css", "css/birdies-screens.css",
       "css/liquid-intro.css"),
      "<!-- HOME-STYLES:START -->", "<!-- HOME-STYLES:END -->", "<style>\n", "\n</style>"),
@@ -103,7 +118,7 @@ for partial_file, START, END in partials:
     if not os.path.exists(partial_path):
         raise FileNotFoundError(f'Required partial not found: {partial_file}')
 
-    content_partial = open(partial_path).read().strip()
+    content_partial = version_stylesheets(open(partial_path).read().strip())
     print(f'\n--- {partial_file} ---')
     updated = 0
     used = 0
@@ -168,6 +183,20 @@ for asset_file, START, END, prefix, suffix in embedded_assets:
         total_stale += updated
     else:
         total_updated += updated
+
+# Also version page-specific CSS outside generated partials. Partials are
+# normalized before comparison above, so --check stays read-only/idempotent.
+for path in sorted(files):
+    content = open(path).read()
+    updated_content = version_stylesheets(content)
+    if updated_content != content:
+        if args.check:
+            total_stale += 1
+            print(f'  stale stylesheet versions: {os.path.relpath(path, BASE)}')
+        else:
+            with open(path, 'w') as output:
+                output.write(updated_content)
+            total_updated += 1
 
 if args.check:
     if total_stale:

@@ -1,14 +1,14 @@
 .cs-askread-hero .askread-season-evidence{margin-top:28px;border-top:1px solid #ffffff24;padding-top:24px;font-size:21px;line-height:1.5;color:#bcc4b3}
-.cs-askread-hero .askread-season-evidence summary{cursor:pointer;font-size:18px;letter-spacing:.08em;color:#d6ae63;padding:12px 0}
+.cs-askread-hero .askread-season-evidence summary{cursor:pointer;font-size:18px;letter-spacing:.08em;color:var(--askread-accent);padding:12px 0}
 .cs-askread-hero .askread-season-evidence .askread-season-scope{font-size:19px;color:#929c87}
 .cs-askread-hero .askread-season-category{margin-top:32px}
-.cs-askread-hero .askread-season-category h3{font-size:19px;letter-spacing:.1em;color:#d6ae63;margin:0 0 18px}
+.cs-askread-hero .askread-season-category h3{font-size:19px;letter-spacing:.1em;color:var(--askread-accent);margin:0 0 18px}
 .cs-askread-hero .askread-season-category article{padding:24px 0;border-top:1px solid #ffffff18}
-.cs-askread-hero .askread-season-category h4{font-size:27px;line-height:1.3;font-weight:500;margin:6px 0 16px;color:#f3f3ed}
+.cs-askread-hero .askread-season-category h4{font-size:27px;line-height:1.3;font-weight:500;margin:6px 0 16px;color:var(--askread-text)}
 .cs-askread-hero .askread-season-category p{margin:12px 0}
-.cs-askread-hero .askread-season-category .askread-season-state{font-size:17px;letter-spacing:.1em;color:#d6ae63}
+.cs-askread-hero .askread-season-category .askread-season-state{font-size:17px;letter-spacing:.1em;color:var(--askread-accent)}
 .cs-askread-hero .askread-season-category .askread-season-sources{font-size:18px}
-.cs-askread-hero .askread-season-sources a{color:#d6ae63;text-decoration:underline;text-underline-offset:3px}
+.cs-askread-hero .askread-season-sources a{color:var(--askread-accent);text-decoration:underline;text-underline-offset:3px}
 .cs-askread-hero[data-season-review] .askread-screen-scroll{overflow-y:auto;overscroll-behavior:contain}
 .cs-askread-hero[data-season-review] .askread-guided-prompts{display:none}
 .cs-askread-hero .story-shade{pointer-events:none}

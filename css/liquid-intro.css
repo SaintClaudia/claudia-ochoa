@@ -28,11 +28,11 @@
 @media(prefers-reduced-motion:reduce){.liquid-explore .work-intro-arrow{animation:none;transition:none}.liquid-explore:hover .work-intro-arrow{transform:none}}
 
 /* Keep the introduction in Inter with a quieter scroll cue. */
-.liquid-intro{font-family:Inter,Arial,sans-serif}
+.liquid-intro{font-family:var(--site-font)}
 .liquid-intro h1{letter-spacing:-.055em}
 .liquid-intro-copy p{letter-spacing:-.02em}
 .liquid-explore{font-family:inherit;font-size:15px;font-weight:400;letter-spacing:0;text-transform:none;gap:16px}
-.liquid-explore .work-intro-arrow{font-family:Inter,Arial,sans-serif}
+.liquid-explore .work-intro-arrow{font-family:var(--site-font)}
 @media(max-width:520px){.liquid-explore{font-size:14px}}
 
 /* Ask Read emerges onto the same ink used by the CLAUDIA wordmark. */
@@ -115,4 +115,4 @@
 .work-page .story-purdy .project-summary{max-width:490px;text-wrap:pretty}
 
 /* Project counts remain readable on both dark project backgrounds. */
-.work-page .story-index span{opacity:1;color:#aeb2b0}
+.work-page .story-index span{opacity:1;color:var(--site-text-secondary)}

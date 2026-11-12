@@ -1,5 +1,5 @@
 [data-birdies-screen]{width:100%}
-.cb-ui{position:relative;isolation:isolate;overflow:hidden;container-type:inline-size;background:#08120e;color:#f6f3e9;font-family:Inter,Arial,sans-serif;text-align:left}
+.cb-ui{position:relative;isolation:isolate;overflow:hidden;container-type:inline-size;background:#08120e;color:#f6f3e9;font-family:var(--site-font);text-align:left}
 .cb-ui svg{position:static;inset:auto;display:block;width:100%;height:auto;max-width:none;filter:none;opacity:1;transform:none;object-fit:initial}
 .cb-ui a{color:inherit;text-decoration:none}
 .cb-ui button{font:inherit;color:inherit;cursor:pointer}

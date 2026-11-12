@@ -1,5 +1,5 @@
 /* Shared light editorial surface for About and Contact. */
-.editorial-page{--editorial-ink:#0b0c0b;--editorial-muted:#454744;--editorial-rule:#dcdeda;--editorial-dot-color:#fcfbfa;--editorial-dot-image:radial-gradient(circle,rgb(24 21 18 / .19) .48px,transparent .82px);--editorial-dot-size:3.5px 3.5px;--editorial-shadow:0 1px 1px rgb(24 21 18 / .04),0 8px 24px rgb(24 21 18 / .045);--editorial-gutter:clamp(24px,5.4vw,68px);--editorial-heading:clamp(42px,7.6vw,92px);background:#fff;color:var(--editorial-ink);color-scheme:light}
+.editorial-page{--editorial-ink:var(--site-light-ink);--editorial-muted:var(--site-light-muted);--editorial-rule:var(--site-light-rule);--editorial-dot-color:#fcfbfa;--editorial-dot-image:radial-gradient(circle,rgb(24 21 18 / .19) .48px,transparent .82px);--editorial-dot-size:3.5px 3.5px;--editorial-shadow:0 1px 1px rgb(24 21 18 / .04),0 8px 24px rgb(24 21 18 / .045);--editorial-gutter:clamp(24px,5.4vw,68px);--editorial-heading:clamp(42px,7.6vw,92px);background:var(--site-light-background);color:var(--editorial-ink);color-scheme:light}
 .editorial-page .site-header{mix-blend-mode:difference}
 .editorial-page .site-menu-toggle{color:#fff}
 .editorial-page .site-menu-toggle:focus-visible{outline-color:currentColor}
@@ -20,16 +20,16 @@
 .editorial-page .text-link:is(:hover,:focus-visible)::after{transform:scaleX(1)}
 @media(prefers-reduced-motion:reduce){.editorial-page .text-link::after{transition:none}}
 .contact-page .contact-form{padding:0;gap:32px}
-.contact-page .contact-form label{color:var(--editorial-muted);font-size:14px;gap:8px}
+.contact-page .contact-form label{color:var(--editorial-muted);font-size:var(--site-small-size);gap:8px}
 .contact-page .contact-form :is(input,textarea){color:var(--editorial-ink);font-size:var(--site-body-size);line-height:var(--site-body-leading);border-color:var(--editorial-rule);background:transparent}
 .contact-page .contact-form textarea{min-height:140px}
 .contact-page .contact-form .case-link{font-size:16px;padding:16px 24px}
 .contact-page .contact-form button:disabled{opacity:.65;cursor:wait}
-.contact-page .form-status{margin:0;color:var(--editorial-muted);font-size:14px;line-height:1.65;min-height:1.65em}
+.contact-page .form-status{margin:0;color:var(--editorial-muted);font-size:var(--site-small-size);line-height:1.65;min-height:1.65em}
 @media(max-width:800px){.contact-page .contact-layout{grid-template-columns:1fr;padding-top:150px;padding-bottom:64px;gap:56px}.contact-page .contact-layout .editorial-body{max-width:36ch}}
 
 .editorial-dots{background-color:var(--editorial-dot-color);background-image:var(--editorial-dot-image);background-size:var(--editorial-dot-size)}
-.contact-page .contact-form{background:#fff;padding:clamp(24px,3.6vw,44px);box-shadow:var(--editorial-shadow)}
+.contact-page .contact-form{background:var(--site-light-background);padding:clamp(24px,3.6vw,44px);box-shadow:var(--editorial-shadow)}
 
 /* Underlined fields keep a visible focus state without a surrounding box. */
 .editorial-page .contact-form :is(input,textarea):focus{outline:none;border-bottom-color:var(--editorial-ink);box-shadow:0 1px 0 var(--editorial-ink)}

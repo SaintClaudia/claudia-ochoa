@@ -1,0 +1,42 @@
+/* Portfolio design primitives. No element resets: archived pages also use the
+   shared navigation/footer, but retain their original content design.
+   Product mockups use explicitly named product tokens, not portfolio aliases. */
+@font-face{font-family:Inter;src:url('/fonts/inter-latin-variable.woff2') format('woff2');font-weight:100 900;font-display:swap}
+@font-face{font-family:AskReadOutfit;src:url('/fonts/outfit-latin-400.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:AskReadOutfit;src:url('/fonts/outfit-latin-500.woff2') format('woff2');font-weight:500;font-display:swap}
+@font-face{font-family:AskReadOutfit;src:url('/fonts/outfit-latin-600.woff2') format('woff2');font-weight:600;font-display:swap}
+
+:root {
+  --site-font: Inter, Arial, sans-serif;
+  --askread-font: AskReadOutfit, Arial, sans-serif;
+  --site-background: #0a0b0b;
+  --site-text: #f5f5f1;
+  --site-text-secondary: #aeb2b0;
+  --site-text-muted: #ffffff8c;
+  --site-rule: #ffffff1a;
+  --site-white: #fff;
+  --site-gutter: clamp(24px, 4vw, 80px);
+  --site-body-size: 1.25rem;
+  --site-body-leading: 1.65;
+  --site-lead-size: clamp(1.375rem, 2vw, 1.75rem);
+  --site-lead-leading: 1.5;
+  --site-label-size: .8125rem;
+  --site-small-size: .875rem;
+  --site-caption-size: .75rem;
+  --site-media-radius: clamp(12px, 1.4vw, 20px);
+  --site-pill-radius: 100px;
+  --site-section-space: clamp(120px, 18vh, 200px);
+  --site-section-gap: clamp(32px, 6vw, 120px);
+  --site-light-background: #fff;
+  --site-light-ink: #0b0c0b;
+  --site-light-muted: #454744;
+  --site-light-rule: #dcdeda;
+  --askread-accent: #d6ae63;
+  --askread-background: #080a09;
+  --askread-sidebar: #0d0f0e;
+  --askread-text: #f3f3ed;
+}
+
+@media (max-width: 800px) {
+  :root { --site-body-size: 1.125rem; }
+}

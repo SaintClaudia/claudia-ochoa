@@ -215,6 +215,33 @@ GitHub Pages deploys automatically. Changes are live within 1–2 minutes.
 The `Code quality` GitHub Actions workflow runs the same generated-file and
 syntax checks on every push and pull request.
 
+## Shared visual design
+
+`css/portfolio-foundation.css` is the source of truth for the active portfolio's
+font declarations, font stacks, text sizes, neutral colors, gutters, section
+spacing, and media radii. Component styles consume these tokens. Inter is the
+portfolio typeface; Outfit belongs to Ask Read product interfaces. Project
+artwork and brand palettes remain scoped to their own stories. Archived case
+studies, the blog, and independent prototypes retain their original designs.
+See [the design-system guide](docs/design-system.md) for conventions and scope.
+
+`build.py` embeds the foundation in the homepage and stamps its stylesheet into
+the shared navigation assets on other portfolio pages. It also derives local
+stylesheet versions from file contents; manual CSS version increments are no
+longer needed. Run the build after CSS changes, including those embedded on the
+homepage, and commit the regenerated HTML.
+
+```bash
+python3 build.py
+python3 build.py --check
+python3 eval/design-system-check.py
+```
+
+The design check verifies the seven active pages, referenced local assets,
+image dimensions and alt attributes, and central font ownership. It runs in CI.
+Browser review is still required for layout, contrast over imagery, keyboard
+interaction, zoom, and reduced-motion behavior.
+
 ## Updating the nav or footer
 
 Portfolio pages use `_portfolio-nav.html` for the header and menu. `_portfolio-nav-assets.html` supplies the single navigation stylesheet and script. Edit these shared sources and run `python3 build.py`; do not edit generated navigation blocks in individual pages. The shared script handles the current-page state, opening, closing, Escape, and focus recovery.
