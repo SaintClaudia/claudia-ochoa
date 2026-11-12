@@ -11,7 +11,27 @@
       document.documentElement.classList.add('menu-is-open');
       menuClose.focus();
     });
-    menu.addEventListener('keydown', () => menu.classList.remove('is-pointer-opened'));
+    menu.addEventListener('keydown', event => {
+      menu.classList.remove('is-pointer-opened');
+      if (event.key !== 'Tab' || !menu.open || event.altKey || event.ctrlKey || event.metaKey) return;
+      // Native modal dialogs keep the page inert, but Chrome may move focus
+      // into its toolbar at the boundary. Wrap only unmodified Tab navigation.
+      const controls = [...menu.querySelectorAll('a[href],button,[tabindex]')].filter(control =>
+        control.tabIndex >= 0 && !control.matches(':disabled') &&
+        !control.closest('[inert]') && control.getClientRects().length > 0 &&
+        getComputedStyle(control).visibility === 'visible'
+      );
+      const first = controls[0];
+      const last = controls[controls.length - 1];
+      if (!first) return;
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    });
     const closeMenu = () => menu.close();
     menuClose.addEventListener('click', closeMenu);
     menu.addEventListener('click', event => {

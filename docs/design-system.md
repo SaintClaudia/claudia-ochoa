@@ -77,10 +77,19 @@ before/after comparison.
 Follow-up polish makes the Ask Read and Chasing Birdies detail-page mobile
 heroes content-sized, with previews aligned to the shared gutters. Contact's
 desktop heading uses two phrase spans and a smaller fluid scale; font metrics
-were checked against the grid at 801, 1024, 1440, and 1920px. This follow-up
-still needs rendered review. Keyboard operation, visible focus, 200% browser
-zoom, and reduced motion were reviewed in source only; the browser connection
-remained unavailable in the editing session.
+were checked against the grid at 801, 1024, 1440, and 1920px. The user's subsequent Chrome review reported improved mobile heroes at 390px,
+a clean two-line desktop Contact heading, reachable keyboard controls, visible
+focus on both themes, readable and operable Contact content at 200% zoom, and
+a static homepage wordmark with working anchor navigation under reduced motion.
+These are targeted checks, not a full accessibility audit.
+
+That review identified Tab leaving the modal menu for Chrome's toolbar at the
+first/last control. The shared navigation now wraps Tab and Shift+Tab at those
+boundaries while preserving native interior navigation, Escape, and browser
+shortcuts. `node --test eval/portfolio-nav.test.cjs` covers boundary handling,
+unavailable controls, and focus restoration using a simulated DOM. The wrapping
+fix still needs a real-browser recheck; the editing session's browser connection
+remains unavailable.
 
 References: [MDN custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascading_variables/Using_custom_properties)
 and [MDN font loading and CSS performance](https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Performance/CSS).
