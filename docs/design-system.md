@@ -69,8 +69,18 @@ visual systems and are not included in this active-page check.
 The November 2026 consolidation also passed a local tinycss2 syntax audit of
 all stylesheets in `css/`, verified the Inter variable weight range, and checked
 that active raster image dimensions preserve their source aspect ratios.
-Browser preview was unavailable during that session, so rendered mobile/desktop
-layout verification remains outstanding.
+A subsequent browser review supplied by the user reported no page-level horizontal
+overflow across the six main pages at 1440px and 320px, clean content fit at
+390px, and working mobile navigation. It was a current-site review, not a
+before/after comparison.
+
+Follow-up polish makes the Ask Read and Chasing Birdies detail-page mobile
+heroes content-sized, with previews aligned to the shared gutters. Contact's
+desktop heading uses two phrase spans and a smaller fluid scale; font metrics
+were checked against the grid at 801, 1024, 1440, and 1920px. This follow-up
+still needs rendered review. Keyboard operation, visible focus, 200% browser
+zoom, and reduced motion were reviewed in source only; the browser connection
+remained unavailable in the editing session.
 
 References: [MDN custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascading_variables/Using_custom_properties)
 and [MDN font loading and CSS performance](https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Performance/CSS).

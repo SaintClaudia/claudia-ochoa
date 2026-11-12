@@ -316,3 +316,12 @@
 
 /* Keep the hero title first in reading order and below the artwork on phones. */
 @media(max-width:800px){.cs-askread-hero .story-copy{order:1}}
+
+/* Project detail previews size the mobile hero, including at browser zoom.
+   The homepage retains its full-screen story composition. */
+@media(max-width:800px){
+ .case-story-page :is(.cs-askread-hero,.cs-birdies-hero) .story-panel{min-height:0;padding-top:104px}
+ .case-story-page :is(.cs-askread-hero,.cs-birdies-hero) .project-art{flex:none;min-height:0;container-type:inline-size;margin-bottom:32px}
+ .case-story-page :is(.cs-askread-hero,.cs-birdies-hero) :is(.askread-stage,.birdies-stage){position:relative;inset:auto;margin:0 auto;width:calc(100% - 2 * var(--gutter));max-width:680px;height:auto;translate:none}
+ .case-story-page :is(.cs-askread-hero,.cs-birdies-hero) .story-copy{margin-top:0}
+}
