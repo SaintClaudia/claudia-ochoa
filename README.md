@@ -326,6 +326,30 @@ Ask Read, Chasing Birdies, and Brock Purdy 13. It excludes archived work, the bl
 and the unlinked game prototype. `robots.txt` references the sitemap. Keep each
 page's `lastmod` accurate when making meaningful content changes.
 
+### Naming conventions
+
+Use lowercase, hyphen-separated names for new public pages, stylesheets, scripts,
+and images, such as `work/ask-read.html` and `images/ask-read-showcase.webp`.
+Prefix project assets with their project name and shared portfolio assets with
+`portfolio-`. Keep existing CSS component prefixes consistent within each system
+(`site-`, `story-`, `cs-`, `askread-`, and `birdies-`); do not rename selectors
+without updating their HTML and JavaScript references. HTML partials use a leading
+underscore. Preserve brand names in visible copy: Ask Read, Chasing Birdies, and
+Brock Purdy 13. The résumé download keeps its human-readable filename.
+
+Existing archive asset names and compatibility redirects are intentional exceptions.
+Do not rename published URLs just for cosmetic consistency; preserve old links
+with redirects when a URL genuinely needs to change.
+
+Review on 2026-11-11: all six sitemap pages have unique titles and descriptions,
+self-canonical URLs, one H1, and `lang="en"`. All HTML links and fragment targets
+from those pages resolve locally. The six live routes returned HTTP 200; a missing
+route returned 404. The linked NFL PDF and Cowboys article returned 200. LinkedIn
+returned 999 to the automated request, so its destination was not verified.
+About and Contact now include explicit social-image descriptions, and Contact
+also has explicit Twitter metadata and ContactPage JSON-LD. This review checks
+metadata and link integrity, not search-engine indexing or rendered social cards.
+
 ## Accessibility
 
 WCAG 2.1 AA is the target, not a claim of a completed site-wide conformance audit.

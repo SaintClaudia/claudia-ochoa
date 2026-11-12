@@ -87,9 +87,11 @@ That review identified Tab leaving the modal menu for Chrome's toolbar at the
 first/last control. The shared navigation now wraps Tab and Shift+Tab at those
 boundaries while preserving native interior navigation, Escape, and browser
 shortcuts. `node --test eval/portfolio-nav.test.cjs` covers boundary handling,
-unavailable controls, and focus restoration using a simulated DOM. The wrapping
-fix still needs a real-browser recheck; the editing session's browser connection
-remains unavailable.
+unavailable controls, and focus restoration using a simulated DOM. The user’s subsequent Chrome review confirmed forward/backward wrapping and
+Escape focus restoration. Native Safari checks also confirmed those menu behaviors,
+reviewed the six main page layouts at desktop and mobile widths, and checked
+Contact at 200% zoom. Safari’s reduced-motion behavior and a physical iPhone were
+not verified in that pass.
 
 References: [MDN custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascading_variables/Using_custom_properties)
 and [MDN font loading and CSS performance](https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Performance/CSS).
