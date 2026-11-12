@@ -233,7 +233,7 @@
 .cb-brand{position:relative;isolation:isolate;overflow:hidden;grid-template-columns:23% 28% minmax(0,1fr);gap:0;aspect-ratio:3.2;padding:0 5%;background:#0d1a10}
 .cb-brand::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#0b140dbf 0%,#0b140d66 22%,#0b140d00 38%,#0b140d00 58%,#0b140d40 100%)}
 .cb-brand .cb-brand-bg{position:absolute;z-index:-2;top:0;left:12%;width:auto;max-width:none;height:100%;margin:0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 9%);mask-image:linear-gradient(90deg,transparent,#000 9%)}
-.cb-brand .cb-brand-logo{grid-column:1;width:100%;max-width:none;margin:0;filter:drop-shadow(0 6px 24px #0009)}
+.cb-brand .cb-brand-logo{grid-column:1;width:100%;height:auto;max-width:none;margin:0;filter:drop-shadow(0 6px 24px #0009)}
 .cb-brand p{grid-column:3;justify-self:end;font-size:clamp(18px,2.7vw,46px);font-weight:500;letter-spacing:-.035em;text-shadow:0 2px 18px #000b}
 .cb-brand p span{color:#8fb456}
 @media(max-width:1100px) and (min-width:801px){.cb-brand{grid-template-columns:23% 22% minmax(0,1fr);aspect-ratio:2.8}.cb-brand p{font-size:2.5vw}}
