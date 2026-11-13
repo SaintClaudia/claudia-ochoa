@@ -20,3 +20,7 @@
 /* Keep Cosmic Waves artwork in its original color. */
 .neb-feature[data-tone=sacred]:before{background:linear-gradient(90deg,#0008,transparent),url('/images/nebulae-cosmic-waves.webp') center/cover;filter:none}
 .neb-station-art.sacred{background:linear-gradient(0deg,#0005,transparent),url('/images/nebulae-cosmic-waves.webp') center/cover;filter:none!important}
+
+/* Reeper Riffs artwork retains its warm tones. */
+.neb-feature[data-tone=reeper]:before{background:linear-gradient(90deg,#0008,transparent),url('/images/nebulae-reeper-riffs.webp') center/cover;filter:none}
+.neb-station-art.reeper{background:linear-gradient(0deg,#0005,transparent),url('/images/nebulae-reeper-riffs.webp') center/cover;filter:none!important}
