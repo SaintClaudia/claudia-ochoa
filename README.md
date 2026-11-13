@@ -398,6 +398,6 @@ items are recorded; this status is not a blanket audit of archived pages or asse
 
 Nebulae’s triangle-and-record mark (`images/nebulae-mark.svg`) is a vector reconstruction of Claudia’s original logo supplied November 13, 2026. Her supplied A2IM screenshot documents the December 12, 2016 Associate Member Spotlight and its original lossless streaming and touring-band promotion vision. These describe the historical service proposal, not implemented streaming features in this prototype.
 
-Nebulae’s Work preview shows a static streaming interface with a persistent player. Album and artist names in this preview are fictional design samples, not a licensed catalog; the player is illustrative.
+Nebulae’s Work preview shows a static streaming interface with a persistent player. The now-playing track is “Lost In The Night” by Dead Man’s Bones, using cover artwork supplied by Claudia and a 5:00 duration from her Bandcamp screenshot. The other release names are fictional design samples. The player is illustrative and does not stream audio.
 
 Ask Read and Chasing Birdies have been removed from the public portfolio, including their project and preview routes. Nebulae is the sole featured project. Historical source assets remain in the repository.
