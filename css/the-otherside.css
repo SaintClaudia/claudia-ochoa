@@ -12,3 +12,42 @@
 
 /* Monochrome app identity: logo only, dark navigation, white community canvas. */
 .other-app{background:#fff;color:#171717;border-color:#292929}.other-sidebar{background:#111;color:#f5f5f5}.other-brand .other-symbol{color:#fff}.other-sidebar nav button{color:#bbb}.other-sidebar nav button[aria-pressed=true]{background:#303030;color:#fff}.other-sidebar-note>span{color:#bbb}.other-sidebar-note p{color:#999}.other-main{background:#fff}.other-toolbar{color:#666}.other-profile{background:#e7e7e7;color:#333}.other-welcome{border-color:#ddd}.other-welcome>p,.other-welcome>span{color:#666}.other-filters button{border-color:#ccc;color:#444}.other-filters button[aria-pressed=true]{background:#171717;color:#fff;border-color:#171717}.other-section-title>span{color:#666}.other-poster-record{background:#e3e3e3;color:#171717}.other-poster-record i{border-color:#222;box-shadow:0 0 0 10px #e3e3e3,0 0 0 11px #222}.other-preview .other-poster-record i{box-shadow:0 0 0 1cqw #e3e3e3,0 0 0 1.1cqw #222}.other-poster-show{background:#222;color:#fff}.other-poster-show>i{color:#aaa}.other-poster-listen{background:#d1d1d1;color:#222}.other-poster-listen>i{color:#f5f5f5}.other-plan-meta,.other-plan>p{color:#666}.other-initial{background:#e8e8e8;color:#333}.other-host small{color:#666}.other-plan-button{color:#222;border-color:#ddd}.other-new{background:#f3f3f3;border-color:#ddd}.other-new .other-symbol{color:#444}.other-new p,.other-new-tag,.other-empty{color:#666}.other-dialog{background:#fff;color:#171717}.other-dialog p{color:#555}.other-save{background:#171717;color:#fff}.other-demo :focus-visible,.other-dialog :focus-visible{outline-color:#777}
+
+/* Match Nebulae’s readable release typography throughout the community UI. */
+.other-preview .other-toolbar,.other-preview .other-sidebar nav button,.other-preview .other-welcome>span,.other-preview .other-filters button{font-size:1.3cqw}
+.other-preview .other-welcome>p,.other-preview .other-sidebar-note>span,.other-preview .other-section-title>span,.other-preview .other-plan-meta,.other-preview .other-new-tag{font-size:1.05cqw}
+.other-preview .other-sidebar-note p,.other-preview .other-host small,.other-preview .other-new p{font-size:1.1cqw;line-height:1.4}
+.other-preview .other-plan>p{font-size:1.3cqw;line-height:1.4;min-height:3.64cqw;margin-bottom:1.2cqw}
+.other-preview .other-plan h5{font-size:1.65cqw;line-height:1.2;min-height:3.96cqw;margin-bottom:.5cqw}
+.other-preview .other-host{font-size:1.3cqw;align-items:flex-start}.other-preview .other-host small{margin-top:.25cqw}
+.other-preview .other-plan-button{font-size:1.3cqw!important}.other-preview .other-new strong{font-size:1.4cqw}.other-preview .other-new-tag{white-space:normal;max-width:8em}
+.other-preview .other-plan-meta{flex-wrap:wrap;row-gap:.3cqw}.other-preview .other-section-title{align-items:baseline}.other-preview .other-section-title>span{text-align:right}
+.other-demo .other-toolbar,.other-demo .other-sidebar nav button,.other-demo .other-welcome>span,.other-demo .other-filters button,.other-demo .other-plan>p,.other-demo .other-host{font-size:15px;line-height:1.4}
+.other-demo .other-welcome>p,.other-demo .other-section-title>span,.other-demo .other-plan-meta,.other-demo .other-new-tag{font-size:12px}
+.other-demo .other-host small,.other-demo .other-new p{font-size:13px;line-height:1.4}.other-demo .other-host small{margin-top:3px}.other-demo .other-plan h5{margin-bottom:6px}.other-demo .other-plan-meta{flex-wrap:wrap;row-gap:4px}.other-demo .other-plan-button{font-size:15px!important}.other-demo .other-new strong{font-size:17px}.other-dialog p{font-size:16px}.other-dialog .other-dialog-label,.other-dialog .other-dialog-note{font-size:12px}
+
+/* A lighter concept preview: two spacious plans, with detail reserved for the demo. */
+.other-preview .other-plans{grid-template-columns:repeat(2,minmax(0,1fr));gap:3cqw}
+.other-preview .other-plan[data-other-id="listen"]{display:none}
+.other-preview .other-main{padding:3.6cqw 4cqw 4cqw}
+.other-preview .other-welcome{padding:4cqw 0 3.2cqw}
+.other-preview .other-filters{padding:2.8cqw 0 1cqw;gap:.9cqw}
+.other-preview .other-section-title{margin:2.2cqw 0 2cqw}
+.other-preview .other-poster{aspect-ratio:1.7;padding:2cqw}
+.other-preview .other-plan-meta{margin:1.7cqw 0 1.2cqw;font-size:1.05cqw}
+.other-preview .other-plan h5{font-size:1.8cqw;line-height:1.2;min-height:0;margin:0 0 .9cqw}
+.other-preview .other-plan>p{font-size:1.3cqw;line-height:1.5;min-height:3.9cqw;margin:0 0 1.6cqw;max-width:24em}
+.other-preview .other-host{align-items:center;gap:.9cqw}
+.other-preview .other-plan-button{margin-top:2cqw;padding:1.4cqw 0 .5cqw}
+.other-demo .other-plans{grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 28px}
+.other-demo .other-poster{aspect-ratio:1.7;padding:24px}
+.other-demo .other-main{padding:36px}
+.other-demo .other-welcome{padding-bottom:32px}
+.other-demo .other-filters{padding:28px 0 12px;gap:10px}
+.other-demo .other-section-title{margin:24px 0}
+.other-demo .other-plan h5{min-height:0;margin-bottom:10px;font-size:21px}
+.other-demo .other-plan>p{min-height:42px;line-height:1.5;margin-bottom:20px}
+.other-demo .other-plan-meta{margin:20px 0 14px}
+.other-demo .other-host{align-items:center;gap:10px}
+.other-demo .other-plan-button{padding:16px 0 6px;margin-top:24px}
+@media(max-width:800px){.other-demo .other-plans{grid-template-columns:1fr;gap:36px}.other-demo .other-main{padding:24px}.other-demo .other-plan>p{min-height:0}}
