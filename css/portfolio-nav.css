@@ -1,6 +1,10 @@
 /* Shared portfolio header and navigation drawer. */
 body.portfolio-standard-page{padding-top:104px}
 .site-header{position:fixed;inset:0 0 auto;z-index:20;padding:30px var(--site-gutter);display:flex;justify-content:flex-end;align-items:center;background:transparent;transition:transform .35s cubic-bezier(.2,.7,.2,1),background-color .25s;pointer-events:none;font-family:var(--site-font);color:var(--site-text)}
+/* Invert the white control against the actual surface beneath the fixed header. */
+.site-header{mix-blend-mode:difference}
+.site-header .site-menu-toggle{color:#fff}
+.site-header .site-menu-toggle:focus-visible{outline-color:#fff}
 .site-header.is-scrolled{background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none}
 .site-header.is-hidden{transform:translateY(-100%)}
 .site-header.is-natural-scroll{transform:translateY(var(--header-scroll-y,0px));transition:none}

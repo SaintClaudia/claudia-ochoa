@@ -509,6 +509,10 @@ svg.site-short-arrow{display:inline-block;position:static!important;inset:auto!i
 /* Shared portfolio header and navigation drawer. */
 body.portfolio-standard-page{padding-top:104px}
 .site-header{position:fixed;inset:0 0 auto;z-index:20;padding:30px var(--site-gutter);display:flex;justify-content:flex-end;align-items:center;background:transparent;transition:transform .35s cubic-bezier(.2,.7,.2,1),background-color .25s;pointer-events:none;font-family:var(--site-font);color:var(--site-text)}
+/* Invert the white control against the actual surface beneath the fixed header. */
+.site-header{mix-blend-mode:difference}
+.site-header .site-menu-toggle{color:#fff}
+.site-header .site-menu-toggle:focus-visible{outline-color:#fff}
 .site-header.is-scrolled{background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none}
 .site-header.is-hidden{transform:translateY(-100%)}
 .site-header.is-natural-scroll{transform:translateY(var(--header-scroll-y,0px));transition:none}
@@ -635,10 +639,8 @@ html.menu-is-open{overflow:hidden}
 .cb-ui-tablet[data-view]:not([data-view="play"]) .cb-ui-feature h3{font-size:4.4cqw;line-height:1.05}
 .cb-ui-tablet[data-view]:not([data-view="play"]) .cb-ui-description{max-width:30em}
 /* The homepage study: one continuous wordmark, driven by native page scroll. */
-.work-page .site-header{justify-content:flex-end;transform:none!important;background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none}
+.work-page .site-header{justify-content:flex-end;background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none}
 .work-page .site-header .signature{display:none}
-.work-page .site-menu-toggle{color:var(--ink)}
-.work-page.intro-passed .site-menu-toggle{color:var(--paper)}
 .work-page .site-menu-toggle:focus-visible{outline-color:currentColor}
 .liquid-intro{position:relative;z-index:2;height:auto;margin-bottom:calc(-1 * clamp(24px,5vw,80px));background:transparent;color:var(--ink)}
 .liquid-intro-stage{position:relative;height:100svh;min-height:540px;overflow:hidden;background:#fff;border-radius:0;clip-path:inset(0 round 0 0 var(--intro-radius,0px) var(--intro-radius,0px));isolation:isolate}
