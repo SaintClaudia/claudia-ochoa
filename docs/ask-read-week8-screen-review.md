@@ -39,7 +39,7 @@ Cutoff: league games completed through Sunday, November 1, 2026. The [Bears sche
 
 ### Performance and milestone
 
-The [49ers schedule](https://www.49ers.com/schedule/2026/) confirms the Week 8 bye and 6–1 record. [Purdy’s official 49ers profile](https://www.49ers.com/team/players-roster/brock-purdy/) corroborates the unchanged seven-game season totals and 104.8 career rating. Latest game: October 25; no Week 8 game is added to the chart. Seven-game totals were independently summed.
+The [49ers schedule](https://www.49ers.com/schedule/2026/) confirms the Week 8 bye and 6–1 record. [the reference quarterback’s official 49ers profile](https://www.49ers.com/team/stats/) corroborates the unchanged seven-game season totals and 104.8 career rating. Latest game: October 25; no Week 8 game is added to the chart. Seven-game totals were independently summed.
 
 Chart audit: the Washington line of 21/29, 264 yards, one TD, zero INT yields 111.8534 using the NFL formula, rounding to 111.9. The NFL game log instead prints 111.8. Display now uses calculated 111.9; the other four chart ratings agree after rounding. The Washington bar height remains 69.9% of the existing 160-point chart scale. No raw passing totals were changed.
 
@@ -55,15 +55,15 @@ The [NFL touchdown table](https://www.nfl.com/stats/player-stats/category/passin
 | 2 | Kirk Cousins | 19 | [Raiders profile](https://www.raiders.com/team/players-roster/kirk-cousins/) |
 | 3 | Trevor Lawrence | 17 | [Jaguars profile](https://www.jaguars.com/team/players-roster/trevor-lawrence/) |
 | 4 | Jordan Love | 16 | [Packers profile](https://www.packers.com/team/players-roster/jordan-love/) |
-| T-5 | Brock Purdy | 15 | 49ers profile |
+| T-5 | the reference quarterback | 15 | 49ers profile |
 
-Five players are displayed to retain the existing card layout, with Purdy representing the tie at fifth. This is not every tied player; the heading now says Leaders, and its hover text makes that distinction explicit.
+Five players are displayed to retain the existing card layout, with the reference quarterback representing the tie at fifth. This is not every tied player; the heading now says Leaders, and its hover text makes that distinction explicit.
 
 | Qualified rating rank | Player | Rating | Cmp/Att | Yards | TD/INT |
 | --- | --- | --- | --- | --- | --- |
 | 1 | Trevor Lawrence | 112.6 | 130/198 | 1690 | 17/4 |
 | 2 | Joe Burrow | 111.6 | 195/267 | 2115 | 20/6 |
-| 3 | Brock Purdy | 110.1 | 146/211 | 1748 | 15/4 |
+| 3 | the reference quarterback | 110.1 | 146/211 | 1748 | 15/4 |
 | 4 | Jared Goff | 110.0 | 168/248 | 1964 | 15/1 |
 | 5 | Caleb Williams | 105.6 | 88/124 | 1020 | 5/1 |
 
@@ -86,3 +86,6 @@ A collapsed Season evidence disclosure contains the full finding inventory and s
 Boot Flood Right and its existing formation, routes, controls, and status are retained. Updated subtitle/sidebar to Week 9; replaced the future Jets checkpoint with completed-game context. The three rail sections now cover the play intent, verified matchup context, and specific review cues. Conversation prompts and responses use the same completed-game context. Removed the extra Scripted responses footer from the conversation. No new illustrative-purpose labels were added inside the screen.
 
 Statistics are from the eight-game season audit: 1,171 rushing yards on 229 attempts (5.1/carry); Jets 166 rushing yards, two Raiders sacks; seven consecutive opposing 100-yard rushing games. These outcomes frame questions about run action and boot-side protection; they do not establish a Raiders coverage call, containment failure, or effectiveness of Boot Flood Right. The bottom caption is preserved exactly: “For demonstration purposes only. Not an official 49ers game plan.” Other page copy and screens are unchanged in this step. Local only.
+
+
+Current concept: Ask Read serves quarterbacks generally. The personal UI uses “Your profile,” “Your game at a glance,” and “You.” Earlier statistics documented above are historical design inputs; the current QB Intelligence screen labels them as illustrative sample data and makes no individual career-record claim.

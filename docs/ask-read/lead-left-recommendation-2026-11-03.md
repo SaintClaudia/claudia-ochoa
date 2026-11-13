@@ -45,6 +45,9 @@ Research cutoff: November 3, 2026; every game cited predates the target kickoff.
 - [LV–NYJ official gamebook](https://static.www.nfl.com/image/upload/v1793617587/gamecenter/ab1661ac-4feb-11f1-abca-2c54536568a9.pdf): PDF page 11, Q2 14:47–10:56, including the incomplete pass and negative run.
 - [LV–NYJ official full-game replay](https://www.nfl.com/games/raiders-at-jets-2026-reg-8?tab=highlights-replays): selected All-22 frames around 20:27–22:15 for the four matched added snaps. Player jumps limit matching; no continuous-viewing claim.
 - [LV–LAR Week 7 NFL Pro](https://pro.nfl.com/film/plays?season=2026&seasonType=REG&weekSlug=WEEK_7&gameId=aaf700e5-4feb-11f1-abca-2c54536568a9): related early-down evidence and stops; holding no-play excluded from production.
-- [SF official acquisition of DeForest Buckner](https://www.49ers.com/news/the-49ers-acquire-dl-deforest-buckner): defensive roster context, not a direct change to the fixed Purdy offensive decision.
+- [SF official acquisition of DeForest Buckner](https://www.49ers.com/news/the-49ers-acquire-dl-deforest-buckner): defensive roster context, not a direct change to the fixed quarterback offensive decision.
 
 Detailed source notes remain in the saved pregame research library for this case study. No licensed footage is redistributed with the site.
+
+
+Current concept: Ask Read serves quarterbacks generally. The personal UI uses “Your profile,” “Your game at a glance,” and “You.” Earlier statistics documented above are historical design inputs; the current QB Intelligence screen labels them as illustrative sample data and makes no individual career-record claim.

@@ -17,7 +17,7 @@ export const PORTFOLIO_RESOURCES = [
     "category": "ai-leadership",
     "title": "Ask Read — Football Intelligence",
     "url": "https://claudiaochoa.co/work/ask-read.html",
-    "summary": "Ask Read is a football intelligence concept for Brock Purdy, connecting opponent film, evidence-backed briefings, and weekly preparation.",
+    "summary": "Ask Read is a football intelligence concept for quarterbacks, connecting opponent film, evidence-backed briefings, and weekly preparation.",
     "details": "The concept uses computer vision to analyze game film and surface patterns, tendencies, and opportunities. It connects opponent study, personal development, and questions for the film room. The published design emphasizes evidence, evaluation, and clear communication; it does not establish shipped adoption or measured performance outcomes.",
     "tags": [
         "Ask Read",

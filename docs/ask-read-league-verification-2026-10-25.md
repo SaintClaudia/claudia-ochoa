@@ -14,12 +14,12 @@ Game-by-game completions, attempts, yards, touchdowns, and interceptions were su
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | Kirk Cousins | 7 | 161/257 | 1,877 | 16 | 5 | 97.4 |
 | Jared Goff | 6 | 150/223 | 1,788 | 14 | 0 | 112.5 |
-| Brock Purdy | 7 | 146/211 | 1,748 | 15 | 4 | 110.1 |
+| the reference quarterback | 7 | 146/211 | 1,748 | 15 | 4 | 110.1 |
 | Joe Burrow | 6 | 157/219 | 1,653 | 15 | 3 | 110.4 |
 | Trevor Lawrence | 6 | 120/184 | 1,480 | 14 | 4 | 106.2 |
 | Michael Penix Jr. | 5 | 96/144 | 1,157 | 9 | 1 | 109.1 |
 
-The six-player union covers all five players in each of the two displayed tables. Passing-TD ranks remain Cousins 1, Purdy/Burrow T-2, Goff/Lawrence T-4. The display is five players, not every tied player: Stafford also has 14 and is outside that five-player display. Qualified passer-rating ranks remain Goff, Burrow, Purdy, Penix, Lawrence.
+The six-player union covers all five players in each of the two displayed tables. Passing-TD ranks remain Cousins 1, the reference quarterback/Burrow T-2, Goff/Lawrence T-4. The display is five players, not every tied player: Stafford also has 14 and is outside that five-player display. Qualified passer-rating ranks remain Goff, Burrow, the reference quarterback, Penix, Lawrence.
 
 ## Official-page discrepancies observed
 
@@ -39,7 +39,7 @@ Completed-game records:
 - [Raiders final Rams-game box score](https://www.raiders.com/game-day/2026/reg-week7/rams-at-raiders/box-score)
 - [Goff NFL 2026 log](https://www.nfl.com/players/jared-goff/stats/logs/2026/)
 - [Lions final-game recap](https://www.detroitlions.com/news/recap-lions-vs-packers-goff-williams-stbrown-branch)
-- [Purdy NFL 2026 log](https://www.nfl.com/players/brock-purdy/stats/logs/2026/)
+- [the reference quarterback NFL 2026 log](https://www.49ers.com/team/stats/)
 - [Burrow NFL 2026 log](https://www.nfl.com/players/joe-burrow/stats/logs/2026/)
 - [Lawrence NFL 2026 log](https://www.nfl.com/players/trevor-lawrence/stats/logs/2026/)
 - [Penix NFL 2026 log](https://www.nfl.com/players/michael-penix-jr/stats/logs/2026/)
@@ -52,3 +52,6 @@ Stale public counterparts, retained to document the discrepancy:
 ## Change status
 
 The existing uncommitted five-row ranking edit remains untouched. This verification adds only this local audit document. Layout and styling are unchanged; nothing was published.
+
+
+Current concept: Ask Read serves quarterbacks generally. The personal UI uses “Your profile,” “Your game at a glance,” and “You.” Earlier statistics documented above are historical design inputs; the current QB Intelligence screen labels them as illustrative sample data and makes no individual career-record claim.

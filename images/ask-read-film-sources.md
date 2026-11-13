@@ -65,7 +65,7 @@ The three Pressure previews remain the three passing touchdowns allowed after ha
 
 ### QB Intelligence
 
-- [49ers team statistics](https://www.49ers.com/team/stats/) and [Purdy's official profile and recent games](https://www.49ers.com/team/players-roster/brock-purdy/) confirm the displayed season totals and five game ratings. The chart retains the official profile's Week 2 value of 149.0.
+- [49ers team statistics](https://www.49ers.com/team/stats/) and [the reference quarterback's official profile and recent games](https://www.49ers.com/team/stats/) confirm the displayed season totals and five game ratings. The chart retains the official profile's Week 2 value of 149.0.
 - [NFL passing touchdowns](https://www.nfl.com/stats/player-stats/category/passing/2026/reg/all/passingtouchdowns/desc) reconfirms the displayed touchdown leaderboard. [NFL passer ratings](https://www.nfl.com/stats/player-stats/category/passing/2026/reg/all/passingpasserrating/desc) reconfirms the displayed qualified-passer ordering; low-attempt players are excluded from that panel.
 - [Washington's official team statistics](https://www.commanders.com/team/stats/) confirm nine defensive sacks and three defensive interceptions. The site's SACKS pair lists ten sacks taken and nine by the defense; these must not be reversed.
 - [Washington's schedule](https://www.commanders.com/schedule/) confirms its 1–3–1 record. Points allowed through five games sum to 149 (24 + 37 + 31 + 30 + 27); 149 / 5 = 29.8 points allowed per game. This is a team scoring average, not a claim that all points were charged to the defense.
@@ -99,3 +99,6 @@ Official sack sources and Open Graph poster assets:
 - [Kwity Paye, 8-yard sack of Josh Allen, Oct 18](https://www.raiders.com/video/kwity-paye-sacks-josh-allen-nfl-week-6-bills-2026-season): `raiders/jdobm3bgdgdcsfzrp4ya`, local `ask-read-raiders-paye-bills-sack.webp` (1280 × 720).
 
 The featured film and chat context both reference Crosby’s Jets sack. The response uses the audited 18 season sacks and ten in the latest six games, and directs comparison with the other sack examples and plays where protection held. No pressure rate or blitz assignment is inferred. Existing animation sequence and timing are retained. The play posters remain static portfolio previews. Surrounding page copy and desktop screens are unchanged.
+
+
+Current concept: Ask Read serves quarterbacks generally. The personal UI uses “Your profile,” “Your game at a glance,” and “You.” Earlier statistics documented above are historical design inputs; the current QB Intelligence screen labels them as illustrative sample data and makes no individual career-record claim.

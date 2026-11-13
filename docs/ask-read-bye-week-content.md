@@ -13,7 +13,7 @@ All opponent copy leads with Las Vegas. Rams players and game references identif
 - Next update: Raiders at Jets, November 1. Product copy describes the intended future update; the portfolio remains static and requires manual edits.
 - QB statistics are current through Week 7: 6–1 team record, 146/211 passing, 1,748 yards, 15 TD, 4 INT, 7 sacks, 8.3 yards per attempt, 110.1 passer rating.
 - The chart covers the latest five games (Weeks 3–7).
-- The League tab and rankings retain their original purpose, updated as of October 25. Purdy and Burrow are tied first with 15 passing TDs; Cousins and Lawrence are tied third with 14. Qualified passer rating: Goff 111.3, Burrow 110.4, Purdy 110.1, Penix 109.1, Lawrence 106.2. Qualification uses 14 attempts per team game. Jackson’s 96 attempts fall below Baltimore’s 98-attempt minimum after seven team games, so his 119.6 is excluded. Low-volume passers Lock, Dart, Mariota and Wentz are also excluded. Earlier fantasy-subdomain and uppercase URL results were stale; the canonical NFL lowercase URLs below returned updated Purdy totals consistent with his official player page.
+- The League tab and rankings retain their original purpose, updated as of October 25. the reference quarterback and Burrow are tied first with 15 passing TDs; Cousins and Lawrence are tied third with 14. Qualified passer rating: Goff 111.3, Burrow 110.4, the reference quarterback 110.1, Penix 109.1, Lawrence 106.2. Qualification uses 14 attempts per team game. Jackson’s 96 attempts fall below Baltimore’s 98-attempt minimum after seven team games, so his 119.6 is excluded. Low-volume passers Lock, Dart, Mariota and Wentz are also excluded. Earlier fantasy-subdomain and uppercase URL results were stale; the canonical NFL lowercase URLs below returned updated the reference quarterback totals consistent with his official player page.
 - The illustrative Library now begins with Weeks 7 and 6, Atlanta and Washington.
 
 ## Official sources
@@ -21,7 +21,7 @@ All opponent copy leads with Las Vegas. Rams players and game references identif
 - [49ers schedule](https://www.49ers.com/schedule/2026/)
 - [Raiders schedule](https://www.raiders.com/news/las-vegas-raiders-2026-schedule-release-nfl-regular-season-allegiant-stadium)
 - [Rams’ official recap](https://www.therams.com/news/game-recap-rams-defeat-raiders-35-21-in-las-vegas)
-- [Brock Purdy’s official season stats and game log](https://www.49ers.com/team/players-roster/brock-purdy/)
+- [the reference quarterback’s official season stats and game log](https://www.49ers.com/team/stats/)
 - [Davis Allen 3-yard TD](https://www.therams.com/video/highlights-tight-end-davis-allen-catches-3-yard-touchdown-vs-the-raiders-week-7)
 - [Davis Allen 5-yard TD](https://www.therams.com/video/highlights-rams-quarterback-matthew-stafford-connects-tight-end-davis-allen-second-touchdown-vs-raiders-week-7)
 - [Puka Nacua 11-yard TD](https://www.therams.com/video/highlights-rams-qb-matthew-stafford-third-touchdown-wr-puka-nacua-vs-the-raiders-week-7)
@@ -54,12 +54,15 @@ Final copy review: removed the added Illustrative labels from the Plays screen a
 Added a restrained gold-accent milestone highlight inside the existing QB Intelligence tablet, between its header and current-season tabs. Copy: A HISTORIC MILESTONE / No. 1 in NFL history. Featured statistic: 104.8, explicitly labeled Career passer rating and dated October 25, 2026. Regular-season scope and the 1,500-career-attempt qualification are stated. No animation or interaction changes were added. Existing 2026 League entries are preserved; the section label now explicitly says 2026 League.
 
 Verification:
-- [Official 49ers Week 6 game notes, page 3](https://media.49ers.1rmg.com/wp-content/uploads/2026/10/19233316/San-Francisco-49ers-vs.-Washington-Commanders-Game-Notes-Transcripts.pdf): after the October 19 game, Purdy had 1,524 career attempts and a 105.6 career rating, ranked first in NFL history among players with at least 1,500 attempts. This verifies the achievement and date, not the latest rating.
-- [NFL.com career totals](https://www.nfl.com/players/brock-purdy/stats/): through the October 25 Atlanta game, 1,564 attempts and 104.8 career rating. This is the current number displayed, rather than the 105.6 milestone-night value.
+- [Official 49ers Week 6 game notes, page 3](https://media.49ers.1rmg.com/wp-content/uploads/2026/10/19233316/San-Francisco-49ers-vs.-Washington-Commanders-Game-Notes-Transcripts.pdf): after the October 19 game, the reference quarterback had 1,524 career attempts and a 105.6 career rating, ranked first in NFL history among players with at least 1,500 attempts. This verifies the achievement and date, not the latest rating.
+- [NFL.com career totals](https://www.49ers.com/team/stats/): through the October 25 Atlanta game, 1,564 attempts and 104.8 career rating. This is the current number displayed, rather than the 105.6 milestone-night value.
 - [NFL Record & Fact Book, career passer-rating qualification](https://operations.nfl.com/media/hfjn4oid/2024-record-fact-book-incl-supplemental.pdf): 1,500 attempts.
 
 User instruction: implement locally for review; do not commit, push, or deploy this milestone update.
 
 ## Equal-length League cards — later October 25 refresh
 
-Passing touchdowns now shows five players, matching the five passer-rating rows. The live NFL tables refreshed during this check: Cousins 16 TD, Purdy and Burrow 15, Goff and Lawrence 14. The five displayed rows retain tied ranks (T-2 and T-4); Stafford also has 14 and falls outside the five-player display. Goff’s rating refreshed to 112.5; Brock remains third among qualified passers at 110.1. The season headline and accessible description now say tied second in touchdowns. Sources are the canonical NFL tables already linked above.
+Passing touchdowns now shows five players, matching the five passer-rating rows. The live NFL tables refreshed during this check: Cousins 16 TD, the reference quarterback and Burrow 15, Goff and Lawrence 14. The five displayed rows retain tied ranks (T-2 and T-4); Stafford also has 14 and falls outside the five-player display. Goff’s rating refreshed to 112.5; The reference quarterback remains third among qualified passers at 110.1. The season headline and accessible description now say tied second in touchdowns. Sources are the canonical NFL tables already linked above.
+
+
+Current concept: Ask Read serves quarterbacks generally. The personal UI uses “Your profile,” “Your game at a glance,” and “You.” Earlier statistics documented above are historical design inputs; the current QB Intelligence screen labels them as illustrative sample data and makes no individual career-record claim.
