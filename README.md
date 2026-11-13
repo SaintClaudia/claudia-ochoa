@@ -397,3 +397,5 @@ items are recorded; this status is not a blanket audit of archived pages or asse
 `work/nebulae.html` explores independent music discovery with quiet cosmic artwork and the tagline “Music for those that seek independence.” Styles and interactions live in `css/nebulae.css` and `js/nebulae.js`. Station selection and saving to Your orbit work locally; playback is not included. Sacred Gateway and Reeper Riffs are original station names supplied by Claudia; Field Notes is a new draft direction. Historical label context does not imply current partnerships.
 
 Nebulae’s triangle-and-record mark (`images/nebulae-mark.svg`) is a vector reconstruction of Claudia’s original logo supplied November 13, 2026. Her supplied A2IM screenshot documents the December 12, 2016 Associate Member Spotlight and its original lossless streaming and touring-band promotion vision. These describe the historical service proposal, not implemented streaming features in this prototype.
+
+Nebulae’s Work preview shows a static streaming interface with a persistent player. Album and artist names in this preview are fictional design samples, not a licensed catalog; the player is illustrative.
