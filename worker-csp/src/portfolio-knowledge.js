@@ -25,7 +25,7 @@ export const PORTFOLIO_RESOURCES = [
   "title": "Nebulae \u2014 Independent Music",
   "url": "https://claudiaochoa.co/work/nebulae.html",
   "summary": "Independent music discovery concept centered on subculture, curated radio, labels and self-releasing artists.",
-  "details": "A concept revisiting Claudia\u2019s original independent music service idea. Sacred Gateway and Reeper Riffs introduce discovery through named stations. The prototype supports saving stations locally; it is not a licensed streaming catalog and does not claim current label partnerships or launch outcomes.",
+  "details": "A concept revisiting Claudia\u2019s original independent music service idea. Cosmic Waves and Reeper Riffs introduce discovery through named stations. The prototype supports saving stations locally; it is not a licensed streaming catalog and does not claim current label partnerships or launch outcomes.",
   "tags": [
     "Nebulae",
     "independent music",

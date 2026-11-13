@@ -1,6 +1,6 @@
 (() => {
   const stations = {
-    sacred: { title: 'Sacred Gateway', description: 'Hazy guitars, dreamlike textures, and songs that open into something bigger.', sounds: 'Psych · Dream · Slow explorations' },
+    sacred: { title: 'Cosmic Waves', description: 'Hazy guitars, dreamlike textures, and songs that open into something bigger.', sounds: 'Psych · Dream · Slow explorations' },
     reeper: { title: 'Reeper Riffs', description: 'Fuzzed-out amplifiers, basement energy, and riffs with a little dirt under their nails.', sounds: 'Garage · Doom · Punk' },
     field: { title: 'Field Notes', description: 'Intimate voices, unfamiliar paths, and folk sounds reaching beyond their roots.', sounds: 'Neo-folk · Experimental folk · Quiet discoveries' }
   };
