@@ -24,3 +24,7 @@
 /* Reeper Riffs artwork retains its warm tones. */
 .neb-feature[data-tone=reeper]:before{background:linear-gradient(90deg,#0008,transparent),url('/images/nebulae-reeper-riffs.webp') center/cover;filter:none}
 .neb-station-art.reeper{background:linear-gradient(0deg,#0005,transparent),url('/images/nebulae-reeper-riffs.webp') center/cover;filter:none!important}
+
+/* Sacred Ritual artwork retains its original tones. */
+.neb-feature[data-tone=field]:before{background:linear-gradient(90deg,#0008,transparent),url('/images/nebulae-sacred-ritual.webp') center/cover;filter:none}
+.neb-station-art.field{background:linear-gradient(0deg,#0005,transparent),url('/images/nebulae-sacred-ritual.webp') center/cover;filter:none!important}
