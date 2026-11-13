@@ -186,7 +186,7 @@ for asset_file, START, END, prefix, suffix in embedded_assets:
 
 # Also version page-specific CSS outside generated partials. Partials are
 # normalized before comparison above, so --check stays read-only/idempotent.
-for path in sorted(files):
+for path in sorted(files + glob.glob(f'{BASE}/previews/*.html')):
     content = open(path).read()
     updated_content = version_stylesheets(content)
     if updated_content != content:
