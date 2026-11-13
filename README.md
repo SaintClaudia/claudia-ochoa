@@ -8,7 +8,7 @@ Personal portfolio of Claudia Ochoa — Creative and Product Design Leader blend
 
 ## Portfolio redesign
 
-Work is the homepage, with full-screen project stories and independent device motion. About and Contact are separate pages. The three pages share `css/portfolio-story.css` and `js/portfolio-story.js`; all portfolio pages share `_portfolio-nav.html`, `css/portfolio-nav.css`, and `js/portfolio-nav.js`; the menu lists Ask Read, Chasing Birdies, and Nebulae. `/work/` redirects to `/`. Earlier Walmart, Home Depot, and Lovesac pages, prototypes, and the blog are archived at their original URLs. Archive pages carry `noindex, follow`, are excluded from the sitemap and curated AI sources, and preserve their original content and design. Blog audit reports are also excluded from indexing. The blog template is archived; do not use it for new active content without explicitly restoring it. Contact uses the existing Web3Forms integration.
+Work is the homepage, with full-screen project stories and independent device motion. About and Contact are separate pages. The three pages share `css/portfolio-story.css` and `js/portfolio-story.js`; all portfolio pages share `_portfolio-nav.html`, `css/portfolio-nav.css`, and `js/portfolio-nav.js`; the menu lists Nebulae. `/work/` redirects to `/`. Earlier Walmart, Home Depot, and Lovesac pages, prototypes, and the blog are archived at their original URLs. Archive pages carry `noindex, follow`, are excluded from the sitemap and curated AI sources, and preserve their original content and design. Blog audit reports are also excluded from indexing. The blog template is archived; do not use it for new active content without explicitly restoring it. Contact uses the existing Web3Forms integration.
 
 Edit the production pages and shared story assets directly. `redesign/` is an ignored local review snapshot. The new pages preserve canonical/social metadata, structured data, analytics, and reduced-motion support. Homepage WebMCP remains available.
 
@@ -252,8 +252,8 @@ Current portfolio pages carry canonical URLs, descriptions, Open Graph/Twitter
 sharing metadata, and shared favicons. The homepage includes `Person` JSON-LD.
 Archived pages retain their historical metadata alongside `noindex, follow`.
 
-`sitemap.xml` lists the six current portfolio routes: Home, About, Contact,
-Ask Read, Chasing Birdies, and Nebulae. It excludes archived work and the blog.
+`sitemap.xml` lists the four current portfolio routes: Home, About, Contact,
+Nebulae. It excludes archived work and the blog.
 `robots.txt` references the sitemap. Keep each
 page's `lastmod` accurate when making meaningful content changes.
 
@@ -265,7 +265,7 @@ Prefix project assets with their project name and shared portfolio assets with
 `portfolio-`. Keep existing CSS component prefixes consistent within each system
 (`site-`, `story-`, `cs-`, `askread-`, and `birdies-`); do not rename selectors
 without updating their HTML and JavaScript references. HTML partials use a leading
-underscore. Preserve brand names in visible copy: Ask Read, Chasing Birdies, and Nebulae. The résumé download keeps its human-readable filename.
+underscore. Preserve brand names in visible copy: Nebulae. The résumé download keeps its human-readable filename.
 
 Existing archive asset names and compatibility redirects are intentional exceptions.
 Do not rename published URLs just for cosmetic consistency; preserve old links
@@ -399,3 +399,5 @@ items are recorded; this status is not a blanket audit of archived pages or asse
 Nebulae’s triangle-and-record mark (`images/nebulae-mark.svg`) is a vector reconstruction of Claudia’s original logo supplied November 13, 2026. Her supplied A2IM screenshot documents the December 12, 2016 Associate Member Spotlight and its original lossless streaming and touring-band promotion vision. These describe the historical service proposal, not implemented streaming features in this prototype.
 
 Nebulae’s Work preview shows a static streaming interface with a persistent player. Album and artist names in this preview are fictional design samples, not a licensed catalog; the player is illustrative.
+
+Ask Read and Chasing Birdies have been removed from the public portfolio, including their project and preview routes. Nebulae is the sole featured project. Historical source assets remain in the repository.

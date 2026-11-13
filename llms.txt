@@ -10,9 +10,9 @@ For structured access, connect an MCP client to [the public portfolio MCP endpoi
 
 ## Selected Work
 
-- [Ask Read](https://claudiaochoa.co/work/ask-read.html): A football film-study product that uses computer vision to turn a week of opponent film into a short, evidence-backed briefing for the quarterback.
+- [Nebulae](https://claudiaochoa.co/work/nebulae.html): Independent music discovery concept, with curated radio and room for label-affiliated and self-releasing artists.
 
-- [Chasing Birdies](https://claudiaochoa.co/work/chasing-birdies.html): A golf simulation concept with a 14-player roster of football stars and legends on iconic courses.
+
 
 ## Profile
 
@@ -27,5 +27,3 @@ Archived blog posts and earlier Walmart, Home Depot, and Lovesac work remain ava
 
 - [XML Sitemap](https://claudiaochoa.co/sitemap.xml): Current indexable portfolio pages.
 - [Crawler and Content-Use Policy](https://claudiaochoa.co/robots.txt): Search, AI-use, training, and crawler directives.
-
-- [Nebulae](https://claudiaochoa.co/work/nebulae.html): Independent music discovery concept, with curated radio and room for label-affiliated and self-releasing artists.

@@ -47,15 +47,15 @@ test("rejects cross-origin browser requests", async () => {
 test("falls back to cited retrieval if the model is unavailable", async () => {
   const originalConsoleError = console.error;
   console.error = () => {};
-  const response = await handlePortfolioChat(request({ query: "football computer vision film study" }), {
+  const response = await handlePortfolioChat(request({ query: "independent music radio labels" }), {
     AI: { run: async () => { throw new Error("transient"); } },
   }).finally(() => {
     console.error = originalConsoleError;
   });
   const payload = await response.json();
   assert.equal(response.status, 200);
-  assert.match(payload.answer, /football intelligence concept/);
-  assert.equal(payload.sources[0].id, "ask-read");
+  assert.match(payload.answer, /Independent music discovery concept/);
+  assert.equal(payload.sources[0].id, "nebulae");
 });
 
 test("retries malformed model output before returning it to an employer", async () => {

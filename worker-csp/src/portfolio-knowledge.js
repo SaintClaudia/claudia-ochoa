@@ -30,42 +30,6 @@ export const PORTFOLIO_RESOURCES = [
     tags: ["AI leadership", "product design", "human-centered AI", "business strategy", "brand", "collaboration", "shared ownership", "delivery partnership", "MBA", "legal fluency"],
   },
   {
-    "id": "ask-read",
-    "category": "ai-leadership",
-    "title": "Ask Read — Football Intelligence",
-    "url": "https://claudiaochoa.co/work/ask-read.html",
-    "summary": "Ask Read is a football intelligence concept for quarterbacks, connecting opponent film, evidence-backed briefings, and weekly preparation.",
-    "details": "The concept uses computer vision to analyze game film and surface patterns, tendencies, and opportunities. It connects opponent study, personal development, and questions for the film room. The published design emphasizes evidence, evaluation, and clear communication; it does not establish shipped adoption or measured performance outcomes.",
-    "tags": [
-        "Ask Read",
-        "football",
-        "computer vision",
-        "AI",
-        "film study",
-        "quarterback",
-        "product design",
-        "evidence",
-        "evaluation"
-    ]
-},
-  {
-    "id": "chasing-birdies",
-    "category": "experience-strategy",
-    "title": "Chasing Birdies — Golf Simulation",
-    "url": "https://claudiaochoa.co/work/chasing-birdies.html",
-    "summary": "Chasing Birdies is a golf simulation concept featuring a 14-player roster of football stars and legends.",
-    "details": "The portfolio presents a golf concept spanning character design, a football-inspired roster, course presentation, and game interaction. It brings the competitive spirit of football onto iconic fairways. Treat the work as a concept and prototype, not an officially licensed or commercially released game.",
-    "tags": [
-        "Chasing Birdies",
-        "golf",
-        "simulation",
-        "game design",
-        "characters",
-        "prototype",
-        "Golf simulation"
-    ]
-},
-  {
     id: "resume",
     category: "profile",
     title: "Résumé",
