@@ -13,20 +13,15 @@
   function render() {
     const station = stations[selected];
     get('radio-page-title').textContent = view === 'collection' ? 'Playlists' : view === 'discover' ? 'Discover' : 'Radio';
-    get('station-title').textContent = station.title;
-    get('station-description').textContent = station.description;
-    get('station-sounds').textContent = station.sounds;
-    get('neb-feature').dataset.tone = selected;
     get('save-station').textContent = saved.has(selected) ? '✓ Station saved' : '+ Save station';
     get('save-station').setAttribute('aria-pressed', String(saved.has(selected)));
+    get('save-station').setAttribute('aria-label', `${saved.has(selected) ? 'Remove' : 'Save'} ${station.title}${saved.has(selected) ? ' from your playlist' : ' to your playlist'}`);
     document.querySelectorAll('[data-station]').forEach(button => {
       button.hidden = view === 'collection' && !saved.has(button.dataset.station);
       button.setAttribute('aria-pressed', String(button.dataset.station === selected));
     });
     document.querySelectorAll('[data-view]').forEach(button => { button.setAttribute('aria-pressed', String(button.dataset.view === view)); button.classList.toggle('is-active', button.dataset.view === view); });
     get('station-list-title').textContent = view === 'collection' ? 'Your playlist' : view === 'radio' ? 'Wander through the frequencies' : 'Find a world of your own';
-    const count = view === 'collection' ? saved.size : Object.keys(stations).length;
-    get('station-count').textContent = `${String(count).padStart(2, '0')} ${count === 1 ? 'station' : 'stations'}`;
     get('neb-empty').hidden = view !== 'collection' || saved.size > 0;
     document.querySelector('.neb-editorial').hidden = view !== 'discover';
   }
@@ -34,7 +29,7 @@
     selected = button.dataset.station; render(); get('neb-status').textContent = `Exploring ${stations[selected].title}.`;
   }));
   document.querySelectorAll('[data-view]').forEach(button => button.addEventListener('click', () => {
-    view = button.dataset.view; render(); get('neb-status').textContent = view === 'collection' ? 'Your saved stations, gathered in one place.' : 'Select a station to explore its sound.';
+    view = button.dataset.view; render(); get('neb-status').textContent = view === 'collection' ? 'Your saved stations, gathered in one place.' : '';
   }));
   get('save-station').addEventListener('click', () => {
     if (saved.has(selected)) saved.delete(selected); else saved.add(selected);
