@@ -2,6 +2,24 @@ const SITE_ORIGIN = "https://claudiaochoa.co";
 
 export const PORTFOLIO_RESOURCES = [
 {
+  "id": "the-otherside",
+  "category": "experience-strategy",
+  "title": "The Otherside \u2014 Community App",
+  "url": "https://claudiaochoa.co/work/the-otherside.html",
+  "summary": "A community app concept helping independent music fans find friends through shared interests and small local gatherings.",
+  "details": "Evolved from Claudia\u2019s Connect idea for people relocating to work onsite during return to office, explored when she started at Walmart. This new concept serves the independent-minded audience of Nebulae. The prototype includes fictional gatherings, filtering, plan details and local saving. It is not a launched Walmart product or a live social network.",
+  "tags": [
+    "The Otherside",
+    "community",
+    "friendship",
+    "relocation",
+    "independent music",
+    "gatherings",
+    "Connect",
+    "product design"
+  ]
+},
+{
   "id": "nebulae",
   "category": "experience-strategy",
   "title": "Nebulae \u2014 Independent Music",

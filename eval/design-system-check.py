@@ -8,7 +8,7 @@ from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 PAGES = ('index.html', 'about.html', 'contact.html', '404.html',
-         'work/nebulae.html')
+         'work/nebulae.html', 'work/the-otherside.html')
 errors = []
 stylesheets = set()
 image_count = 0

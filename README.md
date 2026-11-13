@@ -400,4 +400,8 @@ Nebulae’s triangle-and-record mark (`images/nebulae-mark.svg`) is a vector rec
 
 Nebulae’s Work preview shows a static streaming interface with a persistent player. The now-playing track is “Lost In The Night” by Dead Man’s Bones, using cover artwork supplied by Claudia and a 5:00 duration from her Bandcamp screenshot. The other release names are fictional design samples. The player is illustrative and does not stream audio.
 
-Ask Read and Chasing Birdies have been removed from the public portfolio, including their project and preview routes. Nebulae is the sole featured project. Historical source assets remain in the repository.
+Ask Read and Chasing Birdies have been removed from the public portfolio, including their project and preview routes. Nebulae and The Otherside are the featured projects. Historical source assets remain in the repository.
+
+## The Otherside
+
+Community app concept in `work/the-otherside.html`, following Nebulae on Work. It evolves Claudia’s Connect idea for relocation and return-to-office friendship into a community for independent music fans. `css/the-otherside.css` defines the presentation and `js/the-otherside.js` supports filters, sample-plan dialogs, and local saving. The sample location is Brooklyn, NY. Profiles and gatherings are fictional; there is no messaging or RSVP backend.

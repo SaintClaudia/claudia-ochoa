@@ -325,3 +325,4 @@
 /* A single related concept keeps a deliberate reading width. */
 .cs-more-list:has(>li:only-child){grid-template-columns:minmax(0,760px)}
 .cs-more-nebulae{background:linear-gradient(90deg,#0d0b1690,#0d0b1620),url('/images/nebulae-cosmic.webp') center/cover!important}
+.cs-more-otherside{background:radial-gradient(circle at 80% 20%,#535e36,#1d2418 58%,#10140e)!important}

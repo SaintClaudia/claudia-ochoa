@@ -10,6 +10,8 @@ For structured access, connect an MCP client to [the public portfolio MCP endpoi
 
 ## Selected Work
 
+- [The Otherside](https://claudiaochoa.co/work/the-otherside.html): Community app concept connecting independent music fans through shared interests and small local gatherings.
+
 - [Nebulae](https://claudiaochoa.co/work/nebulae.html): Independent music discovery concept, with curated radio and room for label-affiliated and self-releasing artists.
 
 
