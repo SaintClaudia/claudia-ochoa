@@ -40,3 +40,6 @@
 @media (max-width: 800px) {
   :root { --site-body-size: 1.125rem; }
 }
+
+/* Compact directional arrows share the navigation icon geometry. */
+svg.site-short-arrow{display:inline-block;position:static!important;inset:auto!important;width:1em!important;height:1em!important;vertical-align:-.12em;flex:none;opacity:1!important}
