@@ -29,7 +29,7 @@ scoped to the corresponding page or section. Shared navigation uses explicit
 site colors so it stays readable across those themes.
 
 Ask Read has separate `--askread-*` surface, text, and accent tokens. Chasing
-Birdies and Brock Purdy retain their own art direction. Do not replace project
+Birdies retains its own art direction. Do not replace project
 colors with portfolio colors merely because they look similar. Translucent
 colors and photographic gradients require review in their actual context.
 

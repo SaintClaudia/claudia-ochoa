@@ -1,7 +1,7 @@
 # Chasing Birdies swing rig foundation
 
 Historical implementation notes. As of November 5, 2026, the portfolio swing
-uses the continuous concept film documented in `chasing-birdies-swing-film.md`.
+uses a coastal course spotlight. The procedural rig remains a separate technical preview.
 The procedural rig remains a separate experiment; the raster-pose presentation
 described below is no longer loaded by the portfolio page.
 

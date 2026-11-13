@@ -45,7 +45,7 @@
 .cb-player-heading h2{font-size:clamp(36px,5vw,76px);font-weight:450;letter-spacing:-.05em;line-height:1.05;margin:24px 0}
 .cb-player-heading>p:last-child{font-size:clamp(17px,1.6vw,24px);line-height:1.6;color:var(--muted)}
 .cb-customizer{display:grid;grid-template-columns:25% 42% 33%;min-height:650px;position:relative;isolation:isolate;overflow:hidden;--cb-corner-radius:20px;border-radius:var(--cb-corner-radius);clip-path:inset(0 round var(--cb-corner-radius));background:#14241c}
-.cb-customizer:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#08120ef2,#13261a60 45%,#08120eea),url('/images/chasing-birdies-tablet-screen.webp') center 40%/cover;filter:blur(3px);opacity:.6}
+.cb-customizer:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#08120ef2,#13261a60 45%,#08120eea),url('/images/chasing-birdies-tablet-screen.webp?v=standalone-1') center 40%/cover;filter:blur(3px);opacity:.6}
 .cb-select-player{padding:36px 0 32px 32px;z-index:2}
 .cb-select-logo{width:170px;max-width:90%;height:auto;margin-bottom:44px}
 .cb-select-label{font-size:11px;letter-spacing:.13em;font-weight:600;color:#d6ae63;margin:0 0 20px}
@@ -100,7 +100,7 @@
 .cb-look-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));list-style:none;margin:0;padding:0;gap:9px}
 .cb-look-row li{position:relative;min-width:0;padding:0 0 8px;border:1px solid #ffffff32;border-radius:8px;background:#14211de6;overflow:hidden;transition:border-color .4s,box-shadow .4s}
 .cb-look-row li.is-selected{border-color:#e4bf66;box-shadow:inset 0 0 0 1px #e4bf66}
-.cb-wardrobe-thumb{display:block;width:100%;aspect-ratio:1;background-image:url('/images/birdies-wardrobe-v1.png');background-size:400% 400%;background-position:var(--sprite-x) var(--sprite-y)}
+.cb-wardrobe-thumb{display:block;width:100%;aspect-ratio:1;background-image:none;background-size:400% 400%;background-position:var(--sprite-x) var(--sprite-y)}
 .cb-item-name{display:block;text-align:center;padding:6px 3px 0;font-size:10px;line-height:1.35;color:#eee}.cb-item-name small{display:block;font-size:9px;color:#aeb8a9;margin-top:3px}
 .cb-choice-check{position:absolute;right:6px;top:6px;display:grid;place-items:center;width:21px;height:21px;border-radius:50%;background:#e4bf66;color:#142017;font-size:13px;font-weight:700;opacity:0;transition:opacity .4s}.is-selected .cb-choice-check{opacity:1}
 .cb-accessory-row{grid-template-columns:repeat(6,minmax(0,1fr));gap:7px}.cb-accessory-row .cb-item-name{font-size:9px}.cb-accessory-row .cb-item-name small{font-size:8px}
@@ -119,7 +119,7 @@
 .cb-swing-course{position:absolute;left:0;top:0;max-width:none;transform-origin:0 0}
 .cb-swing-shade{position:absolute;inset:0;background:linear-gradient(180deg,var(--ink) 0,#0000 22%,#0000 70%,#0006 100%)}
 .cb-swing-golfer{position:absolute;left:0;top:0}
-.cb-swing-sprite{position:absolute;inset:0;background:url('/images/chasing-birdies-swing-embroidered-glove.png') 0 0/600% 100% no-repeat}
+.cb-swing-sprite{position:absolute;inset:0;background:none 0 0/600% 100% no-repeat}
  .cb-swing-shadow{position:absolute;inset:0;z-index:0}
 .cb-swing-shadow::before,.cb-swing-shadow::after{content:"";position:absolute;width:13%;height:1.2%;border-radius:50%;background:radial-gradient(ellipse,#000b 0%,#0007 35%,#0000 75%);translate:-50% 0}
 .cb-swing-shadow::before{left:var(--left-foot-x,27%);top:var(--left-foot-y,75.5%)}
@@ -159,7 +159,7 @@
 .cb-swing-overview>img{display:block;width:100%;height:auto;aspect-ratio:2/3;object-fit:cover;border-radius:7px}
 @media(max-width:650px){.cb-swing-overview{top:86px;right:16px;width:120px;padding:10px;border-radius:9px}.cb-swing-overview-label{font-size:7px;letter-spacing:.08em;margin-bottom:7px}.cb-swing-overview h3{font-size:14px}.cb-swing-overview-distance{font-size:10px;margin-bottom:6px}.cb-swing-overview-wind{font-size:9px;gap:5px;margin-bottom:9px}.cb-swing-overview-wind svg{width:15px;height:15px}}
 
-/* Left rail: Purdy was picked on a previous screen, so it shows setup progress and his stats. */
+/* Left rail: the selected golfer’s setup progress and concept stats. */
 .cb-select-logo{margin-bottom:28px}
 .cb-setup-steps{display:flex;gap:6px;list-style:none;margin:0 0 22px;padding:0}
 .cb-setup-steps li{flex:1;padding:7px 0 0;border-top:2px solid #ffffff26;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#8f9a8c}
@@ -323,3 +323,14 @@
 
 /* Echo the Work page accent in the opening statement. */
 .birdies-story-page{--case-accent:#bec794}
+
+/* Standalone course identity and original wardrobe character. */
+.cb-course-spotlight{position:relative;margin:0 var(--gutter);overflow:hidden;border-radius:20px;background:#10251b}
+.cb-course-spotlight>img{display:block;width:100%;height:clamp(380px,55vw,740px);object-fit:cover}
+.cb-course-spotlight>div{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;padding:clamp(24px,5vw,80px);background:linear-gradient(180deg,transparent 25%,#071716e8)}
+.cb-course-spotlight h2{font-size:clamp(30px,4.5vw,68px);font-weight:500;letter-spacing:-.045em;margin:12px 0}
+.cb-course-spotlight p{line-height:1.6}.cb-course-spotlight .case-link{margin-top:16px}
+.cb-original-looks{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cb-original-looks .cb-wardrobe-thumb{height:clamp(100px,13vw,200px);object-fit:cover;object-position:center top;border-radius:8px}
+.cb-locked-head img.cb-locked-portrait{object-fit:cover;object-position:center top}
+.cb-outfit-demo .cb-character-look{border-radius:16px;object-fit:contain}

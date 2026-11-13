@@ -8,7 +8,7 @@ Personal portfolio of Claudia Ochoa — Creative and Product Design Leader blend
 
 ## Portfolio redesign
 
-Work is the homepage, with full-screen project stories and independent device motion. About and Contact are separate pages. The three pages share `css/portfolio-story.css` and `js/portfolio-story.js`; all portfolio pages share `_portfolio-nav.html`, `css/portfolio-nav.css`, and `js/portfolio-nav.js`; the menu lists Ask Read, Chasing Birdies, and Brock Purdy 13. `/work/` redirects to `/`. Earlier Walmart, Home Depot, and Lovesac pages, prototypes, and the blog are archived at their original URLs. Archive pages carry `noindex, follow`, are excluded from the sitemap and curated AI sources, and preserve their original content and design. Blog audit reports are also excluded from indexing. The blog template is archived; do not use it for new active content without explicitly restoring it. Contact uses the existing Web3Forms integration.
+Work is the homepage, with full-screen project stories and independent device motion. About and Contact are separate pages. The three pages share `css/portfolio-story.css` and `js/portfolio-story.js`; all portfolio pages share `_portfolio-nav.html`, `css/portfolio-nav.css`, and `js/portfolio-nav.js`; the menu lists Ask Read, Chasing Birdies, and Nebulae. `/work/` redirects to `/`. Earlier Walmart, Home Depot, and Lovesac pages, prototypes, and the blog are archived at their original URLs. Archive pages carry `noindex, follow`, are excluded from the sitemap and curated AI sources, and preserve their original content and design. Blog audit reports are also excluded from indexing. The blog template is archived; do not use it for new active content without explicitly restoring it. Contact uses the existing Web3Forms integration.
 
 Edit the production pages and shared story assets directly. `redesign/` is an ignored local review snapshot. The new pages preserve canonical/social metadata, structured data, analytics, and reduced-motion support. Homepage WebMCP remains available.
 
@@ -94,84 +94,16 @@ serves those files directly.
 │   └── lovesac-support.html          # Lovesac prototype — customer support page
 ```
 
-Portfolio pages are linked from the site. The intentionally unlinked game prototype
-at `/games/chasing-birdies/` is excluded from navigation, the sitemap, and agent
-discovery, and has a `noindex, nofollow` directive. An unlinked URL is still public
-when deployed.
+Portfolio pages are linked from the site.
 
 ## Chasing Birdies
 
-The portfolio swing section uses a 6.8-second, locally hosted H.264 concept film
-with a reference-based Brock Purdy likeness. It plays once when visible, pauses
-offscreen, offers pause/replay controls, and stays still for reduced-motion
-visitors until they choose to play. Native controls remain available without
-JavaScript. See `docs/chasing-birdies-swing-film.md` for provenance and review.
-
-The portfolio story at `work/chasing-birdies.html` presents Chasing Birdies with
-Brock Purdy as its lead and a 16-player concept roster spanning teams and eras.
-The roster uses four staggered desktop columns, three on tablet, and two on phones;
-its gentle scroll motion respects reduced-motion preferences. Golf portraits carry
-current-team or last-played-for logos, while the separate customization sequence
-retains football uniforms. Artwork provenance and team assignments are recorded in
-`images/birdies-roster-artwork.md`. This concept roster is separate from the existing
-three-character playable prototype described below.
-
-An independent, buildless arcade golf game at `games/chasing-birdies/index.html`.
-Compatibility pages redirect the former misspelled game and player-gallery URLs
-to the corrected path on GitHub Pages. The site Worker also includes a permanent
-redirect for all old paths, including assets, ready for its next deployment.
-The game has its own canonical URL, search description, Open Graph/Twitter
-sharing metadata, and factual `VideoGame` JSON-LD describing local play.
-Choose 1–3 local players, select Purdy, McCaffrey, or Kittle for each player,
-and choose a football uniform or Niners golf attire. Three coastal holes feature
-club selection, aim and power controls, tap/drag aiming, wind, rough, bunkers,
-water penalties, a scorecard, and round results. Each participant takes one shot
-per turn; finished players are skipped. A twelve-stroke pickup keeps rounds moving.
-Club buttons show maximum distance for the current golfer and lie. Full-power
-ranges are 285–320 yd for drivers, 165–180 yd for 7 irons, 80–85 yd for sand
-wedges, and 60 yd for putters on the green. Rough and sand reduce these ranges,
-with stronger reductions for drivers and putters. Wedges preserve bunker recovery.
-Club and power suggestions use distance, lie, and head/tail wind; players can
-adjust both. Each club has its own wind response and flight height, with lower
-flight on softer shots. Green detection follows the drawn ellipse.
-Mobile rounds put club selection, aim and power sliders, and Swing directly
-beneath the course. A mobile Swing button inside the course also shows the selected
-club and power, and is disabled during playback. The landing preview shows expected distance and surface,
-with water and out-of-bounds warnings. Dragging the target adjusts both aim and
-power with wind compensation; pulling back from the ball also adjusts the shot.
-Mobile gestures wait for Swing by default; swing on release can be enabled in
-How to play. Player details and the scorecard expand below the controls,
-and shot transitions return the course to view. Desktop retains keyboard controls
-and defaults to swing on release for pull-back gestures.
-Rolling shots and landings can bump resting balls, transferring motion and
-deflecting glancing hits. Balls waiting to tee off and holed balls are excluded.
-Bumps do not add strokes to other players; a bumped ball entering the cup finishes
-with its existing stroke count. A bumped ball sent into a hazard is restored to
-a safe resting position without a penalty. The deterministic motion module is
-`ball-physics.js`; run its collision checks with
-`node --test games/chasing-birdies/ball-physics.test.cjs`.
-Ball collisions have timed impact clicks. The cup-drop sound uses a cleaned,
-user-confirmed recording, loaded only when sound is enabled. Hole and round
-completion have no victory ping. Driver, iron, and wedge shots use a trimmed recording from the
-supplied hit voice memo; the putter keeps its existing sound. Source and edit details are in `games/chasing-birdies/audio/README.md`.
-
-Preview at `http://localhost:8000/games/chasing-birdies/` using the static server
-below. The game uses its own CSS and JavaScript, self-hosted portfolio fonts,
-procedural canvas course art, and transparent player costume sheets. The pitch-aligned
-arcade edition adds the self-hosted Anton font (license alongside it), blue HUD
-panels, and generated coastal title artwork in `fairway-title.webp`; its ImageGen
-prompt is retained in `artwork-prompt.txt`. The Clubhouse loads responsive hero versions,
-a small logo, and pre-cropped portraits. Swing sheets load when a round starts,
-for selected golfers only. `anton-latin.woff2` is a subset of the licensed Anton
-source font. Rebuild these display assets after artwork changes with
-`python3 games/chasing-birdies/optimize_assets.py` (Pillow and fontTools with
-WOFF2 support), then update the hero cache versions in the HTML and CSS. Player sheets in `players/` cover
-uniform and golf variants for all three players, using official headshots as
-likeness references; generation prompts and source links live in `players/README.md`.
-The unlinked `players/index.html` comparison view displays all six looks. It requires
-no external services. Round state is held in memory and resets on reload.
-Keep it unlinked until ready to announce.
-
+The portfolio story at `work/chasing-birdies.html` presents a standalone golf
+identity, a coastal swing scene, and an original golfer wardrobe concept.
+The 14-player athlete roster spans teams and eras. The roster uses four staggered
+desktop columns, three on tablet, and two on phones, with reduced-motion support.
+The wardrobe shows three unbranded golf outfits for an original fictional character.
+See `docs/chasing-birdies-wardrobe.md` for the current artwork notes.
 ## Agent interfaces
 
 The site exposes the same published evidence through complementary interfaces:
@@ -282,8 +214,7 @@ the sitemap, unless explicitly restoring that content.
 
 ## Adding a featured project
 
-1. Use a current project page (`work/ask-read.html`, `work/chasing-birdies.html`,
-   or `work/brock-purdy-13.html`) as the structural reference.
+1. Use a current project page (`work/ask-read.html` or `work/chasing-birdies.html`) as the structural reference.
 2. Update content, artwork, title, description, canonical URL, social metadata,
    and any structured data to accurately describe the new project.
 3. Add the homepage story in `index.html` and the navigation entry in
@@ -322,8 +253,8 @@ sharing metadata, and shared favicons. The homepage includes `Person` JSON-LD.
 Archived pages retain their historical metadata alongside `noindex, follow`.
 
 `sitemap.xml` lists the six current portfolio routes: Home, About, Contact,
-Ask Read, Chasing Birdies, and Brock Purdy 13. It excludes archived work, the blog,
-and the unlinked game prototype. `robots.txt` references the sitemap. Keep each
+Ask Read, Chasing Birdies, and Nebulae. It excludes archived work and the blog.
+`robots.txt` references the sitemap. Keep each
 page's `lastmod` accurate when making meaningful content changes.
 
 ### Naming conventions
@@ -334,8 +265,7 @@ Prefix project assets with their project name and shared portfolio assets with
 `portfolio-`. Keep existing CSS component prefixes consistent within each system
 (`site-`, `story-`, `cs-`, `askread-`, and `birdies-`); do not rename selectors
 without updating their HTML and JavaScript references. HTML partials use a leading
-underscore. Preserve brand names in visible copy: Ask Read, Chasing Birdies, and
-Brock Purdy 13. The résumé download keeps its human-readable filename.
+underscore. Preserve brand names in visible copy: Ask Read, Chasing Birdies, and Nebulae. The résumé download keeps its human-readable filename.
 
 Existing archive asset names and compatibility redirects are intentional exceptions.
 Do not rename published URLs just for cosmetic consistency; preserve old links
@@ -403,28 +333,6 @@ follow-up. Do not extend these results to archived pages.
 - CSP and Permissions-Policy response headers added by [`worker-csp/`](worker-csp/)
 - Domain verified with Google Search Console
 
-### Chasing Birdies player balance
-
-Player traits are fictional arcade choices, not measured abilities of the real
-athletes. Purdy drives 285 yd at full power and has the least wind drift;
-McCaffrey drives 300 yd and retains more distance from rough and sand;
-Kittle drives 320 yd with stronger irons and greater wind drift. Wedge ranges
-are 95/98/100 yd; putting is identical, even from poor lies. No random miss
-is added: the aiming preview and actual shot use the same calculation in
-`player-skills.js`. Power shows the selected club's distance before wind.
-Run balance checks with `node --test games/chasing-birdies/player-skills.test.cjs`.
-
-The three holes use distinct coastal layouts: Coastal kickoff is a wide, open
-par 4; The golden gate is a narrower par 4 crossing the map beside cool lagoons;
-The faithful finish is a longer, warmer-toned par 5 dogleg with bunkers at the
-turn. Fairway lie detection uses each hole's rendered fairway width.
-
-The opening screen uses the existing lightweight logo with a waving SVG flag
-and a creator credit, then reveals the clubhouse after 4 seconds. Skip intro
-and Escape enter immediately. Reduced motion and JavaScript-disabled browsers
-bypass the animation. It runs once per page load, never on returning to the
-clubhouse within a round. No audio or additional image assets load for it.
-
 ## Sharing and archive maintenance
 
 `images/og-card.png` is Claudia's supplied “Ideas, made visible” artwork, copied
@@ -447,7 +355,7 @@ The homepage embeds its stylesheet sources in cascade order using the
 Edit the shared CSS sources, then run `python3 build.py`; never edit the stamped
 style block directly. Other pages retain external stylesheets. The introductory
 SVG wordmark is preloaded at high priority. Below-fold film thumbnails use
-responsive WebP sizes; the homepage fragrance image uses a WebP derivative.
+responsive WebP sizes.
 Original artwork remains available for project pages and social sharing.
 
 ## About page
@@ -483,3 +391,9 @@ Do not commit or delete them as part of routine site updates. As of November 11,
 2026, the current redesign follow-up in `BACKLOG.md` is complete, including
 Claudia’s confirmation of VoiceOver verification. No other unresolved redesign
 items are recorded; this status is not a blanket audit of archived pages or assets.
+
+## Nebulae
+
+`work/nebulae.html` explores independent music discovery with quiet cosmic artwork and the tagline “Music for those who live outside the mainstream.” Styles and interactions live in `css/nebulae.css` and `js/nebulae.js`. Station selection and saving to Your orbit work locally; playback is not included. Sacred Gateway and Reeper Riffs are original station names supplied by Claudia; Field Notes is a new draft direction. Historical label context does not imply current partnerships.
+
+Nebulae’s triangle-and-record mark (`images/nebulae-mark.svg`) is a vector reconstruction of Claudia’s original logo supplied November 13, 2026. Her supplied A2IM screenshot documents the December 12, 2016 Associate Member Spotlight and its original lossless streaming and touring-band promotion vision. These describe the historical service proposal, not implemented streaming features in this prototype.

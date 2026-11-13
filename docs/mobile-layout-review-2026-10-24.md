@@ -4,7 +4,7 @@ Reviewed the local site in Chrome responsive viewports at 320, 375, 390, 430, an
 
 ## Corrections
 
-- Increased shared color-palette row gaps from 12px to 28px while retaining 12px column gaps. Wrapped rows now have more space below the previous row’s hex labels in Chasing Birdies, Ask Read, and Brock Purdy 13.
+- Increased shared color-palette row gaps from 12px to 28px while retaining 12px column gaps. Wrapped rows now have more space below the previous row’s hex labels in Chasing Birdies, Ask Read.
 - Centered Ask Read’s QB Intelligence tablet within the introduction’s text gutters and kept its background glow within the tablet’s horizontal bounds. The page previously extended 23–66px beyond the tested mobile viewport widths.
 - Updated stylesheet version queries on all three affected case studies.
 
@@ -26,7 +26,6 @@ This review used desktop Chrome viewport emulation. Changes are local and have n
 - `/404.html`
 - `/work/ask-read.html`
 - `/work/chasing-birdies.html`
-- `/work/brock-purdy-13.html`
 - `/work/lovesac-case-study.html`
 - `/work/lovesac-case-study-2.html`
 - `/work/lovesac-case-study-3.html`
@@ -49,8 +48,6 @@ This review used desktop Chrome viewport emulation. Changes are local and have n
 - `/blog/reports/homedepot-pagespeed-report.html`
 - `/blog/reports/salesforce-pagespeed-report.html`
 - `/blog/reports/workday-pagespeed-report.html`
-- `/games/chasing-birdies/`
-- `/games/chasing-birdies/players/`
 - `/work/chasing-birdies-rig.html`
 - `/work/chasing-birdies-rig-debug.html`
 - `/work/`

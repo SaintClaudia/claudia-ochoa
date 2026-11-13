@@ -1,6 +1,23 @@
 const SITE_ORIGIN = "https://claudiaochoa.co";
 
 export const PORTFOLIO_RESOURCES = [
+{
+  "id": "nebulae",
+  "category": "experience-strategy",
+  "title": "Nebulae \u2014 Independent Music",
+  "url": "https://claudiaochoa.co/work/nebulae.html",
+  "summary": "Independent music discovery concept centered on subculture, curated radio, labels and self-releasing artists.",
+  "details": "A concept revisiting Claudia\u2019s original independent music service idea. Sacred Gateway and Reeper Riffs introduce discovery through named stations. The prototype supports saving stations locally; it is not a licensed streaming catalog and does not claim current label partnerships or launch outcomes.",
+  "tags": [
+    "Nebulae",
+    "independent music",
+    "radio",
+    "labels",
+    "artists",
+    "music discovery",
+    "subculture"
+  ]
+},
   {
     id: "profile",
     category: "profile",
@@ -36,7 +53,7 @@ export const PORTFOLIO_RESOURCES = [
     "category": "experience-strategy",
     "title": "Chasing Birdies — Golf Simulation",
     "url": "https://claudiaochoa.co/work/chasing-birdies.html",
-    "summary": "Chasing Birdies is a golf simulation concept featuring Brock Purdy and a 16-player roster of football stars and legends.",
+    "summary": "Chasing Birdies is a golf simulation concept featuring a 14-player roster of football stars and legends.",
     "details": "The portfolio presents a golf concept spanning character design, a football-inspired roster, course presentation, and game interaction. It brings the competitive spirit of football onto iconic fairways. Treat the work as a concept and prototype, not an officially licensed or commercially released game.",
     "tags": [
         "Chasing Birdies",
@@ -45,24 +62,7 @@ export const PORTFOLIO_RESOURCES = [
         "game design",
         "characters",
         "prototype",
-        "Brock Purdy"
-    ]
-},
-  {
-    "id": "brock-purdy-13",
-    "category": "experience-strategy",
-    "title": "Brock Purdy 13 — Fragrance Collection",
-    "url": "https://claudiaochoa.co/work/brock-purdy-13.html",
-    "summary": "Brock Purdy 13 is a fragrance and grooming concept with brand identity, packaging, and art direction built around his signature number.",
-    "details": "The concept expresses discipline, confidence, and balance through a signature mark, bottle design, and golden-hour art direction. An eau de parfum anchors the grooming collection. This is a portfolio design concept; the page does not establish an official endorsement, a retail launch, or sales results.",
-    "tags": [
-        "Brock Purdy 13",
-        "fragrance",
-        "grooming",
-        "brand identity",
-        "packaging",
-        "art direction",
-        "signature mark"
+        "Golf simulation"
     ]
 },
   {

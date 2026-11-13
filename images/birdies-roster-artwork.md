@@ -2,7 +2,7 @@
 
 Approved portfolio artwork, November 5, 2026. Created with the built-in ImageGen
 tool as a single 4-by-4 portrait atlas, followed by an apparel-logo edit. The
-compressed production asset is `birdies-roster-golf-teams.jpg` (1086 × 1448).
+compressed production asset is `birdies-roster-nature.png` (1086 × 1448).
 This is concept art for the portfolio story, not photographs or new playable
 characters in the separate game prototype.
 
@@ -12,7 +12,6 @@ The atlas is read left to right, top to bottom. The HTML's visible order differs
 
 | Cell | Player | Current team or last team actually played for |
 | --- | --- | --- |
-| 1 | Brock Purdy | San Francisco 49ers |
 | 2 | Tom Brady | Tampa Bay Buccaneers |
 | 3 | Josh Allen | Buffalo Bills |
 | 4 | Patrick Mahomes | Kansas City Chiefs |
@@ -65,3 +64,5 @@ SF oval, Buccaneers pirate flag, Bills charging buffalo, Chiefs arrowhead,
 Cardinals head, Cowboys star, Steelers circular mark, Raiders shield, Rams LA
 horn mark, Broncos horse head, and Jaguars head as appropriate. No other text,
 sponsors, or clothing changes.
+
+The first sprite cell is intentionally empty and omitted from the rendered roster.

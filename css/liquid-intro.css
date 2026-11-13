@@ -111,8 +111,6 @@
 .work-page .story-birdies .project-footer{margin-top:calc(120px - 36px - var(--birdies-art-width) * .059127)}
 @media(max-width:800px){.work-page .story-birdies .project-footer{margin-top:calc(80px - 20px - var(--birdies-art-width) * .059127)}}
 
-/* Keep the fragrance description balanced without a one-word final line. */
-.work-page .story-purdy .project-summary{max-width:490px;text-wrap:pretty}
 
 /* Project counts remain readable on both dark project backgrounds. */
 .work-page .story-index span{opacity:1;color:var(--site-text-secondary)}

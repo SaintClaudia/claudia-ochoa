@@ -1,6 +1,6 @@
 # Portfolio accessibility review — November 10, 2026
 
-Scope: Home, About, Contact, Ask Read, Chasing Birdies, and Brock Purdy 13.
+Scope: Home, About, Contact, Ask Read, Chasing Birdies.
 Reviewed in Google Chrome on macOS through the native accessibility tree and
 keyboard input. Existing live pages were inspected first, then changed pages
 were reviewed using a local preview. This is not a WCAG conformance certification
@@ -39,7 +39,6 @@ or a completed VoiceOver listening test.
 | Contact | Labels and keyboard sequence are usable; empty submission focuses the required name field with native validation feedback. |
 | Ask Read | Title precedes preview; evidence disclosure opens by keyboard; sources appear when expanded. Overview receives focus. Tab then reaches the Library switches without entering decorative mockups; Space on Offseason exposes the offseason panel. |
 | Chasing Birdies | Named main target accepts focus; roster heading precedes the list; keyboard activation changes the film button between Play swing and Pause swing. |
-| Brock Purdy 13 | Skip target and overview accept focus; next Tab reaches a distinctly named related-project link. |
 | Shared menu | Keyboard opening focuses Close menu; Tab reaches menu links; underlying page is excluded while modal is open; Escape returns focus to Open menu. Browser chrome remains reachable through normal browser navigation. |
 | Contact responses | A localhost-only test endpoint returned failure and success. Both messages appeared in accessibility output; focus returned to Send message. Failure preserved input; success reset it. No message was sent to Web3Forms. |
 | Source checks | Generated regions, JavaScript syntax, whitespace, local link/asset paths, and fragment targets checked. |

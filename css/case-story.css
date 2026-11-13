@@ -295,9 +295,6 @@
 @media(prefers-reduced-motion:reduce){.cs-more-bg{transition:none}.cs-more-card:hover .cs-more-bg{scale:1}}
 @media(max-width:480px){.cs-pair .cs-evidence{padding:12px}.cs-ev-card{padding:20px 18px}.cs-ev-label{letter-spacing:.1em}.cs-ev-stats dt{letter-spacing:.08em}.cs-ev-pill{font-size:var(--site-label-size)}}
 
-.cs-more-purdy{--scrim:23 18 14;background:#17120e}
-.cs-more-purdy .cs-more-bg{height:58%;object-position:78% 50%}
-.cs-more-purdy::before{background:linear-gradient(180deg,transparent 32%,rgb(var(--scrim) / .15) 42%,rgb(var(--scrim) / .75) 51%,rgb(var(--scrim)) 58%),linear-gradient(90deg,rgb(var(--scrim) / .4),rgb(var(--scrim) / .15) 40%,transparent 65%)}
 
 /* Match the Work page's flat ink backdrop for Ask Read. */
 .askread-case-study{background:var(--site-background)}
@@ -312,7 +309,6 @@
 .cs-more-card.cs-more-askread{--scrim:10 11 11;background:var(--site-background)}
 
 /* Use the full card width while retaining the shared headline size. */
-.cs-more-card.cs-more-purdy h3{max-width:none}
 
 /* Keep the hero title first in reading order and below the artwork on phones. */
 @media(max-width:800px){.cs-askread-hero .story-copy{order:1}}
@@ -325,3 +321,7 @@
  .case-story-page :is(.cs-askread-hero,.cs-birdies-hero) :is(.askread-stage,.birdies-stage){position:relative;inset:auto;margin:0 auto;width:calc(100% - 2 * var(--gutter));max-width:680px;height:auto;translate:none}
  .case-story-page :is(.cs-askread-hero,.cs-birdies-hero) .story-copy{margin-top:0}
 }
+
+/* A single related concept keeps a deliberate reading width. */
+.cs-more-list:has(>li:only-child){grid-template-columns:minmax(0,760px)}
+.cs-more-nebulae{background:linear-gradient(90deg,#0d0b1690,#0d0b1620),url('/images/nebulae-cosmic.webp') center/cover!important}

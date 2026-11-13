@@ -39,9 +39,9 @@
   const wardrobe = root.querySelector('.cb-wardrobe');
   const previewCaption = root.querySelector('.cb-preview-caption strong');
   const states = [
-    {look:'game', choices:['scarlet','helmet'], label:'Brock Purdy · Game-day wear'},
-    {look:'golf', choices:['ivory'], label:'Brock Purdy · Golf attire'},
-    {look:'black-glove', choices:['black','glove'], label:'Brock Purdy · 49ers polo + 13 glove'}
+    {look:'game', choices:['scarlet','helmet'], label:'Your golfer · Forest polo'},
+    {look:'golf', choices:['ivory'], label:'Your golfer · Ivory polo'},
+    {look:'black-glove', choices:['black','glove'], label:'Your golfer · Navy quarter zip'}
   ];
   let active = -1;
   let pending = false;

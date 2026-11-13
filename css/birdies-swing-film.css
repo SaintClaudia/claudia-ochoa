@@ -46,3 +46,5 @@
 .cb-film-wind{display:flex;align-items:center;gap:9px;margin:0 0 16px;color:#c3cbbf;font-size:clamp(12px,1vw,16px)}
 .cb-film-wind svg{width:24px;height:24px;flex:none}
 @media(max-width:700px){.cb-film-overview{grid-template-rows:auto auto auto auto;border-radius:0}.cb-film-course-details{grid-row:3;margin-bottom:10px}.cb-film-wind{grid-column:1;grid-row:4;margin:0}.cb-film-map{grid-row:1/5}}
+
+@media(max-width:700px){.cb-film-stage{padding-bottom:0}}
