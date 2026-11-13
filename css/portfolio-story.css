@@ -348,3 +348,9 @@
 
 /* Sacred Ritual station artwork. */
 .neb-preview-device .neb-mini-art.sage{background:url('/images/nebulae-sacred-ritual.webp') center/cover}
+
+/* Playback progress spans the top edge of the player. */
+.neb-stream-player{position:relative;border-top:0}
+.neb-stream-progress{position:absolute;top:0;left:0;right:0;margin:0;gap:0}
+.neb-stream-progress>span{display:none}
+.neb-stream-progress>i{height:.35cqw;border-radius:0;background:#333}.neb-stream-progress b{background:#444444}
