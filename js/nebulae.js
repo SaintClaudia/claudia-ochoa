@@ -22,7 +22,7 @@
       button.setAttribute('aria-pressed', String(button.dataset.station === selected));
     });
     document.querySelectorAll('[data-view]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.view === view)));
-    get('station-list-title').textContent = view === 'collection' ? 'Your orbit' : view === 'radio' ? 'Wander through the frequencies' : 'Find a world of your own';
+    get('station-list-title').textContent = view === 'collection' ? 'Your playlist' : view === 'radio' ? 'Wander through the frequencies' : 'Find a world of your own';
     const count = view === 'collection' ? saved.size : 3;
     get('station-count').textContent = `${String(count).padStart(2, '0')} ${count === 1 ? 'station' : 'stations'}`;
     get('neb-empty').hidden = view !== 'collection' || saved.size > 0;
@@ -39,7 +39,7 @@
     let persisted = true;
     try { localStorage.setItem('nebulae-stations', JSON.stringify([...saved])); } catch (_) { persisted = false; }
     render();
-    get('neb-status').textContent = `${stations[selected].title} ${saved.has(selected) ? 'added to' : 'removed from'} your orbit.${persisted ? '' : ' Saved for this visit only; browser storage is unavailable.'}`;
+    get('neb-status').textContent = `${stations[selected].title} ${saved.has(selected) ? 'added to' : 'removed from'} your playlist.${persisted ? '' : ' Saved for this visit only; browser storage is unavailable.'}`;
   });
   render();
 })();
