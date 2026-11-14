@@ -341,7 +341,7 @@
 .neb-stream-album>strong{font-size:1.3cqw;line-height:1.25;margin:.8cqw 0 .25cqw;font-weight:550}.neb-stream-album>small{display:block;font-size:1.1cqw;line-height:1.3;margin:0}
 
 /* Altered States station artwork. */
-.neb-preview-device .neb-mini-art.altered{background:url('/images/nebulae-altered-states.png') center/cover}
+.neb-preview-device .neb-mini-art.altered{background:url('/images/nebulae-altered-states.png?v=c2285056d027') center/cover}
 
 /* Reeper Riffs station artwork. */
 .neb-preview-device .neb-mini-art.rust{background:url('/images/nebulae-reeper-riffs.webp') center/cover}
