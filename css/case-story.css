@@ -326,3 +326,14 @@
 .cs-more-list:has(>li:only-child){grid-template-columns:minmax(0,760px)}
 .cs-more-nebulae{background:linear-gradient(90deg,#0d0b1690,#0d0b1620),url('/images/nebulae-cosmic.webp') center/cover!important}
 .cs-more-otherside{background:radial-gradient(circle at 80% 20%,#535e36,#1d2418 58%,#10140e)!important}
+
+/* Full-width text-only next-project CTA. */
+.cs-next-project{padding-top:64px;padding-bottom:64px}
+.cs-next-project .cs-label{margin-bottom:22px}
+.cs-next-card{width:100%;border-top:1px solid #ffffff25;border-bottom:1px solid #ffffff25}
+.cs-next-copy{display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:24px;padding:28px 0;color:var(--paper);text-decoration:none}
+.cs-next-copy .project-eyebrow{grid-column:1;margin:0 0 12px;font-size:12px}
+.cs-next-copy h3{grid-column:1;font-size:clamp(26px,2.6vw,40px);line-height:1.1;font-weight:450;letter-spacing:-.04em;margin:0}
+.cs-next-cta{grid-column:2;grid-row:1 / 3;display:inline-flex;align-items:center;gap:22px;font-size:14px;color:#b7b7b7}
+.cs-next-copy:hover .cs-next-cta{color:#fff}
+@media(max-width:600px){.cs-next-copy{column-gap:16px;padding:24px 0}.cs-next-copy h3{font-size:26px}.cs-next-cta{font-size:12px}.cs-next-copy .project-eyebrow{font-size:10px}}
