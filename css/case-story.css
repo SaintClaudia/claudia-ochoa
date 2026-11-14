@@ -328,7 +328,7 @@
 .cs-more-otherside{background:radial-gradient(circle at 80% 20%,#535e36,#1d2418 58%,#10140e)!important}
 
 /* Full-width text-only next-project CTA. */
-.cs-next-project{padding-top:64px;padding-bottom:64px}
+.cs-next-project{padding-top:clamp(96px,10vw,160px);padding-bottom:64px}
 .cs-next-project .cs-label{margin-bottom:22px}
 .cs-next-card{width:100%;border-top:1px solid #ffffff25;border-bottom:1px solid #ffffff25}
 .cs-next-copy{display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:24px;padding:28px 0;color:var(--paper);text-decoration:none}
