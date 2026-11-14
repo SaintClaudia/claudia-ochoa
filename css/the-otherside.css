@@ -100,3 +100,7 @@
 /* Compact wave mark drawn from the supplied brand identity. */
 .other-brand-mark{display:block;width:30px;height:30px;flex:none}
 .other-preview .other-brand-mark{width:2.8cqw;height:2.8cqw}
+
+/* The experience device shares the same frame proportions as the previews. */
+.other-demo .other-app{aspect-ratio:var(--preview-device-ratio);min-height:0;grid-template-rows:minmax(0,1fr);border-width:var(--preview-device-border);border-radius:var(--preview-device-radius);border-color:#252525}
+.other-demo .other-main,.other-demo .other-sidebar{min-height:0;overflow:hidden}
