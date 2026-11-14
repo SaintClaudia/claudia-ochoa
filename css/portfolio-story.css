@@ -354,3 +354,11 @@
 .neb-stream-progress{position:absolute;top:0;left:0;right:0;margin:0;gap:0}
 .neb-stream-progress>span{display:none}
 .neb-stream-progress>i{height:.35cqw;border-radius:0;background:#333}.neb-stream-progress b{background:#444444}
+
+/* Shared landscape device proportions for portfolio product screens. */
+:root{--preview-device-ratio:3 / 2;--preview-device-border:9px;--preview-device-radius:20px}
+.neb-preview-device{aspect-ratio:var(--preview-device-ratio);display:grid;grid-template-rows:minmax(0,1fr) auto;min-height:0;border-width:var(--preview-device-border);border-radius:var(--preview-device-radius)}
+.neb-stream-shell{min-height:0;overflow:hidden}
+.neb-stream-main{min-height:0;overflow:auto;scrollbar-width:none}
+.neb-stream-main::-webkit-scrollbar{display:none}
+@media(max-width:800px){:root{--preview-device-border:5px;--preview-device-radius:12px}}
