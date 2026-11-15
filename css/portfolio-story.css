@@ -366,3 +366,10 @@
 .neb-preview-device{display:flex;flex-direction:column;aspect-ratio:auto}
 .neb-preview-device>.neb-stream-shell{flex:1 0 auto;min-height:68cqw}
 .neb-preview-device>.neb-stream-player{flex:0 0 auto}
+
+/* Let mobile project previews contribute their full height to the page. */
+@media(max-width:800px){
+  .work-page .story-nebulae .project-art{container-type:normal;flex:none}
+  .work-page .story-nebulae h2{font-size:clamp(36px,10vw,68px)}
+  .work-page .story-index{flex:none;white-space:nowrap}
+}

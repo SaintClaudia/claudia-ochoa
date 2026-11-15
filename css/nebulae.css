@@ -64,3 +64,8 @@
 .neb-preview-device.neb-radio-device{aspect-ratio:var(--preview-device-ratio);display:grid;grid-template-rows:minmax(0,1fr) auto}
 .neb-preview-device.neb-radio-device>.neb-stream-shell{min-height:0;overflow:hidden}
 .neb-radio-device .neb-stream-main{min-height:0;overflow:hidden}
+
+/* The hero preview needs natural height before the title below it. */
+@media(max-width:800px){
+  .cs-nebulae-hero .project-art{container-type:normal;flex:none;margin:0}
+}

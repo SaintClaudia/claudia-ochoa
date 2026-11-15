@@ -327,3 +327,8 @@
 .other-shop-price strong{font-size:12px}
 .other-shop-price>span{font-size:9px;line-height:1.4}
 }
+
+/* A container-sized preview needs a definite width inside the mobile flex layout. */
+@media(max-width:800px){
+  .work-page .other-work-preview{width:100%;flex:none}
+}
