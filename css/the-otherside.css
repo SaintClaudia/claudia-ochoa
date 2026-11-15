@@ -104,3 +104,74 @@
 /* The experience device shares the same frame proportions as the previews. */
 .other-demo .other-app{aspect-ratio:var(--preview-device-ratio);min-height:0;grid-template-rows:minmax(0,1fr);border-width:var(--preview-device-border);border-radius:var(--preview-device-radius);border-color:#252525}
 .other-demo .other-main,.other-demo .other-sidebar{min-height:0;overflow:hidden}
+
+/* Explore: compact editorial hierarchy within the existing device frame. */
+.other-demo{container-type:inline-size}
+.other-preview .other-explore,.other-demo .other-explore{padding:0;overflow:clip;background:#f8f5f1}
+.other-explore-hero{padding:2.5cqw 3cqw 2cqw;color:#fff;background:linear-gradient(90deg,#111e,#1116),url('/images/otherside-explore-reference.png') 100% 0/240% auto}
+.other-explore-brand{font-size:1.5cqw;font-weight:600;letter-spacing:-.04em;margin:0 0 2.2cqw}
+.other-explore-hero h3{font-size:3.6cqw!important;line-height:1.1!important;letter-spacing:-.045em!important;font-weight:550!important;margin:0 0 1cqw!important}
+.other-explore-intro{font-size:1.3cqw;line-height:1.55;max-width:38em;margin:0;color:#f5f2ef}
+.other-explore .other-filters{gap:.8cqw;padding:2cqw 0 0}
+.other-explore .other-filters .other-filter{font-size:1.2cqw;line-height:1.3;padding:.8cqw 1.6cqw;color:#fff;border:1px solid #ffffffb3;background:#1113}
+.other-explore .other-filters .other-filter.is-active{color:#171717;background:#f8f5f1;border-color:#f8f5f1}
+.other-explore-content{padding:0 3cqw 2.5cqw}
+.other-explore-section{padding:2.5cqw 0;border-bottom:1px solid #dedad5}
+.other-explore-section:first-of-type{border-bottom:0}
+.other-explore-section:last-of-type{border:0;padding-bottom:0}
+.other-explore-heading h4{font-size:1.85cqw;line-height:1.25;font-weight:600;letter-spacing:-.035em;margin:0 0 .6cqw}
+.other-explore-description{font-size:1.2cqw;line-height:1.5;color:#53514d;margin:0 0 1.7cqw}
+.other-explore-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.4cqw}
+.other-explore-card{position:relative;display:flex;align-items:flex-end;min-width:0;min-height:17cqw;border:0;border-radius:.9cqw;overflow:hidden;padding:1.5cqw;text-align:left;color:#fff;background:#292622;isolation:isolate}
+.other-explore-card::before{content:"";position:absolute;inset:0;z-index:-2;background-image:url('/images/otherside-explore-reference.png');background-repeat:no-repeat;background-size:371.014493% 1163.636364%;background-position:var(--photo-x) var(--photo-y)}
+.other-explore-card::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,#000e,#0008 35%,transparent 85%)}
+
+.other-explore-card-copy{display:grid;gap:.5cqw}
+.other-explore-card-copy small{font-size:.9cqw;font-weight:500;letter-spacing:.055em;line-height:1.4}
+.other-explore-card-copy strong{font-size:1.65cqw;font-weight:550;letter-spacing:-.025em;line-height:1.2}
+.other-explore-card-copy>span{font-size:1.1cqw;line-height:1.4;color:#f2efeb}
+.other-demo .other-explore :focus-visible{outline:2px solid #c9804e;outline-offset:3px}
+@media(max-width:800px){
+.other-demo .other-app{aspect-ratio:auto;height:760px;max-height:85svh;grid-template-rows:minmax(0,1fr)}
+.other-demo .other-explore-hero{padding:24px 20px}
+.other-demo .other-explore-brand{font-size:14px;margin-bottom:28px}
+.other-demo .other-explore-hero h3{font-size:34px!important;margin-bottom:12px!important}
+.other-demo .other-explore-intro{font-size:14px}
+.other-demo .other-explore .other-filters{gap:8px;padding-top:22px}
+.other-demo .other-explore .other-filters .other-filter{font-size:12px;padding:8px 12px}
+.other-demo .other-explore-content{padding:0 20px 24px}
+.other-demo .other-explore-section{padding:24px 0}
+.other-demo .other-explore-heading h4{font-size:19px;margin-bottom:8px}
+.other-demo .other-explore-description{font-size:13px;margin-bottom:16px}
+.other-demo .other-explore-grid{grid-template-columns:1fr;gap:16px}
+.other-demo .other-explore-card{min-height:200px;padding:18px;border-radius:10px}
+.other-demo .other-explore-card-copy{gap:6px}
+.other-demo .other-explore-card-copy small{font-size:10px}
+.other-demo .other-explore-card-copy strong{font-size:19px}
+.other-demo .other-explore-card-copy>span{font-size:12px}
+}
+
+/* Preserve the device height and clip Explore content without scrolling. */
+.other-demo .other-explore{overflow:clip}
+
+.other-filter{display:inline-block;border-radius:25px}
+.other-explore-card{cursor:default}
+
+/* Preserve the removed brand line’s space above Explore. */
+.other-explore-hero::before{content:"";display:block;height:calc(1.5cqw * 1.5 + 2.2cqw)}
+@media(max-width:800px){.other-demo .other-explore-hero::before{height:49px}}
+
+.other-explore-heading{display:flex;align-items:baseline;justify-content:space-between;gap:1.5cqw}
+.other-view-all{display:inline-flex;align-items:center;gap:.7cqw;white-space:nowrap;font-size:1.1cqw;line-height:1.4;color:#171717}
+.other-view-all svg{flex:none;width:1.3cqw;height:1.3cqw}
+@media(max-width:800px){.other-demo .other-view-all{font-size:12px;gap:8px}.other-demo .other-view-all svg{width:14px;height:14px}}
+
+.other-explore-subline{display:flex;align-items:baseline;justify-content:space-between;gap:1.5cqw;margin-bottom:1.7cqw}
+.other-explore-subline .other-explore-description{margin-bottom:0}
+@media(max-width:800px){.other-demo .other-explore-subline{gap:12px;margin-bottom:16px}.other-demo .other-explore-subline .other-explore-description{margin-bottom:0}}
+
+/* Match the first section’s top inset after the divider-free card row. */
+.other-explore-section:first-of-type{padding-bottom:0}
+@media(max-width:800px){.other-demo .other-explore-section:first-of-type{padding-bottom:0}}
+
+.other-explore-card-studio::before{background-image:url("/images/otherside-austin-studio-tour.jpg");background-size:cover;background-position:center 45%}
