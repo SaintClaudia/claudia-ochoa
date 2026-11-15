@@ -266,3 +266,64 @@
 /* Product names stay beneath the artwork and wrap within their own cards. */
 .other-shop-product h4,.other-shop-product>p{overflow-wrap:anywhere}
 .other-shop-image{aspect-ratio:1}
+
+/* Phone presentations use native-sized content instead of shrinking a desktop. */
+@media(max-width:600px){
+.other-feed-demo .other-app,.other-shop-demo .other-app{aspect-ratio:auto;height:620px;max-height:none;grid-template-columns:1fr;grid-template-rows:48px minmax(0,1fr);border-width:5px;border-radius:20px}
+.other-feed-demo .other-sidebar,.other-shop-demo .other-sidebar{padding:8px 12px;flex-direction:row;gap:16px;overflow:hidden}
+.other-feed-demo .other-brand,.other-shop-demo .other-brand{margin:0;flex:none}
+.other-feed-demo .other-brand-mark,.other-shop-demo .other-brand-mark{width:23px;height:23px}
+.other-feed-demo .other-sidebar nav,.other-shop-demo .other-sidebar nav{display:flex;justify-content:space-between;align-items:center;gap:4px;min-width:0}
+.other-feed-demo .other-nav-item,.other-shop-demo .other-nav-item{padding:6px;border-radius:6px}
+.other-feed-demo .other-sidebar nav svg,.other-shop-demo .other-sidebar nav svg{width:18px;height:18px}
+.other-feed-demo .other-nav-item:nth-child(n+4):not(:last-child),.other-shop-demo .other-nav-item:nth-child(n+4):not(:last-child){display:none}
+.other-feed-demo .other-nav-profile img,.other-shop-demo .other-nav-profile img{width:23px;height:23px}
+.other-feed-portrait{inset:0;transform:none;aspect-ratio:auto}
+.other-feed-portrait>img{object-position:58% center}
+.other-feed-portrait::after{background:linear-gradient(180deg,#0008,#0002 35%,#0007 55%,#000e)}
+.other-feed-portrait figcaption{left:18px;right:48px;top:24px;bottom:auto;gap:8px;text-shadow:0 1px 8px #0009}
+.other-feed-portrait figcaption>span{font-size:9px;letter-spacing:.12em}
+.other-feed-portrait figcaption strong{font-size:32px;line-height:1.04}
+.other-feed-portrait figcaption small{font-size:11px;max-width:19em}
+.other-feed-post{left:16px;bottom:65px;width:calc(100% - 70px);font-size:12px}
+.other-feed-location{padding:6px 8px;font-size:10px;margin-bottom:12px;background:#0006}
+.other-feed-creator{gap:8px;flex-wrap:wrap}
+.other-feed-avatar{width:30px;height:30px;font-size:15px}
+.other-feed-creator strong{font-size:12px}
+.other-feed-creator small{font-size:10px;margin-top:2px;color:#ccc}
+.other-feed-follow{font-size:10px;padding:5px 8px;border-radius:4px}
+.other-feed-post>p{font-size:12px;line-height:1.5;margin:12px 0 8px}
+.other-feed-tags{font-size:10px;line-height:1.5;color:#d6d0c7}
+.other-feed-audio{font-size:10px;margin-top:12px;color:#ddd}
+.other-feed-actions{right:12px;bottom:85px;gap:18px}
+.other-feed-actions svg{width:22px;height:22px}
+.other-feed-actions>span{gap:5px}
+.other-feed-actions small{font-size:10px;color:#eee}
+.other-feed-pagination{display:none}
+.other-feed-playback{left:16px;right:16px;bottom:18px;font-size:10px}
+.other-feed-progress{margin-bottom:10px}
+.other-feed-playback>div:last-child{gap:9px}
+.other-feed-playback svg{width:16px;height:16px}
+.other-shop-demo .other-main.other-shop{padding:16px 14px;overflow:clip}
+.other-shop-header{gap:12px;padding-bottom:14px;flex-wrap:wrap}
+.other-shop-header h3{font-size:24px!important}
+.other-shop-bag{margin-left:auto}
+.other-shop-bag svg,.other-shop-search svg{width:18px;height:18px;flex:none}
+.other-shop-search{order:3;flex-basis:100%;margin:0;padding:9px 12px;font-size:11px;gap:8px;border-radius:24px}
+.other-shop-intro{padding:16px 0 12px}
+.other-shop-intro h4{font-size:17px;line-height:1.2;margin-bottom:6px}
+.other-shop-intro p{font-size:11px;line-height:1.5}
+.other-shop-toolbar{margin-bottom:14px;gap:8px}
+.other-shop-filters{flex-wrap:wrap;gap:6px}
+.other-shop-filters>span{font-size:10px;padding:5px 8px;border-radius:20px}
+.other-shop-sort{display:none}
+.other-shop-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 12px}
+.other-shop-image{border-radius:6px}
+.other-shop-heart{top:6px;right:6px;width:24px;height:24px}
+.other-shop-heart svg{width:14px;height:14px}
+.other-shop-product h4{font-size:12px;line-height:1.35;margin:9px 0 4px}
+.other-shop-product>p{font-size:10px;line-height:1.4;margin-bottom:6px}
+.other-shop-price{gap:4px;flex-direction:column}
+.other-shop-price strong{font-size:12px}
+.other-shop-price>span{font-size:9px;line-height:1.4}
+}
