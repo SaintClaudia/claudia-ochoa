@@ -262,3 +262,7 @@
 .other-shop-demo .other-sidebar nav svg{width:2.5cqw;height:2.5cqw}
 .other-shop-demo .other-nav-profile img{width:3cqw;height:3cqw}
 }
+
+/* Product names stay beneath the artwork and wrap within their own cards. */
+.other-shop-product h4,.other-shop-product>p{overflow-wrap:anywhere}
+.other-shop-image{aspect-ratio:1}

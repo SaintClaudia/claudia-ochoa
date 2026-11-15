@@ -1,0 +1,38 @@
+{
+  "generator": "Built-in image_gen",
+  "purpose": "Fictional independent-maker products for The Otherside concept shop.",
+  "assets": [
+    {
+      "file": "images/otherside-shop-heron-photo.jpg",
+      "prompt": "Use case: product-mockup. Create one photorealistic independent artist marketplace product photograph, square composition. A portrait-format handmade screenprint of a cobalt blue heron among rust orange reeds on ivory cotton paper, no text, no typography, no logos, no branding. Entire unframed paper with deckled edges visible on pale plaster tabletop, soft daylight from left, authentic ink texture, sophisticated independent art fair aesthetic. Product occupies 75% of frame with safe margins on all sides, suitable for slight portrait crop in shop card. Single product, no collage."
+    },
+    {
+      "file": "images/otherside-shop-vinyl-photo.jpg",
+      "prompt": "Use case: product-mockup. Generate a single square photorealistic product photo for an independent artists marketplace, each object is a unique maker's work, never platform merchandise. A translucent amber 12-inch vinyl record partially emerging from a midnight-purple sleeve featuring an abstract analog cyan and magenta light-leak photograph, on dark charcoal concrete. No words or letters anywhere, blank small center label. Oblique overhead angle, moody directional light, rich tactile record grooves. Product occupies roughly 70% of frame with generous safe margins, suitable for portrait crop. No typography, no text, no branding, no watermarks, no collages, no website UI. High quality natural tactile materials."
+    },
+    {
+      "file": "images/otherside-shop-zine-photo.jpg",
+      "prompt": "Use case: product-mockup. Generate a single square photorealistic product photo for an independent artists marketplace, each object is a unique maker's work, never platform merchandise. A small independent black-and-white street photography zine lying open on a worn pale wooden table. Two visible pages with grainy architectural and urban shadow photography, cream paper, saddle stitching, no printed words. Window daylight, intimate documentary feel. Product occupies roughly 70% of frame with generous safe margins, suitable for portrait crop. No typography, no text, no branding, no watermarks, no collages, no website UI. High quality natural tactile materials."
+    },
+    {
+      "file": "images/otherside-shop-shirt-photo.jpg",
+      "prompt": "Use case: product-mockup. Generate a single square photorealistic product photo for an independent artists marketplace, each object is a unique maker's work, never platform merchandise. A cream short-sleeved linen camp-collar shirt with delicate hand-embroidered red wildflowers on the chest pocket and sleeve, laid out neatly on muted sage fabric, all sleeves and hem visible. No text or logos. Natural morning light, detailed stitches, real garment folds. Product occupies roughly 70% of frame with generous safe margins, suitable for portrait crop. No typography, no text, no branding, no watermarks, no collages, no website UI. High quality natural tactile materials."
+    },
+    {
+      "file": "images/otherside-shop-vase-photo.jpg",
+      "prompt": "Use case: product-mockup. Generate a single square photorealistic product photo for an independent artists marketplace, each object is a unique maker's work, never platform merchandise. A sculptural hand-built terracotta vase with asymmetrical loop handles, matte earthy clay outside and cobalt glaze inside its opening. One vase on a dusty pale blue plinth with soft pink plaster background, warm side light, ceramic imperfections. Product occupies roughly 70% of frame with generous safe margins, suitable for portrait crop. No typography, no text, no branding, no watermarks, no collages, no website UI. High quality natural tactile materials."
+    },
+    {
+      "file": "images/otherside-shop-ring-photo.jpg",
+      "prompt": "Use case: product-mockup. Generate a single square photorealistic product photo for an independent artists marketplace, each object is a unique maker's work, never platform merchandise. An artisan hammered sterling silver sculptural ring with a small irregular moss-green stone, on a dark rough slate block. Close-up jewelry product photograph, ring fully visible, silver texture and stone depth, soft dramatic light. Product occupies roughly 70% of frame with generous safe margins, suitable for portrait crop. No typography, no text, no branding, no watermarks, no collages, no website UI. High quality natural tactile materials."
+    },
+    {
+      "file": "images/otherside-shop-bag-photo.jpg",
+      "prompt": "Use case: product-mockup. Generate a single square photorealistic product photo for an independent artists marketplace, each object is a unique maker's work, never platform merchandise. A handwoven crossbody bag in indigo and ochre geometric stripes, with natural leather strap curled beside it, placed on a pale neutral linen surface. Entire bag and strap visible within frame, textile texture, artisan craft photography, no symbols or logos. Product occupies roughly 70% of frame with generous safe margins, suitable for portrait crop. No typography, no text, no branding, no watermarks, no collages, no website UI. High quality natural tactile materials."
+    },
+    {
+      "file": "images/otherside-shop-riso-photo.jpg",
+      "prompt": "Use case: product-mockup. Generate a single square photorealistic product photo for an independent artists marketplace, each object is a unique maker's work, never platform merchandise. A vibrant unframed risograph art print depicting a whimsical pink and emerald botanical still life with a lemon, blue checkered vase and red abstract leaves on yellow cream paper. Full rectangular paper visible, top-down on pale lilac surface, crisp print grain, no words. Product occupies roughly 70% of frame with generous safe margins, suitable for portrait crop. No typography, no text, no branding, no watermarks, no collages, no website UI. High quality natural tactile materials."
+    }
+  ]
+}
